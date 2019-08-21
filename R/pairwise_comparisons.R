@@ -32,9 +32,23 @@
 #' @inheritParams stats::t.test
 #' @inheritParams WRS2::rmmcp
 #'
-#' @return A tibble dataframe containing groups levels being compared with each
-#'   other and *p*-value corresponding to this comparison and a label for this
-#'   *p*-value, in case this needs to be displayed in `geom_ggsignif`.
+#' @return A tibble dataframe containing two columns corresponding to group
+#'   levels being compared with each other (`group1` and `group2`) and `p.value`
+#'   column corresponding to this comparison. The dataframe will also contain a
+#'   `p.value.label` column containing a *label* for this *p*-value, in case
+#'   this needs to be displayed in `geom_ggsignif`. In addition to these common
+#'   columns across the different types of statistics, there will be additional
+#'   columns specific to the `type` of test being run.
+#'
+#'   The `significance` column will display asterisks to indicate significance
+#'   of *p*-values in the American Psychological Association (APA) mandated
+#'   format:
+#'   \itemize{
+#'   \item `ns` : > 0.05
+#'   \item `*` : < 0.05
+#'   \item `**` : < 0.01
+#'   \item `***` : < 0.001
+#'   }
 #'
 #' @importFrom dplyr select rename mutate mutate_if everything full_join vars
 #' @importFrom stats p.adjust pairwise.t.test na.omit aov TukeyHSD var sd

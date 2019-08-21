@@ -55,9 +55,23 @@ to be displayed (Default: \code{TRUE}).}
 \item{...}{Current ignored.}
 }
 \value{
-A tibble dataframe containing groups levels being compared with each
-other and \emph{p}-value corresponding to this comparison and a label for this
-\emph{p}-value, in case this needs to be displayed in \code{geom_ggsignif}.
+A tibble dataframe containing two columns corresponding to group
+levels being compared with each other (\code{group1} and \code{group2}) and \code{p.value}
+column corresponding to this comparison. The dataframe will also contain a
+\code{p.value.label} column containing a \emph{label} for this \emph{p}-value, in case
+this needs to be displayed in \code{geom_ggsignif}. In addition to these common
+columns across the different types of statistics, there will be additional
+columns specific to the \code{type} of test being run.
+
+The \code{significance} column will display asterisks to indicate significance
+of \emph{p}-values in the American Psychological Association (APA) mandated
+format:
+\itemize{
+\item \code{ns} : > 0.05
+\item \code{*} : < 0.05
+\item \code{**} : < 0.01
+\item \code{***} : < 0.001
+}
 }
 \description{
 Calculate parametric, non-parametric, and robust pairwise

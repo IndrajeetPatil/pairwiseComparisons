@@ -19,12 +19,12 @@
 provides a tidy data friendly way to carry out pairwise comparison
 tests.
 
-It currently supports *post hoc* multiple pairwise comparisons tests
+It currently supports *post hoc* multiple pairwise comparisons tests for
 both between-subjects and within-subjects one-way analysis of variance
-designs. For all such designs, parametric, non-parametric, and robust
-statistical tests are available.
+designs. For both of these designs, parametric, non-parametric, and
+robust statistical tests are available.
 
-# Installation
+## Installation
 
 To get the latest, stable `CRAN` release (`0.1.0`):
 
@@ -42,7 +42,7 @@ If you are in hurry and want to reduce the time of installation, prefer-
 
 ``` r
 # needed package to download from GitHub repo
-utils::install.packages(pkgs = "remotes")
+install.packages(pkgs = "remotes")
 
 # downloading the package from GitHub
 remotes::install_github(
@@ -62,23 +62,10 @@ remotes::install_github(
 )
 ```
 
-# Citation
-
-If you want to cite this package in a scientific journal or in any other
-context, run the following code in your `R` console:
-
-``` r
-citation("pairwiseComparisons")
-```
-
-# Documentation and Examples
-
-To see the documentation relevant for the **development** version of the
-package, see the dedicated website for `pairwiseComparisons`, which is
-updated after every new commit:
-<https://indrajeetpatil.github.io/pairwiseComparisons/>.
-
 # Summary of types of statistical analyses
+
+Following table contains a brief summary of the currently supported
+pairwise comparison tests-
 
 ## Between-subjects design
 
@@ -101,6 +88,13 @@ updated after every new commit:
 | Bayes Factor   | <font color="red">No</font> | <font color="red">No</font>    |
 
 # Examples
+
+Here we will see specific examples of how to use this function for
+different types of
+
+  - designs (between or within subjects)
+  - statistics (parametric, non-parametric, robust)
+  - *p*-value adjustment methods
 
 ## Between-subjects design
 

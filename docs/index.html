@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">pairwiseComparisons</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.1.0.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.1.0</span>
       </span>
     </div>
 
@@ -168,17 +168,16 @@
 <h1 class="hasAnchor">
 <a href="#introduction" class="anchor"></a>Introduction</h1>
 <p><a href="https://indrajeetpatil.github.io/pairwiseComparisons/"><code>pairwiseComparisons</code></a> provides a tidy data friendly way to carry out pairwise comparison tests.</p>
-<p>It currently supports <em>post hoc</em> multiple pairwise comparisons tests both between-subjects and within-subjects one-way analysis of variance designs. For all such designs, parametric, non-parametric, and robust statistical tests are available.</p>
-</div>
-<div id="installation" class="section level1">
-<h1 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h1>
+<p>It currently supports <em>post hoc</em> multiple pairwise comparisons tests for both between-subjects and within-subjects one-way analysis of variance designs. For both of these designs, parametric, non-parametric, and robust statistical tests are available.</p>
+<div id="installation" class="section level2">
+<h2 class="hasAnchor">
+<a href="#installation" class="anchor"></a>Installation</h2>
 <p>To get the latest, stable <code>CRAN</code> release (<code>0.1.0</code>):</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="dt">pkgs =</span> <span class="st">"pairwiseComparisons"</span>)</a></code></pre></div>
 <p>You can get the <strong>development</strong> version of the package from <code>GitHub</code> (<code>0.1.0.9000</code>). To see what new changes (and bug fixes) have been made to the package since the last release on <code>CRAN</code>, you can check the detailed log of changes here: <a href="https://indrajeetpatil.github.io/pairwiseComparisons/news/index.html" class="uri">https://indrajeetpatil.github.io/pairwiseComparisons/news/index.html</a></p>
 <p>If you are in hurry and want to reduce the time of installation, prefer-</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="co"># needed package to download from GitHub repo</span></a>
-<a class="sourceLine" id="cb2-2" title="2">utils<span class="op">::</span><span class="kw"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="dt">pkgs =</span> <span class="st">"remotes"</span>)</a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="kw"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="dt">pkgs =</span> <span class="st">"remotes"</span>)</a>
 <a class="sourceLine" id="cb2-3" title="3"></a>
 <a class="sourceLine" id="cb2-4" title="4"><span class="co"># downloading the package from GitHub</span></a>
 <a class="sourceLine" id="cb2-5" title="5">remotes<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/remotes/man/install_github.html">install_github</a></span>(</a>
@@ -193,20 +192,11 @@
 <a class="sourceLine" id="cb3-4" title="4">  <span class="dt">upgrade_dependencies =</span> <span class="ot">TRUE</span> <span class="co"># updates any out of date dependencies</span></a>
 <a class="sourceLine" id="cb3-5" title="5">)</a></code></pre></div>
 </div>
-<div id="citation" class="section level1">
-<h1 class="hasAnchor">
-<a href="#citation" class="anchor"></a>Citation</h1>
-<p>If you want to cite this package in a scientific journal or in any other context, run the following code in your <code>R</code> console:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="kw"><a href="https://rdrr.io/r/utils/citation.html">citation</a></span>(<span class="st">"pairwiseComparisons"</span>)</a></code></pre></div>
-</div>
-<div id="documentation-and-examples" class="section level1">
-<h1 class="hasAnchor">
-<a href="#documentation-and-examples" class="anchor"></a>Documentation and Examples</h1>
-<p>To see the documentation relevant for the <strong>development</strong> version of the package, see the dedicated website for <code>pairwiseComparisons</code>, which is updated after every new commit: <a href="https://indrajeetpatil.github.io/pairwiseComparisons/" class="uri">https://indrajeetpatil.github.io/pairwiseComparisons/</a>.</p>
 </div>
 <div id="summary-of-types-of-statistical-analyses" class="section level1">
 <h1 class="hasAnchor">
 <a href="#summary-of-types-of-statistical-analyses" class="anchor"></a>Summary of types of statistical analyses</h1>
+<p>Following table contains a brief summary of the currently supported pairwise comparison tests-</p>
 <div id="between-subjects-design" class="section level2">
 <h2 class="hasAnchor">
 <a href="#between-subjects-design" class="anchor"></a>Between-subjects design</h2>
@@ -296,225 +286,232 @@
 <div id="examples" class="section level1">
 <h1 class="hasAnchor">
 <a href="#examples" class="anchor"></a>Examples</h1>
+<p>Here we will see specific examples of how to use this function for different types of</p>
+<ul>
+<li>designs (between or within subjects)</li>
+<li>statistics (parametric, non-parametric, robust)</li>
+<li>
+<em>p</em>-value adjustment methods</li>
+</ul>
 <div id="between-subjects-design-1" class="section level2">
 <h2 class="hasAnchor">
 <a href="#between-subjects-design-1" class="anchor"></a>Between-subjects design</h2>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="co"># for reproducibility</span></a>
-<a class="sourceLine" id="cb5-2" title="2"><span class="kw"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="dv">123</span>)</a>
-<a class="sourceLine" id="cb5-3" title="3"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(pairwiseComparisons)</a>
-<a class="sourceLine" id="cb5-4" title="4"><span class="co">#&gt; Registered S3 method overwritten by 'broom.mixed':</span></a>
-<a class="sourceLine" id="cb5-5" title="5"><span class="co">#&gt;   method      from </span></a>
-<a class="sourceLine" id="cb5-6" title="6"><span class="co">#&gt;   tidy.gamlss broom</span></a>
-<a class="sourceLine" id="cb5-7" title="7"></a>
-<a class="sourceLine" id="cb5-8" title="8"><span class="co"># parametric</span></a>
-<a class="sourceLine" id="cb5-9" title="9"><span class="co"># if `var.equal = TRUE`, then Student's *t*-test will be run</span></a>
-<a class="sourceLine" id="cb5-10" title="10"><span class="kw"><a href="reference/pairwise_comparisons.html">pairwise_comparisons</a></span>(</a>
-<a class="sourceLine" id="cb5-11" title="11">  <span class="dt">data =</span> ggplot2<span class="op">::</span>msleep,</a>
-<a class="sourceLine" id="cb5-12" title="12">  <span class="dt">x =</span> vore,</a>
-<a class="sourceLine" id="cb5-13" title="13">  <span class="dt">y =</span> brainwt,</a>
-<a class="sourceLine" id="cb5-14" title="14">  <span class="dt">type =</span> <span class="st">"p"</span>,</a>
-<a class="sourceLine" id="cb5-15" title="15">  <span class="dt">var.equal =</span> <span class="ot">TRUE</span>,</a>
-<a class="sourceLine" id="cb5-16" title="16">  <span class="dt">paired =</span> <span class="ot">FALSE</span>,</a>
-<a class="sourceLine" id="cb5-17" title="17">  <span class="dt">p.adjust.method =</span> <span class="st">"bonferroni"</span></a>
-<a class="sourceLine" id="cb5-18" title="18">)</a>
-<a class="sourceLine" id="cb5-19" title="19"><span class="co">#&gt; Note: The parametric pairwise multiple comparisons test used-</span></a>
-<a class="sourceLine" id="cb5-20" title="20"><span class="co">#&gt;  Student's t-test.</span></a>
-<a class="sourceLine" id="cb5-21" title="21"><span class="co">#&gt;  Adjustment method for p-values: bonferroni</span></a>
-<a class="sourceLine" id="cb5-22" title="22"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb5-23" title="23"><span class="co">#&gt; # A tibble: 6 x 6</span></a>
-<a class="sourceLine" id="cb5-24" title="24"><span class="co">#&gt;   group1  group2  mean.difference p.value significance</span></a>
-<a class="sourceLine" id="cb5-25" title="25"><span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;             &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;       </span></a>
-<a class="sourceLine" id="cb5-26" title="26"><span class="co">#&gt; 1 carni   herbi            0.542    1     ns          </span></a>
-<a class="sourceLine" id="cb5-27" title="27"><span class="co">#&gt; 2 carni   insecti         -0.0577   1     ns          </span></a>
-<a class="sourceLine" id="cb5-28" title="28"><span class="co">#&gt; 3 carni   omni             0.0665   1     ns          </span></a>
-<a class="sourceLine" id="cb5-29" title="29"><span class="co">#&gt; 4 herbi   insecti         -0.600    1     ns          </span></a>
-<a class="sourceLine" id="cb5-30" title="30"><span class="co">#&gt; 5 herbi   omni            -0.476    0.979 ns          </span></a>
-<a class="sourceLine" id="cb5-31" title="31"><span class="co">#&gt; 6 insecti omni             0.124    1     ns          </span></a>
-<a class="sourceLine" id="cb5-32" title="32"><span class="co">#&gt;   p.value.label            </span></a>
-<a class="sourceLine" id="cb5-33" title="33"><span class="co">#&gt;   &lt;chr&gt;                    </span></a>
-<a class="sourceLine" id="cb5-34" title="34"><span class="co">#&gt; 1 list(~italic(p)== 1.000 )</span></a>
-<a class="sourceLine" id="cb5-35" title="35"><span class="co">#&gt; 2 list(~italic(p)== 1.000 )</span></a>
-<a class="sourceLine" id="cb5-36" title="36"><span class="co">#&gt; 3 list(~italic(p)== 1.000 )</span></a>
-<a class="sourceLine" id="cb5-37" title="37"><span class="co">#&gt; 4 list(~italic(p)== 1.000 )</span></a>
-<a class="sourceLine" id="cb5-38" title="38"><span class="co">#&gt; 5 list(~italic(p)== 0.979 )</span></a>
-<a class="sourceLine" id="cb5-39" title="39"><span class="co">#&gt; 6 list(~italic(p)== 1.000 )</span></a>
-<a class="sourceLine" id="cb5-40" title="40"></a>
-<a class="sourceLine" id="cb5-41" title="41"><span class="co"># if `var.equal = FALSE`, then Games-Howell test will be run</span></a>
-<a class="sourceLine" id="cb5-42" title="42"><span class="kw"><a href="reference/pairwise_comparisons.html">pairwise_comparisons</a></span>(</a>
-<a class="sourceLine" id="cb5-43" title="43">  <span class="dt">data =</span> ggplot2<span class="op">::</span>msleep,</a>
-<a class="sourceLine" id="cb5-44" title="44">  <span class="dt">x =</span> vore,</a>
-<a class="sourceLine" id="cb5-45" title="45">  <span class="dt">y =</span> brainwt,</a>
-<a class="sourceLine" id="cb5-46" title="46">  <span class="dt">type =</span> <span class="st">"parametric"</span>,</a>
-<a class="sourceLine" id="cb5-47" title="47">  <span class="dt">var.equal =</span> <span class="ot">FALSE</span>,</a>
-<a class="sourceLine" id="cb5-48" title="48">  <span class="dt">paired =</span> <span class="ot">FALSE</span>,</a>
-<a class="sourceLine" id="cb5-49" title="49">  <span class="dt">p.adjust.method =</span> <span class="st">"bonferroni"</span></a>
-<a class="sourceLine" id="cb5-50" title="50">)</a>
-<a class="sourceLine" id="cb5-51" title="51"><span class="co">#&gt; Note: The parametric pairwise multiple comparisons test used-</span></a>
-<a class="sourceLine" id="cb5-52" title="52"><span class="co">#&gt;  Games-Howell test.</span></a>
-<a class="sourceLine" id="cb5-53" title="53"><span class="co">#&gt;  Adjustment method for p-values: bonferroni</span></a>
-<a class="sourceLine" id="cb5-54" title="54"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb5-55" title="55"><span class="co">#&gt; # A tibble: 6 x 9</span></a>
-<a class="sourceLine" id="cb5-56" title="56"><span class="co">#&gt;   group1 group2  mean.difference    se t.value    df p.value significance</span></a>
-<a class="sourceLine" id="cb5-57" title="57"><span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;             &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;       </span></a>
-<a class="sourceLine" id="cb5-58" title="58"><span class="co">#&gt; 1 omni   herbi             0.476 0.255   1.32   20.9       1 ns          </span></a>
-<a class="sourceLine" id="cb5-59" title="59"><span class="co">#&gt; 2 omni   carni            -0.066 0.061   0.774  21.1       1 ns          </span></a>
-<a class="sourceLine" id="cb5-60" title="60"><span class="co">#&gt; 3 omni   insecti          -0.124 0.057   1.55   17.2       1 ns          </span></a>
-<a class="sourceLine" id="cb5-61" title="61"><span class="co">#&gt; 4 herbi  carni            -0.542 0.25    1.54   19.4       1 ns          </span></a>
-<a class="sourceLine" id="cb5-62" title="62"><span class="co">#&gt; 5 herbi  insecti          -0.6   0.249   1.70   19.1       1 ns          </span></a>
-<a class="sourceLine" id="cb5-63" title="63"><span class="co">#&gt; 6 carni  insecti          -0.058 0.027   1.53   10.7       1 ns          </span></a>
-<a class="sourceLine" id="cb5-64" title="64"><span class="co">#&gt;   p.value.label            </span></a>
-<a class="sourceLine" id="cb5-65" title="65"><span class="co">#&gt;   &lt;chr&gt;                    </span></a>
-<a class="sourceLine" id="cb5-66" title="66"><span class="co">#&gt; 1 list(~italic(p)== 1.000 )</span></a>
-<a class="sourceLine" id="cb5-67" title="67"><span class="co">#&gt; 2 list(~italic(p)== 1.000 )</span></a>
-<a class="sourceLine" id="cb5-68" title="68"><span class="co">#&gt; 3 list(~italic(p)== 1.000 )</span></a>
-<a class="sourceLine" id="cb5-69" title="69"><span class="co">#&gt; 4 list(~italic(p)== 1.000 )</span></a>
-<a class="sourceLine" id="cb5-70" title="70"><span class="co">#&gt; 5 list(~italic(p)== 1.000 )</span></a>
-<a class="sourceLine" id="cb5-71" title="71"><span class="co">#&gt; 6 list(~italic(p)== 1.000 )</span></a>
-<a class="sourceLine" id="cb5-72" title="72"></a>
-<a class="sourceLine" id="cb5-73" title="73"><span class="co"># non-parametric</span></a>
-<a class="sourceLine" id="cb5-74" title="74"><span class="kw"><a href="reference/pairwise_comparisons.html">pairwise_comparisons</a></span>(</a>
-<a class="sourceLine" id="cb5-75" title="75">  <span class="dt">data =</span> ggplot2<span class="op">::</span>msleep,</a>
-<a class="sourceLine" id="cb5-76" title="76">  <span class="dt">x =</span> vore,</a>
-<a class="sourceLine" id="cb5-77" title="77">  <span class="dt">y =</span> brainwt,</a>
-<a class="sourceLine" id="cb5-78" title="78">  <span class="dt">type =</span> <span class="st">"nonparametric"</span>,</a>
-<a class="sourceLine" id="cb5-79" title="79">  <span class="dt">paired =</span> <span class="ot">FALSE</span>,</a>
-<a class="sourceLine" id="cb5-80" title="80">  <span class="dt">p.adjust.method =</span> <span class="st">"none"</span></a>
-<a class="sourceLine" id="cb5-81" title="81">)</a>
-<a class="sourceLine" id="cb5-82" title="82"><span class="co">#&gt; Note: The nonparametric pairwise multiple comparisons test used-</span></a>
-<a class="sourceLine" id="cb5-83" title="83"><span class="co">#&gt;  Dwass-Steel-Crichtlow-Fligner test.</span></a>
-<a class="sourceLine" id="cb5-84" title="84"><span class="co">#&gt;  Adjustment method for p-values: none</span></a>
-<a class="sourceLine" id="cb5-85" title="85"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb5-86" title="86"><span class="co">#&gt; # A tibble: 6 x 6</span></a>
-<a class="sourceLine" id="cb5-87" title="87"><span class="co">#&gt;   group1  group2       W p.value significance p.value.label            </span></a>
-<a class="sourceLine" id="cb5-88" title="88"><span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;                    </span></a>
-<a class="sourceLine" id="cb5-89" title="89"><span class="co">#&gt; 1 carni   herbi   -0.8    0.572  ns           list(~italic(p)== 0.572 )</span></a>
-<a class="sourceLine" id="cb5-90" title="90"><span class="co">#&gt; 2 carni   insecti -2.36   0.0956 ns           list(~italic(p)== 0.096 )</span></a>
-<a class="sourceLine" id="cb5-91" title="91"><span class="co">#&gt; 3 carni   omni    -1.72   0.225  ns           list(~italic(p)== 0.225 )</span></a>
-<a class="sourceLine" id="cb5-92" title="92"><span class="co">#&gt; 4 herbi   insecti -2.40   0.0895 ns           list(~italic(p)== 0.089 )</span></a>
-<a class="sourceLine" id="cb5-93" title="93"><span class="co">#&gt; 5 herbi   omni    -0.948  0.503  ns           list(~italic(p)== 0.503 )</span></a>
-<a class="sourceLine" id="cb5-94" title="94"><span class="co">#&gt; 6 insecti omni     1.61   0.256  ns           list(~italic(p)== 0.256 )</span></a>
-<a class="sourceLine" id="cb5-95" title="95"></a>
-<a class="sourceLine" id="cb5-96" title="96"><span class="co"># robust</span></a>
-<a class="sourceLine" id="cb5-97" title="97"><span class="kw"><a href="reference/pairwise_comparisons.html">pairwise_comparisons</a></span>(</a>
-<a class="sourceLine" id="cb5-98" title="98">  <span class="dt">data =</span> ggplot2<span class="op">::</span>msleep,</a>
-<a class="sourceLine" id="cb5-99" title="99">  <span class="dt">x =</span> vore,</a>
-<a class="sourceLine" id="cb5-100" title="100">  <span class="dt">y =</span> brainwt,</a>
-<a class="sourceLine" id="cb5-101" title="101">  <span class="dt">type =</span> <span class="st">"robust"</span>,</a>
-<a class="sourceLine" id="cb5-102" title="102">  <span class="dt">paired =</span> <span class="ot">FALSE</span>,</a>
-<a class="sourceLine" id="cb5-103" title="103">  <span class="dt">p.adjust.method =</span> <span class="st">"fdr"</span></a>
-<a class="sourceLine" id="cb5-104" title="104">)</a>
-<a class="sourceLine" id="cb5-105" title="105"><span class="co">#&gt; Note: The robust pairwise multiple comparisons test used-</span></a>
-<a class="sourceLine" id="cb5-106" title="106"><span class="co">#&gt;  Yuen's trimmed means comparisons test.</span></a>
-<a class="sourceLine" id="cb5-107" title="107"><span class="co">#&gt;  Adjustment method for p-values: fdr</span></a>
-<a class="sourceLine" id="cb5-108" title="108"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb5-109" title="109"><span class="co">#&gt; # A tibble: 6 x 8</span></a>
-<a class="sourceLine" id="cb5-110" title="110"><span class="co">#&gt;   group1  group2    psihat conf.low conf.high p.value significance</span></a>
-<a class="sourceLine" id="cb5-111" title="111"><span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;       </span></a>
-<a class="sourceLine" id="cb5-112" title="112"><span class="co">#&gt; 1 insecti omni    -0.0556   -0.184     0.0728   0.969 ns          </span></a>
-<a class="sourceLine" id="cb5-113" title="113"><span class="co">#&gt; 2 carni   herbi   -0.0530   -0.274     0.168    0.969 ns          </span></a>
-<a class="sourceLine" id="cb5-114" title="114"><span class="co">#&gt; 3 carni   omni     0.00210  -0.151     0.155    0.969 ns          </span></a>
-<a class="sourceLine" id="cb5-115" title="115"><span class="co">#&gt; 4 herbi   omni     0.0551   -0.173     0.283    0.969 ns          </span></a>
-<a class="sourceLine" id="cb5-116" title="116"><span class="co">#&gt; 5 carni   insecti  0.0577   -0.0609    0.176    0.969 ns          </span></a>
-<a class="sourceLine" id="cb5-117" title="117"><span class="co">#&gt; 6 herbi   insecti  0.111    -0.0983    0.320    0.969 ns          </span></a>
-<a class="sourceLine" id="cb5-118" title="118"><span class="co">#&gt;   p.value.label            </span></a>
-<a class="sourceLine" id="cb5-119" title="119"><span class="co">#&gt;   &lt;chr&gt;                    </span></a>
-<a class="sourceLine" id="cb5-120" title="120"><span class="co">#&gt; 1 list(~italic(p)== 0.969 )</span></a>
-<a class="sourceLine" id="cb5-121" title="121"><span class="co">#&gt; 2 list(~italic(p)== 0.969 )</span></a>
-<a class="sourceLine" id="cb5-122" title="122"><span class="co">#&gt; 3 list(~italic(p)== 0.969 )</span></a>
-<a class="sourceLine" id="cb5-123" title="123"><span class="co">#&gt; 4 list(~italic(p)== 0.969 )</span></a>
-<a class="sourceLine" id="cb5-124" title="124"><span class="co">#&gt; 5 list(~italic(p)== 0.969 )</span></a>
-<a class="sourceLine" id="cb5-125" title="125"><span class="co">#&gt; 6 list(~italic(p)== 0.969 )</span></a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="co"># for reproducibility</span></a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="kw"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="dv">123</span>)</a>
+<a class="sourceLine" id="cb4-3" title="3"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(pairwiseComparisons)</a>
+<a class="sourceLine" id="cb4-4" title="4"><span class="co">#&gt; Registered S3 method overwritten by 'broom.mixed':</span></a>
+<a class="sourceLine" id="cb4-5" title="5"><span class="co">#&gt;   method      from </span></a>
+<a class="sourceLine" id="cb4-6" title="6"><span class="co">#&gt;   tidy.gamlss broom</span></a>
+<a class="sourceLine" id="cb4-7" title="7"></a>
+<a class="sourceLine" id="cb4-8" title="8"><span class="co"># parametric</span></a>
+<a class="sourceLine" id="cb4-9" title="9"><span class="co"># if `var.equal = TRUE`, then Student's *t*-test will be run</span></a>
+<a class="sourceLine" id="cb4-10" title="10"><span class="kw"><a href="reference/pairwise_comparisons.html">pairwise_comparisons</a></span>(</a>
+<a class="sourceLine" id="cb4-11" title="11">  <span class="dt">data =</span> ggplot2<span class="op">::</span>msleep,</a>
+<a class="sourceLine" id="cb4-12" title="12">  <span class="dt">x =</span> vore,</a>
+<a class="sourceLine" id="cb4-13" title="13">  <span class="dt">y =</span> brainwt,</a>
+<a class="sourceLine" id="cb4-14" title="14">  <span class="dt">type =</span> <span class="st">"p"</span>,</a>
+<a class="sourceLine" id="cb4-15" title="15">  <span class="dt">var.equal =</span> <span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb4-16" title="16">  <span class="dt">paired =</span> <span class="ot">FALSE</span>,</a>
+<a class="sourceLine" id="cb4-17" title="17">  <span class="dt">p.adjust.method =</span> <span class="st">"bonferroni"</span></a>
+<a class="sourceLine" id="cb4-18" title="18">)</a>
+<a class="sourceLine" id="cb4-19" title="19"><span class="co">#&gt; Note: The parametric pairwise multiple comparisons test used-</span></a>
+<a class="sourceLine" id="cb4-20" title="20"><span class="co">#&gt;  Student's t-test.</span></a>
+<a class="sourceLine" id="cb4-21" title="21"><span class="co">#&gt;  Adjustment method for p-values: bonferroni</span></a>
+<a class="sourceLine" id="cb4-22" title="22"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb4-23" title="23"><span class="co">#&gt; # A tibble: 6 x 6</span></a>
+<a class="sourceLine" id="cb4-24" title="24"><span class="co">#&gt;   group1  group2  mean.difference p.value significance</span></a>
+<a class="sourceLine" id="cb4-25" title="25"><span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;             &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;       </span></a>
+<a class="sourceLine" id="cb4-26" title="26"><span class="co">#&gt; 1 carni   herbi            0.542    1     ns          </span></a>
+<a class="sourceLine" id="cb4-27" title="27"><span class="co">#&gt; 2 carni   insecti         -0.0577   1     ns          </span></a>
+<a class="sourceLine" id="cb4-28" title="28"><span class="co">#&gt; 3 carni   omni             0.0665   1     ns          </span></a>
+<a class="sourceLine" id="cb4-29" title="29"><span class="co">#&gt; 4 herbi   insecti         -0.600    1     ns          </span></a>
+<a class="sourceLine" id="cb4-30" title="30"><span class="co">#&gt; 5 herbi   omni            -0.476    0.979 ns          </span></a>
+<a class="sourceLine" id="cb4-31" title="31"><span class="co">#&gt; 6 insecti omni             0.124    1     ns          </span></a>
+<a class="sourceLine" id="cb4-32" title="32"><span class="co">#&gt;   p.value.label            </span></a>
+<a class="sourceLine" id="cb4-33" title="33"><span class="co">#&gt;   &lt;chr&gt;                    </span></a>
+<a class="sourceLine" id="cb4-34" title="34"><span class="co">#&gt; 1 list(~italic(p)== 1.000 )</span></a>
+<a class="sourceLine" id="cb4-35" title="35"><span class="co">#&gt; 2 list(~italic(p)== 1.000 )</span></a>
+<a class="sourceLine" id="cb4-36" title="36"><span class="co">#&gt; 3 list(~italic(p)== 1.000 )</span></a>
+<a class="sourceLine" id="cb4-37" title="37"><span class="co">#&gt; 4 list(~italic(p)== 1.000 )</span></a>
+<a class="sourceLine" id="cb4-38" title="38"><span class="co">#&gt; 5 list(~italic(p)== 0.979 )</span></a>
+<a class="sourceLine" id="cb4-39" title="39"><span class="co">#&gt; 6 list(~italic(p)== 1.000 )</span></a>
+<a class="sourceLine" id="cb4-40" title="40"></a>
+<a class="sourceLine" id="cb4-41" title="41"><span class="co"># if `var.equal = FALSE`, then Games-Howell test will be run</span></a>
+<a class="sourceLine" id="cb4-42" title="42"><span class="kw"><a href="reference/pairwise_comparisons.html">pairwise_comparisons</a></span>(</a>
+<a class="sourceLine" id="cb4-43" title="43">  <span class="dt">data =</span> ggplot2<span class="op">::</span>msleep,</a>
+<a class="sourceLine" id="cb4-44" title="44">  <span class="dt">x =</span> vore,</a>
+<a class="sourceLine" id="cb4-45" title="45">  <span class="dt">y =</span> brainwt,</a>
+<a class="sourceLine" id="cb4-46" title="46">  <span class="dt">type =</span> <span class="st">"parametric"</span>,</a>
+<a class="sourceLine" id="cb4-47" title="47">  <span class="dt">var.equal =</span> <span class="ot">FALSE</span>,</a>
+<a class="sourceLine" id="cb4-48" title="48">  <span class="dt">paired =</span> <span class="ot">FALSE</span>,</a>
+<a class="sourceLine" id="cb4-49" title="49">  <span class="dt">p.adjust.method =</span> <span class="st">"bonferroni"</span></a>
+<a class="sourceLine" id="cb4-50" title="50">)</a>
+<a class="sourceLine" id="cb4-51" title="51"><span class="co">#&gt; Note: The parametric pairwise multiple comparisons test used-</span></a>
+<a class="sourceLine" id="cb4-52" title="52"><span class="co">#&gt;  Games-Howell test.</span></a>
+<a class="sourceLine" id="cb4-53" title="53"><span class="co">#&gt;  Adjustment method for p-values: bonferroni</span></a>
+<a class="sourceLine" id="cb4-54" title="54"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb4-55" title="55"><span class="co">#&gt; # A tibble: 6 x 9</span></a>
+<a class="sourceLine" id="cb4-56" title="56"><span class="co">#&gt;   group1 group2  mean.difference    se t.value    df p.value significance</span></a>
+<a class="sourceLine" id="cb4-57" title="57"><span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;             &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;       </span></a>
+<a class="sourceLine" id="cb4-58" title="58"><span class="co">#&gt; 1 omni   herbi             0.476 0.255   1.32   20.9       1 ns          </span></a>
+<a class="sourceLine" id="cb4-59" title="59"><span class="co">#&gt; 2 omni   carni            -0.066 0.061   0.774  21.1       1 ns          </span></a>
+<a class="sourceLine" id="cb4-60" title="60"><span class="co">#&gt; 3 omni   insecti          -0.124 0.057   1.55   17.2       1 ns          </span></a>
+<a class="sourceLine" id="cb4-61" title="61"><span class="co">#&gt; 4 herbi  carni            -0.542 0.25    1.54   19.4       1 ns          </span></a>
+<a class="sourceLine" id="cb4-62" title="62"><span class="co">#&gt; 5 herbi  insecti          -0.6   0.249   1.70   19.1       1 ns          </span></a>
+<a class="sourceLine" id="cb4-63" title="63"><span class="co">#&gt; 6 carni  insecti          -0.058 0.027   1.53   10.7       1 ns          </span></a>
+<a class="sourceLine" id="cb4-64" title="64"><span class="co">#&gt;   p.value.label            </span></a>
+<a class="sourceLine" id="cb4-65" title="65"><span class="co">#&gt;   &lt;chr&gt;                    </span></a>
+<a class="sourceLine" id="cb4-66" title="66"><span class="co">#&gt; 1 list(~italic(p)== 1.000 )</span></a>
+<a class="sourceLine" id="cb4-67" title="67"><span class="co">#&gt; 2 list(~italic(p)== 1.000 )</span></a>
+<a class="sourceLine" id="cb4-68" title="68"><span class="co">#&gt; 3 list(~italic(p)== 1.000 )</span></a>
+<a class="sourceLine" id="cb4-69" title="69"><span class="co">#&gt; 4 list(~italic(p)== 1.000 )</span></a>
+<a class="sourceLine" id="cb4-70" title="70"><span class="co">#&gt; 5 list(~italic(p)== 1.000 )</span></a>
+<a class="sourceLine" id="cb4-71" title="71"><span class="co">#&gt; 6 list(~italic(p)== 1.000 )</span></a>
+<a class="sourceLine" id="cb4-72" title="72"></a>
+<a class="sourceLine" id="cb4-73" title="73"><span class="co"># non-parametric</span></a>
+<a class="sourceLine" id="cb4-74" title="74"><span class="kw"><a href="reference/pairwise_comparisons.html">pairwise_comparisons</a></span>(</a>
+<a class="sourceLine" id="cb4-75" title="75">  <span class="dt">data =</span> ggplot2<span class="op">::</span>msleep,</a>
+<a class="sourceLine" id="cb4-76" title="76">  <span class="dt">x =</span> vore,</a>
+<a class="sourceLine" id="cb4-77" title="77">  <span class="dt">y =</span> brainwt,</a>
+<a class="sourceLine" id="cb4-78" title="78">  <span class="dt">type =</span> <span class="st">"nonparametric"</span>,</a>
+<a class="sourceLine" id="cb4-79" title="79">  <span class="dt">paired =</span> <span class="ot">FALSE</span>,</a>
+<a class="sourceLine" id="cb4-80" title="80">  <span class="dt">p.adjust.method =</span> <span class="st">"none"</span></a>
+<a class="sourceLine" id="cb4-81" title="81">)</a>
+<a class="sourceLine" id="cb4-82" title="82"><span class="co">#&gt; Note: The nonparametric pairwise multiple comparisons test used-</span></a>
+<a class="sourceLine" id="cb4-83" title="83"><span class="co">#&gt;  Dwass-Steel-Crichtlow-Fligner test.</span></a>
+<a class="sourceLine" id="cb4-84" title="84"><span class="co">#&gt;  Adjustment method for p-values: none</span></a>
+<a class="sourceLine" id="cb4-85" title="85"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb4-86" title="86"><span class="co">#&gt; # A tibble: 6 x 6</span></a>
+<a class="sourceLine" id="cb4-87" title="87"><span class="co">#&gt;   group1  group2       W p.value significance p.value.label            </span></a>
+<a class="sourceLine" id="cb4-88" title="88"><span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;                    </span></a>
+<a class="sourceLine" id="cb4-89" title="89"><span class="co">#&gt; 1 carni   herbi   -0.8    0.572  ns           list(~italic(p)== 0.572 )</span></a>
+<a class="sourceLine" id="cb4-90" title="90"><span class="co">#&gt; 2 carni   insecti -2.36   0.0956 ns           list(~italic(p)== 0.096 )</span></a>
+<a class="sourceLine" id="cb4-91" title="91"><span class="co">#&gt; 3 carni   omni    -1.72   0.225  ns           list(~italic(p)== 0.225 )</span></a>
+<a class="sourceLine" id="cb4-92" title="92"><span class="co">#&gt; 4 herbi   insecti -2.40   0.0895 ns           list(~italic(p)== 0.089 )</span></a>
+<a class="sourceLine" id="cb4-93" title="93"><span class="co">#&gt; 5 herbi   omni    -0.948  0.503  ns           list(~italic(p)== 0.503 )</span></a>
+<a class="sourceLine" id="cb4-94" title="94"><span class="co">#&gt; 6 insecti omni     1.61   0.256  ns           list(~italic(p)== 0.256 )</span></a>
+<a class="sourceLine" id="cb4-95" title="95"></a>
+<a class="sourceLine" id="cb4-96" title="96"><span class="co"># robust</span></a>
+<a class="sourceLine" id="cb4-97" title="97"><span class="kw"><a href="reference/pairwise_comparisons.html">pairwise_comparisons</a></span>(</a>
+<a class="sourceLine" id="cb4-98" title="98">  <span class="dt">data =</span> ggplot2<span class="op">::</span>msleep,</a>
+<a class="sourceLine" id="cb4-99" title="99">  <span class="dt">x =</span> vore,</a>
+<a class="sourceLine" id="cb4-100" title="100">  <span class="dt">y =</span> brainwt,</a>
+<a class="sourceLine" id="cb4-101" title="101">  <span class="dt">type =</span> <span class="st">"robust"</span>,</a>
+<a class="sourceLine" id="cb4-102" title="102">  <span class="dt">paired =</span> <span class="ot">FALSE</span>,</a>
+<a class="sourceLine" id="cb4-103" title="103">  <span class="dt">p.adjust.method =</span> <span class="st">"fdr"</span></a>
+<a class="sourceLine" id="cb4-104" title="104">)</a>
+<a class="sourceLine" id="cb4-105" title="105"><span class="co">#&gt; Note: The robust pairwise multiple comparisons test used-</span></a>
+<a class="sourceLine" id="cb4-106" title="106"><span class="co">#&gt;  Yuen's trimmed means comparisons test.</span></a>
+<a class="sourceLine" id="cb4-107" title="107"><span class="co">#&gt;  Adjustment method for p-values: fdr</span></a>
+<a class="sourceLine" id="cb4-108" title="108"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb4-109" title="109"><span class="co">#&gt; # A tibble: 6 x 8</span></a>
+<a class="sourceLine" id="cb4-110" title="110"><span class="co">#&gt;   group1  group2    psihat conf.low conf.high p.value significance</span></a>
+<a class="sourceLine" id="cb4-111" title="111"><span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;       </span></a>
+<a class="sourceLine" id="cb4-112" title="112"><span class="co">#&gt; 1 insecti omni    -0.0556   -0.184     0.0728   0.969 ns          </span></a>
+<a class="sourceLine" id="cb4-113" title="113"><span class="co">#&gt; 2 carni   herbi   -0.0530   -0.274     0.168    0.969 ns          </span></a>
+<a class="sourceLine" id="cb4-114" title="114"><span class="co">#&gt; 3 carni   omni     0.00210  -0.151     0.155    0.969 ns          </span></a>
+<a class="sourceLine" id="cb4-115" title="115"><span class="co">#&gt; 4 herbi   omni     0.0551   -0.173     0.283    0.969 ns          </span></a>
+<a class="sourceLine" id="cb4-116" title="116"><span class="co">#&gt; 5 carni   insecti  0.0577   -0.0609    0.176    0.969 ns          </span></a>
+<a class="sourceLine" id="cb4-117" title="117"><span class="co">#&gt; 6 herbi   insecti  0.111    -0.0983    0.320    0.969 ns          </span></a>
+<a class="sourceLine" id="cb4-118" title="118"><span class="co">#&gt;   p.value.label            </span></a>
+<a class="sourceLine" id="cb4-119" title="119"><span class="co">#&gt;   &lt;chr&gt;                    </span></a>
+<a class="sourceLine" id="cb4-120" title="120"><span class="co">#&gt; 1 list(~italic(p)== 0.969 )</span></a>
+<a class="sourceLine" id="cb4-121" title="121"><span class="co">#&gt; 2 list(~italic(p)== 0.969 )</span></a>
+<a class="sourceLine" id="cb4-122" title="122"><span class="co">#&gt; 3 list(~italic(p)== 0.969 )</span></a>
+<a class="sourceLine" id="cb4-123" title="123"><span class="co">#&gt; 4 list(~italic(p)== 0.969 )</span></a>
+<a class="sourceLine" id="cb4-124" title="124"><span class="co">#&gt; 5 list(~italic(p)== 0.969 )</span></a>
+<a class="sourceLine" id="cb4-125" title="125"><span class="co">#&gt; 6 list(~italic(p)== 0.969 )</span></a></code></pre></div>
 </div>
 <div id="within-subjects-design-1" class="section level2">
 <h2 class="hasAnchor">
 <a href="#within-subjects-design-1" class="anchor"></a>Within-subjects design</h2>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="co"># for reproducibility</span></a>
-<a class="sourceLine" id="cb6-2" title="2"><span class="kw"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="dv">123</span>)</a>
-<a class="sourceLine" id="cb6-3" title="3"></a>
-<a class="sourceLine" id="cb6-4" title="4"><span class="co"># parametric</span></a>
-<a class="sourceLine" id="cb6-5" title="5"><span class="kw"><a href="reference/pairwise_comparisons.html">pairwise_comparisons</a></span>(</a>
-<a class="sourceLine" id="cb6-6" title="6">  <span class="dt">data =</span> bugs_long,</a>
-<a class="sourceLine" id="cb6-7" title="7">  <span class="dt">x =</span> condition,</a>
-<a class="sourceLine" id="cb6-8" title="8">  <span class="dt">y =</span> desire,</a>
-<a class="sourceLine" id="cb6-9" title="9">  <span class="dt">type =</span> <span class="st">"parametric"</span>,</a>
-<a class="sourceLine" id="cb6-10" title="10">  <span class="dt">paired =</span> <span class="ot">TRUE</span>,</a>
-<a class="sourceLine" id="cb6-11" title="11">  <span class="dt">p.adjust.method =</span> <span class="st">"BH"</span></a>
-<a class="sourceLine" id="cb6-12" title="12">)</a>
-<a class="sourceLine" id="cb6-13" title="13"><span class="co">#&gt; Note: The parametric pairwise multiple comparisons test used-</span></a>
-<a class="sourceLine" id="cb6-14" title="14"><span class="co">#&gt;  Student's t-test.</span></a>
-<a class="sourceLine" id="cb6-15" title="15"><span class="co">#&gt;  Adjustment method for p-values: BH</span></a>
-<a class="sourceLine" id="cb6-16" title="16"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb6-17" title="17"><span class="co">#&gt; # A tibble: 6 x 6</span></a>
-<a class="sourceLine" id="cb6-18" title="18"><span class="co">#&gt;   group1 group2 mean.difference   p.value significance</span></a>
-<a class="sourceLine" id="cb6-19" title="19"><span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;            &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;       </span></a>
-<a class="sourceLine" id="cb6-20" title="20"><span class="co">#&gt; 1 HDHF   HDLF            -1.11  10.00e- 4 ***         </span></a>
-<a class="sourceLine" id="cb6-21" title="21"><span class="co">#&gt; 2 HDHF   LDHF            -0.474  7.07e- 2 ns          </span></a>
-<a class="sourceLine" id="cb6-22" title="22"><span class="co">#&gt; 3 HDHF   LDLF            -2.14   7.64e-12 ***         </span></a>
-<a class="sourceLine" id="cb6-23" title="23"><span class="co">#&gt; 4 HDLF   LDHF             0.637  5.47e- 2 ns          </span></a>
-<a class="sourceLine" id="cb6-24" title="24"><span class="co">#&gt; 5 HDLF   LDLF            -1.03   1.39e- 3 **          </span></a>
-<a class="sourceLine" id="cb6-25" title="25"><span class="co">#&gt; 6 LDHF   LDLF            -1.66   6.67e- 9 ***         </span></a>
-<a class="sourceLine" id="cb6-26" title="26"><span class="co">#&gt;   p.value.label            </span></a>
-<a class="sourceLine" id="cb6-27" title="27"><span class="co">#&gt;   &lt;chr&gt;                    </span></a>
-<a class="sourceLine" id="cb6-28" title="28"><span class="co">#&gt; 1 list(~italic(p)== 0.001 )</span></a>
-<a class="sourceLine" id="cb6-29" title="29"><span class="co">#&gt; 2 list(~italic(p)== 0.071 )</span></a>
-<a class="sourceLine" id="cb6-30" title="30"><span class="co">#&gt; 3 list(~italic(p)&lt;= 0.001 )</span></a>
-<a class="sourceLine" id="cb6-31" title="31"><span class="co">#&gt; 4 list(~italic(p)== 0.055 )</span></a>
-<a class="sourceLine" id="cb6-32" title="32"><span class="co">#&gt; 5 list(~italic(p)== 0.001 )</span></a>
-<a class="sourceLine" id="cb6-33" title="33"><span class="co">#&gt; 6 list(~italic(p)&lt;= 0.001 )</span></a>
-<a class="sourceLine" id="cb6-34" title="34"></a>
-<a class="sourceLine" id="cb6-35" title="35"><span class="co"># non-parametric</span></a>
-<a class="sourceLine" id="cb6-36" title="36"><span class="kw"><a href="reference/pairwise_comparisons.html">pairwise_comparisons</a></span>(</a>
-<a class="sourceLine" id="cb6-37" title="37">  <span class="dt">data =</span> bugs_long,</a>
-<a class="sourceLine" id="cb6-38" title="38">  <span class="dt">x =</span> condition,</a>
-<a class="sourceLine" id="cb6-39" title="39">  <span class="dt">y =</span> desire,</a>
-<a class="sourceLine" id="cb6-40" title="40">  <span class="dt">type =</span> <span class="st">"nonparametric"</span>,</a>
-<a class="sourceLine" id="cb6-41" title="41">  <span class="dt">paired =</span> <span class="ot">TRUE</span>,</a>
-<a class="sourceLine" id="cb6-42" title="42">  <span class="dt">p.adjust.method =</span> <span class="st">"BY"</span></a>
-<a class="sourceLine" id="cb6-43" title="43">)</a>
-<a class="sourceLine" id="cb6-44" title="44"><span class="co">#&gt; Note: The nonparametric pairwise multiple comparisons test used-</span></a>
-<a class="sourceLine" id="cb6-45" title="45"><span class="co">#&gt;  Durbin-Conover test.</span></a>
-<a class="sourceLine" id="cb6-46" title="46"><span class="co">#&gt;  Adjustment method for p-values: BY</span></a>
-<a class="sourceLine" id="cb6-47" title="47"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb6-48" title="48"><span class="co">#&gt; # A tibble: 6 x 6</span></a>
-<a class="sourceLine" id="cb6-49" title="49"><span class="co">#&gt;   group1 group2 statistic  p.value significance p.value.label            </span></a>
-<a class="sourceLine" id="cb6-50" title="50"><span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;      &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;                    </span></a>
-<a class="sourceLine" id="cb6-51" title="51"><span class="co">#&gt; 1 HDHF   HDLF        4.78 1.44e- 5 ***          list(~italic(p)&lt;= 0.001 )</span></a>
-<a class="sourceLine" id="cb6-52" title="52"><span class="co">#&gt; 2 HDHF   LDHF        2.44 4.47e- 2 *            list(~italic(p)== 0.045 )</span></a>
-<a class="sourceLine" id="cb6-53" title="53"><span class="co">#&gt; 3 HDHF   LDLF        8.01 5.45e-13 ***          list(~italic(p)&lt;= 0.001 )</span></a>
-<a class="sourceLine" id="cb6-54" title="54"><span class="co">#&gt; 4 HDLF   LDHF        2.34 4.96e- 2 *            list(~italic(p)== 0.050 )</span></a>
-<a class="sourceLine" id="cb6-55" title="55"><span class="co">#&gt; 5 HDLF   LDLF        3.23 5.05e- 3 **           list(~italic(p)== 0.005 )</span></a>
-<a class="sourceLine" id="cb6-56" title="56"><span class="co">#&gt; 6 LDHF   LDLF        5.57 4.64e- 7 ***          list(~italic(p)&lt;= 0.001 )</span></a>
-<a class="sourceLine" id="cb6-57" title="57"></a>
-<a class="sourceLine" id="cb6-58" title="58"><span class="co"># robust</span></a>
-<a class="sourceLine" id="cb6-59" title="59"><span class="kw"><a href="reference/pairwise_comparisons.html">pairwise_comparisons</a></span>(</a>
-<a class="sourceLine" id="cb6-60" title="60">  <span class="dt">data =</span> bugs_long,</a>
-<a class="sourceLine" id="cb6-61" title="61">  <span class="dt">x =</span> condition,</a>
-<a class="sourceLine" id="cb6-62" title="62">  <span class="dt">y =</span> desire,</a>
-<a class="sourceLine" id="cb6-63" title="63">  <span class="dt">type =</span> <span class="st">"robust"</span>,</a>
-<a class="sourceLine" id="cb6-64" title="64">  <span class="dt">paired =</span> <span class="ot">TRUE</span>,</a>
-<a class="sourceLine" id="cb6-65" title="65">  <span class="dt">p.adjust.method =</span> <span class="st">"hommel"</span></a>
-<a class="sourceLine" id="cb6-66" title="66">)</a>
-<a class="sourceLine" id="cb6-67" title="67"><span class="co">#&gt; Note: The robust pairwise multiple comparisons test used-</span></a>
-<a class="sourceLine" id="cb6-68" title="68"><span class="co">#&gt;  Yuen's trimmed means comparisons test.</span></a>
-<a class="sourceLine" id="cb6-69" title="69"><span class="co">#&gt;  Adjustment method for p-values: hommel</span></a>
-<a class="sourceLine" id="cb6-70" title="70"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb6-71" title="71"><span class="co">#&gt; # A tibble: 6 x 8</span></a>
-<a class="sourceLine" id="cb6-72" title="72"><span class="co">#&gt;   group1 group2 psihat conf.low conf.high  p.value significance</span></a>
-<a class="sourceLine" id="cb6-73" title="73"><span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       </span></a>
-<a class="sourceLine" id="cb6-74" title="74"><span class="co">#&gt; 1 HDLF   LDHF   -0.701  -1.71       0.303 6.20e- 2 ns          </span></a>
-<a class="sourceLine" id="cb6-75" title="75"><span class="co">#&gt; 2 HDHF   LDHF    0.5    -0.188      1.19  6.20e- 2 ns          </span></a>
-<a class="sourceLine" id="cb6-76" title="76"><span class="co">#&gt; 3 HDLF   LDLF    0.938   0.0694     1.81  1.36e- 2 *           </span></a>
-<a class="sourceLine" id="cb6-77" title="77"><span class="co">#&gt; 4 HDHF   HDLF    1.16    0.318      2.00  1.49e- 3 **          </span></a>
-<a class="sourceLine" id="cb6-78" title="78"><span class="co">#&gt; 5 LDHF   LDLF    1.54    0.810      2.27  1.16e- 6 ***         </span></a>
-<a class="sourceLine" id="cb6-79" title="79"><span class="co">#&gt; 6 HDHF   LDLF    2.10    1.37       2.82  1.79e-10 ***         </span></a>
-<a class="sourceLine" id="cb6-80" title="80"><span class="co">#&gt;   p.value.label            </span></a>
-<a class="sourceLine" id="cb6-81" title="81"><span class="co">#&gt;   &lt;chr&gt;                    </span></a>
-<a class="sourceLine" id="cb6-82" title="82"><span class="co">#&gt; 1 list(~italic(p)== 0.062 )</span></a>
-<a class="sourceLine" id="cb6-83" title="83"><span class="co">#&gt; 2 list(~italic(p)== 0.062 )</span></a>
-<a class="sourceLine" id="cb6-84" title="84"><span class="co">#&gt; 3 list(~italic(p)== 0.014 )</span></a>
-<a class="sourceLine" id="cb6-85" title="85"><span class="co">#&gt; 4 list(~italic(p)== 0.001 )</span></a>
-<a class="sourceLine" id="cb6-86" title="86"><span class="co">#&gt; 5 list(~italic(p)&lt;= 0.001 )</span></a>
-<a class="sourceLine" id="cb6-87" title="87"><span class="co">#&gt; 6 list(~italic(p)&lt;= 0.001 )</span></a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="co"># for reproducibility</span></a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="kw"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="dv">123</span>)</a>
+<a class="sourceLine" id="cb5-3" title="3"></a>
+<a class="sourceLine" id="cb5-4" title="4"><span class="co"># parametric</span></a>
+<a class="sourceLine" id="cb5-5" title="5"><span class="kw"><a href="reference/pairwise_comparisons.html">pairwise_comparisons</a></span>(</a>
+<a class="sourceLine" id="cb5-6" title="6">  <span class="dt">data =</span> bugs_long,</a>
+<a class="sourceLine" id="cb5-7" title="7">  <span class="dt">x =</span> condition,</a>
+<a class="sourceLine" id="cb5-8" title="8">  <span class="dt">y =</span> desire,</a>
+<a class="sourceLine" id="cb5-9" title="9">  <span class="dt">type =</span> <span class="st">"parametric"</span>,</a>
+<a class="sourceLine" id="cb5-10" title="10">  <span class="dt">paired =</span> <span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb5-11" title="11">  <span class="dt">p.adjust.method =</span> <span class="st">"BH"</span></a>
+<a class="sourceLine" id="cb5-12" title="12">)</a>
+<a class="sourceLine" id="cb5-13" title="13"><span class="co">#&gt; Note: The parametric pairwise multiple comparisons test used-</span></a>
+<a class="sourceLine" id="cb5-14" title="14"><span class="co">#&gt;  Student's t-test.</span></a>
+<a class="sourceLine" id="cb5-15" title="15"><span class="co">#&gt;  Adjustment method for p-values: BH</span></a>
+<a class="sourceLine" id="cb5-16" title="16"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb5-17" title="17"><span class="co">#&gt; # A tibble: 6 x 6</span></a>
+<a class="sourceLine" id="cb5-18" title="18"><span class="co">#&gt;   group1 group2 mean.difference   p.value significance</span></a>
+<a class="sourceLine" id="cb5-19" title="19"><span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;            &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;       </span></a>
+<a class="sourceLine" id="cb5-20" title="20"><span class="co">#&gt; 1 HDHF   HDLF            -1.11  10.00e- 4 ***         </span></a>
+<a class="sourceLine" id="cb5-21" title="21"><span class="co">#&gt; 2 HDHF   LDHF            -0.474  7.07e- 2 ns          </span></a>
+<a class="sourceLine" id="cb5-22" title="22"><span class="co">#&gt; 3 HDHF   LDLF            -2.14   7.64e-12 ***         </span></a>
+<a class="sourceLine" id="cb5-23" title="23"><span class="co">#&gt; 4 HDLF   LDHF             0.637  5.47e- 2 ns          </span></a>
+<a class="sourceLine" id="cb5-24" title="24"><span class="co">#&gt; 5 HDLF   LDLF            -1.03   1.39e- 3 **          </span></a>
+<a class="sourceLine" id="cb5-25" title="25"><span class="co">#&gt; 6 LDHF   LDLF            -1.66   6.67e- 9 ***         </span></a>
+<a class="sourceLine" id="cb5-26" title="26"><span class="co">#&gt;   p.value.label            </span></a>
+<a class="sourceLine" id="cb5-27" title="27"><span class="co">#&gt;   &lt;chr&gt;                    </span></a>
+<a class="sourceLine" id="cb5-28" title="28"><span class="co">#&gt; 1 list(~italic(p)== 0.001 )</span></a>
+<a class="sourceLine" id="cb5-29" title="29"><span class="co">#&gt; 2 list(~italic(p)== 0.071 )</span></a>
+<a class="sourceLine" id="cb5-30" title="30"><span class="co">#&gt; 3 list(~italic(p)&lt;= 0.001 )</span></a>
+<a class="sourceLine" id="cb5-31" title="31"><span class="co">#&gt; 4 list(~italic(p)== 0.055 )</span></a>
+<a class="sourceLine" id="cb5-32" title="32"><span class="co">#&gt; 5 list(~italic(p)== 0.001 )</span></a>
+<a class="sourceLine" id="cb5-33" title="33"><span class="co">#&gt; 6 list(~italic(p)&lt;= 0.001 )</span></a>
+<a class="sourceLine" id="cb5-34" title="34"></a>
+<a class="sourceLine" id="cb5-35" title="35"><span class="co"># non-parametric</span></a>
+<a class="sourceLine" id="cb5-36" title="36"><span class="kw"><a href="reference/pairwise_comparisons.html">pairwise_comparisons</a></span>(</a>
+<a class="sourceLine" id="cb5-37" title="37">  <span class="dt">data =</span> bugs_long,</a>
+<a class="sourceLine" id="cb5-38" title="38">  <span class="dt">x =</span> condition,</a>
+<a class="sourceLine" id="cb5-39" title="39">  <span class="dt">y =</span> desire,</a>
+<a class="sourceLine" id="cb5-40" title="40">  <span class="dt">type =</span> <span class="st">"nonparametric"</span>,</a>
+<a class="sourceLine" id="cb5-41" title="41">  <span class="dt">paired =</span> <span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb5-42" title="42">  <span class="dt">p.adjust.method =</span> <span class="st">"BY"</span></a>
+<a class="sourceLine" id="cb5-43" title="43">)</a>
+<a class="sourceLine" id="cb5-44" title="44"><span class="co">#&gt; Note: The nonparametric pairwise multiple comparisons test used-</span></a>
+<a class="sourceLine" id="cb5-45" title="45"><span class="co">#&gt;  Durbin-Conover test.</span></a>
+<a class="sourceLine" id="cb5-46" title="46"><span class="co">#&gt;  Adjustment method for p-values: BY</span></a>
+<a class="sourceLine" id="cb5-47" title="47"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb5-48" title="48"><span class="co">#&gt; # A tibble: 6 x 6</span></a>
+<a class="sourceLine" id="cb5-49" title="49"><span class="co">#&gt;   group1 group2 statistic  p.value significance p.value.label            </span></a>
+<a class="sourceLine" id="cb5-50" title="50"><span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;      &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;                    </span></a>
+<a class="sourceLine" id="cb5-51" title="51"><span class="co">#&gt; 1 HDHF   HDLF        4.78 1.44e- 5 ***          list(~italic(p)&lt;= 0.001 )</span></a>
+<a class="sourceLine" id="cb5-52" title="52"><span class="co">#&gt; 2 HDHF   LDHF        2.44 4.47e- 2 *            list(~italic(p)== 0.045 )</span></a>
+<a class="sourceLine" id="cb5-53" title="53"><span class="co">#&gt; 3 HDHF   LDLF        8.01 5.45e-13 ***          list(~italic(p)&lt;= 0.001 )</span></a>
+<a class="sourceLine" id="cb5-54" title="54"><span class="co">#&gt; 4 HDLF   LDHF        2.34 4.96e- 2 *            list(~italic(p)== 0.050 )</span></a>
+<a class="sourceLine" id="cb5-55" title="55"><span class="co">#&gt; 5 HDLF   LDLF        3.23 5.05e- 3 **           list(~italic(p)== 0.005 )</span></a>
+<a class="sourceLine" id="cb5-56" title="56"><span class="co">#&gt; 6 LDHF   LDLF        5.57 4.64e- 7 ***          list(~italic(p)&lt;= 0.001 )</span></a>
+<a class="sourceLine" id="cb5-57" title="57"></a>
+<a class="sourceLine" id="cb5-58" title="58"><span class="co"># robust</span></a>
+<a class="sourceLine" id="cb5-59" title="59"><span class="kw"><a href="reference/pairwise_comparisons.html">pairwise_comparisons</a></span>(</a>
+<a class="sourceLine" id="cb5-60" title="60">  <span class="dt">data =</span> bugs_long,</a>
+<a class="sourceLine" id="cb5-61" title="61">  <span class="dt">x =</span> condition,</a>
+<a class="sourceLine" id="cb5-62" title="62">  <span class="dt">y =</span> desire,</a>
+<a class="sourceLine" id="cb5-63" title="63">  <span class="dt">type =</span> <span class="st">"robust"</span>,</a>
+<a class="sourceLine" id="cb5-64" title="64">  <span class="dt">paired =</span> <span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb5-65" title="65">  <span class="dt">p.adjust.method =</span> <span class="st">"hommel"</span></a>
+<a class="sourceLine" id="cb5-66" title="66">)</a>
+<a class="sourceLine" id="cb5-67" title="67"><span class="co">#&gt; Note: The robust pairwise multiple comparisons test used-</span></a>
+<a class="sourceLine" id="cb5-68" title="68"><span class="co">#&gt;  Yuen's trimmed means comparisons test.</span></a>
+<a class="sourceLine" id="cb5-69" title="69"><span class="co">#&gt;  Adjustment method for p-values: hommel</span></a>
+<a class="sourceLine" id="cb5-70" title="70"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb5-71" title="71"><span class="co">#&gt; # A tibble: 6 x 8</span></a>
+<a class="sourceLine" id="cb5-72" title="72"><span class="co">#&gt;   group1 group2 psihat conf.low conf.high  p.value significance</span></a>
+<a class="sourceLine" id="cb5-73" title="73"><span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       </span></a>
+<a class="sourceLine" id="cb5-74" title="74"><span class="co">#&gt; 1 HDLF   LDHF   -0.701  -1.71       0.303 6.20e- 2 ns          </span></a>
+<a class="sourceLine" id="cb5-75" title="75"><span class="co">#&gt; 2 HDHF   LDHF    0.5    -0.188      1.19  6.20e- 2 ns          </span></a>
+<a class="sourceLine" id="cb5-76" title="76"><span class="co">#&gt; 3 HDLF   LDLF    0.938   0.0694     1.81  1.36e- 2 *           </span></a>
+<a class="sourceLine" id="cb5-77" title="77"><span class="co">#&gt; 4 HDHF   HDLF    1.16    0.318      2.00  1.49e- 3 **          </span></a>
+<a class="sourceLine" id="cb5-78" title="78"><span class="co">#&gt; 5 LDHF   LDLF    1.54    0.810      2.27  1.16e- 6 ***         </span></a>
+<a class="sourceLine" id="cb5-79" title="79"><span class="co">#&gt; 6 HDHF   LDLF    2.10    1.37       2.82  1.79e-10 ***         </span></a>
+<a class="sourceLine" id="cb5-80" title="80"><span class="co">#&gt;   p.value.label            </span></a>
+<a class="sourceLine" id="cb5-81" title="81"><span class="co">#&gt;   &lt;chr&gt;                    </span></a>
+<a class="sourceLine" id="cb5-82" title="82"><span class="co">#&gt; 1 list(~italic(p)== 0.062 )</span></a>
+<a class="sourceLine" id="cb5-83" title="83"><span class="co">#&gt; 2 list(~italic(p)== 0.062 )</span></a>
+<a class="sourceLine" id="cb5-84" title="84"><span class="co">#&gt; 3 list(~italic(p)== 0.014 )</span></a>
+<a class="sourceLine" id="cb5-85" title="85"><span class="co">#&gt; 4 list(~italic(p)== 0.001 )</span></a>
+<a class="sourceLine" id="cb5-86" title="86"><span class="co">#&gt; 5 list(~italic(p)&lt;= 0.001 )</span></a>
+<a class="sourceLine" id="cb5-87" title="87"><span class="co">#&gt; 6 list(~italic(p)&lt;= 0.001 )</span></a></code></pre></div>
 </div>
 </div>
 <div id="code-coverage" class="section level1">
