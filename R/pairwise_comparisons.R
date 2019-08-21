@@ -32,6 +32,10 @@
 #' @inheritParams stats::t.test
 #' @inheritParams WRS2::rmmcp
 #'
+#' @return A tibble dataframe containing groups levels being compared with each
+#'   other and *p*-value corresponding to this comparison and a label for this
+#'   *p*-value, in case this needs to be displayed in `geom_ggsignif`.
+#'
 #' @importFrom dplyr select rename mutate mutate_if everything full_join vars
 #' @importFrom stats p.adjust pairwise.t.test na.omit aov TukeyHSD var sd
 #' @importFrom stringr str_replace

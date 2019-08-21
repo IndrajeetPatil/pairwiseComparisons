@@ -177,13 +177,33 @@ description of pairwise comparison test).</p></td>
     </tr>
     </table>
     
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
+    <p>An expression containing details about the pairwise comparison test
+carried out. These details are intended to be displayed in the caption of a
+plot.</p>
+    
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>
+<span class='kw pkg'>pairwiseComparisons</span><span class='kw ns'>::</span><span class='fu'><a href='https://indrajeetpatil.github.io/pairwiseComparisons//reference/pairwise_comparisons_caption.html'>pairwise_comparisons_caption</a></span>(
+  <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"robust"</span>,
+  <span class='kw'>paired</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>p.adjust.method</span> <span class='kw'>=</span> <span class='st'>"holm"</span>,
+  <span class='kw'>caption</span> <span class='kw'>=</span> <span class='st'>"this is caption"</span>
+)</div><div class='output co'>#&gt; atop(displaystyle("this is caption"), expr = paste("Pairwise comparisons: ", 
+#&gt;     bold("Yuen's trimmed means test"), "; Adjustment (p-value): ", 
+#&gt;     bold("Holm")))</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+      
+      <li><a href="#value">Value</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
     <h2>Author</h2>
     <p><a href='https://github.com/IndrajeetPatil'>Indrajeet Patil</a></p>

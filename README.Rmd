@@ -35,7 +35,12 @@ Package | Status | Usage | GitHub | References
 # Introduction
 
 [`pairwiseComparisons`](https://indrajeetpatil.github.io/pairwiseComparisons/)
-provides a tidy data friendly way to carry out
+provides a tidy data friendly way to carry out pairwise comparison tests.
+
+It currently supports *post hoc* multiple pairwise comparisons tests both
+between-subjects and within-subjects one-way analysis of variance designs. For
+all such designs, parametric, non-parametric, and robust statistical tests are
+available.
 
 # Installation
 

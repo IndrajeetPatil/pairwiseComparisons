@@ -330,5 +330,6 @@
       "name": "pairwiseComparisons: Multiple Pairwise Comparison Tests",
       "url": "https://CRAN.R-project.org/package=pairwiseComparisons"
     }
-  ]
+  ],
+  "readme": "https://github.com/IndrajeetPatil/pairwiseComparisons/blob/master/README.md"
 }

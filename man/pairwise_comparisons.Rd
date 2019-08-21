@@ -54,6 +54,11 @@ to be displayed (Default: \code{TRUE}).}
 
 \item{...}{Current ignored.}
 }
+\value{
+A tibble dataframe containing groups levels being compared with each
+other and \emph{p}-value corresponding to this comparison and a label for this
+\emph{p}-value, in case this needs to be displayed in \code{geom_ggsignif}.
+}
 \description{
 Calculate parametric, non-parametric, and robust pairwise
 comparisons between group levels with corrections for multiple testing.

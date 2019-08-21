@@ -35,10 +35,23 @@ description of pairwise comparison test).}
 
 \item{...}{Current ignored.}
 }
+\value{
+An expression containing details about the pairwise comparison test
+carried out. These details are intended to be displayed in the caption of a
+plot.
+}
 \description{
 Preparing caption in case pairwise comparisons are displayed.
+}
+\examples{
+
+pairwiseComparisons::pairwise_comparisons_caption(
+  type = "robust",
+  paired = FALSE,
+  p.adjust.method = "holm",
+  caption = "this is caption"
+)
 }
 \author{
 \href{https://github.com/IndrajeetPatil}{Indrajeet Patil}
 }
-\keyword{internal}

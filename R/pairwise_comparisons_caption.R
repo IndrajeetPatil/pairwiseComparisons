@@ -6,7 +6,19 @@
 #' @param caption Text to display as caption (will be displayed on top of the
 #'   description of pairwise comparison test).
 #'
-#' @keywords internal
+#' @return An expression containing details about the pairwise comparison test
+#'   carried out. These details are intended to be displayed in the caption of a
+#'   plot.
+#'
+#' @examples
+#'
+#' pairwiseComparisons::pairwise_comparisons_caption(
+#'   type = "robust",
+#'   paired = FALSE,
+#'   p.adjust.method = "holm",
+#'   caption = "this is caption"
+#' )
+#' @export
 
 pairwise_comparisons_caption <- function(type,
                                          var.equal = FALSE,
