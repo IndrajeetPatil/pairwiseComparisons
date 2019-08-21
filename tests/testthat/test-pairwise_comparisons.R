@@ -482,4 +482,3 @@ testthat::test_that(
     testthat::expect_equal(df$group2, c("PG-13", "R", "R"))
   }
 )
-

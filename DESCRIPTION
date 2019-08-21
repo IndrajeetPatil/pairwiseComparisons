@@ -31,7 +31,6 @@ Imports:
     groupedstats,
     jmv,
     magrittr (>= 1.5),
-    purrr (>= 0.3.2),
     purrrlyr,
     rlang (>= 0.4.0),
     stats,
