@@ -1,0 +1,235 @@
+---
+output:
+  github_document:
+    pandoc_args: --webtex
+---
+
+  <!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, echo = FALSE}
+# show me all columns
+options(tibble.width = Inf) 
+
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  dpi = 200,
+  out.width = "100%",
+  comment = "#>",
+  fig.path = "man/figures/README-"
+)
+```
+
+# `pairwiseComparisons`: Multiple Pairwise Comparison Tests
+
+Package | Status | Usage | GitHub | References
+----------------- | ----------------- | ----------------- | ----------------- | -----------------
+[![CRAN_Release_Badge](http://www.r-pkg.org/badges/version-ago/pairwiseComparisons)](https://CRAN.R-project.org/package=pairwiseComparisons) | [![Travis Build Status](https://travis-ci.org/IndrajeetPatil/pairwiseComparisons.svg?branch=master)](https://travis-ci.org/IndrajeetPatil/pairwiseComparisons) | [![Daily downloads badge](https://cranlogs.r-pkg.org/badges/last-day/pairwiseComparisons?color=blue)](https://CRAN.R-project.org/package=pairwiseComparisons) | [![GitHub version](https://img.shields.io/badge/GitHub-0.1.0.9000-orange.svg?style=flat-square)](https://github.com/IndrajeetPatil/pairwiseComparisons/) | [![Website](https://img.shields.io/badge/website-pairwiseComparisons-orange.svg?colorB=E91E63)](https://indrajeetpatil.github.io/pairwiseComparisons/)
+[![CRAN Checks](https://cranchecks.info/badges/summary/pairwiseComparisons)](https://cran.r-project.org/web/checks/check_results_pairwiseComparisons.html) | [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/pairwiseComparisons?branch=master&svg=true)](https://ci.appveyor.com/project/IndrajeetPatil/pairwiseComparisons) | [![Weekly downloads badge](https://cranlogs.r-pkg.org/badges/last-week/pairwiseComparisons?color=blue)](https://CRAN.R-project.org/package=pairwiseComparisons) | [![Forks](https://img.shields.io/badge/forks-`r itdepends:::get_github_info("pairwiseComparisons")$forks[[1]]`-blue.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/) | [![Rdoc](https://www.rdocumentation.org/badges/version/pairwiseComparisons)](https://www.rdocumentation.org/packages/pairwiseComparisons)
+[![minimal R version](https://img.shields.io/badge/R%3E%3D-3.5.0-6666ff.svg)](https://cran.r-project.org/) | [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/) | [![Monthly downloads badge](https://cranlogs.r-pkg.org/badges/last-month/pairwiseComparisons?color=blue)](https://CRAN.R-project.org/package=pairwiseComparisons) | [![Github Issues](https://img.shields.io/badge/issues-`r itdepends:::get_github_info("pairwiseComparisons")$open_issues[[1]]`-red.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/issues) | [![vignettes](https://img.shields.io/badge/vignettes-0.1.0-orange.svg?colorB=FF5722)](https://CRAN.R-project.org/package=pairwiseComparisons/vignettes/)
+[![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/IndrajeetPatil/pairwiseComparisons.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons) | [![Coverage Status](https://coveralls.io/repos/github/IndrajeetPatil/pairwiseComparisons/badge.svg?branch=master)](https://coveralls.io/github/IndrajeetPatil/pairwiseComparisons?branch=master) | [![Total downloads badge](https://cranlogs.r-pkg.org/badges/grand-total/pairwiseComparisons?color=blue)](https://CRAN.R-project.org/package=pairwiseComparisons) | [![Github Stars](https://img.shields.io/github/stars/IndrajeetPatil/pairwiseComparisons.svg?style=social&label=Github)](https://github.com/IndrajeetPatil/pairwiseComparisons) | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2074621.svg)](https://doi.org/10.5281/zenodo.2074621)
+[![Licence](https://img.shields.io/badge/licence-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html) | [![Codecov test coverage](https://codecov.io/gh/IndrajeetPatil/pairwiseComparisons/branch/master/graph/badge.svg)](https://codecov.io/gh/IndrajeetPatil/pairwiseComparisons?branch=master) | [![HitCount](http://hits.dwyl.io/IndrajeetPatil/pairwiseComparisons.svg)](http://hits.dwyl.io/IndrajeetPatil/pairwiseComparisons) | [![Last-changedate](https://img.shields.io/badge/last%20change-`r gsub('-', '--', Sys.Date())`-yellowgreen.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/commits/master) | [![GitHub last commit](https://img.shields.io/github/last-commit/IndrajeetPatil/pairwiseComparisons.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/commits/master)
+[![status](https://tinyverse.netlify.com/badge/pairwiseComparisons)](https://CRAN.R-project.org/package=pairwiseComparisons) | [![Covrpage Summary](https://img.shields.io/badge/covrpage-Last_Build_2019_08_16-yellowgreen.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/blob/master/tests/README.md) | [![saythanks](https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg)](https://saythanks.io/to/IndrajeetPatil) | [![Project Status](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active) | [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/IndrajeetPatil/pairwiseComparisons/issues)
+[![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/pairwiseComparisons/community) | | | |
+
+
+# Introduction
+
+[`pairwiseComparisons`](https://indrajeetpatil.github.io/pairwiseComparisons/)
+provides a tidy data friendly way to carry out
+
+# Installation
+
+To get the latest, stable `CRAN` release (`0.1.0`):
+
+```{r installationCRAN, eval = FALSE}
+install.packages(pkgs = "pairwiseComparisons")
+```
+
+You can get the **development** version of the package from `GitHub`
+(`0.1.0.9000`). To see what new changes (and bug fixes) have been made to the
+package since the last release on `CRAN`, you can check the detailed log of
+changes here: <https://indrajeetpatil.github.io/pairwiseComparisons/news/index.html>
+
+If you are in hurry and want to reduce the time of installation,
+prefer-
+
+```{r installation1, eval = FALSE}
+# needed package to download from GitHub repo
+utils::install.packages(pkgs = "remotes")
+
+# downloading the package from GitHub
+remotes::install_github(
+  repo = "IndrajeetPatil/pairwiseComparisons", # package path on GitHub
+  dependencies = FALSE, # assumes you have already installed needed packages
+  quick = TRUE # skips docs, demos, and vignettes
+)
+```
+
+If time is not a constraint-
+
+```{r installation2, eval = FALSE}
+remotes::install_github(
+  repo = "IndrajeetPatil/pairwiseComparisons", # package path on GitHub
+  dependencies = TRUE, # installs packages which pairwiseComparisons depends on
+  upgrade_dependencies = TRUE # updates any out of date dependencies
+)
+```
+
+# Citation
+
+If you want to cite this package in a scientific journal or in any other
+context, run the following code in your `R` console:
+
+```{r citation, eval = FALSE}
+citation("pairwiseComparisons")
+```
+
+# Documentation and Examples
+
+To see the documentation relevant for the **development** version of the package,
+see the dedicated website for `pairwiseComparisons`, which is updated after every new
+commit: <https://indrajeetpatil.github.io/pairwiseComparisons/>.
+
+# Summary of types of statistical analyses
+
+## Between-subjects design
+
+Type | Equal variance? | Test | *p*-value adjustment? 
+----------- | --- | ------------------------- | ---
+Parametric | No | Games-Howell test | <font color="green">Yes</font>  
+Parametric | Yes | Student's *t*-test | <font color="green">Yes</font>  
+Non-parametric | No | Dwass-Steel-Crichtlow-Fligner test | <font color="green">Yes</font>  
+Robust | No | Yuen's trimmed means test | <font color="green">Yes</font>  
+Bayes Factor | No | <font color="red">No</font> | <font color="red">No</font>
+Bayes Factor | Yes | <font color="red">No</font> | <font color="red">No</font>
+
+## Within-subjects design
+
+Type | Test | *p*-value adjustment? 
+----------- | ---------------------------- | ---
+Parametric | Student's *t*-test | <font color="green">Yes</font>  
+Non-parametric | Durbin-Conover test | <font color="green">Yes</font>  
+Robust | Yuen's trimmed means test | <font color="green">Yes</font>  
+Bayes Factor | <font color="red">No</font> | <font color="red">No</font>
+
+# Examples
+
+## Between-subjects design
+
+```{r}
+# for reproducibility
+set.seed(123)
+library(pairwiseComparisons)
+
+# parametric
+# if `var.equal = TRUE`, then Student's *t*-test will be run
+pairwise_comparisons(
+  data = ggplot2::msleep,
+  x = vore,
+  y = brainwt,
+  type = "p",
+  var.equal = TRUE,
+  paired = FALSE,
+  p.adjust.method = "bonferroni"
+)
+
+# if `var.equal = FALSE`, then Games-Howell test will be run
+pairwise_comparisons(
+  data = ggplot2::msleep,
+  x = vore,
+  y = brainwt,
+  type = "parametric",
+  var.equal = FALSE,
+  paired = FALSE,
+  p.adjust.method = "bonferroni"
+)
+
+# non-parametric
+pairwise_comparisons(
+  data = ggplot2::msleep,
+  x = vore,
+  y = brainwt,
+  type = "nonparametric",
+  paired = FALSE,
+  p.adjust.method = "none"
+)
+
+# robust
+pairwise_comparisons(
+  data = ggplot2::msleep,
+  x = vore,
+  y = brainwt,
+  type = "robust",
+  paired = FALSE,
+  p.adjust.method = "fdr"
+)
+```
+
+
+## Within-subjects design
+
+```{r}
+# for reproducibility
+set.seed(123)
+
+# parametric
+pairwise_comparisons(
+  data = bugs_long,
+  x = condition,
+  y = desire,
+  type = "parametric",
+  paired = TRUE,
+  p.adjust.method = "BH"
+)
+
+# non-parametric
+pairwise_comparisons(
+  data = bugs_long,
+  x = condition,
+  y = desire,
+  type = "nonparametric",
+  paired = TRUE,
+  p.adjust.method = "BY"
+)
+
+# robust
+pairwise_comparisons(
+  data = bugs_long,
+  x = condition,
+  y = desire,
+  type = "robust",
+  paired = TRUE,
+  p.adjust.method = "hommel"
+)
+```
+
+
+# Code coverage
+
+As the code stands right now, here is the code coverage for all primary
+functions involved:
+<https://codecov.io/gh/IndrajeetPatil/pairwiseComparisons/tree/master/R>
+
+# Contributing
+
+I'm happy to receive bug reports, suggestions, questions, and (most of all)
+contributions to fix problems and add features. I personally prefer using the
+`GitHub` issues system over trying to reach out to me in other ways (personal
+e-mail, Twitter, etc.). Pull Requests for contributions are encouraged.
+
+Here are some simple ways in which you can contribute (in the increasing order
+of commitment):
+
+  - Read and correct any inconsistencies in the
+    [documentation](https://indrajeetpatil.github.io/pairwiseComparisons/)
+
+  - Raise issues about bugs or wanted features
+
+  - Review code
+
+  - Add new functionality (in the form of new plotting functions or helpers for
+    preparing subtitles)
+
+Please note that this project is released with a 
+[Contributor Code of Conduct](https://github.com/IndrajeetPatil/pairwiseComparisons/blob/master/CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
+

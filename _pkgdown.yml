@@ -1,0 +1,45 @@
+url: https://indrajeetpatil.github.io/pairwiseComparisons/
+
+template:
+  params:
+    bootswatch: simplex
+
+development:
+  mode: unreleased
+
+toc:
+  depth: 3
+
+authors:
+  Indrajeet Patil:
+    href: https://sites.google.com/site/indrajeetspatilmorality/
+
+reference:
+  - title: Pairwise multiple comparisons tests
+    desc: Parametric, non-parametric, and robust variants of multiple pairwise comparison tests for one-way ANOVA designs.
+    contents:
+      - pairwise_comparisons
+
+  - title: Helper functions
+    contents:
+      - pairwise_comparisons_caption
+
+  - title: Reexported functions
+    desc:  Useful functions re-exported from other packages.
+    contents:
+      - signif_column
+      - "%>%"
+      - "%<>%"
+      - "%$%"
+      - "%||%"
+      - "%|%"
+      - tibble
+      - as_tibble
+
+  - title: Data
+    desc:  Datasets included in the package.
+    contents:
+      - movies_wide
+      - movies_long
+      - bugs_long
+      - iris_long

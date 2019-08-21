@@ -1,0 +1,5 @@
+bibentry(bibtype = "manual",
+         title = "pairwiseComparisons: Multiple Pairwise Comparison Tests",
+         author = c(person("Indrajeet", "Patil")),
+         year = 2019,
+         url = "https://CRAN.R-project.org/package=pairwiseComparisons")
