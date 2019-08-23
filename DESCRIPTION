@@ -14,8 +14,7 @@ Description: Multiple pairwise comparison tests for one-way
     designs. Currently, it supports only the most common types of
     statistical analyses and tests: parametric (Welch's and Student's
     t-test), nonparametric (Durbin-Conover test and
-    Dwass-Steel-Crichtlow-Fligner test), robust (Yuen’s trimmed means test
-    ).
+    Dwass-Steel-Crichtlow-Fligner test), robust (Yuen’s trimmed means test).
 License: GPL-3 | file LICENSE
 URL: https://indrajeetpatil.github.io/pairwiseComparisons/,
     https://github.com/IndrajeetPatil/pairwiseComparisons

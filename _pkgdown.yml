@@ -23,6 +23,7 @@ reference:
   - title: Helper functions
     contents:
       - pairwise_comparisons_caption
+      - p_adjust_text
 
   - title: Reexported functions
     desc:  Useful functions re-exported from other packages.

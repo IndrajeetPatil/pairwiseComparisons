@@ -13,6 +13,7 @@ testthat::test_that(
     )
     testthat::expect_identical(p_adjust_text("hochberg"), "Hochberg")
     testthat::expect_identical(p_adjust_text("bonferroni"), "Bonferroni")
+    testthat::expect_identical(p_adjust_text("holm"), "Holm")
     testthat::expect_identical(p_adjust_text("hommel"), "Hommel")
     testthat::expect_identical(p_adjust_text("BY"), "Benjamini & Yekutieli")
     testthat::expect_identical(p_adjust_text("xyz"), "Holm")
