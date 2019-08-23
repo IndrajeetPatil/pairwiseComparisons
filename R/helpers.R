@@ -5,7 +5,7 @@
 #'
 #' @inheritParams pairwise_comparisons
 #'
-#' @keywords internal
+#' @export
 
 p_adjust_text <- function(p.adjust.method) {
   switch(

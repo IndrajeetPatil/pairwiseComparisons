@@ -20,4 +20,3 @@ Preparing text to describe which \emph{p}-value adjustment method was used
 \author{
 Indrajeet Patil
 }
-\keyword{internal}

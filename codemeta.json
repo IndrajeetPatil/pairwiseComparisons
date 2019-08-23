@@ -5,7 +5,7 @@
   ],
   "@type": "SoftwareSourceCode",
   "identifier": "pairwiseComparisons",
-  "description": "Multiple pairwise comparison tests for one-way\n    analysis of variance for both between-subjects and within-subjects\n    designs. Currently, it supports only the most common types of\n    statistical analyses and tests: parametric (Welch's and Student's\n    t-test), nonparametric (Durbin-Conover test and\n    Dwass-Steel-Crichtlow-Fligner test), robust (Yuen’s trimmed means test\n    ).",
+  "description": "Multiple pairwise comparison tests for one-way\n    analysis of variance for both between-subjects and within-subjects\n    designs. Currently, it supports only the most common types of\n    statistical analyses and tests: parametric (Welch's and Student's\n    t-test), nonparametric (Durbin-Conover test and\n    Dwass-Steel-Crichtlow-Fligner test), robust (Yuen’s trimmed means test).",
   "name": "pairwiseComparisons: Multiple Pairwise Comparison Tests",
   "codeRepository": "https://github.com/IndrajeetPatil/pairwiseComparisons",
   "relatedLink": "https://indrajeetpatil.github.io/pairwiseComparisons/",
