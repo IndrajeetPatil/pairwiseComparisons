@@ -1,7 +1,7 @@
 Type: Package
 Package: pairwiseComparisons
 Title: Multiple Pairwise Comparison Tests
-Version: 0.1.0
+Version: 0.1.0.9000
 Authors@R: 
     person(given = "Indrajeet",
            family = "Patil",
