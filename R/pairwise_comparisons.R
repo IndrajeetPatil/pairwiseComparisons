@@ -51,15 +51,16 @@
 #'   }
 #'
 #' @importFrom dplyr select rename mutate mutate_if everything full_join vars
+#' @importFrom dplyr group_nest
 #' @importFrom stats p.adjust pairwise.t.test na.omit aov TukeyHSD var sd
 #' @importFrom stringr str_replace
 #' @importFrom WRS2 lincon rmmcp
-#' @importFrom tidyr gather spread separate
+#' @importFrom tidyr gather spread separate unnest nest
 #' @importFrom rlang !! enquo as_string ensym
 #' @importFrom tibble as_tibble rowid_to_column enframe
 #' @importFrom jmv anovaNP anovaRMNP
 #' @importFrom forcats fct_relabel
-#' @importFrom purrrlyr by_row
+#' @importFrom purrr map
 #'
 #' @examples
 #'
@@ -472,17 +473,27 @@ pairwise_comparisons <- function(data,
       .predicate = is.factor,
       .funs = ~ as.character(.)
     ) %>%
-    purrrlyr::by_row(
-      .d = .,
-      ..f = ~ specify_decimal_p(
-        x = .$p.value,
-        k = k,
-        p.value = TRUE
-      ),
-      .collate = "rows",
-      .to = "label",
-      .labels = TRUE
-    ) %>%
+    dplyr::mutate(.data = ., rowid = dplyr::row_number()) %>%
+    dplyr::group_nest(.tbl = ., rowid) %>%
+    dplyr::mutate(
+      .data = .,
+      label = data %>%
+        purrr::map(
+          .x = .,
+          .f = ~ specify_decimal_p(x = .$p.value, k = k, p.value = TRUE)
+        )
+    )
+
+  # unnesting the dataframe
+  if (utils::packageVersion("tidyr") <= "0.8.9") {
+    df %<>%tidyr::unnest(.)
+  } else {
+    df%<>% tidyr::unnest(., cols = c(data, label))
+  }
+
+
+  # formatting label
+  df %<>%
     dplyr::mutate(
       .data = .,
       p.value.label = dplyr::case_when(
@@ -490,7 +501,7 @@ pairwise_comparisons <- function(data,
         TRUE ~ paste("list(~italic(p)==", label, ")", sep = " ")
       )
     ) %>%
-    dplyr::select(.data = ., -label)
+    dplyr::select(.data = ., -label, -rowid)
 
   # return
   return(tibble::as_tibble(df))

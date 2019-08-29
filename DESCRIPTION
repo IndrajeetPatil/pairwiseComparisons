@@ -30,7 +30,7 @@ Imports:
     groupedstats,
     jmv,
     magrittr (>= 1.5),
-    purrrlyr,
+    purrr,
     rlang (>= 0.4.0),
     stats,
     stringr,
