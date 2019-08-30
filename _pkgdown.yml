@@ -2,6 +2,9 @@ url: https://indrajeetpatil.github.io/pairwiseComparisons/
 
 template:
   params:
+    docsearch:
+      api_key: ddaf578b7d72cc2ef95180207cae42e0
+      index_name: pairwiseComparisons
     bootswatch: simplex
 
 development:

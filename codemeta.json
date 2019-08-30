@@ -8,10 +8,13 @@
   "description": "Multiple pairwise comparison tests for one-way\n    analysis of variance for both between-subjects and within-subjects\n    designs. Currently, it supports only the most common types of\n    statistical analyses and tests: parametric (Welch's and Student's\n    t-test), nonparametric (Durbin-Conover test and\n    Dwass-Steel-Crichtlow-Fligner test), robust (Yuen’s trimmed means test).",
   "name": "pairwiseComparisons: Multiple Pairwise Comparison Tests",
   "codeRepository": "https://github.com/IndrajeetPatil/pairwiseComparisons",
-  "relatedLink": "https://indrajeetpatil.github.io/pairwiseComparisons/",
+  "relatedLink": [
+    "https://indrajeetpatil.github.io/pairwiseComparisons/",
+    "https://CRAN.R-project.org/package=pairwiseComparisons"
+  ],
   "issueTracker": "\n    https://github.com/IndrajeetPatil/pairwiseComparisons/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "0.1.0",
+  "version": "0.1.0.9000",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -207,15 +210,15 @@
     },
     {
       "@type": "SoftwareApplication",
-      "identifier": "purrrlyr",
-      "name": "purrrlyr",
+      "identifier": "purrr",
+      "name": "purrr",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://CRAN.R-project.org/package=purrrlyr"
+      "sameAs": "https://CRAN.R-project.org/package=purrr"
     },
     {
       "@type": "SoftwareApplication",
@@ -318,5 +321,11 @@
       "url": "https://CRAN.R-project.org/package=pairwiseComparisons"
     }
   ],
-  "readme": "https://github.com/IndrajeetPatil/pairwiseComparisons/blob/master/README.md"
+  "readme": "https://github.com/IndrajeetPatil/pairwiseComparisons/blob/master/README.md",
+  "provider": {
+    "@id": "https://cran.r-project.org",
+    "@type": "Organization",
+    "name": "Comprehensive R Archive Network (CRAN)",
+    "url": "https://cran.r-project.org"
+  }
 }
