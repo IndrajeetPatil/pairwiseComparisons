@@ -486,9 +486,9 @@ pairwise_comparisons <- function(data,
 
   # unnesting the dataframe
   if (utils::packageVersion("tidyr") <= "0.8.9") {
-    df %<>%tidyr::unnest(.)
+    df %<>% tidyr::unnest(.)
   } else {
-    df%<>% tidyr::unnest(., cols = c(data, label))
+    df %<>% tidyr::unnest(., cols = c(data, label))
   }
 
 
