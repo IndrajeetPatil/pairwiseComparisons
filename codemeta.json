@@ -163,6 +163,7 @@
       "@type": "SoftwareApplication",
       "identifier": "forcats",
       "name": "forcats",
+      "version": ">= 0.4.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -175,6 +176,7 @@
       "@type": "SoftwareApplication",
       "identifier": "groupedstats",
       "name": "groupedstats",
+      "version": ">= 0.0.9",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -187,6 +189,7 @@
       "@type": "SoftwareApplication",
       "identifier": "jmv",
       "name": "jmv",
+      "version": ">= 0.9.6.1",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -212,6 +215,7 @@
       "@type": "SoftwareApplication",
       "identifier": "purrr",
       "name": "purrr",
+      "version": ">= 0.3.2",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -242,6 +246,7 @@
       "@type": "SoftwareApplication",
       "identifier": "stringr",
       "name": "stringr",
+      "version": ">= 1.4.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
