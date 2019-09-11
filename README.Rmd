@@ -8,7 +8,7 @@ output:
 
 ```{r, echo = FALSE}
 # show me all columns
-options(tibble.width = Inf) 
+options(tibble.width = Inf)
 
 knitr::opts_chunk$set(
   collapse = TRUE,
@@ -201,6 +201,41 @@ pairwise_comparisons(
   paired = TRUE,
   p.adjust.method = "hommel"
 )
+```
+
+# Using `pairwiseComparisons` with `ggsignif` to display results
+
+```{r ggisignif}
+
+# needed libraries
+library(ggplot2)
+library(pairwiseComparisons)
+library(ggsignif)
+
+# converting to factor
+mtcars$cyl <- as.factor(mtcars$cyl)
+
+# creating a basic plot
+p <- ggplot(mtcars, aes(cyl, wt)) + geom_boxplot()
+
+# using `pairwiseComparisons` package to create a dataframe with results
+(df <-
+  pairwise_comparisons(mtcars, cyl, wt, messages = FALSE) %>%
+  dplyr::mutate(.data = ., groups = purrr::pmap(.l = list(group1, group2), .f = c)) %>%
+  dplyr::arrange(.data = ., group1))
+
+# using `geom_signif` to display results
+p +
+  ggsignif::geom_signif(
+    comparisons = df$groups,
+    map_signif_level = TRUE,
+    tip_length = 0.01,
+    y_position = c(5.5, 5.75, 6),
+    annotations = df$label,
+    test = NULL,
+    na.rm = TRUE,
+    parse = TRUE
+  )
 ```
 
 # Code coverage
