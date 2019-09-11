@@ -87,6 +87,7 @@ options(tibble.width = Inf)
 
 # for reproducibility
 set.seed(123)
+
 library(pairwiseComparisons)
 
 # parametric

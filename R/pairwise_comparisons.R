@@ -72,6 +72,7 @@
 #'
 #' # for reproducibility
 #' set.seed(123)
+#'
 #' library(pairwiseComparisons)
 #'
 #' # parametric
@@ -493,15 +494,28 @@ pairwise_comparisons <- function(data,
 
 
   # formatting label
-  df %<>%
-    dplyr::mutate(
-      .data = .,
-      p.value.label = dplyr::case_when(
-        label == "< 0.001" ~ paste("list(~italic(p)<=", "0.001", ")", sep = " "),
-        TRUE ~ paste("list(~italic(p)==", label, ")", sep = " ")
+  if (p.adjust.method == "none") {
+    df %<>%
+      dplyr::mutate(
+        .data = .,
+        label = dplyr::case_when(
+          label == "< 0.001" ~ paste("list(~italic(p)['unadjusted']<=", "0.001", ")", sep = " "),
+          TRUE ~ paste("list(~italic(p)['unadjusted']==", label, ")", sep = " ")
+        )
       )
-    ) %>%
-    dplyr::select(.data = ., -label, -rowid)
+  } else {
+    df %<>%
+      dplyr::mutate(
+        .data = .,
+        label = dplyr::case_when(
+          label == "< 0.001" ~ paste("list(~italic(p)['adjusted']<=", "0.001", ")", sep = " "),
+          TRUE ~ paste("list(~italic(p)['adjusted']==", label, ")", sep = " ")
+        )
+      )
+  }
+
+  # removing unnecessary columns
+  df %<>% dplyr::select(.data = ., -rowid)
 
   # return
   return(tibble::as_tibble(df))

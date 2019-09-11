@@ -126,6 +126,55 @@ testthat::test_that(
       tolerance = 0.001
     )
 
+    # checking labels
+    testthat::expect_identical(
+      df1$label,
+      c(
+        "list(~italic(p)['adjusted']== 1.000 )",
+        "list(~italic(p)['adjusted']== 1.000 )",
+        "list(~italic(p)['adjusted']== 1.000 )",
+        "list(~italic(p)['adjusted']== 1.000 )",
+        "list(~italic(p)['adjusted']== 0.979 )",
+        "list(~italic(p)['adjusted']== 1.000 )"
+      )
+    )
+
+    testthat::expect_identical(
+      df2$label,
+      c(
+        "list(~italic(p)['adjusted']== 1.000 )",
+        "list(~italic(p)['adjusted']== 1.000 )",
+        "list(~italic(p)['adjusted']== 1.000 )",
+        "list(~italic(p)['adjusted']== 1.000 )",
+        "list(~italic(p)['adjusted']== 1.000 )",
+        "list(~italic(p)['adjusted']== 1.000 )"
+      )
+    )
+
+    testthat::expect_identical(
+      df3$label,
+      c(
+        "list(~italic(p)['unadjusted']== 0.572 )",
+        "list(~italic(p)['unadjusted']== 0.096 )",
+        "list(~italic(p)['unadjusted']== 0.225 )",
+        "list(~italic(p)['unadjusted']== 0.089 )",
+        "list(~italic(p)['unadjusted']== 0.503 )",
+        "list(~italic(p)['unadjusted']== 0.256 )"
+      )
+    )
+
+    testthat::expect_identical(
+      df4$label,
+      c(
+        "list(~italic(p)['adjusted']== 0.969 )",
+        "list(~italic(p)['adjusted']== 0.969 )",
+        "list(~italic(p)['adjusted']== 0.969 )",
+        "list(~italic(p)['adjusted']== 0.969 )",
+        "list(~italic(p)['adjusted']== 0.969 )",
+        "list(~italic(p)['adjusted']== 0.969 )"
+      )
+    )
+
     # checking tibble
     testthat::expect_is(df1, "tbl_df")
     testthat::expect_is(df2, "tbl_df")
@@ -196,14 +245,14 @@ testthat::test_that(
     )
 
     testthat::expect_identical(
-      df1$p.value.label,
+      df1$label,
       c(
-        "list(~italic(p)== 0.003 )",
-        "list(~italic(p)== 0.424 )",
-        "list(~italic(p)<= 0.001 )",
-        "list(~italic(p)== 0.274 )",
-        "list(~italic(p)== 0.006 )",
-        "list(~italic(p)<= 0.001 )"
+        "list(~italic(p)['adjusted']== 0.003 )",
+        "list(~italic(p)['adjusted']== 0.424 )",
+        "list(~italic(p)['adjusted']<= 0.001 )",
+        "list(~italic(p)['adjusted']== 0.274 )",
+        "list(~italic(p)['adjusted']== 0.006 )",
+        "list(~italic(p)['adjusted']<= 0.001 )"
       )
     )
 
@@ -219,14 +268,14 @@ testthat::test_that(
     )
 
     testthat::expect_identical(
-      df2$p.value.label,
+      df2$label,
       c(
-        "list(~italic(p)<= 0.001 )",
-        "list(~italic(p)== 0.045 )",
-        "list(~italic(p)<= 0.001 )",
-        "list(~italic(p)== 0.050 )",
-        "list(~italic(p)== 0.005 )",
-        "list(~italic(p)<= 0.001 )"
+        "list(~italic(p)['adjusted']<= 0.001 )",
+        "list(~italic(p)['adjusted']== 0.045 )",
+        "list(~italic(p)['adjusted']<= 0.001 )",
+        "list(~italic(p)['adjusted']== 0.050 )",
+        "list(~italic(p)['adjusted']== 0.005 )",
+        "list(~italic(p)['adjusted']<= 0.001 )"
       )
     )
 
@@ -249,14 +298,14 @@ testthat::test_that(
     )
 
     testthat::expect_identical(
-      df3$p.value.label,
+      df3$label,
       c(
-        "list(~italic(p)== 0.062 )",
-        "list(~italic(p)== 0.062 )",
-        "list(~italic(p)== 0.014 )",
-        "list(~italic(p)== 0.001 )",
-        "list(~italic(p)<= 0.001 )",
-        "list(~italic(p)<= 0.001 )"
+        "list(~italic(p)['adjusted']== 0.062 )",
+        "list(~italic(p)['adjusted']== 0.062 )",
+        "list(~italic(p)['adjusted']== 0.014 )",
+        "list(~italic(p)['adjusted']== 0.001 )",
+        "list(~italic(p)['adjusted']<= 0.001 )",
+        "list(~italic(p)['adjusted']<= 0.001 )"
       )
     )
 
@@ -458,6 +507,7 @@ testthat::test_that(
     testthat::expect_equal(df1$se, df2$se, tolerance = 0.01)
     testthat::expect_equal(df1$t.value, df2$t.value, tolerance = 0.01)
     testthat::expect_equal(df1$df, df2$df, tolerance = 0.01)
+    testthat::expect_identical(df2$label, "list(~italic(p)['unadjusted']== 0.865 )")
   }
 )
 
