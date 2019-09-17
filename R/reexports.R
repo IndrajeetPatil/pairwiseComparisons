@@ -12,16 +12,16 @@ groupedstats::signif_column
 # ----------------------- tidyverse -------------------------------------
 
 #' @export
-#' @importFrom magrittr "%>%"
-magrittr::`%>%`
+#' @importFrom broomExtra "%>%"
+broomExtra::`%>%`
 
 #' @export
-#' @importFrom magrittr "%<>%"
-magrittr::`%<>%`
+#' @importFrom broomExtra "%<>%"
+broomExtra::`%<>%`
 
 #' @export
-#' @importFrom magrittr "%$%"
-magrittr::`%$%`
+#' @importFrom broomExtra "%$%"
+broomExtra::`%$%`
 
 #' @export
 #' @importFrom rlang "%||%"

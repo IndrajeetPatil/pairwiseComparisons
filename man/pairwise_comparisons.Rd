@@ -68,9 +68,9 @@ of \emph{p}-values in the American Psychological Association (APA) mandated
 format:
 \itemize{
 \item \code{ns} : > 0.05
-\item \code{*} : < 0.05
-\item \code{**} : < 0.01
-\item \code{***} : < 0.001
+\item \verb{*} : < 0.05
+\item \verb{**} : < 0.01
+\item \verb{***} : < 0.001
 }
 }
 \description{

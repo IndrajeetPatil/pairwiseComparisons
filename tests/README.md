@@ -1,6 +1,6 @@
 Tests and Coverage
 ================
-12 September, 2019 10:58:56
+17 September, 2019 09:56:46
 
   - [Coverage](#coverage)
   - [Unit Tests](#unit-tests)
@@ -31,10 +31,10 @@ Unit Test summary is created using the
 
 | file                                                                                  |  n |  time | error | failed | skipped | warning |
 | :------------------------------------------------------------------------------------ | -: | ----: | ----: | -----: | ------: | ------: |
-| [test-long\_to\_wide\_converter.R](testthat/test-long_to_wide_converter.R)            |  4 |  0.11 |     0 |      0 |       0 |       0 |
-| [test-pairwise\_comparisons.R](testthat/test-pairwise_comparisons.R)                  | 62 | 18.28 |     0 |      0 |       0 |       0 |
+| [test-long\_to\_wide\_converter.R](testthat/test-long_to_wide_converter.R)            |  4 |  0.08 |     0 |      0 |       0 |       0 |
+| [test-pairwise\_comparisons.R](testthat/test-pairwise_comparisons.R)                  | 62 | 20.45 |     0 |      0 |       0 |       0 |
 | [test-pairwise\_comparisons\_caption.R](testthat/test-pairwise_comparisons_caption.R) |  5 |  0.00 |     0 |      0 |       0 |       0 |
-| [test-switch\_statements.R](testthat/test-switch_statements.R)                        |  9 |  0.00 |     0 |      0 |       0 |       0 |
+| [test-switch\_statements.R](testthat/test-switch_statements.R)                        |  9 |  0.01 |     0 |      0 |       0 |       0 |
 
 <details closed>
 
@@ -42,15 +42,15 @@ Unit Test summary is created using the
 
 | file                                                                                          | context                        | test                                                               | status |  n | time |
 | :-------------------------------------------------------------------------------------------- | :----------------------------- | :----------------------------------------------------------------- | :----- | -: | ---: |
-| [test-long\_to\_wide\_converter.R](testthat/test-long_to_wide_converter.R#L26)                | long\_to\_wide\_converter      | long\_to\_wide\_converter works                                    | PASS   |  4 | 0.11 |
-| [test-pairwise\_comparisons.R](testthat/test-pairwise_comparisons.R#L67)                      | pairwise\_comparisons          | `pairwise_comparisons()` works for between-subjects design         | PASS   | 22 | 8.83 |
-| [test-pairwise\_comparisons.R](testthat/test-pairwise_comparisons.R#L234_L245)                | pairwise\_comparisons          | `pairwise_comparisons()` works for within-subjects design          | PASS   | 15 | 0.23 |
-| [test-pairwise\_comparisons.R](testthat/test-pairwise_comparisons.R#L348)                     | pairwise\_comparisons          | `pairwise_comparisons()` messages are correct for between-subjects | PASS   |  9 | 8.39 |
-| [test-pairwise\_comparisons.R](testthat/test-pairwise_comparisons.R#L427)                     | pairwise\_comparisons          | `pairwise_comparisons()` messages are correct for within-subjects  | PASS   |  7 | 0.25 |
-| [test-pairwise\_comparisons.R](testthat/test-pairwise_comparisons.R#L505)                     | pairwise\_comparisons          | dropped levels are not included                                    | PASS   |  6 | 0.53 |
-| [test-pairwise\_comparisons.R](testthat/test-pairwise_comparisons.R#L530)                     | pairwise\_comparisons          | check if everything works fine with irregular factor level names   | PASS   |  3 | 0.05 |
+| [test-long\_to\_wide\_converter.R](testthat/test-long_to_wide_converter.R#L26)                | long\_to\_wide\_converter      | long\_to\_wide\_converter works                                    | PASS   |  4 | 0.08 |
+| [test-pairwise\_comparisons.R](testthat/test-pairwise_comparisons.R#L67)                      | pairwise\_comparisons          | `pairwise_comparisons()` works for between-subjects design         | PASS   | 22 | 9.73 |
+| [test-pairwise\_comparisons.R](testthat/test-pairwise_comparisons.R#L234_L245)                | pairwise\_comparisons          | `pairwise_comparisons()` works for within-subjects design          | PASS   | 15 | 0.22 |
+| [test-pairwise\_comparisons.R](testthat/test-pairwise_comparisons.R#L348)                     | pairwise\_comparisons          | `pairwise_comparisons()` messages are correct for between-subjects | PASS   |  9 | 9.38 |
+| [test-pairwise\_comparisons.R](testthat/test-pairwise_comparisons.R#L427)                     | pairwise\_comparisons          | `pairwise_comparisons()` messages are correct for within-subjects  | PASS   |  7 | 0.40 |
+| [test-pairwise\_comparisons.R](testthat/test-pairwise_comparisons.R#L505)                     | pairwise\_comparisons          | dropped levels are not included                                    | PASS   |  6 | 0.66 |
+| [test-pairwise\_comparisons.R](testthat/test-pairwise_comparisons.R#L530)                     | pairwise\_comparisons          | check if everything works fine with irregular factor level names   | PASS   |  3 | 0.06 |
 | [test-pairwise\_comparisons\_caption.R](testthat/test-pairwise_comparisons_caption.R#L46_L57) | pairwise\_comparisons\_caption | `pairwise_comparisons_caption()` works                             | PASS   |  5 | 0.00 |
-| [test-switch\_statements.R](testthat/test-switch_statements.R#L8)                             | switch statements              | switch for p adjustment works                                      | PASS   |  9 | 0.00 |
+| [test-switch\_statements.R](testthat/test-switch_statements.R#L8)                             | switch statements              | switch for p adjustment works                                      | PASS   |  9 | 0.01 |
 
 </details>
 

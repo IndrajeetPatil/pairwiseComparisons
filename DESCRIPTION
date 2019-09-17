@@ -1,7 +1,7 @@
 Type: Package
 Package: pairwiseComparisons
 Title: Multiple Pairwise Comparison Tests
-Version: 0.1.0.9000
+Version: 0.1.1
 Authors@R: 
     person(given = "Indrajeet",
            family = "Patil",
@@ -29,7 +29,6 @@ Imports:
     forcats (>= 0.4.0),
     groupedstats (>= 0.0.9),
     jmv (>= 0.9.6.1),
-    magrittr (>= 1.5),
     purrr (>= 0.3.2),
     rlang (>= 0.4.0),
     stats,
@@ -50,4 +49,4 @@ Encoding: UTF-8
 Language: en-US
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 6.1.1.9000
+RoxygenNote: 6.1.99.9000
