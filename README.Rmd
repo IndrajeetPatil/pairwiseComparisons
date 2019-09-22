@@ -12,9 +12,11 @@ options(tibble.width = Inf)
 
 knitr::opts_chunk$set(
   collapse = TRUE,
-  dpi = 200,
+  dpi = 300,
   out.width = "100%",
   comment = "#>",
+  warning = FALSE,
+  message = FALSE,
   fig.path = "man/figures/README-"
 )
 ```

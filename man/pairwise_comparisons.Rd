@@ -5,13 +5,33 @@
 \alias{pairwise_p}
 \title{Multiple pairwise comparison tests}
 \usage{
-pairwise_comparisons(data, x, y, type = "parametric", tr = 0.1,
-  paired = FALSE, var.equal = FALSE, p.adjust.method = "holm",
-  k = 2, messages = TRUE, ...)
+pairwise_comparisons(
+  data,
+  x,
+  y,
+  type = "parametric",
+  tr = 0.1,
+  paired = FALSE,
+  var.equal = FALSE,
+  p.adjust.method = "holm",
+  k = 2,
+  messages = TRUE,
+  ...
+)
 
-pairwise_p(data, x, y, type = "parametric", tr = 0.1, paired = FALSE,
-  var.equal = FALSE, p.adjust.method = "holm", k = 2,
-  messages = TRUE, ...)
+pairwise_p(
+  data,
+  x,
+  y,
+  type = "parametric",
+  tr = 0.1,
+  paired = FALSE,
+  var.equal = FALSE,
+  p.adjust.method = "holm",
+  k = 2,
+  messages = TRUE,
+  ...
+)
 }
 \arguments{
 \item{data}{A dataframe (or a tibble) from which variables specified are to

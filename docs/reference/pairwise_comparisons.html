@@ -145,13 +145,33 @@ comparisons between group levels with corrections for multiple testing." />
 comparisons between group levels with corrections for multiple testing.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>pairwise_comparisons</span>(<span class='no'>data</span>, <span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"parametric"</span>, <span class='kw'>tr</span> <span class='kw'>=</span> <span class='fl'>0.1</span>,
-  <span class='kw'>paired</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>var.equal</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>p.adjust.method</span> <span class='kw'>=</span> <span class='st'>"holm"</span>,
-  <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>messages</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>pairwise_comparisons</span>(
+  <span class='no'>data</span>,
+  <span class='no'>x</span>,
+  <span class='no'>y</span>,
+  <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"parametric"</span>,
+  <span class='kw'>tr</span> <span class='kw'>=</span> <span class='fl'>0.1</span>,
+  <span class='kw'>paired</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>var.equal</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>p.adjust.method</span> <span class='kw'>=</span> <span class='st'>"holm"</span>,
+  <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>2</span>,
+  <span class='kw'>messages</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='no'>...</span>
+)
 
-<span class='fu'>pairwise_p</span>(<span class='no'>data</span>, <span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"parametric"</span>, <span class='kw'>tr</span> <span class='kw'>=</span> <span class='fl'>0.1</span>, <span class='kw'>paired</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>var.equal</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>p.adjust.method</span> <span class='kw'>=</span> <span class='st'>"holm"</span>, <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>2</span>,
-  <span class='kw'>messages</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)</pre>
+<span class='fu'>pairwise_p</span>(
+  <span class='no'>data</span>,
+  <span class='no'>x</span>,
+  <span class='no'>y</span>,
+  <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"parametric"</span>,
+  <span class='kw'>tr</span> <span class='kw'>=</span> <span class='fl'>0.1</span>,
+  <span class='kw'>paired</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>var.equal</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>p.adjust.method</span> <span class='kw'>=</span> <span class='st'>"holm"</span>,
+  <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>2</span>,
+  <span class='kw'>messages</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='no'>...</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">

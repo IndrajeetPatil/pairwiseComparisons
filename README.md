@@ -9,7 +9,7 @@
 | [![CRAN Checks](https://cranchecks.info/badges/summary/pairwiseComparisons)](https://cran.r-project.org/web/checks/check_results_pairwiseComparisons.html)                      | [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/pairwiseComparisons?branch=master&svg=true)](https://ci.appveyor.com/project/IndrajeetPatil/pairwiseComparisons) | [![Weekly downloads badge](https://cranlogs.r-pkg.org/badges/last-week/pairwiseComparisons?color=blue)](https://CRAN.R-project.org/package=pairwiseComparisons)   | [![Forks](https://img.shields.io/badge/forks-0-blue.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/)                                                              | [![Rdoc](https://www.rdocumentation.org/badges/version/pairwiseComparisons)](https://www.rdocumentation.org/packages/pairwiseComparisons)                                       |
 | [![minimal R version](https://img.shields.io/badge/R%3E%3D-3.5.0-6666ff.svg)](https://cran.r-project.org/)                                                                      | [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/)                                                                                               | [![Monthly downloads badge](https://cranlogs.r-pkg.org/badges/last-month/pairwiseComparisons?color=blue)](https://CRAN.R-project.org/package=pairwiseComparisons) | [![Github Issues](https://img.shields.io/badge/issues-1-red.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/issues)                                                | [![vignettes](https://img.shields.io/badge/vignettes-0.1.1-orange.svg?colorB=FF5722)](https://CRAN.R-project.org/package=pairwiseComparisons/vignettes/)                        |
 | [![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/IndrajeetPatil/pairwiseComparisons.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons) | [![Coverage Status](https://coveralls.io/repos/github/IndrajeetPatil/pairwiseComparisons/badge.svg?branch=master)](https://coveralls.io/github/IndrajeetPatil/pairwiseComparisons?branch=master)             | [![Total downloads badge](https://cranlogs.r-pkg.org/badges/grand-total/pairwiseComparisons?color=blue)](https://CRAN.R-project.org/package=pairwiseComparisons)  | [![Github Stars](https://img.shields.io/github/stars/IndrajeetPatil/pairwiseComparisons.svg?style=social&label=Github)](https://github.com/IndrajeetPatil/pairwiseComparisons) | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2074621.svg)](https://doi.org/10.5281/zenodo.2074621)                                                                       |
-| [![Licence](https://img.shields.io/badge/licence-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)                                                                | [![Codecov test coverage](https://codecov.io/gh/IndrajeetPatil/pairwiseComparisons/branch/master/graph/badge.svg)](https://codecov.io/gh/IndrajeetPatil/pairwiseComparisons?branch=master)                   | [![HitCount](http://hits.dwyl.io/IndrajeetPatil/pairwiseComparisons.svg)](http://hits.dwyl.io/IndrajeetPatil/pairwiseComparisons)                                 | [![Last-changedate](https://img.shields.io/badge/last%20change-2019--09--17-yellowgreen.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/commits/master)            | [![GitHub last commit](https://img.shields.io/github/last-commit/IndrajeetPatil/pairwiseComparisons.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/commits/master) |
+| [![Licence](https://img.shields.io/badge/licence-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)                                                                | [![Codecov test coverage](https://codecov.io/gh/IndrajeetPatil/pairwiseComparisons/branch/master/graph/badge.svg)](https://codecov.io/gh/IndrajeetPatil/pairwiseComparisons?branch=master)                   | [![HitCount](http://hits.dwyl.io/IndrajeetPatil/pairwiseComparisons.svg)](http://hits.dwyl.io/IndrajeetPatil/pairwiseComparisons)                                 | [![Last-changedate](https://img.shields.io/badge/last%20change-2019--09--22-yellowgreen.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/commits/master)            | [![GitHub last commit](https://img.shields.io/github/last-commit/IndrajeetPatil/pairwiseComparisons.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/commits/master) |
 | [![status](https://tinyverse.netlify.com/badge/pairwiseComparisons)](https://CRAN.R-project.org/package=pairwiseComparisons)                                                    | [![Covrpage Summary](https://img.shields.io/badge/covrpage-Last_Build_2019_09_17-brightgreen.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/blob/master/tests/README.md)                        | [![saythanks](https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg)](https://saythanks.io/to/IndrajeetPatil)                                                    | [![Project Status](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)                                                                     | [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/IndrajeetPatil/pairwiseComparisons/issues)         |
 | [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/pairwiseComparisons/community)                                                                 |                                                                                                                                                                                                              |                                                                                                                                                                   |                                                                                                                                                                                |                                                                                                                                                                                 |
 
@@ -102,9 +102,6 @@ different types of
 # for reproducibility
 set.seed(123)
 library(pairwiseComparisons)
-#> Registered S3 method overwritten by 'broom.mixed':
-#>   method      from 
-#>   tidy.gamlss broom
 
 # parametric
 # if `var.equal = TRUE`, then Student's *t*-test will be run
@@ -120,7 +117,6 @@ pairwise_comparisons(
 #> Note: The parametric pairwise multiple comparisons test used-
 #>  Student's t-test.
 #>  Adjustment method for p-values: bonferroni
-#> 
 #> # A tibble: 6 x 6
 #>   group1  group2  mean.difference p.value significance
 #>   <chr>   <chr>             <dbl>   <dbl> <chr>       
@@ -152,7 +148,6 @@ pairwise_comparisons(
 #> Note: The parametric pairwise multiple comparisons test used-
 #>  Games-Howell test.
 #>  Adjustment method for p-values: bonferroni
-#> 
 #> # A tibble: 6 x 9
 #>   group1 group2  mean.difference    se t.value    df p.value significance
 #>   <chr>  <chr>             <dbl> <dbl>   <dbl> <dbl>   <dbl> <chr>       
@@ -183,7 +178,6 @@ pairwise_comparisons(
 #> Note: The nonparametric pairwise multiple comparisons test used-
 #>  Dwass-Steel-Crichtlow-Fligner test.
 #>  Adjustment method for p-values: none
-#> 
 #> # A tibble: 6 x 6
 #>   group1  group2       W p.value significance
 #>   <chr>   <chr>    <dbl>   <dbl> <chr>       
@@ -214,7 +208,6 @@ pairwise_comparisons(
 #> Note: The robust pairwise multiple comparisons test used-
 #>  Yuen's trimmed means comparisons test.
 #>  Adjustment method for p-values: fdr
-#> 
 #> # A tibble: 6 x 8
 #>   group1  group2    psihat conf.low conf.high p.value significance
 #>   <chr>   <chr>      <dbl>    <dbl>     <dbl>   <dbl> <chr>       
@@ -252,7 +245,6 @@ pairwise_comparisons(
 #> Note: The parametric pairwise multiple comparisons test used-
 #>  Student's t-test.
 #>  Adjustment method for p-values: BH
-#> 
 #> # A tibble: 6 x 6
 #>   group1 group2 mean.difference   p.value significance
 #>   <chr>  <chr>            <dbl>     <dbl> <chr>       
@@ -283,7 +275,6 @@ pairwise_comparisons(
 #> Note: The nonparametric pairwise multiple comparisons test used-
 #>  Durbin-Conover test.
 #>  Adjustment method for p-values: BY
-#> 
 #> # A tibble: 6 x 6
 #>   group1 group2 statistic  p.value significance
 #>   <chr>  <chr>      <dbl>    <dbl> <chr>       
@@ -314,7 +305,6 @@ pairwise_comparisons(
 #> Note: The robust pairwise multiple comparisons test used-
 #>  Yuen's trimmed means comparisons test.
 #>  Adjustment method for p-values: hommel
-#> 
 #> # A tibble: 6 x 8
 #>   group1 group2 psihat conf.low conf.high  p.value significance
 #>   <chr>  <chr>   <dbl>    <dbl>     <dbl>    <dbl> <chr>       

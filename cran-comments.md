@@ -5,8 +5,5 @@
 
 ## R CMD check results
 
-0 errors | 0 warnings | 1 note
+0 errors | 0 warnings | 0 note
 
-  - This leads to a few breakages in `ggstatsplot` package, which I maintain. I
-    will be submit a new version of `ggstatsplot` once `pairwiseComparisons` is
-    on `CRAN`.
