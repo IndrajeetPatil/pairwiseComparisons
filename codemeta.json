@@ -14,7 +14,7 @@
   ],
   "issueTracker": "\n    https://github.com/IndrajeetPatil/pairwiseComparisons/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "0.1.1.9000",
+  "version": "0.1.2",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -189,14 +189,14 @@
       "@type": "SoftwareApplication",
       "identifier": "jmv",
       "name": "jmv",
-      "version": ">= 0.9.6.1",
+      "version": ">= 1.0.8",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://CRAN.R-project.org/package=jmv"
+      "sameAs": "https://github.com/jamovi/jmv"
     },
     {
       "@type": "SoftwareApplication",

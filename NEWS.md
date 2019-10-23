@@ -1,4 +1,9 @@
-# pairwiseComparisons 0.1.1.9000
+# pairwiseComparisons 0.1.2
+
+MINOR CHANGES
+
+  - With `jmv 1.0.8`, the results from the Dwass-Steel-Crichtlow-Fligner test
+    will be slightly different.
 
 # pairwiseComparisons 0.1.1
 

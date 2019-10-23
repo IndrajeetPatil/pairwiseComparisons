@@ -154,12 +154,12 @@ testthat::test_that(
     testthat::expect_identical(
       df3$label,
       c(
-        "list(~italic(p)['unadjusted']== 0.572 )",
-        "list(~italic(p)['unadjusted']== 0.096 )",
-        "list(~italic(p)['unadjusted']== 0.225 )",
-        "list(~italic(p)['unadjusted']== 0.089 )",
-        "list(~italic(p)['unadjusted']== 0.503 )",
-        "list(~italic(p)['unadjusted']== 0.256 )"
+        "list(~italic(p)['unadjusted']== 0.942 )",
+        "list(~italic(p)['unadjusted']== 0.342 )",
+        "list(~italic(p)['unadjusted']== 0.619 )",
+        "list(~italic(p)['unadjusted']== 0.325 )",
+        "list(~italic(p)['unadjusted']== 0.908 )",
+        "list(~italic(p)['unadjusted']== 0.667 )"
       )
     )
 
