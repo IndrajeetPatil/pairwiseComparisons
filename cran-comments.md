@@ -7,3 +7,5 @@
 
 0 errors | 0 warnings | 0 note
 
+- This is a maintenance release that fixes tests broken by update to `jmv` package.
+

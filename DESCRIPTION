@@ -43,8 +43,6 @@ Suggests:
     rmarkdown,
     spelling,
     testthat
-Remotes:
-    jamovi/jmv
 VignetteBuilder: 
     knitr
 Encoding: UTF-8

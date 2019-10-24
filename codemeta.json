@@ -196,7 +196,7 @@
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://github.com/jamovi/jmv"
+      "sameAs": "https://CRAN.R-project.org/package=jmv"
     },
     {
       "@type": "SoftwareApplication",
