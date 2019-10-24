@@ -1,7 +1,7 @@
 Type: Package
 Package: pairwiseComparisons
 Title: Multiple Pairwise Comparison Tests
-Version: 0.1.2
+Version: 0.1.2.9000
 Authors@R: 
     person(given = "Indrajeet",
            family = "Patil",
@@ -30,7 +30,7 @@ Imports:
     groupedstats (>= 0.0.9),
     jmv (>= 1.0.8),
     purrr (>= 0.3.2),
-    rlang (>= 0.4.0),
+    rlang (>= 0.4.1),
     stats,
     stringr (>= 1.4.0),
     tibble (>= 2.1.3),
