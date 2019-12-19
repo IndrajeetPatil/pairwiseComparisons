@@ -15,7 +15,6 @@ pairwise_comparisons(
   var.equal = FALSE,
   p.adjust.method = "holm",
   k = 2,
-  messages = TRUE,
   ...
 )
 
@@ -29,7 +28,6 @@ pairwise_p(
   var.equal = FALSE,
   p.adjust.method = "holm",
   k = 2,
-  messages = TRUE,
   ...
 )
 }
@@ -68,9 +66,6 @@ comparisons. Possible methods are: \code{"holm"} (default), \code{"hochberg"},
 
 \item{k}{Number of digits after decimal point (should be an integer)
 (Default: \code{k = 2}).}
-
-\item{messages}{Decides whether messages references, notes, and warnings are
-to be displayed (Default: \code{TRUE}).}
 
 \item{...}{Current ignored.}
 }

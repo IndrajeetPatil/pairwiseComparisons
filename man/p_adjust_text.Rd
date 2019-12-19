@@ -17,6 +17,11 @@ Standardized text description for what method was used.
 \description{
 Preparing text to describe which \emph{p}-value adjustment method was used
 }
+\examples{
+library(pairwiseComparisons)
+p_adjust_text("none")
+p_adjust_text("BY")
+}
 \author{
 Indrajeet Patil
 }

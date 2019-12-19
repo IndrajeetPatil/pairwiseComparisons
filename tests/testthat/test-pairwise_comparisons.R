@@ -12,7 +12,6 @@ testthat::test_that(
       data = ggplot2::msleep,
       x = vore,
       y = brainwt,
-      messages = FALSE,
       type = "p",
       var.equal = TRUE,
       paired = FALSE,
@@ -24,7 +23,6 @@ testthat::test_that(
       data = ggplot2::msleep,
       x = vore,
       y = brainwt,
-      messages = FALSE,
       type = "p",
       var.equal = FALSE,
       paired = FALSE,
@@ -36,7 +34,6 @@ testthat::test_that(
       data = ggplot2::msleep,
       x = vore,
       y = brainwt,
-      messages = FALSE,
       type = "np",
       paired = FALSE,
       p.adjust.method = "none"
@@ -47,7 +44,6 @@ testthat::test_that(
       data = ggplot2::msleep,
       x = vore,
       y = brainwt,
-      messages = FALSE,
       type = "r",
       paired = FALSE,
       p.adjust.method = "fdr"
@@ -59,16 +55,29 @@ testthat::test_that(
       data = movies_wide,
       x = mpaa,
       y = rating,
-      var.equal = TRUE,
-      messages = FALSE
+      var.equal = TRUE
     )
 
     # checking dimensions of the results dataframe
-    testthat::expect_equal(dim(df1), c(6L, 6L))
-    testthat::expect_equal(dim(df2), c(6L, 9L))
-    testthat::expect_equal(dim(df3), c(6L, 6L))
-    testthat::expect_equal(dim(df4), c(6L, 8L))
-    testthat::expect_equal(dim(df5), c(3L, 6L))
+    testthat::expect_equal(dim(df1), c(6L, 8L))
+    testthat::expect_equal(dim(df2), c(6L, 11L))
+    testthat::expect_equal(dim(df3), c(6L, 8L))
+    testthat::expect_equal(dim(df4), c(6L, 10L))
+    testthat::expect_equal(dim(df5), c(3L, 8L))
+
+    # test details
+    testthat::expect_identical(unique(df1$test.details), "Student's t-test")
+    testthat::expect_identical(unique(df2$test.details), "Games-Howell test")
+    testthat::expect_identical(unique(df3$test.details), "Dwass-Steel-Crichtlow-Fligner test")
+    testthat::expect_identical(unique(df4$test.details), "Yuen's trimmed means test")
+    testthat::expect_identical(unique(df5$test.details), "Student's t-test")
+
+    # adjustment method
+    testthat::expect_identical(unique(df1$p.value.adjustment), "Bonferroni")
+    testthat::expect_identical(unique(df2$p.value.adjustment), "Bonferroni")
+    testthat::expect_identical(unique(df3$p.value.adjustment), "None")
+    testthat::expect_identical(unique(df4$p.value.adjustment), "Benjamini & Hochberg")
+    testthat::expect_identical(unique(df5$p.value.adjustment), "Holm")
 
     # testing exact values
     testthat::expect_equal(
@@ -200,7 +209,6 @@ testthat::test_that(
       type = "p",
       k = 3,
       paired = TRUE,
-      messages = FALSE,
       p.adjust.method = "bonferroni"
     )
 
@@ -213,7 +221,6 @@ testthat::test_that(
       type = "np",
       k = 3,
       paired = TRUE,
-      messages = FALSE,
       p.adjust.method = "BY"
     )
 
@@ -226,9 +233,18 @@ testthat::test_that(
       type = "r",
       k = 3,
       paired = TRUE,
-      messages = FALSE,
       p.adjust.method = "hommel"
     )
+
+    # test details
+    testthat::expect_identical(unique(df1$test.details), "Student's t-test")
+    testthat::expect_identical(unique(df2$test.details), "Durbin-Conover test")
+    testthat::expect_identical(unique(df3$test.details), "Yuen's trimmed means test")
+
+    # adjustment method
+    testthat::expect_identical(unique(df1$p.value.adjustment), "Bonferroni")
+    testthat::expect_identical(unique(df2$p.value.adjustment), "Benjamini & Yekutieli")
+    testthat::expect_identical(unique(df3$p.value.adjustment), "Hommel")
 
     # checking exact values
     testthat::expect_equal(
@@ -315,158 +331,14 @@ testthat::test_that(
     )
 
     # checking dimensions of the results dataframe
-    testthat::expect_equal(dim(df1), c(6L, 6L))
-    testthat::expect_equal(dim(df2), c(6L, 6L))
-    testthat::expect_equal(dim(df3), c(6L, 8L))
+    testthat::expect_equal(dim(df1), c(6L, 8L))
+    testthat::expect_equal(dim(df2), c(6L, 8L))
+    testthat::expect_equal(dim(df3), c(6L, 10L))
 
     # checking if it is a tibble
     testthat::expect_is(df1, "tbl_df")
     testthat::expect_is(df2, "tbl_df")
     testthat::expect_is(df3, "tbl_df")
-  }
-)
-
-# messages - between subjects ------------------------------------------------
-
-testthat::test_that(
-  desc = "`pairwise_comparisons()` messages are correct for between-subjects",
-  code = {
-    set.seed(123)
-
-    # student's t
-    messages1 <- capture.output(pairwiseComparisons::pairwise_comparisons(
-      data = ggplot2::msleep,
-      x = vore,
-      y = brainwt,
-      messages = TRUE,
-      type = "p",
-      var.equal = TRUE,
-      paired = FALSE,
-      p.adjust.method = "BH"
-    ))
-
-    testthat::expect_match(messages1[2], "Student's t-test", fixed = TRUE)
-    testthat::expect_match(messages1[3], "BH", fixed = TRUE)
-
-    # games-howell
-    messages2 <- capture.output(pairwiseComparisons::pairwise_comparisons(
-      data = ggplot2::msleep,
-      x = vore,
-      y = brainwt,
-      messages = TRUE,
-      type = "p",
-      var.equal = FALSE,
-      paired = FALSE,
-      p.adjust.method = "bonferroni"
-    ))
-
-    testthat::expect_match(messages2[2], "Games-Howell test", fixed = TRUE)
-    testthat::expect_match(messages2[3], "bonferroni", fixed = TRUE)
-
-    # Dwass-Steel-Crichtlow-Fligner test
-    messages3 <- capture.output(pairwiseComparisons::pairwise_comparisons(
-      data = ggplot2::msleep,
-      x = vore,
-      y = brainwt,
-      messages = TRUE,
-      type = "np",
-      paired = FALSE,
-      p.adjust.method = "none"
-    ))
-
-    testthat::expect_match(messages3[2], "Dwass-Steel-Crichtlow-Fligner test", fixed = TRUE)
-    testthat::expect_match(messages3[3], "none", fixed = TRUE)
-
-    # robust t test
-    messages4 <- capture.output(pairwiseComparisons::pairwise_comparisons(
-      data = ggplot2::msleep,
-      x = vore,
-      y = brainwt,
-      messages = TRUE,
-      type = "r",
-      paired = FALSE,
-      p.adjust.method = "hochberg"
-    ))
-
-    testthat::expect_match(messages4[2], "Yuen's trimmed means", fixed = TRUE)
-    testthat::expect_match(messages4[3], "hochberg", fixed = TRUE)
-
-    # bayes factor
-    testthat::expect_error(
-      pairwiseComparisons::pairwise_comparisons(
-        data = ggplot2::msleep,
-        x = vore,
-        y = brainwt,
-        messages = TRUE,
-        type = "bf",
-        p.adjust.method = "hochberg"
-      )
-    )
-  }
-)
-
-
-# messages - within subjects --------------------------------------------------
-
-testthat::test_that(
-  desc = "`pairwise_comparisons()` messages are correct for within-subjects",
-  code = {
-    set.seed(123)
-
-    # student's t test
-    messages1 <- capture.output(pairwiseComparisons::pairwise_comparisons(
-      data = pairwiseComparisons::bugs_long,
-      x = condition,
-      y = desire,
-      type = "p",
-      paired = TRUE,
-      messages = TRUE,
-      p.adjust.method = "fdr"
-    ))
-
-    testthat::expect_match(messages1[2], "Student's t-test", fixed = TRUE)
-    testthat::expect_match(messages1[3], "fdr", fixed = TRUE)
-
-    # Durbin-Conover test
-    messages2 <- capture.output(pairwiseComparisons::pairwise_comparisons(
-      data = pairwiseComparisons::bugs_long,
-      x = condition,
-      y = desire,
-      type = "np",
-      paired = TRUE,
-      messages = TRUE,
-      p.adjust.method = "BY"
-    ))
-
-    testthat::expect_match(messages2[2], "Durbin-Conover test", fixed = TRUE)
-    testthat::expect_match(messages2[3], "BY", fixed = TRUE)
-
-    # robust t test
-    messages3 <- capture.output(pairwiseComparisons::pairwise_comparisons(
-      data = pairwiseComparisons::bugs_long,
-      x = condition,
-      y = desire,
-      type = "r",
-      paired = TRUE,
-      messages = TRUE,
-      p.adjust.method = "hommel"
-    ))
-
-    testthat::expect_match(messages3[2], "Yuen's trimmed means", fixed = TRUE)
-    testthat::expect_match(messages3[3], "hommel", fixed = TRUE)
-
-    # bayes factor
-    testthat::expect_error(
-      pairwiseComparisons::pairwise_comparisons(
-        data = pairwiseComparisons::bugs_long,
-        x = condition,
-        y = desire,
-        paired = TRUE,
-        messages = TRUE,
-        type = "bf",
-        p.adjust.method = "hochberg"
-      )
-    )
   }
 )
 
@@ -488,7 +360,6 @@ testthat::test_that(
       data = msleep2,
       x = vore,
       y = brainwt,
-      messages = FALSE,
       p.adjust.method = "none"
     )
 
@@ -496,13 +367,12 @@ testthat::test_that(
       data = ggplot2::msleep,
       x = vore,
       y = brainwt,
-      messages = FALSE,
       p.adjust.method = "none"
     ) %>%
       dplyr::filter(.data = ., group1 == "omni", group2 == "carni")
 
     # tests
-    testthat::expect_equal(dim(df1), c(1L, 9L))
+    testthat::expect_equal(dim(df1), c(1L, 11L))
     testthat::expect_equal(df1$mean.difference, df2$mean.difference, tolerance = 0.01)
     testthat::expect_equal(df1$se, df2$se, tolerance = 0.01)
     testthat::expect_equal(df1$t.value, df2$t.value, tolerance = 0.01)
@@ -523,11 +393,10 @@ testthat::test_that(
       x = mpaa,
       y = rating,
       type = "p",
-      var.equal = TRUE,
-      messages = FALSE
+      var.equal = TRUE
     )
 
-    testthat::expect_equal(dim(df), c(3L, 6L))
+    testthat::expect_equal(dim(df), c(3L, 8L))
     testthat::expect_equal(df$group1, c("PG", "PG", "PG-13"))
     testthat::expect_equal(df$group2, c("PG-13", "R", "R"))
   }

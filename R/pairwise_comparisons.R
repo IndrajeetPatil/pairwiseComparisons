@@ -24,8 +24,6 @@
 #' @param paired Logical that decides whether the experimental design is
 #'   repeated measures/within-subjects or between-subjects. The default is
 #'   `FALSE`.
-#' @param messages Decides whether messages references, notes, and warnings are
-#'   to be displayed (Default: `TRUE`).
 #' @param k Number of digits after decimal point (should be an integer)
 #'   (Default: `k = 2`).
 #' @param ... Current ignored.
@@ -165,7 +163,6 @@ pairwise_comparisons <- function(data,
                                  var.equal = FALSE,
                                  p.adjust.method = "holm",
                                  k = 2,
-                                 messages = TRUE,
                                  ...) {
 
   # ensure the arguments work quoted or unquoted
@@ -250,19 +247,8 @@ pairwise_comparisons <- function(data,
         dplyr::rename(.data = ., group2 = group1, group1 = group2) %>%
         dplyr::select(.data = ., group1, group2, dplyr::everything())
 
-      # display message about the post hoc tests run
-      if (isTRUE(messages)) {
-        message(cat(
-          crayon::green("Note: "),
-          crayon::blue(
-            "The parametric pairwise multiple comparisons test used-\n",
-            "Student's t-test.\n",
-            "Adjustment method for p-values: "
-          ),
-          crayon::yellow(p.adjust.method),
-          sep = ""
-        ))
-      }
+      # test details
+      test.details <- "Student's t-test"
     } else {
 
       # dataframe with Games-Howell test results
@@ -271,19 +257,8 @@ pairwise_comparisons <- function(data,
         p_adjust_column_adder(df = ., p.adjust.method = p.adjust.method) %>%
         dplyr::select(.data = ., -conf.low, -conf.high)
 
-      # display message about the post hoc tests run
-      if (isTRUE(messages)) {
-        message(cat(
-          crayon::green("Note: "),
-          crayon::blue(
-            "The parametric pairwise multiple comparisons test used-\n",
-            "Games-Howell test.\n",
-            "Adjustment method for p-values: "
-          ),
-          crayon::yellow(p.adjust.method),
-          sep = ""
-        ))
-      }
+      # test details
+      test.details <- "Games-Howell test"
     }
   }
 
@@ -312,25 +287,13 @@ pairwise_comparisons <- function(data,
         ) %>%
         p_adjust_column_adder(df = ., p.adjust.method = p.adjust.method)
 
-      # letting the user know which test was run
-      if (isTRUE(messages)) {
-        message(cat(
-          crayon::green("Note: "),
-          crayon::blue(
-            "The nonparametric pairwise multiple comparisons test used-\n",
-            "Dwass-Steel-Crichtlow-Fligner test.\n",
-            "Adjustment method for p-values: "
-          ),
-          crayon::yellow(p.adjust.method),
-          sep = ""
-        ))
-      }
+      # test details
+      test.details <- "Dwass-Steel-Crichtlow-Fligner test"
     }
 
     # converting the entered long format data to wide format
     if (isTRUE(paired)) {
-      data_wide <-
-        long_to_wide_converter(data = data, x = {{ x }}, y = {{ y }})
+      data_wide <- long_to_wide_converter(data = data, x = {{ x }}, y = {{ y }})
 
       # running Durbin-Conover test using `jmv` package
       jmv_pairs <-
@@ -354,19 +317,8 @@ pairwise_comparisons <- function(data,
         ) %>%
         p_adjust_column_adder(df = ., p.adjust.method = p.adjust.method)
 
-      # letting the user know which test was run
-      if (isTRUE(messages)) {
-        message(cat(
-          crayon::green("Note: "),
-          crayon::blue(
-            "The nonparametric pairwise multiple comparisons test used-\n",
-            "Durbin-Conover test.\n",
-            "Adjustment method for p-values: "
-          ),
-          crayon::yellow(p.adjust.method),
-          sep = ""
-        ))
-      }
+      # test details
+      test.details <- "Durbin-Conover test"
     }
   }
 
@@ -414,8 +366,7 @@ pairwise_comparisons <- function(data,
     df <-
       dplyr::full_join(
         # dataframe comparing comparison details
-        x = rob_df_tidy %>%
-          p_adjust_column_adder(df = ., p.adjust.method = p.adjust.method) %>%
+        x = p_adjust_column_adder(df = rob_df_tidy, p.adjust.method = p.adjust.method) %>%
           tidyr::gather(
             data = .,
             key = "key",
@@ -423,8 +374,7 @@ pairwise_comparisons <- function(data,
             group1:group2
           ),
         # dataframe with factor levels
-        y = rob_pairwise_df$fnames %>%
-          tibble::enframe(x = ., name = "rowid"),
+        y = tibble::enframe(x = rob_pairwise_df$fnames, name = "rowid"),
         by = "rowid"
       ) %>%
       dplyr::select(.data = ., -rowid) %>%
@@ -437,32 +387,15 @@ pairwise_comparisons <- function(data,
     # renaming confidence interval names
     df %<>% dplyr::rename(.data = ., conf.low = ci.lower, conf.high = ci.upper)
 
-    # message about which test was run
-    if (isTRUE(messages)) {
-      message(cat(
-        crayon::green("Note: "),
-        crayon::blue(
-          "The robust pairwise multiple comparisons test used-\n",
-          "Yuen's trimmed means comparisons test.\n",
-          "Adjustment method for p-values: "
-        ),
-        crayon::yellow(p.adjust.method),
-        sep = ""
-      ))
-    }
+    # test details
+    test.details <- "Yuen's trimmed means test"
   }
 
   # ---------------------------- bayes factor --------------------------------
 
   # print a message telling the user that this is currently not supported
   if (type %in% c("bf", "bayes")) {
-    stop(message(cat(
-      crayon::red("Warning: "),
-      crayon::blue("No Bayes Factor pairwise comparisons currently available.\n"),
-      sep = ""
-    )),
-    call. = FALSE
-    )
+    stop(message("No pairwise comparisons currently available.\n"), call. = FALSE)
   }
 
   # ---------------------------- cleanup ----------------------------------
@@ -483,10 +416,8 @@ pairwise_comparisons <- function(data,
           .x = .,
           .f = ~ specify_decimal_p(x = .$p.value, k = k, p.value = TRUE)
         )
-    )
-
-  # unnesting the dataframe
-  df %<>% tidyr::unnest(., cols = c(data, label))
+    ) %>% # unnesting the dataframe
+    tidyr::unnest(data = ., cols = c(data, label))
 
   # formatting label
   if (p.adjust.method == "none") {
@@ -510,7 +441,13 @@ pairwise_comparisons <- function(data,
   }
 
   # removing unnecessary columns
-  df %<>% dplyr::select(.data = ., -rowid)
+  df %<>%
+    dplyr::select(.data = ., -rowid) %>%
+    dplyr::mutate(
+      .data = .,
+      test.details = test.details,
+      p.value.adjustment = p_adjust_text(p.adjust.method)
+    )
 
   # return
   return(tibble::as_tibble(df))

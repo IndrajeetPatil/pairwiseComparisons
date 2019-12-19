@@ -5,6 +5,10 @@
 #'
 #' @inheritParams pairwise_comparisons
 #'
+#' @examples
+#' library(pairwiseComparisons)
+#' p_adjust_text("none")
+#' p_adjust_text("BY")
 #' @export
 
 p_adjust_text <- function(p.adjust.method) {

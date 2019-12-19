@@ -1,5 +1,13 @@
 # pairwiseComparisons 0.1.2.9000
 
+MINOR CHANGES
+
+  - Instead of cluttering the terminal with messages, `pairwise_comparisons`
+    function now instead add two columns (`test.details` and
+    `p.value.adjustment`) to all outputs specifying which test was carried out
+    wand which adjustment method is being used for *p*-value correction.
+  - Gets rid of `groupedstats` and `crayon` from dependencies.
+
 # pairwiseComparisons 0.1.2
 
 MINOR CHANGES

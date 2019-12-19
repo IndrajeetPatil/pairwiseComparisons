@@ -56,8 +56,6 @@ matrix:
         - git2r
         - data.table
       r_packages:
-        - car
-        - afex
         - rlang
         - bindrcpp
         - tidyr
@@ -106,8 +104,6 @@ matrix:
         - git2r
         - data.table
       r_packages:
-        - car
-        - afex
         - rlang
         - bindrcpp
         - tidyr
