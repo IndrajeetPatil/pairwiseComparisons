@@ -236,6 +236,17 @@ testthat::test_that(
       p.adjust.method = "hommel"
     )
 
+    # bf
+    testthat::expect_error(
+      pairwiseComparisons::pairwise_comparisons(
+        data = pairwiseComparisons::bugs_long,
+        x = condition,
+        y = desire,
+        type = "bf",
+        paired = TRUE
+      )
+    )
+
     # test details
     testthat::expect_identical(unique(df1$test.details), "Student's t-test")
     testthat::expect_identical(unique(df2$test.details), "Durbin-Conover test")

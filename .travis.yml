@@ -61,8 +61,7 @@ matrix:
         - tidyr
         - dplyr
         - coin
-        - jmv
-        - sjstats
+        - jmvs
         - WRS2
         - BH
         - remotes
@@ -110,7 +109,6 @@ matrix:
         - dplyr
         - coin
         - jmv
-        - sjstats
         - WRS2
         - BH
         - remotes
