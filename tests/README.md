@@ -1,6 +1,6 @@
 Tests and Coverage
 ================
-19 December, 2019 14:25:18
+20 December, 2019 19:38:24
 
   - [Coverage](#coverage)
   - [Unit Tests](#unit-tests)
@@ -13,14 +13,13 @@ This output is created by
 Coverage summary is created using the
 [covr](https://github.com/r-lib/covr) package.
 
-| Object                                                                    | Coverage (%) |
-| :------------------------------------------------------------------------ | :----------: |
-| pairwiseComparisons                                                       |     100      |
-| [R/games\_howell.R](../R/games_howell.R)                                  |     100      |
-| [R/helpers.R](../R/helpers.R)                                             |     100      |
-| [R/pairwise\_comparisons.R](../R/pairwise_comparisons.R)                  |     100      |
-| [R/pairwise\_comparisons\_caption.R](../R/pairwise_comparisons_caption.R) |     100      |
-| [R/utils\_formatting.R](../R/utils_formatting.R)                          |     100      |
+| Object                                                   | Coverage (%) |
+| :------------------------------------------------------- | :----------: |
+| pairwiseComparisons                                      |     100      |
+| [R/games\_howell.R](../R/games_howell.R)                 |     100      |
+| [R/helpers.R](../R/helpers.R)                            |     100      |
+| [R/pairwise\_comparisons.R](../R/pairwise_comparisons.R) |     100      |
+| [R/utils\_formatting.R](../R/utils_formatting.R)         |     100      |
 
 <br>
 
@@ -29,26 +28,24 @@ Coverage summary is created using the
 Unit Test summary is created using the
 [testthat](https://github.com/r-lib/testthat) package.
 
-| file                                                                                  |  n | time | error | failed | skipped | warning |
-| :------------------------------------------------------------------------------------ | -: | ---: | ----: | -----: | ------: | ------: |
-| [test-long\_to\_wide\_converter.R](testthat/test-long_to_wide_converter.R)            |  4 | 0.03 |     0 |      0 |       0 |       0 |
-| [test-pairwise\_comparisons.R](testthat/test-pairwise_comparisons.R)                  | 63 | 8.84 |     0 |      0 |       0 |       0 |
-| [test-pairwise\_comparisons\_caption.R](testthat/test-pairwise_comparisons_caption.R) |  5 | 0.00 |     0 |      0 |       0 |       0 |
-| [test-switch\_statements.R](testthat/test-switch_statements.R)                        |  9 | 0.02 |     0 |      0 |       0 |       0 |
+| file                                                                       |  n | time | error | failed | skipped | warning |
+| :------------------------------------------------------------------------- | -: | ---: | ----: | -----: | ------: | ------: |
+| [test-long\_to\_wide\_converter.R](testthat/test-long_to_wide_converter.R) |  4 | 0.06 |     0 |      0 |       0 |       0 |
+| [test-pairwise\_comparisons.R](testthat/test-pairwise_comparisons.R)       | 63 | 9.85 |     0 |      0 |       0 |       0 |
+| [test-switch\_statements.R](testthat/test-switch_statements.R)             |  9 | 0.01 |     0 |      0 |       0 |       0 |
 
 <details closed>
 
 <summary> Show Detailed Test Results </summary>
 
-| file                                                                                          | context                        |                               test                               | status |  n | time |
-| :-------------------------------------------------------------------------------------------- | :----------------------------- | :--------------------------------------------------------------: | :----- | -: | ---: |
-| [test-long\_to\_wide\_converter.R](testthat/test-long_to_wide_converter.R#L26)                | long\_to\_wide\_converter      |                 long\_to\_wide\_converter works                  | PASS   |  4 | 0.03 |
-| [test-pairwise\_comparisons.R](testthat/test-pairwise_comparisons.R#L62)                      | pairwise\_comparisons          |    `pairwise_comparisons()` works for between-subjects design    | PASS   | 32 | 8.03 |
-| [test-pairwise\_comparisons.R](testthat/test-pairwise_comparisons.R#L240_L248)                | pairwise\_comparisons          |    `pairwise_comparisons()` works for within-subjects design     | PASS   | 22 | 0.19 |
-| [test-pairwise\_comparisons.R](testthat/test-pairwise_comparisons.R#L386)                     | pairwise\_comparisons          |                 dropped levels are not included                  | PASS   |  6 | 0.57 |
-| [test-pairwise\_comparisons.R](testthat/test-pairwise_comparisons.R#L410)                     | pairwise\_comparisons          | check if everything works fine with irregular factor level names | PASS   |  3 | 0.05 |
-| [test-pairwise\_comparisons\_caption.R](testthat/test-pairwise_comparisons_caption.R#L46_L57) | pairwise\_comparisons\_caption |              `pairwise_comparisons_caption()` works              | PASS   |  5 | 0.00 |
-| [test-switch\_statements.R](testthat/test-switch_statements.R#L8)                             | switch statements              |                  switch for p adjustment works                   | PASS   |  9 | 0.02 |
+| file                                                                           | context                   |                               test                               | status |  n | time |
+| :----------------------------------------------------------------------------- | :------------------------ | :--------------------------------------------------------------: | :----- | -: | ---: |
+| [test-long\_to\_wide\_converter.R](testthat/test-long_to_wide_converter.R#L26) | long\_to\_wide\_converter |                 long\_to\_wide\_converter works                  | PASS   |  4 | 0.06 |
+| [test-pairwise\_comparisons.R](testthat/test-pairwise_comparisons.R#L62)       | pairwise\_comparisons     |    `pairwise_comparisons()` works for between-subjects design    | PASS   | 32 | 9.00 |
+| [test-pairwise\_comparisons.R](testthat/test-pairwise_comparisons.R#L240_L248) | pairwise\_comparisons     |    `pairwise_comparisons()` works for within-subjects design     | PASS   | 22 | 0.22 |
+| [test-pairwise\_comparisons.R](testthat/test-pairwise_comparisons.R#L386)      | pairwise\_comparisons     |                 dropped levels are not included                  | PASS   |  6 | 0.58 |
+| [test-pairwise\_comparisons.R](testthat/test-pairwise_comparisons.R#L410)      | pairwise\_comparisons     | check if everything works fine with irregular factor level names | PASS   |  3 | 0.05 |
+| [test-switch\_statements.R](testthat/test-switch_statements.R#L8)              | switch statements         |                  switch for p adjustment works                   | PASS   |  9 | 0.01 |
 
 </details>
 

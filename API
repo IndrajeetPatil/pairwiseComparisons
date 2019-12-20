@@ -1,3 +1,4 @@
 p_adjust_text(p.adjust.method)
-pairwise_comparisons(data, x, y, type = "parametric", tr = 0.1, paired = FALSE, var.equal = FALSE, p.adjust.method = "holm", k = 2, messages = TRUE, ...)
-pairwise_comparisons_caption(type, var.equal = FALSE, paired = FALSE, p.adjust.method = "holm", caption = NULL, ...)
+pairwise_comparisons(data, x, y, type = "parametric", tr = 0.1, paired = FALSE, var.equal = FALSE, p.adjust.method = "holm", k = 2, ...)
+signif_column(data, p, messages = FALSE)
+specify_decimal_p(x, k = 3, p.value = FALSE)

@@ -25,7 +25,6 @@ reference:
 
   - title: Helper functions
     contents:
-      - pairwise_comparisons_caption
       - p_adjust_text
       - signif_column
       - specify_decimal_p

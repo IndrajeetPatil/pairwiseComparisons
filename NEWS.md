@@ -1,5 +1,11 @@
 # pairwiseComparisons 0.1.3.9000
 
+BREAKING CHANGES
+
+  - `pairwise_comparisons_caption` is removed since it was helpful only for
+    `ggstatsplot`'s internal graphics display and wasn't of much utility outside
+    of that context.
+
 # pairwiseComparisons 0.1.3
 
 MINOR CHANGES
