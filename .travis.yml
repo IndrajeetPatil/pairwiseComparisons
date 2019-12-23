@@ -61,7 +61,7 @@ matrix:
         - tidyr
         - dplyr
         - coin
-        - jmvs
+        - jmv
         - WRS2
         - BH
         - remotes
