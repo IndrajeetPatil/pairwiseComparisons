@@ -51,7 +51,6 @@
 #' @importFrom dplyr select rename mutate mutate_if everything full_join vars
 #' @importFrom dplyr group_nest
 #' @importFrom stats p.adjust pairwise.t.test na.omit aov TukeyHSD var sd
-#' @importFrom stringr str_replace
 #' @importFrom WRS2 lincon rmmcp
 #' @importFrom tidyr gather spread separate unnest nest
 #' @importFrom rlang !! enquo as_string ensym
@@ -193,8 +192,8 @@ pairwise_comparisons <- function(data,
           .data = .,
           {{ x }} := forcats::fct_relabel(
             .f = {{ x }},
-            .fun = ~ stringr::str_replace(
-              string = .x,
+            .fun = ~ gsub(
+              x = .x,
               pattern = "-",
               replacement = "_"
             )
@@ -216,8 +215,8 @@ pairwise_comparisons <- function(data,
         dplyr::mutate_at(
           .tbl = .,
           .vars = dplyr::vars(dplyr::matches("^group[0-9]$")),
-          .funs = ~ stringr::str_replace(
-            string = .,
+          .funs = ~ gsub(
+            x = .,
             pattern = "_",
             replacement = "-"
           )

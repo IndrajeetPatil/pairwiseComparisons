@@ -205,19 +205,6 @@
     },
     {
       "@type": "SoftwareApplication",
-      "identifier": "stringr",
-      "name": "stringr",
-      "version": ">= 1.4.0",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=stringr"
-    },
-    {
-      "@type": "SoftwareApplication",
       "identifier": "tibble",
       "name": "tibble",
       "version": ">= 2.1.3",
