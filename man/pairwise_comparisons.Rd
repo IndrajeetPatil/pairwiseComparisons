@@ -3,7 +3,7 @@
 \name{pairwise_comparisons}
 \alias{pairwise_comparisons}
 \alias{pairwise_p}
-\title{Multiple pairwise comparison tests}
+\title{Multiple pairwise comparison tests with tidy data}
 \usage{
 pairwise_comparisons(
   data,

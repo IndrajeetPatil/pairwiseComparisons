@@ -1,4 +1,4 @@
-# pairwiseComparisons 0.1.3.9000
+# pairwiseComparisons 0.1.4
 
 BREAKING CHANGES
 

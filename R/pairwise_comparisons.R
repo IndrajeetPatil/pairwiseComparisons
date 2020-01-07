@@ -1,4 +1,4 @@
-#' @title Multiple pairwise comparison tests
+#' @title Multiple pairwise comparison tests with tidy data
 #' @name pairwise_comparisons
 #' @description Calculate parametric, non-parametric, and robust pairwise
 #'   comparisons between group levels with corrections for multiple testing.
@@ -419,25 +419,15 @@ pairwise_comparisons <- function(data,
     tidyr::unnest(data = ., cols = c(data, label))
 
   # formatting label
-  if (p.adjust.method == "none") {
-    df %<>%
-      dplyr::mutate(
-        .data = .,
-        label = dplyr::case_when(
-          label == "< 0.001" ~ paste("list(~italic(p)['unadjusted']<=", "0.001", ")", sep = " "),
-          TRUE ~ paste("list(~italic(p)['unadjusted']==", label, ")", sep = " ")
-        )
+  adjust_text <- ifelse(p.adjust.method == "none", "unadjusted", "adjusted")
+  df %<>%
+    dplyr::mutate(
+      .data = .,
+      label = dplyr::case_when(
+        label == "< 0.001" ~ paste("list(~italic(p)[", adjust_text, "]<=", "0.001", ")", sep = " "),
+        TRUE ~ paste("list(~italic(p)[", adjust_text, "]==", label, ")", sep = " ")
       )
-  } else {
-    df %<>%
-      dplyr::mutate(
-        .data = .,
-        label = dplyr::case_when(
-          label == "< 0.001" ~ paste("list(~italic(p)['adjusted']<=", "0.001", ")", sep = " "),
-          TRUE ~ paste("list(~italic(p)['adjusted']==", label, ")", sep = " ")
-        )
-      )
-  }
+    )
 
   # removing unnecessary columns
   df %<>%

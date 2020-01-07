@@ -139,48 +139,48 @@ testthat::test_that(
     testthat::expect_identical(
       df1$label,
       c(
-        "list(~italic(p)['adjusted']== 1.000 )",
-        "list(~italic(p)['adjusted']== 1.000 )",
-        "list(~italic(p)['adjusted']== 1.000 )",
-        "list(~italic(p)['adjusted']== 1.000 )",
-        "list(~italic(p)['adjusted']== 0.979 )",
-        "list(~italic(p)['adjusted']== 1.000 )"
+        "list(~italic(p)[ adjusted ]== 1.000 )",
+        "list(~italic(p)[ adjusted ]== 1.000 )",
+        "list(~italic(p)[ adjusted ]== 1.000 )",
+        "list(~italic(p)[ adjusted ]== 1.000 )",
+        "list(~italic(p)[ adjusted ]== 0.979 )",
+        "list(~italic(p)[ adjusted ]== 1.000 )"
       )
     )
 
     testthat::expect_identical(
       df2$label,
       c(
-        "list(~italic(p)['adjusted']== 1.000 )",
-        "list(~italic(p)['adjusted']== 1.000 )",
-        "list(~italic(p)['adjusted']== 1.000 )",
-        "list(~italic(p)['adjusted']== 1.000 )",
-        "list(~italic(p)['adjusted']== 1.000 )",
-        "list(~italic(p)['adjusted']== 1.000 )"
+        "list(~italic(p)[ adjusted ]== 1.000 )",
+        "list(~italic(p)[ adjusted ]== 1.000 )",
+        "list(~italic(p)[ adjusted ]== 1.000 )",
+        "list(~italic(p)[ adjusted ]== 1.000 )",
+        "list(~italic(p)[ adjusted ]== 1.000 )",
+        "list(~italic(p)[ adjusted ]== 1.000 )"
       )
     )
 
     testthat::expect_identical(
       df3$label,
       c(
-        "list(~italic(p)['unadjusted']== 0.942 )",
-        "list(~italic(p)['unadjusted']== 0.342 )",
-        "list(~italic(p)['unadjusted']== 0.619 )",
-        "list(~italic(p)['unadjusted']== 0.325 )",
-        "list(~italic(p)['unadjusted']== 0.908 )",
-        "list(~italic(p)['unadjusted']== 0.667 )"
+        "list(~italic(p)[ unadjusted ]== 0.942 )",
+        "list(~italic(p)[ unadjusted ]== 0.342 )",
+        "list(~italic(p)[ unadjusted ]== 0.619 )",
+        "list(~italic(p)[ unadjusted ]== 0.325 )",
+        "list(~italic(p)[ unadjusted ]== 0.908 )",
+        "list(~italic(p)[ unadjusted ]== 0.667 )"
       )
     )
 
     testthat::expect_identical(
       df4$label,
       c(
-        "list(~italic(p)['adjusted']== 0.969 )",
-        "list(~italic(p)['adjusted']== 0.969 )",
-        "list(~italic(p)['adjusted']== 0.969 )",
-        "list(~italic(p)['adjusted']== 0.969 )",
-        "list(~italic(p)['adjusted']== 0.969 )",
-        "list(~italic(p)['adjusted']== 0.969 )"
+        "list(~italic(p)[ adjusted ]== 0.969 )",
+        "list(~italic(p)[ adjusted ]== 0.969 )",
+        "list(~italic(p)[ adjusted ]== 0.969 )",
+        "list(~italic(p)[ adjusted ]== 0.969 )",
+        "list(~italic(p)[ adjusted ]== 0.969 )",
+        "list(~italic(p)[ adjusted ]== 0.969 )"
       )
     )
 
@@ -274,12 +274,12 @@ testthat::test_that(
     testthat::expect_identical(
       df1$label,
       c(
-        "list(~italic(p)['adjusted']== 0.003 )",
-        "list(~italic(p)['adjusted']== 0.424 )",
-        "list(~italic(p)['adjusted']<= 0.001 )",
-        "list(~italic(p)['adjusted']== 0.274 )",
-        "list(~italic(p)['adjusted']== 0.006 )",
-        "list(~italic(p)['adjusted']<= 0.001 )"
+        "list(~italic(p)[ adjusted ]== 0.003 )",
+        "list(~italic(p)[ adjusted ]== 0.424 )",
+        "list(~italic(p)[ adjusted ]<= 0.001 )",
+        "list(~italic(p)[ adjusted ]== 0.274 )",
+        "list(~italic(p)[ adjusted ]== 0.006 )",
+        "list(~italic(p)[ adjusted ]<= 0.001 )"
       )
     )
 
@@ -297,12 +297,12 @@ testthat::test_that(
     testthat::expect_identical(
       df2$label,
       c(
-        "list(~italic(p)['adjusted']<= 0.001 )",
-        "list(~italic(p)['adjusted']== 0.045 )",
-        "list(~italic(p)['adjusted']<= 0.001 )",
-        "list(~italic(p)['adjusted']== 0.050 )",
-        "list(~italic(p)['adjusted']== 0.005 )",
-        "list(~italic(p)['adjusted']<= 0.001 )"
+        "list(~italic(p)[ adjusted ]<= 0.001 )",
+        "list(~italic(p)[ adjusted ]== 0.045 )",
+        "list(~italic(p)[ adjusted ]<= 0.001 )",
+        "list(~italic(p)[ adjusted ]== 0.050 )",
+        "list(~italic(p)[ adjusted ]== 0.005 )",
+        "list(~italic(p)[ adjusted ]<= 0.001 )"
       )
     )
 
@@ -327,12 +327,12 @@ testthat::test_that(
     testthat::expect_identical(
       df3$label,
       c(
-        "list(~italic(p)['adjusted']== 0.062 )",
-        "list(~italic(p)['adjusted']== 0.062 )",
-        "list(~italic(p)['adjusted']== 0.014 )",
-        "list(~italic(p)['adjusted']== 0.001 )",
-        "list(~italic(p)['adjusted']<= 0.001 )",
-        "list(~italic(p)['adjusted']<= 0.001 )"
+        "list(~italic(p)[ adjusted ]== 0.062 )",
+        "list(~italic(p)[ adjusted ]== 0.062 )",
+        "list(~italic(p)[ adjusted ]== 0.014 )",
+        "list(~italic(p)[ adjusted ]== 0.001 )",
+        "list(~italic(p)[ adjusted ]<= 0.001 )",
+        "list(~italic(p)[ adjusted ]<= 0.001 )"
       )
     )
 
@@ -388,7 +388,7 @@ testthat::test_that(
     testthat::expect_equal(df1$se, df2$se, tolerance = 0.01)
     testthat::expect_equal(df1$t.value, df2$t.value, tolerance = 0.01)
     testthat::expect_equal(df1$df, df2$df, tolerance = 0.01)
-    testthat::expect_identical(df2$label, "list(~italic(p)['unadjusted']== 0.865 )")
+    testthat::expect_identical(df2$label, "list(~italic(p)[ unadjusted ]== 0.865 )")
   }
 )
 

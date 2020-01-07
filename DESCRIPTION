@@ -1,7 +1,7 @@
 Type: Package
 Package: pairwiseComparisons
 Title: Multiple Pairwise Comparison Tests
-Version: 0.1.3.9000
+Version: 0.1.4
 Authors@R: 
     person(given = "Indrajeet",
            family = "Patil",
@@ -9,12 +9,13 @@ Authors@R:
            email = "patilindrajeet.science@gmail.com",
            comment = c(ORCID = "0000-0003-1995-6531"))
 Maintainer: Indrajeet Patil <patilindrajeet.science@gmail.com>
-Description: Multiple pairwise comparison tests for one-way
-    analysis of variance for both between-subjects and within-subjects
-    designs. Currently, it supports only the most common types of
-    statistical analyses and tests: parametric (Welch's and Student's
-    t-test), nonparametric (Durbin-Conover test and
-    Dwass-Steel-Crichtlow-Fligner test), robust (Yuen’s trimmed means test).
+Description: Multiple pairwise comparison tests on tidy data for
+    one-way analysis of variance for both between-subjects and
+    within-subjects designs. Currently, it supports only the most common
+    types of statistical analyses and tests: parametric (Welch's and
+    Student's t-test), nonparametric (Durbin-Conover test and
+    Dwass-Steel-Crichtlow-Fligner test), robust (Yuen’s trimmed means
+    test).
 License: GPL-3 | file LICENSE
 URL: https://indrajeetpatil.github.io/pairwiseComparisons/,
     https://github.com/IndrajeetPatil/pairwiseComparisons
