@@ -24,7 +24,7 @@ BugReports:
 Depends: 
     R (>= 3.5.0)
 Imports:
-    broomExtra (>= 0.0.6),
+    broomExtra (>= 1.0.1),
     dplyr (>= 0.8.3),
     forcats (>= 0.4.0),
     jmv (>= 1.0.8),
@@ -47,4 +47,4 @@ Encoding: UTF-8
 Language: en-US
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.0.2
+RoxygenNote: 7.0.2.9000

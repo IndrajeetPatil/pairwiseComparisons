@@ -61,6 +61,8 @@ matrix:
         - tidyr
         - dplyr
         - coin
+        - car
+        - afex
         - jmv
         - WRS2
         - BH
@@ -108,6 +110,8 @@ matrix:
         - tidyr
         - dplyr
         - coin
+        - car
+        - afex
         - jmv
         - WRS2
         - BH

@@ -55,18 +55,6 @@
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-<li>
-      <a href="articles/tests_and_coverage.html">Tests and Coverage</a>
-    </li>
-  </ul>
-</li>
 <li>
   <a href="news/index.html">Changelog</a>
 </li>
@@ -148,7 +136,7 @@
 <td><a href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img src="https://img.shields.io/badge/licence-GPL--3-blue.svg" alt="Licence"></a></td>
 <td><a href="https://codecov.io/gh/IndrajeetPatil/pairwiseComparisons?branch=master"><img src="https://codecov.io/gh/IndrajeetPatil/pairwiseComparisons/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></td>
 <td><a href="http://hits.dwyl.io/IndrajeetPatil/pairwiseComparisons"><img src="http://hits.dwyl.io/IndrajeetPatil/pairwiseComparisons.svg" alt="HitCount"></a></td>
-<td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/commits/master"><img src="https://img.shields.io/badge/last%20change-2020--01--06-yellowgreen.svg" alt="Last-changedate"></a></td>
+<td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/commits/master"><img src="https://img.shields.io/badge/last%20change-2020--01--31-yellowgreen.svg" alt="Last-changedate"></a></td>
 <td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/commits/master"><img src="https://img.shields.io/github/last-commit/IndrajeetPatil/pairwiseComparisons.svg" alt="GitHub last commit"></a></td>
 </tr>
 <tr class="even">
@@ -309,22 +297,22 @@
 <span id="cb4-14"><a href="#cb4-14"></a>  <span class="dt">p.adjust.method =</span> <span class="st">"bonferroni"</span></span>
 <span id="cb4-15"><a href="#cb4-15"></a>)</span>
 <span id="cb4-16"><a href="#cb4-16"></a><span class="co">#&gt; # A tibble: 6 x 8</span></span>
-<span id="cb4-17"><a href="#cb4-17"></a><span class="co">#&gt;   group1  group2  mean.difference p.value significance label                                 test.details    </span></span>
-<span id="cb4-18"><a href="#cb4-18"></a><span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;             &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;                                 &lt;chr&gt;           </span></span>
-<span id="cb4-19"><a href="#cb4-19"></a><span class="co">#&gt; 1 carni   herbi            0.542    1     ns           list(~italic(p)[ adjusted ]== 1.000 ) Student's t-test</span></span>
-<span id="cb4-20"><a href="#cb4-20"></a><span class="co">#&gt; 2 carni   insecti         -0.0577   1     ns           list(~italic(p)[ adjusted ]== 1.000 ) Student's t-test</span></span>
-<span id="cb4-21"><a href="#cb4-21"></a><span class="co">#&gt; 3 carni   omni             0.0665   1     ns           list(~italic(p)[ adjusted ]== 1.000 ) Student's t-test</span></span>
-<span id="cb4-22"><a href="#cb4-22"></a><span class="co">#&gt; 4 herbi   insecti         -0.600    1     ns           list(~italic(p)[ adjusted ]== 1.000 ) Student's t-test</span></span>
-<span id="cb4-23"><a href="#cb4-23"></a><span class="co">#&gt; 5 herbi   omni            -0.476    0.979 ns           list(~italic(p)[ adjusted ]== 0.979 ) Student's t-test</span></span>
-<span id="cb4-24"><a href="#cb4-24"></a><span class="co">#&gt; 6 insecti omni             0.124    1     ns           list(~italic(p)[ adjusted ]== 1.000 ) Student's t-test</span></span>
-<span id="cb4-25"><a href="#cb4-25"></a><span class="co">#&gt;   p.value.adjustment</span></span>
-<span id="cb4-26"><a href="#cb4-26"></a><span class="co">#&gt;   &lt;chr&gt;             </span></span>
-<span id="cb4-27"><a href="#cb4-27"></a><span class="co">#&gt; 1 Bonferroni        </span></span>
-<span id="cb4-28"><a href="#cb4-28"></a><span class="co">#&gt; 2 Bonferroni        </span></span>
-<span id="cb4-29"><a href="#cb4-29"></a><span class="co">#&gt; 3 Bonferroni        </span></span>
-<span id="cb4-30"><a href="#cb4-30"></a><span class="co">#&gt; 4 Bonferroni        </span></span>
-<span id="cb4-31"><a href="#cb4-31"></a><span class="co">#&gt; 5 Bonferroni        </span></span>
-<span id="cb4-32"><a href="#cb4-32"></a><span class="co">#&gt; 6 Bonferroni</span></span>
+<span id="cb4-17"><a href="#cb4-17"></a><span class="co">#&gt;   group1  group2  mean.difference p.value significance</span></span>
+<span id="cb4-18"><a href="#cb4-18"></a><span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;             &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;       </span></span>
+<span id="cb4-19"><a href="#cb4-19"></a><span class="co">#&gt; 1 carni   herbi            0.542    1     ns          </span></span>
+<span id="cb4-20"><a href="#cb4-20"></a><span class="co">#&gt; 2 carni   insecti         -0.0577   1     ns          </span></span>
+<span id="cb4-21"><a href="#cb4-21"></a><span class="co">#&gt; 3 carni   omni             0.0665   1     ns          </span></span>
+<span id="cb4-22"><a href="#cb4-22"></a><span class="co">#&gt; 4 herbi   insecti         -0.600    1     ns          </span></span>
+<span id="cb4-23"><a href="#cb4-23"></a><span class="co">#&gt; 5 herbi   omni            -0.476    0.979 ns          </span></span>
+<span id="cb4-24"><a href="#cb4-24"></a><span class="co">#&gt; 6 insecti omni             0.124    1     ns          </span></span>
+<span id="cb4-25"><a href="#cb4-25"></a><span class="co">#&gt;   label                                 test.details     p.value.adjustment</span></span>
+<span id="cb4-26"><a href="#cb4-26"></a><span class="co">#&gt;   &lt;chr&gt;                                 &lt;chr&gt;            &lt;chr&gt;             </span></span>
+<span id="cb4-27"><a href="#cb4-27"></a><span class="co">#&gt; 1 list(~italic(p)[ adjusted ]== 1.000 ) Student's t-test Bonferroni        </span></span>
+<span id="cb4-28"><a href="#cb4-28"></a><span class="co">#&gt; 2 list(~italic(p)[ adjusted ]== 1.000 ) Student's t-test Bonferroni        </span></span>
+<span id="cb4-29"><a href="#cb4-29"></a><span class="co">#&gt; 3 list(~italic(p)[ adjusted ]== 1.000 ) Student's t-test Bonferroni        </span></span>
+<span id="cb4-30"><a href="#cb4-30"></a><span class="co">#&gt; 4 list(~italic(p)[ adjusted ]== 1.000 ) Student's t-test Bonferroni        </span></span>
+<span id="cb4-31"><a href="#cb4-31"></a><span class="co">#&gt; 5 list(~italic(p)[ adjusted ]== 0.979 ) Student's t-test Bonferroni        </span></span>
+<span id="cb4-32"><a href="#cb4-32"></a><span class="co">#&gt; 6 list(~italic(p)[ adjusted ]== 1.000 ) Student's t-test Bonferroni</span></span>
 <span id="cb4-33"><a href="#cb4-33"></a></span>
 <span id="cb4-34"><a href="#cb4-34"></a><span class="co"># if `var.equal = FALSE`, then Games-Howell test will be run</span></span>
 <span id="cb4-35"><a href="#cb4-35"></a><span class="kw"><a href="reference/pairwise_comparisons.html">pairwise_comparisons</a></span>(</span>
@@ -337,22 +325,22 @@
 <span id="cb4-42"><a href="#cb4-42"></a>  <span class="dt">p.adjust.method =</span> <span class="st">"bonferroni"</span></span>
 <span id="cb4-43"><a href="#cb4-43"></a>)</span>
 <span id="cb4-44"><a href="#cb4-44"></a><span class="co">#&gt; # A tibble: 6 x 11</span></span>
-<span id="cb4-45"><a href="#cb4-45"></a><span class="co">#&gt;   group1 group2  mean.difference    se t.value    df p.value significance label                                </span></span>
-<span id="cb4-46"><a href="#cb4-46"></a><span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;             &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;                                </span></span>
-<span id="cb4-47"><a href="#cb4-47"></a><span class="co">#&gt; 1 omni   herbi             0.476 0.255   1.32   20.9       1 ns           list(~italic(p)[ adjusted ]== 1.000 )</span></span>
-<span id="cb4-48"><a href="#cb4-48"></a><span class="co">#&gt; 2 omni   carni            -0.066 0.061   0.774  21.1       1 ns           list(~italic(p)[ adjusted ]== 1.000 )</span></span>
-<span id="cb4-49"><a href="#cb4-49"></a><span class="co">#&gt; 3 omni   insecti          -0.124 0.057   1.55   17.2       1 ns           list(~italic(p)[ adjusted ]== 1.000 )</span></span>
-<span id="cb4-50"><a href="#cb4-50"></a><span class="co">#&gt; 4 herbi  carni            -0.542 0.25    1.54   19.4       1 ns           list(~italic(p)[ adjusted ]== 1.000 )</span></span>
-<span id="cb4-51"><a href="#cb4-51"></a><span class="co">#&gt; 5 herbi  insecti          -0.6   0.249   1.70   19.1       1 ns           list(~italic(p)[ adjusted ]== 1.000 )</span></span>
-<span id="cb4-52"><a href="#cb4-52"></a><span class="co">#&gt; 6 carni  insecti          -0.058 0.027   1.53   10.7       1 ns           list(~italic(p)[ adjusted ]== 1.000 )</span></span>
-<span id="cb4-53"><a href="#cb4-53"></a><span class="co">#&gt;   test.details      p.value.adjustment</span></span>
-<span id="cb4-54"><a href="#cb4-54"></a><span class="co">#&gt;   &lt;chr&gt;             &lt;chr&gt;             </span></span>
-<span id="cb4-55"><a href="#cb4-55"></a><span class="co">#&gt; 1 Games-Howell test Bonferroni        </span></span>
-<span id="cb4-56"><a href="#cb4-56"></a><span class="co">#&gt; 2 Games-Howell test Bonferroni        </span></span>
-<span id="cb4-57"><a href="#cb4-57"></a><span class="co">#&gt; 3 Games-Howell test Bonferroni        </span></span>
-<span id="cb4-58"><a href="#cb4-58"></a><span class="co">#&gt; 4 Games-Howell test Bonferroni        </span></span>
-<span id="cb4-59"><a href="#cb4-59"></a><span class="co">#&gt; 5 Games-Howell test Bonferroni        </span></span>
-<span id="cb4-60"><a href="#cb4-60"></a><span class="co">#&gt; 6 Games-Howell test Bonferroni</span></span>
+<span id="cb4-45"><a href="#cb4-45"></a><span class="co">#&gt;   group1 group2  mean.difference    se t.value    df p.value significance</span></span>
+<span id="cb4-46"><a href="#cb4-46"></a><span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;             &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;       </span></span>
+<span id="cb4-47"><a href="#cb4-47"></a><span class="co">#&gt; 1 omni   herbi             0.476 0.255   1.32   20.9       1 ns          </span></span>
+<span id="cb4-48"><a href="#cb4-48"></a><span class="co">#&gt; 2 omni   carni            -0.066 0.061   0.774  21.1       1 ns          </span></span>
+<span id="cb4-49"><a href="#cb4-49"></a><span class="co">#&gt; 3 omni   insecti          -0.124 0.057   1.55   17.2       1 ns          </span></span>
+<span id="cb4-50"><a href="#cb4-50"></a><span class="co">#&gt; 4 herbi  carni            -0.542 0.25    1.54   19.4       1 ns          </span></span>
+<span id="cb4-51"><a href="#cb4-51"></a><span class="co">#&gt; 5 herbi  insecti          -0.6   0.249   1.70   19.1       1 ns          </span></span>
+<span id="cb4-52"><a href="#cb4-52"></a><span class="co">#&gt; 6 carni  insecti          -0.058 0.027   1.53   10.7       1 ns          </span></span>
+<span id="cb4-53"><a href="#cb4-53"></a><span class="co">#&gt;   label                                 test.details      p.value.adjustment</span></span>
+<span id="cb4-54"><a href="#cb4-54"></a><span class="co">#&gt;   &lt;chr&gt;                                 &lt;chr&gt;             &lt;chr&gt;             </span></span>
+<span id="cb4-55"><a href="#cb4-55"></a><span class="co">#&gt; 1 list(~italic(p)[ adjusted ]== 1.000 ) Games-Howell test Bonferroni        </span></span>
+<span id="cb4-56"><a href="#cb4-56"></a><span class="co">#&gt; 2 list(~italic(p)[ adjusted ]== 1.000 ) Games-Howell test Bonferroni        </span></span>
+<span id="cb4-57"><a href="#cb4-57"></a><span class="co">#&gt; 3 list(~italic(p)[ adjusted ]== 1.000 ) Games-Howell test Bonferroni        </span></span>
+<span id="cb4-58"><a href="#cb4-58"></a><span class="co">#&gt; 4 list(~italic(p)[ adjusted ]== 1.000 ) Games-Howell test Bonferroni        </span></span>
+<span id="cb4-59"><a href="#cb4-59"></a><span class="co">#&gt; 5 list(~italic(p)[ adjusted ]== 1.000 ) Games-Howell test Bonferroni        </span></span>
+<span id="cb4-60"><a href="#cb4-60"></a><span class="co">#&gt; 6 list(~italic(p)[ adjusted ]== 1.000 ) Games-Howell test Bonferroni</span></span>
 <span id="cb4-61"><a href="#cb4-61"></a></span>
 <span id="cb4-62"><a href="#cb4-62"></a><span class="co"># non-parametric</span></span>
 <span id="cb4-63"><a href="#cb4-63"></a><span class="kw"><a href="reference/pairwise_comparisons.html">pairwise_comparisons</a></span>(</span>
@@ -364,49 +352,65 @@
 <span id="cb4-69"><a href="#cb4-69"></a>  <span class="dt">p.adjust.method =</span> <span class="st">"none"</span></span>
 <span id="cb4-70"><a href="#cb4-70"></a>)</span>
 <span id="cb4-71"><a href="#cb4-71"></a><span class="co">#&gt; # A tibble: 6 x 8</span></span>
-<span id="cb4-72"><a href="#cb4-72"></a><span class="co">#&gt;   group1  group2       W p.value significance label                                   test.details                      </span></span>
-<span id="cb4-73"><a href="#cb4-73"></a><span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;                                   &lt;chr&gt;                             </span></span>
-<span id="cb4-74"><a href="#cb4-74"></a><span class="co">#&gt; 1 carni   herbi   -0.8     0.942 ns           list(~italic(p)[ unadjusted ]== 0.942 ) Dwass-Steel-Crichtlow-Fligner test</span></span>
-<span id="cb4-75"><a href="#cb4-75"></a><span class="co">#&gt; 2 carni   insecti -2.36    0.342 ns           list(~italic(p)[ unadjusted ]== 0.342 ) Dwass-Steel-Crichtlow-Fligner test</span></span>
-<span id="cb4-76"><a href="#cb4-76"></a><span class="co">#&gt; 3 carni   omni    -1.72    0.619 ns           list(~italic(p)[ unadjusted ]== 0.619 ) Dwass-Steel-Crichtlow-Fligner test</span></span>
-<span id="cb4-77"><a href="#cb4-77"></a><span class="co">#&gt; 4 herbi   insecti -2.40    0.325 ns           list(~italic(p)[ unadjusted ]== 0.325 ) Dwass-Steel-Crichtlow-Fligner test</span></span>
-<span id="cb4-78"><a href="#cb4-78"></a><span class="co">#&gt; 5 herbi   omni    -0.948   0.908 ns           list(~italic(p)[ unadjusted ]== 0.908 ) Dwass-Steel-Crichtlow-Fligner test</span></span>
-<span id="cb4-79"><a href="#cb4-79"></a><span class="co">#&gt; 6 insecti omni     1.61    0.667 ns           list(~italic(p)[ unadjusted ]== 0.667 ) Dwass-Steel-Crichtlow-Fligner test</span></span>
-<span id="cb4-80"><a href="#cb4-80"></a><span class="co">#&gt;   p.value.adjustment</span></span>
-<span id="cb4-81"><a href="#cb4-81"></a><span class="co">#&gt;   &lt;chr&gt;             </span></span>
-<span id="cb4-82"><a href="#cb4-82"></a><span class="co">#&gt; 1 None              </span></span>
-<span id="cb4-83"><a href="#cb4-83"></a><span class="co">#&gt; 2 None              </span></span>
-<span id="cb4-84"><a href="#cb4-84"></a><span class="co">#&gt; 3 None              </span></span>
-<span id="cb4-85"><a href="#cb4-85"></a><span class="co">#&gt; 4 None              </span></span>
-<span id="cb4-86"><a href="#cb4-86"></a><span class="co">#&gt; 5 None              </span></span>
-<span id="cb4-87"><a href="#cb4-87"></a><span class="co">#&gt; 6 None</span></span>
-<span id="cb4-88"><a href="#cb4-88"></a></span>
-<span id="cb4-89"><a href="#cb4-89"></a><span class="co"># robust</span></span>
-<span id="cb4-90"><a href="#cb4-90"></a><span class="kw"><a href="reference/pairwise_comparisons.html">pairwise_comparisons</a></span>(</span>
-<span id="cb4-91"><a href="#cb4-91"></a>  <span class="dt">data =</span> ggplot2<span class="op">::</span>msleep,</span>
-<span id="cb4-92"><a href="#cb4-92"></a>  <span class="dt">x =</span> vore,</span>
-<span id="cb4-93"><a href="#cb4-93"></a>  <span class="dt">y =</span> brainwt,</span>
-<span id="cb4-94"><a href="#cb4-94"></a>  <span class="dt">type =</span> <span class="st">"robust"</span>,</span>
-<span id="cb4-95"><a href="#cb4-95"></a>  <span class="dt">paired =</span> <span class="ot">FALSE</span>,</span>
-<span id="cb4-96"><a href="#cb4-96"></a>  <span class="dt">p.adjust.method =</span> <span class="st">"fdr"</span></span>
-<span id="cb4-97"><a href="#cb4-97"></a>)</span>
-<span id="cb4-98"><a href="#cb4-98"></a><span class="co">#&gt; # A tibble: 6 x 10</span></span>
-<span id="cb4-99"><a href="#cb4-99"></a><span class="co">#&gt;   group1  group2    psihat conf.low conf.high p.value significance label                                </span></span>
-<span id="cb4-100"><a href="#cb4-100"></a><span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;                                </span></span>
-<span id="cb4-101"><a href="#cb4-101"></a><span class="co">#&gt; 1 insecti omni    -0.0556   -0.184     0.0728   0.969 ns           list(~italic(p)[ adjusted ]== 0.969 )</span></span>
-<span id="cb4-102"><a href="#cb4-102"></a><span class="co">#&gt; 2 carni   herbi   -0.0530   -0.274     0.168    0.969 ns           list(~italic(p)[ adjusted ]== 0.969 )</span></span>
-<span id="cb4-103"><a href="#cb4-103"></a><span class="co">#&gt; 3 carni   omni     0.00210  -0.151     0.155    0.969 ns           list(~italic(p)[ adjusted ]== 0.969 )</span></span>
-<span id="cb4-104"><a href="#cb4-104"></a><span class="co">#&gt; 4 herbi   omni     0.0551   -0.173     0.283    0.969 ns           list(~italic(p)[ adjusted ]== 0.969 )</span></span>
-<span id="cb4-105"><a href="#cb4-105"></a><span class="co">#&gt; 5 carni   insecti  0.0577   -0.0609    0.176    0.969 ns           list(~italic(p)[ adjusted ]== 0.969 )</span></span>
-<span id="cb4-106"><a href="#cb4-106"></a><span class="co">#&gt; 6 herbi   insecti  0.111    -0.0983    0.320    0.969 ns           list(~italic(p)[ adjusted ]== 0.969 )</span></span>
-<span id="cb4-107"><a href="#cb4-107"></a><span class="co">#&gt;   test.details              p.value.adjustment  </span></span>
-<span id="cb4-108"><a href="#cb4-108"></a><span class="co">#&gt;   &lt;chr&gt;                     &lt;chr&gt;               </span></span>
-<span id="cb4-109"><a href="#cb4-109"></a><span class="co">#&gt; 1 Yuen's trimmed means test Benjamini &amp; Hochberg</span></span>
-<span id="cb4-110"><a href="#cb4-110"></a><span class="co">#&gt; 2 Yuen's trimmed means test Benjamini &amp; Hochberg</span></span>
-<span id="cb4-111"><a href="#cb4-111"></a><span class="co">#&gt; 3 Yuen's trimmed means test Benjamini &amp; Hochberg</span></span>
-<span id="cb4-112"><a href="#cb4-112"></a><span class="co">#&gt; 4 Yuen's trimmed means test Benjamini &amp; Hochberg</span></span>
-<span id="cb4-113"><a href="#cb4-113"></a><span class="co">#&gt; 5 Yuen's trimmed means test Benjamini &amp; Hochberg</span></span>
-<span id="cb4-114"><a href="#cb4-114"></a><span class="co">#&gt; 6 Yuen's trimmed means test Benjamini &amp; Hochberg</span></span></code></pre></div>
+<span id="cb4-72"><a href="#cb4-72"></a><span class="co">#&gt;   group1  group2       W p.value significance</span></span>
+<span id="cb4-73"><a href="#cb4-73"></a><span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;       </span></span>
+<span id="cb4-74"><a href="#cb4-74"></a><span class="co">#&gt; 1 carni   herbi   -0.8     0.942 ns          </span></span>
+<span id="cb4-75"><a href="#cb4-75"></a><span class="co">#&gt; 2 carni   insecti -2.36    0.342 ns          </span></span>
+<span id="cb4-76"><a href="#cb4-76"></a><span class="co">#&gt; 3 carni   omni    -1.72    0.619 ns          </span></span>
+<span id="cb4-77"><a href="#cb4-77"></a><span class="co">#&gt; 4 herbi   insecti -2.40    0.325 ns          </span></span>
+<span id="cb4-78"><a href="#cb4-78"></a><span class="co">#&gt; 5 herbi   omni    -0.948   0.908 ns          </span></span>
+<span id="cb4-79"><a href="#cb4-79"></a><span class="co">#&gt; 6 insecti omni     1.61    0.667 ns          </span></span>
+<span id="cb4-80"><a href="#cb4-80"></a><span class="co">#&gt;   label                                   test.details                      </span></span>
+<span id="cb4-81"><a href="#cb4-81"></a><span class="co">#&gt;   &lt;chr&gt;                                   &lt;chr&gt;                             </span></span>
+<span id="cb4-82"><a href="#cb4-82"></a><span class="co">#&gt; 1 list(~italic(p)[ unadjusted ]== 0.942 ) Dwass-Steel-Crichtlow-Fligner test</span></span>
+<span id="cb4-83"><a href="#cb4-83"></a><span class="co">#&gt; 2 list(~italic(p)[ unadjusted ]== 0.342 ) Dwass-Steel-Crichtlow-Fligner test</span></span>
+<span id="cb4-84"><a href="#cb4-84"></a><span class="co">#&gt; 3 list(~italic(p)[ unadjusted ]== 0.619 ) Dwass-Steel-Crichtlow-Fligner test</span></span>
+<span id="cb4-85"><a href="#cb4-85"></a><span class="co">#&gt; 4 list(~italic(p)[ unadjusted ]== 0.325 ) Dwass-Steel-Crichtlow-Fligner test</span></span>
+<span id="cb4-86"><a href="#cb4-86"></a><span class="co">#&gt; 5 list(~italic(p)[ unadjusted ]== 0.908 ) Dwass-Steel-Crichtlow-Fligner test</span></span>
+<span id="cb4-87"><a href="#cb4-87"></a><span class="co">#&gt; 6 list(~italic(p)[ unadjusted ]== 0.667 ) Dwass-Steel-Crichtlow-Fligner test</span></span>
+<span id="cb4-88"><a href="#cb4-88"></a><span class="co">#&gt;   p.value.adjustment</span></span>
+<span id="cb4-89"><a href="#cb4-89"></a><span class="co">#&gt;   &lt;chr&gt;             </span></span>
+<span id="cb4-90"><a href="#cb4-90"></a><span class="co">#&gt; 1 None              </span></span>
+<span id="cb4-91"><a href="#cb4-91"></a><span class="co">#&gt; 2 None              </span></span>
+<span id="cb4-92"><a href="#cb4-92"></a><span class="co">#&gt; 3 None              </span></span>
+<span id="cb4-93"><a href="#cb4-93"></a><span class="co">#&gt; 4 None              </span></span>
+<span id="cb4-94"><a href="#cb4-94"></a><span class="co">#&gt; 5 None              </span></span>
+<span id="cb4-95"><a href="#cb4-95"></a><span class="co">#&gt; 6 None</span></span>
+<span id="cb4-96"><a href="#cb4-96"></a></span>
+<span id="cb4-97"><a href="#cb4-97"></a><span class="co"># robust</span></span>
+<span id="cb4-98"><a href="#cb4-98"></a><span class="kw"><a href="reference/pairwise_comparisons.html">pairwise_comparisons</a></span>(</span>
+<span id="cb4-99"><a href="#cb4-99"></a>  <span class="dt">data =</span> ggplot2<span class="op">::</span>msleep,</span>
+<span id="cb4-100"><a href="#cb4-100"></a>  <span class="dt">x =</span> vore,</span>
+<span id="cb4-101"><a href="#cb4-101"></a>  <span class="dt">y =</span> brainwt,</span>
+<span id="cb4-102"><a href="#cb4-102"></a>  <span class="dt">type =</span> <span class="st">"robust"</span>,</span>
+<span id="cb4-103"><a href="#cb4-103"></a>  <span class="dt">paired =</span> <span class="ot">FALSE</span>,</span>
+<span id="cb4-104"><a href="#cb4-104"></a>  <span class="dt">p.adjust.method =</span> <span class="st">"fdr"</span></span>
+<span id="cb4-105"><a href="#cb4-105"></a>)</span>
+<span id="cb4-106"><a href="#cb4-106"></a><span class="co">#&gt; # A tibble: 6 x 10</span></span>
+<span id="cb4-107"><a href="#cb4-107"></a><span class="co">#&gt;   group1  group2    psihat conf.low conf.high p.value significance</span></span>
+<span id="cb4-108"><a href="#cb4-108"></a><span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;       </span></span>
+<span id="cb4-109"><a href="#cb4-109"></a><span class="co">#&gt; 1 insecti omni    -0.0556   -0.184     0.0728   0.969 ns          </span></span>
+<span id="cb4-110"><a href="#cb4-110"></a><span class="co">#&gt; 2 carni   herbi   -0.0530   -0.274     0.168    0.969 ns          </span></span>
+<span id="cb4-111"><a href="#cb4-111"></a><span class="co">#&gt; 3 carni   omni     0.00210  -0.151     0.155    0.969 ns          </span></span>
+<span id="cb4-112"><a href="#cb4-112"></a><span class="co">#&gt; 4 herbi   omni     0.0551   -0.173     0.283    0.969 ns          </span></span>
+<span id="cb4-113"><a href="#cb4-113"></a><span class="co">#&gt; 5 carni   insecti  0.0577   -0.0609    0.176    0.969 ns          </span></span>
+<span id="cb4-114"><a href="#cb4-114"></a><span class="co">#&gt; 6 herbi   insecti  0.111    -0.0983    0.320    0.969 ns          </span></span>
+<span id="cb4-115"><a href="#cb4-115"></a><span class="co">#&gt;   label                                 test.details             </span></span>
+<span id="cb4-116"><a href="#cb4-116"></a><span class="co">#&gt;   &lt;chr&gt;                                 &lt;chr&gt;                    </span></span>
+<span id="cb4-117"><a href="#cb4-117"></a><span class="co">#&gt; 1 list(~italic(p)[ adjusted ]== 0.969 ) Yuen's trimmed means test</span></span>
+<span id="cb4-118"><a href="#cb4-118"></a><span class="co">#&gt; 2 list(~italic(p)[ adjusted ]== 0.969 ) Yuen's trimmed means test</span></span>
+<span id="cb4-119"><a href="#cb4-119"></a><span class="co">#&gt; 3 list(~italic(p)[ adjusted ]== 0.969 ) Yuen's trimmed means test</span></span>
+<span id="cb4-120"><a href="#cb4-120"></a><span class="co">#&gt; 4 list(~italic(p)[ adjusted ]== 0.969 ) Yuen's trimmed means test</span></span>
+<span id="cb4-121"><a href="#cb4-121"></a><span class="co">#&gt; 5 list(~italic(p)[ adjusted ]== 0.969 ) Yuen's trimmed means test</span></span>
+<span id="cb4-122"><a href="#cb4-122"></a><span class="co">#&gt; 6 list(~italic(p)[ adjusted ]== 0.969 ) Yuen's trimmed means test</span></span>
+<span id="cb4-123"><a href="#cb4-123"></a><span class="co">#&gt;   p.value.adjustment  </span></span>
+<span id="cb4-124"><a href="#cb4-124"></a><span class="co">#&gt;   &lt;chr&gt;               </span></span>
+<span id="cb4-125"><a href="#cb4-125"></a><span class="co">#&gt; 1 Benjamini &amp; Hochberg</span></span>
+<span id="cb4-126"><a href="#cb4-126"></a><span class="co">#&gt; 2 Benjamini &amp; Hochberg</span></span>
+<span id="cb4-127"><a href="#cb4-127"></a><span class="co">#&gt; 3 Benjamini &amp; Hochberg</span></span>
+<span id="cb4-128"><a href="#cb4-128"></a><span class="co">#&gt; 4 Benjamini &amp; Hochberg</span></span>
+<span id="cb4-129"><a href="#cb4-129"></a><span class="co">#&gt; 5 Benjamini &amp; Hochberg</span></span>
+<span id="cb4-130"><a href="#cb4-130"></a><span class="co">#&gt; 6 Benjamini &amp; Hochberg</span></span></code></pre></div>
 </div>
 <div id="within-subjects-design-1" class="section level2">
 <h2 class="hasAnchor">
@@ -424,22 +428,22 @@
 <span id="cb5-11"><a href="#cb5-11"></a>  <span class="dt">p.adjust.method =</span> <span class="st">"BH"</span></span>
 <span id="cb5-12"><a href="#cb5-12"></a>)</span>
 <span id="cb5-13"><a href="#cb5-13"></a><span class="co">#&gt; # A tibble: 6 x 8</span></span>
-<span id="cb5-14"><a href="#cb5-14"></a><span class="co">#&gt;   group1 group2 mean.difference  p.value significance label                                 test.details    </span></span>
-<span id="cb5-15"><a href="#cb5-15"></a><span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;            &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;                                 &lt;chr&gt;           </span></span>
-<span id="cb5-16"><a href="#cb5-16"></a><span class="co">#&gt; 1 HDHF   HDLF            -1.11  1.00e- 3 ***          list(~italic(p)[ adjusted ]== 0.001 ) Student's t-test</span></span>
-<span id="cb5-17"><a href="#cb5-17"></a><span class="co">#&gt; 2 HDHF   LDHF            -0.474 7.07e- 2 ns           list(~italic(p)[ adjusted ]== 0.071 ) Student's t-test</span></span>
-<span id="cb5-18"><a href="#cb5-18"></a><span class="co">#&gt; 3 HDHF   LDLF            -2.14  7.64e-12 ***          list(~italic(p)[ adjusted ]&lt;= 0.001 ) Student's t-test</span></span>
-<span id="cb5-19"><a href="#cb5-19"></a><span class="co">#&gt; 4 HDLF   LDHF             0.637 5.47e- 2 ns           list(~italic(p)[ adjusted ]== 0.055 ) Student's t-test</span></span>
-<span id="cb5-20"><a href="#cb5-20"></a><span class="co">#&gt; 5 HDLF   LDLF            -1.03  1.39e- 3 **           list(~italic(p)[ adjusted ]== 0.001 ) Student's t-test</span></span>
-<span id="cb5-21"><a href="#cb5-21"></a><span class="co">#&gt; 6 LDHF   LDLF            -1.66  6.67e- 9 ***          list(~italic(p)[ adjusted ]&lt;= 0.001 ) Student's t-test</span></span>
-<span id="cb5-22"><a href="#cb5-22"></a><span class="co">#&gt;   p.value.adjustment  </span></span>
-<span id="cb5-23"><a href="#cb5-23"></a><span class="co">#&gt;   &lt;chr&gt;               </span></span>
-<span id="cb5-24"><a href="#cb5-24"></a><span class="co">#&gt; 1 Benjamini &amp; Hochberg</span></span>
-<span id="cb5-25"><a href="#cb5-25"></a><span class="co">#&gt; 2 Benjamini &amp; Hochberg</span></span>
-<span id="cb5-26"><a href="#cb5-26"></a><span class="co">#&gt; 3 Benjamini &amp; Hochberg</span></span>
-<span id="cb5-27"><a href="#cb5-27"></a><span class="co">#&gt; 4 Benjamini &amp; Hochberg</span></span>
-<span id="cb5-28"><a href="#cb5-28"></a><span class="co">#&gt; 5 Benjamini &amp; Hochberg</span></span>
-<span id="cb5-29"><a href="#cb5-29"></a><span class="co">#&gt; 6 Benjamini &amp; Hochberg</span></span>
+<span id="cb5-14"><a href="#cb5-14"></a><span class="co">#&gt;   group1 group2 mean.difference  p.value significance</span></span>
+<span id="cb5-15"><a href="#cb5-15"></a><span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;            &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       </span></span>
+<span id="cb5-16"><a href="#cb5-16"></a><span class="co">#&gt; 1 HDHF   HDLF            -1.11  1.00e- 3 ***         </span></span>
+<span id="cb5-17"><a href="#cb5-17"></a><span class="co">#&gt; 2 HDHF   LDHF            -0.474 7.07e- 2 ns          </span></span>
+<span id="cb5-18"><a href="#cb5-18"></a><span class="co">#&gt; 3 HDHF   LDLF            -2.14  7.64e-12 ***         </span></span>
+<span id="cb5-19"><a href="#cb5-19"></a><span class="co">#&gt; 4 HDLF   LDHF             0.637 5.47e- 2 ns          </span></span>
+<span id="cb5-20"><a href="#cb5-20"></a><span class="co">#&gt; 5 HDLF   LDLF            -1.03  1.39e- 3 **          </span></span>
+<span id="cb5-21"><a href="#cb5-21"></a><span class="co">#&gt; 6 LDHF   LDLF            -1.66  6.67e- 9 ***         </span></span>
+<span id="cb5-22"><a href="#cb5-22"></a><span class="co">#&gt;   label                                 test.details     p.value.adjustment  </span></span>
+<span id="cb5-23"><a href="#cb5-23"></a><span class="co">#&gt;   &lt;chr&gt;                                 &lt;chr&gt;            &lt;chr&gt;               </span></span>
+<span id="cb5-24"><a href="#cb5-24"></a><span class="co">#&gt; 1 list(~italic(p)[ adjusted ]== 0.001 ) Student's t-test Benjamini &amp; Hochberg</span></span>
+<span id="cb5-25"><a href="#cb5-25"></a><span class="co">#&gt; 2 list(~italic(p)[ adjusted ]== 0.071 ) Student's t-test Benjamini &amp; Hochberg</span></span>
+<span id="cb5-26"><a href="#cb5-26"></a><span class="co">#&gt; 3 list(~italic(p)[ adjusted ]&lt;= 0.001 ) Student's t-test Benjamini &amp; Hochberg</span></span>
+<span id="cb5-27"><a href="#cb5-27"></a><span class="co">#&gt; 4 list(~italic(p)[ adjusted ]== 0.055 ) Student's t-test Benjamini &amp; Hochberg</span></span>
+<span id="cb5-28"><a href="#cb5-28"></a><span class="co">#&gt; 5 list(~italic(p)[ adjusted ]== 0.001 ) Student's t-test Benjamini &amp; Hochberg</span></span>
+<span id="cb5-29"><a href="#cb5-29"></a><span class="co">#&gt; 6 list(~italic(p)[ adjusted ]&lt;= 0.001 ) Student's t-test Benjamini &amp; Hochberg</span></span>
 <span id="cb5-30"><a href="#cb5-30"></a></span>
 <span id="cb5-31"><a href="#cb5-31"></a><span class="co"># non-parametric</span></span>
 <span id="cb5-32"><a href="#cb5-32"></a><span class="kw"><a href="reference/pairwise_comparisons.html">pairwise_comparisons</a></span>(</span>
@@ -451,49 +455,65 @@
 <span id="cb5-38"><a href="#cb5-38"></a>  <span class="dt">p.adjust.method =</span> <span class="st">"BY"</span></span>
 <span id="cb5-39"><a href="#cb5-39"></a>)</span>
 <span id="cb5-40"><a href="#cb5-40"></a><span class="co">#&gt; # A tibble: 6 x 8</span></span>
-<span id="cb5-41"><a href="#cb5-41"></a><span class="co">#&gt;   group1 group2 statistic  p.value significance label                                 test.details       </span></span>
-<span id="cb5-42"><a href="#cb5-42"></a><span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;      &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;                                 &lt;chr&gt;              </span></span>
-<span id="cb5-43"><a href="#cb5-43"></a><span class="co">#&gt; 1 HDHF   HDLF        4.78 1.44e- 5 ***          list(~italic(p)[ adjusted ]&lt;= 0.001 ) Durbin-Conover test</span></span>
-<span id="cb5-44"><a href="#cb5-44"></a><span class="co">#&gt; 2 HDHF   LDHF        2.44 4.47e- 2 *            list(~italic(p)[ adjusted ]== 0.045 ) Durbin-Conover test</span></span>
-<span id="cb5-45"><a href="#cb5-45"></a><span class="co">#&gt; 3 HDHF   LDLF        8.01 5.45e-13 ***          list(~italic(p)[ adjusted ]&lt;= 0.001 ) Durbin-Conover test</span></span>
-<span id="cb5-46"><a href="#cb5-46"></a><span class="co">#&gt; 4 HDLF   LDHF        2.34 4.96e- 2 *            list(~italic(p)[ adjusted ]== 0.050 ) Durbin-Conover test</span></span>
-<span id="cb5-47"><a href="#cb5-47"></a><span class="co">#&gt; 5 HDLF   LDLF        3.23 5.05e- 3 **           list(~italic(p)[ adjusted ]== 0.005 ) Durbin-Conover test</span></span>
-<span id="cb5-48"><a href="#cb5-48"></a><span class="co">#&gt; 6 LDHF   LDLF        5.57 4.64e- 7 ***          list(~italic(p)[ adjusted ]&lt;= 0.001 ) Durbin-Conover test</span></span>
-<span id="cb5-49"><a href="#cb5-49"></a><span class="co">#&gt;   p.value.adjustment   </span></span>
-<span id="cb5-50"><a href="#cb5-50"></a><span class="co">#&gt;   &lt;chr&gt;                </span></span>
-<span id="cb5-51"><a href="#cb5-51"></a><span class="co">#&gt; 1 Benjamini &amp; Yekutieli</span></span>
-<span id="cb5-52"><a href="#cb5-52"></a><span class="co">#&gt; 2 Benjamini &amp; Yekutieli</span></span>
-<span id="cb5-53"><a href="#cb5-53"></a><span class="co">#&gt; 3 Benjamini &amp; Yekutieli</span></span>
-<span id="cb5-54"><a href="#cb5-54"></a><span class="co">#&gt; 4 Benjamini &amp; Yekutieli</span></span>
-<span id="cb5-55"><a href="#cb5-55"></a><span class="co">#&gt; 5 Benjamini &amp; Yekutieli</span></span>
-<span id="cb5-56"><a href="#cb5-56"></a><span class="co">#&gt; 6 Benjamini &amp; Yekutieli</span></span>
-<span id="cb5-57"><a href="#cb5-57"></a></span>
-<span id="cb5-58"><a href="#cb5-58"></a><span class="co"># robust</span></span>
-<span id="cb5-59"><a href="#cb5-59"></a><span class="kw"><a href="reference/pairwise_comparisons.html">pairwise_comparisons</a></span>(</span>
-<span id="cb5-60"><a href="#cb5-60"></a>  <span class="dt">data =</span> bugs_long,</span>
-<span id="cb5-61"><a href="#cb5-61"></a>  <span class="dt">x =</span> condition,</span>
-<span id="cb5-62"><a href="#cb5-62"></a>  <span class="dt">y =</span> desire,</span>
-<span id="cb5-63"><a href="#cb5-63"></a>  <span class="dt">type =</span> <span class="st">"robust"</span>,</span>
-<span id="cb5-64"><a href="#cb5-64"></a>  <span class="dt">paired =</span> <span class="ot">TRUE</span>,</span>
-<span id="cb5-65"><a href="#cb5-65"></a>  <span class="dt">p.adjust.method =</span> <span class="st">"hommel"</span></span>
-<span id="cb5-66"><a href="#cb5-66"></a>)</span>
-<span id="cb5-67"><a href="#cb5-67"></a><span class="co">#&gt; # A tibble: 6 x 10</span></span>
-<span id="cb5-68"><a href="#cb5-68"></a><span class="co">#&gt;   group1 group2 psihat conf.low conf.high  p.value significance label                                </span></span>
-<span id="cb5-69"><a href="#cb5-69"></a><span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;                                </span></span>
-<span id="cb5-70"><a href="#cb5-70"></a><span class="co">#&gt; 1 HDLF   LDHF   -0.701  -1.71       0.303 6.20e- 2 ns           list(~italic(p)[ adjusted ]== 0.062 )</span></span>
-<span id="cb5-71"><a href="#cb5-71"></a><span class="co">#&gt; 2 HDHF   LDHF    0.5    -0.188      1.19  6.20e- 2 ns           list(~italic(p)[ adjusted ]== 0.062 )</span></span>
-<span id="cb5-72"><a href="#cb5-72"></a><span class="co">#&gt; 3 HDLF   LDLF    0.938   0.0694     1.81  1.36e- 2 *            list(~italic(p)[ adjusted ]== 0.014 )</span></span>
-<span id="cb5-73"><a href="#cb5-73"></a><span class="co">#&gt; 4 HDHF   HDLF    1.16    0.318      2.00  1.49e- 3 **           list(~italic(p)[ adjusted ]== 0.001 )</span></span>
-<span id="cb5-74"><a href="#cb5-74"></a><span class="co">#&gt; 5 LDHF   LDLF    1.54    0.810      2.27  1.16e- 6 ***          list(~italic(p)[ adjusted ]&lt;= 0.001 )</span></span>
-<span id="cb5-75"><a href="#cb5-75"></a><span class="co">#&gt; 6 HDHF   LDLF    2.10    1.37       2.82  1.79e-10 ***          list(~italic(p)[ adjusted ]&lt;= 0.001 )</span></span>
-<span id="cb5-76"><a href="#cb5-76"></a><span class="co">#&gt;   test.details              p.value.adjustment</span></span>
-<span id="cb5-77"><a href="#cb5-77"></a><span class="co">#&gt;   &lt;chr&gt;                     &lt;chr&gt;             </span></span>
-<span id="cb5-78"><a href="#cb5-78"></a><span class="co">#&gt; 1 Yuen's trimmed means test Hommel            </span></span>
-<span id="cb5-79"><a href="#cb5-79"></a><span class="co">#&gt; 2 Yuen's trimmed means test Hommel            </span></span>
-<span id="cb5-80"><a href="#cb5-80"></a><span class="co">#&gt; 3 Yuen's trimmed means test Hommel            </span></span>
-<span id="cb5-81"><a href="#cb5-81"></a><span class="co">#&gt; 4 Yuen's trimmed means test Hommel            </span></span>
-<span id="cb5-82"><a href="#cb5-82"></a><span class="co">#&gt; 5 Yuen's trimmed means test Hommel            </span></span>
-<span id="cb5-83"><a href="#cb5-83"></a><span class="co">#&gt; 6 Yuen's trimmed means test Hommel</span></span></code></pre></div>
+<span id="cb5-41"><a href="#cb5-41"></a><span class="co">#&gt;   group1 group2 statistic  p.value significance</span></span>
+<span id="cb5-42"><a href="#cb5-42"></a><span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;      &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       </span></span>
+<span id="cb5-43"><a href="#cb5-43"></a><span class="co">#&gt; 1 HDHF   HDLF        4.78 1.44e- 5 ***         </span></span>
+<span id="cb5-44"><a href="#cb5-44"></a><span class="co">#&gt; 2 HDHF   LDHF        2.44 4.47e- 2 *           </span></span>
+<span id="cb5-45"><a href="#cb5-45"></a><span class="co">#&gt; 3 HDHF   LDLF        8.01 5.45e-13 ***         </span></span>
+<span id="cb5-46"><a href="#cb5-46"></a><span class="co">#&gt; 4 HDLF   LDHF        2.34 4.96e- 2 *           </span></span>
+<span id="cb5-47"><a href="#cb5-47"></a><span class="co">#&gt; 5 HDLF   LDLF        3.23 5.05e- 3 **          </span></span>
+<span id="cb5-48"><a href="#cb5-48"></a><span class="co">#&gt; 6 LDHF   LDLF        5.57 4.64e- 7 ***         </span></span>
+<span id="cb5-49"><a href="#cb5-49"></a><span class="co">#&gt;   label                                 test.details       </span></span>
+<span id="cb5-50"><a href="#cb5-50"></a><span class="co">#&gt;   &lt;chr&gt;                                 &lt;chr&gt;              </span></span>
+<span id="cb5-51"><a href="#cb5-51"></a><span class="co">#&gt; 1 list(~italic(p)[ adjusted ]&lt;= 0.001 ) Durbin-Conover test</span></span>
+<span id="cb5-52"><a href="#cb5-52"></a><span class="co">#&gt; 2 list(~italic(p)[ adjusted ]== 0.045 ) Durbin-Conover test</span></span>
+<span id="cb5-53"><a href="#cb5-53"></a><span class="co">#&gt; 3 list(~italic(p)[ adjusted ]&lt;= 0.001 ) Durbin-Conover test</span></span>
+<span id="cb5-54"><a href="#cb5-54"></a><span class="co">#&gt; 4 list(~italic(p)[ adjusted ]== 0.050 ) Durbin-Conover test</span></span>
+<span id="cb5-55"><a href="#cb5-55"></a><span class="co">#&gt; 5 list(~italic(p)[ adjusted ]== 0.005 ) Durbin-Conover test</span></span>
+<span id="cb5-56"><a href="#cb5-56"></a><span class="co">#&gt; 6 list(~italic(p)[ adjusted ]&lt;= 0.001 ) Durbin-Conover test</span></span>
+<span id="cb5-57"><a href="#cb5-57"></a><span class="co">#&gt;   p.value.adjustment   </span></span>
+<span id="cb5-58"><a href="#cb5-58"></a><span class="co">#&gt;   &lt;chr&gt;                </span></span>
+<span id="cb5-59"><a href="#cb5-59"></a><span class="co">#&gt; 1 Benjamini &amp; Yekutieli</span></span>
+<span id="cb5-60"><a href="#cb5-60"></a><span class="co">#&gt; 2 Benjamini &amp; Yekutieli</span></span>
+<span id="cb5-61"><a href="#cb5-61"></a><span class="co">#&gt; 3 Benjamini &amp; Yekutieli</span></span>
+<span id="cb5-62"><a href="#cb5-62"></a><span class="co">#&gt; 4 Benjamini &amp; Yekutieli</span></span>
+<span id="cb5-63"><a href="#cb5-63"></a><span class="co">#&gt; 5 Benjamini &amp; Yekutieli</span></span>
+<span id="cb5-64"><a href="#cb5-64"></a><span class="co">#&gt; 6 Benjamini &amp; Yekutieli</span></span>
+<span id="cb5-65"><a href="#cb5-65"></a></span>
+<span id="cb5-66"><a href="#cb5-66"></a><span class="co"># robust</span></span>
+<span id="cb5-67"><a href="#cb5-67"></a><span class="kw"><a href="reference/pairwise_comparisons.html">pairwise_comparisons</a></span>(</span>
+<span id="cb5-68"><a href="#cb5-68"></a>  <span class="dt">data =</span> bugs_long,</span>
+<span id="cb5-69"><a href="#cb5-69"></a>  <span class="dt">x =</span> condition,</span>
+<span id="cb5-70"><a href="#cb5-70"></a>  <span class="dt">y =</span> desire,</span>
+<span id="cb5-71"><a href="#cb5-71"></a>  <span class="dt">type =</span> <span class="st">"robust"</span>,</span>
+<span id="cb5-72"><a href="#cb5-72"></a>  <span class="dt">paired =</span> <span class="ot">TRUE</span>,</span>
+<span id="cb5-73"><a href="#cb5-73"></a>  <span class="dt">p.adjust.method =</span> <span class="st">"hommel"</span></span>
+<span id="cb5-74"><a href="#cb5-74"></a>)</span>
+<span id="cb5-75"><a href="#cb5-75"></a><span class="co">#&gt; # A tibble: 6 x 10</span></span>
+<span id="cb5-76"><a href="#cb5-76"></a><span class="co">#&gt;   group1 group2 psihat conf.low conf.high  p.value significance</span></span>
+<span id="cb5-77"><a href="#cb5-77"></a><span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       </span></span>
+<span id="cb5-78"><a href="#cb5-78"></a><span class="co">#&gt; 1 HDLF   LDHF   -0.701  -1.71       0.303 6.20e- 2 ns          </span></span>
+<span id="cb5-79"><a href="#cb5-79"></a><span class="co">#&gt; 2 HDHF   LDHF    0.5    -0.188      1.19  6.20e- 2 ns          </span></span>
+<span id="cb5-80"><a href="#cb5-80"></a><span class="co">#&gt; 3 HDLF   LDLF    0.938   0.0694     1.81  1.36e- 2 *           </span></span>
+<span id="cb5-81"><a href="#cb5-81"></a><span class="co">#&gt; 4 HDHF   HDLF    1.16    0.318      2.00  1.49e- 3 **          </span></span>
+<span id="cb5-82"><a href="#cb5-82"></a><span class="co">#&gt; 5 LDHF   LDLF    1.54    0.810      2.27  1.16e- 6 ***         </span></span>
+<span id="cb5-83"><a href="#cb5-83"></a><span class="co">#&gt; 6 HDHF   LDLF    2.10    1.37       2.82  1.79e-10 ***         </span></span>
+<span id="cb5-84"><a href="#cb5-84"></a><span class="co">#&gt;   label                                 test.details             </span></span>
+<span id="cb5-85"><a href="#cb5-85"></a><span class="co">#&gt;   &lt;chr&gt;                                 &lt;chr&gt;                    </span></span>
+<span id="cb5-86"><a href="#cb5-86"></a><span class="co">#&gt; 1 list(~italic(p)[ adjusted ]== 0.062 ) Yuen's trimmed means test</span></span>
+<span id="cb5-87"><a href="#cb5-87"></a><span class="co">#&gt; 2 list(~italic(p)[ adjusted ]== 0.062 ) Yuen's trimmed means test</span></span>
+<span id="cb5-88"><a href="#cb5-88"></a><span class="co">#&gt; 3 list(~italic(p)[ adjusted ]== 0.014 ) Yuen's trimmed means test</span></span>
+<span id="cb5-89"><a href="#cb5-89"></a><span class="co">#&gt; 4 list(~italic(p)[ adjusted ]== 0.001 ) Yuen's trimmed means test</span></span>
+<span id="cb5-90"><a href="#cb5-90"></a><span class="co">#&gt; 5 list(~italic(p)[ adjusted ]&lt;= 0.001 ) Yuen's trimmed means test</span></span>
+<span id="cb5-91"><a href="#cb5-91"></a><span class="co">#&gt; 6 list(~italic(p)[ adjusted ]&lt;= 0.001 ) Yuen's trimmed means test</span></span>
+<span id="cb5-92"><a href="#cb5-92"></a><span class="co">#&gt;   p.value.adjustment</span></span>
+<span id="cb5-93"><a href="#cb5-93"></a><span class="co">#&gt;   &lt;chr&gt;             </span></span>
+<span id="cb5-94"><a href="#cb5-94"></a><span class="co">#&gt; 1 Hommel            </span></span>
+<span id="cb5-95"><a href="#cb5-95"></a><span class="co">#&gt; 2 Hommel            </span></span>
+<span id="cb5-96"><a href="#cb5-96"></a><span class="co">#&gt; 3 Hommel            </span></span>
+<span id="cb5-97"><a href="#cb5-97"></a><span class="co">#&gt; 4 Hommel            </span></span>
+<span id="cb5-98"><a href="#cb5-98"></a><span class="co">#&gt; 5 Hommel            </span></span>
+<span id="cb5-99"><a href="#cb5-99"></a><span class="co">#&gt; 6 Hommel</span></span></code></pre></div>
 </div>
 </div>
 <div id="using-pairwisecomparisons-with-ggsignif-to-display-results" class="section level1">
@@ -517,29 +537,34 @@
 <span id="cb6-16"><a href="#cb6-16"></a><span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">.data =</span> ., <span class="dt">groups =</span> purrr<span class="op">::</span><span class="kw"><a href="https://purrr.tidyverse.org/reference/map2.html">pmap</a></span>(<span class="dt">.l =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(group1, group2), <span class="dt">.f =</span> c)) <span class="op">%&gt;%</span></span>
 <span id="cb6-17"><a href="#cb6-17"></a><span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="dt">.data =</span> ., group1))</span>
 <span id="cb6-18"><a href="#cb6-18"></a><span class="co">#&gt; # A tibble: 3 x 12</span></span>
-<span id="cb6-19"><a href="#cb6-19"></a><span class="co">#&gt;   group1 group2 mean.difference    se t.value    df p.value significance label                                </span></span>
-<span id="cb6-20"><a href="#cb6-20"></a><span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;            &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;                                </span></span>
-<span id="cb6-21"><a href="#cb6-21"></a><span class="co">#&gt; 1 4      8                1.71  0.188    6.44  23.0   0     ***          list(~italic(p)[ adjusted ]&lt;= 0.001 )</span></span>
-<span id="cb6-22"><a href="#cb6-22"></a><span class="co">#&gt; 2 6      4               -0.831 0.154    3.81  16.0   0.008 **           list(~italic(p)[ adjusted ]== 0.008 )</span></span>
-<span id="cb6-23"><a href="#cb6-23"></a><span class="co">#&gt; 3 6      8                0.882 0.172    3.62  19.0   0.008 **           list(~italic(p)[ adjusted ]== 0.008 )</span></span>
-<span id="cb6-24"><a href="#cb6-24"></a><span class="co">#&gt;   test.details      p.value.adjustment groups   </span></span>
-<span id="cb6-25"><a href="#cb6-25"></a><span class="co">#&gt;   &lt;chr&gt;             &lt;chr&gt;              &lt;list&gt;   </span></span>
-<span id="cb6-26"><a href="#cb6-26"></a><span class="co">#&gt; 1 Games-Howell test Holm               &lt;chr [2]&gt;</span></span>
-<span id="cb6-27"><a href="#cb6-27"></a><span class="co">#&gt; 2 Games-Howell test Holm               &lt;chr [2]&gt;</span></span>
-<span id="cb6-28"><a href="#cb6-28"></a><span class="co">#&gt; 3 Games-Howell test Holm               &lt;chr [2]&gt;</span></span>
-<span id="cb6-29"><a href="#cb6-29"></a></span>
-<span id="cb6-30"><a href="#cb6-30"></a><span class="co"># using `geom_signif` to display results</span></span>
-<span id="cb6-31"><a href="#cb6-31"></a>p <span class="op">+</span></span>
-<span id="cb6-32"><a href="#cb6-32"></a><span class="st">  </span>ggsignif<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/ggsignif/man/stat_signif.html">geom_signif</a></span>(</span>
-<span id="cb6-33"><a href="#cb6-33"></a>    <span class="dt">comparisons =</span> df<span class="op">$</span>groups,</span>
-<span id="cb6-34"><a href="#cb6-34"></a>    <span class="dt">map_signif_level =</span> <span class="ot">TRUE</span>,</span>
-<span id="cb6-35"><a href="#cb6-35"></a>    <span class="dt">tip_length =</span> <span class="fl">0.01</span>,</span>
-<span id="cb6-36"><a href="#cb6-36"></a>    <span class="dt">y_position =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">5.5</span>, <span class="fl">5.75</span>, <span class="dv">6</span>),</span>
-<span id="cb6-37"><a href="#cb6-37"></a>    <span class="dt">annotations =</span> df<span class="op">$</span>label,</span>
-<span id="cb6-38"><a href="#cb6-38"></a>    <span class="dt">test =</span> <span class="ot">NULL</span>,</span>
-<span id="cb6-39"><a href="#cb6-39"></a>    <span class="dt">na.rm =</span> <span class="ot">TRUE</span>,</span>
-<span id="cb6-40"><a href="#cb6-40"></a>    <span class="dt">parse =</span> <span class="ot">TRUE</span></span>
-<span id="cb6-41"><a href="#cb6-41"></a>  )</span></code></pre></div>
+<span id="cb6-19"><a href="#cb6-19"></a><span class="co">#&gt;   group1 group2 mean.difference    se t.value    df p.value significance</span></span>
+<span id="cb6-20"><a href="#cb6-20"></a><span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;            &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;       </span></span>
+<span id="cb6-21"><a href="#cb6-21"></a><span class="co">#&gt; 1 4      8                1.71  0.188    6.44  23.0   0     ***         </span></span>
+<span id="cb6-22"><a href="#cb6-22"></a><span class="co">#&gt; 2 6      4               -0.831 0.154    3.81  16.0   0.008 **          </span></span>
+<span id="cb6-23"><a href="#cb6-23"></a><span class="co">#&gt; 3 6      8                0.882 0.172    3.62  19.0   0.008 **          </span></span>
+<span id="cb6-24"><a href="#cb6-24"></a><span class="co">#&gt;   label                                 test.details      p.value.adjustment</span></span>
+<span id="cb6-25"><a href="#cb6-25"></a><span class="co">#&gt;   &lt;chr&gt;                                 &lt;chr&gt;             &lt;chr&gt;             </span></span>
+<span id="cb6-26"><a href="#cb6-26"></a><span class="co">#&gt; 1 list(~italic(p)[ adjusted ]&lt;= 0.001 ) Games-Howell test Holm              </span></span>
+<span id="cb6-27"><a href="#cb6-27"></a><span class="co">#&gt; 2 list(~italic(p)[ adjusted ]== 0.008 ) Games-Howell test Holm              </span></span>
+<span id="cb6-28"><a href="#cb6-28"></a><span class="co">#&gt; 3 list(~italic(p)[ adjusted ]== 0.008 ) Games-Howell test Holm              </span></span>
+<span id="cb6-29"><a href="#cb6-29"></a><span class="co">#&gt;   groups   </span></span>
+<span id="cb6-30"><a href="#cb6-30"></a><span class="co">#&gt;   &lt;list&gt;   </span></span>
+<span id="cb6-31"><a href="#cb6-31"></a><span class="co">#&gt; 1 &lt;chr [2]&gt;</span></span>
+<span id="cb6-32"><a href="#cb6-32"></a><span class="co">#&gt; 2 &lt;chr [2]&gt;</span></span>
+<span id="cb6-33"><a href="#cb6-33"></a><span class="co">#&gt; 3 &lt;chr [2]&gt;</span></span>
+<span id="cb6-34"><a href="#cb6-34"></a></span>
+<span id="cb6-35"><a href="#cb6-35"></a><span class="co"># using `geom_signif` to display results</span></span>
+<span id="cb6-36"><a href="#cb6-36"></a>p <span class="op">+</span></span>
+<span id="cb6-37"><a href="#cb6-37"></a><span class="st">  </span>ggsignif<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/ggsignif/man/stat_signif.html">geom_signif</a></span>(</span>
+<span id="cb6-38"><a href="#cb6-38"></a>    <span class="dt">comparisons =</span> df<span class="op">$</span>groups,</span>
+<span id="cb6-39"><a href="#cb6-39"></a>    <span class="dt">map_signif_level =</span> <span class="ot">TRUE</span>,</span>
+<span id="cb6-40"><a href="#cb6-40"></a>    <span class="dt">tip_length =</span> <span class="fl">0.01</span>,</span>
+<span id="cb6-41"><a href="#cb6-41"></a>    <span class="dt">y_position =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">5.5</span>, <span class="fl">5.75</span>, <span class="dv">6</span>),</span>
+<span id="cb6-42"><a href="#cb6-42"></a>    <span class="dt">annotations =</span> df<span class="op">$</span>label,</span>
+<span id="cb6-43"><a href="#cb6-43"></a>    <span class="dt">test =</span> <span class="ot">NULL</span>,</span>
+<span id="cb6-44"><a href="#cb6-44"></a>    <span class="dt">na.rm =</span> <span class="ot">TRUE</span>,</span>
+<span id="cb6-45"><a href="#cb6-45"></a>    <span class="dt">parse =</span> <span class="ot">TRUE</span></span>
+<span id="cb6-46"><a href="#cb6-46"></a>  )</span></code></pre></div>
 <p><img src="reference/figures/README-ggisignif-1.png" width="100%"></p>
 </div>
 <div id="code-coverage" class="section level1">
