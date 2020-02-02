@@ -5,12 +5,12 @@
 
 | Package                                                                                                                                                                         | Status                                                                                                                                                                                                       | Usage                                                                                                                                                             | GitHub                                                                                                                                                                         | References                                                                                                                                                                      |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [![CRAN\_Release\_Badge](http://www.r-pkg.org/badges/version-ago/pairwiseComparisons)](https://CRAN.R-project.org/package=pairwiseComparisons)                                  | [![Travis Build Status](https://travis-ci.org/IndrajeetPatil/pairwiseComparisons.svg?branch=master)](https://travis-ci.org/IndrajeetPatil/pairwiseComparisons)                                               | [![Daily downloads badge](https://cranlogs.r-pkg.org/badges/last-day/pairwiseComparisons?color=blue)](https://CRAN.R-project.org/package=pairwiseComparisons)     | [![GitHub version](https://img.shields.io/badge/GitHub-0.1.4.9000-orange.svg?style=flat-square)](https://github.com/IndrajeetPatil/pairwiseComparisons/)                       | [![Website](https://img.shields.io/badge/website-pairwiseComparisons-orange.svg?colorB=E91E63)](https://indrajeetpatil.github.io/pairwiseComparisons/)                          |
+| [![CRAN\_Release\_Badge](http://www.r-pkg.org/badges/version-ago/pairwiseComparisons)](https://CRAN.R-project.org/package=pairwiseComparisons)                                  | [![Travis Build Status](https://travis-ci.org/IndrajeetPatil/pairwiseComparisons.svg?branch=master)](https://travis-ci.org/IndrajeetPatil/pairwiseComparisons)                                               | [![Daily downloads badge](https://cranlogs.r-pkg.org/badges/last-day/pairwiseComparisons?color=blue)](https://CRAN.R-project.org/package=pairwiseComparisons)     | [![GitHub version](https://img.shields.io/badge/GitHub-0.2.0.9000-orange.svg?style=flat-square)](https://github.com/IndrajeetPatil/pairwiseComparisons/)                       | [![Website](https://img.shields.io/badge/website-pairwiseComparisons-orange.svg?colorB=E91E63)](https://indrajeetpatil.github.io/pairwiseComparisons/)                          |
 | [![CRAN Checks](https://cranchecks.info/badges/summary/pairwiseComparisons)](https://cran.r-project.org/web/checks/check_results_pairwiseComparisons.html)                      | [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/pairwiseComparisons?branch=master&svg=true)](https://ci.appveyor.com/project/IndrajeetPatil/pairwiseComparisons) | [![Weekly downloads badge](https://cranlogs.r-pkg.org/badges/last-week/pairwiseComparisons?color=blue)](https://CRAN.R-project.org/package=pairwiseComparisons)   | [![Forks](https://img.shields.io/badge/forks-1-blue.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/)                                                              | [![Rdoc](https://www.rdocumentation.org/badges/version/pairwiseComparisons)](https://www.rdocumentation.org/packages/pairwiseComparisons)                                       |
-| [![minimal R version](https://img.shields.io/badge/R%3E%3D-3.5.0-6666ff.svg)](https://cran.r-project.org/)                                                                      | [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/)                                                                                               | [![Monthly downloads badge](https://cranlogs.r-pkg.org/badges/last-month/pairwiseComparisons?color=blue)](https://CRAN.R-project.org/package=pairwiseComparisons) | [![Github Issues](https://img.shields.io/badge/issues-1-red.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/issues)                                                | [![vignettes](https://img.shields.io/badge/vignettes-0.1.4-orange.svg?colorB=FF5722)](https://CRAN.R-project.org/package=pairwiseComparisons/vignettes/)                        |
+| [![minimal R version](https://img.shields.io/badge/R%3E%3D-3.5.0-6666ff.svg)](https://cran.r-project.org/)                                                                      | [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/)                                                                                               | [![Monthly downloads badge](https://cranlogs.r-pkg.org/badges/last-month/pairwiseComparisons?color=blue)](https://CRAN.R-project.org/package=pairwiseComparisons) | [![Github Issues](https://img.shields.io/badge/issues-1-red.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/issues)                                                | [![vignettes](https://img.shields.io/badge/vignettes-0.2.0-orange.svg?colorB=FF5722)](https://CRAN.R-project.org/package=pairwiseComparisons/vignettes/)                        |
 | [![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/IndrajeetPatil/pairwiseComparisons.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons) | [![Coverage Status](https://coveralls.io/repos/github/IndrajeetPatil/pairwiseComparisons/badge.svg?branch=master)](https://coveralls.io/github/IndrajeetPatil/pairwiseComparisons?branch=master)             | [![Total downloads badge](https://cranlogs.r-pkg.org/badges/grand-total/pairwiseComparisons?color=blue)](https://CRAN.R-project.org/package=pairwiseComparisons)  | [![Github Stars](https://img.shields.io/github/stars/IndrajeetPatil/pairwiseComparisons.svg?style=social&label=Github)](https://github.com/IndrajeetPatil/pairwiseComparisons) | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2074621.svg)](https://doi.org/10.5281/zenodo.2074621)                                                                       |
-| [![Licence](https://img.shields.io/badge/licence-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)                                                                | [![Codecov test coverage](https://codecov.io/gh/IndrajeetPatil/pairwiseComparisons/branch/master/graph/badge.svg)](https://codecov.io/gh/IndrajeetPatil/pairwiseComparisons?branch=master)                   | [![HitCount](http://hits.dwyl.io/IndrajeetPatil/pairwiseComparisons.svg)](http://hits.dwyl.io/IndrajeetPatil/pairwiseComparisons)                                 | [![Last-changedate](https://img.shields.io/badge/last%20change-2020--01--31-yellowgreen.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/commits/master)            | [![GitHub last commit](https://img.shields.io/github/last-commit/IndrajeetPatil/pairwiseComparisons.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/commits/master) |
-| [![status](https://tinyverse.netlify.com/badge/pairwiseComparisons)](https://CRAN.R-project.org/package=pairwiseComparisons)                                                    | [![Covrpage Summary](https://img.shields.io/badge/covrpage-Last_Build_2020_01_06-brightgreen.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/blob/master/tests/README.md)                        | [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/pairwiseComparisons/community)                                                   | [![Project Status](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)                                                                     | [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/IndrajeetPatil/pairwiseComparisons/issues)         |
+| [![Licence](https://img.shields.io/badge/licence-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)                                                                | [![Codecov test coverage](https://codecov.io/gh/IndrajeetPatil/pairwiseComparisons/branch/master/graph/badge.svg)](https://codecov.io/gh/IndrajeetPatil/pairwiseComparisons?branch=master)                   | [![HitCount](http://hits.dwyl.io/IndrajeetPatil/pairwiseComparisons.svg)](http://hits.dwyl.io/IndrajeetPatil/pairwiseComparisons)                                 | [![Last-changedate](https://img.shields.io/badge/last%20change-2020--02--02-yellowgreen.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/commits/master)            | [![GitHub last commit](https://img.shields.io/github/last-commit/IndrajeetPatil/pairwiseComparisons.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/commits/master) |
+| [![status](https://tinyverse.netlify.com/badge/pairwiseComparisons)](https://CRAN.R-project.org/package=pairwiseComparisons)                                                    | [![Covrpage Summary](https://img.shields.io/badge/covrpage-Last_Build_2020_02_02-brightgreen.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/blob/master/tests/README.md)                        | [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/pairwiseComparisons/community)                                                   | [![Project Status](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)                                                                     | [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/IndrajeetPatil/pairwiseComparisons/issues)         |
 
 # Introduction
 
@@ -25,14 +25,14 @@ robust statistical tests are available.
 
 ## Installation
 
-To get the latest, stable `CRAN` release (`0.1.4`):
+To get the latest, stable `CRAN` release (`0.2.0`):
 
 ``` r
 install.packages(pkgs = "pairwiseComparisons")
 ```
 
 You can get the **development** version of the package from `GitHub`
-(`0.1.4.9000`). To see what new changes (and bug fixes) have been made
+(`0.2.0.9000`). To see what new changes (and bug fixes) have been made
 to the package since the last release on `CRAN`, you can check the
 detailed log of changes here:
 <https://indrajeetpatil.github.io/pairwiseComparisons/news/index.html>
@@ -114,22 +114,14 @@ pairwise_comparisons(
   p.adjust.method = "bonferroni"
 )
 #> # A tibble: 6 x 8
-#>   group1  group2  mean.difference p.value significance
-#>   <chr>   <chr>             <dbl>   <dbl> <chr>       
-#> 1 carni   herbi            0.542    1     ns          
-#> 2 carni   insecti         -0.0577   1     ns          
-#> 3 carni   omni             0.0665   1     ns          
-#> 4 herbi   insecti         -0.600    1     ns          
-#> 5 herbi   omni            -0.476    0.979 ns          
-#> 6 insecti omni             0.124    1     ns          
-#>   label                                 test.details     p.value.adjustment
-#>   <chr>                                 <chr>            <chr>             
-#> 1 list(~italic(p)[ adjusted ]== 1.000 ) Student's t-test Bonferroni        
-#> 2 list(~italic(p)[ adjusted ]== 1.000 ) Student's t-test Bonferroni        
-#> 3 list(~italic(p)[ adjusted ]== 1.000 ) Student's t-test Bonferroni        
-#> 4 list(~italic(p)[ adjusted ]== 1.000 ) Student's t-test Bonferroni        
-#> 5 list(~italic(p)[ adjusted ]== 0.979 ) Student's t-test Bonferroni        
-#> 6 list(~italic(p)[ adjusted ]== 1.000 ) Student's t-test Bonferroni
+#>   group1  group2  mean.difference p.value significance label                                 test.details     p.value.adjustment
+#>   <chr>   <chr>             <dbl>   <dbl> <chr>        <chr>                                 <chr>            <chr>             
+#> 1 carni   herbi            0.542    1     ns           list(~italic(p)[ adjusted ]== 1.000 ) Student's t-test Bonferroni        
+#> 2 carni   insecti         -0.0577   1     ns           list(~italic(p)[ adjusted ]== 1.000 ) Student's t-test Bonferroni        
+#> 3 carni   omni             0.0665   1     ns           list(~italic(p)[ adjusted ]== 1.000 ) Student's t-test Bonferroni        
+#> 4 herbi   insecti         -0.600    1     ns           list(~italic(p)[ adjusted ]== 1.000 ) Student's t-test Bonferroni        
+#> 5 herbi   omni            -0.476    0.979 ns           list(~italic(p)[ adjusted ]== 0.979 ) Student's t-test Bonferroni        
+#> 6 insecti omni             0.124    1     ns           list(~italic(p)[ adjusted ]== 1.000 ) Student's t-test Bonferroni
 
 # if `var.equal = FALSE`, then Games-Howell test will be run
 pairwise_comparisons(
@@ -142,22 +134,22 @@ pairwise_comparisons(
   p.adjust.method = "bonferroni"
 )
 #> # A tibble: 6 x 11
-#>   group1 group2  mean.difference    se t.value    df p.value significance
-#>   <chr>  <chr>             <dbl> <dbl>   <dbl> <dbl>   <dbl> <chr>       
-#> 1 omni   herbi             0.476 0.255   1.32   20.9       1 ns          
-#> 2 omni   carni            -0.066 0.061   0.774  21.1       1 ns          
-#> 3 omni   insecti          -0.124 0.057   1.55   17.2       1 ns          
-#> 4 herbi  carni            -0.542 0.25    1.54   19.4       1 ns          
-#> 5 herbi  insecti          -0.6   0.249   1.70   19.1       1 ns          
-#> 6 carni  insecti          -0.058 0.027   1.53   10.7       1 ns          
-#>   label                                 test.details      p.value.adjustment
-#>   <chr>                                 <chr>             <chr>             
-#> 1 list(~italic(p)[ adjusted ]== 1.000 ) Games-Howell test Bonferroni        
-#> 2 list(~italic(p)[ adjusted ]== 1.000 ) Games-Howell test Bonferroni        
-#> 3 list(~italic(p)[ adjusted ]== 1.000 ) Games-Howell test Bonferroni        
-#> 4 list(~italic(p)[ adjusted ]== 1.000 ) Games-Howell test Bonferroni        
-#> 5 list(~italic(p)[ adjusted ]== 1.000 ) Games-Howell test Bonferroni        
-#> 6 list(~italic(p)[ adjusted ]== 1.000 ) Games-Howell test Bonferroni
+#>   group1 group2  mean.difference    se t.value    df p.value significance label                                 test.details     
+#>   <chr>  <chr>             <dbl> <dbl>   <dbl> <dbl>   <dbl> <chr>        <chr>                                 <chr>            
+#> 1 omni   herbi             0.476 0.255   1.32   20.9       1 ns           list(~italic(p)[ adjusted ]== 1.000 ) Games-Howell test
+#> 2 omni   carni            -0.066 0.061   0.774  21.1       1 ns           list(~italic(p)[ adjusted ]== 1.000 ) Games-Howell test
+#> 3 omni   insecti          -0.124 0.057   1.55   17.2       1 ns           list(~italic(p)[ adjusted ]== 1.000 ) Games-Howell test
+#> 4 herbi  carni            -0.542 0.25    1.54   19.4       1 ns           list(~italic(p)[ adjusted ]== 1.000 ) Games-Howell test
+#> 5 herbi  insecti          -0.6   0.249   1.70   19.1       1 ns           list(~italic(p)[ adjusted ]== 1.000 ) Games-Howell test
+#> 6 carni  insecti          -0.058 0.027   1.53   10.7       1 ns           list(~italic(p)[ adjusted ]== 1.000 ) Games-Howell test
+#>   p.value.adjustment
+#>   <chr>             
+#> 1 Bonferroni        
+#> 2 Bonferroni        
+#> 3 Bonferroni        
+#> 4 Bonferroni        
+#> 5 Bonferroni        
+#> 6 Bonferroni
 
 # non-parametric
 pairwise_comparisons(
@@ -169,22 +161,14 @@ pairwise_comparisons(
   p.adjust.method = "none"
 )
 #> # A tibble: 6 x 8
-#>   group1  group2       W p.value significance
-#>   <chr>   <chr>    <dbl>   <dbl> <chr>       
-#> 1 carni   herbi   -0.8     0.942 ns          
-#> 2 carni   insecti -2.36    0.342 ns          
-#> 3 carni   omni    -1.72    0.619 ns          
-#> 4 herbi   insecti -2.40    0.325 ns          
-#> 5 herbi   omni    -0.948   0.908 ns          
-#> 6 insecti omni     1.61    0.667 ns          
-#>   label                                   test.details                      
-#>   <chr>                                   <chr>                             
-#> 1 list(~italic(p)[ unadjusted ]== 0.942 ) Dwass-Steel-Crichtlow-Fligner test
-#> 2 list(~italic(p)[ unadjusted ]== 0.342 ) Dwass-Steel-Crichtlow-Fligner test
-#> 3 list(~italic(p)[ unadjusted ]== 0.619 ) Dwass-Steel-Crichtlow-Fligner test
-#> 4 list(~italic(p)[ unadjusted ]== 0.325 ) Dwass-Steel-Crichtlow-Fligner test
-#> 5 list(~italic(p)[ unadjusted ]== 0.908 ) Dwass-Steel-Crichtlow-Fligner test
-#> 6 list(~italic(p)[ unadjusted ]== 0.667 ) Dwass-Steel-Crichtlow-Fligner test
+#>   group1  group2       W p.value significance label                                   test.details                      
+#>   <chr>   <chr>    <dbl>   <dbl> <chr>        <chr>                                   <chr>                             
+#> 1 carni   herbi   -0.8     0.942 ns           list(~italic(p)[ unadjusted ]== 0.942 ) Dwass-Steel-Crichtlow-Fligner test
+#> 2 carni   insecti -2.36    0.342 ns           list(~italic(p)[ unadjusted ]== 0.342 ) Dwass-Steel-Crichtlow-Fligner test
+#> 3 carni   omni    -1.72    0.619 ns           list(~italic(p)[ unadjusted ]== 0.619 ) Dwass-Steel-Crichtlow-Fligner test
+#> 4 herbi   insecti -2.40    0.325 ns           list(~italic(p)[ unadjusted ]== 0.325 ) Dwass-Steel-Crichtlow-Fligner test
+#> 5 herbi   omni    -0.948   0.908 ns           list(~italic(p)[ unadjusted ]== 0.908 ) Dwass-Steel-Crichtlow-Fligner test
+#> 6 insecti omni     1.61    0.667 ns           list(~italic(p)[ unadjusted ]== 0.667 ) Dwass-Steel-Crichtlow-Fligner test
 #>   p.value.adjustment
 #>   <chr>             
 #> 1 None              
@@ -204,30 +188,22 @@ pairwise_comparisons(
   p.adjust.method = "fdr"
 )
 #> # A tibble: 6 x 10
-#>   group1  group2    psihat conf.low conf.high p.value significance
-#>   <chr>   <chr>      <dbl>    <dbl>     <dbl>   <dbl> <chr>       
-#> 1 insecti omni    -0.0556   -0.184     0.0728   0.969 ns          
-#> 2 carni   herbi   -0.0530   -0.274     0.168    0.969 ns          
-#> 3 carni   omni     0.00210  -0.151     0.155    0.969 ns          
-#> 4 herbi   omni     0.0551   -0.173     0.283    0.969 ns          
-#> 5 carni   insecti  0.0577   -0.0609    0.176    0.969 ns          
-#> 6 herbi   insecti  0.111    -0.0983    0.320    0.969 ns          
-#>   label                                 test.details             
-#>   <chr>                                 <chr>                    
-#> 1 list(~italic(p)[ adjusted ]== 0.969 ) Yuen's trimmed means test
-#> 2 list(~italic(p)[ adjusted ]== 0.969 ) Yuen's trimmed means test
-#> 3 list(~italic(p)[ adjusted ]== 0.969 ) Yuen's trimmed means test
-#> 4 list(~italic(p)[ adjusted ]== 0.969 ) Yuen's trimmed means test
-#> 5 list(~italic(p)[ adjusted ]== 0.969 ) Yuen's trimmed means test
-#> 6 list(~italic(p)[ adjusted ]== 0.969 ) Yuen's trimmed means test
-#>   p.value.adjustment  
-#>   <chr>               
-#> 1 Benjamini & Hochberg
-#> 2 Benjamini & Hochberg
-#> 3 Benjamini & Hochberg
-#> 4 Benjamini & Hochberg
-#> 5 Benjamini & Hochberg
-#> 6 Benjamini & Hochberg
+#>   group1  group2    psihat conf.low conf.high p.value significance label                                
+#>   <chr>   <chr>      <dbl>    <dbl>     <dbl>   <dbl> <chr>        <chr>                                
+#> 1 insecti omni    -0.0556   -0.184     0.0728   0.969 ns           list(~italic(p)[ adjusted ]== 0.969 )
+#> 2 carni   herbi   -0.0530   -0.274     0.168    0.969 ns           list(~italic(p)[ adjusted ]== 0.969 )
+#> 3 carni   omni     0.00210  -0.151     0.155    0.969 ns           list(~italic(p)[ adjusted ]== 0.969 )
+#> 4 herbi   omni     0.0551   -0.173     0.283    0.969 ns           list(~italic(p)[ adjusted ]== 0.969 )
+#> 5 carni   insecti  0.0577   -0.0609    0.176    0.969 ns           list(~italic(p)[ adjusted ]== 0.969 )
+#> 6 herbi   insecti  0.111    -0.0983    0.320    0.969 ns           list(~italic(p)[ adjusted ]== 0.969 )
+#>   test.details              p.value.adjustment  
+#>   <chr>                     <chr>               
+#> 1 Yuen's trimmed means test Benjamini & Hochberg
+#> 2 Yuen's trimmed means test Benjamini & Hochberg
+#> 3 Yuen's trimmed means test Benjamini & Hochberg
+#> 4 Yuen's trimmed means test Benjamini & Hochberg
+#> 5 Yuen's trimmed means test Benjamini & Hochberg
+#> 6 Yuen's trimmed means test Benjamini & Hochberg
 ```
 
 ## Within-subjects design
@@ -246,22 +222,14 @@ pairwise_comparisons(
   p.adjust.method = "BH"
 )
 #> # A tibble: 6 x 8
-#>   group1 group2 mean.difference  p.value significance
-#>   <chr>  <chr>            <dbl>    <dbl> <chr>       
-#> 1 HDHF   HDLF            -1.11  1.00e- 3 ***         
-#> 2 HDHF   LDHF            -0.474 7.07e- 2 ns          
-#> 3 HDHF   LDLF            -2.14  7.64e-12 ***         
-#> 4 HDLF   LDHF             0.637 5.47e- 2 ns          
-#> 5 HDLF   LDLF            -1.03  1.39e- 3 **          
-#> 6 LDHF   LDLF            -1.66  6.67e- 9 ***         
-#>   label                                 test.details     p.value.adjustment  
-#>   <chr>                                 <chr>            <chr>               
-#> 1 list(~italic(p)[ adjusted ]== 0.001 ) Student's t-test Benjamini & Hochberg
-#> 2 list(~italic(p)[ adjusted ]== 0.071 ) Student's t-test Benjamini & Hochberg
-#> 3 list(~italic(p)[ adjusted ]<= 0.001 ) Student's t-test Benjamini & Hochberg
-#> 4 list(~italic(p)[ adjusted ]== 0.055 ) Student's t-test Benjamini & Hochberg
-#> 5 list(~italic(p)[ adjusted ]== 0.001 ) Student's t-test Benjamini & Hochberg
-#> 6 list(~italic(p)[ adjusted ]<= 0.001 ) Student's t-test Benjamini & Hochberg
+#>   group1 group2 mean.difference  p.value significance label                                 test.details     p.value.adjustment  
+#>   <chr>  <chr>            <dbl>    <dbl> <chr>        <chr>                                 <chr>            <chr>               
+#> 1 HDHF   HDLF            -1.11  1.00e- 3 ***          list(~italic(p)[ adjusted ]== 0.001 ) Student's t-test Benjamini & Hochberg
+#> 2 HDHF   LDHF            -0.474 7.07e- 2 ns           list(~italic(p)[ adjusted ]== 0.071 ) Student's t-test Benjamini & Hochberg
+#> 3 HDHF   LDLF            -2.14  7.64e-12 ***          list(~italic(p)[ adjusted ]<= 0.001 ) Student's t-test Benjamini & Hochberg
+#> 4 HDLF   LDHF             0.637 5.47e- 2 ns           list(~italic(p)[ adjusted ]== 0.055 ) Student's t-test Benjamini & Hochberg
+#> 5 HDLF   LDLF            -1.03  1.39e- 3 **           list(~italic(p)[ adjusted ]== 0.001 ) Student's t-test Benjamini & Hochberg
+#> 6 LDHF   LDLF            -1.66  6.67e- 9 ***          list(~italic(p)[ adjusted ]<= 0.001 ) Student's t-test Benjamini & Hochberg
 
 # non-parametric
 pairwise_comparisons(
@@ -273,30 +241,14 @@ pairwise_comparisons(
   p.adjust.method = "BY"
 )
 #> # A tibble: 6 x 8
-#>   group1 group2 statistic  p.value significance
-#>   <chr>  <chr>      <dbl>    <dbl> <chr>       
-#> 1 HDHF   HDLF        4.78 1.44e- 5 ***         
-#> 2 HDHF   LDHF        2.44 4.47e- 2 *           
-#> 3 HDHF   LDLF        8.01 5.45e-13 ***         
-#> 4 HDLF   LDHF        2.34 4.96e- 2 *           
-#> 5 HDLF   LDLF        3.23 5.05e- 3 **          
-#> 6 LDHF   LDLF        5.57 4.64e- 7 ***         
-#>   label                                 test.details       
-#>   <chr>                                 <chr>              
-#> 1 list(~italic(p)[ adjusted ]<= 0.001 ) Durbin-Conover test
-#> 2 list(~italic(p)[ adjusted ]== 0.045 ) Durbin-Conover test
-#> 3 list(~italic(p)[ adjusted ]<= 0.001 ) Durbin-Conover test
-#> 4 list(~italic(p)[ adjusted ]== 0.050 ) Durbin-Conover test
-#> 5 list(~italic(p)[ adjusted ]== 0.005 ) Durbin-Conover test
-#> 6 list(~italic(p)[ adjusted ]<= 0.001 ) Durbin-Conover test
-#>   p.value.adjustment   
-#>   <chr>                
-#> 1 Benjamini & Yekutieli
-#> 2 Benjamini & Yekutieli
-#> 3 Benjamini & Yekutieli
-#> 4 Benjamini & Yekutieli
-#> 5 Benjamini & Yekutieli
-#> 6 Benjamini & Yekutieli
+#>   group1 group2 statistic  p.value significance label                                 test.details        p.value.adjustment   
+#>   <chr>  <chr>      <dbl>    <dbl> <chr>        <chr>                                 <chr>               <chr>                
+#> 1 HDHF   HDLF        4.78 1.44e- 5 ***          list(~italic(p)[ adjusted ]<= 0.001 ) Durbin-Conover test Benjamini & Yekutieli
+#> 2 HDHF   LDHF        2.44 4.47e- 2 *            list(~italic(p)[ adjusted ]== 0.045 ) Durbin-Conover test Benjamini & Yekutieli
+#> 3 HDHF   LDLF        8.01 5.45e-13 ***          list(~italic(p)[ adjusted ]<= 0.001 ) Durbin-Conover test Benjamini & Yekutieli
+#> 4 HDLF   LDHF        2.34 4.96e- 2 *            list(~italic(p)[ adjusted ]== 0.050 ) Durbin-Conover test Benjamini & Yekutieli
+#> 5 HDLF   LDLF        3.23 5.05e- 3 **           list(~italic(p)[ adjusted ]== 0.005 ) Durbin-Conover test Benjamini & Yekutieli
+#> 6 LDHF   LDLF        5.57 4.64e- 7 ***          list(~italic(p)[ adjusted ]<= 0.001 ) Durbin-Conover test Benjamini & Yekutieli
 
 # robust
 pairwise_comparisons(
@@ -308,22 +260,14 @@ pairwise_comparisons(
   p.adjust.method = "hommel"
 )
 #> # A tibble: 6 x 10
-#>   group1 group2 psihat conf.low conf.high  p.value significance
-#>   <chr>  <chr>   <dbl>    <dbl>     <dbl>    <dbl> <chr>       
-#> 1 HDLF   LDHF   -0.701  -1.71       0.303 6.20e- 2 ns          
-#> 2 HDHF   LDHF    0.5    -0.188      1.19  6.20e- 2 ns          
-#> 3 HDLF   LDLF    0.938   0.0694     1.81  1.36e- 2 *           
-#> 4 HDHF   HDLF    1.16    0.318      2.00  1.49e- 3 **          
-#> 5 LDHF   LDLF    1.54    0.810      2.27  1.16e- 6 ***         
-#> 6 HDHF   LDLF    2.10    1.37       2.82  1.79e-10 ***         
-#>   label                                 test.details             
-#>   <chr>                                 <chr>                    
-#> 1 list(~italic(p)[ adjusted ]== 0.062 ) Yuen's trimmed means test
-#> 2 list(~italic(p)[ adjusted ]== 0.062 ) Yuen's trimmed means test
-#> 3 list(~italic(p)[ adjusted ]== 0.014 ) Yuen's trimmed means test
-#> 4 list(~italic(p)[ adjusted ]== 0.001 ) Yuen's trimmed means test
-#> 5 list(~italic(p)[ adjusted ]<= 0.001 ) Yuen's trimmed means test
-#> 6 list(~italic(p)[ adjusted ]<= 0.001 ) Yuen's trimmed means test
+#>   group1 group2 psihat conf.low conf.high  p.value significance label                                 test.details             
+#>   <chr>  <chr>   <dbl>    <dbl>     <dbl>    <dbl> <chr>        <chr>                                 <chr>                    
+#> 1 HDLF   LDHF   -0.701  -1.71       0.303 6.20e- 2 ns           list(~italic(p)[ adjusted ]== 0.062 ) Yuen's trimmed means test
+#> 2 HDHF   LDHF    0.5    -0.188      1.19  6.20e- 2 ns           list(~italic(p)[ adjusted ]== 0.062 ) Yuen's trimmed means test
+#> 3 HDLF   LDLF    0.938   0.0694     1.81  1.36e- 2 *            list(~italic(p)[ adjusted ]== 0.014 ) Yuen's trimmed means test
+#> 4 HDHF   HDLF    1.16    0.318      2.00  1.49e- 3 **           list(~italic(p)[ adjusted ]== 0.001 ) Yuen's trimmed means test
+#> 5 LDHF   LDLF    1.54    0.810      2.27  1.16e- 6 ***          list(~italic(p)[ adjusted ]<= 0.001 ) Yuen's trimmed means test
+#> 6 HDHF   LDLF    2.10    1.37       2.82  1.79e-10 ***          list(~italic(p)[ adjusted ]<= 0.001 ) Yuen's trimmed means test
 #>   p.value.adjustment
 #>   <chr>             
 #> 1 Hommel            
@@ -355,21 +299,16 @@ p <- ggplot(mtcars, aes(cyl, wt)) + geom_boxplot()
   dplyr::mutate(.data = ., groups = purrr::pmap(.l = list(group1, group2), .f = c)) %>%
   dplyr::arrange(.data = ., group1))
 #> # A tibble: 3 x 12
-#>   group1 group2 mean.difference    se t.value    df p.value significance
-#>   <chr>  <chr>            <dbl> <dbl>   <dbl> <dbl>   <dbl> <chr>       
-#> 1 4      8                1.71  0.188    6.44  23.0   0     ***         
-#> 2 6      4               -0.831 0.154    3.81  16.0   0.008 **          
-#> 3 6      8                0.882 0.172    3.62  19.0   0.008 **          
-#>   label                                 test.details      p.value.adjustment
-#>   <chr>                                 <chr>             <chr>             
-#> 1 list(~italic(p)[ adjusted ]<= 0.001 ) Games-Howell test Holm              
-#> 2 list(~italic(p)[ adjusted ]== 0.008 ) Games-Howell test Holm              
-#> 3 list(~italic(p)[ adjusted ]== 0.008 ) Games-Howell test Holm              
-#>   groups   
-#>   <list>   
-#> 1 <chr [2]>
-#> 2 <chr [2]>
-#> 3 <chr [2]>
+#>   group1 group2 mean.difference    se t.value    df p.value significance label                                 test.details     
+#>   <chr>  <chr>            <dbl> <dbl>   <dbl> <dbl>   <dbl> <chr>        <chr>                                 <chr>            
+#> 1 4      8                1.71  0.188    6.44  23.0   0     ***          list(~italic(p)[ adjusted ]<= 0.001 ) Games-Howell test
+#> 2 6      4               -0.831 0.154    3.81  16.0   0.008 **           list(~italic(p)[ adjusted ]== 0.008 ) Games-Howell test
+#> 3 6      8                0.882 0.172    3.62  19.0   0.008 **           list(~italic(p)[ adjusted ]== 0.008 ) Games-Howell test
+#>   p.value.adjustment groups   
+#>   <chr>              <list>   
+#> 1 Holm               <chr [2]>
+#> 2 Holm               <chr [2]>
+#> 3 Holm               <chr [2]>
 
 # using `geom_signif` to display results
 p +
