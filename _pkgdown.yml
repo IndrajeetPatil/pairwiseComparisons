@@ -26,8 +26,6 @@ reference:
   - title: Helper functions
     contents:
       - p_adjust_text
-      - signif_column
-      - specify_decimal_p
 
   - title: Reexported functions
     desc:  Useful functions re-exported from other packages.
@@ -35,10 +33,14 @@ reference:
       - "%>%"
       - "%<>%"
       - "%$%"
+      - "%<-%"
       - "%||%"
       - "%|%"
       - tibble
       - as_tibble
+      - long_to_wide_converter
+      - signif_column
+      - specify_decimal_p
 
   - title: Data
     desc:  Datasets included in the package.

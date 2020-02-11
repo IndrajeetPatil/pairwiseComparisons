@@ -6,10 +6,14 @@
 \alias{\%>\%}
 \alias{\%<>\%}
 \alias{\%$\%}
+\alias{\%<-\%}
 \alias{\%||\%}
 \alias{\%|\%}
 \alias{tibble}
 \alias{as_tibble}
+\alias{specify_decimal_p}
+\alias{signif_column}
+\alias{long_to_wide_converter}
 \title{Objects exported from other packages}
 \keyword{internal}
 \description{
@@ -17,7 +21,7 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
-  \item{broomExtra}{\code{\link[broomExtra]{\%$\%}}, \code{\link[broomExtra]{\%<>\%}}, \code{\link[broomExtra]{\%>\%}}}
+  \item{ipmisc}{\code{\link[ipmisc]{\%$\%}}, \code{\link[ipmisc]{\%<-\%}}, \code{\link[ipmisc]{\%<>\%}}, \code{\link[ipmisc]{\%>\%}}, \code{\link[ipmisc]{long_to_wide_converter}}, \code{\link[ipmisc]{signif_column}}, \code{\link[ipmisc]{specify_decimal_p}}}
 
   \item{rlang}{\code{\link[rlang]{\%|\%}}, \code{\link[rlang]{\%||\%}}}
 

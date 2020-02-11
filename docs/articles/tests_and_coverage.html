@@ -34,7 +34,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pairwiseComparisons</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.2.0</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.2.5</span>
       </span>
     </div>
 
@@ -93,7 +93,7 @@
     <div class="page-header toc-ignore">
       <h1>Tests and Coverage</h1>
             
-            <h4 class="date">02 February, 2020 16:12:16</h4>
+            <h4 class="date">11 February, 2020 10:13:13</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/IndrajeetPatil/pairwiseComparisons/blob/master/vignettes/tests_and_coverage.Rmd"><code>vignettes/tests_and_coverage.Rmd</code></a></small>
       <div class="hidden name"><code>tests_and_coverage.Rmd</code></div>
@@ -134,10 +134,6 @@
 <td align="left"><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/tree/master/R/pairwise_comparisons.R">R/pairwise_comparisons.R</a></td>
 <td align="center">100</td>
 </tr>
-<tr class="odd">
-<td align="left"><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/tree/master/R/utils_formatting.R">R/utils_formatting.R</a></td>
-<td align="center">100</td>
-</tr>
 </tbody>
 </table>
 <p><br></p>
@@ -158,24 +154,15 @@
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td align="left"><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/tree/master/tests/testthat/test-long_to_wide_converter.R">test-long_to_wide_converter.R</a></td>
-<td align="right">4</td>
-<td align="right">0.10</td>
+<td align="left"><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/tree/master/tests/testthat/test-pairwise_comparisons.R">test-pairwise_comparisons.R</a></td>
+<td align="right">63</td>
+<td align="right">11.33</td>
 <td align="right">0</td>
 <td align="right">0</td>
 <td align="right">0</td>
 <td align="right">0</td>
 </tr>
 <tr class="even">
-<td align="left"><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/tree/master/tests/testthat/test-pairwise_comparisons.R">test-pairwise_comparisons.R</a></td>
-<td align="right">63</td>
-<td align="right">13.58</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">0</td>
-</tr>
-<tr class="odd">
 <td align="left"><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/tree/master/tests/testthat/test-switch_statements.R">test-switch_statements.R</a></td>
 <td align="right">9</td>
 <td align="right">0.02</td>
@@ -189,9 +176,9 @@
 <details closed><p><summary> Show Detailed Test Results </summary></p>
 <table class="table">
 <colgroup>
-<col width="43%">
-<col width="13%">
-<col width="35%">
+<col width="44%">
+<col width="11%">
+<col width="36%">
 <col width="3%">
 <col width="1%">
 <col width="2%">
@@ -206,48 +193,40 @@
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td align="left"><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/tree/master/tests/testthat/test-long_to_wide_converter.R#L26">test-long_to_wide_converter.R</a></td>
-<td align="left">long_to_wide_converter</td>
-<td align="center">long_to_wide_converter works</td>
-<td align="left">PASS</td>
-<td align="right">4</td>
-<td align="right">0.10</td>
-</tr>
-<tr class="even">
 <td align="left"><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/tree/master/tests/testthat/test-pairwise_comparisons.R#L62">test-pairwise_comparisons.R</a></td>
 <td align="left">pairwise_comparisons</td>
 <td align="center">
 <code><a href="../reference/pairwise_comparisons.html">pairwise_comparisons()</a></code> works for between-subjects design</td>
 <td align="left">PASS</td>
 <td align="right">32</td>
-<td align="right">12.28</td>
+<td align="right">10.19</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/tree/master/tests/testthat/test-pairwise_comparisons.R#L240_L248">test-pairwise_comparisons.R</a></td>
 <td align="left">pairwise_comparisons</td>
 <td align="center">
 <code><a href="../reference/pairwise_comparisons.html">pairwise_comparisons()</a></code> works for within-subjects design</td>
 <td align="left">PASS</td>
 <td align="right">22</td>
-<td align="right">0.31</td>
+<td align="right">0.44</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/tree/master/tests/testthat/test-pairwise_comparisons.R#L386">test-pairwise_comparisons.R</a></td>
 <td align="left">pairwise_comparisons</td>
 <td align="center">dropped levels are not included</td>
 <td align="left">PASS</td>
 <td align="right">6</td>
-<td align="right">0.90</td>
+<td align="right">0.62</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/tree/master/tests/testthat/test-pairwise_comparisons.R#L410">test-pairwise_comparisons.R</a></td>
 <td align="left">pairwise_comparisons</td>
 <td align="center">check if everything works fine with irregular factor level names</td>
 <td align="left">PASS</td>
 <td align="right">3</td>
-<td align="right">0.09</td>
+<td align="right">0.08</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/tree/master/tests/testthat/test-switch_statements.R#L8">test-switch_statements.R</a></td>
 <td align="left">switch statements</td>
 <td align="center">switch for p adjustment works</td>

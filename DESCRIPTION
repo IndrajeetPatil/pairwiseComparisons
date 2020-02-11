@@ -1,7 +1,7 @@
 Type: Package
 Package: pairwiseComparisons
 Title: Multiple Pairwise Comparison Tests
-Version: 0.2.0
+Version: 0.2.5
 Authors@R: 
     person(given = "Indrajeet",
            family = "Patil",
@@ -24,9 +24,9 @@ BugReports:
 Depends: 
     R (>= 3.5.0)
 Imports:
-    broomExtra (>= 1.0.1),
     dplyr (>= 0.8.3),
     forcats (>= 0.4.0),
+    ipmisc (>= 1.0.0),
     jmv (>= 1.0.8),
     purrr (>= 0.3.3),
     rlang (>= 0.4.2),
@@ -41,9 +41,10 @@ Suggests:
     rmarkdown,
     spelling,
     testthat
+VignetteBuilder: 
+    knitr
 Encoding: UTF-8
 Language: en-US
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.0.2.9000
-VignetteBuilder: knitr

@@ -174,7 +174,7 @@ pairwise_comparisons <- function(data,
   data %<>%
     dplyr::select(.data = ., {{ x }}, {{ y }}) %>%
     dplyr::mutate(.data = ., {{ x }} := droplevels(as.factor({{ x }}))) %>%
-    tibble::as_tibble(x = .)
+    tibble::as_tibble(.)
 
   # ---------------------------- parametric ---------------------------------
 
@@ -203,7 +203,7 @@ pairwise_comparisons <- function(data,
       # extracting and cleaning up Tukey's HSD output
       df_tukey <-
         stats::TukeyHSD(x = aovmodel, conf.level = 0.95) %>%
-        broomExtra::tidy(x = .) %>%
+        ipmisc::tidy(.) %>%
         dplyr::select(.data = ., comparison, estimate) %>%
         tidyr::separate(
           data = .,
@@ -224,7 +224,7 @@ pairwise_comparisons <- function(data,
 
       # tidy dataframe with results from pairwise tests
       df_tidy <-
-        broomExtra::tidy(
+        ipmisc::tidy(
           stats::pairwise.t.test(
             x = data %>% dplyr::pull({{ y }}),
             g = data %>% dplyr::pull({{ x }}),
@@ -276,8 +276,8 @@ pairwise_comparisons <- function(data,
 
       # extracting the pairwise tests and formatting the output
       df <-
-        as.data.frame(x = jmv_pairs$comparisons[[1]]) %>%
-        tibble::as_tibble(x = .) %>%
+        as.data.frame(jmv_pairs$comparisons[[1]]) %>%
+        tibble::as_tibble(.) %>%
         dplyr::rename(
           .data = .,
           group1 = p1,
@@ -304,8 +304,8 @@ pairwise_comparisons <- function(data,
 
       # extracting the pairwise tests and formatting the output
       df <-
-        as.data.frame(x = jmv_pairs$comp) %>%
-        tibble::as_tibble(x = .) %>%
+        as.data.frame(jmv_pairs$comp) %>%
+        tibble::as_tibble(.) %>%
         dplyr::select(.data = ., -sep) %>%
         dplyr::rename(
           .data = .,
@@ -365,7 +365,8 @@ pairwise_comparisons <- function(data,
     df <-
       dplyr::full_join(
         # dataframe comparing comparison details
-        x = p_adjust_column_adder(df = rob_df_tidy, p.adjust.method = p.adjust.method) %>%
+        x = rob_df_tidy %>%
+          p_adjust_column_adder(df = ., p.adjust.method = p.adjust.method) %>%
           tidyr::gather(
             data = .,
             key = "key",
@@ -442,6 +443,21 @@ pairwise_comparisons <- function(data,
   return(tibble::as_tibble(df))
 }
 
+
+#' @noRd
+#'
+#' @importFrom rlang :=
+#'
+#' @keywords internal
+
+df_cleanup_paired <- function(data, x, y) {
+  data %<>%
+    long_to_wide_converter(data = ., x = {{ x }}, y = {{ y }}) %>%
+    tidyr::gather(data = ., key, value, -rowid) %>%
+    dplyr::arrange(.data = ., rowid) %>%
+    dplyr::rename(.data = ., {{ x }} := key, {{ y }} := value) %>%
+    dplyr::mutate(.data = ., {{ x }} := factor({{ x }}))
+}
 
 #' @name pairwise_comparisons
 #' @aliases  pairwise_comparisons
