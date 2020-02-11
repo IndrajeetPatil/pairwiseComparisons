@@ -7,6 +7,4 @@
 
 0 errors | 0 warnings | 0 note
 
-  - This release leads to breaking changes to strong dependency `ggstatsplot`. I
-    am also the maintainer of `ggstatsplot` and have already prepared a new
-    release to account for these breaking changes. 
+  - Minor maintenance release to rely on new functions from `ipmisc` package. 
