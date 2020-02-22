@@ -1,7 +1,7 @@
 Type: Package
 Package: pairwiseComparisons
 Title: Multiple Pairwise Comparison Tests
-Version: 0.2.5
+Version: 0.2.6
 Authors@R: 
     person(given = "Indrajeet",
            family = "Patil",
@@ -24,17 +24,18 @@ BugReports:
 Depends: 
     R (>= 3.5.0)
 Imports:
-    dplyr (>= 0.8.3),
-    forcats (>= 0.4.0),
-    ipmisc (>= 1.0.0),
-    jmv (>= 1.0.8),
-    purrr (>= 0.3.3),
-    rlang (>= 0.4.2),
+    broomExtra,
+    dplyr,
+    forcats,
+    ipmisc,
+    jmv,
+    purrr,
+    rlang,
     stats,
-    tibble (>= 2.1.3),
-    tidyr (>= 1.0.0),
+    tibble,
+    tidyr,
     utils,
-    WRS2 (>= 1.0-0)
+    WRS2
 Suggests:
     ggplot2,
     knitr,

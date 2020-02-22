@@ -1,3 +1,7 @@
+# pairwiseComparisons 0.2.6
+
+  - Maintenance release to prepare for the upcoming release of `broomExtra`.
+
 # pairwiseComparisons 0.2.5
 
   - Maintenance release to import functions from `ipmisc`.

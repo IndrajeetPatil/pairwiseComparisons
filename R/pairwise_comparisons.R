@@ -58,6 +58,7 @@
 #' @importFrom jmv anovaNP anovaRMNP
 #' @importFrom forcats fct_relabel
 #' @importFrom purrr map
+#' @importFrom broomExtra tidy
 #'
 #' @examples
 #'
@@ -203,7 +204,7 @@ pairwise_comparisons <- function(data,
       # extracting and cleaning up Tukey's HSD output
       df_tukey <-
         stats::TukeyHSD(x = aovmodel, conf.level = 0.95) %>%
-        ipmisc::tidy(.) %>%
+        broomExtra::tidy(.) %>%
         dplyr::select(.data = ., comparison, estimate) %>%
         tidyr::separate(
           data = .,
@@ -224,7 +225,7 @@ pairwise_comparisons <- function(data,
 
       # tidy dataframe with results from pairwise tests
       df_tidy <-
-        ipmisc::tidy(
+        broomExtra::tidy(
           stats::pairwise.t.test(
             x = data %>% dplyr::pull({{ y }}),
             g = data %>% dplyr::pull({{ x }}),
