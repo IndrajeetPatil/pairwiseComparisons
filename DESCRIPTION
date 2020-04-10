@@ -13,9 +13,9 @@ Description: Multiple pairwise comparison tests on tidy data for
     one-way analysis of variance for both between-subjects and
     within-subjects designs. Currently, it supports only the most common
     types of statistical analyses and tests: parametric (Welch's and
-    Student's t-test), nonparametric (Durbin-Conover test and
+    Student's t-test), nonparametric (Durbin-Conover test
     Dwass-Steel-Crichtlow-Fligner test), robust (Yuen’s trimmed means
-    test).
+    test), and Bayes Factor (Student's t-test).
 License: GPL-3 | file LICENSE
 URL: https://indrajeetpatil.github.io/pairwiseComparisons/,
     https://github.com/IndrajeetPatil/pairwiseComparisons
@@ -33,6 +33,7 @@ Imports:
     rlang,
     stats,
     tibble,
+    tidyBF (>= 0.2.0),
     tidyr,
     utils,
     WRS2
@@ -43,7 +44,8 @@ Suggests:
     spelling,
     testthat
 Remotes:
-    IndrajeetPatil/ipmisc
+    IndrajeetPatil/ipmisc,
+    IndrajeetPatil/tidyBF
 Encoding: UTF-8
 Language: en-US
 LazyData: true

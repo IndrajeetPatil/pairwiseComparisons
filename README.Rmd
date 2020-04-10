@@ -37,8 +37,8 @@ provides a tidy data friendly way to carry out pairwise comparison tests.
 
 It currently supports *post hoc* multiple pairwise comparisons tests for both
 between-subjects and within-subjects one-way analysis of variance designs. For
-both of these designs, parametric, non-parametric, and robust statistical tests
-are available.
+both of these designs, parametric, non-parametric, robust, and Bayes Factor
+statistical tests are available.
 
 ## Installation
 
@@ -91,7 +91,7 @@ Parametric | No | Games-Howell test | <font color="green">Yes</font>
 Parametric | Yes | Student's *t*-test | <font color="green">Yes</font>  
 Non-parametric | No | Dwass-Steel-Crichtlow-Fligner test | <font color="green">Yes</font>  
 Robust | No | Yuen's trimmed means test | <font color="green">Yes</font>  
-Bayes Factor | `NA` | Student's *t*-test | <font color="red">No</font>
+Bayes Factor | `NA` | Student's *t*-test | <font color="green">Yes</font>
 
 ## Within-subjects design
 
@@ -100,7 +100,7 @@ Type | Test | *p*-value adjustment?
 Parametric | Student's *t*-test | <font color="green">Yes</font>  
 Non-parametric | Durbin-Conover test | <font color="green">Yes</font>  
 Robust | Yuen's trimmed means test | <font color="green">Yes</font>  
-Bayes Factor | Student's *t*-test | <font color="red">No</font>
+Bayes Factor | Student's *t*-test | <font color="green">Yes</font>
 
 # Examples
 
@@ -160,6 +160,15 @@ pairwise_comparisons(
   paired = FALSE,
   p.adjust.method = "fdr"
 )
+
+# Bayes Factor
+pairwise_comparisons(
+  data = ggplot2::msleep,
+  x = vore,
+  y = brainwt,
+  type = "bayes",
+  paired = FALSE
+)
 ```
 
 
@@ -198,9 +207,21 @@ pairwise_comparisons(
   paired = TRUE,
   p.adjust.method = "hommel"
 )
+
+# Bayes Factor
+pairwise_comparisons(
+  data = WRS2::WineTasting,
+  x = Wine,
+  y = Taste,
+  type = "bayes",
+  paired = TRUE,
+  bf.prior = 0.77
+)
 ```
 
 # Using `pairwiseComparisons` with `ggsignif` to display results
+
+## Example-1
 
 ```{r ggisignif}
 # needed libraries
@@ -227,6 +248,37 @@ p +
     map_signif_level = TRUE,
     tip_length = 0.01,
     y_position = c(5.5, 5.75, 6),
+    annotations = df$label,
+    test = NULL,
+    na.rm = TRUE,
+    parse = TRUE
+  )
+```
+
+## Example-2
+
+```{r ggisignif2}
+# needed libraries
+library(ggplot2)
+library(pairwiseComparisons)
+library(ggsignif)
+
+# creating a basic plot
+p <- ggplot(WRS2::WineTasting, aes(Wine, Taste)) + geom_boxplot(notch = TRUE)
+
+# using `pairwiseComparisons` package to create a dataframe with results
+(df <-
+  pairwise_comparisons(WRS2::WineTasting, Wine, Taste, type = "bayes", paired = TRUE) %>%
+  dplyr::mutate(.data = ., groups = purrr::pmap(.l = list(group1, group2), .f = c)) %>%
+  dplyr::arrange(.data = ., group1))
+
+# using `geom_signif` to display results
+p +
+  ggsignif::geom_signif(
+    comparisons = df$groups,
+    map_signif_level = TRUE,
+    tip_length = 0.01,
+    y_position = c(6.5, 6.75, 7),
     annotations = df$label,
     test = NULL,
     na.rm = TRUE,

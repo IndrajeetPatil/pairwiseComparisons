@@ -7,7 +7,7 @@
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [![CRAN\_Release\_Badge](http://www.r-pkg.org/badges/version-ago/pairwiseComparisons)](https://CRAN.R-project.org/package=pairwiseComparisons)                                  | [![Travis Build Status](https://travis-ci.org/IndrajeetPatil/pairwiseComparisons.svg?branch=master)](https://travis-ci.org/IndrajeetPatil/pairwiseComparisons)                                               | [![Daily downloads badge](https://cranlogs.r-pkg.org/badges/last-day/pairwiseComparisons?color=blue)](https://CRAN.R-project.org/package=pairwiseComparisons)                         | [![GitHub version](https://img.shields.io/badge/GitHub-0.2.6-orange.svg?style=flat-square)](https://github.com/IndrajeetPatil/pairwiseComparisons/)                            | [![Website](https://img.shields.io/badge/website-pairwiseComparisons-orange.svg?colorB=E91E63)](https://indrajeetpatil.github.io/pairwiseComparisons/)                          |
 | [![CRAN Checks](https://cranchecks.info/badges/summary/pairwiseComparisons)](https://cran.r-project.org/web/checks/check_results_pairwiseComparisons.html)                      | [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/pairwiseComparisons?branch=master&svg=true)](https://ci.appveyor.com/project/IndrajeetPatil/pairwiseComparisons) | [![Weekly downloads badge](https://cranlogs.r-pkg.org/badges/last-week/pairwiseComparisons?color=blue)](https://CRAN.R-project.org/package=pairwiseComparisons)                       | [![Forks](https://img.shields.io/badge/forks-3-blue.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/)                                                              | [![Rdoc](https://www.rdocumentation.org/badges/version/pairwiseComparisons)](https://www.rdocumentation.org/packages/pairwiseComparisons)                                       |
-| [![minimal R version](https://img.shields.io/badge/R%3E%3D-3.5.0-6666ff.svg)](https://cran.r-project.org/)                                                                      | [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/)                                                                                               | [![Monthly downloads badge](https://cranlogs.r-pkg.org/badges/last-month/pairwiseComparisons?color=blue)](https://CRAN.R-project.org/package=pairwiseComparisons)                     | [![Github Issues](https://img.shields.io/badge/issues-2-red.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/issues)                                                | [![vignettes](https://img.shields.io/badge/vignettes-0.2.6-orange.svg?colorB=FF5722)](https://CRAN.R-project.org/package=pairwiseComparisons/vignettes/)                        |
+| [![minimal R version](https://img.shields.io/badge/R%3E%3D-3.5.0-6666ff.svg)](https://cran.r-project.org/)                                                                      | [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/)                                                                                               | [![Monthly downloads badge](https://cranlogs.r-pkg.org/badges/last-month/pairwiseComparisons?color=blue)](https://CRAN.R-project.org/package=pairwiseComparisons)                     | [![Github Issues](https://img.shields.io/badge/issues-1-red.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/issues)                                                | [![vignettes](https://img.shields.io/badge/vignettes-0.2.6-orange.svg?colorB=FF5722)](https://CRAN.R-project.org/package=pairwiseComparisons/vignettes/)                        |
 | [![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/IndrajeetPatil/pairwiseComparisons.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons) | [![Coverage Status](https://coveralls.io/repos/github/IndrajeetPatil/pairwiseComparisons/badge.svg?branch=master)](https://coveralls.io/github/IndrajeetPatil/pairwiseComparisons?branch=master)             | [![Total downloads badge](https://cranlogs.r-pkg.org/badges/grand-total/pairwiseComparisons?color=blue)](https://CRAN.R-project.org/package=pairwiseComparisons)                      | [![Github Stars](https://img.shields.io/github/stars/IndrajeetPatil/pairwiseComparisons.svg?style=social&label=Github)](https://github.com/IndrajeetPatil/pairwiseComparisons) | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2074621.svg)](https://doi.org/10.5281/zenodo.2074621)                                                                       |
 | [![Licence](https://img.shields.io/badge/licence-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)                                                                | [![Codecov test coverage](https://codecov.io/gh/IndrajeetPatil/pairwiseComparisons/branch/master/graph/badge.svg)](https://codecov.io/gh/IndrajeetPatil/pairwiseComparisons?branch=master)                   | [![Covrpage Summary](https://img.shields.io/badge/covrpage-Last_Build_2020_02_11-brightgreen.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/blob/master/tests/README.md) | [![Last-changedate](https://img.shields.io/badge/last%20change-2020--04--10-yellowgreen.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/commits/master)            | [![GitHub last commit](https://img.shields.io/github/last-commit/IndrajeetPatil/pairwiseComparisons.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/commits/master) |
 | [![status](https://tinyverse.netlify.com/badge/pairwiseComparisons)](https://CRAN.R-project.org/package=pairwiseComparisons)                                                    | [![R build status](https://github.com/IndrajeetPatil/pairwiseComparisons/workflows/R-CMD-check/badge.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons)                                            | [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/pairwiseComparisons/community)                                                                       | [![Project Status](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)                                                                     | [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/IndrajeetPatil/pairwiseComparisons/issues)         |
@@ -20,8 +20,8 @@ tests.
 
 It currently supports *post hoc* multiple pairwise comparisons tests for
 both between-subjects and within-subjects one-way analysis of variance
-designs. For both of these designs, parametric, non-parametric, and
-robust statistical tests are available.
+designs. For both of these designs, parametric, non-parametric, robust,
+and Bayes Factor statistical tests are available.
 
 ## Installation
 
@@ -74,7 +74,7 @@ pairwise comparison tests-
 | Parametric     | Yes             | Student’s *t*-test                 | <font color="green">Yes</font> |
 | Non-parametric | No              | Dwass-Steel-Crichtlow-Fligner test | <font color="green">Yes</font> |
 | Robust         | No              | Yuen’s trimmed means test          | <font color="green">Yes</font> |
-| Bayes Factor   | `NA`            | Student’s *t*-test                 | <font color="red">No</font>    |
+| Bayes Factor   | `NA`            | Student’s *t*-test                 | <font color="green">Yes</font> |
 
 ## Within-subjects design
 
@@ -83,7 +83,7 @@ pairwise comparison tests-
 | Parametric     | Student’s *t*-test        | <font color="green">Yes</font> |
 | Non-parametric | Durbin-Conover test       | <font color="green">Yes</font> |
 | Robust         | Yuen’s trimmed means test | <font color="green">Yes</font> |
-| Bayes Factor   | Student’s *t*-test        | <font color="red">No</font>    |
+| Bayes Factor   | Student’s *t*-test        | <font color="green">Yes</font> |
 
 # Examples
 
@@ -227,6 +227,32 @@ pairwise_comparisons(
 #> 4 Benjamini & Hochberg
 #> 5 Benjamini & Hochberg
 #> 6 Benjamini & Hochberg
+
+# Bayes Factor
+pairwise_comparisons(
+  data = ggplot2::msleep,
+  x = vore,
+  y = brainwt,
+  type = "bayes",
+  paired = FALSE
+)
+#> # A tibble: 6 x 12
+#>   group1 group2   bf10     error  bf01 log_e_bf10 log_e_bf01 log_10_bf10
+#>   <fct>  <fct>   <dbl>     <dbl> <dbl>      <dbl>      <dbl>       <dbl>
+#> 1 omni   herbi   0.571 0.0000411  1.75     -0.560      0.560      -0.243
+#> 2 omni   carni   0.427 0.000105   2.34     -0.851      0.851      -0.369
+#> 3 omni   insecti 0.545 0.0000190  1.83     -0.606      0.606      -0.263
+#> 4 herbi  carni   0.540 0.0000100  1.85     -0.617      0.617      -0.268
+#> 5 herbi  insecti 0.540 0.0000175  1.85     -0.616      0.616      -0.267
+#> 6 carni  insecti 0.718 0.000152   1.39     -0.332      0.332      -0.144
+#>   log_10_bf01 bf.prior label                        test.details    
+#>         <dbl>    <dbl> <chr>                        <chr>           
+#> 1       0.243    0.707 list(~log[e](BF[10])==-0.56) Student's t-test
+#> 2       0.369    0.707 list(~log[e](BF[10])==-0.85) Student's t-test
+#> 3       0.263    0.707 list(~log[e](BF[10])==-0.61) Student's t-test
+#> 4       0.268    0.707 list(~log[e](BF[10])==-0.62) Student's t-test
+#> 5       0.267    0.707 list(~log[e](BF[10])==-0.62) Student's t-test
+#> 6       0.144    0.707 list(~log[e](BF[10])==-0.33) Student's t-test
 ```
 
 ## Within-subjects design
@@ -331,9 +357,32 @@ pairwise_comparisons(
 #> 4 Hommel            
 #> 5 Hommel            
 #> 6 Hommel
+
+# Bayes Factor
+pairwise_comparisons(
+  data = WRS2::WineTasting,
+  x = Wine,
+  y = Taste,
+  type = "bayes",
+  paired = TRUE,
+  bf.prior = 0.77
+)
+#> # A tibble: 3 x 12
+#>   group1 group2   bf10       error   bf01 log_e_bf10 log_e_bf01 log_10_bf10
+#>   <chr>  <chr>   <dbl>       <dbl>  <dbl>      <dbl>      <dbl>       <dbl>
+#> 1 Wine A Wine B  0.219 0.000366    4.57        -1.52       1.52      -0.660
+#> 2 Wine A Wine C  3.60  0.00000709  0.277        1.28      -1.28       0.557
+#> 3 Wine B Wine C 50.5   0.000000840 0.0198       3.92      -3.92       1.70 
+#>   log_10_bf01 bf.prior label                        test.details    
+#>         <dbl>    <dbl> <chr>                        <chr>           
+#> 1       0.660     0.77 list(~log[e](BF[10])==-1.52) Student's t-test
+#> 2      -0.557     0.77 list(~log[e](BF[10])==1.28)  Student's t-test
+#> 3      -1.70      0.77 list(~log[e](BF[10])==3.92)  Student's t-test
 ```
 
 # Using `pairwiseComparisons` with `ggsignif` to display results
+
+## Example-1
 
 ``` r
 # needed libraries
@@ -384,6 +433,50 @@ p +
 ```
 
 <img src="man/figures/README-ggisignif-1.png" width="100%" />
+
+## Example-2
+
+``` r
+# needed libraries
+library(ggplot2)
+library(pairwiseComparisons)
+library(ggsignif)
+
+# creating a basic plot
+p <- ggplot(WRS2::WineTasting, aes(Wine, Taste)) + geom_boxplot(notch = TRUE)
+
+# using `pairwiseComparisons` package to create a dataframe with results
+(df <-
+  pairwise_comparisons(WRS2::WineTasting, Wine, Taste, type = "bayes", paired = TRUE) %>%
+  dplyr::mutate(.data = ., groups = purrr::pmap(.l = list(group1, group2), .f = c)) %>%
+  dplyr::arrange(.data = ., group1))
+#> # A tibble: 3 x 13
+#>   group1 group2   bf10       error   bf01 log_e_bf10 log_e_bf01 log_10_bf10
+#>   <chr>  <chr>   <dbl>       <dbl>  <dbl>      <dbl>      <dbl>       <dbl>
+#> 1 Wine A Wine B  0.235 0.000313    4.25        -1.45       1.45      -0.628
+#> 2 Wine A Wine C  3.71  0.0000120   0.269        1.31      -1.31       0.570
+#> 3 Wine B Wine C 50.5   0.000000769 0.0198       3.92      -3.92       1.70 
+#>   log_10_bf01 bf.prior label                        test.details     groups   
+#>         <dbl>    <dbl> <chr>                        <chr>            <list>   
+#> 1       0.628    0.707 list(~log[e](BF[10])==-1.45) Student's t-test <chr [2]>
+#> 2      -0.570    0.707 list(~log[e](BF[10])==1.31)  Student's t-test <chr [2]>
+#> 3      -1.70     0.707 list(~log[e](BF[10])==3.92)  Student's t-test <chr [2]>
+
+# using `geom_signif` to display results
+p +
+  ggsignif::geom_signif(
+    comparisons = df$groups,
+    map_signif_level = TRUE,
+    tip_length = 0.01,
+    y_position = c(6.5, 6.75, 7),
+    annotations = df$label,
+    test = NULL,
+    na.rm = TRUE,
+    parse = TRUE
+  )
+```
+
+<img src="man/figures/README-ggisignif2-1.png" width="100%" />
 
 # Code coverage
 

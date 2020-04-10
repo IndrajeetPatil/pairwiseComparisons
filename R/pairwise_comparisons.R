@@ -28,6 +28,7 @@
 #' @param ... Current ignored.
 #' @inheritParams stats::t.test
 #' @inheritParams WRS2::rmmcp
+#' @inheritParams tidyBF::bf_ttest
 #'
 #' @return A tibble dataframe containing two columns corresponding to group
 #'   levels being compared with each other (`group1` and `group2`) and `p.value`
@@ -48,7 +49,7 @@
 #'   }
 #'
 #' @importFrom dplyr select rename mutate mutate_if everything full_join vars
-#' @importFrom dplyr group_nest
+#' @importFrom dplyr group_nest bind_cols
 #' @importFrom stats p.adjust pairwise.t.test na.omit aov TukeyHSD var sd
 #' @importFrom WRS2 lincon rmmcp
 #' @importFrom tidyr gather spread separate unnest nest
@@ -56,9 +57,10 @@
 #' @importFrom tibble enframe
 #' @importFrom jmv anovaNP anovaRMNP
 #' @importFrom forcats fct_relabel
-#' @importFrom purrr map
+#' @importFrom purrr map map2 map_dfr
 #' @importFrom broomExtra tidy
 #' @importFrom ipmisc stats_type_switch
+#' @importFrom tidyBF bf_ttest
 #'
 #' @examples
 #'
@@ -82,7 +84,7 @@
 #'   type = "parametric",
 #'   var.equal = TRUE,
 #'   paired = FALSE,
-#'   p.adjust.method = "bonferroni"
+#'   p.adjust.method = "none"
 #' )
 #'
 #' # if `var.equal = FALSE`, then Games-Howell test will be run
@@ -114,6 +116,15 @@
 #'   type = "robust",
 #'   paired = FALSE,
 #'   p.adjust.method = "fdr"
+#' )
+#'
+#' # Bayes Factor
+#' pairwise_comparisons(
+#'   data = ggplot2::msleep,
+#'   x = vore,
+#'   y = brainwt,
+#'   type = "bayes",
+#'   paired = FALSE
 #' )
 #'
 #' #------------------- within-subjects design ----------------------------
@@ -150,6 +161,16 @@
 #'   paired = TRUE,
 #'   p.adjust.method = "hommel"
 #' )
+#'
+#' # Bayes Factor
+#' pairwise_comparisons(
+#'   data = bugs_long,
+#'   x = condition,
+#'   y = desire,
+#'   type = "bayes",
+#'   paired = TRUE,
+#'   bf.prior = 0.80
+#' )
 #' }
 #' @export
 
@@ -158,9 +179,10 @@ pairwise_comparisons <- function(data,
                                  x,
                                  y,
                                  type = "parametric",
-                                 tr = 0.1,
                                  paired = FALSE,
                                  var.equal = FALSE,
+                                 tr = 0.1,
+                                 bf.prior = 0.707,
                                  p.adjust.method = "holm",
                                  k = 2,
                                  ...) {
@@ -181,7 +203,7 @@ pairwise_comparisons <- function(data,
 
   # ---------------------------- parametric ---------------------------------
 
-  if (type == "parametric") {
+  if (type %in% c("parametric", "bayes")) {
     if (isTRUE(var.equal) || isTRUE(paired)) {
       # anova model
       aovmodel <- stats::aov(
@@ -252,7 +274,6 @@ pairwise_comparisons <- function(data,
       # test details
       test.details <- "Student's t-test"
     } else {
-
       # dataframe with Games-Howell test results
       df <-
         games_howell(data = data, x = {{ x }}, y = {{ y }}) %>%
@@ -354,10 +375,7 @@ pairwise_comparisons <- function(data,
 
     # extracting the robust pairwise comparisons and tidying up names
     rob_df_tidy <-
-      suppressMessages(as_tibble(
-        x = rob_pairwise_df$comp,
-        .name_repair = "unique"
-      )) %>%
+      suppressMessages(as_tibble(rob_pairwise_df$comp, .name_repair = "unique")) %>%
       dplyr::rename(
         .data = .,
         group1 = Group...1,
@@ -398,7 +416,60 @@ pairwise_comparisons <- function(data,
 
   # print a message telling the user that this is currently not supported
   if (type == "bayes") {
-    stop(message("No pairwise comparisons currently available.\n"), call. = FALSE)
+    # creating a list of dataframes with subsections of data
+    df_list <-
+      purrr::map2(
+        .x = as.character(df$group2),
+        .y = as.character(df$group1),
+        .f = function(a, b) {
+          data %>%
+            dplyr::filter(.data = ., !is.na({{ x }})) %>%
+            dplyr::filter(.data = ., !is.na({{ y }})) %>%
+            dplyr::filter(.data = ., {{ x }} %in% c(a, b)) %>%
+            droplevels() %>%
+            as.data.frame()
+        }
+      )
+
+    # combining results into a single dataframe and returning it
+    df_tidy <-
+      df_list %>%
+      purrr::map_dfr(
+        .x = .,
+        .f = ~ tidyBF::bf_ttest(
+          data = .,
+          x = {{ x }},
+          y = {{ y }},
+          paired = paired,
+          bf.prior = bf.prior,
+          output = "results"
+        )
+      ) %>%
+      dplyr::mutate(.data = ., rowid = dplyr::row_number()) %>%
+      dplyr::group_nest(.tbl = ., rowid) %>%
+      dplyr::mutate(
+        .data = .,
+        label = data %>%
+          purrr::map(
+            .x = .,
+            .f = ~ paste(
+              "list(~log[e](BF[10])",
+              "==",
+              specify_decimal_p(x = .$log_e_bf10, k = k),
+              # ", ~italic(r)[Cauchy]^JZS",
+              # "==",
+              # specify_decimal_p(x = .$bf.prior, k = k),
+              ")",
+              sep = ""
+            )
+          )
+      ) %>% # unnesting the dataframe
+      tidyr::unnest(data = ., cols = c(data, label)) %>%
+      dplyr::select(.data = ., -rowid) %>%
+      dplyr::mutate(.data = ., test.details = "Student's t-test")
+
+    # early return (no further cleanup required)
+    return(dplyr::bind_cols(dplyr::select(df, group1, group2), df_tidy))
   }
 
   # ---------------------------- cleanup ----------------------------------

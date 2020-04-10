@@ -22,8 +22,10 @@ testthat::test_that(
 
     # adding empty factor level (shouldn't change results)
     df_msleep %<>%
-      dplyr::mutate(vore = as.factor(vore),
-                    vore = forcats::fct_expand(vore, "random"))
+      dplyr::mutate(
+        vore = as.factor(vore),
+        vore = forcats::fct_expand(vore, "random")
+      )
 
     df2 <-
       pairwiseComparisons::pairwise_comparisons(
@@ -68,12 +70,23 @@ testthat::test_that(
         var.equal = TRUE
       )
 
+    # bayes test
+    df6 <-
+      pairwiseComparisons::pairwise_comparisons(
+        data = ggplot2::msleep,
+        x = vore,
+        y = brainwt,
+        type = "bf",
+        k = 3
+      )
+
     # checking dimensions of the results dataframe
     testthat::expect_equal(dim(df1), c(6L, 8L))
     testthat::expect_equal(dim(df2), c(6L, 11L))
     testthat::expect_equal(dim(df3), c(6L, 8L))
     testthat::expect_equal(dim(df4), c(6L, 10L))
     testthat::expect_equal(dim(df5), c(3L, 8L))
+    testthat::expect_equal(dim(df6), c(6L, 12L))
 
     # test details
     testthat::expect_identical(unique(df1$test.details), "Student's t-test")
@@ -81,6 +94,7 @@ testthat::test_that(
     testthat::expect_identical(unique(df3$test.details), "Dwass-Steel-Crichtlow-Fligner test")
     testthat::expect_identical(unique(df4$test.details), "Yuen's trimmed means test")
     testthat::expect_identical(unique(df5$test.details), "Student's t-test")
+    testthat::expect_identical(unique(df6$test.details), "Student's t-test")
 
     # adjustment method
     testthat::expect_identical(unique(df1$p.value.adjustment), "Bonferroni")
@@ -103,7 +117,8 @@ testthat::test_that(
       tolerance = 0.001
     )
 
-    testthat::expect_equal(df2$mean.difference,
+    testthat::expect_equal(
+      df2$mean.difference,
       c(0.476, -0.066, -0.124, -0.542, -0.600, -0.058),
       tolerance = 0.001
     )
@@ -202,6 +217,18 @@ testthat::test_that(
       )
     )
 
+    testthat::expect_identical(
+      df6$label,
+      c(
+        "list(~log[e](BF[10])==-0.560)",
+        "list(~log[e](BF[10])==-0.851)",
+        "list(~log[e](BF[10])==-0.606)",
+        "list(~log[e](BF[10])==-0.617)",
+        "list(~log[e](BF[10])==-0.616)",
+        "list(~log[e](BF[10])==-0.332)"
+      )
+    )
+
     # checking tibble
     testthat::expect_is(df1, "tbl_df")
     testthat::expect_is(df2, "tbl_df")
@@ -220,55 +247,60 @@ testthat::test_that(
 
     # student's t test
     set.seed(123)
-    df1 <- pairwiseComparisons::pairwise_comparisons(
-      data = pairwiseComparisons::bugs_long,
-      x = condition,
-      y = desire,
-      type = "p",
-      k = 3,
-      paired = TRUE,
-      p.adjust.method = "bonferroni"
-    )
-
-    # Durbin-Conover test
-    set.seed(123)
-    df2 <- pairwiseComparisons::pairwise_comparisons(
-      data = pairwiseComparisons::bugs_long,
-      x = condition,
-      y = desire,
-      type = "np",
-      k = 3,
-      paired = TRUE,
-      p.adjust.method = "BY"
-    )
-
-    # robust t test
-    set.seed(123)
-    df3 <- pairwiseComparisons::pairwise_comparisons(
-      data = pairwiseComparisons::bugs_long,
-      x = condition,
-      y = desire,
-      type = "r",
-      k = 3,
-      paired = TRUE,
-      p.adjust.method = "hommel"
-    )
-
-    # bf
-    testthat::expect_error(
+    df1 <-
       pairwiseComparisons::pairwise_comparisons(
         data = pairwiseComparisons::bugs_long,
         x = condition,
         y = desire,
+        type = "p",
+        k = 3,
+        paired = TRUE,
+        p.adjust.method = "bonferroni"
+      )
+
+    # Durbin-Conover test
+    set.seed(123)
+    df2 <-
+      pairwiseComparisons::pairwise_comparisons(
+        data = pairwiseComparisons::bugs_long,
+        x = condition,
+        y = desire,
+        type = "np",
+        k = 3,
+        paired = TRUE,
+        p.adjust.method = "BY"
+      )
+
+    # robust t test
+    set.seed(123)
+    df3 <-
+      pairwiseComparisons::pairwise_comparisons(
+        data = pairwiseComparisons::bugs_long,
+        x = condition,
+        y = desire,
+        type = "r",
+        k = 3,
+        paired = TRUE,
+        p.adjust.method = "hommel"
+      )
+
+    # bf
+    df4 <-
+      pairwiseComparisons::pairwise_comparisons(
+        data = bugs_long,
+        x = condition,
+        y = desire,
         type = "bf",
+        k = 4,
+        bf.prior = 0.9,
         paired = TRUE
       )
-    )
 
     # test details
     testthat::expect_identical(unique(df1$test.details), "Student's t-test")
     testthat::expect_identical(unique(df2$test.details), "Durbin-Conover test")
     testthat::expect_identical(unique(df3$test.details), "Yuen's trimmed means test")
+    testthat::expect_identical(unique(df4$test.details), "Student's t-test")
 
     # adjustment method
     testthat::expect_identical(unique(df1$p.value.adjustment), "Bonferroni")
@@ -359,15 +391,29 @@ testthat::test_that(
       c("ns", "ns", "*", "**", "***", "***")
     )
 
+    testthat::expect_identical(
+      df4$label,
+      c(
+        "list(~log[e](BF[10])==1.5536)",
+        "list(~log[e](BF[10])==-1.0261)",
+        "list(~log[e](BF[10])==10.5197)",
+        "list(~log[e](BF[10])==-0.9107)",
+        "list(~log[e](BF[10])==0.9789)",
+        "list(~log[e](BF[10])==6.9598)"
+      )
+    )
+
     # checking dimensions of the results dataframe
     testthat::expect_equal(dim(df1), c(6L, 8L))
     testthat::expect_equal(dim(df2), c(6L, 8L))
     testthat::expect_equal(dim(df3), c(6L, 10L))
+    testthat::expect_equal(dim(df4), c(6L, 12L))
 
     # checking if it is a tibble
     testthat::expect_is(df1, "tbl_df")
     testthat::expect_is(df2, "tbl_df")
     testthat::expect_is(df3, "tbl_df")
+    testthat::expect_is(df4, "tbl_df")
   }
 )
 
@@ -385,19 +431,21 @@ testthat::test_that(
     )
 
     # check those levels are not included
-    df1 <- pairwiseComparisons::pairwise_comparisons(
-      data = msleep2,
-      x = vore,
-      y = brainwt,
-      p.adjust.method = "none"
-    )
+    df1 <-
+      pairwiseComparisons::pairwise_comparisons(
+        data = msleep2,
+        x = vore,
+        y = brainwt,
+        p.adjust.method = "none"
+      )
 
-    df2 <- pairwiseComparisons::pairwise_comparisons(
-      data = ggplot2::msleep,
-      x = vore,
-      y = brainwt,
-      p.adjust.method = "none"
-    ) %>%
+    df2 <-
+      pairwiseComparisons::pairwise_comparisons(
+        data = ggplot2::msleep,
+        x = vore,
+        y = brainwt,
+        p.adjust.method = "none"
+      ) %>%
       dplyr::filter(.data = ., group1 == "omni", group2 == "carni")
 
     # tests
@@ -417,13 +465,14 @@ testthat::test_that(
   code = {
     set.seed(123)
 
-    df <- pairwiseComparisons::pairwise_comparisons(
-      data = pairwiseComparisons::movies_wide,
-      x = mpaa,
-      y = rating,
-      type = "p",
-      var.equal = TRUE
-    )
+    df <-
+      pairwiseComparisons::pairwise_comparisons(
+        data = movies_wide,
+        x = mpaa,
+        y = rating,
+        type = "p",
+        var.equal = TRUE
+      )
 
     testthat::expect_equal(dim(df), c(3L, 8L))
     testthat::expect_equal(df$group1, c("PG", "PG", "PG-13"))

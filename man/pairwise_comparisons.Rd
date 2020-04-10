@@ -10,9 +10,10 @@ pairwise_comparisons(
   x,
   y,
   type = "parametric",
-  tr = 0.1,
   paired = FALSE,
   var.equal = FALSE,
+  tr = 0.1,
+  bf.prior = 0.707,
   p.adjust.method = "holm",
   k = 2,
   ...
@@ -23,9 +24,10 @@ pairwise_p(
   x,
   y,
   type = "parametric",
-  tr = 0.1,
   paired = FALSE,
   var.equal = FALSE,
+  tr = 0.1,
+  bf.prior = 0.707,
   p.adjust.method = "holm",
   k = 2,
   ...
@@ -45,12 +47,6 @@ or \code{"robust"} or \code{"bayes"}).Corresponding abbreviations are also accep
 \code{"p"} (for parametric), \code{"np"} (nonparametric), \code{"r"} (robust), or
 \code{"bf"}resp.}
 
-\item{tr}{Trim level for the mean when carrying out \code{robust} tests. If you
-get error stating "Standard error cannot be computed because of Winsorized
-variance of 0 (e.g., due to ties). Try to decrease the trimming level.",
-try to play around with the value of \code{tr}, which is by default set to
-\code{0.1}. Lowering the value might help.}
-
 \item{paired}{Logical that decides whether the experimental design is
 repeated measures/within-subjects or between-subjects. The default is
 \code{FALSE}.}
@@ -59,6 +55,15 @@ repeated measures/within-subjects or between-subjects. The default is
     two variances as being equal. If \code{TRUE} then the pooled
     variance is used to estimate the variance otherwise the Welch
     (or Satterthwaite) approximation to the degrees of freedom is used.}
+
+\item{tr}{Trim level for the mean when carrying out \code{robust} tests. If you
+get error stating "Standard error cannot be computed because of Winsorized
+variance of 0 (e.g., due to ties). Try to decrease the trimming level.",
+try to play around with the value of \code{tr}, which is by default set to
+\code{0.1}. Lowering the value might help.}
+
+\item{bf.prior}{A number between \code{0.5} and \code{2} (default \code{0.707}), the prior
+width to use in calculating Bayes factors.}
 
 \item{p.adjust.method}{Adjustment method for \emph{p}-values for multiple
 comparisons. Possible methods are: \code{"holm"} (default), \code{"hochberg"},
@@ -114,7 +119,7 @@ pairwise_comparisons(
   type = "parametric",
   var.equal = TRUE,
   paired = FALSE,
-  p.adjust.method = "bonferroni"
+  p.adjust.method = "none"
 )
 
 # if `var.equal = FALSE`, then Games-Howell test will be run
@@ -146,6 +151,15 @@ pairwise_comparisons(
   type = "robust",
   paired = FALSE,
   p.adjust.method = "fdr"
+)
+
+# Bayes Factor
+pairwise_comparisons(
+  data = ggplot2::msleep,
+  x = vore,
+  y = brainwt,
+  type = "bayes",
+  paired = FALSE
 )
 
 #------------------- within-subjects design ----------------------------
@@ -181,6 +195,16 @@ pairwise_comparisons(
   type = "robust",
   paired = TRUE,
   p.adjust.method = "hommel"
+)
+
+# Bayes Factor
+pairwise_comparisons(
+  data = bugs_long,
+  x = condition,
+  y = desire,
+  type = "bayes",
+  paired = TRUE,
+  bf.prior = 0.80
 )
 }
 }

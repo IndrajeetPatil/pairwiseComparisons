@@ -5,7 +5,7 @@
   ],
   "@type": "SoftwareSourceCode",
   "identifier": "pairwiseComparisons",
-  "description": "Multiple pairwise comparison tests on tidy data for\n    one-way analysis of variance for both between-subjects and\n    within-subjects designs. Currently, it supports only the most common\n    types of statistical analyses and tests: parametric (Welch's and\n    Student's t-test), nonparametric (Durbin-Conover test and\n    Dwass-Steel-Crichtlow-Fligner test), robust (Yuen’s trimmed means\n    test).",
+  "description": "Multiple pairwise comparison tests on tidy data for\n    one-way analysis of variance for both between-subjects and\n    within-subjects designs. Currently, it supports only the most common\n    types of statistical analyses and tests: parametric (Welch's and\n    Student's t-test), nonparametric (Durbin-Conover test\n    Dwass-Steel-Crichtlow-Fligner test), robust (Yuen’s trimmed means\n    test), and Bayes Factor (Student's t-test).",
   "name": "pairwiseComparisons: Multiple Pairwise Comparison Tests",
   "codeRepository": "https://github.com/IndrajeetPatil/pairwiseComparisons",
   "relatedLink": [
@@ -221,6 +221,19 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=tibble"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "tidyBF",
+      "name": "tidyBF",
+      "version": ">= 0.2.0",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://github.com/IndrajeetPatil/tidyBF"
     },
     {
       "@type": "SoftwareApplication",
