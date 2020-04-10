@@ -1,10 +1,8 @@
 # pairwiseComparisons 0.3.0
 
+  - Adds support for the Bayes Factor tests.
+
   - Exports the internal helper function `pairwise_caption`.
-
-# pairwiseComparisons 0.2.6
-
-  - Maintenance release to prepare for the upcoming release of `broomExtra`.
 
 # pairwiseComparisons 0.2.5
 
@@ -12,15 +10,11 @@
 
 # pairwiseComparisons 0.2.0
 
-BREAKING CHANGES
-
   - `pairwise_comparisons_caption` is removed since it was helpful only for
     `ggstatsplot`'s internal graphics display and wasn't of much utility outside
     of that context.
 
 # pairwiseComparisons 0.1.3
-
-MINOR CHANGES
 
   - Instead of cluttering the terminal with messages, `pairwise_comparisons`
     function now instead adds two columns (`test.details` and
@@ -30,18 +24,15 @@ MINOR CHANGES
 
 # pairwiseComparisons 0.1.2
 
-MINOR CHANGES
-
   - With `jmv 1.0.8`, the results from the Dwass-Steel-Crichtlow-Fligner test
     will be slightly different.
 
 # pairwiseComparisons 0.1.1
 
-BREAKING CHANGES
-
   - The `p.value.label` in the output dataframe has been renamed to `label` to
     consider the possibility that Bayes Factor tests might also be supported in
     future.
+    
   - The label now specified whether the *p*-value was adjusted or not for
     multiple comparisons.
 

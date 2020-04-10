@@ -46,13 +46,16 @@ r_binary_packages:
   - BH
   - stringi
   - BayesFactor
+  - metaBMA
+  - coda
+
 r_packages:
   - coin
   - WRS2
-  - coda
   - remotes
   - knitr
   - rmarkdown
+
 r_github_packages:
   - jimhester/lintr
   - r-lib/covr
