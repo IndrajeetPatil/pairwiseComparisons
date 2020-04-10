@@ -38,9 +38,8 @@
 #'   columns across the different types of statistics, there will be additional
 #'   columns specific to the `type` of test being run.
 #'
-#'   The `significance` column will display asterisks to indicate significance
-#'   of *p*-values in the American Psychological Association (APA) mandated
-#'   format:
+#'   The `significance` column asterisks indicate significance levels of
+#'   *p*-values in the American Psychological Association (APA) mandated format:
 #'   \itemize{
 #'   \item `ns` : > 0.05
 #'   \item `*` : < 0.05
@@ -48,8 +47,8 @@
 #'   \item `***` : < 0.001
 #'   }
 #'
-#' @importFrom dplyr select rename mutate mutate_if everything full_join vars
-#' @importFrom dplyr group_nest bind_cols
+#' @importFrom dplyr select rename mutate everything full_join vars
+#' @importFrom dplyr group_nest bind_cols rename_all recode matches
 #' @importFrom stats p.adjust pairwise.t.test na.omit aov TukeyHSD var sd
 #' @importFrom WRS2 lincon rmmcp
 #' @importFrom tidyr gather spread separate unnest nest
@@ -299,16 +298,16 @@ pairwise_comparisons <- function(data,
         )
 
       # extracting the pairwise tests and formatting the output
-      df <-
-        as.data.frame(jmv_pairs$comparisons[[1]]) %>%
-        as_tibble(.) %>%
-        dplyr::rename(
-          .data = .,
-          group1 = p1,
-          group2 = p2,
-          p.value = p
-        ) %>%
-        p_adjust_column_adder(df = ., p.adjust.method = p.adjust.method)
+      df <- as.data.frame(jmv_pairs$comparisons[[1]])
+      # %>%
+      #   as_tibble(.) %>%
+      #   dplyr::rename(
+      #     .data = .,
+      #     group1 = p1,
+      #     group2 = p2,
+      #     p.value = p
+      #   ) %>%
+      #   p_adjust_column_adder(df = ., p.adjust.method = p.adjust.method)
 
       # test details
       test.details <- "Dwass-Steel-Crichtlow-Fligner test"
@@ -327,22 +326,38 @@ pairwise_comparisons <- function(data,
         )
 
       # extracting the pairwise tests and formatting the output
-      df <-
-        as.data.frame(jmv_pairs$comp) %>%
-        as_tibble(.) %>%
-        dplyr::select(.data = ., -sep) %>%
-        dplyr::rename(
-          .data = .,
-          group1 = i1,
-          group2 = i2,
-          statistic = stat,
-          p.value = p
-        ) %>%
-        p_adjust_column_adder(df = ., p.adjust.method = p.adjust.method)
+      df <- as.data.frame(jmv_pairs$comp)
+      # %>%
+      #   as_tibble(.) %>%
+      #   dplyr::select(.data = ., -sep) %>%
+      #   dplyr::rename(
+      #     .data = .,
+      #     group1 = i1,
+      #     group2 = i2,
+      #     statistic = stat,
+      #     p.value = p
+      #   ) %>%
+      #   p_adjust_column_adder(df = ., p.adjust.method = p.adjust.method)
 
       # test details
       test.details <- "Durbin-Conover test"
     }
+
+    # cleanup
+    df %<>%
+      as_tibble(.) %>%
+      dplyr::select(.data = ., -dplyr::matches("sep")) %>%
+      dplyr::rename_all(
+        .tbl = .,
+        .funs = dplyr::recode,
+        "p1" = "group1",
+        "p2" = "group2",
+        "i1" = "group1",
+        "i2" = "group2",
+        "stat" = "statistic",
+        "p" = "p.value"
+      ) %>%
+      p_adjust_column_adder(df = ., p.adjust.method = p.adjust.method)
   }
 
   # ---------------------------- robust ----------------------------------
@@ -423,8 +438,7 @@ pairwise_comparisons <- function(data,
         .y = as.character(df$group1),
         .f = function(a, b) {
           data %>%
-            dplyr::filter(.data = ., !is.na({{ x }})) %>%
-            dplyr::filter(.data = ., !is.na({{ y }})) %>%
+            dplyr::filter(.data = ., !is.na({{ x }}), !is.na({{ y }})) %>%
             dplyr::filter(.data = ., {{ x }} %in% c(a, b)) %>%
             droplevels() %>%
             as.data.frame()
@@ -456,9 +470,6 @@ pairwise_comparisons <- function(data,
               "list(~log[e](BF[10])",
               "==",
               specify_decimal_p(x = .$log_e_bf10, k = k),
-              # ", ~italic(r)[Cauchy]^JZS",
-              # "==",
-              # specify_decimal_p(x = .$bf.prior, k = k),
               ")",
               sep = ""
             )
@@ -474,13 +485,8 @@ pairwise_comparisons <- function(data,
 
   # ---------------------------- cleanup ----------------------------------
 
-  # if there are factors, covert them to character to make life easy
+  # final cleanup for p-value labels
   df %<>%
-    dplyr::mutate_if(
-      .tbl = .,
-      .predicate = is.factor,
-      .funs = ~ as.character(.)
-    ) %>%
     dplyr::mutate(.data = ., rowid = dplyr::row_number()) %>%
     dplyr::group_nest(.tbl = ., rowid) %>%
     dplyr::mutate(

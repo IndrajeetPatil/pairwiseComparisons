@@ -240,9 +240,8 @@ column corresponding to this comparison. The dataframe will also contain a
 this needs to be displayed in <code>geom_ggsignif</code>. In addition to these common
 columns across the different types of statistics, there will be additional
 columns specific to the <code>type</code> of test being run.</p>
-<p>The <code>significance</code> column will display asterisks to indicate significance
-of <em>p</em>-values in the American Psychological Association (APA) mandated
-format:</p><ul>
+<p>The <code>significance</code> column asterisks indicate significance levels of
+<em>p</em>-values in the American Psychological Association (APA) mandated format:</p><ul>
 <li><p><code>ns</code> : &gt; 0.05</p></li>
 <li><p><code>*</code> : &lt; 0.05</p></li>
 <li><p><code>**</code> : &lt; 0.01</p></li>
@@ -301,7 +300,7 @@ format:</p><ul>
   <span class='kw'>p.adjust.method</span> <span class='kw'>=</span> <span class='st'>"bonferroni"</span>
 )</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 6 x 11</span><span>
 #&gt;   group1 group2  mean.difference    se t.value    df p.value significance
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>             </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>             </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       
 #&gt; </span><span style='color: #BCBCBC;'>1</span><span> omni   herbi             0.476 0.255   1.32   20.9       1 ns          
 #&gt; </span><span style='color: #BCBCBC;'>2</span><span> omni   carni            -</span><span style='color: #BB0000;'>0.066</span><span> 0.061   0.774  21.1       1 ns          
 #&gt; </span><span style='color: #BCBCBC;'>3</span><span> omni   insecti          -</span><span style='color: #BB0000;'>0.124</span><span> 0.057   1.55   17.2       1 ns          
@@ -326,7 +325,7 @@ format:</p><ul>
   <span class='kw'>p.adjust.method</span> <span class='kw'>=</span> <span class='st'>"none"</span>
 )</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 6 x 8</span><span>
 #&gt;   group1  group2       W p.value significance
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       
 #&gt; </span><span style='color: #BCBCBC;'>1</span><span> carni   herbi   -</span><span style='color: #BB0000;'>0.8</span><span>     0.942 ns          
 #&gt; </span><span style='color: #BCBCBC;'>2</span><span> carni   insecti -</span><span style='color: #BB0000;'>2.36</span><span>    0.342 ns          
 #&gt; </span><span style='color: #BCBCBC;'>3</span><span> carni   omni    -</span><span style='color: #BB0000;'>1.72</span><span>    0.619 ns          
@@ -446,7 +445,7 @@ format:</p><ul>
   <span class='kw'>p.adjust.method</span> <span class='kw'>=</span> <span class='st'>"BY"</span>
 )</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 6 x 8</span><span>
 #&gt;   group1 group2 statistic  p.value significance
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       
 #&gt; </span><span style='color: #BCBCBC;'>1</span><span> HDHF   HDLF        4.78 1.44</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 5</span><span> ***         
 #&gt; </span><span style='color: #BCBCBC;'>2</span><span> HDHF   LDHF        2.44 4.47</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 2</span><span> *           
 #&gt; </span><span style='color: #BCBCBC;'>3</span><span> HDHF   LDLF        8.01 5.45</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-13</span><span> ***         

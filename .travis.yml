@@ -32,7 +32,6 @@ r_binary_packages:
   - SparseM
   - httpuv
   - markdown
-  - sem
   - readxl
   - openxlsx
   - pander
@@ -48,10 +47,10 @@ r_binary_packages:
   - BayesFactor
   - metaBMA
   - coda
+  - coin
+  - multcomp
 
 r_packages:
-  - coin
-  - WRS2
   - remotes
   - knitr
   - rmarkdown

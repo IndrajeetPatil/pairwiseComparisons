@@ -83,9 +83,8 @@ this needs to be displayed in \code{geom_ggsignif}. In addition to these common
 columns across the different types of statistics, there will be additional
 columns specific to the \code{type} of test being run.
 
-The \code{significance} column will display asterisks to indicate significance
-of \emph{p}-values in the American Psychological Association (APA) mandated
-format:
+The \code{significance} column asterisks indicate significance levels of
+\emph{p}-values in the American Psychological Association (APA) mandated format:
 \itemize{
 \item \code{ns} : > 0.05
 \item \code{*} : < 0.05
