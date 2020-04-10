@@ -91,7 +91,7 @@ Parametric | No | Games-Howell test | <font color="green">Yes</font>
 Parametric | Yes | Student's *t*-test | <font color="green">Yes</font>  
 Non-parametric | No | Dwass-Steel-Crichtlow-Fligner test | <font color="green">Yes</font>  
 Robust | No | Yuen's trimmed means test | <font color="green">Yes</font>  
-Bayes Factor | `NA` | Student's *t*-test | <font color="green">Yes</font>
+Bayes Factor | `NA` | Student's *t*-test | `NA`
 
 ## Within-subjects design
 
@@ -100,7 +100,7 @@ Type | Test | *p*-value adjustment?
 Parametric | Student's *t*-test | <font color="green">Yes</font>  
 Non-parametric | Durbin-Conover test | <font color="green">Yes</font>  
 Robust | Yuen's trimmed means test | <font color="green">Yes</font>  
-Bayes Factor | Student's *t*-test | <font color="green">Yes</font>
+Bayes Factor | Student's *t*-test | `NA`
 
 # Examples
 
@@ -108,7 +108,7 @@ Here we will see specific examples of how to use this function for different
 types of
 
   - designs (between or within subjects)
-  - statistics (parametric, non-parametric, robust)
+  - statistics (parametric, non-parametric, robust, Bayes Factor)
   - *p*-value adjustment methods
 
 ## Between-subjects design
@@ -221,7 +221,7 @@ pairwise_comparisons(
 
 # Using `pairwiseComparisons` with `ggsignif` to display results
 
-## Example-1
+## Example-1: between-subjects
 
 ```{r ggisignif}
 # needed libraries
@@ -255,7 +255,7 @@ p +
   )
 ```
 
-## Example-2
+## Example-2: within-subjects
 
 ```{r ggisignif2}
 # needed libraries
@@ -285,12 +285,6 @@ p +
     parse = TRUE
   )
 ```
-
-# Code coverage
-
-As the code stands right now, here is the code coverage for all primary
-functions involved:
-<https://codecov.io/gh/IndrajeetPatil/pairwiseComparisons/tree/master/R>
 
 # Contributing
 

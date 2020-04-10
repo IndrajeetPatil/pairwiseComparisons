@@ -7,4 +7,4 @@
 
 0 errors | 0 warnings | 0 note
 
-  - Minor maintenance release to rely on new functions from `ipmisc` package. 
+  - Adds support for Bayes Factor tests. 

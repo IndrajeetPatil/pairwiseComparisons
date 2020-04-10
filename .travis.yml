@@ -45,7 +45,7 @@ r_binary_packages:
   - bridgesampling
   - BH
   - stringi
-  - fastGHQuad
+  - BayesFactor
 r_packages:
   - coin
   - WRS2
