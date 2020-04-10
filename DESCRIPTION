@@ -27,7 +27,7 @@ Imports:
     broomExtra,
     dplyr,
     forcats,
-    ipmisc,
+    ipmisc (>= 2.0.0),
     jmv,
     purrr,
     rlang,
@@ -42,6 +42,8 @@ Suggests:
     rmarkdown,
     spelling,
     testthat
+Remotes:
+    IndrajeetPatil/ipmisc
 Encoding: UTF-8
 Language: en-US
 LazyData: true
