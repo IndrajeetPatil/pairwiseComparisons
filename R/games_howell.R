@@ -7,6 +7,7 @@
 #'
 #' @importFrom stats ptukey qtukey
 #' @importFrom utils combn
+#' @importFrom dplyr select everything
 #'
 #' @note This is based on the implementation of Games-Howell test by Aaron
 #'   Schlegel (https://rpubs.com/aaronsc32)  and published on RPubs
@@ -28,7 +29,7 @@ games_howell <- function(data, x, y) {
     ) %>%
     tidyr::drop_na(data = .) %>%
     dplyr::mutate(.data = ., x = droplevels(as.factor(x))) %>%
-    tibble::as_tibble(x = .)
+    as_tibble(.)
 
   # variables of interest for running the test
   grp <- data$x
@@ -141,7 +142,7 @@ games_howell <- function(data, x, y) {
 
   # converting it to tibble
   results %<>%
-    tibble::as_tibble(x = .) %>%
+    as_tibble(.) %>%
     dplyr::select(
       .data = .,
       group1:mean.difference,

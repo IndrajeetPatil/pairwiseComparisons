@@ -14,14 +14,14 @@
   ],
   "issueTracker": "\n    https://github.com/IndrajeetPatil/pairwiseComparisons/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "0.2.6",
+  "version": "0.3.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
-    "version": "3.6.2",
+    "version": "4.0.0",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 3.6.2 (2019-12-12)",
+  "runtimePlatform": "R Under development (unstable) (2020-02-28 r77874)",
   "author": [
     {
       "@type": "Person",

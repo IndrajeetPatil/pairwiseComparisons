@@ -1,3 +1,7 @@
+# pairwiseComparisons 0.3.0
+
+  - Exports the internal helper function `pairwise_caption`.
+
 # pairwiseComparisons 0.2.6
 
   - Maintenance release to prepare for the upcoming release of `broomExtra`.

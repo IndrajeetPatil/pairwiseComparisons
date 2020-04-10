@@ -1,7 +1,5 @@
 ---
-output:
-  github_document:
-    pandoc_args: --webtex
+output: github_document
 ---
 
   <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -47,7 +45,7 @@ are available.
 To get the latest, stable `CRAN` release:
 
 ```{r installationCRAN, eval = FALSE}
-install.packages(pkgs = "pairwiseComparisons")
+install.packages("pairwiseComparisons")
 ```
 
 You can get the **development** version of the package from `GitHub`. To see
@@ -60,7 +58,7 @@ prefer-
 
 ```{r installation1, eval = FALSE}
 # needed package to download from GitHub repo
-install.packages(pkgs = "remotes")
+install.packages("remotes")
 
 # downloading the package from GitHub
 remotes::install_github(
@@ -93,8 +91,7 @@ Parametric | No | Games-Howell test | <font color="green">Yes</font>
 Parametric | Yes | Student's *t*-test | <font color="green">Yes</font>  
 Non-parametric | No | Dwass-Steel-Crichtlow-Fligner test | <font color="green">Yes</font>  
 Robust | No | Yuen's trimmed means test | <font color="green">Yes</font>  
-Bayes Factor | No | <font color="red">No</font> | <font color="red">No</font>
-Bayes Factor | Yes | <font color="red">No</font> | <font color="red">No</font>
+Bayes Factor | `NA` | Student's *t*-test | <font color="red">No</font>
 
 ## Within-subjects design
 
@@ -103,7 +100,7 @@ Type | Test | *p*-value adjustment?
 Parametric | Student's *t*-test | <font color="green">Yes</font>  
 Non-parametric | Durbin-Conover test | <font color="green">Yes</font>  
 Robust | Yuen's trimmed means test | <font color="green">Yes</font>  
-Bayes Factor | <font color="red">No</font> | <font color="red">No</font>
+Bayes Factor | Student's *t*-test | <font color="red">No</font>
 
 # Examples
 

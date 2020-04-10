@@ -2,7 +2,6 @@
 #' @name pairwise_comparisons
 #' @description Calculate parametric, non-parametric, and robust pairwise
 #'   comparisons between group levels with corrections for multiple testing.
-#' @author \href{https://github.com/IndrajeetPatil}{Indrajeet Patil}
 #'
 #' @param data A dataframe (or a tibble) from which variables specified are to
 #'   be taken. A matrix or tables will **not** be accepted.
@@ -54,11 +53,12 @@
 #' @importFrom WRS2 lincon rmmcp
 #' @importFrom tidyr gather spread separate unnest nest
 #' @importFrom rlang !! enquo as_string ensym
-#' @importFrom tibble as_tibble rowid_to_column enframe
+#' @importFrom tibble enframe
 #' @importFrom jmv anovaNP anovaRMNP
 #' @importFrom forcats fct_relabel
 #' @importFrom purrr map
 #' @importFrom broomExtra tidy
+#' @importFrom ipmisc stats_type_switch
 #'
 #' @examples
 #'
@@ -164,6 +164,8 @@ pairwise_comparisons <- function(data,
                                  p.adjust.method = "holm",
                                  k = 2,
                                  ...) {
+  # standardize stats type
+  type <- ipmisc::stats_type_switch(type)
 
   # ensure the arguments work quoted or unquoted
   x <- rlang::ensym(x)
@@ -175,11 +177,11 @@ pairwise_comparisons <- function(data,
   data %<>%
     dplyr::select(.data = ., {{ x }}, {{ y }}) %>%
     dplyr::mutate(.data = ., {{ x }} := droplevels(as.factor({{ x }}))) %>%
-    tibble::as_tibble(.)
+    as_tibble(.)
 
   # ---------------------------- parametric ---------------------------------
 
-  if (type %in% c("parametric", "p")) {
+  if (type == "parametric") {
     if (isTRUE(var.equal) || isTRUE(paired)) {
       # anova model
       aovmodel <- stats::aov(
@@ -264,7 +266,7 @@ pairwise_comparisons <- function(data,
 
   # ---------------------------- nonparametric ----------------------------
 
-  if (type %in% c("nonparametric", "np")) {
+  if (type == "nonparametric") {
     if (isFALSE(paired)) {
       # running Dwass-Steel-Crichtlow-Fligner test using `jmv` package
       jmv_pairs <-
@@ -278,7 +280,7 @@ pairwise_comparisons <- function(data,
       # extracting the pairwise tests and formatting the output
       df <-
         as.data.frame(jmv_pairs$comparisons[[1]]) %>%
-        tibble::as_tibble(.) %>%
+        as_tibble(.) %>%
         dplyr::rename(
           .data = .,
           group1 = p1,
@@ -306,7 +308,7 @@ pairwise_comparisons <- function(data,
       # extracting the pairwise tests and formatting the output
       df <-
         as.data.frame(jmv_pairs$comp) %>%
-        tibble::as_tibble(.) %>%
+        as_tibble(.) %>%
         dplyr::select(.data = ., -sep) %>%
         dplyr::rename(
           .data = .,
@@ -324,7 +326,7 @@ pairwise_comparisons <- function(data,
 
   # ---------------------------- robust ----------------------------------
 
-  if (type %in% c("robust", "r")) {
+  if (type == "robust") {
     if (isFALSE(paired)) {
       # object with all details about pairwise comparisons
       rob_pairwise_df <-
@@ -352,7 +354,7 @@ pairwise_comparisons <- function(data,
 
     # extracting the robust pairwise comparisons and tidying up names
     rob_df_tidy <-
-      suppressMessages(tibble::as_tibble(
+      suppressMessages(as_tibble(
         x = rob_pairwise_df$comp,
         .name_repair = "unique"
       )) %>%
@@ -395,7 +397,7 @@ pairwise_comparisons <- function(data,
   # ---------------------------- bayes factor --------------------------------
 
   # print a message telling the user that this is currently not supported
-  if (type %in% c("bf", "bayes")) {
+  if (type == "bayes") {
     stop(message("No pairwise comparisons currently available.\n"), call. = FALSE)
   }
 
@@ -441,24 +443,9 @@ pairwise_comparisons <- function(data,
     )
 
   # return
-  return(tibble::as_tibble(df))
+  return(as_tibble(df))
 }
 
-
-#' @noRd
-#'
-#' @importFrom rlang :=
-#'
-#' @keywords internal
-
-df_cleanup_paired <- function(data, x, y) {
-  data %<>%
-    long_to_wide_converter(data = ., x = {{ x }}, y = {{ y }}) %>%
-    tidyr::gather(data = ., key, value, -rowid) %>%
-    dplyr::arrange(.data = ., rowid) %>%
-    dplyr::rename(.data = ., {{ x }} := key, {{ y }} := value) %>%
-    dplyr::mutate(.data = ., {{ x }} := factor({{ x }}))
-}
 
 #' @name pairwise_comparisons
 #' @aliases  pairwise_comparisons

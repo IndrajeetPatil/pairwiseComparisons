@@ -184,6 +184,3 @@ pairwise_comparisons(
 )
 }
 }
-\author{
-\href{https://github.com/IndrajeetPatil}{Indrajeet Patil}
-}

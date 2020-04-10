@@ -1,5 +1,3 @@
-context("pairwise_comparisons")
-
 # between-subjects design --------------------------------------------------
 
 testthat::test_that(
@@ -8,55 +6,67 @@ testthat::test_that(
     set.seed(123)
 
     # student's t
-    df1 <- pairwiseComparisons::pairwise_comparisons(
-      data = ggplot2::msleep,
-      x = vore,
-      y = brainwt,
-      type = "p",
-      var.equal = TRUE,
-      paired = FALSE,
-      p.adjust.method = "bonferroni"
-    )
+    df1 <-
+      pairwiseComparisons::pairwise_comparisons(
+        data = ggplot2::msleep,
+        x = vore,
+        y = "brainwt",
+        type = "p",
+        var.equal = TRUE,
+        paired = FALSE,
+        p.adjust.method = "bonferroni"
+      )
 
     # games-howell
-    df2 <- pairwiseComparisons::pairwise_comparisons(
-      data = ggplot2::msleep,
-      x = vore,
-      y = brainwt,
-      type = "p",
-      var.equal = FALSE,
-      paired = FALSE,
-      p.adjust.method = "bonferroni"
-    )
+    df_msleep <- ggplot2::msleep
+
+    # adding empty factor level (shouldn't change results)
+    df_msleep %<>%
+      dplyr::mutate(vore = as.factor(vore),
+                    vore = forcats::fct_expand(vore, "random"))
+
+    df2 <-
+      pairwiseComparisons::pairwise_comparisons(
+        data = df_msleep,
+        x = "vore",
+        y = brainwt,
+        type = "p",
+        var.equal = FALSE,
+        paired = FALSE,
+        p.adjust.method = "bonferroni"
+      )
 
     # Dwass-Steel-Crichtlow-Fligner test
-    df3 <- pairwiseComparisons::pairwise_comparisons(
-      data = ggplot2::msleep,
-      x = vore,
-      y = brainwt,
-      type = "np",
-      paired = FALSE,
-      p.adjust.method = "none"
-    )
+    df3 <-
+      pairwiseComparisons::pairwise_comparisons(
+        data = ggplot2::msleep,
+        x = vore,
+        y = brainwt,
+        type = "np",
+        paired = FALSE,
+        p.adjust.method = "none"
+      )
 
     # robust t test
-    df4 <- pairwiseComparisons::pairwise_comparisons(
-      data = ggplot2::msleep,
-      x = vore,
-      y = brainwt,
-      type = "r",
-      paired = FALSE,
-      p.adjust.method = "fdr"
-    )
+    df4 <-
+      pairwiseComparisons::pairwise_comparisons(
+        data = ggplot2::msleep,
+        x = vore,
+        y = brainwt,
+        type = "r",
+        paired = FALSE,
+        p.adjust.method = "fdr"
+      )
 
     # checking the edge case where factor level names contain `-`
     set.seed(123)
-    df5 <- pairwiseComparisons::pairwise_comparisons(
-      data = movies_wide,
-      x = mpaa,
-      y = rating,
-      var.equal = TRUE
-    )
+    df5 <-
+      pairwiseComparisons::pairwise_comparisons(
+        data = movies_wide,
+        x = mpaa,
+        y = rating,
+        var.equal = TRUE
+      )
 
     # checking dimensions of the results dataframe
     testthat::expect_equal(dim(df1), c(6L, 8L))
@@ -124,6 +134,14 @@ testthat::test_that(
       tolerance = 0.001
     )
 
+    testthat::expect_equal(
+      df1$group1,
+      c("carni", "carni", "carni", "herbi", "herbi", "insecti")
+    )
+    testthat::expect_equal(
+      df1$group2,
+      c("herbi", "insecti", "omni", "insecti", "omni", "omni")
+    )
     testthat::expect_equal(df5$group1, c("PG", "PG", "PG-13"))
     testthat::expect_equal(df5$group2, c("PG-13", "R", "R"))
     testthat::expect_equal(df5$mean.difference,

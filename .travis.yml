@@ -1,96 +1,61 @@
-# documentation at https://docs.travis-ci.com/user/languages/r
-
 language: r
-cache: packages
+r:
+  - release
+#  - devel
+
 latex: true
-warnings_are_errors: true
+warnings_are_errors: TRUE
 
 env:
   global:
-    #- R_MAX_NUM_DLLS=999
     - _R_CHECK_FORCE_SUGGESTS_=true
     - _R_CHECK_CRAN_INCOMING_=true
 
-jobs:
-  include:
-    - r: release
-      r_binary_packages:
-        - stringi
-        - magrittr
-        - curl
-        - jsonlite
-        - Rcpp
-        - RcppEigen
-        - openssl
-        - utf8
-        - gss
-        - haven
-        - minqa
-        - mvtnorm
-        - nloptr
-        - SparseM
-        - httpuv
-        - markdown
-        - sem
-        - readxl
-        - openxlsx
-        - pander
-        - git2r
-        - data.table
-      r_packages:
-        - rlang
-        - bindrcpp
-        - tidyr
-        - dplyr
-        - coin
-        - car
-        - afex
-        - jmv
-        - WRS2
-        - BH
-        - remotes
-      r_github_packages:
-        - jimhester/lintr
-        - r-lib/covr
-    - r: devel
-      r_binary_packages:
-        - stringi
-        - magrittr
-        - curl
-        - jsonlite
-        - Rcpp
-        - RcppEigen
-        - openssl
-        - utf8
-        - gss
-        - haven
-        - minqa
-        - mvtnorm
-        - nloptr
-        - SparseM
-        - httpuv
-        - markdown
-        - sem
-        - readxl
-        - openxlsx
-        - pander
-        - git2r
-        - data.table
-      r_packages:
-        - rlang
-        - bindrcpp
-        - tidyr
-        - dplyr
-        - coin
-        - car
-        - afex
-        - jmv
-        - WRS2
-        - BH
-        - remotes
-      r_github_packages:
-        - jimhester/lintr
-        - r-lib/covr
+cache:
+  - packages
+  - ccache
+
+r_binary_packages:
+  - magrittr
+  - curl
+  - jsonlite
+  - rstan
+  - Rcpp
+  - RcppEigen
+  - openssl
+  - utf8
+  - gss
+  - haven
+  - minqa
+  - mvtnorm
+  - nloptr
+  - SparseM
+  - httpuv
+  - markdown
+  - sem
+  - readxl
+  - openxlsx
+  - pander
+  - git2r
+  - rlang
+  - bindrcpp
+  - tidyr
+  - dplyr
+  - rstantools
+  - bridgesampling
+  - BH
+  - stringi
+  - fastGHQuad
+r_packages:
+  - coin
+  - WRS2
+  - coda
+  - remotes
+  - knitr
+  - rmarkdown
+r_github_packages:
+  - jimhester/lintr
+  - r-lib/covr
 
 addons:
   apt:

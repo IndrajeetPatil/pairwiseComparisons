@@ -1,5 +1,3 @@
-context("switch statements")
-
 # switch for p adjustment ------------------------------------------------
 
 testthat::test_that(
