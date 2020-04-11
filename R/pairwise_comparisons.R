@@ -47,13 +47,12 @@
 #'   \item `***` : < 0.001
 #'   }
 #'
-#' @importFrom dplyr select rename mutate everything full_join vars
+#' @importFrom dplyr select rename mutate everything full_join vars mutate_if
 #' @importFrom dplyr group_nest bind_cols rename_all recode matches
 #' @importFrom stats p.adjust pairwise.t.test na.omit aov TukeyHSD var sd
 #' @importFrom WRS2 lincon rmmcp
 #' @importFrom tidyr gather spread separate unnest nest
 #' @importFrom rlang !! enquo as_string ensym
-#' @importFrom tibble enframe
 #' @importFrom jmv anovaNP anovaRMNP
 #' @importFrom forcats fct_relabel
 #' @importFrom purrr map map2 map_dfr
@@ -299,15 +298,6 @@ pairwise_comparisons <- function(data,
 
       # extracting the pairwise tests and formatting the output
       df <- as.data.frame(jmv_pairs$comparisons[[1]])
-      # %>%
-      #   as_tibble(.) %>%
-      #   dplyr::rename(
-      #     .data = .,
-      #     group1 = p1,
-      #     group2 = p2,
-      #     p.value = p
-      #   ) %>%
-      #   p_adjust_column_adder(df = ., p.adjust.method = p.adjust.method)
 
       # test details
       test.details <- "Dwass-Steel-Crichtlow-Fligner test"
@@ -327,17 +317,6 @@ pairwise_comparisons <- function(data,
 
       # extracting the pairwise tests and formatting the output
       df <- as.data.frame(jmv_pairs$comp)
-      # %>%
-      #   as_tibble(.) %>%
-      #   dplyr::select(.data = ., -sep) %>%
-      #   dplyr::rename(
-      #     .data = .,
-      #     group1 = i1,
-      #     group2 = i2,
-      #     statistic = stat,
-      #     p.value = p
-      #   ) %>%
-      #   p_adjust_column_adder(df = ., p.adjust.method = p.adjust.method)
 
       # test details
       test.details <- "Durbin-Conover test"
@@ -410,7 +389,7 @@ pairwise_comparisons <- function(data,
             group1:group2
           ),
         # dataframe with factor levels
-        y = tibble::enframe(x = rob_pairwise_df$fnames, name = "rowid"),
+        y = enframe(x = rob_pairwise_df$fnames, name = "rowid"),
         by = "rowid"
       ) %>%
       dplyr::select(.data = ., -rowid) %>%
@@ -431,6 +410,14 @@ pairwise_comparisons <- function(data,
 
   # print a message telling the user that this is currently not supported
   if (type == "bayes") {
+    # convert groups to character type
+    df %<>%
+      dplyr::mutate_if(
+        .tbl = .,
+        .predicate = is.factor,
+        .funs = ~ as.character(.)
+      )
+
     # creating a list of dataframes with subsections of data
     df_list <-
       purrr::map2(
@@ -487,6 +474,11 @@ pairwise_comparisons <- function(data,
 
   # final cleanup for p-value labels
   df %<>%
+    dplyr::mutate_if(
+      .tbl = .,
+      .predicate = is.factor,
+      .funs = ~ as.character(.)
+    ) %>%
     dplyr::mutate(.data = ., rowid = dplyr::row_number()) %>%
     dplyr::group_nest(.tbl = ., rowid) %>%
     dplyr::mutate(

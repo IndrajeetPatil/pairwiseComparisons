@@ -1,5 +1,8 @@
 # pairwiseComparisons 0.3.0
 
+  - Due to changes made to downstream dependencies, the minimum R version
+    expected is bumped to `3.6.0`.
+
   - Adds support for the Bayes Factor tests.
 
   - Exports the internal helper function `pairwise_caption`.

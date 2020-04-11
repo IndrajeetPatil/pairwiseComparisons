@@ -7,4 +7,6 @@
 
 0 errors | 0 warnings | 0 note
 
-  - Adds support for Bayes Factor tests. 
+  - Adds support for Bayes Factor tests.
+  
+  - Adjusts to breaking changes from `ipmisc` package.

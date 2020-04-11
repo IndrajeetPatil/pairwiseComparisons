@@ -88,6 +88,14 @@ testthat::test_that(
     testthat::expect_equal(dim(df5), c(3L, 8L))
     testthat::expect_equal(dim(df6), c(6L, 12L))
 
+    # column types
+    testthat::expect_true(all(is.character(df1$group1), is.character(df1$group2)))
+    testthat::expect_true(all(is.character(df2$group1), is.character(df2$group2)))
+    testthat::expect_true(all(is.character(df3$group1), is.character(df3$group2)))
+    testthat::expect_true(all(is.character(df4$group1), is.character(df4$group2)))
+    testthat::expect_true(all(is.character(df5$group1), is.character(df5$group2)))
+    testthat::expect_true(all(is.character(df6$group1), is.character(df6$group2)))
+
     # test details
     testthat::expect_identical(unique(df1$test.details), "Student's t-test")
     testthat::expect_identical(unique(df2$test.details), "Games-Howell test")

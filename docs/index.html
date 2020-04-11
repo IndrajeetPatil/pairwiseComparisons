@@ -108,7 +108,7 @@
 <td><a href="https://CRAN.R-project.org/package=pairwiseComparisons"><img src="http://www.r-pkg.org/badges/version-ago/pairwiseComparisons" alt="CRAN_Release_Badge"></a></td>
 <td><a href="https://travis-ci.org/IndrajeetPatil/pairwiseComparisons"><img src="https://travis-ci.org/IndrajeetPatil/pairwiseComparisons.svg?branch=master" alt="Travis Build Status"></a></td>
 <td><a href="https://CRAN.R-project.org/package=pairwiseComparisons"><img src="https://cranlogs.r-pkg.org/badges/last-day/pairwiseComparisons?color=blue" alt="Daily downloads badge"></a></td>
-<td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/"><img src="https://img.shields.io/badge/GitHub-0.2.6-orange.svg?style=flat-square" alt="GitHub version"></a></td>
+<td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/"><img src="https://img.shields.io/badge/GitHub-0.3.0-orange.svg?style=flat-square" alt="GitHub version"></a></td>
 <td><a href="https://indrajeetpatil.github.io/pairwiseComparisons/"><img src="https://img.shields.io/badge/website-pairwiseComparisons-orange.svg?colorB=E91E63" alt="Website"></a></td>
 </tr>
 <tr class="even">
@@ -119,7 +119,7 @@
 <td><a href="https://www.rdocumentation.org/packages/pairwiseComparisons"><img src="https://www.rdocumentation.org/badges/version/pairwiseComparisons" alt="Rdoc"></a></td>
 </tr>
 <tr class="odd">
-<td><a href="https://cran.r-project.org/"><img src="https://img.shields.io/badge/R%3E%3D-3.5.0-6666ff.svg" alt="minimal R version"></a></td>
+<td><a href="https://cran.r-project.org/"><img src="https://img.shields.io/badge/R%3E%3D-3.6.0-6666ff.svg" alt="minimal R version"></a></td>
 <td><a href="https://www.tidyverse.org/lifecycle/"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="lifecycle"></a></td>
 <td><a href="https://CRAN.R-project.org/package=pairwiseComparisons"><img src="https://cranlogs.r-pkg.org/badges/last-month/pairwiseComparisons?color=blue" alt="Monthly downloads badge"></a></td>
 <td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/issues"><img src="https://img.shields.io/badge/issues-0-red.svg" alt="Github Issues"></a></td>
@@ -136,7 +136,7 @@
 <td><a href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img src="https://img.shields.io/badge/licence-GPL--3-blue.svg" alt="Licence"></a></td>
 <td><a href="https://codecov.io/gh/IndrajeetPatil/pairwiseComparisons?branch=master"><img src="https://codecov.io/gh/IndrajeetPatil/pairwiseComparisons/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></td>
 <td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/blob/master/tests/README.md"><img src="https://img.shields.io/badge/covrpage-Last_Build_2020_02_11-brightgreen.svg" alt="Covrpage Summary"></a></td>
-<td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/commits/master"><img src="https://img.shields.io/badge/last%20change-2020--04--10-yellowgreen.svg" alt="Last-changedate"></a></td>
+<td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/commits/master"><img src="https://img.shields.io/badge/last%20change-2020--04--11-yellowgreen.svg" alt="Last-changedate"></a></td>
 <td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/commits/master"><img src="https://img.shields.io/github/last-commit/IndrajeetPatil/pairwiseComparisons.svg" alt="GitHub last commit"></a></td>
 </tr>
 <tr class="even">
@@ -416,7 +416,7 @@
 )
 <span class="co">#&gt; # A tibble: 6 x 12</span>
 <span class="co">#&gt;   group1 group2   bf10     error  bf01 log_e_bf10 log_e_bf01 log_10_bf10</span>
-<span class="co">#&gt;   &lt;fct&gt;  &lt;fct&gt;   &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;</span>
+<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;   &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 omni   herbi   0.571 0.0000411  1.75     -0.560      0.560      -0.243</span>
 <span class="co">#&gt; 2 omni   carni   0.427 0.000105   2.34     -0.851      0.851      -0.369</span>
 <span class="co">#&gt; 3 omni   insecti 0.545 0.0000190  1.83     -0.606      0.606      -0.263</span>
@@ -608,7 +608,7 @@
     <span class="kw">na.rm</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
     <span class="kw">parse</span> <span class="kw">=</span> <span class="fl">TRUE</span>
   )</pre></div>
-<p><img src="reference/figures/README-ggisignif-1.png" width="100%"></p>
+<p><img src="reference/figures/README-ggsignif-1.png" width="100%"></p>
 </div>
 <div id="example-2-within-subjects" class="section level2">
 <h2 class="hasAnchor">
@@ -619,7 +619,7 @@
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">ggsignif</span>)
 
 <span class="co"># creating a basic plot</span>
-<span class="no">p</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="kw pkg">WRS2</span><span class="kw ns">::</span><span class="no"><a href="https://rdrr.io/pkg/WRS2/man/WineTasting.html">WineTasting</a></span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="no">Wine</span>, <span class="no">Taste</span>)) + <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span>(<span class="kw">notch</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
+<span class="no">p</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="kw pkg">WRS2</span><span class="kw ns">::</span><span class="no"><a href="https://rdrr.io/pkg/WRS2/man/WineTasting.html">WineTasting</a></span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="no">Wine</span>, <span class="no">Taste</span>)) + <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span>()
 
 <span class="co"># using `pairwiseComparisons` package to create a dataframe with results</span>
 (<span class="no">df</span> <span class="kw">&lt;-</span>
@@ -644,13 +644,13 @@
     <span class="kw">comparisons</span> <span class="kw">=</span> <span class="no">df</span>$<span class="no">groups</span>,
     <span class="kw">map_signif_level</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
     <span class="kw">tip_length</span> <span class="kw">=</span> <span class="fl">0.01</span>,
-    <span class="kw">y_position</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">6.5</span>, <span class="fl">6.75</span>, <span class="fl">7</span>),
+    <span class="kw">y_position</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">6.5</span>, <span class="fl">6.65</span>, <span class="fl">6.8</span>),
     <span class="kw">annotations</span> <span class="kw">=</span> <span class="no">df</span>$<span class="no">label</span>,
     <span class="kw">test</span> <span class="kw">=</span> <span class="kw">NULL</span>,
     <span class="kw">na.rm</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
     <span class="kw">parse</span> <span class="kw">=</span> <span class="fl">TRUE</span>
   )</pre></div>
-<p><img src="reference/figures/README-ggisignif2-1.png" width="100%"></p>
+<p><img src="reference/figures/README-ggsignif2-1.png" width="100%"></p>
 </div>
 </div>
 <div id="contributing" class="section level1">

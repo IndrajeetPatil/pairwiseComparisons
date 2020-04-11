@@ -49,6 +49,8 @@ r_binary_packages:
   - coda
   - coin
   - multcomp
+  - pbkrtest
+  - afex
 
 r_packages:
   - remotes
