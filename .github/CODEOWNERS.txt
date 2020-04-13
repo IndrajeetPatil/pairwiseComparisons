@@ -1,0 +1,2 @@
+# CODEOWNERS for pairwiseComparisons
+.github/CODEOWNERS @IndrajeetPatil

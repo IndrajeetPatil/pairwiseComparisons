@@ -1,3 +1,5 @@
+# pairwiseComparisons 0.3.0.9000
+
 # pairwiseComparisons 0.3.0
 
   - Due to changes made to downstream dependencies, the minimum R version

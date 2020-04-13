@@ -50,12 +50,13 @@ r_binary_packages:
   - coin
   - multcomp
   - pbkrtest
-  - afex
+  - jmv
 
 r_packages:
   - remotes
   - knitr
   - rmarkdown
+  - ipmisc
 
 r_github_packages:
   - jimhester/lintr
