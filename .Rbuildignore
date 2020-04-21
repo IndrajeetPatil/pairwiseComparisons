@@ -38,3 +38,7 @@ tests\^spelling
 ^paper.*$
 references.bib
 ^API$
+^\.pre-commit-config\.yaml$
+^\.github/workflows/R\.yaml$
+^\.github/workflows/pr-commands\.yaml$
+hextools

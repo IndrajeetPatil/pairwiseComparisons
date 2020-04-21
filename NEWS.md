@@ -1,5 +1,7 @@
 # pairwiseComparisons 0.3.0.9000
 
+  - Thanks to Sarah, the package has a hexsticker. :)
+
 # pairwiseComparisons 0.3.0
 
   - Due to changes made to downstream dependencies, the minimum R version

@@ -32,8 +32,6 @@ r_binary_packages:
   - SparseM
   - httpuv
   - markdown
-  - readxl
-  - openxlsx
   - pander
   - git2r
   - rlang
@@ -50,7 +48,6 @@ r_binary_packages:
   - coin
   - multcomp
   - pbkrtest
-  - jmv
 
 r_packages:
   - remotes
