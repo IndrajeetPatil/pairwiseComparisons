@@ -18,7 +18,6 @@
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
-    "version": "4.0.0",
     "url": "https://r-project.org"
   },
   "runtimePlatform": "R Under development (unstable) (2020-02-28 r77874)",
@@ -252,16 +251,8 @@
     }
   ],
   "releaseNotes": "https://github.com/IndrajeetPatil/pairwiseComparisons/blob/master/NEWS.md",
-  "contIntegration": [
-    "https://travis-ci.org/IndrajeetPatil/ggstatsplot",
-    "https://ci.appveyor.com/project/IndrajeetPatil/ggstatsplot",
-    "https://coveralls.io/github/IndrajeetPatil/ggstatsplot?branch=master",
-    "https://codecov.io/gh/IndrajeetPatil/ggstatsplot?branch=master"
-  ],
-  "developmentStatus": [
-    "https://www.tidyverse.org/lifecycle/",
-    "http://www.repostatus.org/#active"
-  ],
+  "contIntegration": ["https://travis-ci.org/IndrajeetPatil/pairwiseComparisons", "https://ci.appveyor.com/project/IndrajeetPatil/pairwiseComparisons", "https://coveralls.io/github/IndrajeetPatil/pairwiseComparisons?branch=master", "https://codecov.io/gh/IndrajeetPatil/pairwiseComparisons?branch=master"],
+  "developmentStatus": ["https://www.tidyverse.org/lifecycle/", "http://www.repostatus.org/#active"],
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -283,5 +274,6 @@
     "@type": "Organization",
     "name": "Comprehensive R Archive Network (CRAN)",
     "url": "https://cran.r-project.org"
-  }
+  },
+  "fileSize": "1503.121KB"
 }
