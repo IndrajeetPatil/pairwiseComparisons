@@ -48,6 +48,8 @@ r_binary_packages:
   - coin
   - multcomp
   - pbkrtest
+  - mc2d
+  - data.table
 
 r_packages:
   - remotes
