@@ -48,12 +48,19 @@ r_binary_packages:
   - coin
   - multcomp
   - pbkrtest
+  - mc2d
+  - data.table
+  - lme4
+  - lmerTest
+  - GGally
+  - emmeans
 
 r_packages:
   - remotes
   - knitr
   - rmarkdown
   - ipmisc
+  - afex
 
 r_github_packages:
   - jimhester/lintr
