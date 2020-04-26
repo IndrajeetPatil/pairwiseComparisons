@@ -53,6 +53,8 @@ r_binary_packages:
   - lme4
   - lmerTest
   - GGally
+  - afex
+  - emmeans
 
 r_packages:
   - remotes
