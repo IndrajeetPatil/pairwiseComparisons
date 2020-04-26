@@ -50,6 +50,8 @@ r_binary_packages:
   - pbkrtest
   - mc2d
   - data.table
+  - lme4
+  - lmerTest
 
 r_packages:
   - remotes
