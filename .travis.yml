@@ -47,21 +47,15 @@ repos:
 #   - BayesFactor
 #   - metaBMA
 #   - coda
-#   - coin
-#   - multcomp
+#   - coinmp
 #   - pbkrtest
 #   - mc2d
 #   - data.table
-#   - lme4
-#   - lmerTest
-#   - GGally
-#   - emmeans
 #
 # r_packages:
 #   - remotes
 #   - knitr
 #   - rmarkdown
-#   - afex
 
 r_github_packages:
   - jimhester/lintr
@@ -73,6 +67,7 @@ addons:
       - libudunits2-dev
       - libgdal-dev
       - libproj-dev
+      - libmpfr-dev
 
 before_install:
   - mkdir -p ~/.R
