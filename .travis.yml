@@ -2,7 +2,7 @@ language: r
 r:
   - release
   - devel
-
+dist: trusty
 latex: true
 warnings_are_errors: TRUE
 
@@ -11,57 +11,57 @@ env:
     - _R_CHECK_FORCE_SUGGESTS_=true
     - _R_CHECK_CRAN_INCOMING_=true
 
-#cache: packages
+cache: packages
 
 repos:
   CRAN: https://cloud.r-project.org
   ropensci: http://packages.ropensci.org
 
-# r_binary_packages:
-#   - magrittr
-#   - curl
-#   - jsonlite
-#   - rstan
-#   - Rcpp
-#   - RcppEigen
-#   - openssl
-#   - utf8
-#   - gss
-#   - haven
-#   - minqa
-#   - mvtnorm
-#   - nloptr
-#   - SparseM
-#   - httpuv
-#   - markdown
-#   - pander
-#   - git2r
-#   - rlang
-#   - bindrcpp
-#   - tidyr
-#   - dplyr
-#   - rstantools
-#   - bridgesampling
-#   - BH
-#   - stringi
-#   - BayesFactor
-#   - metaBMA
-#   - coda
-#   - coin
-#   - multcomp
-#   - pbkrtest
-#   - mc2d
-#   - data.table
-#   - lme4
-#   - lmerTest
-#   - GGally
-#   - emmeans
-#
-# r_packages:
-#   - remotes
-#   - knitr
-#   - rmarkdown
-#   - afex
+r_binary_packages:
+  - magrittr
+  - curl
+  - jsonlite
+  - rstan
+  - Rcpp
+  - RcppEigen
+  - openssl
+  - utf8
+  - gss
+  - haven
+  - minqa
+  - mvtnorm
+  - nloptr
+  - SparseM
+  - httpuv
+  - markdown
+  - pander
+  - git2r
+  - rlang
+  - bindrcpp
+  - tidyr
+  - dplyr
+  - rstantools
+  - bridgesampling
+  - BH
+  - stringi
+  - BayesFactor
+  - metaBMA
+  - coda
+  - coin
+  - multcomp
+  - pbkrtest
+  - mc2d
+  - data.table
+  - lme4
+  - lmerTest
+  - GGally
+  - emmeans
+
+r_packages:
+  - remotes
+  - knitr
+  - rmarkdown
+  - afex
 
 r_github_packages:
   - jimhester/lintr
