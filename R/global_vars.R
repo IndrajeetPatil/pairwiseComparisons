@@ -203,7 +203,8 @@ utils::globalVariables(
     "main",
     "pair1",
     "W",
-    "stat"
+    "stat",
+    "contrast"
   ),
   package = "pairwiseComparisons",
   add = FALSE
