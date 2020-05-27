@@ -1,8 +1,9 @@
-# pairwiseComparisons 1.0.0.9000
+# pairwiseComparisons 1.0.0
 
-  - Removes dependence on `jmv` and instead relies on `dunn.test` and `PMCMRplus`.
+  - Removes dependence on `jmv` and instead relies on `dunn.test` and
+    `PMCMRplus`. This significantly reduces number of dependencies.
   
-  - The non-parametric test has been changed to Dunn test.
+  - The non-parametric Dwass test has been changed to Dunn test.
 
 # pairwiseComparisons 0.3.1
 
