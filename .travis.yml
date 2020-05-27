@@ -1,7 +1,7 @@
 language: r
 r:
   - release
-#  - devel
+  - devel
 
 latex: true
 warnings_are_errors: TRUE
@@ -11,56 +11,15 @@ env:
     - _R_CHECK_FORCE_SUGGESTS_=true
     - _R_CHECK_CRAN_INCOMING_=true
 
-# cache:
-#   - packages
-#   - ccache
-
-r_binary_packages:
-  - magrittr
-  - curl
-  - jsonlite
-  - rstan
-  - Rcpp
-  - RcppEigen
-  - openssl
-  - utf8
-  - gss
-  - haven
-  - minqa
-  - mvtnorm
-  - nloptr
-  - SparseM
-  - httpuv
-  - markdown
-  - pander
-  - git2r
-  - rlang
-  - bindrcpp
-  - tidyr
-  - dplyr
-  - rstantools
-  - bridgesampling
-  - BH
-  - stringi
-  - BayesFactor
-  - metaBMA
-  - coda
-  - coin
-  - multcomp
-  - pbkrtest
-  - mc2d
-  - data.table
-  - lme4
-  - lmerTest
-  - GGally
-  - emmeans
-
 r_packages:
   - remotes
   - knitr
   - rmarkdown
-  - ipmisc
   - afex
+  - coda
+  - rstantools
+  - bridgesampling
+  - BH
 
 r_github_packages:
   - jimhester/lintr

@@ -226,7 +226,15 @@ pairwise_comparisons <- function(data,
       # extracting and cleaning up Tukey's HSD output
       df_tukey <-
         stats::TukeyHSD(x = aovmodel, conf.level = 0.95) %>%
-        broomExtra::tidy(.) %>%
+        broomExtra::tidy(.)
+
+      # breaking change in `broom 0.7.0`
+      if ("contrast" %in% names(df_tukey)) {
+        df_tukey %<>% dplyr::rename(.data = ., comparison = contrast)
+      }
+
+      # cleanup
+      df_tukey %<>%
         dplyr::select(.data = ., comparison, estimate) %>%
         tidyr::separate(
           data = .,
