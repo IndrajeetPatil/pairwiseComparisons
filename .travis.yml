@@ -13,51 +13,51 @@ env:
 
 cache: packages
 
-r_binary_packages:
-  - magrittr
-  - curl
-  - jsonlite
-  - rstan
-  - Rcpp
-  - RcppEigen
-  - openssl
-  - utf8
-  - gss
-  - haven
-  - minqa
-  - mvtnorm
-  - nloptr
-  - SparseM
-  - httpuv
-  - markdown
-  - pander
-  - git2r
-  - rlang
-  - bindrcpp
-  - tidyr
-  - dplyr
-  - rstantools
-  - bridgesampling
-  - BH
-  - stringi
-  - BayesFactor
-  - metaBMA
-  - coda
-  - coin
-  - multcomp
-  - pbkrtest
-  - mc2d
-  - data.table
-  - lme4
-  - lmerTest
-  - GGally
-  - emmeans
-
-r_packages:
-  - remotes
-  - knitr
-  - rmarkdown
-  - afex
+# r_binary_packages:
+#   - magrittr
+#   - curl
+#   - jsonlite
+#   - rstan
+#   - Rcpp
+#   - RcppEigen
+#   - openssl
+#   - utf8
+#   - gss
+#   - haven
+#   - minqa
+#   - mvtnorm
+#   - nloptr
+#   - SparseM
+#   - httpuv
+#   - markdown
+#   - pander
+#   - git2r
+#   - rlang
+#   - bindrcpp
+#   - tidyr
+#   - dplyr
+#   - rstantools
+#   - bridgesampling
+#   - BH
+#   - stringi
+#   - BayesFactor
+#   - metaBMA
+#   - coda
+#   - coin
+#   - multcomp
+#   - pbkrtest
+#   - mc2d
+#   - data.table
+#   - lme4
+#   - lmerTest
+#   - GGally
+#   - emmeans
+#
+# r_packages:
+#   - remotes
+#   - knitr
+#   - rmarkdown
+#   - afex
 
 r_github_packages:
   - jimhester/lintr
