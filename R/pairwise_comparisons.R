@@ -24,7 +24,7 @@
 #'   repeated measures/within-subjects or between-subjects. The default is
 #'   `FALSE`.
 #' @param k Number of digits after decimal point (should be an integer)
-#'   (Default: `k = 2`).
+#'   (Default: `k = 2L`).
 #' @param ... Current ignored.
 #' @inheritParams stats::t.test
 #' @inheritParams WRS2::rmmcp
@@ -52,23 +52,24 @@
 #' @importFrom stats p.adjust pairwise.t.test na.omit aov TukeyHSD var sd
 #' @importFrom WRS2 lincon rmmcp
 #' @importFrom tidyr gather spread separate unnest nest
+#' @importFrom dunn.test dunn.test
+#' @importFrom PMCMRplus durbinAllPairsTest
 #' @importFrom rlang !! enquo as_string ensym
-#' @importFrom jmv anovaNP anovaRMNP
 #' @importFrom forcats fct_relabel
 #' @importFrom purrr map map2 map_dfr
-#' @importFrom broomExtra tidy
+#' @importFrom broomExtra tidy easystats_to_tidy_names
 #' @importFrom ipmisc stats_type_switch
 #' @importFrom tidyBF bf_ttest
+#' @importFrom utils capture.output
 #'
 #' @examples
 #'
 #' \donttest{
-#' #------------------- between-subjects design ----------------------------
-#'
 #' # for reproducibility
 #' set.seed(123)
-#'
 #' library(pairwiseComparisons)
+#'
+#' #------------------- between-subjects design ----------------------------
 #'
 #' # parametric
 #' # if `var.equal = TRUE`, then Student's *t*-test will be run
@@ -191,7 +192,8 @@ pairwise_comparisons <- function(data,
   # ---------------------------- data cleanup -------------------------------
 
   # creating a dataframe
-  data %<>%
+  df_internal <-
+    data %>%
     dplyr::select(.data = ., {{ x }}, {{ y }}) %>%
     dplyr::mutate(.data = ., {{ x }} := droplevels(as.factor({{ x }}))) %>%
     as_tibble(.)
@@ -203,7 +205,7 @@ pairwise_comparisons <- function(data,
       # anova model
       aovmodel <- stats::aov(
         formula = rlang::new_formula({{ y }}, {{ x }}),
-        data = data
+        data = df_internal
       )
 
       # safeguarding against edge cases
@@ -254,8 +256,8 @@ pairwise_comparisons <- function(data,
       df_tidy <-
         broomExtra::tidy(
           stats::pairwise.t.test(
-            x = data %>% dplyr::pull({{ y }}),
-            g = data %>% dplyr::pull({{ x }}),
+            x = df_internal %>% dplyr::pull({{ y }}),
+            g = df_internal %>% dplyr::pull({{ x }}),
             p.adjust.method = p.adjust.method,
             paired = paired,
             alternative = "two.sided",
@@ -279,7 +281,7 @@ pairwise_comparisons <- function(data,
     } else {
       # dataframe with Games-Howell test results
       df <-
-        games_howell(data = data, x = {{ x }}, y = {{ y }}) %>%
+        games_howell(data = df_internal, x = {{ x }}, y = {{ y }}) %>%
         p_adjust_column_adder(df = ., p.adjust.method = p.adjust.method) %>%
         dplyr::select(.data = ., -conf.low, -conf.high)
 
@@ -292,56 +294,85 @@ pairwise_comparisons <- function(data,
 
   if (type == "nonparametric") {
     if (isFALSE(paired)) {
-      # running Dwass-Steel-Crichtlow-Fligner test using `jmv` package
-      jmv_pairs <-
-        jmv::anovaNP(
-          data = data,
-          deps = rlang::as_string(y),
-          group = rlang::as_string(x),
-          pairs = TRUE
+      # running Dunn test
+      invisible(utils::capture.output(df <-
+        as.data.frame(
+          dunn.test::dunn.test(
+            x = df_internal %>% dplyr::pull({{ y }}),
+            g = df_internal %>% dplyr::pull({{ x }}),
+            table = FALSE,
+            kw = FALSE,
+            label = FALSE,
+            alpha = 0.05,
+            method = "none"
+          )
+        ), file = NULL))
+
+      # cleanup
+      df %<>%
+        as_tibble(.) %>%
+        broomExtra::easystats_to_tidy_names(.) %>%
+        dplyr::mutate(z.value = abs(statistic)) %>%
+        dplyr::select(
+          .data = .,
+          comparisons,
+          z.value,
+          dplyr::everything(),
+          -"p.adjusted",
+          -statistic,
+          -chi2
+        ) %>%
+        tidyr::separate(
+          data = .,
+          col = "comparisons",
+          into = c("group1", "group2"),
+          sep = " - ",
+          remove = TRUE
         )
 
-      # extracting the pairwise tests and formatting the output
-      df <- as.data.frame(jmv_pairs$comparisons[[1]])
 
       # test details
-      test.details <- "Dwass-Steel-Crichtlow-Fligner test"
+      test.details <- "Dunn test"
     }
 
     # converting the entered long format data to wide format
     if (isTRUE(paired)) {
-      data_wide <- long_to_wide_converter(data = data, x = {{ x }}, y = {{ y }})
+      x_vec <- df_internal %>% dplyr::pull({{ x }})
+      y_vec <- df_internal %>% dplyr::pull({{ y }})
 
-      # running Durbin-Conover test using `jmv` package
-      jmv_pairs <-
-        jmv::anovaRMNP(
-          data = data_wide,
-          measures = names(data_wide[, -1]),
-          pairs = TRUE
+      # creating model object
+      mod <-
+        PMCMRplus::durbinAllPairsTest(
+          y = na.omit(matrix(
+            data = y_vec,
+            ncol = length(unique(x_vec)),
+            dimnames = list(
+              seq(1, length(y_vec) / length(unique(x_vec))),
+              unique(x_vec)
+            )
+          )),
+          p.adjust.method = "none"
         )
 
-      # extracting the pairwise tests and formatting the output
-      df <- as.data.frame(jmv_pairs$comp)
+
+      # combining into one dataframe
+      df <-
+        dplyr::bind_cols(
+          matrix_to_tidy(m = mod$statistic, col_names = c("group2", "group1", "W")),
+          dplyr::select(
+            matrix_to_tidy(m = mod$p.value, col_names = c("group2", "group1", "p.value")),
+            -dplyr::contains("group")
+          )
+        ) %>%
+        dplyr::select(.data = ., group1, dplyr::everything())
+
 
       # test details
       test.details <- "Durbin-Conover test"
     }
 
     # cleanup
-    df %<>%
-      as_tibble(.) %>%
-      dplyr::select(.data = ., -dplyr::matches("sep")) %>%
-      dplyr::rename_all(
-        .tbl = .,
-        .funs = dplyr::recode,
-        "p1" = "group1",
-        "p2" = "group2",
-        "i1" = "group1",
-        "i2" = "group2",
-        "stat" = "statistic",
-        "p" = "p.value"
-      ) %>%
-      p_adjust_column_adder(df = ., p.adjust.method = p.adjust.method)
+    df %<>% p_adjust_column_adder(df = ., p.adjust.method = p.adjust.method)
   }
 
   # ---------------------------- robust ----------------------------------
@@ -352,7 +383,7 @@ pairwise_comparisons <- function(data,
       rob_pairwise_df <-
         WRS2::lincon(
           formula = rlang::new_formula({{ y }}, {{ x }}),
-          data = data,
+          data = df_internal,
           tr = tr
         )
     }
@@ -360,14 +391,14 @@ pairwise_comparisons <- function(data,
     # converting to long format and then getting it back in wide so that the
     # rowid variable can be used as the block variable
     if (isTRUE(paired)) {
-      data %<>% df_cleanup_paired(data = ., x = {{ x }}, y = {{ y }})
+      df_internal %<>% df_cleanup_paired(data = ., x = {{ x }}, y = {{ y }})
 
       # running pairwise multiple comparison tests
       rob_pairwise_df <-
         WRS2::rmmcp(
-          y = data[[rlang::as_name(y)]],
-          groups = data[[rlang::as_name(x)]],
-          blocks = data[["rowid"]],
+          y = df_internal[[rlang::as_name(y)]],
+          groups = df_internal[[rlang::as_name(x)]],
+          blocks = df_internal[["rowid"]],
           tr = tr
         )
     }

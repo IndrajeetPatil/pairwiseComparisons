@@ -25,9 +25,9 @@
     one-way analysis of variance for both between-subjects and
     within-subjects designs. Currently, it supports only the most common
     types of statistical analyses and tests: parametric (Welchs and
-    Students t-test), nonparametric (Durbin-Conover test
-    Dwass-Steel-Crichtlow-Fligner test), robust (Yuen’s trimmed means
-    test), and Bayes Factor (Student's t-test).">
+    Students t-test), nonparametric (Durbin-Conover test Dunn test),
+    robust (Yuen’s trimmed means test), and Bayes Factor (Student's
+    t-test).">
 <meta property="og:image" content="https://indrajeetpatil.github.io/pairwiseComparisons/logo.png">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -47,7 +47,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">pairwiseComparisons</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.3.1.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">1.0.0.9000</span>
       </span>
     </div>
 
@@ -115,7 +115,7 @@
 <td><a href="https://CRAN.R-project.org/package=pairwiseComparisons"><img src="http://www.r-pkg.org/badges/version-ago/pairwiseComparisons" alt="CRAN_Release_Badge"></a></td>
 <td><a href="https://travis-ci.org/IndrajeetPatil/pairwiseComparisons"><img src="https://travis-ci.org/IndrajeetPatil/pairwiseComparisons.svg?branch=master" alt="Travis Build Status"></a></td>
 <td><a href="https://CRAN.R-project.org/package=pairwiseComparisons"><img src="https://cranlogs.r-pkg.org/badges/last-day/pairwiseComparisons?color=blue" alt="Daily downloads badge"></a></td>
-<td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/"><img src="https://img.shields.io/badge/GitHub-0.3.1-orange.svg?style=flat-square" alt="GitHub version"></a></td>
+<td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/"><img src="https://img.shields.io/badge/GitHub-1.0.0-orange.svg?style=flat-square" alt="GitHub version"></a></td>
 <td><a href="https://indrajeetpatil.github.io/pairwiseComparisons/"><img src="https://img.shields.io/badge/website-pairwiseComparisons-orange.svg?colorB=E91E63" alt="Website"></a></td>
 </tr>
 <tr class="even">
@@ -130,7 +130,7 @@
 <td><a href="https://www.tidyverse.org/lifecycle/"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="lifecycle"></a></td>
 <td><a href="https://CRAN.R-project.org/package=pairwiseComparisons"><img src="https://cranlogs.r-pkg.org/badges/last-month/pairwiseComparisons?color=blue" alt="Monthly downloads badge"></a></td>
 <td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/issues"><img src="https://img.shields.io/badge/issues-2-red.svg" alt="Github Issues"></a></td>
-<td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/blob/master/README.md"><img src="https://img.shields.io/badge/vignettes-0.3.1-orange.svg?colorB=FF5722" alt="vignettes"></a></td>
+<td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/blob/master/README.md"><img src="https://img.shields.io/badge/vignettes-1.0.0-orange.svg?colorB=FF5722" alt="vignettes"></a></td>
 </tr>
 <tr class="even">
 <td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons"><img src="https://img.shields.io/github/languages/code-size/IndrajeetPatil/pairwiseComparisons.svg" alt="GitHub code size in bytes"></a></td>
@@ -217,7 +217,7 @@
 <tr class="odd">
 <td>Non-parametric</td>
 <td>No</td>
-<td>Dwass-Steel-Crichtlow-Fligner test</td>
+<td>Dunn test</td>
 <td><font color="green">Yes</font></td>
 </tr>
 <tr class="even">
@@ -354,30 +354,22 @@
   <span class="kw">p.adjust.method</span> <span class="kw">=</span> <span class="st">"none"</span>
 )
 <span class="co">#&gt; # A tibble: 6 x 8</span>
-<span class="co">#&gt;   group1  group2       W p.value significance</span>
-<span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;       </span>
-<span class="co">#&gt; 1 carni   herbi   -0.8     0.942 ns          </span>
-<span class="co">#&gt; 2 carni   insecti -2.36    0.342 ns          </span>
-<span class="co">#&gt; 3 carni   omni    -1.72    0.619 ns          </span>
-<span class="co">#&gt; 4 herbi   insecti -2.40    0.325 ns          </span>
-<span class="co">#&gt; 5 herbi   omni    -0.948   0.908 ns          </span>
-<span class="co">#&gt; 6 insecti omni     1.61    0.667 ns          </span>
-<span class="co">#&gt;   label                                   test.details                      </span>
-<span class="co">#&gt;   &lt;chr&gt;                                   &lt;chr&gt;                             </span>
-<span class="co">#&gt; 1 list(~italic(p)[ unadjusted ]== 0.942 ) Dwass-Steel-Crichtlow-Fligner test</span>
-<span class="co">#&gt; 2 list(~italic(p)[ unadjusted ]== 0.342 ) Dwass-Steel-Crichtlow-Fligner test</span>
-<span class="co">#&gt; 3 list(~italic(p)[ unadjusted ]== 0.619 ) Dwass-Steel-Crichtlow-Fligner test</span>
-<span class="co">#&gt; 4 list(~italic(p)[ unadjusted ]== 0.325 ) Dwass-Steel-Crichtlow-Fligner test</span>
-<span class="co">#&gt; 5 list(~italic(p)[ unadjusted ]== 0.908 ) Dwass-Steel-Crichtlow-Fligner test</span>
-<span class="co">#&gt; 6 list(~italic(p)[ unadjusted ]== 0.667 ) Dwass-Steel-Crichtlow-Fligner test</span>
-<span class="co">#&gt;   p.value.adjustment</span>
-<span class="co">#&gt;   &lt;chr&gt;             </span>
-<span class="co">#&gt; 1 None              </span>
-<span class="co">#&gt; 2 None              </span>
-<span class="co">#&gt; 3 None              </span>
-<span class="co">#&gt; 4 None              </span>
-<span class="co">#&gt; 5 None              </span>
-<span class="co">#&gt; 6 None</span>
+<span class="co">#&gt;   group1  group2  z.value p.value significance</span>
+<span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;       </span>
+<span class="co">#&gt; 1 carni   herbi     0.582  0.280  ns          </span>
+<span class="co">#&gt; 2 carni   insecti   1.88   0.0298 *           </span>
+<span class="co">#&gt; 3 herbi   insecti   1.63   0.0511 ns          </span>
+<span class="co">#&gt; 4 carni   omni      1.14   0.127  ns          </span>
+<span class="co">#&gt; 5 herbi   omni      0.717  0.237  ns          </span>
+<span class="co">#&gt; 6 insecti omni      1.14   0.127  ns          </span>
+<span class="co">#&gt;   label                                   test.details p.value.adjustment</span>
+<span class="co">#&gt;   &lt;chr&gt;                                   &lt;chr&gt;        &lt;chr&gt;             </span>
+<span class="co">#&gt; 1 list(~italic(p)[ unadjusted ]== 0.280 ) Dunn test    None              </span>
+<span class="co">#&gt; 2 list(~italic(p)[ unadjusted ]== 0.030 ) Dunn test    None              </span>
+<span class="co">#&gt; 3 list(~italic(p)[ unadjusted ]== 0.051 ) Dunn test    None              </span>
+<span class="co">#&gt; 4 list(~italic(p)[ unadjusted ]== 0.127 ) Dunn test    None              </span>
+<span class="co">#&gt; 5 list(~italic(p)[ unadjusted ]== 0.237 ) Dunn test    None              </span>
+<span class="co">#&gt; 6 list(~italic(p)[ unadjusted ]== 0.127 ) Dunn test    None</span>
 
 <span class="co"># robust</span>
 <span class="fu"><a href="reference/pairwise_comparisons.html">pairwise_comparisons</a></span>(
@@ -483,21 +475,21 @@
   <span class="kw">p.adjust.method</span> <span class="kw">=</span> <span class="st">"BY"</span>
 )
 <span class="co">#&gt; # A tibble: 6 x 8</span>
-<span class="co">#&gt;   group1 group2 statistic  p.value significance</span>
-<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;      &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       </span>
-<span class="co">#&gt; 1 HDHF   HDLF        4.78 1.44e- 5 ***         </span>
-<span class="co">#&gt; 2 HDHF   LDHF        2.44 4.47e- 2 *           </span>
-<span class="co">#&gt; 3 HDHF   LDLF        8.01 5.45e-13 ***         </span>
-<span class="co">#&gt; 4 HDLF   LDHF        2.34 4.96e- 2 *           </span>
-<span class="co">#&gt; 5 HDLF   LDLF        3.23 5.05e- 3 **          </span>
-<span class="co">#&gt; 6 LDHF   LDLF        5.57 4.64e- 7 ***         </span>
+<span class="co">#&gt;   group1 group2     W  p.value significance</span>
+<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;  &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       </span>
+<span class="co">#&gt; 1 LDLF   LDHF    5.57 4.64e- 7 ***         </span>
+<span class="co">#&gt; 2 LDLF   HDLF    3.23 5.05e- 3 **          </span>
+<span class="co">#&gt; 3 LDHF   HDLF    2.34 4.96e- 2 *           </span>
+<span class="co">#&gt; 4 LDLF   HDHF    8.01 5.45e-13 ***         </span>
+<span class="co">#&gt; 5 LDHF   HDHF    2.44 4.47e- 2 *           </span>
+<span class="co">#&gt; 6 HDLF   HDHF    4.78 1.44e- 5 ***         </span>
 <span class="co">#&gt;   label                                 test.details       </span>
 <span class="co">#&gt;   &lt;chr&gt;                                 &lt;chr&gt;              </span>
 <span class="co">#&gt; 1 list(~italic(p)[ adjusted ]&lt;= 0.001 ) Durbin-Conover test</span>
-<span class="co">#&gt; 2 list(~italic(p)[ adjusted ]== 0.045 ) Durbin-Conover test</span>
-<span class="co">#&gt; 3 list(~italic(p)[ adjusted ]&lt;= 0.001 ) Durbin-Conover test</span>
-<span class="co">#&gt; 4 list(~italic(p)[ adjusted ]== 0.050 ) Durbin-Conover test</span>
-<span class="co">#&gt; 5 list(~italic(p)[ adjusted ]== 0.005 ) Durbin-Conover test</span>
+<span class="co">#&gt; 2 list(~italic(p)[ adjusted ]== 0.005 ) Durbin-Conover test</span>
+<span class="co">#&gt; 3 list(~italic(p)[ adjusted ]== 0.050 ) Durbin-Conover test</span>
+<span class="co">#&gt; 4 list(~italic(p)[ adjusted ]&lt;= 0.001 ) Durbin-Conover test</span>
+<span class="co">#&gt; 5 list(~italic(p)[ adjusted ]== 0.045 ) Durbin-Conover test</span>
 <span class="co">#&gt; 6 list(~italic(p)[ adjusted ]&lt;= 0.001 ) Durbin-Conover test</span>
 <span class="co">#&gt;   p.value.adjustment   </span>
 <span class="co">#&gt;   &lt;chr&gt;                </span>

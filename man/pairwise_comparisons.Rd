@@ -70,7 +70,7 @@ comparisons. Possible methods are: \code{"holm"} (default), \code{"hochberg"},
 \code{"hommel"}, \code{"bonferroni"}, \code{"BH"}, \code{"BY"}, \code{"fdr"}, \code{"none"}.}
 
 \item{k}{Number of digits after decimal point (should be an integer)
-(Default: \code{k = 2}).}
+(Default: \code{k = 2L}).}
 
 \item{...}{Current ignored.}
 }
@@ -99,12 +99,11 @@ comparisons between group levels with corrections for multiple testing.
 \examples{
 
 \donttest{
-#------------------- between-subjects design ----------------------------
-
 # for reproducibility
 set.seed(123)
-
 library(pairwiseComparisons)
+
+#------------------- between-subjects design ----------------------------
 
 # parametric
 # if `var.equal = TRUE`, then Student's *t*-test will be run
