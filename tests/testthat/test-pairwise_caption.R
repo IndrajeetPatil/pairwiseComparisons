@@ -7,29 +7,21 @@ testthat::test_that(
     expr2 <- pairwise_caption(NULL, "Yuen's t-test", "none")
 
     testthat::expect_identical(
-      expr1,
-      ggplot2::expr(atop(
-        displaystyle("my caption"),
-        expr = paste(
-          "Pairwise comparisons: ",
-          bold("Student's t-test"),
-          "; Adjustment (p-value): ",
-          bold("Holm")
-        )
-      ))
+      as.character(expr1),
+      c(
+        "atop",
+        "displaystyle(\"my caption\")",
+        "paste(\"Pairwise comparisons: \", bold(\"Student's t-test\"), \"; Adjustment (p-value): \", bold(\"Holm\"))"
+      )
     )
 
     testthat::expect_identical(
-      expr2,
-      ggplot2::expr(atop(
-        displaystyle(NULL),
-        expr = paste(
-          "Pairwise comparisons: ",
-          bold("Yuen's t-test"),
-          "; Adjustment (p-value): ",
-          bold("None")
-        )
-      ))
+      as.character(expr2),
+      c(
+        "atop",
+        "displaystyle(NULL)",
+        "paste(\"Pairwise comparisons: \", bold(\"Yuen's t-test\"), \"; Adjustment (p-value): \", bold(\"None\"))"
+      )
     )
   }
 )

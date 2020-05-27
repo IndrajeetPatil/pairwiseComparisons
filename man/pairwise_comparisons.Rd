@@ -99,9 +99,6 @@ comparisons between group levels with corrections for multiple testing.
 \examples{
 
 \donttest{
-# show all columns in a tibble
-options(tibble.width = Inf)
-
 #------------------- between-subjects design ----------------------------
 
 # for reproducibility
@@ -112,9 +109,9 @@ library(pairwiseComparisons)
 # parametric
 # if `var.equal = TRUE`, then Student's *t*-test will be run
 pairwise_comparisons(
-  data = ggplot2::msleep,
-  x = vore,
-  y = brainwt,
+  data = mtcars,
+  x = cyl,
+  y = wt,
   type = "parametric",
   var.equal = TRUE,
   paired = FALSE,
@@ -123,9 +120,9 @@ pairwise_comparisons(
 
 # if `var.equal = FALSE`, then Games-Howell test will be run
 pairwise_comparisons(
-  data = ggplot2::msleep,
-  x = vore,
-  y = brainwt,
+  data = mtcars,
+  x = cyl,
+  y = wt,
   type = "parametric",
   var.equal = FALSE,
   paired = FALSE,
@@ -134,9 +131,9 @@ pairwise_comparisons(
 
 # non-parametric
 pairwise_comparisons(
-  data = ggplot2::msleep,
-  x = vore,
-  y = brainwt,
+  data = mtcars,
+  x = cyl,
+  y = wt,
   type = "nonparametric",
   paired = FALSE,
   p.adjust.method = "none"
@@ -144,9 +141,9 @@ pairwise_comparisons(
 
 # robust
 pairwise_comparisons(
-  data = ggplot2::msleep,
-  x = vore,
-  y = brainwt,
+  data = mtcars,
+  x = cyl,
+  y = wt,
   type = "robust",
   paired = FALSE,
   p.adjust.method = "fdr"
@@ -154,9 +151,9 @@ pairwise_comparisons(
 
 # Bayes Factor
 pairwise_comparisons(
-  data = ggplot2::msleep,
-  x = vore,
-  y = brainwt,
+  data = mtcars,
+  x = cyl,
+  y = wt,
   type = "bayes",
   paired = FALSE
 )

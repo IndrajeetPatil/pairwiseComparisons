@@ -63,9 +63,6 @@
 #' @examples
 #'
 #' \donttest{
-#' # show all columns in a tibble
-#' options(tibble.width = Inf)
-#'
 #' #------------------- between-subjects design ----------------------------
 #'
 #' # for reproducibility
@@ -76,9 +73,9 @@
 #' # parametric
 #' # if `var.equal = TRUE`, then Student's *t*-test will be run
 #' pairwise_comparisons(
-#'   data = ggplot2::msleep,
-#'   x = vore,
-#'   y = brainwt,
+#'   data = mtcars,
+#'   x = cyl,
+#'   y = wt,
 #'   type = "parametric",
 #'   var.equal = TRUE,
 #'   paired = FALSE,
@@ -87,9 +84,9 @@
 #'
 #' # if `var.equal = FALSE`, then Games-Howell test will be run
 #' pairwise_comparisons(
-#'   data = ggplot2::msleep,
-#'   x = vore,
-#'   y = brainwt,
+#'   data = mtcars,
+#'   x = cyl,
+#'   y = wt,
 #'   type = "parametric",
 #'   var.equal = FALSE,
 #'   paired = FALSE,
@@ -98,9 +95,9 @@
 #'
 #' # non-parametric
 #' pairwise_comparisons(
-#'   data = ggplot2::msleep,
-#'   x = vore,
-#'   y = brainwt,
+#'   data = mtcars,
+#'   x = cyl,
+#'   y = wt,
 #'   type = "nonparametric",
 #'   paired = FALSE,
 #'   p.adjust.method = "none"
@@ -108,9 +105,9 @@
 #'
 #' # robust
 #' pairwise_comparisons(
-#'   data = ggplot2::msleep,
-#'   x = vore,
-#'   y = brainwt,
+#'   data = mtcars,
+#'   x = cyl,
+#'   y = wt,
 #'   type = "robust",
 #'   paired = FALSE,
 #'   p.adjust.method = "fdr"
@@ -118,9 +115,9 @@
 #'
 #' # Bayes Factor
 #' pairwise_comparisons(
-#'   data = ggplot2::msleep,
-#'   x = vore,
-#'   y = brainwt,
+#'   data = mtcars,
+#'   x = cyl,
+#'   y = wt,
 #'   type = "bayes",
 #'   paired = FALSE
 #' )
