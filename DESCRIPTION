@@ -1,7 +1,7 @@
 Type: Package
 Package: pairwiseComparisons
 Title: Multiple Pairwise Comparison Tests
-Version: 0.3.1
+Version: 0.3.1.9000
 Authors@R: 
     person(given = "Indrajeet",
            family = "Patil",
@@ -37,7 +37,6 @@ Imports:
     utils,
     WRS2
 Suggests:
-    ggplot2,
     knitr,
     rmarkdown,
     spelling,
