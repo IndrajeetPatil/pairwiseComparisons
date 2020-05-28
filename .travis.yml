@@ -2,7 +2,6 @@ language: r
 r:
   - release
   - devel
-dist: trusty
 latex: true
 warnings_are_errors: TRUE
 
@@ -19,45 +18,43 @@ repos:
   CRAN: https://cloud.r-project.org
   ropensci: http://packages.ropensci.org
 
-# r_binary_packages:
-#   - magrittr
-#   - curl
-#   - jsonlite
-#   - rstan
-#   - Rcpp
-#   - RcppEigen
-#   - openssl
-#   - utf8
-#   - gss
-#   - haven
-#   - minqa
-#   - mvtnorm
-#   - nloptr
-#   - SparseM
-#   - httpuv
-#   - markdown
-#   - pander
-#   - git2r
-#   - rlang
-#   - bindrcpp
-#   - tidyr
-#   - dplyr
-#   - rstantools
-#   - bridgesampling
-#   - BH
-#   - stringi
-#   - BayesFactor
-#   - metaBMA
-#   - coda
-#   - coinmp
-#   - pbkrtest
-#   - mc2d
-#   - data.table
-#
-# r_packages:
-#   - remotes
-#   - knitr
-#   - rmarkdown
+r_packages:
+  - magrittr
+  - curl
+  - jsonlite
+  - rstan
+  - Rcpp
+  - RcppEigen
+  - openssl
+  - utf8
+  - gss
+  - haven
+  - minqa
+  - mvtnorm
+  - nloptr
+  - SparseM
+  - httpuv
+  - markdown
+  - pander
+  - git2r
+  - rlang
+  - bindrcpp
+  - tidyr
+  - dplyr
+  - rstantools
+  - bridgesampling
+  - BH
+  - stringi
+  - BayesFactor
+  - metaBMA
+  - coda
+  - coinmp
+  - pbkrtest
+  - mc2d
+  - data.table
+  - remotes
+  - knitr
+  - rmarkdown
 
 r_github_packages:
   - jimhester/lintr
@@ -69,15 +66,11 @@ addons:
       - libudunits2-dev
       - libgdal-dev
       - libproj-dev
-      - libmpfr-dev
-      - jags
-    sources:
-      - ubuntu-toolchain-r-test
 
 before_install:
-  - mkdir -p ~/.R/
-  - echo "CXX14FLAGS = -mtune=native -march=native -Wno-unused-variable -Wno-unused-function -Wno-unused-local-typedefs -Wno-ignored-attributes -Wno-deprecated-declarations -Wno-attributes -O3" >> ~/.R/Makevars
-  - echo "CXX14=g++ -std=c++1y -fPIC" >> ~/.R/Makevars
+  - mkdir -p ~/.R
+  - echo "CXX14FLAGS=-O3 -mtune=native -march=native -Wno-unused-variable -Wno-unused-function  -Wno-macro-redefined" >> ~/.R/Makevars
+  - echo "CXX14=g++ -std=c++1y -fext-numeric-literals -fPIC" >> ~/.R/Makevars
 
 notifications:
   email:
