@@ -26,22 +26,22 @@ repos:
   ropensci: http://packages.ropensci.org
 
 r_packages:
-  -Rcpp
-  -RcppEigen
-  -mvtnorm
-  -rstan
-  -StanHeaders
-  -LaplacesDemon
-  -logspline
-  -testthat
-  -devtools
-  -remotes
-  -knitr
-  -rmarkdown
-  -coda
-  -rstantools
-  -bridgesampling
-  -BH
+  - Rcpp
+  - RcppEigen
+  - mvtnorm
+  - rstan
+  - StanHeaders
+  - LaplacesDemon
+  - logspline
+  - testthat
+  - devtools
+  - remotes
+  - knitr
+  - rmarkdown
+  - coda
+  - rstantools
+  - bridgesampling
+  - BH
 
 r_github_packages:
   - jimhester/lintr
