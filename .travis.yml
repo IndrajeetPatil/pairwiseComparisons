@@ -5,6 +5,13 @@ r:
 latex: true
 warnings_are_errors: TRUE
 
+addons:
+  apt:
+    packages:
+      - libudunits2-dev
+      - libgdal-dev
+      - libproj-dev
+
 env:
   global:
     - _R_CHECK_FORCE_SUGGESTS_=true
@@ -19,53 +26,26 @@ repos:
   ropensci: http://packages.ropensci.org
 
 r_packages:
-  - magrittr
-  - curl
-  - jsonlite
-  - rstan
-  - Rcpp
-  - RcppEigen
-  - openssl
-  - utf8
-  - gss
-  - haven
-  - minqa
-  - mvtnorm
-  - nloptr
-  - SparseM
-  - httpuv
-  - markdown
-  - pander
-  - git2r
-  - rlang
-  - bindrcpp
-  - tidyr
-  - dplyr
-  - rstantools
-  - bridgesampling
-  - BH
-  - stringi
-  - BayesFactor
-  - metaBMA
-  - coda
-  - coinmp
-  - pbkrtest
-  - mc2d
-  - data.table
-  - remotes
-  - knitr
-  - rmarkdown
+  -Rcpp
+  -RcppEigen
+  -mvtnorm
+  -rstan
+  -StanHeaders
+  -LaplacesDemon
+  -logspline
+  -testthat
+  -devtools
+  -remotes
+  -knitr
+  -rmarkdown
+  -coda
+  -rstantools
+  -bridgesampling
+  -BH
 
 r_github_packages:
   - jimhester/lintr
   - r-lib/covr
-
-addons:
-  apt:
-    packages:
-      - libudunits2-dev
-      - libgdal-dev
-      - libproj-dev
 
 before_install:
   - mkdir -p ~/.R
