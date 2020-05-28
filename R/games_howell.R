@@ -105,8 +105,7 @@ games_howell <- function(data, x, y) {
     group2 <- as.character(combs[2, x])
 
     # Collect all statistics into list
-    stats <-
-      list(group1, group2, mean.diff, se, t, df, p, conf.high, conf.low)
+    stats <- list(group1, group2, mean.diff, se, t, df, p, conf.high, conf.low)
   })
 
   # unlist statistics collected earlier

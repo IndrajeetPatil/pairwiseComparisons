@@ -207,7 +207,8 @@ utils::globalVariables(
     "contrast",
     "chi2",
     "comparisons",
-    "z.value"
+    "z.value",
+    "altp"
   ),
   package = "pairwiseComparisons",
   add = FALSE
