@@ -5,7 +5,7 @@
   ],
   "@type": "SoftwareSourceCode",
   "identifier": "pairwiseComparisons",
-  "description": "Multiple pairwise comparison tests on tidy data for\n    one-way analysis of variance for both between-subjects and\n    within-subjects designs. Currently, it supports only the most common\n    types of statistical analyses and tests: parametric (Welch's and\n    Student's t-test), nonparametric (Durbin-Conover test\n    Dwass-Steel-Crichtlow-Fligner test), robust (Yuen’s trimmed means\n    test), and Bayes Factor (Student's t-test).",
+  "description": "Multiple pairwise comparison tests on tidy data for\n    one-way analysis of variance for both between-subjects and\n    within-subjects designs. Currently, it supports only the most common\n    types of statistical analyses and tests: parametric (Welch's and\n    Student's t-test), nonparametric (Durbin-Conover test Dunn test),\n    robust (Yuen’s trimmed means test), and Bayes Factor (Student's\n    t-test).",
   "name": "pairwiseComparisons: Multiple Pairwise Comparison Tests",
   "codeRepository": "https://github.com/IndrajeetPatil/pairwiseComparisons",
   "relatedLink": [
@@ -14,7 +14,7 @@
   ],
   "issueTracker": "\n    https://github.com/IndrajeetPatil/pairwiseComparisons/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "0.3.1.9000",
+  "version": "1.0.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -133,6 +133,18 @@
     },
     {
       "@type": "SoftwareApplication",
+      "identifier": "dunn.test",
+      "name": "dunn.test",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=dunn.test"
+    },
+    {
+      "@type": "SoftwareApplication",
       "identifier": "forcats",
       "name": "forcats",
       "provider": {
@@ -157,15 +169,27 @@
     },
     {
       "@type": "SoftwareApplication",
-      "identifier": "jmv",
-      "name": "jmv",
+      "identifier": "Matrix",
+      "name": "Matrix",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://CRAN.R-project.org/package=jmv"
+      "sameAs": "https://CRAN.R-project.org/package=Matrix"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "PMCMRplus",
+      "name": "PMCMRplus",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=PMCMRplus"
     },
     {
       "@type": "SoftwareApplication",
@@ -263,5 +287,5 @@
     "name": "Comprehensive R Archive Network (CRAN)",
     "url": "https://cran.r-project.org"
   },
-  "fileSize": "1505.596KB"
+  "fileSize": "1508.187KB"
 }

@@ -1,3 +1,50 @@
+#' @name matrix_to_tidy
+#' @noRd
+#'
+#' @note Adapted from `dfrtopics::gather_matrix()`.
+#'
+#' @importFrom Matrix t
+#'
+#' @keywords internal
+
+# function body
+matrix_to_tidy <- function(m,
+                           row_values = rownames(m),
+                           col_values = colnames(m),
+                           col_names = c("row_key", "col_key", "value"),
+                           row_major = TRUE,
+                           ...) {
+  if (is.null(row_values)) {
+    row_values <- seq(nrow(m))
+  }
+  if (is.null(col_values)) {
+    col_values <- seq(ncol(m))
+  }
+  stopifnot(length(row_values) == nrow(m))
+  stopifnot(length(col_values) == ncol(m))
+  stopifnot(length(col_names) == 3)
+  if (row_major) {
+    result <- data.frame(
+      rkey = rep(row_values, each = ncol(m)),
+      ckey = rep(col_values, times = nrow(m)),
+      value = as.numeric(Matrix::t(m)),
+      stringsAsFactors = FALSE
+    )
+  }
+  else {
+    result <- data.frame(
+      rkey = rep(row_values, times = ncol(m)),
+      ckey = rep(col_values, each = nrow(m)),
+      value = as.numeric(m),
+      stringsAsFactors = FALSE
+    )
+  }
+  names(result) <- col_names
+  result <- as_tibble(na.omit(result))
+  return(result)
+}
+
+
 #' @noRd
 #' @keywords internal
 

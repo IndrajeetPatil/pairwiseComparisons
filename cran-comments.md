@@ -7,4 +7,4 @@
 
 0 errors | 0 warnings | 0 note
 
-  - Adjusts to breaking changes from upcoming release of `broom` package.
+  - Major internal refactoring to reduce number of recursive dependencies.

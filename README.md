@@ -5,9 +5,9 @@
 
 | Package                                                                                                                                                                         | Status                                                                                                                                                                                                       | Usage                                                                                                                                                                                 | GitHub                                                                                                                                                                         | References                                                                                                                                                                      |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [![CRAN\_Release\_Badge](http://www.r-pkg.org/badges/version-ago/pairwiseComparisons)](https://CRAN.R-project.org/package=pairwiseComparisons)                                  | [![Travis Build Status](https://travis-ci.org/IndrajeetPatil/pairwiseComparisons.svg?branch=master)](https://travis-ci.org/IndrajeetPatil/pairwiseComparisons)                                               | [![Daily downloads badge](https://cranlogs.r-pkg.org/badges/last-day/pairwiseComparisons?color=blue)](https://CRAN.R-project.org/package=pairwiseComparisons)                         | [![GitHub version](https://img.shields.io/badge/GitHub-0.3.1-orange.svg?style=flat-square)](https://github.com/IndrajeetPatil/pairwiseComparisons/)                            | [![Website](https://img.shields.io/badge/website-pairwiseComparisons-orange.svg?colorB=E91E63)](https://indrajeetpatil.github.io/pairwiseComparisons/)                          |
+| [![CRAN\_Release\_Badge](http://www.r-pkg.org/badges/version-ago/pairwiseComparisons)](https://CRAN.R-project.org/package=pairwiseComparisons)                                  | [![Travis Build Status](https://travis-ci.org/IndrajeetPatil/pairwiseComparisons.svg?branch=master)](https://travis-ci.org/IndrajeetPatil/pairwiseComparisons)                                               | [![Daily downloads badge](https://cranlogs.r-pkg.org/badges/last-day/pairwiseComparisons?color=blue)](https://CRAN.R-project.org/package=pairwiseComparisons)                         | [![GitHub version](https://img.shields.io/badge/GitHub-1.0.0-orange.svg?style=flat-square)](https://github.com/IndrajeetPatil/pairwiseComparisons/)                            | [![Website](https://img.shields.io/badge/website-pairwiseComparisons-orange.svg?colorB=E91E63)](https://indrajeetpatil.github.io/pairwiseComparisons/)                          |
 | [![CRAN Checks](https://cranchecks.info/badges/summary/pairwiseComparisons)](https://cran.r-project.org/web/checks/check_results_pairwiseComparisons.html)                      | [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/pairwiseComparisons?branch=master&svg=true)](https://ci.appveyor.com/project/IndrajeetPatil/pairwiseComparisons) | [![Weekly downloads badge](https://cranlogs.r-pkg.org/badges/last-week/pairwiseComparisons?color=blue)](https://CRAN.R-project.org/package=pairwiseComparisons)                       | [![Forks](https://img.shields.io/badge/forks-3-blue.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/)                                                              | [![Rdoc](https://www.rdocumentation.org/badges/version/pairwiseComparisons)](https://www.rdocumentation.org/packages/pairwiseComparisons)                                       |
-| [![minimal R version](https://img.shields.io/badge/R%3E%3D-3.6.0-6666ff.svg)](https://cran.r-project.org/)                                                                      | [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/)                                                                                               | [![Monthly downloads badge](https://cranlogs.r-pkg.org/badges/last-month/pairwiseComparisons?color=blue)](https://CRAN.R-project.org/package=pairwiseComparisons)                     | [![Github Issues](https://img.shields.io/badge/issues-2-red.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/issues)                                                | [![vignettes](https://img.shields.io/badge/vignettes-0.3.1-orange.svg?colorB=FF5722)](https://github.com/IndrajeetPatil/pairwiseComparisons/blob/master/README.md)              |
+| [![minimal R version](https://img.shields.io/badge/R%3E%3D-3.6.0-6666ff.svg)](https://cran.r-project.org/)                                                                      | [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/)                                                                                               | [![Monthly downloads badge](https://cranlogs.r-pkg.org/badges/last-month/pairwiseComparisons?color=blue)](https://CRAN.R-project.org/package=pairwiseComparisons)                     | [![Github Issues](https://img.shields.io/badge/issues-2-red.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/issues)                                                | [![vignettes](https://img.shields.io/badge/vignettes-1.0.0-orange.svg?colorB=FF5722)](https://github.com/IndrajeetPatil/pairwiseComparisons/blob/master/README.md)              |
 | [![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/IndrajeetPatil/pairwiseComparisons.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons) | [![Coverage Status](https://coveralls.io/repos/github/IndrajeetPatil/pairwiseComparisons/badge.svg?branch=master)](https://coveralls.io/github/IndrajeetPatil/pairwiseComparisons?branch=master)             | [![Total downloads badge](https://cranlogs.r-pkg.org/badges/grand-total/pairwiseComparisons?color=blue)](https://CRAN.R-project.org/package=pairwiseComparisons)                      | [![Github Stars](https://img.shields.io/github/stars/IndrajeetPatil/pairwiseComparisons.svg?style=social&label=Github)](https://github.com/IndrajeetPatil/pairwiseComparisons) | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2074621.svg)](https://doi.org/10.5281/zenodo.2074621)                                                                       |
 | [![Licence](https://img.shields.io/badge/licence-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)                                                                | [![Codecov test coverage](https://codecov.io/gh/IndrajeetPatil/pairwiseComparisons/branch/master/graph/badge.svg)](https://codecov.io/gh/IndrajeetPatil/pairwiseComparisons?branch=master)                   | [![Covrpage Summary](https://img.shields.io/badge/covrpage-Last_Build_2020_02_11-brightgreen.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/blob/master/tests/README.md) | [![Last-changedate](https://img.shields.io/badge/last%20change-2020--05--27-yellowgreen.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/commits/master)            | [![GitHub last commit](https://img.shields.io/github/last-commit/IndrajeetPatil/pairwiseComparisons.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/commits/master) |
 | [![status](https://tinyverse.netlify.com/badge/pairwiseComparisons)](https://CRAN.R-project.org/package=pairwiseComparisons)                                                    | [![R build status](https://github.com/IndrajeetPatil/pairwiseComparisons/workflows/R-CMD-check/badge.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons)                                            | [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/pairwiseComparisons/community)                                                                       | [![Project Status](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)                                                                     | [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/IndrajeetPatil/pairwiseComparisons/issues)         |
@@ -68,13 +68,13 @@ pairwise comparison tests-
 
 ## Between-subjects design
 
-| Type           | Equal variance? | Test                               | *p*-value adjustment?          |
-| -------------- | --------------- | ---------------------------------- | ------------------------------ |
-| Parametric     | No              | Games-Howell test                  | <font color="green">Yes</font> |
-| Parametric     | Yes             | Student’s *t*-test                 | <font color="green">Yes</font> |
-| Non-parametric | No              | Dwass-Steel-Crichtlow-Fligner test | <font color="green">Yes</font> |
-| Robust         | No              | Yuen’s trimmed means test          | <font color="green">Yes</font> |
-| Bayes Factor   | `NA`            | Student’s *t*-test                 | `NA`                           |
+| Type           | Equal variance? | Test                      | *p*-value adjustment?          |
+| -------------- | --------------- | ------------------------- | ------------------------------ |
+| Parametric     | No              | Games-Howell test         | <font color="green">Yes</font> |
+| Parametric     | Yes             | Student’s *t*-test        | <font color="green">Yes</font> |
+| Non-parametric | No              | Dunn test                 | <font color="green">Yes</font> |
+| Robust         | No              | Yuen’s trimmed means test | <font color="green">Yes</font> |
+| Bayes Factor   | `NA`            | Student’s *t*-test        | `NA`                           |
 
 ## Within-subjects design
 
@@ -168,30 +168,22 @@ pairwise_comparisons(
   p.adjust.method = "none"
 )
 #> # A tibble: 6 x 8
-#>   group1  group2       W p.value significance
-#>   <chr>   <chr>    <dbl>   <dbl> <chr>       
-#> 1 carni   herbi   -0.8     0.942 ns          
-#> 2 carni   insecti -2.36    0.342 ns          
-#> 3 carni   omni    -1.72    0.619 ns          
-#> 4 herbi   insecti -2.40    0.325 ns          
-#> 5 herbi   omni    -0.948   0.908 ns          
-#> 6 insecti omni     1.61    0.667 ns          
-#>   label                                   test.details                      
-#>   <chr>                                   <chr>                             
-#> 1 list(~italic(p)[ unadjusted ]== 0.942 ) Dwass-Steel-Crichtlow-Fligner test
-#> 2 list(~italic(p)[ unadjusted ]== 0.342 ) Dwass-Steel-Crichtlow-Fligner test
-#> 3 list(~italic(p)[ unadjusted ]== 0.619 ) Dwass-Steel-Crichtlow-Fligner test
-#> 4 list(~italic(p)[ unadjusted ]== 0.325 ) Dwass-Steel-Crichtlow-Fligner test
-#> 5 list(~italic(p)[ unadjusted ]== 0.908 ) Dwass-Steel-Crichtlow-Fligner test
-#> 6 list(~italic(p)[ unadjusted ]== 0.667 ) Dwass-Steel-Crichtlow-Fligner test
-#>   p.value.adjustment
-#>   <chr>             
-#> 1 None              
-#> 2 None              
-#> 3 None              
-#> 4 None              
-#> 5 None              
-#> 6 None
+#>   group1  group2  z.value p.value significance
+#>   <chr>   <chr>     <dbl>   <dbl> <chr>       
+#> 1 carni   herbi     0.582  0.280  ns          
+#> 2 carni   insecti   1.88   0.0298 *           
+#> 3 herbi   insecti   1.63   0.0511 ns          
+#> 4 carni   omni      1.14   0.127  ns          
+#> 5 herbi   omni      0.717  0.237  ns          
+#> 6 insecti omni      1.14   0.127  ns          
+#>   label                                   test.details p.value.adjustment
+#>   <chr>                                   <chr>        <chr>             
+#> 1 list(~italic(p)[ unadjusted ]== 0.280 ) Dunn test    None              
+#> 2 list(~italic(p)[ unadjusted ]== 0.030 ) Dunn test    None              
+#> 3 list(~italic(p)[ unadjusted ]== 0.051 ) Dunn test    None              
+#> 4 list(~italic(p)[ unadjusted ]== 0.127 ) Dunn test    None              
+#> 5 list(~italic(p)[ unadjusted ]== 0.237 ) Dunn test    None              
+#> 6 list(~italic(p)[ unadjusted ]== 0.127 ) Dunn test    None
 
 # robust
 pairwise_comparisons(
@@ -298,21 +290,21 @@ pairwise_comparisons(
   p.adjust.method = "BY"
 )
 #> # A tibble: 6 x 8
-#>   group1 group2 statistic  p.value significance
-#>   <chr>  <chr>      <dbl>    <dbl> <chr>       
-#> 1 HDHF   HDLF        4.78 1.44e- 5 ***         
-#> 2 HDHF   LDHF        2.44 4.47e- 2 *           
-#> 3 HDHF   LDLF        8.01 5.45e-13 ***         
-#> 4 HDLF   LDHF        2.34 4.96e- 2 *           
-#> 5 HDLF   LDLF        3.23 5.05e- 3 **          
-#> 6 LDHF   LDLF        5.57 4.64e- 7 ***         
+#>   group1 group2     W  p.value significance
+#>   <chr>  <chr>  <dbl>    <dbl> <chr>       
+#> 1 LDLF   LDHF    5.57 4.64e- 7 ***         
+#> 2 LDLF   HDLF    3.23 5.05e- 3 **          
+#> 3 LDHF   HDLF    2.34 4.96e- 2 *           
+#> 4 LDLF   HDHF    8.01 5.45e-13 ***         
+#> 5 LDHF   HDHF    2.44 4.47e- 2 *           
+#> 6 HDLF   HDHF    4.78 1.44e- 5 ***         
 #>   label                                 test.details       
 #>   <chr>                                 <chr>              
 #> 1 list(~italic(p)[ adjusted ]<= 0.001 ) Durbin-Conover test
-#> 2 list(~italic(p)[ adjusted ]== 0.045 ) Durbin-Conover test
-#> 3 list(~italic(p)[ adjusted ]<= 0.001 ) Durbin-Conover test
-#> 4 list(~italic(p)[ adjusted ]== 0.050 ) Durbin-Conover test
-#> 5 list(~italic(p)[ adjusted ]== 0.005 ) Durbin-Conover test
+#> 2 list(~italic(p)[ adjusted ]== 0.005 ) Durbin-Conover test
+#> 3 list(~italic(p)[ adjusted ]== 0.050 ) Durbin-Conover test
+#> 4 list(~italic(p)[ adjusted ]<= 0.001 ) Durbin-Conover test
+#> 5 list(~italic(p)[ adjusted ]== 0.045 ) Durbin-Conover test
 #> 6 list(~italic(p)[ adjusted ]<= 0.001 ) Durbin-Conover test
 #>   p.value.adjustment   
 #>   <chr>                

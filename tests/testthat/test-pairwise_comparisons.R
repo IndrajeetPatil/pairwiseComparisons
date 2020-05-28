@@ -183,7 +183,7 @@ testthat::test_that(
         p.adjust.method = "bonferroni"
       )
 
-    # Dwass-Steel-Crichtlow-Fligner test
+    # Dunn test
     df3 <-
       pairwiseComparisons::pairwise_comparisons(
         data = msleep,
@@ -244,7 +244,7 @@ testthat::test_that(
     # test details
     testthat::expect_identical(unique(df1$test.details), "Student's t-test")
     testthat::expect_identical(unique(df2$test.details), "Games-Howell test")
-    testthat::expect_identical(unique(df3$test.details), "Dwass-Steel-Crichtlow-Fligner test")
+    testthat::expect_identical(unique(df3$test.details), "Dunn test")
     testthat::expect_identical(unique(df4$test.details), "Yuen's trimmed means test")
     testthat::expect_identical(unique(df5$test.details), "Student's t-test")
     testthat::expect_identical(unique(df6$test.details), "Student's t-test")
@@ -277,14 +277,14 @@ testthat::test_that(
     )
 
     testthat::expect_equal(
-      df3$W,
+      df3$z.value,
       c(
-        -0.8000000,
-        -2.3570226,
-        -1.7152791,
-        -2.4019223,
-        -0.9483623,
-        1.6070259
+        0.581939863708611,
+        1.88416265861034,
+        1.63470584606214,
+        1.1401937549755,
+        0.716738819223383,
+        1.14184879734281
       ),
       tolerance = 0.001
     )
@@ -349,12 +349,12 @@ testthat::test_that(
     testthat::expect_identical(
       df3$label,
       c(
-        "list(~italic(p)[ unadjusted ]== 0.942 )",
-        "list(~italic(p)[ unadjusted ]== 0.342 )",
-        "list(~italic(p)[ unadjusted ]== 0.619 )",
-        "list(~italic(p)[ unadjusted ]== 0.325 )",
-        "list(~italic(p)[ unadjusted ]== 0.908 )",
-        "list(~italic(p)[ unadjusted ]== 0.667 )"
+        "list(~italic(p)[ unadjusted ]== 0.280 )",
+        "list(~italic(p)[ unadjusted ]== 0.030 )",
+        "list(~italic(p)[ unadjusted ]== 0.051 )",
+        "list(~italic(p)[ unadjusted ]== 0.127 )",
+        "list(~italic(p)[ unadjusted ]== 0.237 )",
+        "list(~italic(p)[ unadjusted ]== 0.127 )"
       )
     )
 
@@ -492,8 +492,15 @@ testthat::test_that(
     )
 
     testthat::expect_equal(
-      df2$statistic,
-      c(4.780042, 2.443931, 8.014657, 2.336111, 3.234615, 5.570726),
+      df2$W,
+      c(
+        5.57072573834912,
+        3.23461494484788,
+        2.33611079350124,
+        8.01465703001196,
+        2.44393129166284,
+        4.78004208516409
+      ),
       tolerance = 0.001
     )
 
@@ -501,17 +508,17 @@ testthat::test_that(
       df2$label,
       c(
         "list(~italic(p)[ adjusted ]<= 0.001 )",
-        "list(~italic(p)[ adjusted ]== 0.045 )",
-        "list(~italic(p)[ adjusted ]<= 0.001 )",
-        "list(~italic(p)[ adjusted ]== 0.050 )",
         "list(~italic(p)[ adjusted ]== 0.005 )",
+        "list(~italic(p)[ adjusted ]== 0.050 )",
+        "list(~italic(p)[ adjusted ]<= 0.001 )",
+        "list(~italic(p)[ adjusted ]== 0.045 )",
         "list(~italic(p)[ adjusted ]<= 0.001 )"
       )
     )
 
     testthat::expect_identical(
       df2$significance,
-      c("***", "*", "***", "*", "**", "***")
+      c("***", "**", "*", "***", "*", "***")
     )
 
     testthat::expect_equal(

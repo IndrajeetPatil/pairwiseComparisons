@@ -204,7 +204,10 @@ utils::globalVariables(
     "pair1",
     "W",
     "stat",
-    "contrast"
+    "contrast",
+    "chi2",
+    "comparisons",
+    "z.value"
   ),
   package = "pairwiseComparisons",
   add = FALSE

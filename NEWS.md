@@ -1,3 +1,10 @@
+# pairwiseComparisons 1.0.0
+
+  - Removes dependence on `jmv` and instead relies on `dunn.test` and
+    `PMCMRplus`. This significantly reduces number of dependencies.
+  
+  - The non-parametric Dwass test has been changed to Dunn test.
+
 # pairwiseComparisons 0.3.1
 
   - Adapts to breaking changes in upcoming release of `broom 0.7.0`.
