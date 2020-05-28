@@ -49,7 +49,7 @@
 #'
 #' @importFrom dplyr select rename mutate everything full_join vars mutate_if
 #' @importFrom dplyr group_nest bind_cols rename_all recode matches
-#' @importFrom stats p.adjust pairwise.t.test na.omit aov TukeyHSD var sd
+#' @importFrom stats p.adjust pairwise.t.test na.omit aov TukeyHSD
 #' @importFrom WRS2 lincon rmmcp
 #' @importFrom tidyr gather spread separate unnest nest
 #' @importFrom dunn.test dunn.test
@@ -304,7 +304,8 @@ pairwise_comparisons <- function(data,
             kw = FALSE,
             label = FALSE,
             alpha = 0.05,
-            method = "none"
+            method = "none",
+            altp = TRUE
           )
         ), file = NULL))
 
@@ -317,10 +318,9 @@ pairwise_comparisons <- function(data,
           .data = .,
           comparisons,
           z.value,
+          "p.value" = "altp.adjusted",
           dplyr::everything(),
-          -"p.adjusted",
-          -statistic,
-          -chi2
+          -c(chi2:altp)
         ) %>%
         tidyr::separate(
           data = .,
@@ -329,7 +329,6 @@ pairwise_comparisons <- function(data,
           sep = " - ",
           remove = TRUE
         )
-
 
       # test details
       test.details <- "Dunn test"

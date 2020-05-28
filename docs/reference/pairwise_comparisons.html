@@ -316,16 +316,16 @@ columns specific to the <code>type</code> of test being run.</p>
   <span class='kw'>paired</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>p.adjust.method</span> <span class='kw'>=</span> <span class='st'>"none"</span>
 )</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 3 x 8</span><span>
-#&gt;   group1 group2 z.value     p.value significance
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       
-#&gt; </span><span style='color: #555555;'>1</span><span> 4      6         1.84 0.033</span><span style='text-decoration: underline;'>2</span><span>      *           
-#&gt; </span><span style='color: #555555;'>2</span><span> 4      8         4.76 0.000</span><span style='text-decoration: underline;'>000</span><span>988 ***         
-#&gt; </span><span style='color: #555555;'>3</span><span> 6      8         2.22 0.013</span><span style='text-decoration: underline;'>2</span><span>      *           
+#&gt;   group1 group2 z.value    p.value significance
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       
+#&gt; </span><span style='color: #555555;'>1</span><span> 4      6         1.84 0.066</span><span style='text-decoration: underline;'>3</span><span>     ns          
+#&gt; </span><span style='color: #555555;'>2</span><span> 4      8         4.76 0.000</span><span style='text-decoration: underline;'>001</span><span>98 ***         
+#&gt; </span><span style='color: #555555;'>3</span><span> 6      8         2.22 0.026</span><span style='text-decoration: underline;'>3</span><span>     *           
 #&gt;   label                                   test.details p.value.adjustment
 #&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                                   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>             
-#&gt; </span><span style='color: #555555;'>1</span><span> list(~italic(p)[ unadjusted ]== 0.033 ) Dunn test    None              
+#&gt; </span><span style='color: #555555;'>1</span><span> list(~italic(p)[ unadjusted ]== 0.066 ) Dunn test    None              
 #&gt; </span><span style='color: #555555;'>2</span><span> list(~italic(p)[ unadjusted ]&lt;= 0.001 ) Dunn test    None              
-#&gt; </span><span style='color: #555555;'>3</span><span> list(~italic(p)[ unadjusted ]== 0.013 ) Dunn test    None              </div><div class='input'>
+#&gt; </span><span style='color: #555555;'>3</span><span> list(~italic(p)[ unadjusted ]== 0.026 ) Dunn test    None              </div><div class='input'>
 <span class='co'># robust</span>
 <span class='fu'>pairwise_comparisons</span>(
   <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>mtcars</span>,
