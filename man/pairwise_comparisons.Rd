@@ -106,7 +106,7 @@ library(pairwiseComparisons)
 #------------------- between-subjects design ----------------------------
 
 # parametric
-# if `var.equal = TRUE`, then Student's *t*-test will be run
+# if `var.equal = TRUE`, then Student's t-test will be run
 pairwise_comparisons(
   data = mtcars,
   x = cyl,
@@ -128,7 +128,7 @@ pairwise_comparisons(
   p.adjust.method = "bonferroni"
 )
 
-# non-parametric
+# non-parametric (Dunn test)
 pairwise_comparisons(
   data = mtcars,
   x = cyl,
@@ -138,7 +138,7 @@ pairwise_comparisons(
   p.adjust.method = "none"
 )
 
-# robust
+# robust (Yuen's trimmed means t-test)
 pairwise_comparisons(
   data = mtcars,
   x = cyl,
@@ -148,7 +148,7 @@ pairwise_comparisons(
   p.adjust.method = "fdr"
 )
 
-# Bayes Factor
+# Bayes Factor (Student's t-test)
 pairwise_comparisons(
   data = mtcars,
   x = cyl,
@@ -159,10 +159,7 @@ pairwise_comparisons(
 
 #------------------- within-subjects design ----------------------------
 
-# for reproducibility
-set.seed(123)
-
-# parametric
+# parametric (Student's t-test)
 pairwise_comparisons(
   data = bugs_long,
   x = condition,
@@ -172,7 +169,7 @@ pairwise_comparisons(
   p.adjust.method = "BH"
 )
 
-# non-parametric
+# non-parametric (Durbin-Conover test)
 pairwise_comparisons(
   data = bugs_long,
   x = condition,
@@ -182,7 +179,7 @@ pairwise_comparisons(
   p.adjust.method = "BY"
 )
 
-# robust
+# robust (Yuen's trimmed means t-test)
 pairwise_comparisons(
   data = bugs_long,
   x = condition,
@@ -192,7 +189,7 @@ pairwise_comparisons(
   p.adjust.method = "hommel"
 )
 
-# Bayes Factor
+# Bayes Factor (Student's t-test)
 pairwise_comparisons(
   data = bugs_long,
   x = condition,

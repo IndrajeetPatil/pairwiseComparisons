@@ -11,8 +11,8 @@
 matrix_to_tidy <- function(m,
                            col_names = c("row_key", "col_key", "value"),
                            ...) {
-  row_values <- seq(nrow(m))
-  col_values <- seq(ncol(m))
+  row_values <- rownames(m)
+  col_values <- colnames(m)
 
   stopifnot(length(row_values) == nrow(m))
   stopifnot(length(col_values) == ncol(m))

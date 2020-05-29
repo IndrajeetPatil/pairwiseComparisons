@@ -72,7 +72,7 @@
 #' #------------------- between-subjects design ----------------------------
 #'
 #' # parametric
-#' # if `var.equal = TRUE`, then Student's *t*-test will be run
+#' # if `var.equal = TRUE`, then Student's t-test will be run
 #' pairwise_comparisons(
 #'   data = mtcars,
 #'   x = cyl,
@@ -94,7 +94,7 @@
 #'   p.adjust.method = "bonferroni"
 #' )
 #'
-#' # non-parametric
+#' # non-parametric (Dunn test)
 #' pairwise_comparisons(
 #'   data = mtcars,
 #'   x = cyl,
@@ -104,7 +104,7 @@
 #'   p.adjust.method = "none"
 #' )
 #'
-#' # robust
+#' # robust (Yuen's trimmed means t-test)
 #' pairwise_comparisons(
 #'   data = mtcars,
 #'   x = cyl,
@@ -114,7 +114,7 @@
 #'   p.adjust.method = "fdr"
 #' )
 #'
-#' # Bayes Factor
+#' # Bayes Factor (Student's t-test)
 #' pairwise_comparisons(
 #'   data = mtcars,
 #'   x = cyl,
@@ -125,10 +125,7 @@
 #'
 #' #------------------- within-subjects design ----------------------------
 #'
-#' # for reproducibility
-#' set.seed(123)
-#'
-#' # parametric
+#' # parametric (Student's t-test)
 #' pairwise_comparisons(
 #'   data = bugs_long,
 #'   x = condition,
@@ -138,7 +135,7 @@
 #'   p.adjust.method = "BH"
 #' )
 #'
-#' # non-parametric
+#' # non-parametric (Durbin-Conover test)
 #' pairwise_comparisons(
 #'   data = bugs_long,
 #'   x = condition,
@@ -148,7 +145,7 @@
 #'   p.adjust.method = "BY"
 #' )
 #'
-#' # robust
+#' # robust (Yuen's trimmed means t-test)
 #' pairwise_comparisons(
 #'   data = bugs_long,
 #'   x = condition,
@@ -158,7 +155,7 @@
 #'   p.adjust.method = "hommel"
 #' )
 #'
-#' # Bayes Factor
+#' # Bayes Factor (Student's t-test)
 #' pairwise_comparisons(
 #'   data = bugs_long,
 #'   x = condition,
@@ -353,18 +350,15 @@ pairwise_comparisons <- function(data,
           p.adjust.method = "none"
         )
 
-
       # combining into one dataframe
       df <-
         dplyr::bind_cols(
-          matrix_to_tidy(m = mod$statistic, col_names = c("group2", "group1", "W")),
+          matrix_to_tidy(m = mod$statistic, col_names = c("group1", "group2", "W")),
           dplyr::select(
-            matrix_to_tidy(m = mod$p.value, col_names = c("group2", "group1", "p.value")),
+            matrix_to_tidy(m = mod$p.value, col_names = c("group1", "group2", "p.value")),
             -dplyr::contains("group")
           )
-        ) %>%
-        dplyr::select(.data = ., group1, dplyr::everything())
-
+        )
 
       # test details
       test.details <- "Durbin-Conover test"
@@ -456,8 +450,8 @@ pairwise_comparisons <- function(data,
     # creating a list of dataframes with subsections of data
     df_list <-
       purrr::map2(
-        .x = as.character(df$group2),
-        .y = as.character(df$group1),
+        .x = as.character(df$group1),
+        .y = as.character(df$group2),
         .f = function(a, b) {
           data %>%
             dplyr::filter(.data = ., !is.na({{ x }}), !is.na({{ y }})) %>%
@@ -544,7 +538,8 @@ pairwise_comparisons <- function(data,
       .data = .,
       test.details = test.details,
       p.value.adjustment = p_adjust_text(p.adjust.method)
-    )
+    ) %>%
+    dplyr::arrange(group1, group2)
 
   # return
   return(as_tibble(df))

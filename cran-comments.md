@@ -5,6 +5,9 @@
 
 ## R CMD check results
 
-0 errors | 0 warnings | 0 note
+0 errors | 0 warnings | 1 note
 
-  - Major internal refactoring to reduce number of recursive dependencies.
+  - Gives 1 NOTE: "Days since last update: 2"
+  
+    Need to update the package again so quickly for a hot fix to address mistake
+    made in the previous release.
