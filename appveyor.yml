@@ -28,10 +28,10 @@ environment:
     GCC_PATH: mingw_64
     PKTYPE: both
 
-  - R_VERSION: devel
-    R_ARCH: x64
-    GCC_PATH: mingw_64
-    PKTYPE: both
+  # - R_VERSION: devel
+  #   R_ARCH: x64
+  #   GCC_PATH: mingw_64
+  #   PKTYPE: both
 
 matrix:
   fast_finish: true
