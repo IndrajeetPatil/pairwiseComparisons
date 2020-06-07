@@ -14,13 +14,13 @@
   ],
   "issueTracker": "\n    https://github.com/IndrajeetPatil/pairwiseComparisons/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "1.0.0",
+  "version": "1.0.0.9000",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R Under development (unstable) (2020-02-28 r77874)",
+  "runtimePlatform": "R Under development (unstable) (2020-06-03 r78637)",
   "author": [
     {
       "@type": "Person",
@@ -169,18 +169,6 @@
     },
     {
       "@type": "SoftwareApplication",
-      "identifier": "Matrix",
-      "name": "Matrix",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=Matrix"
-    },
-    {
-      "@type": "SoftwareApplication",
       "identifier": "PMCMRplus",
       "name": "PMCMRplus",
       "provider": {
@@ -287,5 +275,5 @@
     "name": "Comprehensive R Archive Network (CRAN)",
     "url": "https://cran.r-project.org"
   },
-  "fileSize": "1508.187KB"
+  "fileSize": "1486.713KB"
 }

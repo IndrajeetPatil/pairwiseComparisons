@@ -1,3 +1,5 @@
+# pairwiseComparisons 1.0.0.9000
+
 # pairwiseComparisons 1.0.0
 
   - Removes dependence on `jmv` and instead relies on `dunn.test` and

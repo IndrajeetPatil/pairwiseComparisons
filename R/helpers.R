@@ -1,33 +1,21 @@
 #' @name matrix_to_tidy
-#' @noRd
-#'
 #' @note Adapted from `dfrtopics::gather_matrix()`.
-#'
-#' @importFrom Matrix t
-#'
+#' @importFrom stats na.omit
 #' @keywords internal
+#' @noRd
 
 # function body
-matrix_to_tidy <- function(m,
-                           col_names = c("row_key", "col_key", "value"),
-                           ...) {
-  row_values <- rownames(m)
-  col_values <- colnames(m)
-
-  stopifnot(length(row_values) == nrow(m))
-  stopifnot(length(col_values) == ncol(m))
-  stopifnot(length(col_names) == 3)
-
-  result <- data.frame(
-    rkey = rep(row_values, each = ncol(m)),
-    ckey = rep(col_values, times = nrow(m)),
-    value = as.numeric(Matrix::t(m)),
-    stringsAsFactors = FALSE
-  )
+matrix_to_tidy <- function(m, col_names = c("row_key", "col_key", "value"), ...) {
+  result <-
+    data.frame(
+      rkey = rep(rownames(m), each = ncol(m)),
+      ckey = rep(colnames(m), times = nrow(m)),
+      value = as.numeric(base::t(m)),
+      stringsAsFactors = FALSE
+    )
 
   names(result) <- col_names
-  result <- as_tibble(na.omit(result))
-  return(result)
+  as_tibble(stats::na.omit(result))
 }
 
 
@@ -36,10 +24,7 @@ matrix_to_tidy <- function(m,
 
 p_adjust_column_adder <- function(df, p.adjust.method) {
   df %>%
-    dplyr::mutate(
-      .data = .,
-      p.value = stats::p.adjust(p = p.value, method = p.adjust.method)
-    ) %>%
+    dplyr::mutate(p.value = stats::p.adjust(p = p.value, method = p.adjust.method)) %>%
     signif_column(data = ., p = p.value)
 }
 

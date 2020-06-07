@@ -48,15 +48,15 @@
 #'   }
 #'
 #' @importFrom dplyr select rename mutate everything full_join vars mutate_if
-#' @importFrom dplyr group_nest bind_cols rename_all recode matches
+#' @importFrom dplyr bind_cols rename_all recode matches rowwise ungroup
 #' @importFrom stats p.adjust pairwise.t.test na.omit aov TukeyHSD
 #' @importFrom WRS2 lincon rmmcp
-#' @importFrom tidyr gather spread separate unnest nest
+#' @importFrom tidyr gather spread separate
 #' @importFrom dunn.test dunn.test
 #' @importFrom PMCMRplus durbinAllPairsTest
 #' @importFrom rlang !! enquo as_string ensym
 #' @importFrom forcats fct_relabel
-#' @importFrom purrr map map2 map_dfr
+#' @importFrom purrr map2 map_dfr
 #' @importFrom broomExtra tidy easystats_to_tidy_names
 #' @importFrom ipmisc stats_type_switch
 #' @importFrom tidyBF bf_ttest
@@ -270,8 +270,7 @@ pairwise_comparisons <- function(data,
           y = df_tidy,
           by = c("group1", "group2")
         ) %>% # the group columns need to be swapped to be consistent
-        dplyr::rename(.data = ., group2 = group1, group1 = group2) %>%
-        dplyr::select(.data = ., group1, group2, dplyr::everything())
+        dplyr::rename(.data = ., group2 = group1, group1 = group2)
 
       # test details
       test.details <- "Student's t-test"
@@ -399,11 +398,7 @@ pairwise_comparisons <- function(data,
     # extracting the robust pairwise comparisons and tidying up names
     rob_df_tidy <-
       suppressMessages(as_tibble(rob_pairwise_df$comp, .name_repair = "unique")) %>%
-      dplyr::rename(
-        .data = .,
-        group1 = Group...1,
-        group2 = Group...2
-      )
+      dplyr::rename(group1 = Group...1, group2 = Group...2)
 
     # cleaning the raw object and getting it in the right format
     df <-
@@ -422,8 +417,7 @@ pairwise_comparisons <- function(data,
         by = "rowid"
       ) %>%
       dplyr::select(.data = ., -rowid) %>%
-      tidyr::spread(data = ., key = "key", value = "value") %>%
-      dplyr::select(.data = ., group1, group2, dplyr::everything())
+      tidyr::spread(data = ., key = "key", value = "value")
 
     # for paired designs, there will be an unnecessary column to remove
     if (("p.crit") %in% names(df)) df %<>% dplyr::select(.data = ., -p.crit)
@@ -475,24 +469,15 @@ pairwise_comparisons <- function(data,
           output = "results"
         )
       ) %>%
-      dplyr::mutate(.data = ., rowid = dplyr::row_number()) %>%
-      dplyr::group_nest(.tbl = ., rowid) %>%
-      dplyr::mutate(
-        .data = .,
-        label = data %>%
-          purrr::map(
-            .x = .,
-            .f = ~ paste(
-              "list(~log[e](BF[10])",
-              "==",
-              specify_decimal_p(x = .$log_e_bf10, k = k),
-              ")",
-              sep = ""
-            )
-          )
-      ) %>% # unnesting the dataframe
-      tidyr::unnest(data = ., cols = c(data, label)) %>%
-      dplyr::select(.data = ., -rowid) %>%
+      dplyr::rowwise() %>%
+      dplyr::mutate(label = paste(
+        "list(~log[e](BF[10])",
+        "==",
+        specify_decimal_p(x = log_e_bf10, k = k),
+        ")",
+        sep = ""
+      )) %>%
+      dplyr::ungroup() %>%
       dplyr::mutate(.data = ., test.details = "Student's t-test")
 
     # early return (no further cleanup required)
@@ -501,6 +486,9 @@ pairwise_comparisons <- function(data,
 
   # ---------------------------- cleanup ----------------------------------
 
+  # formatting label
+  adjust_text <- ifelse(p.adjust.method == "none", "unadjusted", "adjusted")
+
   # final cleanup for p-value labels
   df %<>%
     dplyr::mutate_if(
@@ -508,41 +496,23 @@ pairwise_comparisons <- function(data,
       .predicate = is.factor,
       .funs = ~ as.character(.)
     ) %>%
-    dplyr::mutate(.data = ., rowid = dplyr::row_number()) %>%
-    dplyr::group_nest(.tbl = ., rowid) %>%
+    dplyr::rowwise() %>%
+    dplyr::mutate(label = specify_decimal_p(x = p.value, k = k, p.value = TRUE)) %>%
     dplyr::mutate(
-      .data = .,
-      label = data %>%
-        purrr::map(
-          .x = .,
-          .f = ~ specify_decimal_p(x = .$p.value, k = k, p.value = TRUE)
-        )
-    ) %>% # unnesting the dataframe
-    tidyr::unnest(data = ., cols = c(data, label))
-
-  # formatting label
-  adjust_text <- ifelse(p.adjust.method == "none", "unadjusted", "adjusted")
-  df %<>%
-    dplyr::mutate(
-      .data = .,
       label = dplyr::case_when(
         label == "< 0.001" ~ paste("list(~italic(p)[", adjust_text, "]<=", "0.001", ")", sep = " "),
         TRUE ~ paste("list(~italic(p)[", adjust_text, "]==", label, ")", sep = " ")
       )
-    )
-
-  # removing unnecessary columns
-  df %<>%
-    dplyr::select(.data = ., -rowid) %>%
+    ) %>%
     dplyr::mutate(
-      .data = .,
       test.details = test.details,
       p.value.adjustment = p_adjust_text(p.adjust.method)
     ) %>%
+    dplyr::select(.data = ., group1, group2, dplyr::everything()) %>%
     dplyr::arrange(group1, group2)
 
   # return
-  return(as_tibble(df))
+  return(dplyr::ungroup(df))
 }
 
 
