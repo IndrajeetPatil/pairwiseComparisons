@@ -1,7 +1,7 @@
 Type: Package
 Package: pairwiseComparisons
 Title: Multiple Pairwise Comparison Tests
-Version: 1.0.0.9000
+Version: 1.1.0
 Authors@R: 
     person(given = "Indrajeet",
            family = "Patil",
@@ -13,7 +13,7 @@ Description: Multiple pairwise comparison tests on tidy data for
     one-way analysis of variance for both between-subjects and
     within-subjects designs. Currently, it supports only the most common
     types of statistical analyses and tests: parametric (Welch's and
-    Student's t-test), nonparametric (Durbin-Conover test Dunn test),
+    Student's t-test), nonparametric (Durbin-Conover and Dunn test),
     robust (Yuen’s trimmed means test), and Bayes Factor (Student's
     t-test).
 License: GPL-3 | file LICENSE
@@ -28,12 +28,12 @@ Imports:
     dplyr,
     dunn.test,
     forcats,
-    ipmisc,
+    ipmisc (>= 3.0.0.9000),
     PMCMRplus,
     purrr,
     rlang,
     stats,
-    tidyBF,
+    tidyBF (>= 0.2.0.9000),
     tidyr,
     utils,
     WRS2
@@ -42,6 +42,9 @@ Suggests:
     rmarkdown,
     spelling,
     testthat
+Remotes:
+    IndrajeetPatil/ipmisc,
+    IndrajeetPatil/tidyBF
 Encoding: UTF-8
 Language: en-US
 LazyData: true

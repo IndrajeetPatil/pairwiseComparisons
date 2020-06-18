@@ -89,7 +89,7 @@ comparisons between group levels with corrections for multiple testing." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pairwiseComparisons</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">1.0.0.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">1.1.0</span>
       </span>
     </div>
 
@@ -144,32 +144,32 @@ comparisons between group levels with corrections for multiple testing." />
 comparisons between group levels with corrections for multiple testing.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>pairwise_comparisons</span>(
-  <span class='no'>data</span>,
-  <span class='no'>x</span>,
-  <span class='no'>y</span>,
-  <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"parametric"</span>,
-  <span class='kw'>paired</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>var.equal</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>tr</span> <span class='kw'>=</span> <span class='fl'>0.1</span>,
-  <span class='kw'>bf.prior</span> <span class='kw'>=</span> <span class='fl'>0.707</span>,
-  <span class='kw'>p.adjust.method</span> <span class='kw'>=</span> <span class='st'>"holm"</span>,
-  <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>2</span>,
-  <span class='no'>...</span>
+    <pre class="usage"><span class='fu'><a href='https://indrajeetpatil.github.io/pairwiseComparisons//reference/pairwise_comparisons.html'>pairwise_comparisons</a></span>(
+  <span class='kw'>data</span>,
+  <span class='kw'>x</span>,
+  <span class='kw'>y</span>,
+  type = <span class='st'>"parametric"</span>,
+  paired = <span class='fl'>FALSE</span>,
+  var.equal = <span class='fl'>FALSE</span>,
+  tr = <span class='fl'>0.1</span>,
+  bf.prior = <span class='fl'>0.707</span>,
+  p.adjust.method = <span class='st'>"holm"</span>,
+  k = <span class='fl'>2L</span>,
+  <span class='kw'>...</span>
 )
 
-<span class='fu'>pairwise_p</span>(
-  <span class='no'>data</span>,
-  <span class='no'>x</span>,
-  <span class='no'>y</span>,
-  <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"parametric"</span>,
-  <span class='kw'>paired</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>var.equal</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>tr</span> <span class='kw'>=</span> <span class='fl'>0.1</span>,
-  <span class='kw'>bf.prior</span> <span class='kw'>=</span> <span class='fl'>0.707</span>,
-  <span class='kw'>p.adjust.method</span> <span class='kw'>=</span> <span class='st'>"holm"</span>,
-  <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>2</span>,
-  <span class='no'>...</span>
+<span class='fu'><a href='https://indrajeetpatil.github.io/pairwiseComparisons//reference/pairwise_comparisons.html'>pairwise_p</a></span>(
+  <span class='kw'>data</span>,
+  <span class='kw'>x</span>,
+  <span class='kw'>y</span>,
+  type = <span class='st'>"parametric"</span>,
+  paired = <span class='fl'>FALSE</span>,
+  var.equal = <span class='fl'>FALSE</span>,
+  tr = <span class='fl'>0.1</span>,
+  bf.prior = <span class='fl'>0.707</span>,
+  p.adjust.method = <span class='st'>"holm"</span>,
+  k = <span class='fl'>2L</span>,
+  <span class='kw'>...</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -251,7 +251,7 @@ columns specific to the <code>type</code> of test being run.</p>
 <p>The <code>significance</code> column asterisks indicate significance levels of
 <em>p</em>-values in the American Psychological Association (APA) mandated format:</p><ul>
 <li><p><code>ns</code> : &gt; 0.05</p></li>
-<li><p><code>*</code> : &lt; 0.05</p></li>
+<li><p><code><a href='https://rdrr.io/r/base/Arithmetic.html'>*</a></code> : &lt; 0.05</p></li>
 <li><p><code>**</code> : &lt; 0.01</p></li>
 <li><p><code>***</code> : &lt; 0.001</p></li>
 </ul>
@@ -262,20 +262,20 @@ columns specific to the <code>type</code> of test being run.</p>
 <span class='co'># \donttest{</span>
 <span class='co'># for reproducibility</span>
 <span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span>(<span class='fl'>123</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>pairwiseComparisons</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://indrajeetpatil.github.io/pairwiseComparisons'>pairwiseComparisons</a></span>)
 
 <span class='co'>#------------------- between-subjects design ----------------------------</span>
 
 <span class='co'># parametric</span>
 <span class='co'># if `var.equal = TRUE`, then Student's t-test will be run</span>
-<span class='fu'>pairwise_comparisons</span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>mtcars</span>,
-  <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>cyl</span>,
-  <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>wt</span>,
-  <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"parametric"</span>,
-  <span class='kw'>var.equal</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>paired</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>p.adjust.method</span> <span class='kw'>=</span> <span class='st'>"none"</span>
+<span class='fu'><a href='https://indrajeetpatil.github.io/pairwiseComparisons//reference/pairwise_comparisons.html'>pairwise_comparisons</a></span>(
+  data = <span class='kw'>mtcars</span>,
+  x = <span class='kw'>cyl</span>,
+  y = <span class='kw'>wt</span>,
+  type = <span class='st'>"parametric"</span>,
+  var.equal = <span class='fl'>TRUE</span>,
+  paired = <span class='fl'>FALSE</span>,
+  p.adjust.method = <span class='st'>"none"</span>
 )</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 3 x 8</span><span>
 #&gt;   group1 group2 mean.difference     p.value significance
 #&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>            </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       
@@ -288,14 +288,14 @@ columns specific to the <code>type</code> of test being run.</p>
 #&gt; </span><span style='color: #555555;'>2</span><span> list(~italic(p)[ unadjusted ]&lt;= 0.001 ) Student's t-test None              
 #&gt; </span><span style='color: #555555;'>3</span><span> list(~italic(p)[ unadjusted ]== 0.005 ) Student's t-test None              </div><div class='input'>
 <span class='co'># if `var.equal = FALSE`, then Games-Howell test will be run</span>
-<span class='fu'>pairwise_comparisons</span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>mtcars</span>,
-  <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>cyl</span>,
-  <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>wt</span>,
-  <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"parametric"</span>,
-  <span class='kw'>var.equal</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>paired</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>p.adjust.method</span> <span class='kw'>=</span> <span class='st'>"bonferroni"</span>
+<span class='fu'><a href='https://indrajeetpatil.github.io/pairwiseComparisons//reference/pairwise_comparisons.html'>pairwise_comparisons</a></span>(
+  data = <span class='kw'>mtcars</span>,
+  x = <span class='kw'>cyl</span>,
+  y = <span class='kw'>wt</span>,
+  type = <span class='st'>"parametric"</span>,
+  var.equal = <span class='fl'>FALSE</span>,
+  paired = <span class='fl'>FALSE</span>,
+  p.adjust.method = <span class='st'>"bonferroni"</span>
 )</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 3 x 11</span><span>
 #&gt;   group1 group2 mean.difference    se t.value    df p.value significance
 #&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>            </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       
@@ -308,13 +308,13 @@ columns specific to the <code>type</code> of test being run.</p>
 #&gt; </span><span style='color: #555555;'>2</span><span> list(~italic(p)[ adjusted ]== 0.012 ) Games-Howell test Bonferroni        
 #&gt; </span><span style='color: #555555;'>3</span><span> list(~italic(p)[ adjusted ]== 0.015 ) Games-Howell test Bonferroni        </div><div class='input'>
 <span class='co'># non-parametric (Dunn test)</span>
-<span class='fu'>pairwise_comparisons</span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>mtcars</span>,
-  <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>cyl</span>,
-  <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>wt</span>,
-  <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"nonparametric"</span>,
-  <span class='kw'>paired</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>p.adjust.method</span> <span class='kw'>=</span> <span class='st'>"none"</span>
+<span class='fu'><a href='https://indrajeetpatil.github.io/pairwiseComparisons//reference/pairwise_comparisons.html'>pairwise_comparisons</a></span>(
+  data = <span class='kw'>mtcars</span>,
+  x = <span class='kw'>cyl</span>,
+  y = <span class='kw'>wt</span>,
+  type = <span class='st'>"nonparametric"</span>,
+  paired = <span class='fl'>FALSE</span>,
+  p.adjust.method = <span class='st'>"none"</span>
 )</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 3 x 8</span><span>
 #&gt;   group1 group2 z.value    p.value significance
 #&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       
@@ -327,13 +327,13 @@ columns specific to the <code>type</code> of test being run.</p>
 #&gt; </span><span style='color: #555555;'>2</span><span> list(~italic(p)[ unadjusted ]&lt;= 0.001 ) Dunn test    None              
 #&gt; </span><span style='color: #555555;'>3</span><span> list(~italic(p)[ unadjusted ]== 0.026 ) Dunn test    None              </div><div class='input'>
 <span class='co'># robust (Yuen's trimmed means t-test)</span>
-<span class='fu'>pairwise_comparisons</span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>mtcars</span>,
-  <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>cyl</span>,
-  <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>wt</span>,
-  <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"robust"</span>,
-  <span class='kw'>paired</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>p.adjust.method</span> <span class='kw'>=</span> <span class='st'>"fdr"</span>
+<span class='fu'><a href='https://indrajeetpatil.github.io/pairwiseComparisons//reference/pairwise_comparisons.html'>pairwise_comparisons</a></span>(
+  data = <span class='kw'>mtcars</span>,
+  x = <span class='kw'>cyl</span>,
+  y = <span class='kw'>wt</span>,
+  type = <span class='st'>"robust"</span>,
+  paired = <span class='fl'>FALSE</span>,
+  p.adjust.method = <span class='st'>"fdr"</span>
 )</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 3 x 10</span><span>
 #&gt;   group1 group2 psihat conf.low conf.high  p.value significance
 #&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       
@@ -351,33 +351,33 @@ columns specific to the <code>type</code> of test being run.</p>
 #&gt; </span><span style='color: #555555;'>2</span><span> Benjamini &amp; Hochberg
 #&gt; </span><span style='color: #555555;'>3</span><span> Benjamini &amp; Hochberg</div><div class='input'>
 <span class='co'># Bayes Factor (Student's t-test)</span>
-<span class='fu'>pairwise_comparisons</span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>mtcars</span>,
-  <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>cyl</span>,
-  <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>wt</span>,
-  <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"bayes"</span>,
-  <span class='kw'>paired</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
-)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 3 x 12</span><span>
-#&gt;   group1 group2    bf10    error     bf01 log_e_bf10 log_e_bf01 log_10_bf10
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span> 6      4        11.4  1.89</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>- 7</span><span> 0.087</span><span style='text-decoration: underline;'>4</span><span>         2.44      -</span><span style='color: #BB0000;'>2.44</span><span>       1.06 
-#&gt; </span><span style='color: #555555;'>2</span><span> 6      8         5.36 4.48</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>- 6</span><span> 0.187          1.68      -</span><span style='color: #BB0000;'>1.68</span><span>       0.729
-#&gt; </span><span style='color: #555555;'>3</span><span> 4      8      </span><span style='text-decoration: underline;'>5</span><span>222.   4.46</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>-11</span><span> 0.000</span><span style='text-decoration: underline;'>192</span><span>       8.56      -</span><span style='color: #BB0000;'>8.56</span><span>       3.72 
-#&gt;   log_10_bf01 bf.prior label                       test.details    
-#&gt;         </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>           
-#&gt; </span><span style='color: #555555;'>1</span><span>      -</span><span style='color: #BB0000;'>1.06</span><span>     0.707 list(~log[e](BF[10])==2.44) Student's t-test
-#&gt; </span><span style='color: #555555;'>2</span><span>      -</span><span style='color: #BB0000;'>0.729</span><span>    0.707 list(~log[e](BF[10])==1.68) Student's t-test
-#&gt; </span><span style='color: #555555;'>3</span><span>      -</span><span style='color: #BB0000;'>3.72</span><span>     0.707 list(~log[e](BF[10])==8.56) Student's t-test</div><div class='input'>
+<span class='fu'><a href='https://indrajeetpatil.github.io/pairwiseComparisons//reference/pairwise_comparisons.html'>pairwise_comparisons</a></span>(
+  data = <span class='kw'>mtcars</span>,
+  x = <span class='kw'>cyl</span>,
+  y = <span class='kw'>wt</span>,
+  type = <span class='st'>"bayes"</span>,
+  paired = <span class='fl'>FALSE</span>
+)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 3 x 11</span><span>
+#&gt;   group1 group2    bf10     bf01 log_e_bf10 log_e_bf01 log_10_bf10 log_10_bf01
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span> 6      4        11.4  0.087</span><span style='text-decoration: underline;'>4</span><span>         2.44      -</span><span style='color: #BB0000;'>2.44</span><span>       1.06       -</span><span style='color: #BB0000;'>1.06</span><span> 
+#&gt; </span><span style='color: #555555;'>2</span><span> 6      8         5.36 0.187          1.68      -</span><span style='color: #BB0000;'>1.68</span><span>       0.729      -</span><span style='color: #BB0000;'>0.729</span><span>
+#&gt; </span><span style='color: #555555;'>3</span><span> 4      8      </span><span style='text-decoration: underline;'>5</span><span>222.   0.000</span><span style='text-decoration: underline;'>192</span><span>       8.56      -</span><span style='color: #BB0000;'>8.56</span><span>       3.72       -</span><span style='color: #BB0000;'>3.72</span><span> 
+#&gt;   bf.prior label                       test.details    
+#&gt;      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>           
+#&gt; </span><span style='color: #555555;'>1</span><span>    0.707 list(~log[e](BF[10])==2.44) Student's t-test
+#&gt; </span><span style='color: #555555;'>2</span><span>    0.707 list(~log[e](BF[10])==1.68) Student's t-test
+#&gt; </span><span style='color: #555555;'>3</span><span>    0.707 list(~log[e](BF[10])==8.56) Student's t-test</div><div class='input'>
 <span class='co'>#------------------- within-subjects design ----------------------------</span>
 
 <span class='co'># parametric (Student's t-test)</span>
-<span class='fu'>pairwise_comparisons</span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>bugs_long</span>,
-  <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>condition</span>,
-  <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>desire</span>,
-  <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"parametric"</span>,
-  <span class='kw'>paired</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>p.adjust.method</span> <span class='kw'>=</span> <span class='st'>"BH"</span>
+<span class='fu'><a href='https://indrajeetpatil.github.io/pairwiseComparisons//reference/pairwise_comparisons.html'>pairwise_comparisons</a></span>(
+  data = <span class='kw'>bugs_long</span>,
+  x = <span class='kw'>condition</span>,
+  y = <span class='kw'>desire</span>,
+  type = <span class='st'>"parametric"</span>,
+  paired = <span class='fl'>TRUE</span>,
+  p.adjust.method = <span class='st'>"BH"</span>
 )</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 6 x 8</span><span>
 #&gt;   group1 group2 mean.difference  p.value significance
 #&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>            </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       
@@ -396,13 +396,13 @@ columns specific to the <code>type</code> of test being run.</p>
 #&gt; </span><span style='color: #555555;'>5</span><span> list(~italic(p)[ adjusted ]== 0.001 ) Student's t-test Benjamini &amp; Hochberg
 #&gt; </span><span style='color: #555555;'>6</span><span> list(~italic(p)[ adjusted ]&lt;= 0.001 ) Student's t-test Benjamini &amp; Hochberg</div><div class='input'>
 <span class='co'># non-parametric (Durbin-Conover test)</span>
-<span class='fu'>pairwise_comparisons</span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>bugs_long</span>,
-  <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>condition</span>,
-  <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>desire</span>,
-  <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"nonparametric"</span>,
-  <span class='kw'>paired</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>p.adjust.method</span> <span class='kw'>=</span> <span class='st'>"BY"</span>
+<span class='fu'><a href='https://indrajeetpatil.github.io/pairwiseComparisons//reference/pairwise_comparisons.html'>pairwise_comparisons</a></span>(
+  data = <span class='kw'>bugs_long</span>,
+  x = <span class='kw'>condition</span>,
+  y = <span class='kw'>desire</span>,
+  type = <span class='st'>"nonparametric"</span>,
+  paired = <span class='fl'>TRUE</span>,
+  p.adjust.method = <span class='st'>"BY"</span>
 )</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 6 x 8</span><span>
 #&gt;   group1 group2     W  p.value significance
 #&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       
@@ -429,28 +429,28 @@ columns specific to the <code>type</code> of test being run.</p>
 #&gt; </span><span style='color: #555555;'>5</span><span> Benjamini &amp; Yekutieli
 #&gt; </span><span style='color: #555555;'>6</span><span> Benjamini &amp; Yekutieli</div><div class='input'>
 <span class='co'># robust (Yuen's trimmed means t-test)</span>
-<span class='fu'>pairwise_comparisons</span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>bugs_long</span>,
-  <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>condition</span>,
-  <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>desire</span>,
-  <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"robust"</span>,
-  <span class='kw'>paired</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>p.adjust.method</span> <span class='kw'>=</span> <span class='st'>"hommel"</span>
+<span class='fu'><a href='https://indrajeetpatil.github.io/pairwiseComparisons//reference/pairwise_comparisons.html'>pairwise_comparisons</a></span>(
+  data = <span class='kw'>bugs_long</span>,
+  x = <span class='kw'>condition</span>,
+  y = <span class='kw'>desire</span>,
+  type = <span class='st'>"robust"</span>,
+  paired = <span class='fl'>TRUE</span>,
+  p.adjust.method = <span class='st'>"hommel"</span>
 )</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 6 x 10</span><span>
 #&gt;   group1 group2 psihat conf.low conf.high  p.value significance
 #&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       
-#&gt; </span><span style='color: #555555;'>1</span><span> HDHF   HDLF    1.16    0.318      2.00  1.49</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>- 3</span><span> **          
-#&gt; </span><span style='color: #555555;'>2</span><span> HDHF   LDHF    0.5    -</span><span style='color: #BB0000;'>0.188</span><span>      1.19  6.20</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>- 2</span><span> ns          
-#&gt; </span><span style='color: #555555;'>3</span><span> HDHF   LDLF    2.10    1.37       2.82  1.79</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>-10</span><span> ***         
-#&gt; </span><span style='color: #555555;'>4</span><span> HDLF   LDHF   -</span><span style='color: #BB0000;'>0.701</span><span>  -</span><span style='color: #BB0000;'>1.71</span><span>       0.303 6.20</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>- 2</span><span> ns          
-#&gt; </span><span style='color: #555555;'>5</span><span> HDLF   LDLF    0.938   0.069</span><span style='text-decoration: underline;'>4</span><span>     1.81  1.36</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>- 2</span><span> *           
-#&gt; </span><span style='color: #555555;'>6</span><span> LDHF   LDLF    1.54    0.810      2.27  1.16</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>- 6</span><span> ***         
+#&gt; </span><span style='color: #555555;'>1</span><span> HDLF   HDHF   -</span><span style='color: #BB0000;'>1.16</span><span>    -</span><span style='color: #BB0000;'>2.00</span><span>    -</span><span style='color: #BB0000;'>0.318</span><span>  1.49</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>- 3</span><span> **          
+#&gt; </span><span style='color: #555555;'>2</span><span> LDHF   HDHF   -</span><span style='color: #BB0000;'>0.5</span><span>     -</span><span style='color: #BB0000;'>1.19</span><span>     0.188  6.20</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>- 2</span><span> ns          
+#&gt; </span><span style='color: #555555;'>3</span><span> LDHF   HDLF    0.701   -</span><span style='color: #BB0000;'>0.303</span><span>    1.71   6.20</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>- 2</span><span> ns          
+#&gt; </span><span style='color: #555555;'>4</span><span> LDLF   HDHF   -</span><span style='color: #BB0000;'>2.10</span><span>    -</span><span style='color: #BB0000;'>2.82</span><span>    -</span><span style='color: #BB0000;'>1.37</span><span>   1.79</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>-10</span><span> ***         
+#&gt; </span><span style='color: #555555;'>5</span><span> LDLF   HDLF   -</span><span style='color: #BB0000;'>0.938</span><span>   -</span><span style='color: #BB0000;'>1.81</span><span>    -</span><span style='color: #BB0000;'>0.069</span><span style='color: #BB0000;text-decoration: underline;'>4</span><span> 1.36</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>- 2</span><span> *           
+#&gt; </span><span style='color: #555555;'>6</span><span> LDLF   LDHF   -</span><span style='color: #BB0000;'>1.54</span><span>    -</span><span style='color: #BB0000;'>2.27</span><span>    -</span><span style='color: #BB0000;'>0.810</span><span>  1.16</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>- 6</span><span> ***         
 #&gt;   label                                 test.details             
 #&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                                 </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                    
 #&gt; </span><span style='color: #555555;'>1</span><span> list(~italic(p)[ adjusted ]== 0.001 ) Yuen's trimmed means test
 #&gt; </span><span style='color: #555555;'>2</span><span> list(~italic(p)[ adjusted ]== 0.062 ) Yuen's trimmed means test
-#&gt; </span><span style='color: #555555;'>3</span><span> list(~italic(p)[ adjusted ]&lt;= 0.001 ) Yuen's trimmed means test
-#&gt; </span><span style='color: #555555;'>4</span><span> list(~italic(p)[ adjusted ]== 0.062 ) Yuen's trimmed means test
+#&gt; </span><span style='color: #555555;'>3</span><span> list(~italic(p)[ adjusted ]== 0.062 ) Yuen's trimmed means test
+#&gt; </span><span style='color: #555555;'>4</span><span> list(~italic(p)[ adjusted ]&lt;= 0.001 ) Yuen's trimmed means test
 #&gt; </span><span style='color: #555555;'>5</span><span> list(~italic(p)[ adjusted ]== 0.014 ) Yuen's trimmed means test
 #&gt; </span><span style='color: #555555;'>6</span><span> list(~italic(p)[ adjusted ]&lt;= 0.001 ) Yuen's trimmed means test
 #&gt;   p.value.adjustment
@@ -462,30 +462,29 @@ columns specific to the <code>type</code> of test being run.</p>
 #&gt; </span><span style='color: #555555;'>5</span><span> Hommel            
 #&gt; </span><span style='color: #555555;'>6</span><span> Hommel            </div><div class='input'>
 <span class='co'># Bayes Factor (Student's t-test)</span>
-<span class='fu'>pairwise_comparisons</span>(
-  <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>bugs_long</span>,
-  <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>condition</span>,
-  <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>desire</span>,
-  <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"bayes"</span>,
-  <span class='kw'>paired</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>bf.prior</span> <span class='kw'>=</span> <span class='fl'>0.80</span>
-)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 6 x 12</span><span>
-#&gt;   group1 group2      bf10    error      bf01 log_e_bf10 log_e_bf01 log_10_bf10
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span> HDHF   HDLF       5.18  2.04</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>- 8</span><span> 0.193          1.64      -</span><span style='color: #BB0000;'>1.64</span><span>        0.714
-#&gt; </span><span style='color: #555555;'>2</span><span> HDHF   LDHF       0.398 3.39</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>- 7</span><span> 2.51          -</span><span style='color: #BB0000;'>0.920</span><span>      0.920      -</span><span style='color: #BB0000;'>0.400</span><span>
-#&gt; </span><span style='color: #555555;'>3</span><span> HDHF   LDLF   </span><span style='text-decoration: underline;'>38</span><span>787.    2.98</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>-13</span><span> 0.000</span><span style='text-decoration: underline;'>025</span><span>8     10.6      -</span><span style='color: #BB0000;'>10.6</span><span>         4.59 
-#&gt; </span><span style='color: #555555;'>4</span><span> HDLF   LDHF       0.447 3.00</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>- 7</span><span> 2.24          -</span><span style='color: #BB0000;'>0.806</span><span>      0.806      -</span><span style='color: #BB0000;'>0.350</span><span>
-#&gt; </span><span style='color: #555555;'>5</span><span> HDLF   LDLF       2.92  3.88</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>- 8</span><span> 0.342          1.07      -</span><span style='color: #BB0000;'>1.07</span><span>        0.466
-#&gt; </span><span style='color: #555555;'>6</span><span> LDHF   LDLF    </span><span style='text-decoration: underline;'>1</span><span>121.    2.19</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>-11</span><span> 0.000</span><span style='text-decoration: underline;'>892</span><span>       7.02      -</span><span style='color: #BB0000;'>7.02</span><span>        3.05 
-#&gt;   log_10_bf01 bf.prior label                        test.details    
-#&gt;         </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>           
-#&gt; </span><span style='color: #555555;'>1</span><span>      -</span><span style='color: #BB0000;'>0.714</span><span>      0.8 list(~log[e](BF[10])==1.64)  Student's t-test
-#&gt; </span><span style='color: #555555;'>2</span><span>       0.400      0.8 list(~log[e](BF[10])==-0.92) Student's t-test
-#&gt; </span><span style='color: #555555;'>3</span><span>      -</span><span style='color: #BB0000;'>4.59</span><span>       0.8 list(~log[e](BF[10])==10.57) Student's t-test
-#&gt; </span><span style='color: #555555;'>4</span><span>       0.350      0.8 list(~log[e](BF[10])==-0.81) Student's t-test
-#&gt; </span><span style='color: #555555;'>5</span><span>      -</span><span style='color: #BB0000;'>0.466</span><span>      0.8 list(~log[e](BF[10])==1.07)  Student's t-test
-#&gt; </span><span style='color: #555555;'>6</span><span>      -</span><span style='color: #BB0000;'>3.05</span><span>       0.8 list(~log[e](BF[10])==7.02)  Student's t-test</div><div class='input'><span class='co'># }</span></div></span></pre>
+<span class='fu'><a href='https://indrajeetpatil.github.io/pairwiseComparisons//reference/pairwise_comparisons.html'>pairwise_comparisons</a></span>(
+  data = <span class='kw'>bugs_long</span>,
+  x = <span class='kw'>condition</span>,
+  y = <span class='kw'>desire</span>,
+  type = <span class='st'>"bayes"</span>,
+  paired = <span class='fl'>TRUE</span>
+)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 6 x 11</span><span>
+#&gt;   group1 group2     bf10     bf01 log_e_bf10 log_e_bf01 log_10_bf10 log_10_bf01
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span> HDHF   HDLF   4.16</span><span style='color: #555555;'>e</span><span>+ 1 2.41</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>- 2</span><span>      3.73      -</span><span style='color: #BB0000;'>3.73</span><span>        1.62       -</span><span style='color: #BB0000;'>1.62</span><span> 
+#&gt; </span><span style='color: #555555;'>2</span><span> HDHF   LDHF   5.83</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>- 1</span><span> 1.71</span><span style='color: #555555;'>e</span><span>+ 0     -</span><span style='color: #BB0000;'>0.539</span><span>      0.539      -</span><span style='color: #BB0000;'>0.234</span><span>       0.234
+#&gt; </span><span style='color: #555555;'>3</span><span> HDHF   LDLF   1.20</span><span style='color: #555555;'>e</span><span>+10 8.34</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>-11</span><span>     23.2      -</span><span style='color: #BB0000;'>23.2</span><span>        10.1       -</span><span style='color: #BB0000;'>10.1</span><span>  
+#&gt; </span><span style='color: #555555;'>4</span><span> HDLF   LDHF   6.98</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>- 1</span><span> 1.43</span><span style='color: #555555;'>e</span><span>+ 0     -</span><span style='color: #BB0000;'>0.359</span><span>      0.359      -</span><span style='color: #BB0000;'>0.156</span><span>       0.156
+#&gt; </span><span style='color: #555555;'>5</span><span> HDLF   LDLF   1.81</span><span style='color: #555555;'>e</span><span>+ 1 5.52</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>- 2</span><span>      2.90      -</span><span style='color: #BB0000;'>2.90</span><span>        1.26       -</span><span style='color: #BB0000;'>1.26</span><span> 
+#&gt; </span><span style='color: #555555;'>6</span><span> LDHF   LDLF   4.81</span><span style='color: #555555;'>e</span><span>+ 6 2.08</span><span style='color: #555555;'>e</span><span style='color: #BB0000;'>- 7</span><span>     15.4      -</span><span style='color: #BB0000;'>15.4</span><span>         6.68       -</span><span style='color: #BB0000;'>6.68</span><span> 
+#&gt;   bf.prior label                        test.details    
+#&gt;      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>           
+#&gt; </span><span style='color: #555555;'>1</span><span>    0.707 list(~log[e](BF[10])==3.73)  Student's t-test
+#&gt; </span><span style='color: #555555;'>2</span><span>    0.707 list(~log[e](BF[10])==-0.54) Student's t-test
+#&gt; </span><span style='color: #555555;'>3</span><span>    0.707 list(~log[e](BF[10])==23.21) Student's t-test
+#&gt; </span><span style='color: #555555;'>4</span><span>    0.707 list(~log[e](BF[10])==-0.36) Student's t-test
+#&gt; </span><span style='color: #555555;'>5</span><span>    0.707 list(~log[e](BF[10])==2.90)  Student's t-test
+#&gt; </span><span style='color: #555555;'>6</span><span>    0.707 list(~log[e](BF[10])==15.39) Student's t-test</div><div class='input'><span class='co'># }</span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

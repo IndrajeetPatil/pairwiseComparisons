@@ -15,7 +15,7 @@ pairwise_comparisons(
   tr = 0.1,
   bf.prior = 0.707,
   p.adjust.method = "holm",
-  k = 2,
+  k = 2L,
   ...
 )
 
@@ -29,7 +29,7 @@ pairwise_p(
   tr = 0.1,
   bf.prior = 0.707,
   p.adjust.method = "holm",
-  k = 2,
+  k = 2L,
   ...
 )
 }
@@ -195,8 +195,7 @@ pairwise_comparisons(
   x = condition,
   y = desire,
   type = "bayes",
-  paired = TRUE,
-  bf.prior = 0.80
+  paired = TRUE
 )
 }
 }

@@ -161,8 +161,7 @@
 #'   x = condition,
 #'   y = desire,
 #'   type = "bayes",
-#'   paired = TRUE,
-#'   bf.prior = 0.80
+#'   paired = TRUE
 #' )
 #' }
 #' @export
@@ -177,7 +176,7 @@ pairwise_comparisons <- function(data,
                                  tr = 0.1,
                                  bf.prior = 0.707,
                                  p.adjust.method = "holm",
-                                 k = 2,
+                                 k = 2L,
                                  ...) {
   # standardize stats type
   type <- ipmisc::stats_type_switch(type)
@@ -433,22 +432,14 @@ pairwise_comparisons <- function(data,
 
   # print a message telling the user that this is currently not supported
   if (type == "bayes") {
-    # convert groups to character type
-    df %<>%
-      dplyr::mutate_if(
-        .tbl = .,
-        .predicate = is.factor,
-        .funs = ~ as.character(.)
-      )
-
     # creating a list of dataframes with subsections of data
     df_list <-
       purrr::map2(
         .x = as.character(df$group1),
         .y = as.character(df$group2),
         .f = function(a, b) {
-          data %>%
-            dplyr::filter(.data = ., !is.na({{ x }}), !is.na({{ y }})) %>%
+          df_internal %>%
+            long_to_wide_converter(., {{ x }}, {{ y }}, paired, FALSE) %>%
             dplyr::filter(.data = ., {{ x }} %in% c(a, b)) %>%
             droplevels() %>%
             as.data.frame()

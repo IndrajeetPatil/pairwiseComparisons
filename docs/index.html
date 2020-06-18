@@ -25,7 +25,7 @@
     one-way analysis of variance for both between-subjects and
     within-subjects designs. Currently, it supports only the most common
     types of statistical analyses and tests: parametric (Welchs and
-    Students t-test), nonparametric (Durbin-Conover test Dunn test),
+    Students t-test), nonparametric (Durbin-Conover and Dunn test),
     robust (Yuen’s trimmed means test), and Bayes Factor (Student's
     t-test).">
 <meta property="og:image" content="https://indrajeetpatil.github.io/pairwiseComparisons/logo.png">
@@ -47,7 +47,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">pairwiseComparisons</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">1.0.0.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">1.1.0</span>
       </span>
     </div>
 
@@ -115,7 +115,7 @@
 <td><a href="https://CRAN.R-project.org/package=pairwiseComparisons"><img src="http://www.r-pkg.org/badges/version-ago/pairwiseComparisons" alt="CRAN_Release_Badge"></a></td>
 <td><a href="https://travis-ci.org/IndrajeetPatil/pairwiseComparisons"><img src="https://travis-ci.org/IndrajeetPatil/pairwiseComparisons.svg?branch=master" alt="Travis Build Status"></a></td>
 <td><a href="https://CRAN.R-project.org/package=pairwiseComparisons"><img src="https://cranlogs.r-pkg.org/badges/last-day/pairwiseComparisons?color=blue" alt="Daily downloads badge"></a></td>
-<td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/"><img src="https://img.shields.io/badge/GitHub-1.0.0-orange.svg?style=flat-square" alt="GitHub version"></a></td>
+<td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/"><img src="https://img.shields.io/badge/GitHub-1.1.0-orange.svg?style=flat-square" alt="GitHub version"></a></td>
 <td><a href="https://indrajeetpatil.github.io/pairwiseComparisons/"><img src="https://img.shields.io/badge/website-pairwiseComparisons-orange.svg?colorB=E91E63" alt="Website"></a></td>
 </tr>
 <tr class="even">
@@ -143,7 +143,7 @@
 <td><a href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img src="https://img.shields.io/badge/licence-GPL--3-blue.svg" alt="Licence"></a></td>
 <td><a href="https://codecov.io/gh/IndrajeetPatil/pairwiseComparisons?branch=master"><img src="https://codecov.io/gh/IndrajeetPatil/pairwiseComparisons/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></td>
 <td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/blob/master/tests/README.md"><img src="https://img.shields.io/badge/covrpage-Last_Build_2020_05_29-brightgreen.svg" alt="Covrpage Summary"></a></td>
-<td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/commits/master"><img src="https://img.shields.io/badge/last%20change-2020--06--07-yellowgreen.svg" alt="Last-changedate"></a></td>
+<td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/commits/master"><img src="https://img.shields.io/badge/last%20change-2020--06--18-yellowgreen.svg" alt="Last-changedate"></a></td>
 <td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/commits/master"><img src="https://img.shields.io/github/last-commit/IndrajeetPatil/pairwiseComparisons.svg" alt="GitHub last commit"></a></td>
 </tr>
 <tr class="even">
@@ -166,24 +166,30 @@
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>To get the latest, stable <code>CRAN</code> release:</p>
-<div class="sourceCode" id="cb1"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"pairwiseComparisons"</span>)</pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"pairwiseComparisons"</span>)
+</pre></div>
 <p>You can get the <strong>development</strong> version of the package from <code>GitHub</code>. To see what new changes (and bug fixes) have been made to the package since the last release on <code>CRAN</code>, you can check the detailed log of changes here: <a href="https://indrajeetpatil.github.io/pairwiseComparisons/news/index.html" class="uri">https://indrajeetpatil.github.io/pairwiseComparisons/news/index.html</a></p>
 <p>If you are in hurry and want to reduce the time of installation, prefer-</p>
-<div class="sourceCode" id="cb2"><pre class="r"><span class="co"># needed package to download from GitHub repo</span>
+<div class="sourceCode" id="cb2"><pre class="downlit">
+<span class="co"># needed package to download from GitHub repo</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"remotes"</span>)
 
 <span class="co"># downloading the package from GitHub</span>
-<span class="kw pkg">remotes</span><span class="kw ns">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span>(
-  <span class="kw">repo</span> <span class="kw">=</span> <span class="st">"IndrajeetPatil/pairwiseComparisons"</span>, <span class="co"># package path on GitHub</span>
-  <span class="kw">dependencies</span> <span class="kw">=</span> <span class="fl">FALSE</span>, <span class="co"># assumes you have already installed needed packages</span>
-  <span class="kw">quick</span> <span class="kw">=</span> <span class="fl">TRUE</span> <span class="co"># skips docs, demos, and vignettes</span>
-)</pre></div>
+<span class="kw">remotes</span>::<span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span>(
+  repo = <span class="st">"IndrajeetPatil/pairwiseComparisons"</span>, <span class="co"># package path on GitHub</span>
+  dependencies = <span class="fl">FALSE</span>, <span class="co"># assumes you have already installed needed packages</span>
+  quick = <span class="fl">TRUE</span> <span class="co"># skips docs, demos, and vignettes</span>
+)
+</pre></div>
 <p>If time is not a constraint-</p>
-<div class="sourceCode" id="cb3"><pre class="r"><span class="kw pkg">remotes</span><span class="kw ns">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span>(
-  <span class="kw">repo</span> <span class="kw">=</span> <span class="st">"IndrajeetPatil/pairwiseComparisons"</span>, <span class="co"># package path on GitHub</span>
-  <span class="kw">dependencies</span> <span class="kw">=</span> <span class="fl">TRUE</span>, <span class="co"># installs packages which pairwiseComparisons depends on</span>
-  <span class="kw">upgrade_dependencies</span> <span class="kw">=</span> <span class="fl">TRUE</span> <span class="co"># updates any out of date dependencies</span>
-)</pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit">
+<span class="kw">remotes</span>::<span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span>(
+  repo = <span class="st">"IndrajeetPatil/pairwiseComparisons"</span>, <span class="co"># package path on GitHub</span>
+  dependencies = <span class="fl">TRUE</span>, <span class="co"># installs packages which pairwiseComparisons depends on</span>
+  upgrade_dependencies = <span class="fl">TRUE</span> <span class="co"># updates any out of date dependencies</span>
+)
+</pre></div>
 </div>
 </div>
 <div id="summary-of-types-of-statistical-analyses" class="section level1">
@@ -283,20 +289,21 @@
 <div id="between-subjects-design-1" class="section level2">
 <h2 class="hasAnchor">
 <a href="#between-subjects-design-1" class="anchor"></a>Between-subjects design</h2>
-<div class="sourceCode" id="cb4"><pre class="r"><span class="co"># for reproducibility</span>
+<div class="sourceCode" id="cb4"><pre class="downlit">
+<span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="fl">123</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">pairwiseComparisons</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://indrajeetpatil.github.io/pairwiseComparisons">pairwiseComparisons</a></span>)
 
 <span class="co"># parametric</span>
 <span class="co"># if `var.equal = TRUE`, then Student's *t*-test will be run</span>
 <span class="fu"><a href="reference/pairwise_comparisons.html">pairwise_comparisons</a></span>(
-  <span class="kw">data</span> <span class="kw">=</span> <span class="kw pkg">ggplot2</span><span class="kw ns">::</span><span class="no"><a href="https://ggplot2.tidyverse.org/reference/msleep.html">msleep</a></span>,
-  <span class="kw">x</span> <span class="kw">=</span> <span class="no">vore</span>,
-  <span class="kw">y</span> <span class="kw">=</span> <span class="no">brainwt</span>,
-  <span class="kw">type</span> <span class="kw">=</span> <span class="st">"parametric"</span>,
-  <span class="kw">var.equal</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
-  <span class="kw">paired</span> <span class="kw">=</span> <span class="fl">FALSE</span>,
-  <span class="kw">p.adjust.method</span> <span class="kw">=</span> <span class="st">"bonferroni"</span>
+  data = <span class="kw">ggplot2</span>::<span class="kw"><a href="https://ggplot2.tidyverse.org/reference/msleep.html">msleep</a></span>,
+  x = <span class="kw">vore</span>,
+  y = <span class="kw">brainwt</span>,
+  type = <span class="st">"parametric"</span>,
+  var.equal = <span class="fl">TRUE</span>,
+  paired = <span class="fl">FALSE</span>,
+  p.adjust.method = <span class="st">"bonferroni"</span>
 )
 <span class="co">#&gt; # A tibble: 6 x 8</span>
 <span class="co">#&gt;   group1  group2  mean.difference p.value significance</span>
@@ -318,13 +325,13 @@
 
 <span class="co"># if `var.equal = FALSE`, then Games-Howell test will be run</span>
 <span class="fu"><a href="reference/pairwise_comparisons.html">pairwise_comparisons</a></span>(
-  <span class="kw">data</span> <span class="kw">=</span> <span class="kw pkg">ggplot2</span><span class="kw ns">::</span><span class="no"><a href="https://ggplot2.tidyverse.org/reference/msleep.html">msleep</a></span>,
-  <span class="kw">x</span> <span class="kw">=</span> <span class="no">vore</span>,
-  <span class="kw">y</span> <span class="kw">=</span> <span class="no">brainwt</span>,
-  <span class="kw">type</span> <span class="kw">=</span> <span class="st">"parametric"</span>,
-  <span class="kw">var.equal</span> <span class="kw">=</span> <span class="fl">FALSE</span>,
-  <span class="kw">paired</span> <span class="kw">=</span> <span class="fl">FALSE</span>,
-  <span class="kw">p.adjust.method</span> <span class="kw">=</span> <span class="st">"bonferroni"</span>
+  data = <span class="kw">ggplot2</span>::<span class="kw"><a href="https://ggplot2.tidyverse.org/reference/msleep.html">msleep</a></span>,
+  x = <span class="kw">vore</span>,
+  y = <span class="kw">brainwt</span>,
+  type = <span class="st">"parametric"</span>,
+  var.equal = <span class="fl">FALSE</span>,
+  paired = <span class="fl">FALSE</span>,
+  p.adjust.method = <span class="st">"bonferroni"</span>
 )
 <span class="co">#&gt; # A tibble: 6 x 11</span>
 <span class="co">#&gt;   group1 group2  mean.difference    se t.value    df p.value significance</span>
@@ -346,12 +353,12 @@
 
 <span class="co"># non-parametric</span>
 <span class="fu"><a href="reference/pairwise_comparisons.html">pairwise_comparisons</a></span>(
-  <span class="kw">data</span> <span class="kw">=</span> <span class="kw pkg">ggplot2</span><span class="kw ns">::</span><span class="no"><a href="https://ggplot2.tidyverse.org/reference/msleep.html">msleep</a></span>,
-  <span class="kw">x</span> <span class="kw">=</span> <span class="no">vore</span>,
-  <span class="kw">y</span> <span class="kw">=</span> <span class="no">brainwt</span>,
-  <span class="kw">type</span> <span class="kw">=</span> <span class="st">"nonparametric"</span>,
-  <span class="kw">paired</span> <span class="kw">=</span> <span class="fl">FALSE</span>,
-  <span class="kw">p.adjust.method</span> <span class="kw">=</span> <span class="st">"none"</span>
+  data = <span class="kw">ggplot2</span>::<span class="kw"><a href="https://ggplot2.tidyverse.org/reference/msleep.html">msleep</a></span>,
+  x = <span class="kw">vore</span>,
+  y = <span class="kw">brainwt</span>,
+  type = <span class="st">"nonparametric"</span>,
+  paired = <span class="fl">FALSE</span>,
+  p.adjust.method = <span class="st">"none"</span>
 )
 <span class="co">#&gt; # A tibble: 6 x 8</span>
 <span class="co">#&gt;   group1  group2  z.value p.value significance</span>
@@ -373,12 +380,12 @@
 
 <span class="co"># robust</span>
 <span class="fu"><a href="reference/pairwise_comparisons.html">pairwise_comparisons</a></span>(
-  <span class="kw">data</span> <span class="kw">=</span> <span class="kw pkg">ggplot2</span><span class="kw ns">::</span><span class="no"><a href="https://ggplot2.tidyverse.org/reference/msleep.html">msleep</a></span>,
-  <span class="kw">x</span> <span class="kw">=</span> <span class="no">vore</span>,
-  <span class="kw">y</span> <span class="kw">=</span> <span class="no">brainwt</span>,
-  <span class="kw">type</span> <span class="kw">=</span> <span class="st">"robust"</span>,
-  <span class="kw">paired</span> <span class="kw">=</span> <span class="fl">FALSE</span>,
-  <span class="kw">p.adjust.method</span> <span class="kw">=</span> <span class="st">"fdr"</span>
+  data = <span class="kw">ggplot2</span>::<span class="kw"><a href="https://ggplot2.tidyverse.org/reference/msleep.html">msleep</a></span>,
+  x = <span class="kw">vore</span>,
+  y = <span class="kw">brainwt</span>,
+  type = <span class="st">"robust"</span>,
+  paired = <span class="fl">FALSE</span>,
+  p.adjust.method = <span class="st">"fdr"</span>
 )
 <span class="co">#&gt; # A tibble: 6 x 10</span>
 <span class="co">#&gt;   group1  group2    psihat conf.low conf.high p.value significance</span>
@@ -408,44 +415,46 @@
 
 <span class="co"># Bayes Factor</span>
 <span class="fu"><a href="reference/pairwise_comparisons.html">pairwise_comparisons</a></span>(
-  <span class="kw">data</span> <span class="kw">=</span> <span class="kw pkg">ggplot2</span><span class="kw ns">::</span><span class="no"><a href="https://ggplot2.tidyverse.org/reference/msleep.html">msleep</a></span>,
-  <span class="kw">x</span> <span class="kw">=</span> <span class="no">vore</span>,
-  <span class="kw">y</span> <span class="kw">=</span> <span class="no">brainwt</span>,
-  <span class="kw">type</span> <span class="kw">=</span> <span class="st">"bayes"</span>,
-  <span class="kw">paired</span> <span class="kw">=</span> <span class="fl">FALSE</span>
+  data = <span class="kw">ggplot2</span>::<span class="kw"><a href="https://ggplot2.tidyverse.org/reference/msleep.html">msleep</a></span>,
+  x = <span class="kw">vore</span>,
+  y = <span class="kw">brainwt</span>,
+  type = <span class="st">"bayes"</span>,
+  paired = <span class="fl">FALSE</span>
 )
-<span class="co">#&gt; # A tibble: 6 x 12</span>
-<span class="co">#&gt;   group1 group2   bf10     error  bf01 log_e_bf10 log_e_bf01 log_10_bf10</span>
-<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;   &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 omni   herbi   0.571 0.0000411  1.75     -0.560      0.560      -0.243</span>
-<span class="co">#&gt; 2 omni   carni   0.427 0.000105   2.34     -0.851      0.851      -0.369</span>
-<span class="co">#&gt; 3 omni   insecti 0.545 0.0000190  1.83     -0.606      0.606      -0.263</span>
-<span class="co">#&gt; 4 herbi  carni   0.540 0.0000100  1.85     -0.617      0.617      -0.268</span>
-<span class="co">#&gt; 5 herbi  insecti 0.540 0.0000175  1.85     -0.616      0.616      -0.267</span>
-<span class="co">#&gt; 6 carni  insecti 0.718 0.000152   1.39     -0.332      0.332      -0.144</span>
-<span class="co">#&gt;   log_10_bf01 bf.prior label                        test.details    </span>
-<span class="co">#&gt;         &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;                        &lt;chr&gt;           </span>
-<span class="co">#&gt; 1       0.243    0.707 list(~log[e](BF[10])==-0.56) Student's t-test</span>
-<span class="co">#&gt; 2       0.369    0.707 list(~log[e](BF[10])==-0.85) Student's t-test</span>
-<span class="co">#&gt; 3       0.263    0.707 list(~log[e](BF[10])==-0.61) Student's t-test</span>
-<span class="co">#&gt; 4       0.268    0.707 list(~log[e](BF[10])==-0.62) Student's t-test</span>
-<span class="co">#&gt; 5       0.267    0.707 list(~log[e](BF[10])==-0.62) Student's t-test</span>
-<span class="co">#&gt; 6       0.144    0.707 list(~log[e](BF[10])==-0.33) Student's t-test</span></pre></div>
+<span class="co">#&gt; # A tibble: 6 x 11</span>
+<span class="co">#&gt;   group1 group2   bf10  bf01 log_e_bf10 log_e_bf01 log_10_bf10 log_10_bf01</span>
+<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 omni   herbi   0.571  1.75     -0.560      0.560      -0.243       0.243</span>
+<span class="co">#&gt; 2 omni   carni   0.427  2.34     -0.851      0.851      -0.369       0.369</span>
+<span class="co">#&gt; 3 omni   insecti 0.545  1.83     -0.606      0.606      -0.263       0.263</span>
+<span class="co">#&gt; 4 herbi  carni   0.540  1.85     -0.617      0.617      -0.268       0.268</span>
+<span class="co">#&gt; 5 herbi  insecti 0.540  1.85     -0.616      0.616      -0.267       0.267</span>
+<span class="co">#&gt; 6 carni  insecti 0.718  1.39     -0.332      0.332      -0.144       0.144</span>
+<span class="co">#&gt;   bf.prior label                        test.details    </span>
+<span class="co">#&gt;      &lt;dbl&gt; &lt;chr&gt;                        &lt;chr&gt;           </span>
+<span class="co">#&gt; 1    0.707 list(~log[e](BF[10])==-0.56) Student's t-test</span>
+<span class="co">#&gt; 2    0.707 list(~log[e](BF[10])==-0.85) Student's t-test</span>
+<span class="co">#&gt; 3    0.707 list(~log[e](BF[10])==-0.61) Student's t-test</span>
+<span class="co">#&gt; 4    0.707 list(~log[e](BF[10])==-0.62) Student's t-test</span>
+<span class="co">#&gt; 5    0.707 list(~log[e](BF[10])==-0.62) Student's t-test</span>
+<span class="co">#&gt; 6    0.707 list(~log[e](BF[10])==-0.33) Student's t-test</span>
+</pre></div>
 </div>
 <div id="within-subjects-design-1" class="section level2">
 <h2 class="hasAnchor">
 <a href="#within-subjects-design-1" class="anchor"></a>Within-subjects design</h2>
-<div class="sourceCode" id="cb5"><pre class="r"><span class="co"># for reproducibility</span>
+<div class="sourceCode" id="cb5"><pre class="downlit">
+<span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="fl">123</span>)
 
 <span class="co"># parametric</span>
 <span class="fu"><a href="reference/pairwise_comparisons.html">pairwise_comparisons</a></span>(
-  <span class="kw">data</span> <span class="kw">=</span> <span class="no">bugs_long</span>,
-  <span class="kw">x</span> <span class="kw">=</span> <span class="no">condition</span>,
-  <span class="kw">y</span> <span class="kw">=</span> <span class="no">desire</span>,
-  <span class="kw">type</span> <span class="kw">=</span> <span class="st">"parametric"</span>,
-  <span class="kw">paired</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
-  <span class="kw">p.adjust.method</span> <span class="kw">=</span> <span class="st">"BH"</span>
+  data = <span class="kw">bugs_long</span>,
+  x = <span class="kw">condition</span>,
+  y = <span class="kw">desire</span>,
+  type = <span class="st">"parametric"</span>,
+  paired = <span class="fl">TRUE</span>,
+  p.adjust.method = <span class="st">"BH"</span>
 )
 <span class="co">#&gt; # A tibble: 6 x 8</span>
 <span class="co">#&gt;   group1 group2 mean.difference  p.value significance</span>
@@ -467,12 +476,12 @@
 
 <span class="co"># non-parametric</span>
 <span class="fu"><a href="reference/pairwise_comparisons.html">pairwise_comparisons</a></span>(
-  <span class="kw">data</span> <span class="kw">=</span> <span class="no">bugs_long</span>,
-  <span class="kw">x</span> <span class="kw">=</span> <span class="no">condition</span>,
-  <span class="kw">y</span> <span class="kw">=</span> <span class="no">desire</span>,
-  <span class="kw">type</span> <span class="kw">=</span> <span class="st">"nonparametric"</span>,
-  <span class="kw">paired</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
-  <span class="kw">p.adjust.method</span> <span class="kw">=</span> <span class="st">"BY"</span>
+  data = <span class="kw">bugs_long</span>,
+  x = <span class="kw">condition</span>,
+  y = <span class="kw">desire</span>,
+  type = <span class="st">"nonparametric"</span>,
+  paired = <span class="fl">TRUE</span>,
+  p.adjust.method = <span class="st">"BY"</span>
 )
 <span class="co">#&gt; # A tibble: 6 x 8</span>
 <span class="co">#&gt;   group1 group2     W  p.value significance</span>
@@ -502,28 +511,28 @@
 
 <span class="co"># robust</span>
 <span class="fu"><a href="reference/pairwise_comparisons.html">pairwise_comparisons</a></span>(
-  <span class="kw">data</span> <span class="kw">=</span> <span class="no">bugs_long</span>,
-  <span class="kw">x</span> <span class="kw">=</span> <span class="no">condition</span>,
-  <span class="kw">y</span> <span class="kw">=</span> <span class="no">desire</span>,
-  <span class="kw">type</span> <span class="kw">=</span> <span class="st">"robust"</span>,
-  <span class="kw">paired</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
-  <span class="kw">p.adjust.method</span> <span class="kw">=</span> <span class="st">"hommel"</span>
+  data = <span class="kw">bugs_long</span>,
+  x = <span class="kw">condition</span>,
+  y = <span class="kw">desire</span>,
+  type = <span class="st">"robust"</span>,
+  paired = <span class="fl">TRUE</span>,
+  p.adjust.method = <span class="st">"hommel"</span>
 )
 <span class="co">#&gt; # A tibble: 6 x 10</span>
 <span class="co">#&gt;   group1 group2 psihat conf.low conf.high  p.value significance</span>
 <span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       </span>
-<span class="co">#&gt; 1 HDHF   HDLF    1.16    0.318      2.00  1.49e- 3 **          </span>
-<span class="co">#&gt; 2 HDHF   LDHF    0.5    -0.188      1.19  6.20e- 2 ns          </span>
-<span class="co">#&gt; 3 HDHF   LDLF    2.10    1.37       2.82  1.79e-10 ***         </span>
-<span class="co">#&gt; 4 HDLF   LDHF   -0.701  -1.71       0.303 6.20e- 2 ns          </span>
-<span class="co">#&gt; 5 HDLF   LDLF    0.938   0.0694     1.81  1.36e- 2 *           </span>
-<span class="co">#&gt; 6 LDHF   LDLF    1.54    0.810      2.27  1.16e- 6 ***         </span>
+<span class="co">#&gt; 1 HDLF   HDHF   -1.16    -2.00    -0.318  1.49e- 3 **          </span>
+<span class="co">#&gt; 2 LDHF   HDHF   -0.5     -1.19     0.188  6.20e- 2 ns          </span>
+<span class="co">#&gt; 3 LDHF   HDLF    0.701   -0.303    1.71   6.20e- 2 ns          </span>
+<span class="co">#&gt; 4 LDLF   HDHF   -2.10    -2.82    -1.37   1.79e-10 ***         </span>
+<span class="co">#&gt; 5 LDLF   HDLF   -0.938   -1.81    -0.0694 1.36e- 2 *           </span>
+<span class="co">#&gt; 6 LDLF   LDHF   -1.54    -2.27    -0.810  1.16e- 6 ***         </span>
 <span class="co">#&gt;   label                                 test.details             </span>
 <span class="co">#&gt;   &lt;chr&gt;                                 &lt;chr&gt;                    </span>
 <span class="co">#&gt; 1 list(~italic(p)[ adjusted ]== 0.001 ) Yuen's trimmed means test</span>
 <span class="co">#&gt; 2 list(~italic(p)[ adjusted ]== 0.062 ) Yuen's trimmed means test</span>
-<span class="co">#&gt; 3 list(~italic(p)[ adjusted ]&lt;= 0.001 ) Yuen's trimmed means test</span>
-<span class="co">#&gt; 4 list(~italic(p)[ adjusted ]== 0.062 ) Yuen's trimmed means test</span>
+<span class="co">#&gt; 3 list(~italic(p)[ adjusted ]== 0.062 ) Yuen's trimmed means test</span>
+<span class="co">#&gt; 4 list(~italic(p)[ adjusted ]&lt;= 0.001 ) Yuen's trimmed means test</span>
 <span class="co">#&gt; 5 list(~italic(p)[ adjusted ]== 0.014 ) Yuen's trimmed means test</span>
 <span class="co">#&gt; 6 list(~italic(p)[ adjusted ]&lt;= 0.001 ) Yuen's trimmed means test</span>
 <span class="co">#&gt;   p.value.adjustment</span>
@@ -537,24 +546,25 @@
 
 <span class="co"># Bayes Factor</span>
 <span class="fu"><a href="reference/pairwise_comparisons.html">pairwise_comparisons</a></span>(
-  <span class="kw">data</span> <span class="kw">=</span> <span class="kw pkg">WRS2</span><span class="kw ns">::</span><span class="no"><a href="https://rdrr.io/pkg/WRS2/man/WineTasting.html">WineTasting</a></span>,
-  <span class="kw">x</span> <span class="kw">=</span> <span class="no">Wine</span>,
-  <span class="kw">y</span> <span class="kw">=</span> <span class="no">Taste</span>,
-  <span class="kw">type</span> <span class="kw">=</span> <span class="st">"bayes"</span>,
-  <span class="kw">paired</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
-  <span class="kw">bf.prior</span> <span class="kw">=</span> <span class="fl">0.77</span>
+  data = <span class="kw">WRS2</span>::<span class="kw"><a href="https://rdrr.io/pkg/WRS2/man/WineTasting.html">WineTasting</a></span>,
+  x = <span class="kw">Wine</span>,
+  y = <span class="kw">Taste</span>,
+  type = <span class="st">"bayes"</span>,
+  paired = <span class="fl">TRUE</span>,
+  bf.prior = <span class="fl">0.77</span>
 )
-<span class="co">#&gt; # A tibble: 3 x 12</span>
-<span class="co">#&gt;   group1 group2   bf10       error   bf01 log_e_bf10 log_e_bf01 log_10_bf10</span>
-<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;   &lt;dbl&gt;       &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 Wine A Wine B  0.219 0.000366    4.57        -1.52       1.52      -0.660</span>
-<span class="co">#&gt; 2 Wine A Wine C  3.60  0.00000709  0.277        1.28      -1.28       0.557</span>
-<span class="co">#&gt; 3 Wine B Wine C 50.5   0.000000840 0.0198       3.92      -3.92       1.70 </span>
-<span class="co">#&gt;   log_10_bf01 bf.prior label                        test.details    </span>
-<span class="co">#&gt;         &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;                        &lt;chr&gt;           </span>
-<span class="co">#&gt; 1       0.660     0.77 list(~log[e](BF[10])==-1.52) Student's t-test</span>
-<span class="co">#&gt; 2      -0.557     0.77 list(~log[e](BF[10])==1.28)  Student's t-test</span>
-<span class="co">#&gt; 3      -1.70      0.77 list(~log[e](BF[10])==3.92)  Student's t-test</span></pre></div>
+<span class="co">#&gt; # A tibble: 3 x 11</span>
+<span class="co">#&gt;   group1 group2   bf10   bf01 log_e_bf10 log_e_bf01 log_10_bf10 log_10_bf01</span>
+<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;   &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 Wine A Wine B  0.219 4.57        -1.52       1.52      -0.660       0.660</span>
+<span class="co">#&gt; 2 Wine A Wine C  3.60  0.277        1.28      -1.28       0.557      -0.557</span>
+<span class="co">#&gt; 3 Wine B Wine C 50.5   0.0198       3.92      -3.92       1.70       -1.70 </span>
+<span class="co">#&gt;   bf.prior label                        test.details    </span>
+<span class="co">#&gt;      &lt;dbl&gt; &lt;chr&gt;                        &lt;chr&gt;           </span>
+<span class="co">#&gt; 1     0.77 list(~log[e](BF[10])==-1.52) Student's t-test</span>
+<span class="co">#&gt; 2     0.77 list(~log[e](BF[10])==1.28)  Student's t-test</span>
+<span class="co">#&gt; 3     0.77 list(~log[e](BF[10])==3.92)  Student's t-test</span>
+</pre></div>
 </div>
 </div>
 <div id="using-pairwisecomparisons-with-ggsignif-to-display-results" class="section level1">
@@ -563,22 +573,23 @@
 <div id="example-1-between-subjects" class="section level2">
 <h2 class="hasAnchor">
 <a href="#example-1-between-subjects" class="anchor"></a>Example-1: between-subjects</h2>
-<div class="sourceCode" id="cb6"><pre class="r"><span class="co"># needed libraries</span>
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">ggplot2</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">pairwiseComparisons</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">ggsignif</span>)
+<div class="sourceCode" id="cb6"><pre class="downlit">
+<span class="co"># needed libraries</span>
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="http://ggplot2.tidyverse.org">ggplot2</a></span>)
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://indrajeetpatil.github.io/pairwiseComparisons">pairwiseComparisons</a></span>)
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://github.com/const-ae/ggsignif">ggsignif</a></span>)
 
 <span class="co"># converting to factor</span>
-<span class="no">mtcars</span>$<span class="no">cyl</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span>(<span class="no">mtcars</span>$<span class="no">cyl</span>)
+<span class="kw">mtcars</span><span class="op">$</span><span class="kw">cyl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span>(<span class="kw">mtcars</span><span class="op">$</span><span class="kw">cyl</span>)
 
 <span class="co"># creating a basic plot</span>
-<span class="no">p</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="no">mtcars</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="no">cyl</span>, <span class="no">wt</span>)) + <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span>()
+<span class="kw">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="kw">mtcars</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="kw">cyl</span>, <span class="kw">wt</span>)) <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span>()
 
 <span class="co"># using `pairwiseComparisons` package to create a dataframe with results</span>
-(<span class="no">df</span> <span class="kw">&lt;-</span>
-  <span class="fu"><a href="reference/pairwise_comparisons.html">pairwise_comparisons</a></span>(<span class="no">mtcars</span>, <span class="no">cyl</span>, <span class="no">wt</span>, <span class="kw">messages</span> <span class="kw">=</span> <span class="fl">FALSE</span>) <span class="kw">%&gt;%</span>
-  <span class="kw pkg">dplyr</span><span class="kw ns">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="kw">.data</span> <span class="kw">=</span> <span class="no">.</span>, <span class="kw">groups</span> <span class="kw">=</span> <span class="kw pkg">purrr</span><span class="kw ns">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map2.html">pmap</a></span>(<span class="kw">.l</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="no">group1</span>, <span class="no">group2</span>), <span class="kw">.f</span> <span class="kw">=</span> <span class="no">c</span>)) <span class="kw">%&gt;%</span>
-  <span class="kw pkg">dplyr</span><span class="kw ns">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="kw">.data</span> <span class="kw">=</span> <span class="no">.</span>, <span class="no">group1</span>))
+(<span class="kw">df</span> <span class="op">&lt;-</span>
+  <span class="fu"><a href="reference/pairwise_comparisons.html">pairwise_comparisons</a></span>(<span class="kw">mtcars</span>, <span class="kw">cyl</span>, <span class="kw">wt</span>, messages = <span class="fl">FALSE</span>) <span class="op">%&gt;%</span>
+  <span class="kw">dplyr</span>::<span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(.data = <span class="kw">.</span>, groups = <span class="kw">purrr</span>::<span class="fu"><a href="https://purrr.tidyverse.org/reference/map2.html">pmap</a></span>(.l = <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">group1</span>, <span class="kw">group2</span>), .f = <span class="kw">c</span>)) <span class="op">%&gt;%</span>
+  <span class="kw">dplyr</span>::<span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(.data = <span class="kw">.</span>, <span class="kw">group1</span>))
 <span class="co">#&gt; # A tibble: 3 x 12</span>
 <span class="co">#&gt;   group1 group2 mean.difference    se t.value    df p.value significance</span>
 <span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;            &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;       </span>
@@ -597,59 +608,62 @@
 <span class="co">#&gt; 3 &lt;chr [2]&gt;</span>
 
 <span class="co"># using `geom_signif` to display results</span>
-<span class="no">p</span> +
-  <span class="kw pkg">ggsignif</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/ggsignif/man/stat_signif.html">geom_signif</a></span>(
-    <span class="kw">comparisons</span> <span class="kw">=</span> <span class="no">df</span>$<span class="no">groups</span>,
-    <span class="kw">map_signif_level</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
-    <span class="kw">tip_length</span> <span class="kw">=</span> <span class="fl">0.01</span>,
-    <span class="kw">y_position</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">5.5</span>, <span class="fl">5.75</span>, <span class="fl">6</span>),
-    <span class="kw">annotations</span> <span class="kw">=</span> <span class="no">df</span>$<span class="no">label</span>,
-    <span class="kw">test</span> <span class="kw">=</span> <span class="kw">NULL</span>,
-    <span class="kw">na.rm</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
-    <span class="kw">parse</span> <span class="kw">=</span> <span class="fl">TRUE</span>
-  )</pre></div>
+<span class="kw">p</span> <span class="op">+</span>
+  <span class="kw">ggsignif</span>::<span class="fu"><a href="https://rdrr.io/pkg/ggsignif/man/stat_signif.html">geom_signif</a></span>(
+    comparisons = <span class="kw">df</span><span class="op">$</span><span class="kw">groups</span>,
+    map_signif_level = <span class="fl">TRUE</span>,
+    tip_length = <span class="fl">0.01</span>,
+    y_position = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">5.5</span>, <span class="fl">5.75</span>, <span class="fl">6</span>),
+    annotations = <span class="kw">df</span><span class="op">$</span><span class="kw">label</span>,
+    test = <span class="kw">NULL</span>,
+    na.rm = <span class="fl">TRUE</span>,
+    parse = <span class="fl">TRUE</span>
+  )
+</pre></div>
 <p><img src="reference/figures/README-ggsignif-1.png" width="100%"></p>
 </div>
 <div id="example-2-within-subjects" class="section level2">
 <h2 class="hasAnchor">
 <a href="#example-2-within-subjects" class="anchor"></a>Example-2: within-subjects</h2>
-<div class="sourceCode" id="cb7"><pre class="r"><span class="co"># needed libraries</span>
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">ggplot2</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">pairwiseComparisons</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">ggsignif</span>)
+<div class="sourceCode" id="cb7"><pre class="downlit">
+<span class="co"># needed libraries</span>
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="http://ggplot2.tidyverse.org">ggplot2</a></span>)
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://indrajeetpatil.github.io/pairwiseComparisons">pairwiseComparisons</a></span>)
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://github.com/const-ae/ggsignif">ggsignif</a></span>)
 
 <span class="co"># creating a basic plot</span>
-<span class="no">p</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="kw pkg">WRS2</span><span class="kw ns">::</span><span class="no"><a href="https://rdrr.io/pkg/WRS2/man/WineTasting.html">WineTasting</a></span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="no">Wine</span>, <span class="no">Taste</span>)) + <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span>()
+<span class="kw">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="kw">WRS2</span>::<span class="kw"><a href="https://rdrr.io/pkg/WRS2/man/WineTasting.html">WineTasting</a></span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="kw">Wine</span>, <span class="kw">Taste</span>)) <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span>()
 
 <span class="co"># using `pairwiseComparisons` package to create a dataframe with results</span>
-(<span class="no">df</span> <span class="kw">&lt;-</span>
-  <span class="fu"><a href="reference/pairwise_comparisons.html">pairwise_comparisons</a></span>(<span class="kw pkg">WRS2</span><span class="kw ns">::</span><span class="no"><a href="https://rdrr.io/pkg/WRS2/man/WineTasting.html">WineTasting</a></span>, <span class="no">Wine</span>, <span class="no">Taste</span>, <span class="kw">type</span> <span class="kw">=</span> <span class="st">"bayes"</span>, <span class="kw">paired</span> <span class="kw">=</span> <span class="fl">TRUE</span>) <span class="kw">%&gt;%</span>
-  <span class="kw pkg">dplyr</span><span class="kw ns">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="kw">.data</span> <span class="kw">=</span> <span class="no">.</span>, <span class="kw">groups</span> <span class="kw">=</span> <span class="kw pkg">purrr</span><span class="kw ns">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map2.html">pmap</a></span>(<span class="kw">.l</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="no">group1</span>, <span class="no">group2</span>), <span class="kw">.f</span> <span class="kw">=</span> <span class="no">c</span>)) <span class="kw">%&gt;%</span>
-  <span class="kw pkg">dplyr</span><span class="kw ns">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="kw">.data</span> <span class="kw">=</span> <span class="no">.</span>, <span class="no">group1</span>))
-<span class="co">#&gt; # A tibble: 3 x 13</span>
-<span class="co">#&gt;   group1 group2   bf10       error   bf01 log_e_bf10 log_e_bf01 log_10_bf10</span>
-<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;   &lt;dbl&gt;       &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 Wine A Wine B  0.235 0.000313    4.25        -1.45       1.45      -0.628</span>
-<span class="co">#&gt; 2 Wine A Wine C  3.71  0.0000120   0.269        1.31      -1.31       0.570</span>
-<span class="co">#&gt; 3 Wine B Wine C 50.5   0.000000769 0.0198       3.92      -3.92       1.70 </span>
-<span class="co">#&gt;   log_10_bf01 bf.prior label                        test.details     groups   </span>
-<span class="co">#&gt;         &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;                        &lt;chr&gt;            &lt;list&gt;   </span>
-<span class="co">#&gt; 1       0.628    0.707 list(~log[e](BF[10])==-1.45) Student's t-test &lt;chr [2]&gt;</span>
-<span class="co">#&gt; 2      -0.570    0.707 list(~log[e](BF[10])==1.31)  Student's t-test &lt;chr [2]&gt;</span>
-<span class="co">#&gt; 3      -1.70     0.707 list(~log[e](BF[10])==3.92)  Student's t-test &lt;chr [2]&gt;</span>
+(<span class="kw">df</span> <span class="op">&lt;-</span>
+  <span class="fu"><a href="reference/pairwise_comparisons.html">pairwise_comparisons</a></span>(<span class="kw">WRS2</span>::<span class="kw"><a href="https://rdrr.io/pkg/WRS2/man/WineTasting.html">WineTasting</a></span>, <span class="kw">Wine</span>, <span class="kw">Taste</span>, type = <span class="st">"bayes"</span>, paired = <span class="fl">TRUE</span>) <span class="op">%&gt;%</span>
+  <span class="kw">dplyr</span>::<span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(.data = <span class="kw">.</span>, groups = <span class="kw">purrr</span>::<span class="fu"><a href="https://purrr.tidyverse.org/reference/map2.html">pmap</a></span>(.l = <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">group1</span>, <span class="kw">group2</span>), .f = <span class="kw">c</span>)) <span class="op">%&gt;%</span>
+  <span class="kw">dplyr</span>::<span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(.data = <span class="kw">.</span>, <span class="kw">group1</span>))
+<span class="co">#&gt; # A tibble: 3 x 12</span>
+<span class="co">#&gt;   group1 group2   bf10   bf01 log_e_bf10 log_e_bf01 log_10_bf10 log_10_bf01</span>
+<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;   &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 Wine A Wine B  0.235 4.25        -1.45       1.45      -0.628       0.628</span>
+<span class="co">#&gt; 2 Wine A Wine C  3.71  0.269        1.31      -1.31       0.570      -0.570</span>
+<span class="co">#&gt; 3 Wine B Wine C 50.5   0.0198       3.92      -3.92       1.70       -1.70 </span>
+<span class="co">#&gt;   bf.prior label                        test.details     groups   </span>
+<span class="co">#&gt;      &lt;dbl&gt; &lt;chr&gt;                        &lt;chr&gt;            &lt;list&gt;   </span>
+<span class="co">#&gt; 1    0.707 list(~log[e](BF[10])==-1.45) Student's t-test &lt;chr [2]&gt;</span>
+<span class="co">#&gt; 2    0.707 list(~log[e](BF[10])==1.31)  Student's t-test &lt;chr [2]&gt;</span>
+<span class="co">#&gt; 3    0.707 list(~log[e](BF[10])==3.92)  Student's t-test &lt;chr [2]&gt;</span>
 
 <span class="co"># using `geom_signif` to display results</span>
-<span class="no">p</span> +
-  <span class="kw pkg">ggsignif</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/ggsignif/man/stat_signif.html">geom_signif</a></span>(
-    <span class="kw">comparisons</span> <span class="kw">=</span> <span class="no">df</span>$<span class="no">groups</span>,
-    <span class="kw">map_signif_level</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
-    <span class="kw">tip_length</span> <span class="kw">=</span> <span class="fl">0.01</span>,
-    <span class="kw">y_position</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">6.5</span>, <span class="fl">6.65</span>, <span class="fl">6.8</span>),
-    <span class="kw">annotations</span> <span class="kw">=</span> <span class="no">df</span>$<span class="no">label</span>,
-    <span class="kw">test</span> <span class="kw">=</span> <span class="kw">NULL</span>,
-    <span class="kw">na.rm</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
-    <span class="kw">parse</span> <span class="kw">=</span> <span class="fl">TRUE</span>
-  )</pre></div>
+<span class="kw">p</span> <span class="op">+</span>
+  <span class="kw">ggsignif</span>::<span class="fu"><a href="https://rdrr.io/pkg/ggsignif/man/stat_signif.html">geom_signif</a></span>(
+    comparisons = <span class="kw">df</span><span class="op">$</span><span class="kw">groups</span>,
+    map_signif_level = <span class="fl">TRUE</span>,
+    tip_length = <span class="fl">0.01</span>,
+    y_position = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">6.5</span>, <span class="fl">6.65</span>, <span class="fl">6.8</span>),
+    annotations = <span class="kw">df</span><span class="op">$</span><span class="kw">label</span>,
+    test = <span class="kw">NULL</span>,
+    na.rm = <span class="fl">TRUE</span>,
+    parse = <span class="fl">TRUE</span>
+  )
+</pre></div>
 <p><img src="reference/figures/README-ggsignif2-1.png" width="100%"></p>
 </div>
 </div>

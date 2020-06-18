@@ -231,7 +231,7 @@ testthat::test_that(
     testthat::expect_equal(dim(df3), c(6L, 8L))
     testthat::expect_equal(dim(df4), c(6L, 10L))
     testthat::expect_equal(dim(df5), c(3L, 8L))
-    testthat::expect_equal(dim(df6), c(6L, 12L))
+    testthat::expect_equal(dim(df6), c(6L, 11L))
 
     # column types
     testthat::expect_true(all(is.character(df1$group1), is.character(df1$group2)))
@@ -445,7 +445,6 @@ testthat::test_that(
         y = desire,
         type = "bf",
         k = 4,
-        bf.prior = 0.9,
         paired = TRUE
       )
 
@@ -524,12 +523,12 @@ testthat::test_that(
     testthat::expect_equal(
       df3$psihat,
       c(
-        1.15972222222222,
-        0.5,
-        2.09722222222222,
-        -0.701388888888889,
-        0.9375,
-        1.54166666666667
+        -1.15972222222222,
+        -0.5,
+        0.701388888888889,
+        -2.09722222222222,
+        -0.9375,
+        -1.54166666666667
       ),
       tolerance = 0.001
     )
@@ -539,8 +538,8 @@ testthat::test_that(
       c(
         "list(~italic(p)[ adjusted ]== 0.001 )",
         "list(~italic(p)[ adjusted ]== 0.062 )",
-        "list(~italic(p)[ adjusted ]<= 0.001 )",
         "list(~italic(p)[ adjusted ]== 0.062 )",
+        "list(~italic(p)[ adjusted ]<= 0.001 )",
         "list(~italic(p)[ adjusted ]== 0.014 )",
         "list(~italic(p)[ adjusted ]<= 0.001 )"
       )
@@ -548,18 +547,18 @@ testthat::test_that(
 
     testthat::expect_identical(
       df3$significance,
-      c("**", "ns", "***", "ns", "*", "***")
+      c("**", "ns", "ns", "***", "*", "***")
     )
 
     testthat::expect_identical(
       df4$label,
       c(
-        "list(~log[e](BF[10])==1.5536)",
-        "list(~log[e](BF[10])==-1.0261)",
-        "list(~log[e](BF[10])==10.5197)",
-        "list(~log[e](BF[10])==-0.9107)",
-        "list(~log[e](BF[10])==0.9789)",
-        "list(~log[e](BF[10])==6.9598)"
+        "list(~log[e](BF[10])==3.7273)",
+        "list(~log[e](BF[10])==-0.5394)",
+        "list(~log[e](BF[10])==23.2071)",
+        "list(~log[e](BF[10])==-0.3589)",
+        "list(~log[e](BF[10])==2.8966)",
+        "list(~log[e](BF[10])==15.3854)"
       )
     )
 
@@ -567,7 +566,7 @@ testthat::test_that(
     testthat::expect_equal(dim(df1), c(6L, 8L))
     testthat::expect_equal(dim(df2), c(6L, 8L))
     testthat::expect_equal(dim(df3), c(6L, 10L))
-    testthat::expect_equal(dim(df4), c(6L, 12L))
+    testthat::expect_equal(dim(df4), c(6L, 11L))
 
     # checking if it is a tibble
     testthat::expect_is(df1, "tbl_df")
