@@ -3,6 +3,8 @@
   - For repeated measures datasets with `NA`s present, the Bayes Factor values
     were incorrect. This is fixed.
 
+  - Internal refactoring to improve data wrangling using `ipmisc`.
+
 # pairwiseComparisons 1.0.0
 
   - Removes dependence on `jmv` and instead relies on `dunn.test` and

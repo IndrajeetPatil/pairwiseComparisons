@@ -369,6 +369,9 @@ pairwise_comparisons <- function(data,
   # ---------------------------- robust ----------------------------------
 
   if (type == "robust") {
+    # data cleanup
+    df_internal %<>% long_to_wide_converter(., {{ x }}, {{ y }}, paired, FALSE)
+
     if (isFALSE(paired)) {
       # object with all details about pairwise comparisons
       rob_pairwise_df <-
@@ -382,8 +385,6 @@ pairwise_comparisons <- function(data,
     # converting to long format and then getting it back in wide so that the
     # rowid variable can be used as the block variable
     if (isTRUE(paired)) {
-      df_internal %<>% df_cleanup_paired(data = ., x = {{ x }}, y = {{ y }})
-
       # running pairwise multiple comparison tests
       rob_pairwise_df <-
         WRS2::rmmcp(

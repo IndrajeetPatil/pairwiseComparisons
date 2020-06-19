@@ -218,7 +218,7 @@ testthat::test_that(
     # bayes test
     df6 <-
       pairwiseComparisons::pairwise_comparisons(
-        data = msleep,
+        data = df_msleep,
         x = vore,
         y = brainwt,
         type = "bf",

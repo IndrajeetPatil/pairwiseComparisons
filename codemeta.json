@@ -159,14 +159,14 @@
       "@type": "SoftwareApplication",
       "identifier": "ipmisc",
       "name": "ipmisc",
-      "version": ">= 3.0.0.9000",
+      "version": ">= 3.0.1",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://github.com/IndrajeetPatil/ipmisc"
+      "sameAs": "https://CRAN.R-project.org/package=ipmisc"
     },
     {
       "@type": "SoftwareApplication",
@@ -213,14 +213,14 @@
       "@type": "SoftwareApplication",
       "identifier": "tidyBF",
       "name": "tidyBF",
-      "version": ">= 0.2.0.9000",
+      "version": ">= 0.2.1",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://github.com/IndrajeetPatil/tidyBF"
+      "sameAs": "https://CRAN.R-project.org/package=tidyBF"
     },
     {
       "@type": "SoftwareApplication",
@@ -243,6 +243,7 @@
       "@type": "SoftwareApplication",
       "identifier": "WRS2",
       "name": "WRS2",
+      "version": ">= 1.1-0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -277,5 +278,5 @@
     "name": "Comprehensive R Archive Network (CRAN)",
     "url": "https://cran.r-project.org"
   },
-  "fileSize": "1480.258KB"
+  "fileSize": "1485.799KB"
 }

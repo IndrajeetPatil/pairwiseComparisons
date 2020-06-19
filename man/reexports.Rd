@@ -9,6 +9,7 @@
 \alias{\%<-\%}
 \alias{\%||\%}
 \alias{\%|\%}
+\alias{:=}
 \alias{tibble}
 \alias{enframe}
 \alias{as_tibble}
@@ -24,6 +25,6 @@ below to see their documentation.
 \describe{
   \item{ipmisc}{\code{\link[ipmisc:reexports]{\%$\%}}, \code{\link[ipmisc:reexports]{\%<-\%}}, \code{\link[ipmisc:reexports]{\%<>\%}}, \code{\link[ipmisc:reexports]{\%>\%}}, \code{\link[ipmisc:reexports]{as_tibble}}, \code{\link[ipmisc:reexports]{enframe}}, \code{\link[ipmisc]{long_to_wide_converter}}, \code{\link[ipmisc]{signif_column}}, \code{\link[ipmisc]{specify_decimal_p}}, \code{\link[ipmisc:reexports]{tibble}}}
 
-  \item{rlang}{\code{\link[rlang:op-na-default]{\%|\%}}, \code{\link[rlang:op-null-default]{\%||\%}}}
+  \item{rlang}{\code{\link[rlang:op-na-default]{\%|\%}}, \code{\link[rlang:op-null-default]{\%||\%}}, \code{\link[rlang:nse-force]{:=}}}
 }}
 

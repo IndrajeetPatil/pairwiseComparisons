@@ -146,7 +146,7 @@ comparison test and the <em>p</em>-value adjustment method. These details are
 typically included in <code>ggstatsplot</code> package plots as a caption.</p>
     </div>
 
-    <pre class="usage"><span class='fu'><a href='https://indrajeetpatil.github.io/pairwiseComparisons//reference/pairwise_caption.html'>pairwise_caption</a></span>(<span class='kw'>caption</span>, <span class='kw'>test.description</span>, <span class='kw'>p.adjust.method</span>)</pre>
+    <pre class="usage"><span class='fu'>pairwise_caption</span>(<span class='no'>caption</span>, <span class='no'>test.description</span>, <span class='no'>p.adjust.method</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -169,8 +169,8 @@ comparisons. Possible methods are: <code>"holm"</code> (default), <code>"hochber
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://indrajeetpatil.github.io/pairwiseComparisons'>pairwiseComparisons</a></span>)
-<span class='fu'><a href='https://indrajeetpatil.github.io/pairwiseComparisons//reference/pairwise_caption.html'>pairwise_caption</a></span>(<span class='st'>"my caption"</span>, <span class='st'>"Student's t-test"</span>, <span class='st'>"holm"</span>)</div><div class='output co'>#&gt; atop(displaystyle("my caption"), expr = paste("Pairwise comparisons: ", 
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>pairwiseComparisons</span>)
+<span class='fu'>pairwise_caption</span>(<span class='st'>"my caption"</span>, <span class='st'>"Student's t-test"</span>, <span class='st'>"holm"</span>)</div><div class='output co'>#&gt; atop(displaystyle("my caption"), expr = paste("Pairwise comparisons: ", 
 #&gt;     bold("Student's t-test"), "; Adjustment (p-value): ", bold("Holm")))</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -187,7 +187,7 @@ comparisons. Possible methods are: <code>"holm"</code> (default), <code>"hochber
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

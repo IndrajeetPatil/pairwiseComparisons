@@ -28,23 +28,20 @@ Imports:
     dplyr,
     dunn.test,
     forcats,
-    ipmisc (>= 3.0.0.9000),
+    ipmisc (>= 3.0.1),
     PMCMRplus,
     purrr,
     rlang,
     stats,
-    tidyBF (>= 0.2.0.9000),
+    tidyBF (>= 0.2.1),
     tidyr,
     utils,
-    WRS2
+    WRS2 (>= 1.1-0)
 Suggests:
     knitr,
     rmarkdown,
     spelling,
     testthat
-Remotes:
-    IndrajeetPatil/ipmisc,
-    IndrajeetPatil/tidyBF
 Encoding: UTF-8
 Language: en-US
 LazyData: true
