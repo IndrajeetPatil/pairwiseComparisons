@@ -7,6 +7,5 @@
 
 0 errors | 0 warnings | 0 note
 
-  - Gets rid of `NOTE` produced in daily CRAN checks.
-  
-  - Makes package compatible with new release of `ipmisc` and `tidyBF`.
+  - Fixed failing tests in CRAN checks due to new releases of `ipmisc` and
+    `tidyBF` packages.

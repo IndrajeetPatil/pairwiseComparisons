@@ -1,4 +1,4 @@
-# pairwiseComparisons 1.1.0
+# pairwiseComparisons 1.1.1
 
   - For repeated measures datasets with `NA`s present, the Bayes Factor values
     were incorrect. This is fixed.
