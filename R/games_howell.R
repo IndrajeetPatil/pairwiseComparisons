@@ -27,7 +27,7 @@ games_howell <- function(data, x, y) {
       x = !!rlang::enquo(x),
       y = !!rlang::enquo(y)
     ) %>%
-    tidyr::drop_na(data = .) %>%
+    tidyr::drop_na(.) %>%
     dplyr::mutate(.data = ., x = droplevels(as.factor(x))) %>%
     as_tibble(.)
 
@@ -79,8 +79,7 @@ games_howell <- function(data, x, y) {
 
     # sigma standard error
     se <-
-      sqrt(x = 0.5 * (std[combs[1, x]] / n[combs[1, x]] +
-        std[combs[2, x]] / n[combs[2, x]]))
+      sqrt(x = 0.5 * (std[combs[1, x]] / n[combs[1, x]] + std[combs[2, x]] / n[combs[2, x]]))
 
     # upper confidence limit for mean difference
     conf.high <- lapply(X = 1:NCOL(combs), FUN = function(x) {
@@ -140,7 +139,7 @@ games_howell <- function(data, x, y) {
     )
 
   # converting it to tibble
-  results %<>%
+  results %>%
     as_tibble(.) %>%
     dplyr::select(
       .data = .,
@@ -149,7 +148,4 @@ games_howell <- function(data, x, y) {
       conf.high,
       dplyr::everything()
     )
-
-  # select the final dataframe
-  return(results)
 }

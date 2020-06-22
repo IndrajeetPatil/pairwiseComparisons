@@ -7,5 +7,4 @@
 
 0 errors | 0 warnings | 0 note
 
-  - Fixed failing tests in CRAN checks due to new releases of `ipmisc` and
-    `tidyBF` packages.
+  - Hot fix release to fix failing tests on the old release of `R` (`3.6`).

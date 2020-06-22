@@ -403,7 +403,7 @@ testthat::test_that(
     df1 <-
       pairwiseComparisons::pairwise_comparisons(
         data = pairwiseComparisons::bugs_long,
-        x = condition,
+        x = "condition",
         y = desire,
         type = "p",
         k = 3,
@@ -417,7 +417,7 @@ testthat::test_that(
       pairwiseComparisons::pairwise_comparisons(
         data = pairwiseComparisons::bugs_long,
         x = condition,
-        y = desire,
+        y = "desire",
         type = "np",
         k = 3,
         paired = TRUE,
@@ -463,12 +463,12 @@ testthat::test_that(
     testthat::expect_equal(
       df1$mean.difference,
       c(
-        -1.1115026,
-        -0.4741400,
-        -2.1382071,
-        0.6373626,
-        -1.0267045,
-        -1.6640671
+        -1.14772727272727,
+        -0.471590909090914,
+        -2.16477272727272,
+        0.676136363636358,
+        -1.01704545454545,
+        -1.69318181818181
       ),
       tolerance = 0.001
     )
@@ -477,10 +477,10 @@ testthat::test_that(
       df1$label,
       c(
         "list(~italic(p)[ adjusted ]== 0.003 )",
-        "list(~italic(p)[ adjusted ]== 0.424 )",
+        "list(~italic(p)[ adjusted ]== 0.421 )",
         "list(~italic(p)[ adjusted ]<= 0.001 )",
-        "list(~italic(p)[ adjusted ]== 0.274 )",
-        "list(~italic(p)[ adjusted ]== 0.006 )",
+        "list(~italic(p)[ adjusted ]== 0.337 )",
+        "list(~italic(p)[ adjusted ]== 0.008 )",
         "list(~italic(p)[ adjusted ]<= 0.001 )"
       )
     )
@@ -584,10 +584,7 @@ testthat::test_that(
     set.seed(123)
 
     # drop levels
-    msleep2 <- dplyr::filter(
-      .data = msleep,
-      vore %in% c("carni", "omni")
-    )
+    msleep2 <- dplyr::filter(.data = msleep, vore %in% c("carni", "omni"))
 
     # check those levels are not included
     df1 <-

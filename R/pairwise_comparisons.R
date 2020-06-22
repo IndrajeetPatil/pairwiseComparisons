@@ -189,10 +189,13 @@ pairwise_comparisons <- function(data,
 
   # creating a dataframe
   df_internal <-
-    data %>%
-    dplyr::select(.data = ., {{ x }}, {{ y }}) %>%
-    dplyr::mutate(.data = ., {{ x }} := droplevels(as.factor({{ x }}))) %>%
-    as_tibble(.)
+    long_to_wide_converter(
+      data = data,
+      x = {{ x }},
+      y = {{ y }},
+      paired = paired,
+      spread = FALSE
+    )
 
   # ---------------------------- parametric ---------------------------------
 
@@ -254,21 +257,17 @@ pairwise_comparisons <- function(data,
           stats::pairwise.t.test(
             x = df_internal %>% dplyr::pull({{ y }}),
             g = df_internal %>% dplyr::pull({{ x }}),
-            p.adjust.method = p.adjust.method,
+            p.adjust.method = "none",
             paired = paired,
             alternative = "two.sided",
             na.action = na.omit
           )
         ) %>%
-        signif_column(data = ., p = p.value)
+        p_adjust_column_adder(df = ., p.adjust.method = p.adjust.method)
 
       # combining mean difference and results from pairwise t-test
       df <-
-        dplyr::full_join(
-          x = df_tukey,
-          y = df_tidy,
-          by = c("group1", "group2")
-        ) %>% # the group columns need to be swapped to be consistent
+        dplyr::full_join(x = df_tukey, y = df_tidy, by = c("group1", "group2")) %>%
         dplyr::rename(.data = ., group2 = group1, group1 = group2)
 
       # test details
@@ -283,6 +282,51 @@ pairwise_comparisons <- function(data,
       # test details
       test.details <- "Games-Howell test"
     }
+  }
+
+  # ---------------------------- bayes factor --------------------------------
+
+  # print a message telling the user that this is currently not supported
+  if (type == "bayes") {
+    # creating a list of dataframes with subsections of data
+    df_list <-
+      purrr::map2(
+        .x = as.character(df$group1),
+        .y = as.character(df$group2),
+        .f = function(a, b) droplevels(dplyr::filter(df_internal, {{ x }} %in% c(a, b)))
+      )
+
+    # combining results into a single dataframe and returning it
+    df_tidy <-
+      purrr::map_dfr(
+        .x = df_list,
+        .f = ~ tidyBF::bf_ttest(
+          data = .x,
+          x = {{ x }},
+          y = {{ y }},
+          paired = paired,
+          bf.prior = bf.prior,
+          output = "results"
+        )
+      ) %>%
+      dplyr::rowwise() %>%
+      dplyr::mutate(label = paste(
+        "list(~log[e](BF[10])",
+        "==",
+        specify_decimal_p(x = log_e_bf10, k = k),
+        ")",
+        sep = ""
+      )) %>%
+      dplyr::ungroup() %>%
+      dplyr::mutate(.data = ., test.details = "Student's t-test") %>%
+      dplyr::mutate_if(
+        .tbl = .,
+        .predicate = is.factor,
+        .funs = ~ as.character(.)
+      )
+
+    # early return (no further cleanup required)
+    return(dplyr::bind_cols(dplyr::select(df, group1, group2), df_tidy))
   }
 
   # ---------------------------- nonparametric ----------------------------
@@ -369,9 +413,6 @@ pairwise_comparisons <- function(data,
   # ---------------------------- robust ----------------------------------
 
   if (type == "robust") {
-    # data cleanup
-    df_internal %<>% long_to_wide_converter(., {{ x }}, {{ y }}, paired, FALSE)
-
     if (isFALSE(paired)) {
       # object with all details about pairwise comparisons
       rob_pairwise_df <-
@@ -404,8 +445,7 @@ pairwise_comparisons <- function(data,
     df <-
       dplyr::full_join(
         # dataframe comparing comparison details
-        x = rob_df_tidy %>%
-          p_adjust_column_adder(df = ., p.adjust.method = p.adjust.method) %>%
+        x = p_adjust_column_adder(df = rob_df_tidy, p.adjust.method = p.adjust.method) %>%
           tidyr::gather(
             data = .,
             key = "key",
@@ -427,53 +467,6 @@ pairwise_comparisons <- function(data,
 
     # test details
     test.details <- "Yuen's trimmed means test"
-  }
-
-  # ---------------------------- bayes factor --------------------------------
-
-  # print a message telling the user that this is currently not supported
-  if (type == "bayes") {
-    # creating a list of dataframes with subsections of data
-    df_list <-
-      purrr::map2(
-        .x = as.character(df$group1),
-        .y = as.character(df$group2),
-        .f = function(a, b) {
-          df_internal %>%
-            long_to_wide_converter(., {{ x }}, {{ y }}, paired, FALSE) %>%
-            dplyr::filter(.data = ., {{ x }} %in% c(a, b)) %>%
-            droplevels() %>%
-            as.data.frame()
-        }
-      )
-
-    # combining results into a single dataframe and returning it
-    df_tidy <-
-      df_list %>%
-      purrr::map_dfr(
-        .x = .,
-        .f = ~ tidyBF::bf_ttest(
-          data = .,
-          x = {{ x }},
-          y = {{ y }},
-          paired = paired,
-          bf.prior = bf.prior,
-          output = "results"
-        )
-      ) %>%
-      dplyr::rowwise() %>%
-      dplyr::mutate(label = paste(
-        "list(~log[e](BF[10])",
-        "==",
-        specify_decimal_p(x = log_e_bf10, k = k),
-        ")",
-        sep = ""
-      )) %>%
-      dplyr::ungroup() %>%
-      dplyr::mutate(.data = ., test.details = "Student's t-test")
-
-    # early return (no further cleanup required)
-    return(dplyr::bind_cols(dplyr::select(df, group1, group2), df_tidy))
   }
 
   # ---------------------------- cleanup ----------------------------------
