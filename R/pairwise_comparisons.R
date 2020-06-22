@@ -318,15 +318,15 @@ pairwise_comparisons <- function(data,
         sep = ""
       )) %>%
       dplyr::ungroup() %>%
-      dplyr::mutate(.data = ., test.details = "Student's t-test") %>%
+      dplyr::mutate(.data = ., test.details = "Student's t-test")
+
+    # early return (no further cleanup required)
+    return(dplyr::bind_cols(dplyr::select(df, group1, group2), df_tidy) %>%
       dplyr::mutate_if(
         .tbl = .,
         .predicate = is.factor,
         .funs = ~ as.character(.)
-      )
-
-    # early return (no further cleanup required)
-    return(dplyr::bind_cols(dplyr::select(df, group1, group2), df_tidy))
+      ))
   }
 
   # ---------------------------- nonparametric ----------------------------
