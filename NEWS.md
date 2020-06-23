@@ -1,6 +1,6 @@
 # pairwiseComparisons 1.1.2
 
-  - Hot fix release to fix failing tests on the old release of `R` (`3.6`).
+  - Hot fix release to address failing tests on the old release of `R` (`3.6`).
 
 # pairwiseComparisons 1.1.1
 
