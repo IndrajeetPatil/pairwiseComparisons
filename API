@@ -1,2 +1,24 @@
+# API for pairwiseComparisons package
+
+## Exported functions
+
 p_adjust_text(p.adjust.method)
-pairwise_comparisons(data, x, y, type = "parametric", tr = 0.1, paired = FALSE, var.equal = FALSE, p.adjust.method = "holm", k = 2, ...)
+pairwise_caption(caption, test.description, p.adjust.method)
+pairwise_comparisons(data, x, y, type = "parametric", paired = FALSE, var.equal = FALSE, tr = 0.1, bf.prior = 0.707, p.adjust.method = "holm", k = 2L, ...)
+pairwise_p(data, x, y, type = "parametric", paired = FALSE, var.equal = FALSE, tr = 0.1, bf.prior = 0.707, p.adjust.method = "holm", k = 2L, ...)
+
+## Reexported objects
+
+::%$%
+zeallot::%<-%
+::%<>%
+::%>%
+rlang::%|%
+rlang::%||%
+rlang:::=
+tibble::as_tibble
+tibble::enframe
+ipmisc::long_to_wide_converter
+ipmisc::signif_column
+ipmisc::specify_decimal_p
+tibble::tibble
