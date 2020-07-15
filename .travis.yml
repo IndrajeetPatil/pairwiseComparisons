@@ -13,6 +13,7 @@ addons:
       - libgdal-dev
       - libproj-dev
       - libmpfr-dev
+      - libnode-dev
 
 env:
   global:
