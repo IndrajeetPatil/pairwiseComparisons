@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Preparing text to describe which <em>p</em>-value adjustment method was used — p_adjust_text • pairwiseComparisons</title>
+<title>Preparing text to describe which p-value adjustment method was used — p_adjust_text • pairwiseComparisons</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -54,7 +54,7 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Preparing text to describe which <em>p</em>-value adjustment method was used — p_adjust_text" />
+<meta property="og:title" content="Preparing text to describe which p-value adjustment method was used — p_adjust_text" />
 <meta property="og:description" content="Preparing text to describe which p-value adjustment method was used" />
 <meta property="og:image" content="https://indrajeetpatil.github.io/pairwiseComparisons/logo.png" />
 
@@ -142,7 +142,7 @@
     <p>Preparing text to describe which <em>p</em>-value adjustment method was used</p>
     </div>
 
-    <pre class="usage"><span class='fu'>p_adjust_text</span>(<span class='no'>p.adjust.method</span>)</pre>
+    <pre class="usage"><span class='fu'>p_adjust_text</span>(<span class='kw'>p.adjust.method</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -160,8 +160,10 @@ comparisons. Possible methods are: <code>"holm"</code> (default), <code>"hochber
     <p>Standardized text description for what method was used.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>pairwiseComparisons</span>)
-<span class='fu'>p_adjust_text</span>(<span class='st'>"none"</span>)</div><div class='output co'>#&gt; [1] "None"</div><div class='input'><span class='fu'>p_adjust_text</span>(<span class='st'>"BY"</span>)</div><div class='output co'>#&gt; [1] "Benjamini &amp; Yekutieli"</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://indrajeetpatil.github.io/pairwiseComparisons'>pairwiseComparisons</a></span>)
+<span class='fu'>p_adjust_text</span>(<span class='st'>"none"</span>)
+</div><div class='output co'>#&gt; [1] "None"</div><div class='input'><span class='fu'>p_adjust_text</span>(<span class='st'>"BY"</span>)
+</div><div class='output co'>#&gt; [1] "Benjamini &amp; Yekutieli"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -177,7 +179,7 @@ comparisons. Possible methods are: <code>"holm"</code> (default), <code>"hochber
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
 </div>
 
       </footer>

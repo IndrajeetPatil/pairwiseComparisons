@@ -197,9 +197,6 @@ pairwise_comparisons <- function(data,
       spread = FALSE
     )
 
-  # rearrange again when paired design
-  # if (isTRUE(paired)) df_internal %<>% dplyr::arrange(data, {{ x }})
-
   # for some tests, it's better to have these as vectors
   x_vec <- df_internal %>% dplyr::pull({{ x }})
   y_vec <- df_internal %>% dplyr::pull({{ y }})
@@ -323,12 +320,13 @@ pairwise_comparisons <- function(data,
       dplyr::mutate(.data = ., test.details = "Student's t-test")
 
     # early return (no further cleanup required)
-    return(dplyr::bind_cols(dplyr::select(df, group1, group2), df_tidy) %>%
+    return(
       dplyr::mutate_if(
-        .tbl = .,
+        .tbl = dplyr::bind_cols(dplyr::select(df, group1, group2), df_tidy),
         .predicate = is.factor,
         .funs = ~ as.character(.)
-      ))
+      )
+    )
   }
 
   # ---------------------------- nonparametric ----------------------------

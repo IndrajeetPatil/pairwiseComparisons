@@ -78,39 +78,32 @@ games_howell <- function(data, x, y) {
       )
 
     # sigma standard error
-    se <-
-      sqrt(x = 0.5 * (std[combs[1, x]] / n[combs[1, x]] + std[combs[2, x]] / n[combs[2, x]]))
+    se <- sqrt(x = 0.5 * (std[combs[1, x]] / n[combs[1, x]] + std[combs[2, x]] / n[combs[2, x]]))
 
     # upper confidence limit for mean difference
-    conf.high <- lapply(X = 1:NCOL(combs), FUN = function(x) {
-      mean.diff + stats::qtukey(
-        p = 0.95,
-        nmeans = groups,
-        df = df
-      ) * se
-    })[[1]]
+    conf.high <-
+      lapply(
+        X = 1:NCOL(combs),
+        FUN = function(x) mean.diff + stats::qtukey(p = 0.95, nmeans = groups, df = df) * se
+      )
 
     # lower confidence limit for mean difference
-    conf.low <- lapply(X = 1:NCOL(combs), FUN = function(x) {
-      mean.diff - stats::qtukey(
-        p = 0.95,
-        nmeans = groups,
-        df = df
-      ) * se
-    })[[1]]
+    conf.low <-
+      lapply(
+        X = 1:NCOL(combs),
+        FUN = function(x) mean.diff - stats::qtukey(p = 0.95, nmeans = groups, df = df) * se
+      )
 
     # Group Combinations
     group1 <- as.character(combs[1, x])
     group2 <- as.character(combs[2, x])
 
     # Collect all statistics into list
-    stats <- list(group1, group2, mean.diff, se, t, df, p, conf.high, conf.low)
+    stats <- list(group1, group2, mean.diff, se, t, df, p, conf.high[[1]], conf.low[[1]])
   })
 
   # unlist statistics collected earlier
-  stats.unlisted <- lapply(statistics, function(x) {
-    unlist(x)
-  })
+  stats.unlisted <- lapply(statistics, function(x) unlist(x))
 
   # create dataframe from flattened list
   results <-
@@ -121,8 +114,7 @@ games_howell <- function(data, x, y) {
     ))
 
   # select columns that should be numeric and change with as.numeric
-  results[, 3:ncol(results)] <-
-    round(as.numeric(as.matrix(results[, 3:ncol(results)])), digits = 3)
+  results[, 3:ncol(results)] <- round(as.numeric(as.matrix(results[, 3:ncol(results)])), digits = 3)
 
   # Rename data frame columns
   colnames(results) <-
