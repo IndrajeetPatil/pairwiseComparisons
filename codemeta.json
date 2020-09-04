@@ -14,13 +14,13 @@
   ],
   "issueTracker": "\n    https://github.com/IndrajeetPatil/pairwiseComparisons/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "1.1.2.9000",
+  "version": "2.0.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R Under development (unstable) (2020-06-27 r78747)",
+  "runtimePlatform": "R Under development (unstable) (2020-09-01 r79114)",
   "author": [
     {
       "@type": "Person",
@@ -255,7 +255,7 @@
   ],
   "releaseNotes": "https://github.com/IndrajeetPatil/pairwiseComparisons/blob/master/NEWS.md",
   "contIntegration": ["https://travis-ci.org/IndrajeetPatil/pairwiseComparisons", "https://ci.appveyor.com/project/IndrajeetPatil/pairwiseComparisons", "https://coveralls.io/github/IndrajeetPatil/pairwiseComparisons?branch=master", "https://codecov.io/gh/IndrajeetPatil/pairwiseComparisons?branch=master"],
-  "developmentStatus": ["https://www.tidyverse.org/lifecycle/", "http://www.repostatus.org/#active"],
+  "developmentStatus": ["https://www.tidyverse.org/lifecycle/", "https://www.repostatus.org/#active"],
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -278,5 +278,5 @@
     "name": "Comprehensive R Archive Network (CRAN)",
     "url": "https://cran.r-project.org"
   },
-  "fileSize": "1487.595KB"
+  "fileSize": "1518.741KB"
 }

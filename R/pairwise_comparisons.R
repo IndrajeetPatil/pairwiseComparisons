@@ -3,8 +3,8 @@
 #' @description Calculate parametric, non-parametric, and robust pairwise
 #'   comparisons between group levels with corrections for multiple testing.
 #'
-#' @param data A dataframe (or a tibble) from which variables specified are to
-#'   be taken. A matrix or tables will **not** be accepted.
+#' @param data A dataframe from which variables specified are to be taken. A
+#'   matrix or tables will **not** be accepted.
 #' @param x The grouping variable from the dataframe `data`.
 #' @param y The response (a.k.a. outcome or dependent) variable from the
 #'   dataframe `data`.
@@ -187,15 +187,22 @@ pairwise_comparisons <- function(data,
 
   # ---------------------------- data cleanup -------------------------------
 
-  # creating a dataframe
+  # creating a dataframe (it's important for the data to be sorted by `x`)
   df_internal <-
     long_to_wide_converter(
-      data = data,
+      data = dplyr::arrange(data, {{ x }}),
       x = {{ x }},
       y = {{ y }},
       paired = paired,
       spread = FALSE
     )
+
+  # rearrange again when paired design
+  # if (isTRUE(paired)) df_internal %<>% dplyr::arrange(data, {{ x }})
+
+  # for some tests, it's better to have these as vectors
+  x_vec <- df_internal %>% dplyr::pull({{ x }})
+  y_vec <- df_internal %>% dplyr::pull({{ y }})
 
   # ---------------------------- parametric ---------------------------------
 
@@ -253,16 +260,15 @@ pairwise_comparisons <- function(data,
 
       # tidy dataframe with results from pairwise tests
       df_tidy <-
-        broomExtra::tidy(
-          stats::pairwise.t.test(
-            x = df_internal %>% dplyr::pull({{ y }}),
-            g = df_internal %>% dplyr::pull({{ x }}),
-            p.adjust.method = "none",
-            paired = paired,
-            alternative = "two.sided",
-            na.action = na.omit
-          )
+        stats::pairwise.t.test(
+          x = y_vec,
+          g = x_vec,
+          p.adjust.method = "none",
+          paired = paired,
+          alternative = "two.sided",
+          na.action = na.omit
         ) %>%
+        broomExtra::tidy(.) %>%
         p_adjust_column_adder(df = ., p.adjust.method = p.adjust.method)
 
       # combining mean difference and results from pairwise t-test
@@ -310,12 +316,8 @@ pairwise_comparisons <- function(data,
         )
       ) %>%
       dplyr::rowwise() %>%
-      dplyr::mutate(label = paste(
-        "list(~log[e](BF[10])",
-        "==",
-        specify_decimal_p(x = log_e_bf10, k = k),
-        ")",
-        sep = ""
+      dplyr::mutate(label = paste0(
+        "list(~log[e](BF[10])", "==", specify_decimal_p(x = log_e_bf10, k = k), ")"
       )) %>%
       dplyr::ungroup() %>%
       dplyr::mutate(.data = ., test.details = "Student's t-test")
@@ -337,8 +339,8 @@ pairwise_comparisons <- function(data,
       invisible(utils::capture.output(df <-
         as.data.frame(
           dunn.test::dunn.test(
-            x = df_internal %>% dplyr::pull({{ y }}),
-            g = df_internal %>% dplyr::pull({{ x }}),
+            x = y_vec,
+            g = x_vec,
             table = FALSE,
             kw = FALSE,
             label = FALSE,
@@ -375,19 +377,13 @@ pairwise_comparisons <- function(data,
 
     # converting the entered long format data to wide format
     if (isTRUE(paired)) {
-      x_vec <- df_internal %>% dplyr::pull({{ x }})
-      y_vec <- df_internal %>% dplyr::pull({{ y }})
-
       # creating model object
       mod <-
         PMCMRplus::durbinAllPairsTest(
           y = na.omit(matrix(
             data = y_vec,
             ncol = length(unique(x_vec)),
-            dimnames = list(
-              seq(1, length(y_vec) / length(unique(x_vec))),
-              unique(x_vec)
-            )
+            dimnames = list(seq(1, length(y_vec) / length(unique(x_vec))), unique(x_vec))
           )),
           p.adjust.method = "none"
         )
@@ -395,9 +391,9 @@ pairwise_comparisons <- function(data,
       # combining into one dataframe
       df <-
         dplyr::bind_cols(
-          matrix_to_tidy(m = mod$statistic, col_names = c("group1", "group2", "W")),
+          matrix_to_tidy(m = mod$statistic, col_names = c("group2", "group1", "W")),
           dplyr::select(
-            matrix_to_tidy(m = mod$p.value, col_names = c("group1", "group2", "p.value")),
+            matrix_to_tidy(m = mod$p.value, col_names = c("group2", "group1", "p.value")),
             -dplyr::contains("group")
           )
         )
@@ -485,8 +481,8 @@ pairwise_comparisons <- function(data,
     dplyr::mutate(label = specify_decimal_p(x = p.value, k = k, p.value = TRUE)) %>%
     dplyr::mutate(
       label = dplyr::case_when(
-        label == "< 0.001" ~ paste("list(~italic(p)[", adjust_text, "]<=", "0.001", ")", sep = " "),
-        TRUE ~ paste("list(~italic(p)[", adjust_text, "]==", label, ")", sep = " ")
+        label == "< 0.001" ~ paste0("list(~italic(p)[", adjust_text, "]<=", "0.001", ")"),
+        TRUE ~ paste0("list(~italic(p)[", adjust_text, "]==", label, ")")
       )
     ) %>%
     dplyr::mutate(
