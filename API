@@ -9,10 +9,10 @@ pairwise_p(data, x, y, type = "parametric", paired = FALSE, var.equal = FALSE, t
 
 ## Reexported objects
 
-::%$%
+magrittr::%$%
 zeallot::%<-%
-::%<>%
-::%>%
+magrittr::%<>%
+magrittr::%>%
 rlang::%|%
 rlang::%||%
 rlang:::=

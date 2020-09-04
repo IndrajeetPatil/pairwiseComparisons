@@ -1,4 +1,12 @@
-# pairwiseComparisons 1.1.2.9000
+# pairwiseComparisons 2.0.0
+
+  - Fixes a bug which affected results for within-subjects design when the
+    dataframe wasn't sorted by `x` (#19).
+  
+  - This fix also now makes the results more consistent, such that irrespective
+    of which type of statistics is chosen the `group1` and `group2` columns are
+    in identical order.
+
 
 # pairwiseComparisons 1.1.2
 

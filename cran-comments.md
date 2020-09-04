@@ -5,7 +5,7 @@
 
 ## R CMD check results
 
-0 errors | 0 warnings | 1 note
+0 errors | 0 warnings | 0 note
 
-  - I see 1 `NOTE`: "Days since last update: 2"
-  This is a hot fix release to address failing tests on the old release of `R` (`3.6`).
+  - Fixes a bug which affected results for within-subjects design when the
+    dataframe wasn't sorted by `x`.
