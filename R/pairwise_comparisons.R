@@ -69,6 +69,9 @@
 #' set.seed(123)
 #' library(pairwiseComparisons)
 #'
+#' # show me all columns and make the column titles bold
+#' options(tibble.width = Inf, pillar.bold = TRUE)
+#'
 #' #------------------- between-subjects design ----------------------------
 #'
 #' # parametric
@@ -217,42 +220,25 @@ pairwise_comparisons <- function(data,
           .data = .,
           {{ x }} := forcats::fct_relabel(
             .f = {{ x }},
-            .fun = ~ gsub(
-              x = .x,
-              pattern = "-",
-              replacement = "_"
-            )
+            .fun = ~ gsub(x = .x, pattern = "-", replacement = "_")
           )
         )
 
       # extracting and cleaning up Tukey's HSD output
       df_tukey <-
         stats::TukeyHSD(x = aovmodel, conf.level = 0.95) %>%
-        broomExtra::tidy(.)
-
-      # breaking change in `broom 0.7.0`
-      if ("contrast" %in% names(df_tukey)) {
-        df_tukey %<>% dplyr::rename(.data = ., comparison = contrast)
-      }
-
-      # cleanup
-      df_tukey %<>%
-        dplyr::select(.data = ., comparison, estimate) %>%
+        broomExtra::tidy(.) %>%
+        dplyr::select(.data = ., comparison = contrast, mean.difference = estimate) %>%
         tidyr::separate(
           data = .,
           col = comparison,
           into = c("group1", "group2"),
           sep = "-"
         ) %>%
-        dplyr::rename(.data = ., mean.difference = estimate) %>%
         dplyr::mutate_at(
           .tbl = .,
           .vars = dplyr::vars(dplyr::matches("^group[0-9]$")),
-          .funs = ~ gsub(
-            x = .,
-            pattern = "_",
-            replacement = "-"
-          )
+          .funs = ~ gsub(x = ., pattern = "_", replacement = "-")
         )
 
       # tidy dataframe with results from pairwise tests

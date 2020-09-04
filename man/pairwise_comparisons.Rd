@@ -103,6 +103,9 @@ comparisons between group levels with corrections for multiple testing.
 set.seed(123)
 library(pairwiseComparisons)
 
+# show me all columns and make the column titles bold
+options(tibble.width = Inf, pillar.bold = TRUE)
+
 #------------------- between-subjects design ----------------------------
 
 # parametric

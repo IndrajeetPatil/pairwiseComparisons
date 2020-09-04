@@ -1,3 +1,5 @@
+# pairwiseComparisons 2.0.0.9000
+
 # pairwiseComparisons 2.0.0
 
   - Fixes a bug which affected results for within-subjects design when the
