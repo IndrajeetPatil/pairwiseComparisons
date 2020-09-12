@@ -7,5 +7,4 @@
 
 0 errors | 0 warnings | 0 note
 
-  - Fixes a bug which affected results for within-subjects design when the
-    dataframe wasn't sorted by `x`.
+  - Hotfix release to fix failing tests due to release of `tidyBF 0.3.0`.

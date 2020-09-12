@@ -47,7 +47,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">pairwiseComparisons</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">2.0.0.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">2.0.1</span>
       </span>
     </div>
 
@@ -129,7 +129,7 @@
 <td><a href="https://cran.r-project.org/"><img src="https://img.shields.io/badge/R%3E%3D-3.6.0-6666ff.svg" alt="minimal R version"></a></td>
 <td><a href="https://www.tidyverse.org/lifecycle/"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="lifecycle"></a></td>
 <td><a href="https://CRAN.R-project.org/package=pairwiseComparisons"><img src="https://cranlogs.r-pkg.org/badges/last-month/pairwiseComparisons?color=blue" alt="Monthly downloads badge"></a></td>
-<td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/issues"><img src="https://img.shields.io/badge/issues-1-red.svg" alt="Github Issues"></a></td>
+<td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/issues"><img src="https://img.shields.io/badge/issues-0-red.svg" alt="Github Issues"></a></td>
 <td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/blob/master/README.md"><img src="https://img.shields.io/badge/vignettes-2.0.0-orange.svg?colorB=FF5722" alt="vignettes"></a></td>
 </tr>
 <tr class="even">
@@ -143,7 +143,7 @@
 <td><a href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img src="https://img.shields.io/badge/licence-GPL--3-blue.svg" alt="Licence"></a></td>
 <td><a href="https://codecov.io/gh/IndrajeetPatil/pairwiseComparisons?branch=master"><img src="https://codecov.io/gh/IndrajeetPatil/pairwiseComparisons/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></td>
 <td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/blob/master/tests/README.md"><img src="https://img.shields.io/badge/covrpage-Last_Build_2020_05_29-brightgreen.svg" alt="Covrpage Summary"></a></td>
-<td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/commits/master"><img src="https://img.shields.io/badge/last%20change-2020--09--04-yellowgreen.svg" alt="Last-changedate"></a></td>
+<td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/commits/master"><img src="https://img.shields.io/badge/last%20change-2020--09--12-yellowgreen.svg" alt="Last-changedate"></a></td>
 <td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/commits/master"><img src="https://img.shields.io/github/last-commit/IndrajeetPatil/pairwiseComparisons.svg" alt="GitHub last commit"></a></td>
 </tr>
 <tr class="even">
@@ -414,23 +414,39 @@
 <span id="cb4-129"><a href="#cb4-129" aria-hidden="true"></a>  <span class="dt">type =</span> <span class="st">"bayes"</span>,</span>
 <span id="cb4-130"><a href="#cb4-130" aria-hidden="true"></a>  <span class="dt">paired =</span> <span class="ot">FALSE</span></span>
 <span id="cb4-131"><a href="#cb4-131" aria-hidden="true"></a>)</span>
-<span id="cb4-132"><a href="#cb4-132" aria-hidden="true"></a><span class="co">#&gt; # A tibble: 6 x 11</span></span>
-<span id="cb4-133"><a href="#cb4-133" aria-hidden="true"></a><span class="co">#&gt;   group1  group2   bf10  bf01 log_e_bf10 log_e_bf01 log_10_bf10 log_10_bf01</span></span>
-<span id="cb4-134"><a href="#cb4-134" aria-hidden="true"></a><span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;</span></span>
-<span id="cb4-135"><a href="#cb4-135" aria-hidden="true"></a><span class="co">#&gt; 1 carni   herbi   0.540  1.85     -0.617      0.617      -0.268       0.268</span></span>
-<span id="cb4-136"><a href="#cb4-136" aria-hidden="true"></a><span class="co">#&gt; 2 carni   insecti 0.718  1.39     -0.332      0.332      -0.144       0.144</span></span>
-<span id="cb4-137"><a href="#cb4-137" aria-hidden="true"></a><span class="co">#&gt; 3 carni   omni    0.427  2.34     -0.851      0.851      -0.369       0.369</span></span>
-<span id="cb4-138"><a href="#cb4-138" aria-hidden="true"></a><span class="co">#&gt; 4 herbi   insecti 0.540  1.85     -0.616      0.616      -0.267       0.267</span></span>
-<span id="cb4-139"><a href="#cb4-139" aria-hidden="true"></a><span class="co">#&gt; 5 herbi   omni    0.571  1.75     -0.560      0.560      -0.243       0.243</span></span>
-<span id="cb4-140"><a href="#cb4-140" aria-hidden="true"></a><span class="co">#&gt; 6 insecti omni    0.545  1.83     -0.606      0.606      -0.263       0.263</span></span>
-<span id="cb4-141"><a href="#cb4-141" aria-hidden="true"></a><span class="co">#&gt;   bf.prior label                        test.details    </span></span>
-<span id="cb4-142"><a href="#cb4-142" aria-hidden="true"></a><span class="co">#&gt;      &lt;dbl&gt; &lt;chr&gt;                        &lt;chr&gt;           </span></span>
-<span id="cb4-143"><a href="#cb4-143" aria-hidden="true"></a><span class="co">#&gt; 1    0.707 list(~log[e](BF[10])==-0.62) Student's t-test</span></span>
-<span id="cb4-144"><a href="#cb4-144" aria-hidden="true"></a><span class="co">#&gt; 2    0.707 list(~log[e](BF[10])==-0.33) Student's t-test</span></span>
-<span id="cb4-145"><a href="#cb4-145" aria-hidden="true"></a><span class="co">#&gt; 3    0.707 list(~log[e](BF[10])==-0.85) Student's t-test</span></span>
-<span id="cb4-146"><a href="#cb4-146" aria-hidden="true"></a><span class="co">#&gt; 4    0.707 list(~log[e](BF[10])==-0.62) Student's t-test</span></span>
-<span id="cb4-147"><a href="#cb4-147" aria-hidden="true"></a><span class="co">#&gt; 5    0.707 list(~log[e](BF[10])==-0.56) Student's t-test</span></span>
-<span id="cb4-148"><a href="#cb4-148" aria-hidden="true"></a><span class="co">#&gt; 6    0.707 list(~log[e](BF[10])==-0.61) Student's t-test</span></span></code></pre></div>
+<span id="cb4-132"><a href="#cb4-132" aria-hidden="true"></a><span class="co">#&gt; # A tibble: 6 x 21</span></span>
+<span id="cb4-133"><a href="#cb4-133" aria-hidden="true"></a><span class="co">#&gt;   group1  group2  term       estimate conf.low conf.high    pd rope.percentage</span></span>
+<span id="cb4-134"><a href="#cb4-134" aria-hidden="true"></a><span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;           &lt;dbl&gt;</span></span>
+<span id="cb4-135"><a href="#cb4-135" aria-hidden="true"></a><span class="co">#&gt; 1 carni   herbi   Difference  -0.383   -1.15       0.349 0.801           0.135</span></span>
+<span id="cb4-136"><a href="#cb4-136" aria-hidden="true"></a><span class="co">#&gt; 2 carni   insecti Difference   0.0348  -0.0271     0.104 0.812           0.975</span></span>
+<span id="cb4-137"><a href="#cb4-137" aria-hidden="true"></a><span class="co">#&gt; 3 carni   omni    Difference  -0.0460  -0.195      0.107 0.692           0.749</span></span>
+<span id="cb4-138"><a href="#cb4-138" aria-hidden="true"></a><span class="co">#&gt; 4 herbi   insecti Difference   0.358   -0.586      1.33  0.744           0.126</span></span>
+<span id="cb4-139"><a href="#cb4-139" aria-hidden="true"></a><span class="co">#&gt; 5 herbi   omni    Difference   0.371   -0.234      0.884 0.856           0.144</span></span>
+<span id="cb4-140"><a href="#cb4-140" aria-hidden="true"></a><span class="co">#&gt; 6 insecti omni    Difference  -0.0755  -0.286      0.102 0.742           0.586</span></span>
+<span id="cb4-141"><a href="#cb4-141" aria-hidden="true"></a><span class="co">#&gt;   prior.distribution prior.location prior.scale effects component    bf10  bf01</span></span>
+<span id="cb4-142"><a href="#cb4-142" aria-hidden="true"></a><span class="co">#&gt;   &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span id="cb4-143"><a href="#cb4-143" aria-hidden="true"></a><span class="co">#&gt; 1 cauchy                          0       0.707 fixed   conditional 0.540  1.85</span></span>
+<span id="cb4-144"><a href="#cb4-144" aria-hidden="true"></a><span class="co">#&gt; 2 cauchy                          0       0.707 fixed   conditional 0.718  1.39</span></span>
+<span id="cb4-145"><a href="#cb4-145" aria-hidden="true"></a><span class="co">#&gt; 3 cauchy                          0       0.707 fixed   conditional 0.427  2.34</span></span>
+<span id="cb4-146"><a href="#cb4-146" aria-hidden="true"></a><span class="co">#&gt; 4 cauchy                          0       0.707 fixed   conditional 0.540  1.85</span></span>
+<span id="cb4-147"><a href="#cb4-147" aria-hidden="true"></a><span class="co">#&gt; 5 cauchy                          0       0.707 fixed   conditional 0.571  1.75</span></span>
+<span id="cb4-148"><a href="#cb4-148" aria-hidden="true"></a><span class="co">#&gt; 6 cauchy                          0       0.707 fixed   conditional 0.545  1.83</span></span>
+<span id="cb4-149"><a href="#cb4-149" aria-hidden="true"></a><span class="co">#&gt;   log_e_bf10 log_e_bf01 log_10_bf10 log_10_bf01 label                       </span></span>
+<span id="cb4-150"><a href="#cb4-150" aria-hidden="true"></a><span class="co">#&gt;        &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt;                       </span></span>
+<span id="cb4-151"><a href="#cb4-151" aria-hidden="true"></a><span class="co">#&gt; 1     -0.617      0.617      -0.268       0.268 list(~log[e](BF[10])==-0.62)</span></span>
+<span id="cb4-152"><a href="#cb4-152" aria-hidden="true"></a><span class="co">#&gt; 2     -0.332      0.332      -0.144       0.144 list(~log[e](BF[10])==-0.33)</span></span>
+<span id="cb4-153"><a href="#cb4-153" aria-hidden="true"></a><span class="co">#&gt; 3     -0.851      0.851      -0.369       0.369 list(~log[e](BF[10])==-0.85)</span></span>
+<span id="cb4-154"><a href="#cb4-154" aria-hidden="true"></a><span class="co">#&gt; 4     -0.616      0.616      -0.267       0.267 list(~log[e](BF[10])==-0.62)</span></span>
+<span id="cb4-155"><a href="#cb4-155" aria-hidden="true"></a><span class="co">#&gt; 5     -0.560      0.560      -0.243       0.243 list(~log[e](BF[10])==-0.56)</span></span>
+<span id="cb4-156"><a href="#cb4-156" aria-hidden="true"></a><span class="co">#&gt; 6     -0.606      0.606      -0.263       0.263 list(~log[e](BF[10])==-0.61)</span></span>
+<span id="cb4-157"><a href="#cb4-157" aria-hidden="true"></a><span class="co">#&gt;   test.details    </span></span>
+<span id="cb4-158"><a href="#cb4-158" aria-hidden="true"></a><span class="co">#&gt;   &lt;chr&gt;           </span></span>
+<span id="cb4-159"><a href="#cb4-159" aria-hidden="true"></a><span class="co">#&gt; 1 Student's t-test</span></span>
+<span id="cb4-160"><a href="#cb4-160" aria-hidden="true"></a><span class="co">#&gt; 2 Student's t-test</span></span>
+<span id="cb4-161"><a href="#cb4-161" aria-hidden="true"></a><span class="co">#&gt; 3 Student's t-test</span></span>
+<span id="cb4-162"><a href="#cb4-162" aria-hidden="true"></a><span class="co">#&gt; 4 Student's t-test</span></span>
+<span id="cb4-163"><a href="#cb4-163" aria-hidden="true"></a><span class="co">#&gt; 5 Student's t-test</span></span>
+<span id="cb4-164"><a href="#cb4-164" aria-hidden="true"></a><span class="co">#&gt; 6 Student's t-test</span></span></code></pre></div>
 </div>
 <div id="within-subjects-design-1" class="section level2">
 <h2 class="hasAnchor">
@@ -528,17 +544,27 @@
 <span id="cb5-91"><a href="#cb5-91" aria-hidden="true"></a>  <span class="dt">paired =</span> <span class="ot">TRUE</span>,</span>
 <span id="cb5-92"><a href="#cb5-92" aria-hidden="true"></a>  <span class="dt">bf.prior =</span> <span class="fl">0.77</span></span>
 <span id="cb5-93"><a href="#cb5-93" aria-hidden="true"></a>)</span>
-<span id="cb5-94"><a href="#cb5-94" aria-hidden="true"></a><span class="co">#&gt; # A tibble: 3 x 11</span></span>
-<span id="cb5-95"><a href="#cb5-95" aria-hidden="true"></a><span class="co">#&gt;   group1 group2   bf10   bf01 log_e_bf10 log_e_bf01 log_10_bf10 log_10_bf01</span></span>
-<span id="cb5-96"><a href="#cb5-96" aria-hidden="true"></a><span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;   &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;</span></span>
-<span id="cb5-97"><a href="#cb5-97" aria-hidden="true"></a><span class="co">#&gt; 1 Wine A Wine B  0.219 4.57        -1.52       1.52      -0.660       0.660</span></span>
-<span id="cb5-98"><a href="#cb5-98" aria-hidden="true"></a><span class="co">#&gt; 2 Wine A Wine C  3.60  0.277        1.28      -1.28       0.557      -0.557</span></span>
-<span id="cb5-99"><a href="#cb5-99" aria-hidden="true"></a><span class="co">#&gt; 3 Wine B Wine C 50.5   0.0198       3.92      -3.92       1.70       -1.70 </span></span>
-<span id="cb5-100"><a href="#cb5-100" aria-hidden="true"></a><span class="co">#&gt;   bf.prior label                        test.details    </span></span>
-<span id="cb5-101"><a href="#cb5-101" aria-hidden="true"></a><span class="co">#&gt;      &lt;dbl&gt; &lt;chr&gt;                        &lt;chr&gt;           </span></span>
-<span id="cb5-102"><a href="#cb5-102" aria-hidden="true"></a><span class="co">#&gt; 1     0.77 list(~log[e](BF[10])==-1.52) Student's t-test</span></span>
-<span id="cb5-103"><a href="#cb5-103" aria-hidden="true"></a><span class="co">#&gt; 2     0.77 list(~log[e](BF[10])==1.28)  Student's t-test</span></span>
-<span id="cb5-104"><a href="#cb5-104" aria-hidden="true"></a><span class="co">#&gt; 3     0.77 list(~log[e](BF[10])==3.92)  Student's t-test</span></span></code></pre></div>
+<span id="cb5-94"><a href="#cb5-94" aria-hidden="true"></a><span class="co">#&gt; # A tibble: 3 x 21</span></span>
+<span id="cb5-95"><a href="#cb5-95" aria-hidden="true"></a><span class="co">#&gt;   group1 group2 term       estimate conf.low conf.high    pd rope.percentage</span></span>
+<span id="cb5-96"><a href="#cb5-96" aria-hidden="true"></a><span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;           &lt;dbl&gt;</span></span>
+<span id="cb5-97"><a href="#cb5-97" aria-hidden="true"></a><span class="co">#&gt; 1 Wine A Wine B Difference  0.0150   0.00797    0.0228     1               1</span></span>
+<span id="cb5-98"><a href="#cb5-98" aria-hidden="true"></a><span class="co">#&gt; 2 Wine A Wine C Difference  0.0222   0.0119     0.0332     1               1</span></span>
+<span id="cb5-99"><a href="#cb5-99" aria-hidden="true"></a><span class="co">#&gt; 3 Wine B Wine C Difference  0.00807  0.00439    0.0126     1               1</span></span>
+<span id="cb5-100"><a href="#cb5-100" aria-hidden="true"></a><span class="co">#&gt;   prior.distribution prior.location prior.scale effects component     bf10</span></span>
+<span id="cb5-101"><a href="#cb5-101" aria-hidden="true"></a><span class="co">#&gt;   &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;        &lt;dbl&gt;</span></span>
+<span id="cb5-102"><a href="#cb5-102" aria-hidden="true"></a><span class="co">#&gt; 1 cauchy                          0        0.77 fixed   conditional  0.219</span></span>
+<span id="cb5-103"><a href="#cb5-103" aria-hidden="true"></a><span class="co">#&gt; 2 cauchy                          0        0.77 fixed   conditional  3.60 </span></span>
+<span id="cb5-104"><a href="#cb5-104" aria-hidden="true"></a><span class="co">#&gt; 3 cauchy                          0        0.77 fixed   conditional 50.5  </span></span>
+<span id="cb5-105"><a href="#cb5-105" aria-hidden="true"></a><span class="co">#&gt;     bf01 log_e_bf10 log_e_bf01 log_10_bf10 log_10_bf01</span></span>
+<span id="cb5-106"><a href="#cb5-106" aria-hidden="true"></a><span class="co">#&gt;    &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;</span></span>
+<span id="cb5-107"><a href="#cb5-107" aria-hidden="true"></a><span class="co">#&gt; 1 4.57        -1.52       1.52      -0.660       0.660</span></span>
+<span id="cb5-108"><a href="#cb5-108" aria-hidden="true"></a><span class="co">#&gt; 2 0.277        1.28      -1.28       0.557      -0.557</span></span>
+<span id="cb5-109"><a href="#cb5-109" aria-hidden="true"></a><span class="co">#&gt; 3 0.0198       3.92      -3.92       1.70       -1.70 </span></span>
+<span id="cb5-110"><a href="#cb5-110" aria-hidden="true"></a><span class="co">#&gt;   label                        test.details    </span></span>
+<span id="cb5-111"><a href="#cb5-111" aria-hidden="true"></a><span class="co">#&gt;   &lt;chr&gt;                        &lt;chr&gt;           </span></span>
+<span id="cb5-112"><a href="#cb5-112" aria-hidden="true"></a><span class="co">#&gt; 1 list(~log[e](BF[10])==-1.52) Student's t-test</span></span>
+<span id="cb5-113"><a href="#cb5-113" aria-hidden="true"></a><span class="co">#&gt; 2 list(~log[e](BF[10])==1.28)  Student's t-test</span></span>
+<span id="cb5-114"><a href="#cb5-114" aria-hidden="true"></a><span class="co">#&gt; 3 list(~log[e](BF[10])==3.92)  Student's t-test</span></span></code></pre></div>
 </div>
 </div>
 <div id="using-pairwisecomparisons-with-ggsignif-to-display-results" class="section level1">
@@ -611,30 +637,40 @@
 <span id="cb7-11"><a href="#cb7-11" aria-hidden="true"></a><span class="st">  </span><span class="kw">pairwise_comparisons</span>(WRS2<span class="op">::</span>WineTasting, Wine, Taste, <span class="dt">type =</span> <span class="st">"bayes"</span>, <span class="dt">paired =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span></span>
 <span id="cb7-12"><a href="#cb7-12" aria-hidden="true"></a><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">.data =</span> ., <span class="dt">groups =</span> purrr<span class="op">::</span><span class="kw">pmap</span>(<span class="dt">.l =</span> <span class="kw">list</span>(group1, group2), <span class="dt">.f =</span> c)) <span class="op">%&gt;%</span></span>
 <span id="cb7-13"><a href="#cb7-13" aria-hidden="true"></a><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">arrange</span>(<span class="dt">.data =</span> ., group1))</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true"></a><span class="co">#&gt; # A tibble: 3 x 12</span></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true"></a><span class="co">#&gt;   group1 group2   bf10   bf01 log_e_bf10 log_e_bf01 log_10_bf10 log_10_bf01</span></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true"></a><span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;   &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;</span></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true"></a><span class="co">#&gt; 1 Wine A Wine B  0.235 4.25        -1.45       1.45      -0.628       0.628</span></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true"></a><span class="co">#&gt; 2 Wine A Wine C  3.71  0.269        1.31      -1.31       0.570      -0.570</span></span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true"></a><span class="co">#&gt; 3 Wine B Wine C 50.5   0.0198       3.92      -3.92       1.70       -1.70 </span></span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true"></a><span class="co">#&gt;   bf.prior label                        test.details     groups   </span></span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true"></a><span class="co">#&gt;      &lt;dbl&gt; &lt;chr&gt;                        &lt;chr&gt;            &lt;list&gt;   </span></span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true"></a><span class="co">#&gt; 1    0.707 list(~log[e](BF[10])==-1.45) Student's t-test &lt;chr [2]&gt;</span></span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true"></a><span class="co">#&gt; 2    0.707 list(~log[e](BF[10])==1.31)  Student's t-test &lt;chr [2]&gt;</span></span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true"></a><span class="co">#&gt; 3    0.707 list(~log[e](BF[10])==3.92)  Student's t-test &lt;chr [2]&gt;</span></span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true"></a></span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true"></a><span class="co"># using `geom_signif` to display results</span></span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true"></a>p <span class="op">+</span></span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true"></a><span class="st">  </span>ggsignif<span class="op">::</span><span class="kw">geom_signif</span>(</span>
-<span id="cb7-29"><a href="#cb7-29" aria-hidden="true"></a>    <span class="dt">comparisons =</span> df<span class="op">$</span>groups,</span>
-<span id="cb7-30"><a href="#cb7-30" aria-hidden="true"></a>    <span class="dt">map_signif_level =</span> <span class="ot">TRUE</span>,</span>
-<span id="cb7-31"><a href="#cb7-31" aria-hidden="true"></a>    <span class="dt">tip_length =</span> <span class="fl">0.01</span>,</span>
-<span id="cb7-32"><a href="#cb7-32" aria-hidden="true"></a>    <span class="dt">y_position =</span> <span class="kw">c</span>(<span class="fl">6.5</span>, <span class="fl">6.65</span>, <span class="fl">6.8</span>),</span>
-<span id="cb7-33"><a href="#cb7-33" aria-hidden="true"></a>    <span class="dt">annotations =</span> df<span class="op">$</span>label,</span>
-<span id="cb7-34"><a href="#cb7-34" aria-hidden="true"></a>    <span class="dt">test =</span> <span class="ot">NULL</span>,</span>
-<span id="cb7-35"><a href="#cb7-35" aria-hidden="true"></a>    <span class="dt">na.rm =</span> <span class="ot">TRUE</span>,</span>
-<span id="cb7-36"><a href="#cb7-36" aria-hidden="true"></a>    <span class="dt">parse =</span> <span class="ot">TRUE</span></span>
-<span id="cb7-37"><a href="#cb7-37" aria-hidden="true"></a>  )</span></code></pre></div>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true"></a><span class="co">#&gt; # A tibble: 3 x 22</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true"></a><span class="co">#&gt;   group1 group2 term       estimate conf.low conf.high    pd rope.percentage</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true"></a><span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;           &lt;dbl&gt;</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true"></a><span class="co">#&gt; 1 Wine A Wine B Difference  0.0151   0.00817    0.0226     1               1</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true"></a><span class="co">#&gt; 2 Wine A Wine C Difference  0.0224   0.0129     0.0349     1               1</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true"></a><span class="co">#&gt; 3 Wine B Wine C Difference  0.00808  0.00463    0.0128     1               1</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true"></a><span class="co">#&gt;   prior.distribution prior.location prior.scale effects component     bf10</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true"></a><span class="co">#&gt;   &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;        &lt;dbl&gt;</span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true"></a><span class="co">#&gt; 1 cauchy                          0       0.707 fixed   conditional  0.235</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true"></a><span class="co">#&gt; 2 cauchy                          0       0.707 fixed   conditional  3.71 </span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true"></a><span class="co">#&gt; 3 cauchy                          0       0.707 fixed   conditional 50.5  </span></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true"></a><span class="co">#&gt;     bf01 log_e_bf10 log_e_bf01 log_10_bf10 log_10_bf01</span></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true"></a><span class="co">#&gt;    &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;</span></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true"></a><span class="co">#&gt; 1 4.25        -1.45       1.45      -0.628       0.628</span></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true"></a><span class="co">#&gt; 2 0.269        1.31      -1.31       0.570      -0.570</span></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true"></a><span class="co">#&gt; 3 0.0198       3.92      -3.92       1.70       -1.70 </span></span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true"></a><span class="co">#&gt;   label                        test.details     groups   </span></span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true"></a><span class="co">#&gt;   &lt;chr&gt;                        &lt;chr&gt;            &lt;list&gt;   </span></span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true"></a><span class="co">#&gt; 1 list(~log[e](BF[10])==-1.45) Student's t-test &lt;chr [2]&gt;</span></span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true"></a><span class="co">#&gt; 2 list(~log[e](BF[10])==1.31)  Student's t-test &lt;chr [2]&gt;</span></span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true"></a><span class="co">#&gt; 3 list(~log[e](BF[10])==3.92)  Student's t-test &lt;chr [2]&gt;</span></span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true"></a></span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true"></a><span class="co"># using `geom_signif` to display results</span></span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true"></a>p <span class="op">+</span></span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true"></a><span class="st">  </span>ggsignif<span class="op">::</span><span class="kw">geom_signif</span>(</span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true"></a>    <span class="dt">comparisons =</span> df<span class="op">$</span>groups,</span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true"></a>    <span class="dt">map_signif_level =</span> <span class="ot">TRUE</span>,</span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true"></a>    <span class="dt">tip_length =</span> <span class="fl">0.01</span>,</span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true"></a>    <span class="dt">y_position =</span> <span class="kw">c</span>(<span class="fl">6.5</span>, <span class="fl">6.65</span>, <span class="fl">6.8</span>),</span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true"></a>    <span class="dt">annotations =</span> df<span class="op">$</span>label,</span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true"></a>    <span class="dt">test =</span> <span class="ot">NULL</span>,</span>
+<span id="cb7-45"><a href="#cb7-45" aria-hidden="true"></a>    <span class="dt">na.rm =</span> <span class="ot">TRUE</span>,</span>
+<span id="cb7-46"><a href="#cb7-46" aria-hidden="true"></a>    <span class="dt">parse =</span> <span class="ot">TRUE</span></span>
+<span id="cb7-47"><a href="#cb7-47" aria-hidden="true"></a>  )</span></code></pre></div>
 <p><img src="reference/figures/README-ggsignif2-1.png" width="100%"></p>
 </div>
 </div>
@@ -709,7 +745,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

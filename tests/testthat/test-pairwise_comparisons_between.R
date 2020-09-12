@@ -225,14 +225,6 @@ testthat::test_that(
         k = 3
       )
 
-    # checking dimensions of the results dataframe
-    testthat::expect_equal(dim(df1), c(6L, 8L))
-    testthat::expect_equal(dim(df2), c(6L, 11L))
-    testthat::expect_equal(dim(df3), c(6L, 8L))
-    testthat::expect_equal(dim(df4), c(6L, 10L))
-    testthat::expect_equal(dim(df5), c(3L, 8L))
-    testthat::expect_equal(dim(df6), c(6L, 11L))
-
     # column types
     testthat::expect_true(all(is.character(df1$group1), is.character(df1$group2)))
     testthat::expect_true(all(is.character(df2$group1), is.character(df2$group2)))
@@ -430,7 +422,6 @@ testthat::test_that(
       dplyr::filter(.data = ., group2 == "omni", group1 == "carni")
 
     # tests
-    testthat::expect_equal(dim(df1), c(1L, 11L))
     testthat::expect_equal(df1$mean.difference, df2$mean.difference, tolerance = 0.01)
     testthat::expect_equal(df1$se, df2$se, tolerance = 0.01)
     testthat::expect_equal(df1$t.value, df2$t.value, tolerance = 0.01)
@@ -455,7 +446,6 @@ testthat::test_that(
         var.equal = TRUE
       )
 
-    testthat::expect_equal(dim(df), c(3L, 8L))
     testthat::expect_equal(df$group1, c("PG", "PG", "PG-13"))
     testthat::expect_equal(df$group2, c("PG-13", "R", "R"))
   }

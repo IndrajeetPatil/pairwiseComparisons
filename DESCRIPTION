@@ -1,7 +1,7 @@
 Type: Package
 Package: pairwiseComparisons
 Title: Multiple Pairwise Comparison Tests
-Version: 2.0.0.9000
+Version: 2.0.1
 Authors@R: 
     person(given = "Indrajeet",
            family = "Patil",
@@ -28,7 +28,7 @@ Imports:
     dplyr,
     dunn.test,
     forcats,
-    ipmisc (>= 3.0.1),
+    ipmisc,
     PMCMRplus,
     purrr,
     rlang,
@@ -36,7 +36,7 @@ Imports:
     tidyBF (>= 0.2.1),
     tidyr,
     utils,
-    WRS2 (>= 1.1-0)
+    WRS2
 Suggests:
     knitr,
     rmarkdown,

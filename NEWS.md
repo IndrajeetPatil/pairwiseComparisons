@@ -1,4 +1,6 @@
-# pairwiseComparisons 2.0.0.9000
+# pairwiseComparisons 2.0.1
+
+  - Hotfix release to fix failing tests due to release of `tidyBF 0.3.0`.
 
 # pairwiseComparisons 2.0.0
 

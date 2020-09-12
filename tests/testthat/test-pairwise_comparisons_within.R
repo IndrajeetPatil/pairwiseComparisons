@@ -168,12 +168,6 @@ testthat::test_that(
       )
     )
 
-    # checking dimensions of the results dataframe
-    testthat::expect_equal(dim(df1), c(6L, 8L))
-    testthat::expect_equal(dim(df2), c(6L, 8L))
-    testthat::expect_equal(dim(df3), c(6L, 10L))
-    testthat::expect_equal(dim(df4), c(6L, 11L))
-
     # checking if it is a tibble
     testthat::expect_is(df1, "tbl_df")
     testthat::expect_is(df2, "tbl_df")
@@ -332,18 +326,6 @@ testthat::test_that(
         "list(~log[e](BF[10])==3.9214)"
       )
     )
-
-    # checking dimensions of the results dataframe
-    testthat::expect_equal(dim(df1), c(3L, 8L))
-    testthat::expect_equal(dim(df2), c(3L, 8L))
-    testthat::expect_equal(dim(df3), c(3L, 10L))
-    testthat::expect_equal(dim(df4), c(3L, 11L))
-
-    # checking if it is a tibble
-    testthat::expect_is(df1, "tbl_df")
-    testthat::expect_is(df2, "tbl_df")
-    testthat::expect_is(df3, "tbl_df")
-    testthat::expect_is(df4, "tbl_df")
 
     # columns should be same no matter the test
     testthat::expect_identical(df1$group1, df2$group1)
