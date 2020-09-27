@@ -451,9 +451,6 @@ pairwise_comparisons <- function(data,
 
   # ---------------------------- cleanup ----------------------------------
 
-  # formatting label
-  adjust_text <- ifelse(p.adjust.method == "none", "unadjusted", "adjusted")
-
   # final cleanup for p-value labels
   df %<>%
     dplyr::mutate_if(
@@ -464,14 +461,34 @@ pairwise_comparisons <- function(data,
     dplyr::rowwise() %>%
     dplyr::mutate(label = specify_decimal_p(x = p.value, k = k, p.value = TRUE)) %>%
     dplyr::mutate(
-      label = dplyr::case_when(
-        label == "< 0.001" ~ paste0("list(~italic(p)[", adjust_text, "]<=", "0.001", ")"),
-        TRUE ~ paste0("list(~italic(p)[", adjust_text, "]==", label, ")")
-      )
-    ) %>%
-    dplyr::mutate(
       test.details = test.details,
       p.value.adjustment = p_adjust_text(p.adjust.method)
+    ) %>%
+    dplyr::mutate(
+      label = dplyr::case_when(
+        label == "< 0.001" && p.value.adjustment != "None" ~ paste0(
+          "list(~italic(p)[",
+          p.value.adjustment,
+          "-corrected]",
+          "<=",
+          "0.001",
+          ")"
+        ),
+        label != "< 0.001" && p.value.adjustment != "None" ~ paste0(
+          "list(~italic(p)[",
+          p.value.adjustment,
+          "-corrected]",
+          "==",
+          label,
+          ")"
+        ),
+        label == "< 0.001" && p.value.adjustment == "None" ~ paste0(
+          "list(~italic(p)[uncorrected]<=", "0.001", ")"
+        ),
+        label != "< 0.001" && p.value.adjustment == "None" ~ paste0(
+          "list(~italic(p)[uncorrected]==", label, ")"
+        )
+      )
     ) %>%
     dplyr::select(.data = ., group1, group2, dplyr::everything()) %>%
     dplyr::arrange(group1, group2)
@@ -479,10 +496,3 @@ pairwise_comparisons <- function(data,
   # return
   return(dplyr::ungroup(df))
 }
-
-
-#' @name pairwise_comparisons
-#' @aliases  pairwise_comparisons
-#' @export
-
-pairwise_p <- pairwise_comparisons

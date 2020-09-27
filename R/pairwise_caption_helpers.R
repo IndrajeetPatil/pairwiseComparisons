@@ -18,9 +18,9 @@ p_adjust_text <- function(p.adjust.method) {
     holm = "Holm",
     hochberg = "Hochberg",
     hommel = "Hommel",
-    BH = "Benjamini & Hochberg",
-    fdr = "Benjamini & Hochberg",
-    BY = "Benjamini & Yekutieli",
+    BH = "FDR",
+    fdr = "FDR",
+    BY = "BY",
     "Holm"
   )
 }
@@ -30,32 +30,49 @@ p_adjust_text <- function(p.adjust.method) {
 #' @title Expression containing details about pairwise comparison test
 #' @description This returns an expression containing details about the pairwise
 #'   comparison test and the *p*-value adjustment method. These details are
-#'   typically included in `ggstatsplot` package plots as a caption.
+#'   typically included in the `ggstatsplot` package plots as a caption.
 #'
-#' @inheritParams pairwise_comparisons
 #' @param test.description Text describing the details of the test.
 #' @param caption Additional text to be included in the plot.
+#' @param pairwise.display Decides which pairwise comparisons to display.
+#'   Available options are `"significant"` (abbreviation accepted: `"s"`) or
+#'   `"non-significant"` (abbreviation accepted: `"ns"`) or
+#'   `"everything"`/`"all"`. The default is `"significant"`.
+#' @param ... Ignored.
 #'
 #' @examples
 #' library(pairwiseComparisons)
-#' pairwise_caption("my caption", "Student's t-test", "holm")
+#' pairwise_caption("my caption", "Student's t-test")
 #' @export
 
-pairwise_caption <- function(caption, test.description, p.adjust.method) {
+pairwise_caption <- function(caption,
+                             test.description,
+                             pairwise.display = "significant",
+                             ...) {
+  # which comparisons are shown? (standardize strings)
+  pairwise.display <-
+    switch(
+      EXPR = substr(x = pairwise.display, start = 1L, stop = 1L),
+      s = "only significant",
+      n = "only non-significant",
+      "all"
+    )
+
+  # create expression
   substitute(
     atop(
       displaystyle(top.text),
       expr = paste(
-        "Pairwise comparisons: ",
+        "Pairwise test: ",
         bold(test.description),
-        "; Adjustment (p-value): ",
-        bold(p.adjust.method.text)
+        "; Comparisons shown: ",
+        bold(pairwise.display)
       )
     ),
     env = list(
       top.text = caption,
       test.description = test.description,
-      p.adjust.method.text = p_adjust_text(p.adjust.method)
+      pairwise.display = pairwise.display
     )
   )
 }
