@@ -89,6 +89,7 @@ utils::globalVariables(
     "R",
     "adj.r.squared",
     "p.value",
+    "psihat",
     "term",
     "label",
     "loglik",

@@ -274,7 +274,7 @@ testthat::test_that(
     )
 
     testthat::expect_equal(
-      df4$psihat,
+      df4$estimate,
       c(
         -0.0529663194444444,
         0.0577055555555556,

@@ -2,9 +2,24 @@
 % Please edit documentation in R/pairwise_comparisons.R
 \name{pairwise_comparisons}
 \alias{pairwise_comparisons}
+\alias{pairwise_p}
 \title{Multiple pairwise comparison tests with tidy data}
 \usage{
 pairwise_comparisons(
+  data,
+  x,
+  y,
+  type = "parametric",
+  paired = FALSE,
+  var.equal = FALSE,
+  tr = 0.1,
+  bf.prior = 0.707,
+  p.adjust.method = "holm",
+  k = 2L,
+  ...
+)
+
+pairwise_p(
   data,
   x,
   y,
@@ -68,6 +83,21 @@ this needs to be displayed in \code{geom_ggsignif}. In addition to these common
 columns across the different types of statistics, there will be additional
 columns specific to the \code{type} of test being run.
 
+This function provides a unified syntax to carry out pairwise comparison
+tests and internally relies on other packages to carry out these tests. For
+more details about the included tests, see the documentation for the
+respective functions:
+\itemize{
+\item \emph{parametric} : \code{\link[stats:pairwise.t.test]{stats::pairwise.t.test()}} (paired) and
+\code{\link[PMCMRplus:gamesHowellTest]{PMCMRplus::gamesHowellTest()}} (unpaired)
+\item \emph{non-parametric} :
+\code{\link[PMCMRplus:durbinAllPairsTest]{PMCMRplus::durbinAllPairsTest()}} (paired) and
+\code{\link[PMCMRplus:kwAllPairsDunnTest]{PMCMRplus::kwAllPairsDunnTest()}} (unpaired)
+\item \emph{robust} :
+\code{\link[WRS2:rmanova]{WRS2::rmmcp()}} (paired) and  \code{\link[WRS2:t1way]{WRS2::lincon()}} (unpaired)
+\item \emph{Bayes Factor} : \code{\link[BayesFactor:ttestBF]{BayesFactor::ttestBF()}}
+}
+
 The \code{significance} column asterisks indicate significance levels of
 \emph{p}-values in the American Psychological Association (APA) mandated format:
 \itemize{
@@ -78,8 +108,9 @@ The \code{significance} column asterisks indicate significance levels of
 }
 }
 \description{
-Calculate parametric, non-parametric, and robust pairwise
-comparisons between group levels with corrections for multiple testing.
+Calculate parametric, non-parametric, robust, and Bayes Factor
+pairwise comparisons between group levels with corrections for multiple
+testing.
 }
 \examples{
 

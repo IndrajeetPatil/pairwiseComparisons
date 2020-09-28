@@ -25,13 +25,14 @@ Depends:
     R (>= 3.6.0)
 Imports:
     broom,
+    BayesFactor,
     dplyr,
     ipmisc,
     PMCMRplus,
+    parameters,
     purrr,
     rlang,
     stats,
-    tidyBF (>= 0.2.1),
     tidyr,
     WRS2
 Suggests:

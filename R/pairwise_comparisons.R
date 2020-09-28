@@ -1,7 +1,8 @@
 #' @title Multiple pairwise comparison tests with tidy data
 #' @name pairwise_comparisons
-#' @description Calculate parametric, non-parametric, and robust pairwise
-#'   comparisons between group levels with corrections for multiple testing.
+#' @description Calculate parametric, non-parametric, robust, and Bayes Factor
+#'   pairwise comparisons between group levels with corrections for multiple
+#'   testing.
 #'
 #' @param data A dataframe from which variables specified are to be taken. A
 #'   matrix or tables will **not** be accepted.
@@ -38,6 +39,21 @@
 #'   columns across the different types of statistics, there will be additional
 #'   columns specific to the `type` of test being run.
 #'
+#'   This function provides a unified syntax to carry out pairwise comparison
+#'   tests and internally relies on other packages to carry out these tests. For
+#'   more details about the included tests, see the documentation for the
+#'   respective functions:
+#'   \itemize{
+#'   \item *parametric* : [stats::pairwise.t.test()] (paired) and
+#'   [PMCMRplus::gamesHowellTest()] (unpaired)
+#'   \item *non-parametric* :
+#'   [PMCMRplus::durbinAllPairsTest()] (paired) and
+#'   [PMCMRplus::kwAllPairsDunnTest()] (unpaired)
+#'   \item *robust* :
+#'   [WRS2::rmmcp()] (paired) and  [WRS2::lincon()] (unpaired)
+#'   \item *Bayes Factor* : [BayesFactor::ttestBF()]
+#'   }
+#'
 #'   The `significance` column asterisks indicate significance levels of
 #'   *p*-values in the American Psychological Association (APA) mandated format:
 #'   \itemize{
@@ -57,7 +73,6 @@
 #' @importFrom purrr map2 map_dfr
 #' @importFrom broom tidy
 #' @importFrom ipmisc stats_type_switch
-#' @importFrom tidyBF bf_ttest
 #'
 #' @examples
 #'
@@ -182,8 +197,7 @@ pairwise_comparisons <- function(data,
   type <- ipmisc::stats_type_switch(type)
 
   # ensure the arguments work quoted or unquoted
-  x <- rlang::ensym(x)
-  y <- rlang::ensym(y)
+  c(x, y) %<-% c(rlang::ensym(x), rlang::ensym(y))
 
   # ---------------------------- data cleanup -------------------------------
 
@@ -241,27 +255,23 @@ pairwise_comparisons <- function(data,
 
   # ---------------------------- bayes factor --------------------------------
 
-  # print a message telling the user that this is currently not supported
   if (type == "bayes") {
-    # creating a list of dataframes with subsections of data
-    df_list <-
-      purrr::map2(
-        .x = as.character(df$group1),
-        .y = as.character(df$group2),
-        .f = function(a, b) droplevels(dplyr::filter(df_internal, {{ x }} %in% c(a, b)))
-      )
-
     # combining results into a single dataframe and returning it
     df_tidy <-
       purrr::map_dfr(
-        .x = df_list,
-        .f = ~ tidyBF::bf_ttest(
+        # creating a list of dataframes with subsections of data
+        .x = purrr::map2(
+          .x = as.character(df$group1),
+          .y = as.character(df$group2),
+          .f = function(a, b) droplevels(dplyr::filter(df_internal, {{ x }} %in% c(a, b)))
+        ),
+        # internal function to carry out BF t-test
+        .f = ~ bf_internal_ttest(
           data = .x,
           x = {{ x }},
           y = {{ y }},
           paired = paired,
-          bf.prior = bf.prior,
-          output = "results"
+          bf.prior = bf.prior
         )
       ) %>%
       dplyr::rowwise() %>%
@@ -285,8 +295,8 @@ pairwise_comparisons <- function(data,
   # ---------------------------- nonparametric ----------------------------
 
   if (type == "nonparametric") {
+    # # running Dunn test
     if (isFALSE(paired)) {
-      # # running Dunn test
       mod <-
         suppressWarnings(PMCMRplus::kwAllPairsDunnTest(
           x = y_vec,
@@ -299,9 +309,8 @@ pairwise_comparisons <- function(data,
       test.details <- "Dunn test"
     }
 
-    # converting the entered long format data to wide format
+    # # running Durbin-Conover test
     if (isTRUE(paired)) {
-      # creating model object
       mod <-
         PMCMRplus::durbinAllPairsTest(
           y = na.omit(matrix(
@@ -326,8 +335,7 @@ pairwise_comparisons <- function(data,
 
   if (type == "robust") {
     if (isFALSE(paired)) {
-      # object with all details about pairwise comparisons
-      rob_pairwise_df <-
+      wrs_obj <-
         WRS2::lincon(
           formula = rlang::new_formula({{ y }}, {{ x }}),
           data = df_internal,
@@ -335,11 +343,8 @@ pairwise_comparisons <- function(data,
         )
     }
 
-    # converting to long format and then getting it back in wide so that the
-    # rowid variable can be used as the block variable
     if (isTRUE(paired)) {
-      # running pairwise multiple comparison tests
-      rob_pairwise_df <-
+      wrs_obj <-
         WRS2::rmmcp(
           y = df_internal[[rlang::as_name(y)]],
           groups = df_internal[[rlang::as_name(x)]],
@@ -350,22 +355,21 @@ pairwise_comparisons <- function(data,
 
     # extracting the robust pairwise comparisons and tidying up names
     rob_df_tidy <-
-      suppressMessages(as_tibble(rob_pairwise_df$comp, .name_repair = "unique")) %>%
+      suppressMessages(as_tibble(wrs_obj$comp, .name_repair = "unique")) %>%
       dplyr::rename(group1 = Group...1, group2 = Group...2)
 
     # cleaning the raw object and getting it in the right format
     df <-
       dplyr::full_join(
         # dataframe comparing comparison details
-        x = p_adjust_column_adder(df = rob_df_tidy, p.adjust.method = p.adjust.method) %>%
-          tidyr::gather(
-            data = .,
-            key = "key",
-            value = "rowid",
-            group1:group2
-          ),
+        x = tidyr::gather(
+          data = p_adjust_column_adder(rob_df_tidy, p.adjust.method),
+          key = "key",
+          value = "rowid",
+          group1:group2
+        ),
         # dataframe with factor levels
-        y = enframe(x = rob_pairwise_df$fnames, name = "rowid"),
+        y = enframe(x = wrs_obj$fnames, name = "rowid"),
         by = "rowid"
       ) %>%
       dplyr::select(.data = ., -rowid) %>%
@@ -375,7 +379,7 @@ pairwise_comparisons <- function(data,
     if (("p.crit") %in% names(df)) df %<>% dplyr::select(.data = ., -p.crit)
 
     # renaming confidence interval names
-    df %<>% dplyr::rename(.data = ., conf.low = ci.lower, conf.high = ci.upper)
+    df %<>% dplyr::rename(estimate = psihat, conf.low = ci.lower, conf.high = ci.upper)
 
     # test details
     test.details <- "Yuen's trimmed means test"
@@ -428,3 +432,9 @@ pairwise_comparisons <- function(data,
   # return
   return(dplyr::ungroup(df))
 }
+
+#' @name pairwise_comparisons
+#' @aliases  pairwise_comparisons
+#' @export
+
+pairwise_p <- pairwise_comparisons

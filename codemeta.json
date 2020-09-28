@@ -121,6 +121,18 @@
     },
     {
       "@type": "SoftwareApplication",
+      "identifier": "BayesFactor",
+      "name": "BayesFactor",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=BayesFactor"
+    },
+    {
+      "@type": "SoftwareApplication",
       "identifier": "dplyr",
       "name": "dplyr",
       "provider": {
@@ -157,6 +169,18 @@
     },
     {
       "@type": "SoftwareApplication",
+      "identifier": "parameters",
+      "name": "parameters",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=parameters"
+    },
+    {
+      "@type": "SoftwareApplication",
       "identifier": "purrr",
       "name": "purrr",
       "provider": {
@@ -183,19 +207,6 @@
       "@type": "SoftwareApplication",
       "identifier": "stats",
       "name": "stats"
-    },
-    {
-      "@type": "SoftwareApplication",
-      "identifier": "tidyBF",
-      "name": "tidyBF",
-      "version": ">= 0.2.1",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=tidyBF"
     },
     {
       "@type": "SoftwareApplication",
@@ -247,5 +258,5 @@
     "name": "Comprehensive R Archive Network (CRAN)",
     "url": "https://cran.r-project.org"
   },
-  "fileSize": "1255.252KB"
+  "fileSize": "1253.758KB"
 }

@@ -129,7 +129,7 @@
 <td><a href="https://cran.r-project.org/"><img src="https://img.shields.io/badge/R%3E%3D-3.6.0-6666ff.svg" alt="minimal R version"></a></td>
 <td><a href="https://www.tidyverse.org/lifecycle/"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="lifecycle"></a></td>
 <td><a href="https://CRAN.R-project.org/package=pairwiseComparisons"><img src="https://cranlogs.r-pkg.org/badges/last-month/pairwiseComparisons?color=blue" alt="Monthly downloads badge"></a></td>
-<td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/issues"><img src="https://img.shields.io/badge/issues-1-red.svg" alt="Github Issues"></a></td>
+<td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/issues"><img src="https://img.shields.io/badge/issues-2-red.svg" alt="Github Issues"></a></td>
 <td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/blob/master/README.md"><img src="https://img.shields.io/badge/vignettes-3.0.0-orange.svg?colorB=FF5722" alt="vignettes"></a></td>
 </tr>
 <tr class="even">
@@ -357,7 +357,7 @@
   <span class="kw">p.adjust.method</span> <span class="kw">=</span> <span class="st">"fdr"</span>
 )
 <span class="co">#&gt; # A tibble: 6 x 10</span>
-<span class="co">#&gt;   group1  group2    psihat conf.low conf.high p.value significance label                                  test.details             </span>
+<span class="co">#&gt;   group1  group2  estimate conf.low conf.high p.value significance label                                  test.details             </span>
 <span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;                                  &lt;chr&gt;                    </span>
 <span class="co">#&gt; 1 carni   herbi   -0.0530   -0.274     0.168    0.969 ns           list(~italic(p)[FDR-corrected]==0.969) Yuen's trimmed means test</span>
 <span class="co">#&gt; 2 carni   insecti  0.0577   -0.0609    0.176    0.969 ns           list(~italic(p)[FDR-corrected]==0.969) Yuen's trimmed means test</span>
@@ -382,7 +382,7 @@
   <span class="kw">type</span> <span class="kw">=</span> <span class="st">"bayes"</span>,
   <span class="kw">paired</span> <span class="kw">=</span> <span class="fl">FALSE</span>
 )
-<span class="co">#&gt; # A tibble: 6 x 21</span>
+<span class="co">#&gt; # A tibble: 6 x 17</span>
 <span class="co">#&gt;   group1  group2  term       estimate conf.low conf.high    pd rope.percentage prior.distribution prior.location prior.scale effects</span>
 <span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;           &lt;dbl&gt; &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt;  </span>
 <span class="co">#&gt; 1 carni   herbi   Difference   0.383    -0.349    1.15   0.801           0.135 cauchy                          0       0.707 fixed  </span>
@@ -391,14 +391,14 @@
 <span class="co">#&gt; 4 herbi   insecti Difference  -0.371    -1.41     0.526  0.746           0.131 cauchy                          0       0.707 fixed  </span>
 <span class="co">#&gt; 5 herbi   omni    Difference  -0.371    -0.884    0.234  0.856           0.144 cauchy                          0       0.707 fixed  </span>
 <span class="co">#&gt; 6 insecti omni    Difference   0.0758   -0.102    0.286  0.742           0.586 cauchy                          0       0.707 fixed  </span>
-<span class="co">#&gt;   component    bf10  bf01 log_e_bf10 log_e_bf01 log_10_bf10 log_10_bf01 label                        test.details    </span>
-<span class="co">#&gt;   &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt;                        &lt;chr&gt;           </span>
-<span class="co">#&gt; 1 conditional 0.540  1.85     -0.617      0.617      -0.268       0.268 list(~log[e](BF[10])==-0.62) Student's t-test</span>
-<span class="co">#&gt; 2 conditional 0.718  1.39     -0.332      0.332      -0.144       0.144 list(~log[e](BF[10])==-0.33) Student's t-test</span>
-<span class="co">#&gt; 3 conditional 0.427  2.34     -0.851      0.851      -0.369       0.369 list(~log[e](BF[10])==-0.85) Student's t-test</span>
-<span class="co">#&gt; 4 conditional 0.540  1.85     -0.616      0.616      -0.267       0.267 list(~log[e](BF[10])==-0.62) Student's t-test</span>
-<span class="co">#&gt; 5 conditional 0.571  1.75     -0.560      0.560      -0.243       0.243 list(~log[e](BF[10])==-0.56) Student's t-test</span>
-<span class="co">#&gt; 6 conditional 0.545  1.83     -0.606      0.606      -0.263       0.263 list(~log[e](BF[10])==-0.61) Student's t-test</span></pre></div>
+<span class="co">#&gt;   component    bf10 log_e_bf10 label                        test.details    </span>
+<span class="co">#&gt;   &lt;chr&gt;       &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;                        &lt;chr&gt;           </span>
+<span class="co">#&gt; 1 conditional 0.540     -0.617 list(~log[e](BF[10])==-0.62) Student's t-test</span>
+<span class="co">#&gt; 2 conditional 0.718     -0.332 list(~log[e](BF[10])==-0.33) Student's t-test</span>
+<span class="co">#&gt; 3 conditional 0.427     -0.851 list(~log[e](BF[10])==-0.85) Student's t-test</span>
+<span class="co">#&gt; 4 conditional 0.540     -0.616 list(~log[e](BF[10])==-0.62) Student's t-test</span>
+<span class="co">#&gt; 5 conditional 0.571     -0.560 list(~log[e](BF[10])==-0.56) Student's t-test</span>
+<span class="co">#&gt; 6 conditional 0.545     -0.606 list(~log[e](BF[10])==-0.61) Student's t-test</span></pre></div>
 </div>
 <div id="within-subjects-design-1" class="section level2">
 <h2 class="hasAnchor">
@@ -454,14 +454,14 @@
   <span class="kw">p.adjust.method</span> <span class="kw">=</span> <span class="st">"hommel"</span>
 )
 <span class="co">#&gt; # A tibble: 6 x 10</span>
-<span class="co">#&gt;   group1 group2 psihat conf.low conf.high  p.value significance label                                     test.details             </span>
-<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;                                     &lt;chr&gt;                    </span>
-<span class="co">#&gt; 1 HDHF   HDLF    1.16    0.318      2.00  1.49e- 3 **           list(~italic(p)[Hommel-corrected]==0.001) Yuen's trimmed means test</span>
-<span class="co">#&gt; 2 HDHF   LDHF    0.5    -0.188      1.19  6.20e- 2 ns           list(~italic(p)[Hommel-corrected]==0.062) Yuen's trimmed means test</span>
-<span class="co">#&gt; 3 HDHF   LDLF    2.10    1.37       2.82  1.79e-10 ***          list(~italic(p)[Hommel-corrected]&lt;=0.001) Yuen's trimmed means test</span>
-<span class="co">#&gt; 4 HDLF   LDHF   -0.701  -1.71       0.303 6.20e- 2 ns           list(~italic(p)[Hommel-corrected]==0.062) Yuen's trimmed means test</span>
-<span class="co">#&gt; 5 HDLF   LDLF    0.938   0.0694     1.81  1.36e- 2 *            list(~italic(p)[Hommel-corrected]==0.014) Yuen's trimmed means test</span>
-<span class="co">#&gt; 6 LDHF   LDLF    1.54    0.810      2.27  1.16e- 6 ***          list(~italic(p)[Hommel-corrected]&lt;=0.001) Yuen's trimmed means test</span>
+<span class="co">#&gt;   group1 group2 estimate conf.low conf.high  p.value significance label                                     test.details             </span>
+<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;                                     &lt;chr&gt;                    </span>
+<span class="co">#&gt; 1 HDHF   HDLF      1.16    0.318      2.00  1.49e- 3 **           list(~italic(p)[Hommel-corrected]==0.001) Yuen's trimmed means test</span>
+<span class="co">#&gt; 2 HDHF   LDHF      0.5    -0.188      1.19  6.20e- 2 ns           list(~italic(p)[Hommel-corrected]==0.062) Yuen's trimmed means test</span>
+<span class="co">#&gt; 3 HDHF   LDLF      2.10    1.37       2.82  1.79e-10 ***          list(~italic(p)[Hommel-corrected]&lt;=0.001) Yuen's trimmed means test</span>
+<span class="co">#&gt; 4 HDLF   LDHF     -0.701  -1.71       0.303 6.20e- 2 ns           list(~italic(p)[Hommel-corrected]==0.062) Yuen's trimmed means test</span>
+<span class="co">#&gt; 5 HDLF   LDLF      0.938   0.0694     1.81  1.36e- 2 *            list(~italic(p)[Hommel-corrected]==0.014) Yuen's trimmed means test</span>
+<span class="co">#&gt; 6 LDHF   LDLF      1.54    0.810      2.27  1.16e- 6 ***          list(~italic(p)[Hommel-corrected]&lt;=0.001) Yuen's trimmed means test</span>
 <span class="co">#&gt;   p.value.adjustment</span>
 <span class="co">#&gt;   &lt;chr&gt;             </span>
 <span class="co">#&gt; 1 Hommel            </span>
@@ -480,17 +480,17 @@
   <span class="kw">paired</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
   <span class="kw">bf.prior</span> <span class="kw">=</span> <span class="fl">0.77</span>
 )
-<span class="co">#&gt; # A tibble: 3 x 21</span>
+<span class="co">#&gt; # A tibble: 3 x 17</span>
 <span class="co">#&gt;   group1 group2 term       estimate conf.low conf.high    pd rope.percentage prior.distribution prior.location prior.scale effects</span>
 <span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;           &lt;dbl&gt; &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt;  </span>
 <span class="co">#&gt; 1 Wine A Wine B Difference -0.00769  -0.0479    0.0308 0.628           1     cauchy                          0        0.77 fixed  </span>
 <span class="co">#&gt; 2 Wine A Wine C Difference -0.0776   -0.128    -0.0261 0.991           0.809 cauchy                          0        0.77 fixed  </span>
 <span class="co">#&gt; 3 Wine B Wine C Difference -0.0694   -0.104    -0.0394 1.00            1     cauchy                          0        0.77 fixed  </span>
-<span class="co">#&gt;   component     bf10   bf01 log_e_bf10 log_e_bf01 log_10_bf10 log_10_bf01 label                        test.details    </span>
-<span class="co">#&gt;   &lt;chr&gt;        &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt;                        &lt;chr&gt;           </span>
-<span class="co">#&gt; 1 conditional  0.219 4.57        -1.52       1.52      -0.660       0.660 list(~log[e](BF[10])==-1.52) Student's t-test</span>
-<span class="co">#&gt; 2 conditional  3.60  0.277        1.28      -1.28       0.557      -0.557 list(~log[e](BF[10])==1.28)  Student's t-test</span>
-<span class="co">#&gt; 3 conditional 50.5   0.0198       3.92      -3.92       1.70       -1.70  list(~log[e](BF[10])==3.92)  Student's t-test</span></pre></div>
+<span class="co">#&gt;   component     bf10 log_e_bf10 label                        test.details    </span>
+<span class="co">#&gt;   &lt;chr&gt;        &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;                        &lt;chr&gt;           </span>
+<span class="co">#&gt; 1 conditional  0.219      -1.52 list(~log[e](BF[10])==-1.52) Student's t-test</span>
+<span class="co">#&gt; 2 conditional  3.60        1.28 list(~log[e](BF[10])==1.28)  Student's t-test</span>
+<span class="co">#&gt; 3 conditional 50.5         3.92 list(~log[e](BF[10])==3.92)  Student's t-test</span></pre></div>
 </div>
 </div>
 <div id="using-pairwisecomparisons-with-ggsignif" class="section level1">
@@ -558,17 +558,17 @@
   <span class="fu"><a href="reference/pairwise_comparisons.html">pairwise_comparisons</a></span>(<span class="kw pkg">WRS2</span><span class="kw ns">::</span><span class="no"><a href="https://rdrr.io/pkg/WRS2/man/WineTasting.html">WineTasting</a></span>, <span class="no">Wine</span>, <span class="no">Taste</span>, <span class="kw">type</span> <span class="kw">=</span> <span class="st">"bayes"</span>, <span class="kw">paired</span> <span class="kw">=</span> <span class="fl">TRUE</span>) <span class="kw">%&gt;%</span>
   <span class="kw pkg">dplyr</span><span class="kw ns">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="kw">.data</span> <span class="kw">=</span> <span class="no">.</span>, <span class="kw">groups</span> <span class="kw">=</span> <span class="kw pkg">purrr</span><span class="kw ns">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map2.html">pmap</a></span>(<span class="kw">.l</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="no">group1</span>, <span class="no">group2</span>), <span class="kw">.f</span> <span class="kw">=</span> <span class="no">c</span>)) <span class="kw">%&gt;%</span>
   <span class="kw pkg">dplyr</span><span class="kw ns">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="kw">.data</span> <span class="kw">=</span> <span class="no">.</span>, <span class="no">group1</span>))
-<span class="co">#&gt; # A tibble: 3 x 22</span>
+<span class="co">#&gt; # A tibble: 3 x 18</span>
 <span class="co">#&gt;   group1 group2 term       estimate conf.low conf.high    pd rope.percentage prior.distribution prior.location prior.scale effects</span>
 <span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;           &lt;dbl&gt; &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt;  </span>
 <span class="co">#&gt; 1 Wine A Wine B Difference -0.00664  -0.0462    0.0312 0.632           1     cauchy                          0       0.707 fixed  </span>
 <span class="co">#&gt; 2 Wine A Wine C Difference -0.0765   -0.128    -0.0250 0.99            0.811 cauchy                          0       0.707 fixed  </span>
 <span class="co">#&gt; 3 Wine B Wine C Difference -0.0696   -0.103    -0.0409 0.999           0.988 cauchy                          0       0.707 fixed  </span>
-<span class="co">#&gt;   component     bf10   bf01 log_e_bf10 log_e_bf01 log_10_bf10 log_10_bf01 label                        test.details     groups   </span>
-<span class="co">#&gt;   &lt;chr&gt;        &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt;                        &lt;chr&gt;            &lt;list&gt;   </span>
-<span class="co">#&gt; 1 conditional  0.235 4.25        -1.45       1.45      -0.628       0.628 list(~log[e](BF[10])==-1.45) Student's t-test &lt;chr [2]&gt;</span>
-<span class="co">#&gt; 2 conditional  3.71  0.269        1.31      -1.31       0.570      -0.570 list(~log[e](BF[10])==1.31)  Student's t-test &lt;chr [2]&gt;</span>
-<span class="co">#&gt; 3 conditional 50.5   0.0198       3.92      -3.92       1.70       -1.70  list(~log[e](BF[10])==3.92)  Student's t-test &lt;chr [2]&gt;</span>
+<span class="co">#&gt;   component     bf10 log_e_bf10 label                        test.details     groups   </span>
+<span class="co">#&gt;   &lt;chr&gt;        &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;                        &lt;chr&gt;            &lt;list&gt;   </span>
+<span class="co">#&gt; 1 conditional  0.235      -1.45 list(~log[e](BF[10])==-1.45) Student's t-test &lt;chr [2]&gt;</span>
+<span class="co">#&gt; 2 conditional  3.71        1.31 list(~log[e](BF[10])==1.31)  Student's t-test &lt;chr [2]&gt;</span>
+<span class="co">#&gt; 3 conditional 50.5         3.92 list(~log[e](BF[10])==3.92)  Student's t-test &lt;chr [2]&gt;</span>
 
 <span class="co"># using `geom_signif` to display results</span>
 <span class="no">p</span> +

@@ -114,7 +114,7 @@ testthat::test_that(
     )
 
     testthat::expect_equal(
-      df3$psihat,
+      df3$estimate,
       c(
         1.15972222222222,
         0.5,
@@ -276,7 +276,7 @@ testthat::test_that(
     )
 
     testthat::expect_equal(
-      df3$psihat,
+      df3$estimate,
       c(0.0166666666666668, 0.1, 0.0777777777777778),
       tolerance = 0.001
     )
