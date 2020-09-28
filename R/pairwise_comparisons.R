@@ -49,18 +49,15 @@
 #'
 #' @importFrom dplyr select rename mutate everything full_join vars mutate_if
 #' @importFrom dplyr bind_cols rename_all recode matches rowwise ungroup
-#' @importFrom stats p.adjust pairwise.t.test na.omit aov TukeyHSD
+#' @importFrom stats p.adjust pairwise.t.test na.omit aov
 #' @importFrom WRS2 lincon rmmcp
 #' @importFrom tidyr gather spread separate
-#' @importFrom dunn.test dunn.test
-#' @importFrom PMCMRplus durbinAllPairsTest
+#' @importFrom PMCMRplus durbinAllPairsTest kwAllPairsDunnTest gamesHowellTest
 #' @importFrom rlang !! enquo as_string ensym
-#' @importFrom forcats fct_relabel
 #' @importFrom purrr map2 map_dfr
-#' @importFrom broomExtra tidy easystats_to_tidy_names
+#' @importFrom broom tidy
 #' @importFrom ipmisc stats_type_switch
 #' @importFrom tidyBF bf_ttest
-#' @importFrom utils capture.output
 #'
 #' @examples
 #'
@@ -208,41 +205,8 @@ pairwise_comparisons <- function(data,
 
   if (type %in% c("parametric", "bayes")) {
     if (isTRUE(var.equal) || isTRUE(paired)) {
-      # anova model
-      aovmodel <- stats::aov(
-        formula = rlang::new_formula({{ y }}, {{ x }}),
-        data = df_internal
-      )
-
-      # safeguarding against edge cases
-      aovmodel$model %<>%
-        dplyr::mutate(
-          .data = .,
-          {{ x }} := forcats::fct_relabel(
-            .f = {{ x }},
-            .fun = ~ gsub(x = .x, pattern = "-", replacement = "_")
-          )
-        )
-
-      # extracting and cleaning up Tukey's HSD output
-      df_tukey <-
-        stats::TukeyHSD(x = aovmodel, conf.level = 0.95) %>%
-        broomExtra::tidy(.) %>%
-        dplyr::select(.data = ., comparison = contrast, mean.difference = estimate) %>%
-        tidyr::separate(
-          data = .,
-          col = comparison,
-          into = c("group1", "group2"),
-          sep = "-"
-        ) %>%
-        dplyr::mutate_at(
-          .tbl = .,
-          .vars = dplyr::vars(dplyr::matches("^group[0-9]$")),
-          .funs = ~ gsub(x = ., pattern = "_", replacement = "-")
-        )
-
       # tidy dataframe with results from pairwise tests
-      df_tidy <-
+      df <-
         stats::pairwise.t.test(
           x = y_vec,
           g = x_vec,
@@ -251,22 +215,24 @@ pairwise_comparisons <- function(data,
           alternative = "two.sided",
           na.action = na.omit
         ) %>%
-        broomExtra::tidy(.) %>%
-        p_adjust_column_adder(df = ., p.adjust.method = p.adjust.method)
-
-      # combining mean difference and results from pairwise t-test
-      df <-
-        dplyr::full_join(x = df_tukey, y = df_tidy, by = c("group1", "group2")) %>%
+        broom::tidy(.) %>%
+        p_adjust_column_adder(df = ., p.adjust.method = p.adjust.method) %>%
         dplyr::rename(.data = ., group2 = group1, group1 = group2)
 
       # test details
       test.details <- "Student's t-test"
     } else {
+      # anova model
+      aovmodel <-
+        stats::aov(
+          formula = rlang::new_formula({{ y }}, {{ x }}),
+          data = df_internal
+        )
+
       # dataframe with Games-Howell test results
       df <-
-        games_howell(data = df_internal, x = {{ x }}, y = {{ y }}) %>%
-        p_adjust_column_adder(df = ., p.adjust.method = p.adjust.method) %>%
-        dplyr::select(.data = ., -conf.low, -conf.high)
+        PMCMR_to_tibble(PMCMRplus::gamesHowellTest(aovmodel, p.adjust.method = "none")) %>%
+        p_adjust_column_adder(df = ., p.adjust.method = p.adjust.method)
 
       # test details
       test.details <- "Games-Howell test"
@@ -311,7 +277,8 @@ pairwise_comparisons <- function(data,
         .tbl = dplyr::bind_cols(dplyr::select(df, group1, group2), df_tidy),
         .predicate = is.factor,
         .funs = ~ as.character(.)
-      )
+      ) %>%
+        dplyr::arrange(group1, group2)
     )
   }
 
@@ -319,41 +286,14 @@ pairwise_comparisons <- function(data,
 
   if (type == "nonparametric") {
     if (isFALSE(paired)) {
-      # running Dunn test
-      invisible(utils::capture.output(df <-
-        as.data.frame(
-          dunn.test::dunn.test(
-            x = y_vec,
-            g = x_vec,
-            table = FALSE,
-            kw = FALSE,
-            label = FALSE,
-            alpha = 0.05,
-            method = "none",
-            altp = TRUE
-          )
-        ), file = NULL))
-
-      # cleanup
-      df %<>%
-        as_tibble(.) %>%
-        broomExtra::easystats_to_tidy_names(.) %>%
-        dplyr::mutate(z.value = abs(statistic)) %>%
-        dplyr::select(
-          .data = .,
-          comparisons,
-          z.value,
-          "p.value" = "altp.adjusted",
-          dplyr::everything(),
-          -c(chi2:altp)
-        ) %>%
-        tidyr::separate(
-          data = .,
-          col = "comparisons",
-          into = c("group1", "group2"),
-          sep = " - ",
-          remove = TRUE
-        )
+      # # running Dunn test
+      mod <-
+        suppressWarnings(PMCMRplus::kwAllPairsDunnTest(
+          x = y_vec,
+          g = x_vec,
+          na.action = na.omit,
+          p.adjust.method = "none"
+        ))
 
       # test details
       test.details <- "Dunn test"
@@ -372,22 +312,14 @@ pairwise_comparisons <- function(data,
           p.adjust.method = "none"
         )
 
-      # combining into one dataframe
-      df <-
-        dplyr::bind_cols(
-          matrix_to_tidy(m = mod$statistic, col_names = c("group2", "group1", "W")),
-          dplyr::select(
-            matrix_to_tidy(m = mod$p.value, col_names = c("group2", "group1", "p.value")),
-            -dplyr::contains("group")
-          )
-        )
-
       # test details
       test.details <- "Durbin-Conover test"
     }
 
     # cleanup
-    df %<>% p_adjust_column_adder(df = ., p.adjust.method = p.adjust.method)
+    df <-
+      PMCMR_to_tibble(mod) %>%
+      p_adjust_column_adder(df = ., p.adjust.method = p.adjust.method)
   }
 
   # ---------------------------- robust ----------------------------------

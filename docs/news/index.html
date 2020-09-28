@@ -143,6 +143,7 @@
 <ul>
 <li><p>The <code>label</code> column returned in <code>pairwise_comparisons</code> now displays the p-value adjustment method in the label itself.</p></li>
 <li><p><code>pairwise_caption</code> function has changed its output to reflect changes made to the <em>p</em>-value labels.</p></li>
+<li><p>Major internal refactoring to get rid of the following dependencies: <code>forcats</code>, <code>broomExtra</code>, and <code>dunn.test</code>. Comes at the cost of omission of few of the details that were previously included in the output (e.g., <code>mean.difference</code> column for Student’s <em>t</em>-test).</p></li>
 </ul>
 </div>
     <div id="pairwisecomparisons-201" class="section level1">

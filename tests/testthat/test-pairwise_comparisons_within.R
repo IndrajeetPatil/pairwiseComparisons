@@ -66,19 +66,6 @@ testthat::test_that(
     testthat::expect_identical(unique(df3$p.value.adjustment), "Hommel")
 
     # checking exact values
-    testthat::expect_equal(
-      df1$mean.difference,
-      c(
-        -1.14772727272727,
-        -0.471590909090914,
-        -2.16477272727272,
-        0.676136363636358,
-        -1.01704545454545,
-        -1.69318181818181
-      ),
-      tolerance = 0.001
-    )
-
     testthat::expect_identical(
       df1$label,
       c(
@@ -97,7 +84,7 @@ testthat::test_that(
     )
 
     testthat::expect_equal(
-      df2$W,
+      df2$statistic,
       c(
         4.78004208516409,
         2.44393129166284,
@@ -254,16 +241,6 @@ testthat::test_that(
     testthat::expect_identical(unique(df3$p.value.adjustment), "None")
 
     # checking exact values
-    testthat::expect_equal(
-      df1$mean.difference,
-      c(
-        -0.00909090909090882,
-        -0.084090909090909,
-        -0.0750000000000002
-      ),
-      tolerance = 0.001
-    )
-
     testthat::expect_identical(
       df1$label,
       c(
@@ -279,7 +256,7 @@ testthat::test_that(
     )
 
     testthat::expect_equal(
-      df2$W,
+      df2$statistic,
       c(1.04673405118638, 3.66356917915232, 2.61683512796594),
       tolerance = 0.001
     )

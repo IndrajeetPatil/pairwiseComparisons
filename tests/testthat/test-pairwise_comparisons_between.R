@@ -166,11 +166,9 @@ testthat::test_that(
     df_msleep <- msleep
 
     # adding empty factor level (shouldn't change results)
-    df_msleep %<>%
-      dplyr::mutate(
-        vore = as.factor(vore),
-        vore = forcats::fct_expand(vore, "random")
-      )
+    df_msleep %<>% dplyr::mutate(vore = as.factor(vore))
+
+    df_msleep$vore <- factor(df_msleep$vore, levels = c(levels(df_msleep$vore), "Random"))
 
     df2 <-
       pairwiseComparisons::pairwise_comparisons(
@@ -250,26 +248,20 @@ testthat::test_that(
 
     # testing exact values
     testthat::expect_equal(
-      df1$mean.difference,
+      df2$statistic,
       c(
-        0.54234194,
-        -0.05770556,
-        0.06647562,
-        -0.60004750,
-        -0.47586632,
-        0.12418118
+        2.17169043717625,
+        -2.16913303477938,
+        1.09507690266434,
+        -2.41175676610363,
+        -1.86823811633304,
+        2.18822208033862
       ),
       tolerance = 0.001
     )
 
     testthat::expect_equal(
-      df2$mean.difference,
-      c(0.542, -0.058, 0.066, -0.6, -0.476, 0.124),
-      tolerance = 0.001
-    )
-
-    testthat::expect_equal(
-      df3$z.value,
+      df3$statistic,
       c(
         0.581939863708611,
         1.88416265861034,
@@ -304,10 +296,6 @@ testthat::test_that(
     )
     testthat::expect_equal(df5$group1, c("PG", "PG", "PG-13"))
     testthat::expect_equal(df5$group2, c("PG-13", "R", "R"))
-    testthat::expect_equal(df5$mean.difference,
-      c(0.1042746, 0.3234094, 0.2191348),
-      tolerance = 0.001
-    )
     testthat::expect_equal(df5$p.value,
       c(0.315931518, 0.002825407, 0.003100279),
       tolerance = 0.001
@@ -431,10 +419,7 @@ testthat::test_that(
       dplyr::filter(.data = ., group2 == "omni", group1 == "carni")
 
     # tests
-    testthat::expect_equal(df1$mean.difference, df2$mean.difference, tolerance = 0.01)
-    testthat::expect_equal(df1$se, df2$se, tolerance = 0.01)
-    testthat::expect_equal(df1$t.value, df2$t.value, tolerance = 0.01)
-    testthat::expect_equal(df1$df, df2$df, tolerance = 0.01)
+    testthat::expect_equal(df1$statistic, df2$statistic, tolerance = 0.01)
     testthat::expect_identical(df2$label, "list(~italic(p)[uncorrected]==0.865)")
   }
 )

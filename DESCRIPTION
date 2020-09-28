@@ -24,10 +24,8 @@ BugReports:
 Depends: 
     R (>= 3.6.0)
 Imports:
-    broomExtra,
+    broom,
     dplyr,
-    dunn.test,
-    forcats,
     ipmisc,
     PMCMRplus,
     purrr,
@@ -35,7 +33,6 @@ Imports:
     stats,
     tidyBF (>= 0.2.1),
     tidyr,
-    utils,
     WRS2
 Suggests:
     knitr,
