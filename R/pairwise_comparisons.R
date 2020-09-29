@@ -72,7 +72,8 @@
 #' @importFrom rlang !! enquo as_string ensym
 #' @importFrom purrr map2 map_dfr
 #' @importFrom broom tidy
-#' @importFrom ipmisc stats_type_switch
+#' @importFrom ipmisc stats_type_switch specify_decimal_p long_to_wide_converter
+#' @importFrom ipmisc signif_column
 #'
 #' @examples
 #'
@@ -226,7 +227,6 @@ pairwise_comparisons <- function(data,
           g = x_vec,
           p.adjust.method = "none",
           paired = paired,
-          alternative = "two.sided",
           na.action = na.omit
         ) %>%
         broom::tidy(.) %>%
@@ -237,11 +237,7 @@ pairwise_comparisons <- function(data,
       test.details <- "Student's t-test"
     } else {
       # anova model
-      aovmodel <-
-        stats::aov(
-          formula = rlang::new_formula({{ y }}, {{ x }}),
-          data = df_internal
-        )
+      aovmodel <- stats::aov(rlang::new_formula({{ y }}, {{ x }}), df_internal)
 
       # dataframe with Games-Howell test results
       df <-
@@ -334,6 +330,7 @@ pairwise_comparisons <- function(data,
   # ---------------------------- robust ----------------------------------
 
   if (type == "robust") {
+    # extracting the robust pairwise comparisons
     if (isFALSE(paired)) {
       wrs_obj <-
         WRS2::lincon(
@@ -341,9 +338,7 @@ pairwise_comparisons <- function(data,
           data = df_internal,
           tr = tr
         )
-    }
-
-    if (isTRUE(paired)) {
+    } else {
       wrs_obj <-
         WRS2::rmmcp(
           y = df_internal[[rlang::as_name(y)]],
@@ -353,17 +348,14 @@ pairwise_comparisons <- function(data,
         )
     }
 
-    # extracting the robust pairwise comparisons and tidying up names
-    rob_df_tidy <-
-      suppressMessages(as_tibble(wrs_obj$comp, .name_repair = "unique")) %>%
-      dplyr::rename(group1 = Group...1, group2 = Group...2)
-
     # cleaning the raw object and getting it in the right format
     df <-
       dplyr::full_join(
         # dataframe comparing comparison details
         x = tidyr::gather(
-          data = p_adjust_column_adder(rob_df_tidy, p.adjust.method),
+          data = suppressMessages(as_tibble(wrs_obj$comp, .name_repair = "unique")) %>%
+            dplyr::rename(group1 = Group...1, group2 = Group...2) %>%
+            p_adjust_column_adder(., p.adjust.method),
           key = "key",
           value = "rowid",
           group1:group2

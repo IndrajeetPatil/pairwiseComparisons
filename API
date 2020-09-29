@@ -18,7 +18,4 @@ rlang::%||%
 rlang:::=
 tibble::as_tibble
 tibble::enframe
-ipmisc::long_to_wide_converter
-ipmisc::signif_column
-ipmisc::specify_decimal_p
 tibble::tibble

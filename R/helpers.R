@@ -9,27 +9,27 @@
 
 # function body
 PMCMR_to_tibble <- function(mod, ...) {
-  matrix_to_tidy <- function(m, col_names = c("row_key", "col_key", "value"), ...) {
-    result <-
-      data.frame(
-        rkey = rep(rownames(m), each = ncol(m)),
-        ckey = rep(colnames(m), times = nrow(m)),
-        value = as.numeric(base::t(m)),
-        stringsAsFactors = FALSE
-      )
-
-    names(result) <- col_names
-    as_tibble(stats::na.omit(result))
-  }
-
   # combining statistic and p-value columns
   dplyr::bind_cols(
-    matrix_to_tidy(m = mod$statistic, col_names = c("group2", "group1", "statistic")),
-    dplyr::select(
-      matrix_to_tidy(m = mod$p.value, col_names = c("group2", "group1", "p.value")),
-      -dplyr::contains("group")
-    )
+    matrix_to_tidy(mod$statistic, "statistic"),
+    dplyr::select(matrix_to_tidy(mod$p.value, "p.value"), -dplyr::contains("group"))
   )
+}
+
+#' @keywords internal
+#' @noRd
+
+matrix_to_tidy <- function(m, col_name = "value", ...) {
+  result <-
+    data.frame(
+      group2 = rep(rownames(m), each = ncol(m)),
+      group1 = rep(colnames(m), times = nrow(m)),
+      value = as.numeric(base::t(m)),
+      stringsAsFactors = FALSE
+    )
+
+  names(result)[3] <- col_name
+  as_tibble(stats::na.omit(result))
 }
 
 #' @name p_adjust_column_adder
@@ -75,14 +75,11 @@ bf_internal_ttest <- function(data,
 
   # within-subjects design
   if (isTRUE(paired)) {
-    # change names for convenience
-    colnames(data) <- c("rowid", "col1", "col2")
-
     # extracting results from Bayesian test and creating a dataframe
     bf_object <-
       BayesFactor::ttestBF(
-        x = data$col1,
-        y = data$col2,
+        x = data[[2]],
+        y = data[[3]],
         rscale = bf.prior,
         paired = TRUE,
         progress = FALSE
