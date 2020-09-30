@@ -33,7 +33,6 @@ Imports:
     purrr,
     rlang,
     stats,
-    tidyr,
     WRS2
 Suggests:
     knitr,

@@ -7,9 +7,9 @@
     to the *p*-value labels.
     
   - Major internal refactoring to get rid of the following dependencies:
-    `forcats`, `broomExtra`, and `dunn.test`. Comes at the cost of omission of
-    few of the details that were previously included in the output (e.g.,
-    `mean.difference` column for Student's *t*-test).
+    `broomExtra`, `dunn.test`, `forcats`, and `tidyr`. Comes at the cost of
+    omission of few of the details that were previously included in the output
+    (e.g., `mean.difference` column for Student's *t*-test).
 
 # pairwiseComparisons 2.0.1
 

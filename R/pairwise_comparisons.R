@@ -63,11 +63,10 @@
 #'   \item `***` : < 0.001
 #'   }
 #'
-#' @importFrom dplyr select rename mutate everything full_join vars mutate_if
-#' @importFrom dplyr bind_cols rename_all recode matches rowwise ungroup
+#' @importFrom dplyr select rename mutate everything mutate_if across starts_with
+#' @importFrom dplyr bind_cols matches rowwise ungroup
 #' @importFrom stats p.adjust pairwise.t.test na.omit aov
 #' @importFrom WRS2 lincon rmmcp
-#' @importFrom tidyr gather spread separate
 #' @importFrom PMCMRplus durbinAllPairsTest kwAllPairsDunnTest gamesHowellTest
 #' @importFrom rlang !! enquo as_string ensym
 #' @importFrom purrr map2 map_dfr
@@ -216,78 +215,6 @@ pairwise_comparisons <- function(data,
   x_vec <- df_internal %>% dplyr::pull({{ x }})
   y_vec <- df_internal %>% dplyr::pull({{ y }})
 
-  # ---------------------------- parametric ---------------------------------
-
-  if (type %in% c("parametric", "bayes")) {
-    if (isTRUE(var.equal) || isTRUE(paired)) {
-      # tidy dataframe with results from pairwise tests
-      df <-
-        stats::pairwise.t.test(
-          x = y_vec,
-          g = x_vec,
-          p.adjust.method = "none",
-          paired = paired,
-          na.action = na.omit
-        ) %>%
-        broom::tidy(.) %>%
-        p_adjust_column_adder(df = ., p.adjust.method = p.adjust.method) %>%
-        dplyr::rename(.data = ., group2 = group1, group1 = group2)
-
-      # test details
-      test.details <- "Student's t-test"
-    } else {
-      # anova model
-      aovmodel <- stats::aov(rlang::new_formula({{ y }}, {{ x }}), df_internal)
-
-      # dataframe with Games-Howell test results
-      df <-
-        PMCMR_to_tibble(PMCMRplus::gamesHowellTest(aovmodel, p.adjust.method = "none")) %>%
-        p_adjust_column_adder(df = ., p.adjust.method = p.adjust.method)
-
-      # test details
-      test.details <- "Games-Howell test"
-    }
-  }
-
-  # ---------------------------- bayes factor --------------------------------
-
-  if (type == "bayes") {
-    # combining results into a single dataframe and returning it
-    df_tidy <-
-      purrr::map_dfr(
-        # creating a list of dataframes with subsections of data
-        .x = purrr::map2(
-          .x = as.character(df$group1),
-          .y = as.character(df$group2),
-          .f = function(a, b) droplevels(dplyr::filter(df_internal, {{ x }} %in% c(a, b)))
-        ),
-        # internal function to carry out BF t-test
-        .f = ~ bf_internal_ttest(
-          data = .x,
-          x = {{ x }},
-          y = {{ y }},
-          paired = paired,
-          bf.prior = bf.prior
-        )
-      ) %>%
-      dplyr::rowwise() %>%
-      dplyr::mutate(label = paste0(
-        "list(~log[e](BF[10])", "==", specify_decimal_p(x = log_e_bf10, k = k), ")"
-      )) %>%
-      dplyr::ungroup() %>%
-      dplyr::mutate(.data = ., test.details = "Student's t-test")
-
-    # early return (no further cleanup required)
-    return(
-      dplyr::mutate_if(
-        .tbl = dplyr::bind_cols(dplyr::select(df, group1, group2), df_tidy),
-        .predicate = is.factor,
-        .funs = ~ as.character(.)
-      ) %>%
-        dplyr::arrange(group1, group2)
-    )
-  }
-
   # ---------------------------- nonparametric ----------------------------
 
   if (type == "nonparametric") {
@@ -332,14 +259,14 @@ pairwise_comparisons <- function(data,
   if (type == "robust") {
     # extracting the robust pairwise comparisons
     if (isFALSE(paired)) {
-      wrs_obj <-
+      mod <-
         WRS2::lincon(
           formula = rlang::new_formula({{ y }}, {{ x }}),
           data = df_internal,
           tr = tr
         )
     } else {
-      wrs_obj <-
+      mod <-
         WRS2::rmmcp(
           y = df_internal[[rlang::as_name(y)]],
           groups = df_internal[[rlang::as_name(x)]],
@@ -350,22 +277,13 @@ pairwise_comparisons <- function(data,
 
     # cleaning the raw object and getting it in the right format
     df <-
-      dplyr::full_join(
-        # dataframe comparing comparison details
-        x = tidyr::gather(
-          data = suppressMessages(as_tibble(wrs_obj$comp, .name_repair = "unique")) %>%
-            dplyr::rename(group1 = Group...1, group2 = Group...2) %>%
-            p_adjust_column_adder(., p.adjust.method),
-          key = "key",
-          value = "rowid",
-          group1:group2
-        ),
-        # dataframe with factor levels
-        y = enframe(x = wrs_obj$fnames, name = "rowid"),
-        by = "rowid"
-      ) %>%
-      dplyr::select(.data = ., -rowid) %>%
-      tidyr::spread(data = ., key = "key", value = "value")
+      suppressMessages(as_tibble(mod$comp, .name_repair = "unique")) %>%
+      dplyr::rename(group1 = Group...1, group2 = Group...2) %>%
+      dplyr::mutate(dplyr::across(
+        .cols = dplyr::starts_with("group"),
+        .fns = ~ as.character(setNames(mod$fnames, seq_along(mod$fnames))[as.character(.)])
+      )) %>%
+      p_adjust_column_adder(df = ., p.adjust.method = p.adjust.method)
 
     # for paired designs, there will be an unnecessary column to remove
     if (("p.crit") %in% names(df)) df %<>% dplyr::select(.data = ., -p.crit)
@@ -375,6 +293,79 @@ pairwise_comparisons <- function(data,
 
     # test details
     test.details <- "Yuen's trimmed means test"
+  }
+
+  # ---------------------------- parametric ---------------------------------
+
+  if (type %in% c("parametric", "bayes")) {
+    if (isTRUE(var.equal) || isTRUE(paired)) {
+      # tidy dataframe with results from pairwise tests
+      df <-
+        stats::pairwise.t.test(
+          x = y_vec,
+          g = x_vec,
+          p.adjust.method = "none",
+          paired = paired,
+          na.action = na.omit
+        ) %>%
+        broom::tidy(.) %>%
+        dplyr::rename(.data = ., group2 = group1, group1 = group2) %>%
+        p_adjust_column_adder(df = ., p.adjust.method = p.adjust.method)
+
+      # test details
+      test.details <- "Student's t-test"
+    } else {
+      # anova model
+      aovmodel <- stats::aov(rlang::new_formula({{ y }}, {{ x }}), df_internal)
+
+      # dataframe with Games-Howell test results
+      df <-
+        PMCMRplus::gamesHowellTest(aovmodel, p.adjust.method = "none") %>%
+        PMCMR_to_tibble(.) %>%
+        p_adjust_column_adder(df = ., p.adjust.method = p.adjust.method)
+
+      # test details
+      test.details <- "Games-Howell test"
+    }
+  }
+
+  # ---------------------------- bayes factor --------------------------------
+
+  if (type == "bayes") {
+    # combining results into a single dataframe and returning it
+    df_tidy <-
+      purrr::map_dfr(
+        # creating a list of dataframes with subsections of data
+        .x = purrr::map2(
+          .x = as.character(df$group1),
+          .y = as.character(df$group2),
+          .f = function(a, b) droplevels(dplyr::filter(df_internal, {{ x }} %in% c(a, b)))
+        ),
+        # internal function to carry out BF t-test
+        .f = ~ bf_internal_ttest(
+          data = .x,
+          x = {{ x }},
+          y = {{ y }},
+          paired = paired,
+          bf.prior = bf.prior
+        )
+      ) %>%
+      dplyr::rowwise() %>%
+      dplyr::mutate(label = paste0(
+        "list(~log[e](BF[10])", "==", specify_decimal_p(x = log_e_bf10, k = k), ")"
+      )) %>%
+      dplyr::ungroup() %>%
+      dplyr::mutate(.data = ., test.details = "Student's t-test")
+
+    # early return (no further cleanup required)
+    return(
+      dplyr::mutate_if(
+        .tbl = dplyr::bind_cols(dplyr::select(df, group1, group2), df_tidy),
+        .predicate = is.factor,
+        .funs = ~ as.character(.)
+      ) %>%
+        dplyr::arrange(group1, group2)
+    )
   }
 
   # ---------------------------- cleanup ----------------------------------
