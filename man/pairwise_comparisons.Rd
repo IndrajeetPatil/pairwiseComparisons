@@ -2,24 +2,9 @@
 % Please edit documentation in R/pairwise_comparisons.R
 \name{pairwise_comparisons}
 \alias{pairwise_comparisons}
-\alias{pairwise_p}
 \title{Multiple pairwise comparison tests with tidy data}
 \usage{
 pairwise_comparisons(
-  data,
-  x,
-  y,
-  type = "parametric",
-  paired = FALSE,
-  var.equal = FALSE,
-  tr = 0.1,
-  bf.prior = 0.707,
-  p.adjust.method = "holm",
-  k = 2L,
-  ...
-)
-
-pairwise_p(
   data,
   x,
   y,

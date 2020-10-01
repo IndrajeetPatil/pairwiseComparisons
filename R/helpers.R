@@ -32,20 +32,6 @@ matrix_to_tidy <- function(m, col_name = "value", ...) {
   as_tibble(stats::na.omit(result))
 }
 
-#' @name p_adjust_column_adder
-#'
-#' @importFrom stats p.adjust
-#' @importFrom dplyr mutate
-#'
-#' @noRd
-#' @keywords internal
-
-p_adjust_column_adder <- function(df, p.adjust.method) {
-  df %>%
-    dplyr::mutate(p.value = stats::p.adjust(p = p.value, method = p.adjust.method)) %>%
-    signif_column(data = ., p = p.value)
-}
-
 #' @importFrom BayesFactor ttestBF
 #' @importFrom dplyr mutate
 #' @importFrom parameters model_parameters

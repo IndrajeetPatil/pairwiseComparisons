@@ -248,9 +248,7 @@ pairwise_comparisons <- function(data,
     }
 
     # cleanup
-    df <-
-      PMCMR_to_tibble(mod) %>%
-      p_adjust_column_adder(df = ., p.adjust.method = p.adjust.method)
+    df <- PMCMR_to_tibble(mod)
   }
 
   # ---------------------------- robust ----------------------------------
@@ -281,8 +279,7 @@ pairwise_comparisons <- function(data,
       dplyr::mutate(dplyr::across(
         .cols = dplyr::starts_with("group"),
         .fns = ~ as.character(setNames(mod$fnames, seq_along(mod$fnames))[as.character(.)])
-      )) %>%
-      p_adjust_column_adder(df = ., p.adjust.method = p.adjust.method)
+      ))
 
     # for paired designs, there will be an unnecessary column to remove
     if (("p.crit") %in% names(df)) df %<>% dplyr::select(.data = ., -p.crit)
@@ -308,8 +305,7 @@ pairwise_comparisons <- function(data,
           na.action = na.omit
         ) %>%
         .$p.value %>%
-        matrix_to_tidy(., "p.value") %>%
-        p_adjust_column_adder(df = ., p.adjust.method = p.adjust.method)
+        matrix_to_tidy(., "p.value")
 
       # test details
       test.details <- "Student's t-test"
@@ -318,10 +314,7 @@ pairwise_comparisons <- function(data,
       aovmodel <- stats::aov(rlang::new_formula({{ y }}, {{ x }}), df_internal)
 
       # dataframe with Games-Howell test results
-      df <-
-        PMCMRplus::gamesHowellTest(aovmodel, p.adjust.method = "none") %>%
-        PMCMR_to_tibble(.) %>%
-        p_adjust_column_adder(df = ., p.adjust.method = p.adjust.method)
+      df <- PMCMR_to_tibble(PMCMRplus::gamesHowellTest(aovmodel, p.adjust.method = "none"))
 
       # test details
       test.details <- "Games-Howell test"
@@ -371,6 +364,8 @@ pairwise_comparisons <- function(data,
   # clean-up for non-Bayes tests
   if (type != "bayes") {
     df %<>%
+      dplyr::mutate(p.value = stats::p.adjust(p = p.value, method = p.adjust.method)) %>%
+      signif_column(data = ., p = p.value) %>%
       dplyr::mutate(
         test.details = test.details,
         p.value.adjustment = p_adjust_text(p.adjust.method)
@@ -394,9 +389,3 @@ pairwise_comparisons <- function(data,
   # return
   return(df)
 }
-
-#' @name pairwise_comparisons
-#' @aliases  pairwise_comparisons
-#' @export
-
-pairwise_p <- pairwise_comparisons
