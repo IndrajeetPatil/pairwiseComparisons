@@ -387,6 +387,14 @@ testthat::test_that(
     testthat::expect_identical(df1$group2, df3$group2)
     testthat::expect_identical(df1$group2, df4$group2)
     testthat::expect_identical(df1$group2, df6$group2)
+
+    # column names
+    testthat::expect_identical(names(df1)[1:2], c("group1", "group2"))
+    testthat::expect_identical(names(df2)[1:2], c("group1", "group2"))
+    testthat::expect_identical(names(df3)[1:2], c("group1", "group2"))
+    testthat::expect_identical(names(df4)[1:2], c("group1", "group2"))
+    testthat::expect_identical(names(df5)[1:2], c("group1", "group2"))
+    testthat::expect_identical(names(df6)[1:2], c("group1", "group2"))
   }
 )
 
@@ -424,23 +432,29 @@ testthat::test_that(
   }
 )
 
-# irregular names --------------------------------------------------
+# data without NAs --------------------------------------------------
 
 testthat::test_that(
-  desc = "check if everything works fine with irregular factor level names",
+  desc = "data without NAs",
   code = {
     set.seed(123)
-
     df <-
       pairwiseComparisons::pairwise_comparisons(
-        data = movies_wide,
-        x = mpaa,
-        y = rating,
+        data = iris,
+        x = Species,
+        y = Sepal.Length,
         type = "p",
+        p.adjust.method = "fdr",
         var.equal = TRUE
       )
 
-    testthat::expect_equal(df$group1, c("PG", "PG", "PG-13"))
-    testthat::expect_equal(df$group2, c("PG-13", "R", "R"))
+    testthat::expect_equal(
+      df$label,
+      c(
+        "list(~italic(p)[FDR-corrected]==1.32e-15)",
+        "list(~italic(p)[FDR-corrected]==6.64e-32)",
+        "list(~italic(p)[FDR-corrected]==2.77e-09)"
+      )
+    )
   }
 )

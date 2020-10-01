@@ -70,7 +70,6 @@
 #' @importFrom PMCMRplus durbinAllPairsTest kwAllPairsDunnTest gamesHowellTest
 #' @importFrom rlang !! enquo as_string ensym
 #' @importFrom purrr map2 map_dfr
-#' @importFrom broom tidy
 #' @importFrom ipmisc stats_type_switch specify_decimal_p long_to_wide_converter
 #' @importFrom ipmisc signif_column
 #'
@@ -308,8 +307,8 @@ pairwise_comparisons <- function(data,
           paired = paired,
           na.action = na.omit
         ) %>%
-        broom::tidy(.) %>%
-        dplyr::rename(.data = ., group2 = group1, group1 = group2) %>%
+        .$p.value %>%
+        matrix_to_tidy(., "p.value") %>%
         p_adjust_column_adder(df = ., p.adjust.method = p.adjust.method)
 
       # test details
@@ -357,63 +356,43 @@ pairwise_comparisons <- function(data,
       dplyr::ungroup() %>%
       dplyr::mutate(.data = ., test.details = "Student's t-test")
 
-    # early return (no further cleanup required)
-    return(
-      dplyr::mutate_if(
-        .tbl = dplyr::bind_cols(dplyr::select(df, group1, group2), df_tidy),
-        .predicate = is.factor,
-        .funs = ~ as.character(.)
-      ) %>%
-        dplyr::arrange(group1, group2)
-    )
+    # combine it with the other details
+    df <- dplyr::bind_cols(dplyr::select(df, group1, group2), df_tidy)
   }
 
   # ---------------------------- cleanup ----------------------------------
 
   # final cleanup for p-value labels
   df %<>%
-    dplyr::mutate_if(
-      .tbl = .,
-      .predicate = is.factor,
-      .funs = ~ as.character(.)
-    ) %>%
-    dplyr::rowwise() %>%
-    dplyr::mutate(label = specify_decimal_p(x = p.value, k = k, p.value = TRUE)) %>%
-    dplyr::mutate(
-      test.details = test.details,
-      p.value.adjustment = p_adjust_text(p.adjust.method)
-    ) %>%
-    dplyr::mutate(
-      label = dplyr::case_when(
-        label == "< 0.001" && p.value.adjustment != "None" ~ paste0(
-          "list(~italic(p)[",
-          p.value.adjustment,
-          "-corrected]",
-          "<=",
-          "0.001",
-          ")"
-        ),
-        label != "< 0.001" && p.value.adjustment != "None" ~ paste0(
-          "list(~italic(p)[",
-          p.value.adjustment,
-          "-corrected]",
-          "==",
-          label,
-          ")"
-        ),
-        label == "< 0.001" && p.value.adjustment == "None" ~ paste0(
-          "list(~italic(p)[uncorrected]<=", "0.001", ")"
-        ),
-        label != "< 0.001" && p.value.adjustment == "None" ~ paste0(
-          "list(~italic(p)[uncorrected]==", label, ")"
+    dplyr::mutate_if(.tbl = ., .predicate = is.factor, .funs = ~ as.character(.)) %>%
+    dplyr::arrange(group1, group2) %>%
+    dplyr::select(.data = ., group1, group2, dplyr::everything())
+
+  # clean-up for non-Bayes tests
+  if (type != "bayes") {
+    df %<>%
+      dplyr::mutate(
+        test.details = test.details,
+        p.value.adjustment = p_adjust_text(p.adjust.method)
+      ) %>%
+      dplyr::rowwise() %>%
+      dplyr::mutate(
+        label = dplyr::case_when(
+          p.value.adjustment != "None" ~ paste0(
+            "list(~italic(p)[",
+            p.value.adjustment,
+            "-corrected]==",
+            specify_decimal_p(p.value, k, TRUE),
+            ")"
+          ),
+          TRUE ~ paste0("list(~italic(p)[uncorrected]==", specify_decimal_p(p.value, k, TRUE), ")")
         )
-      )
-    ) %>%
-    dplyr::select(.data = ., group1, group2, dplyr::everything()) %>%
-    dplyr::arrange(group1, group2)
+      ) %>%
+      dplyr::ungroup()
+  }
 
   # return
-  return(dplyr::ungroup(df))
+  return(df)
 }
 
 #' @name pairwise_comparisons

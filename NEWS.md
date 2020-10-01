@@ -7,7 +7,7 @@
     to the *p*-value labels.
     
   - Major internal refactoring to get rid of the following dependencies:
-    `broomExtra`, `dunn.test`, `forcats`, and `tidyr`. Comes at the cost of
+    `broomExtra`, `dunn.test`, `forcats`, and `tidyr`. This comes at the cost of
     omission of few of the details that were previously included in the output
     (e.g., `mean.difference` column for Student's *t*-test).
 

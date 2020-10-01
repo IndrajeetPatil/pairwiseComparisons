@@ -1,7 +1,7 @@
 Type: Package
 Package: pairwiseComparisons
 Title: Multiple Pairwise Comparison Tests
-Version: 3.0.0.9000
+Version: 3.0.0
 Authors@R: 
     person(given = "Indrajeet",
            family = "Patil",
@@ -24,10 +24,9 @@ BugReports:
 Depends: 
     R (>= 3.6.0)
 Imports:
-    broom,
     BayesFactor,
     dplyr,
-    ipmisc,
+    ipmisc (>= 4.0.0),
     PMCMRplus,
     parameters,
     purrr,
@@ -39,6 +38,8 @@ Suggests:
     rmarkdown,
     spelling,
     testthat
+Remotes:
+    IndrajeetPatil/ipmisc
 Encoding: UTF-8
 Language: en-US
 LazyData: true

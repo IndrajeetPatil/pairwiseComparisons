@@ -47,7 +47,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">pairwiseComparisons</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">3.0.0.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">3.0.0</span>
       </span>
     </div>
 
@@ -143,7 +143,7 @@
 <td><a href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img src="https://img.shields.io/badge/licence-GPL--3-blue.svg" alt="Licence"></a></td>
 <td><a href="https://codecov.io/gh/IndrajeetPatil/pairwiseComparisons?branch=master"><img src="https://codecov.io/gh/IndrajeetPatil/pairwiseComparisons/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></td>
 <td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/blob/master/tests/README.md"><img src="https://img.shields.io/badge/covrpage-Last_Build_2020_05_29-brightgreen.svg" alt="Covrpage Summary"></a></td>
-<td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/commits/master"><img src="https://img.shields.io/badge/last%20change-2020--09--30-yellowgreen.svg" alt="Last-changedate"></a></td>
+<td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/commits/master"><img src="https://img.shields.io/badge/last%20change-2020--10--01-yellowgreen.svg" alt="Last-changedate"></a></td>
 <td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/commits/master"><img src="https://img.shields.io/github/last-commit/IndrajeetPatil/pairwiseComparisons.svg" alt="GitHub last commit"></a></td>
 </tr>
 <tr class="even">
@@ -416,14 +416,14 @@
   <span class="kw">p.adjust.method</span> <span class="kw">=</span> <span class="st">"BH"</span>
 )
 <span class="co">#&gt; # A tibble: 6 x 7</span>
-<span class="co">#&gt;   group1 group2  p.value significance label                                  test.details     p.value.adjustment</span>
-<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;                                  &lt;chr&gt;            &lt;chr&gt;             </span>
-<span class="co">#&gt; 1 HDHF   HDLF   1.06e- 3 **           list(~italic(p)[FDR-corrected]==0.001) Student's t-test FDR               </span>
-<span class="co">#&gt; 2 HDHF   LDHF   7.02e- 2 ns           list(~italic(p)[FDR-corrected]==0.070) Student's t-test FDR               </span>
-<span class="co">#&gt; 3 HDHF   LDLF   3.95e-12 ***          list(~italic(p)[FDR-corrected]&lt;=0.001) Student's t-test FDR               </span>
-<span class="co">#&gt; 4 HDLF   LDHF   6.74e- 2 ns           list(~italic(p)[FDR-corrected]==0.067) Student's t-test FDR               </span>
-<span class="co">#&gt; 5 HDLF   LDLF   1.99e- 3 **           list(~italic(p)[FDR-corrected]==0.002) Student's t-test FDR               </span>
-<span class="co">#&gt; 6 LDHF   LDLF   6.66e- 9 ***          list(~italic(p)[FDR-corrected]&lt;=0.001) Student's t-test FDR</span>
+<span class="co">#&gt;   group1 group2  p.value significance label                                     test.details     p.value.adjustment</span>
+<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;                                     &lt;chr&gt;            &lt;chr&gt;             </span>
+<span class="co">#&gt; 1 HDHF   HDLF   1.06e- 3 **           list(~italic(p)[FDR-corrected]==0.001)    Student's t-test FDR               </span>
+<span class="co">#&gt; 2 HDHF   LDHF   7.02e- 2 ns           list(~italic(p)[FDR-corrected]==0.070)    Student's t-test FDR               </span>
+<span class="co">#&gt; 3 HDHF   LDLF   3.95e-12 ***          list(~italic(p)[FDR-corrected]==3.95e-12) Student's t-test FDR               </span>
+<span class="co">#&gt; 4 HDLF   LDHF   6.74e- 2 ns           list(~italic(p)[FDR-corrected]==0.067)    Student's t-test FDR               </span>
+<span class="co">#&gt; 5 HDLF   LDLF   1.99e- 3 **           list(~italic(p)[FDR-corrected]==0.002)    Student's t-test FDR               </span>
+<span class="co">#&gt; 6 LDHF   LDLF   6.66e- 9 ***          list(~italic(p)[FDR-corrected]==6.66e-09) Student's t-test FDR</span>
 
 <span class="co"># non-parametric</span>
 <span class="fu"><a href="reference/pairwise_comparisons.html">pairwise_comparisons</a></span>(
@@ -435,14 +435,14 @@
   <span class="kw">p.adjust.method</span> <span class="kw">=</span> <span class="st">"BY"</span>
 )
 <span class="co">#&gt; # A tibble: 6 x 8</span>
-<span class="co">#&gt;   group1 group2 statistic  p.value significance label                                 test.details        p.value.adjustment</span>
-<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;      &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;                                 &lt;chr&gt;               &lt;chr&gt;             </span>
-<span class="co">#&gt; 1 HDHF   HDLF        4.78 1.44e- 5 ***          list(~italic(p)[BY-corrected]&lt;=0.001) Durbin-Conover test BY                </span>
-<span class="co">#&gt; 2 HDHF   LDHF        2.44 4.47e- 2 *            list(~italic(p)[BY-corrected]==0.045) Durbin-Conover test BY                </span>
-<span class="co">#&gt; 3 HDHF   LDLF        8.01 5.45e-13 ***          list(~italic(p)[BY-corrected]&lt;=0.001) Durbin-Conover test BY                </span>
-<span class="co">#&gt; 4 HDLF   LDHF        2.34 4.96e- 2 *            list(~italic(p)[BY-corrected]==0.050) Durbin-Conover test BY                </span>
-<span class="co">#&gt; 5 HDLF   LDLF        3.23 5.05e- 3 **           list(~italic(p)[BY-corrected]==0.005) Durbin-Conover test BY                </span>
-<span class="co">#&gt; 6 LDHF   LDLF        5.57 4.64e- 7 ***          list(~italic(p)[BY-corrected]&lt;=0.001) Durbin-Conover test BY</span>
+<span class="co">#&gt;   group1 group2 statistic  p.value significance label                                    test.details        p.value.adjustment</span>
+<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;      &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;                                    &lt;chr&gt;               &lt;chr&gt;             </span>
+<span class="co">#&gt; 1 HDHF   HDLF        4.78 1.44e- 5 ***          list(~italic(p)[BY-corrected]==1.44e-05) Durbin-Conover test BY                </span>
+<span class="co">#&gt; 2 HDHF   LDHF        2.44 4.47e- 2 *            list(~italic(p)[BY-corrected]==0.045)    Durbin-Conover test BY                </span>
+<span class="co">#&gt; 3 HDHF   LDLF        8.01 5.45e-13 ***          list(~italic(p)[BY-corrected]==5.45e-13) Durbin-Conover test BY                </span>
+<span class="co">#&gt; 4 HDLF   LDHF        2.34 4.96e- 2 *            list(~italic(p)[BY-corrected]==0.050)    Durbin-Conover test BY                </span>
+<span class="co">#&gt; 5 HDLF   LDLF        3.23 5.05e- 3 **           list(~italic(p)[BY-corrected]==0.005)    Durbin-Conover test BY                </span>
+<span class="co">#&gt; 6 LDHF   LDLF        5.57 4.64e- 7 ***          list(~italic(p)[BY-corrected]==4.64e-07) Durbin-Conover test BY</span>
 
 <span class="co"># robust</span>
 <span class="fu"><a href="reference/pairwise_comparisons.html">pairwise_comparisons</a></span>(
@@ -454,22 +454,22 @@
   <span class="kw">p.adjust.method</span> <span class="kw">=</span> <span class="st">"hommel"</span>
 )
 <span class="co">#&gt; # A tibble: 6 x 10</span>
-<span class="co">#&gt;   group1 group2 estimate conf.low conf.high  p.value significance label                                     test.details             </span>
-<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;                                     &lt;chr&gt;                    </span>
-<span class="co">#&gt; 1 HDHF   HDLF      1.16    0.318      2.00  1.49e- 3 **           list(~italic(p)[Hommel-corrected]==0.001) Yuen's trimmed means test</span>
-<span class="co">#&gt; 2 HDHF   LDHF      0.5    -0.188      1.19  6.20e- 2 ns           list(~italic(p)[Hommel-corrected]==0.062) Yuen's trimmed means test</span>
-<span class="co">#&gt; 3 HDHF   LDLF      2.10    1.37       2.82  1.79e-10 ***          list(~italic(p)[Hommel-corrected]&lt;=0.001) Yuen's trimmed means test</span>
-<span class="co">#&gt; 4 HDLF   LDHF     -0.701  -1.71       0.303 6.20e- 2 ns           list(~italic(p)[Hommel-corrected]==0.062) Yuen's trimmed means test</span>
-<span class="co">#&gt; 5 HDLF   LDLF      0.938   0.0694     1.81  1.36e- 2 *            list(~italic(p)[Hommel-corrected]==0.014) Yuen's trimmed means test</span>
-<span class="co">#&gt; 6 LDHF   LDLF      1.54    0.810      2.27  1.16e- 6 ***          list(~italic(p)[Hommel-corrected]&lt;=0.001) Yuen's trimmed means test</span>
-<span class="co">#&gt;   p.value.adjustment</span>
-<span class="co">#&gt;   &lt;chr&gt;             </span>
-<span class="co">#&gt; 1 Hommel            </span>
-<span class="co">#&gt; 2 Hommel            </span>
-<span class="co">#&gt; 3 Hommel            </span>
-<span class="co">#&gt; 4 Hommel            </span>
-<span class="co">#&gt; 5 Hommel            </span>
-<span class="co">#&gt; 6 Hommel</span>
+<span class="co">#&gt;   group1 group2 estimate conf.low conf.high  p.value significance label                                       </span>
+<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;                                       </span>
+<span class="co">#&gt; 1 HDHF   HDLF      1.16    0.318      2.00  1.49e- 3 **           list(~italic(p)[Hommel-corrected]==0.001)   </span>
+<span class="co">#&gt; 2 HDHF   LDHF      0.5    -0.188      1.19  6.20e- 2 ns           list(~italic(p)[Hommel-corrected]==0.062)   </span>
+<span class="co">#&gt; 3 HDHF   LDLF      2.10    1.37       2.82  1.79e-10 ***          list(~italic(p)[Hommel-corrected]==1.79e-10)</span>
+<span class="co">#&gt; 4 HDLF   LDHF     -0.701  -1.71       0.303 6.20e- 2 ns           list(~italic(p)[Hommel-corrected]==0.062)   </span>
+<span class="co">#&gt; 5 HDLF   LDLF      0.938   0.0694     1.81  1.36e- 2 *            list(~italic(p)[Hommel-corrected]==0.014)   </span>
+<span class="co">#&gt; 6 LDHF   LDLF      1.54    0.810      2.27  1.16e- 6 ***          list(~italic(p)[Hommel-corrected]==1.16e-06)</span>
+<span class="co">#&gt;   test.details              p.value.adjustment</span>
+<span class="co">#&gt;   &lt;chr&gt;                     &lt;chr&gt;             </span>
+<span class="co">#&gt; 1 Yuen's trimmed means test Hommel            </span>
+<span class="co">#&gt; 2 Yuen's trimmed means test Hommel            </span>
+<span class="co">#&gt; 3 Yuen's trimmed means test Hommel            </span>
+<span class="co">#&gt; 4 Yuen's trimmed means test Hommel            </span>
+<span class="co">#&gt; 5 Yuen's trimmed means test Hommel            </span>
+<span class="co">#&gt; 6 Yuen's trimmed means test Hommel</span>
 
 <span class="co"># Bayes Factor</span>
 <span class="fu"><a href="reference/pairwise_comparisons.html">pairwise_comparisons</a></span>(
@@ -517,11 +517,11 @@
   <span class="kw pkg">dplyr</span><span class="kw ns">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="kw">.data</span> <span class="kw">=</span> <span class="no">.</span>, <span class="kw">groups</span> <span class="kw">=</span> <span class="kw pkg">purrr</span><span class="kw ns">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map2.html">pmap</a></span>(<span class="kw">.l</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="no">group1</span>, <span class="no">group2</span>), <span class="kw">.f</span> <span class="kw">=</span> <span class="no">c</span>)) <span class="kw">%&gt;%</span>
   <span class="kw pkg">dplyr</span><span class="kw ns">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="kw">.data</span> <span class="kw">=</span> <span class="no">.</span>, <span class="no">group1</span>))
 <span class="co">#&gt; # A tibble: 3 x 9</span>
-<span class="co">#&gt;   group1 group2 statistic   p.value significance label                                   test.details      p.value.adjustment</span>
-<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;      &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;                                   &lt;chr&gt;             &lt;chr&gt;             </span>
-<span class="co">#&gt; 1 4      6           5.39 0.00831   **           list(~italic(p)[Holm-corrected]==0.008) Games-Howell test Holm              </span>
-<span class="co">#&gt; 2 4      8           9.11 0.0000124 ***          list(~italic(p)[Holm-corrected]&lt;=0.001) Games-Howell test Holm              </span>
-<span class="co">#&gt; 3 6      8           5.12 0.00831   **           list(~italic(p)[Holm-corrected]==0.008) Games-Howell test Holm              </span>
+<span class="co">#&gt;   group1 group2 statistic   p.value significance label                                      test.details      p.value.adjustment</span>
+<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;      &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;                                      &lt;chr&gt;             &lt;chr&gt;             </span>
+<span class="co">#&gt; 1 4      6           5.39 0.00831   **           list(~italic(p)[Holm-corrected]==0.008)    Games-Howell test Holm              </span>
+<span class="co">#&gt; 2 4      8           9.11 0.0000124 ***          list(~italic(p)[Holm-corrected]==1.24e-05) Games-Howell test Holm              </span>
+<span class="co">#&gt; 3 6      8           5.12 0.00831   **           list(~italic(p)[Holm-corrected]==0.008)    Games-Howell test Holm              </span>
 <span class="co">#&gt;   groups   </span>
 <span class="co">#&gt;   &lt;list&gt;   </span>
 <span class="co">#&gt; 1 &lt;chr [2]&gt;</span>
