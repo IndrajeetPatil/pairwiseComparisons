@@ -38,8 +38,6 @@ Suggests:
     rmarkdown,
     spelling,
     testthat
-Remotes:
-    IndrajeetPatil/ipmisc
 Encoding: UTF-8
 Language: en-US
 LazyData: true
