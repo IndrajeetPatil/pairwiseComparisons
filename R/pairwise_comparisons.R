@@ -344,7 +344,7 @@ pairwise_comparisons <- function(data,
       ) %>%
       dplyr::rowwise() %>%
       dplyr::mutate(label = paste0(
-        "list(~log[e](BF[10])", "==", specify_decimal_p(x = log_e_bf10, k = k), ")"
+        "list(~log[e](BF['01'])==", specify_decimal_p(-log_e_bf10, k), ")"
       )) %>%
       dplyr::ungroup() %>%
       dplyr::mutate(.data = ., test.details = "Student's t-test")

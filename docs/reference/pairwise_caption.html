@@ -90,7 +90,7 @@ typically included in the ggstatsplot package plots as a caption." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pairwiseComparisons</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">3.0.0</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">3.0.0.9000</span>
       </span>
     </div>
 
@@ -136,7 +136,7 @@ typically included in the ggstatsplot package plots as a caption." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Expression containing details about pairwise comparison test</h1>
-    <small class="dont-index">Source: <a href='https://github.com/IndrajeetPatil/pairwiseComparisons/blob/master/R/pairwise_caption_helpers.R'><code>R/pairwise_caption_helpers.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/IndrajeetPatil/pairwiseComparisons/blob/master/R/helpers.R'><code>R/helpers.R</code></a></small>
     <div class="hidden name"><code>pairwise_caption.Rd</code></div>
     </div>
 
@@ -146,12 +146,12 @@ comparison test and the <em>p</em>-value adjustment method. These details are
 typically included in the <code>ggstatsplot</code> package plots as a caption.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>pairwise_caption</span>(
-  <span class='no'>caption</span>,
-  <span class='no'>test.description</span>,
-  <span class='kw'>pairwise.display</span> <span class='kw'>=</span> <span class='st'>"significant"</span>,
-  <span class='no'>...</span>
-)</pre>
+    <pre class="usage"><span class='fu'>pairwise_caption</span><span class='op'>(</span>
+  <span class='va'>caption</span>,
+  <span class='va'>test.description</span>,
+  pairwise.display <span class='op'>=</span> <span class='st'>"significant"</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -179,8 +179,9 @@ Available options are <code>"significant"</code> (abbreviation accepted: <code>"
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>pairwiseComparisons</span>)
-<span class='fu'>pairwise_caption</span>(<span class='st'>"my caption"</span>, <span class='st'>"Student's t-test"</span>)</div><div class='output co'>#&gt; atop(displaystyle("my caption"), expr = paste("Pairwise test: ", 
+    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://indrajeetpatil.github.io/pairwiseComparisons/'>pairwiseComparisons</a></span><span class='op'>)</span>
+<span class='fu'>pairwise_caption</span><span class='op'>(</span><span class='st'>"my caption"</span>, <span class='st'>"Student's t-test"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; atop(displaystyle("my caption"), expr = paste("Pairwise test: ", 
 #&gt;     bold("Student's t-test"), "; Comparisons shown: ", bold("only significant")))</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -197,7 +198,7 @@ Available options are <code>"significant"</code> (abbreviation accepted: <code>"
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

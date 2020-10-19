@@ -362,12 +362,12 @@ testthat::test_that(
     testthat::expect_identical(
       df6$label,
       c(
-        "list(~log[e](BF[10])==-0.617)",
-        "list(~log[e](BF[10])==-0.332)",
-        "list(~log[e](BF[10])==-0.851)",
-        "list(~log[e](BF[10])==-0.616)",
-        "list(~log[e](BF[10])==-0.560)",
-        "list(~log[e](BF[10])==-0.606)"
+        "list(~log[e](BF['01'])==0.617)",
+        "list(~log[e](BF['01'])==0.332)",
+        "list(~log[e](BF['01'])==0.851)",
+        "list(~log[e](BF['01'])==0.616)",
+        "list(~log[e](BF['01'])==0.560)",
+        "list(~log[e](BF['01'])==0.606)"
       )
     )
 

@@ -146,12 +146,12 @@ testthat::test_that(
     testthat::expect_identical(
       df4$label,
       c(
-        "list(~log[e](BF[10])==3.7273)",
-        "list(~log[e](BF[10])==-0.5394)",
-        "list(~log[e](BF[10])==23.2071)",
-        "list(~log[e](BF[10])==-0.3589)",
-        "list(~log[e](BF[10])==2.8966)",
-        "list(~log[e](BF[10])==15.3854)"
+        "list(~log[e](BF['01'])==-3.7273)",
+        "list(~log[e](BF['01'])==0.5394)",
+        "list(~log[e](BF['01'])==-23.2071)",
+        "list(~log[e](BF['01'])==0.3589)",
+        "list(~log[e](BF['01'])==-2.8966)",
+        "list(~log[e](BF['01'])==-15.3854)"
       )
     )
 
@@ -304,9 +304,9 @@ testthat::test_that(
     testthat::expect_identical(
       df4$label,
       c(
-        "list(~log[e](BF[10])==-1.4462)",
-        "list(~log[e](BF[10])==1.3122)",
-        "list(~log[e](BF[10])==3.9214)"
+        "list(~log[e](BF['01'])==1.4462)",
+        "list(~log[e](BF['01'])==-1.3122)",
+        "list(~log[e](BF['01'])==-3.9214)"
       )
     )
 

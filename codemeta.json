@@ -14,13 +14,13 @@
   ],
   "issueTracker": "\n    https://github.com/IndrajeetPatil/pairwiseComparisons/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "3.0.0",
+  "version": "3.0.0.9000",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R Under development (unstable) (2020-09-11 r79188)",
+  "runtimePlatform": "R Under development (unstable) (2020-10-07 r79310)",
   "author": [
     {
       "@type": "Person",
@@ -133,9 +133,21 @@
     },
     {
       "@type": "SoftwareApplication",
+      "identifier": "insight",
+      "name": "insight",
+      "version": ">= 0.9.6.1",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://github.com/easystats/insight"
+    },
+    {
+      "@type": "SoftwareApplication",
       "identifier": "ipmisc",
       "name": "ipmisc",
-      "version": ">= 4.0.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -235,5 +247,5 @@
     "name": "Comprehensive R Archive Network (CRAN)",
     "url": "https://cran.r-project.org"
   },
-  "fileSize": "1251.782KB"
+  "fileSize": "1260.224KB"
 }
