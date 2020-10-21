@@ -4,7 +4,7 @@
 
 p_adjust_text(p.adjust.method)
 pairwise_caption(caption, test.description, pairwise.display = "significant", ...)
-pairwise_comparisons(data, x, y, type = "parametric", paired = FALSE, var.equal = FALSE, tr = 0.1, bf.prior = 0.707, p.adjust.method = "holm", k = 2L, ...)
+pairwise_comparisons(data, x, y, subject.id = NULL, type = "parametric", paired = FALSE, var.equal = FALSE, tr = 0.1, bf.prior = 0.707, p.adjust.method = "holm", k = 2L, ...)
 
 ## Reexported objects
 
@@ -16,5 +16,4 @@ rlang::%|%
 rlang::%||%
 rlang:::=
 tibble::as_tibble
-tibble::enframe
 tibble::tibble

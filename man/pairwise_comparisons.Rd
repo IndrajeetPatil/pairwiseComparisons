@@ -8,6 +8,7 @@ pairwise_comparisons(
   data,
   x,
   y,
+  subject.id = NULL,
   type = "parametric",
   paired = FALSE,
   var.equal = FALSE,
@@ -26,6 +27,13 @@ matrix or tables will \strong{not} be accepted.}
 
 \item{y}{The response (a.k.a. outcome or dependent) variable from the
 dataframe \code{data}.}
+
+\item{subject.id}{In case of repeated measures design (\code{paired = TRUE},
+i.e.), this argument specifies the subject or repeated measures id. Note
+that if this argument is \code{NULL} (which is the default), the function
+assumes that the data has already been sorted by such an id by the user and
+creates an internal identifier. So if your data is \strong{not} sorted and you
+leave this argument unspecified, the results can be inaccurate.}
 
 \item{type}{Type of statistic expected (\code{"parametric"} or \code{"nonparametric"}
 or \code{"robust"} or \code{"bayes"}).Corresponding abbreviations are also accepted:
@@ -168,6 +176,7 @@ pairwise_comparisons(
   data = bugs_long,
   x = condition,
   y = desire,
+  subject.id = subject,
   type = "parametric",
   paired = TRUE,
   p.adjust.method = "BH"
@@ -178,6 +187,7 @@ pairwise_comparisons(
   data = bugs_long,
   x = condition,
   y = desire,
+  subject.id = subject,
   type = "nonparametric",
   paired = TRUE,
   p.adjust.method = "BY"
@@ -188,6 +198,7 @@ pairwise_comparisons(
   data = bugs_long,
   x = condition,
   y = desire,
+  subject.id = subject,
   type = "robust",
   paired = TRUE,
   p.adjust.method = "hommel"
@@ -198,6 +209,7 @@ pairwise_comparisons(
   data = bugs_long,
   x = condition,
   y = desire,
+  subject.id = subject,
   type = "bayes",
   paired = TRUE
 )

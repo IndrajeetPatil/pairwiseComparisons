@@ -7,7 +7,7 @@ Authors@R:
            family = "Patil",
            role = c("cre", "aut", "cph"),
            email = "patilindrajeet.science@gmail.com",
-           comment = c(ORCID = "0000-0003-1995-6531"))
+           comment = c(ORCID = "0000-0003-1995-6531", Twitter = "@patilindrajeets"))
 Maintainer: Indrajeet Patil <patilindrajeet.science@gmail.com>
 Description: Multiple pairwise comparison tests on tidy data for
     one-way analysis of variance for both between-subjects and
@@ -27,7 +27,7 @@ Imports:
     BayesFactor,
     dplyr,
     insight (>= 0.9.6.1),
-    ipmisc,
+    ipmisc (>= 4.1.0),
     PMCMRplus,
     parameters,
     purrr,
@@ -40,7 +40,8 @@ Suggests:
     spelling,
     testthat
 Remotes:
-    easystats/insight
+    easystats/insight,
+    IndrajeetPatil/ipmisc
 Encoding: UTF-8
 Language: en-US
 LazyData: true

@@ -27,6 +27,7 @@
 #' @param k Number of digits after decimal point (should be an integer)
 #'   (Default: `k = 2L`).
 #' @param ... Current ignored.
+#' @inheritParams ipmisc::long_to_wide_converter
 #' @inheritParams stats::t.test
 #' @inheritParams WRS2::rmmcp
 #' @inheritParams tidyBF::bf_ttest
@@ -144,6 +145,7 @@
 #'   data = bugs_long,
 #'   x = condition,
 #'   y = desire,
+#'   subject.id = subject,
 #'   type = "parametric",
 #'   paired = TRUE,
 #'   p.adjust.method = "BH"
@@ -154,6 +156,7 @@
 #'   data = bugs_long,
 #'   x = condition,
 #'   y = desire,
+#'   subject.id = subject,
 #'   type = "nonparametric",
 #'   paired = TRUE,
 #'   p.adjust.method = "BY"
@@ -164,6 +167,7 @@
 #'   data = bugs_long,
 #'   x = condition,
 #'   y = desire,
+#'   subject.id = subject,
 #'   type = "robust",
 #'   paired = TRUE,
 #'   p.adjust.method = "hommel"
@@ -174,6 +178,7 @@
 #'   data = bugs_long,
 #'   x = condition,
 #'   y = desire,
+#'   subject.id = subject,
 #'   type = "bayes",
 #'   paired = TRUE
 #' )
@@ -184,6 +189,7 @@
 pairwise_comparisons <- function(data,
                                  x,
                                  y,
+                                 subject.id = NULL,
                                  type = "parametric",
                                  paired = FALSE,
                                  var.equal = FALSE,
@@ -203,9 +209,10 @@ pairwise_comparisons <- function(data,
   # creating a dataframe (it's important for the data to be sorted by `x`)
   df_internal <-
     long_to_wide_converter(
-      data = dplyr::arrange(data, {{ x }}),
+      data = data,
       x = {{ x }},
       y = {{ y }},
+      subject.id = {{ subject.id }},
       paired = paired,
       spread = FALSE
     )
@@ -213,6 +220,7 @@ pairwise_comparisons <- function(data,
   # for some tests, it's better to have these as vectors
   x_vec <- df_internal %>% dplyr::pull({{ x }})
   y_vec <- df_internal %>% dplyr::pull({{ y }})
+  g_vec <- df_internal$rowid
 
   # ---------------------------- nonparametric ----------------------------
 
@@ -235,11 +243,9 @@ pairwise_comparisons <- function(data,
     if (isTRUE(paired)) {
       mod <-
         PMCMRplus::durbinAllPairsTest(
-          y = na.omit(matrix(
-            data = y_vec,
-            ncol = length(unique(x_vec)),
-            dimnames = list(seq(1, length(y_vec) / length(unique(x_vec))), unique(x_vec))
-          )),
+          y = y_vec,
+          groups = x_vec,
+          blocks = g_vec,
           p.adjust.method = "none"
         )
 

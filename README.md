@@ -7,9 +7,9 @@
 |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [![CRAN\_Release\_Badge](http://www.r-pkg.org/badges/version-ago/pairwiseComparisons)](https://CRAN.R-project.org/package=pairwiseComparisons)                                  | [![Travis Build Status](https://travis-ci.org/IndrajeetPatil/pairwiseComparisons.svg?branch=master)](https://travis-ci.org/IndrajeetPatil/pairwiseComparisons)                                               | [![Daily downloads badge](https://cranlogs.r-pkg.org/badges/last-day/pairwiseComparisons?color=blue)](https://CRAN.R-project.org/package=pairwiseComparisons)                         | [![GitHub version](https://img.shields.io/badge/GitHub-3.0.0-orange.svg?style=flat-square)](https://github.com/IndrajeetPatil/pairwiseComparisons/)                            | [![Website](https://img.shields.io/badge/website-pairwiseComparisons-orange.svg?colorB=E91E63)](https://indrajeetpatil.github.io/pairwiseComparisons/)                          |
 | [![CRAN Checks](https://cranchecks.info/badges/summary/pairwiseComparisons)](https://cran.r-project.org/web/checks/check_results_pairwiseComparisons.html)                      | [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/pairwiseComparisons?branch=master&svg=true)](https://ci.appveyor.com/project/IndrajeetPatil/pairwiseComparisons) | [![Weekly downloads badge](https://cranlogs.r-pkg.org/badges/last-week/pairwiseComparisons?color=blue)](https://CRAN.R-project.org/package=pairwiseComparisons)                       | [![Forks](https://img.shields.io/badge/forks-3-blue.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/)                                                              | [![Rdoc](https://www.rdocumentation.org/badges/version/pairwiseComparisons)](https://www.rdocumentation.org/packages/pairwiseComparisons)                                       |
-| [![minimal R version](https://img.shields.io/badge/R%3E%3D-3.6.0-6666ff.svg)](https://cran.r-project.org/)                                                                      | [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/)                                                                                               | [![Monthly downloads badge](https://cranlogs.r-pkg.org/badges/last-month/pairwiseComparisons?color=blue)](https://CRAN.R-project.org/package=pairwiseComparisons)                     | [![Github Issues](https://img.shields.io/badge/issues-2-red.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/issues)                                                | [![vignettes](https://img.shields.io/badge/vignettes-3.0.0-orange.svg?colorB=FF5722)](https://github.com/IndrajeetPatil/pairwiseComparisons/blob/master/README.md)              |
+| [![minimal R version](https://img.shields.io/badge/R%3E%3D-3.6.0-6666ff.svg)](https://cran.r-project.org/)                                                                      | [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/)                                                                                               | [![Monthly downloads badge](https://cranlogs.r-pkg.org/badges/last-month/pairwiseComparisons?color=blue)](https://CRAN.R-project.org/package=pairwiseComparisons)                     | [![Github Issues](https://img.shields.io/badge/issues-1-red.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/issues)                                                | [![vignettes](https://img.shields.io/badge/vignettes-3.0.0-orange.svg?colorB=FF5722)](https://github.com/IndrajeetPatil/pairwiseComparisons/blob/master/README.md)              |
 | [![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/IndrajeetPatil/pairwiseComparisons.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons) | [![Coverage Status](https://coveralls.io/repos/github/IndrajeetPatil/pairwiseComparisons/badge.svg?branch=master)](https://coveralls.io/github/IndrajeetPatil/pairwiseComparisons?branch=master)             | [![Total downloads badge](https://cranlogs.r-pkg.org/badges/grand-total/pairwiseComparisons?color=blue)](https://CRAN.R-project.org/package=pairwiseComparisons)                      | [![Github Stars](https://img.shields.io/github/stars/IndrajeetPatil/pairwiseComparisons.svg?style=social&label=Github)](https://github.com/IndrajeetPatil/pairwiseComparisons) | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2074621.svg)](https://doi.org/10.5281/zenodo.2074621)                                                                       |
-| [![Licence](https://img.shields.io/badge/licence-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)                                                                | [![Codecov test coverage](https://codecov.io/gh/IndrajeetPatil/pairwiseComparisons/branch/master/graph/badge.svg)](https://codecov.io/gh/IndrajeetPatil/pairwiseComparisons?branch=master)                   | [![Covrpage Summary](https://img.shields.io/badge/covrpage-Last_Build_2020_05_29-brightgreen.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/blob/master/tests/README.md) | [![Last-changedate](https://img.shields.io/badge/last%20change-2020--10--19-yellowgreen.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/commits/master)            | [![GitHub last commit](https://img.shields.io/github/last-commit/IndrajeetPatil/pairwiseComparisons.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/commits/master) |
+| [![Licence](https://img.shields.io/badge/licence-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)                                                                | [![Codecov test coverage](https://codecov.io/gh/IndrajeetPatil/pairwiseComparisons/branch/master/graph/badge.svg)](https://codecov.io/gh/IndrajeetPatil/pairwiseComparisons?branch=master)                   | [![Covrpage Summary](https://img.shields.io/badge/covrpage-Last_Build_2020_05_29-brightgreen.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/blob/master/tests/README.md) | [![Last-changedate](https://img.shields.io/badge/last%20change-2020--10--21-yellowgreen.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/commits/master)            | [![GitHub last commit](https://img.shields.io/github/last-commit/IndrajeetPatil/pairwiseComparisons.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/commits/master) |
 | [![status](https://tinyverse.netlify.com/badge/pairwiseComparisons)](https://CRAN.R-project.org/package=pairwiseComparisons)                                                    | [![R build status](https://github.com/IndrajeetPatil/pairwiseComparisons/workflows/R-CMD-check/badge.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons)                                            | [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/pairwiseComparisons/community)                                                                       | [![Project Status](http://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)                                                                    | [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/IndrajeetPatil/pairwiseComparisons/issues)         |
 
 # Introduction <img src="man/figures/logo.png" align="right" width="240" />
@@ -266,6 +266,7 @@ pairwise_comparisons(
   data = bugs_long,
   x = condition,
   y = desire,
+  subject.id = subject,
   type = "parametric",
   paired = TRUE,
   p.adjust.method = "BH"
@@ -293,6 +294,7 @@ pairwise_comparisons(
   data = bugs_long,
   x = condition,
   y = desire,
+  subject.id = subject,
   type = "nonparametric",
   paired = TRUE,
   p.adjust.method = "BY"
@@ -320,6 +322,7 @@ pairwise_comparisons(
   data = bugs_long,
   x = condition,
   y = desire,
+  subject.id = subject,
   type = "robust",
   paired = TRUE,
   p.adjust.method = "hommel"
@@ -352,29 +355,39 @@ pairwise_comparisons(
 
 # Bayes Factor
 pairwise_comparisons(
-  data = WRS2::WineTasting,
-  x = Wine,
-  y = Taste,
+  data = bugs_long,
+  x = condition,
+  y = desire,
+  subject.id = subject,
   type = "bayes",
   paired = TRUE,
   bf.prior = 0.77
 )
-#> # A tibble: 3 x 17
+#> # A tibble: 6 x 17
 #>   group1 group2 term       estimate conf.low conf.high    pd rope.percentage
 #>   <chr>  <chr>  <chr>         <dbl>    <dbl>     <dbl> <dbl>           <dbl>
-#> 1 Wine A Wine B Difference -0.00733  -0.0479    0.0308 0.625           0.426
-#> 2 Wine A Wine C Difference -0.0764   -0.126    -0.0234 0.991           0    
-#> 3 Wine B Wine C Difference -0.0698   -0.102    -0.0392 1.00            0    
-#>   prior.distribution prior.location prior.scale effect component     bf10
-#>   <chr>                       <dbl>       <dbl> <chr>  <chr>        <dbl>
-#> 1 cauchy                          0        0.77 fixed  conditional  0.219
-#> 2 cauchy                          0        0.77 fixed  conditional  3.60 
-#> 3 cauchy                          0        0.77 fixed  conditional 50.5  
-#>   log_e_bf10 label                          test.details    
-#>        <dbl> <chr>                          <chr>           
-#> 1      -1.52 list(~log[e](BF['01'])==1.52)  Student's t-test
-#> 2       1.28 list(~log[e](BF['01'])==-1.28) Student's t-test
-#> 3       3.92 list(~log[e](BF['01'])==-3.92) Student's t-test
+#> 1 HDHF   HDLF   Difference   -1.10   -1.62     -0.621  1               0    
+#> 2 HDHF   LDHF   Difference   -0.453  -0.868    -0.0337 0.954           0.166
+#> 3 HDHF   LDLF   Difference   -2.13   -2.53     -1.70   1               0    
+#> 4 HDLF   LDHF   Difference    0.653   0.0889    1.19   0.968           0.144
+#> 5 HDLF   LDLF   Difference   -0.980  -1.49     -0.471  0.999           0    
+#> 6 LDHF   LDLF   Difference   -1.66   -2.09     -1.26   1               0    
+#>   prior.distribution prior.location prior.scale effect component       bf10
+#>   <chr>                       <dbl>       <dbl> <chr>  <chr>          <dbl>
+#> 1 cauchy                          0        0.77 fixed  conditional 3.95e+ 1
+#> 2 cauchy                          0        0.77 fixed  conditional 5.42e- 1
+#> 3 cauchy                          0        0.77 fixed  conditional 1.22e+10
+#> 4 cauchy                          0        0.77 fixed  conditional 6.50e- 1
+#> 5 cauchy                          0        0.77 fixed  conditional 1.72e+ 1
+#> 6 cauchy                          0        0.77 fixed  conditional 4.78e+ 6
+#>   log_e_bf10 label                           test.details    
+#>        <dbl> <chr>                           <chr>           
+#> 1      3.68  list(~log[e](BF['01'])==-3.68)  Student's t-test
+#> 2     -0.612 list(~log[e](BF['01'])==0.61)   Student's t-test
+#> 3     23.2   list(~log[e](BF['01'])==-23.22) Student's t-test
+#> 4     -0.430 list(~log[e](BF['01'])==0.43)   Student's t-test
+#> 5      2.84  list(~log[e](BF['01'])==-2.84)  Student's t-test
+#> 6     15.4   list(~log[e](BF['01'])==-15.38) Student's t-test
 ```
 
 # Using `pairwiseComparisons` with `ggsignif`
@@ -391,7 +404,8 @@ library(ggsignif)
 mtcars$cyl <- as.factor(mtcars$cyl)
 
 # creating a basic plot
-p <- ggplot(mtcars, aes(cyl, wt)) + geom_boxplot()
+p <- ggplot(mtcars, aes(cyl, wt)) +
+  geom_boxplot()
 
 # using `pairwiseComparisons` package to create a dataframe with results
 (df <-
@@ -439,15 +453,22 @@ p <- ggplot(WRS2::WineTasting, aes(Wine, Taste)) + geom_boxplot()
 
 # using `pairwiseComparisons` package to create a dataframe with results
 (df <-
-  pairwise_comparisons(WRS2::WineTasting, Wine, Taste, type = "bayes", paired = TRUE) %>%
+  pairwise_comparisons(
+    WRS2::WineTasting,
+    Wine,
+    Taste,
+    subject.id = Taster,
+    type = "bayes",
+    paired = TRUE
+  ) %>%
   dplyr::mutate(.data = ., groups = purrr::pmap(.l = list(group1, group2), .f = c)) %>%
   dplyr::arrange(.data = ., group1))
 #> # A tibble: 3 x 18
 #>   group1 group2 term       estimate conf.low conf.high    pd rope.percentage
 #>   <chr>  <chr>  <chr>         <dbl>    <dbl>     <dbl> <dbl>           <dbl>
-#> 1 Wine A Wine B Difference -0.00798  -0.0486    0.0315 0.628           0.428
-#> 2 Wine A Wine C Difference -0.0752   -0.129    -0.0237 0.990           0    
-#> 3 Wine B Wine C Difference -0.0694   -0.101    -0.0385 0.999           0    
+#> 1 Wine A Wine B Difference -0.00743  -0.0463    0.0308 0.626           0.418
+#> 2 Wine A Wine C Difference -0.0763   -0.122    -0.0220 0.990           0    
+#> 3 Wine B Wine C Difference -0.0698   -0.103    -0.0398 0.999           0    
 #>   prior.distribution prior.location prior.scale effect component     bf10
 #>   <chr>                       <dbl>       <dbl> <chr>  <chr>        <dbl>
 #> 1 cauchy                          0       0.707 fixed  conditional  0.235

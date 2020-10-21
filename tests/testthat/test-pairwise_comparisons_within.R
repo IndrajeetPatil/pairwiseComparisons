@@ -319,3 +319,93 @@ testthat::test_that(
     testthat::expect_identical(df1$group2, df4$group2)
   }
 )
+
+# works with subject id ------------------------------------------------------
+
+testthat::test_that(
+  desc = "works with subject id",
+  code = {
+    testthat::skip_if(getRversion() < "3.6")
+
+    set.seed(123)
+    df1 <-
+      dplyr::bind_rows(
+        pairwiseComparisons::pairwise_comparisons(
+          data = WRS2::WineTasting,
+          x = Wine,
+          y = "Taste",
+          type = "p",
+          k = 3,
+          subject.id = "Taster",
+          paired = TRUE
+        ),
+        pairwiseComparisons::pairwise_comparisons(
+          data = WRS2::WineTasting,
+          x = Wine,
+          y = "Taste",
+          type = "np",
+          k = 3,
+          subject.id = "Taster",
+          paired = TRUE
+        ),
+        pairwiseComparisons::pairwise_comparisons(
+          data = WRS2::WineTasting,
+          x = Wine,
+          y = "Taste",
+          type = "r",
+          k = 3,
+          subject.id = "Taster",
+          paired = TRUE
+        ),
+        pairwiseComparisons::pairwise_comparisons(
+          data = WRS2::WineTasting,
+          x = Wine,
+          y = "Taste",
+          type = "bf",
+          k = 3,
+          subject.id = "Taster",
+          paired = TRUE
+        )
+      )
+
+    set.seed(123)
+    df2 <-
+      dplyr::bind_rows(
+        pairwiseComparisons::pairwise_comparisons(
+          data = dplyr::arrange(WRS2::WineTasting, Taster),
+          x = Wine,
+          y = "Taste",
+          type = "p",
+          k = 3,
+          paired = TRUE
+        ),
+        pairwiseComparisons::pairwise_comparisons(
+          data = dplyr::arrange(WRS2::WineTasting, Taster),
+          x = Wine,
+          y = "Taste",
+          type = "np",
+          k = 3,
+          paired = TRUE
+        ),
+        pairwiseComparisons::pairwise_comparisons(
+          data = dplyr::arrange(WRS2::WineTasting, Taster),
+          x = Wine,
+          y = "Taste",
+          type = "r",
+          k = 3,
+          paired = TRUE
+        ),
+        pairwiseComparisons::pairwise_comparisons(
+          data = dplyr::arrange(WRS2::WineTasting, Taster),
+          x = Wine,
+          y = "Taste",
+          type = "bf",
+          k = 3,
+          paired = TRUE
+        )
+      )
+
+    # columns should be same no matter the test
+    testthat::expect_equal(as.data.frame(df1), as.data.frame(df2))
+  }
+)

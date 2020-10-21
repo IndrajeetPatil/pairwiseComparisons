@@ -34,9 +34,5 @@ rlang::`:=`
 ipmisc::tibble
 
 #' @export
-#' @importFrom ipmisc enframe
-ipmisc::enframe
-
-#' @export
 #' @importFrom ipmisc as_tibble
 ipmisc::as_tibble

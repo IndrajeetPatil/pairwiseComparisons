@@ -183,6 +183,7 @@ pairwise_comparisons(
   data = bugs_long,
   x = condition,
   y = desire,
+  subject.id = subject,
   type = "parametric",
   paired = TRUE,
   p.adjust.method = "BH"
@@ -193,6 +194,7 @@ pairwise_comparisons(
   data = bugs_long,
   x = condition,
   y = desire,
+  subject.id = subject,
   type = "nonparametric",
   paired = TRUE,
   p.adjust.method = "BY"
@@ -203,6 +205,7 @@ pairwise_comparisons(
   data = bugs_long,
   x = condition,
   y = desire,
+  subject.id = subject,
   type = "robust",
   paired = TRUE,
   p.adjust.method = "hommel"
@@ -210,9 +213,10 @@ pairwise_comparisons(
 
 # Bayes Factor
 pairwise_comparisons(
-  data = WRS2::WineTasting,
-  x = Wine,
-  y = Taste,
+  data = bugs_long,
+  x = condition,
+  y = desire,
+  subject.id = subject,
   type = "bayes",
   paired = TRUE,
   bf.prior = 0.77
@@ -233,7 +237,8 @@ library(ggsignif)
 mtcars$cyl <- as.factor(mtcars$cyl)
 
 # creating a basic plot
-p <- ggplot(mtcars, aes(cyl, wt)) + geom_boxplot()
+p <- ggplot(mtcars, aes(cyl, wt)) +
+  geom_boxplot()
 
 # using `pairwiseComparisons` package to create a dataframe with results
 (df <-
@@ -268,7 +273,14 @@ p <- ggplot(WRS2::WineTasting, aes(Wine, Taste)) + geom_boxplot()
 
 # using `pairwiseComparisons` package to create a dataframe with results
 (df <-
-  pairwise_comparisons(WRS2::WineTasting, Wine, Taste, type = "bayes", paired = TRUE) %>%
+  pairwise_comparisons(
+    WRS2::WineTasting,
+    Wine,
+    Taste,
+    subject.id = Taster,
+    type = "bayes",
+    paired = TRUE
+  ) %>%
   dplyr::mutate(.data = ., groups = purrr::pmap(.l = list(group1, group2), .f = c)) %>%
   dplyr::arrange(.data = ., group1))
 
