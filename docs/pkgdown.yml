@@ -1,8 +1,8 @@
-pandoc: 2.11.0.2
+pandoc: 2.11.0.4
 pkgdown: 1.6.1
 pkgdown_sha: ~
 articles: {}
-last_built: 2020-10-21T19:35Z
+last_built: 2020-10-28T15:40Z
 urls:
   reference: https://indrajeetpatil.github.io/pairwiseComparisons//reference
   article: https://indrajeetpatil.github.io/pairwiseComparisons//articles

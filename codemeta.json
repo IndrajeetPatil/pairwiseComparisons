@@ -14,7 +14,7 @@
   ],
   "issueTracker": "\n    https://github.com/IndrajeetPatil/pairwiseComparisons/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "3.0.0.9000",
+  "version": "3.1.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -135,14 +135,14 @@
       "@type": "SoftwareApplication",
       "identifier": "insight",
       "name": "insight",
-      "version": ">= 0.9.6.1",
+      "version": ">= 0.10.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://github.com/easystats/insight"
+      "sameAs": "https://CRAN.R-project.org/package=insight"
     },
     {
       "@type": "SoftwareApplication",
@@ -155,7 +155,7 @@
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://github.com/IndrajeetPatil/ipmisc"
+      "sameAs": "https://CRAN.R-project.org/package=ipmisc"
     },
     {
       "@type": "SoftwareApplication",
@@ -248,5 +248,5 @@
     "name": "Comprehensive R Archive Network (CRAN)",
     "url": "https://cran.r-project.org"
   },
-  "fileSize": "1260.879KB"
+  "fileSize": "1266.744KB"
 }

@@ -36,6 +36,7 @@ matrix_to_tidy <- function(m, col_name = "value", ...) {
 #' @importFrom dplyr mutate
 #' @importFrom parameters model_parameters
 #' @importFrom insight standardize_names
+#' @importFrom rlang exec new_formula !!!
 #'
 #' @noRd
 #' @keywords internal
@@ -59,31 +60,20 @@ bf_internal_ttest <- function(data,
       spread = paired
     )
 
-  # within-subjects design
-  if (isTRUE(paired)) {
-    # extracting results from Bayesian test and creating a dataframe
-    bf_object <-
-      BayesFactor::ttestBF(
-        x = data[[2]],
-        y = data[[3]],
-        rscale = bf.prior,
-        paired = TRUE,
-        progress = FALSE
-      )
-  }
+  # relevant arguments
+  if (isTRUE(paired)) bf.args <- list(x = data[[2]], y = data[[3]])
+  if (isFALSE(paired)) bf.args <- list(formula = rlang::new_formula({{ y }}, {{ x }}))
 
-  # between-subjects design
-  if (isFALSE(paired)) {
-    # extracting results from Bayesian test and creating a dataframe
-    bf_object <-
-      BayesFactor::ttestBF(
-        formula = rlang::new_formula({{ y }}, {{ x }}),
-        data = as.data.frame(data),
-        rscale = bf.prior,
-        paired = FALSE,
-        progress = FALSE
-      )
-  }
+  # creating a BayesFactor object
+  bf_object <-
+    rlang::exec(
+      .fn = BayesFactor::ttestBF,
+      rscale = bf.prior,
+      paired = paired,
+      progress = FALSE,
+      data = as.data.frame(data),
+      !!!bf.args
+    )
 
   # extracting Bayes Factors and other details
   parameters::model_parameters(bf_object, ...) %>%
