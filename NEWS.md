@@ -1,3 +1,5 @@
+# pairwiseComparisons 3.1.0.9000
+
 # pairwiseComparisons 3.1.0
 
   - To be consistent with the rest of the `ggstatsverse`, the Bayes Factor

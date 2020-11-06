@@ -1,5 +1,4 @@
 #' @name PMCMR_to_tibble
-#' @note Adapted from `dfrtopics::gather_matrix()`.
 #'
 #' @importFrom stats na.omit
 #' @importFrom dplyr bind_cols contains select
@@ -34,8 +33,7 @@ matrix_to_tidy <- function(m, col_name = "value", ...) {
 
 #' @importFrom BayesFactor ttestBF
 #' @importFrom dplyr mutate
-#' @importFrom parameters model_parameters
-#' @importFrom insight standardize_names
+#' @importFrom parameters model_parameters standardize_names
 #' @importFrom rlang exec new_formula !!!
 #'
 #' @noRd
@@ -77,7 +75,7 @@ bf_internal_ttest <- function(data,
 
   # extracting Bayes Factors and other details
   parameters::model_parameters(bf_object, ...) %>%
-    insight::standardize_names(data = ., style = "broom") %>%
+    parameters::standardize_names(data = ., style = "broom") %>%
     dplyr::rename(.data = ., "bf10" = "bayes.factor") %>%
     dplyr::mutate(.data = ., log_e_bf10 = log(bf10))
 }

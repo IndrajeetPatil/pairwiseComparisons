@@ -372,11 +372,11 @@ testthat::test_that(
     )
 
     # checking tibble
-    testthat::expect_is(df1, "tbl_df")
-    testthat::expect_is(df2, "tbl_df")
-    testthat::expect_is(df3, "tbl_df")
-    testthat::expect_is(df4, "tbl_df")
-    testthat::expect_is(df5, "tbl_df")
+    testthat::expect_s3_class(df1, "tbl_df")
+    testthat::expect_s3_class(df2, "tbl_df")
+    testthat::expect_s3_class(df3, "tbl_df")
+    testthat::expect_s3_class(df4, "tbl_df")
+    testthat::expect_s3_class(df5, "tbl_df")
 
     # columns should be same no matter the test
     testthat::expect_identical(df1$group1, df2$group1)

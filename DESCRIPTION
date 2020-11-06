@@ -1,7 +1,7 @@
 Type: Package
 Package: pairwiseComparisons
 Title: Multiple Pairwise Comparison Tests
-Version: 3.1.0
+Version: 3.1.0.9000
 Authors@R: 
     person(given = "Indrajeet",
            family = "Patil",
@@ -26,10 +26,9 @@ Depends:
 Imports:
     BayesFactor,
     dplyr,
-    insight (>= 0.10.0),
-    ipmisc (>= 4.1.0),
-    PMCMRplus,
+    ipmisc,
     parameters,
+    PMCMRplus (>= 1.7.0),
     purrr,
     rlang,
     stats,
@@ -45,3 +44,8 @@ LazyData: true
 Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace",
     "collate", "pkgapi::api_roclet"))
 RoxygenNote: 7.1.1
+Config/testthat/edition: 3
+Config/testthat/parallel: true
+Config/testthat/start-first: watcher, parallel*
+
+

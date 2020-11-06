@@ -393,5 +393,5 @@ pairwise_comparisons <- function(data,
   }
 
   # return
-  return(df)
+  return(as_tibble(df))
 }
