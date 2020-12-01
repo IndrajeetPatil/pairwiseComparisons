@@ -78,11 +78,6 @@ testthat::test_that(
       )
     )
 
-    testthat::expect_identical(
-      df1$significance,
-      c("**", "ns", "***", "ns", "**", "***")
-    )
-
     testthat::expect_equal(
       df2$statistic,
       c(
@@ -108,11 +103,6 @@ testthat::test_that(
       )
     )
 
-    testthat::expect_identical(
-      df2$significance,
-      c("***", "*", "***", "*", "**", "***")
-    )
-
     testthat::expect_equal(
       df3$estimate,
       c(
@@ -136,11 +126,6 @@ testthat::test_that(
         "list(~italic(p)[Hommel-corrected]==0.014)",
         "list(~italic(p)[Hommel-corrected]==1.16e-06)"
       )
-    )
-
-    testthat::expect_identical(
-      df3$significance,
-      c("**", "ns", "***", "ns", "*", "***")
     )
 
     testthat::expect_identical(
@@ -256,11 +241,6 @@ testthat::test_that(
       )
     )
 
-    testthat::expect_identical(
-      df1$significance,
-      c("ns", "*", "***")
-    )
-
     testthat::expect_equal(
       df2$statistic,
       c(1.04673405118638, 3.66356917915232, 2.61683512796594),
@@ -276,11 +256,6 @@ testthat::test_that(
       )
     )
 
-    testthat::expect_identical(
-      df2$significance,
-      c("ns", "***", "*")
-    )
-
     testthat::expect_equal(
       df3$estimate,
       c(0.0166666666666668, 0.1, 0.0777777777777778),
@@ -294,11 +269,6 @@ testthat::test_that(
         "list(~italic(p)[uncorrected]==0.011)",
         "list(~italic(p)[uncorrected]==0.003)"
       )
-    )
-
-    testthat::expect_identical(
-      df3$significance,
-      c("ns", "*", "**")
     )
 
     testthat::expect_identical(

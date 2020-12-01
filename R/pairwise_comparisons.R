@@ -63,7 +63,6 @@
 #' @importFrom rlang !! enquo as_string ensym
 #' @importFrom purrr map2 map_dfr
 #' @importFrom ipmisc stats_type_switch specify_decimal_p long_to_wide_converter
-#' @importFrom ipmisc signif_column
 #'
 #' @examples
 #'
@@ -360,7 +359,6 @@ pairwise_comparisons <- function(data,
   if (type != "bayes") {
     df %<>%
       dplyr::mutate(p.value = stats::p.adjust(p = p.value, method = p.adjust.method)) %>%
-      signif_column(data = ., p = p.value) %>%
       dplyr::mutate(
         test.details = test.details,
         p.value.adjustment = p_adjust_text(p.adjust.method)

@@ -2,11 +2,14 @@
 
   - Minor internal refactoring.
 
+  - Removes the unnecessary (and confusing) `significance` column from all
+    outputs.
+
 # pairwiseComparisons 3.1.0
 
   - To be consistent with the rest of the `ggstatsverse`, the Bayes Factor
     results are now always shown in favor of null over alternative (`BF01`).
-    
+
   - `pairwise_comparisons` function gets `subject.id` argument relevant for
     repeated measures design.
 
@@ -17,7 +20,7 @@
 
   - `pairwise_caption` function has changed its output to reflect changes made
     to the *p*-value labels.
-    
+
   - Major internal refactoring to get rid of the following dependencies:
     `broomExtra`, `dunn.test`, `forcats`, and `tidyr`. This comes at the cost of
     omission of few of the details that were previously included in the output
@@ -31,7 +34,7 @@
 
   - Fixes a bug which affected results for within-subjects design when the
     dataframe wasn't sorted by `x` (#19).
-  
+
   - This fix also now makes the results more consistent, such that irrespective
     of which type of statistics is chosen the `group1` and `group2` columns are
     in identical order.
@@ -51,13 +54,13 @@
 
   - Removes dependence on `jmv` and instead relies on `dunn.test` and
     `PMCMRplus`. This significantly reduces number of dependencies.
-  
+
   - The non-parametric Dwass test has been changed to Dunn test.
 
 # pairwiseComparisons 0.3.1
 
   - Adapts to breaking changes in upcoming release of `broom 0.7.0`.
-  
+
   - Thanks to Sarah, the package has a hexsticker. :)
 
 # pairwiseComparisons 0.3.0
@@ -85,6 +88,7 @@
     function now instead adds two columns (`test.details` and
     `p.value.adjustment`) to all outputs specifying which test was carried out
     and which adjustment method is being used for *p*-value correction.
+
   - Gets rid of `groupedstats` and `crayon` from dependencies.
 
 # pairwiseComparisons 0.1.2
@@ -97,10 +101,11 @@
   - The `p.value.label` in the output dataframe has been renamed to `label` to
     consider the possibility that Bayes Factor tests might also be supported in
     future.
-    
+
   - The label now specified whether the *p*-value was adjusted or not for
     multiple comparisons.
 
 # pairwiseComparisons 0.1.0
 
   - First release of the package.
+
