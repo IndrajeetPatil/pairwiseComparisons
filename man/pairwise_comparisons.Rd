@@ -72,9 +72,9 @@ A tibble dataframe containing two columns corresponding to group
 levels being compared with each other (\code{group1} and \code{group2}) and \code{p.value}
 column corresponding to this comparison. The dataframe will also contain a
 \code{p.value.label} column containing a \emph{label} for this \emph{p}-value, in case
-this needs to be displayed in \code{geom_ggsignif}. In addition to these common
-columns across the different types of statistics, there will be additional
-columns specific to the \code{type} of test being run.
+this needs to be displayed in \code{ggsignif::geom_ggsignif}. In addition to
+these common columns across the different types of statistics, there will
+be additional columns specific to the \code{type} of test being run.
 
 This function provides a unified syntax to carry out pairwise comparison
 tests and internally relies on other packages to carry out these tests. For
@@ -90,15 +90,6 @@ respective functions:
 \code{\link[WRS2:rmanova]{WRS2::rmmcp()}} (paired) and  \code{\link[WRS2:t1way]{WRS2::lincon()}} (unpaired)
 \item \emph{Bayes Factor} : \code{\link[BayesFactor:ttestBF]{BayesFactor::ttestBF()}}
 }
-
-The \code{significance} column asterisks indicate significance levels of
-\emph{p}-values in the American Psychological Association (APA) mandated format:
-\itemize{
-\item \code{ns} : > 0.05
-\item \code{*} : < 0.05
-\item \verb{**} : < 0.01
-\item \verb{***} : < 0.001
-}
 }
 \description{
 Calculate parametric, non-parametric, robust, and Bayes Factor
@@ -113,7 +104,7 @@ set.seed(123)
 library(pairwiseComparisons)
 
 # show me all columns and make the column titles bold
-options(tibble.width = Inf, pillar.bold = TRUE)
+options(tibble.width = Inf, pillar.bold = TRUE, pillar.subtle_num = TRUE)
 
 #------------------- between-subjects design ----------------------------
 

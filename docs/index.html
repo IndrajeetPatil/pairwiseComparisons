@@ -47,7 +47,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">pairwiseComparisons</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">3.1.0.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">3.1.1</span>
       </span>
     </div>
 
@@ -123,7 +123,7 @@
 <td><a href="https://cran.r-project.org/"><img src="https://img.shields.io/badge/R%3E%3D-3.6.0-6666ff.svg" alt="minimal R version"></a></td>
 <td><a href="https://www.tidyverse.org/lifecycle/"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="lifecycle"></a></td>
 <td><a href="https://CRAN.R-project.org/package=pairwiseComparisons"><img src="https://cranlogs.r-pkg.org/badges/last-month/pairwiseComparisons?color=blue" alt="Monthly downloads badge"></a></td>
-<td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/issues"><img src="https://img.shields.io/badge/issues-1-red.svg" alt="Github Issues"></a></td>
+<td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/issues"><img src="https://img.shields.io/badge/issues-2-red.svg" alt="Github Issues"></a></td>
 <td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/blob/master/README.md"><img src="https://img.shields.io/badge/vignettes-3.1.0-orange.svg?colorB=FF5722" alt="vignettes"></a></td>
 </tr>
 <tr class="even">
@@ -137,7 +137,7 @@
 <td><a href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img src="https://img.shields.io/badge/licence-GPL--3-blue.svg" alt="Licence"></a></td>
 <td><a href="https://codecov.io/gh/IndrajeetPatil/pairwiseComparisons?branch=master"><img src="https://codecov.io/gh/IndrajeetPatil/pairwiseComparisons/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></td>
 <td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/blob/master/tests/README.md"><img src="https://img.shields.io/badge/covrpage-Last_Build_2020_05_29-brightgreen.svg" alt="Covrpage Summary"></a></td>
-<td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/commits/master"><img src="https://img.shields.io/badge/last%20change-2020--11--06-yellowgreen.svg" alt="Last-changedate"></a></td>
+<td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/commits/master"><img src="https://img.shields.io/badge/last%20change-2020--12--01-yellowgreen.svg" alt="Last-changedate"></a></td>
 <td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/commits/master"><img src="https://img.shields.io/github/last-commit/IndrajeetPatil/pairwiseComparisons.svg" alt="GitHub last commit"></a></td>
 </tr>
 <tr class="even">
@@ -335,23 +335,31 @@
   paired <span class="op">=</span> <span class="cn">FALSE</span>,
   p.adjust.method <span class="op">=</span> <span class="st">"bonferroni"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 6 x 8</span>
-<span class="co">#&gt;   group1  group2  statistic p.value significance test.details     </span>
-<span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;       &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;            </span>
-<span class="co">#&gt; 1 carni   herbi        2.17       1 ns           Games-Howell test</span>
-<span class="co">#&gt; 2 carni   insecti     -2.17       1 ns           Games-Howell test</span>
-<span class="co">#&gt; 3 carni   omni         1.10       1 ns           Games-Howell test</span>
-<span class="co">#&gt; 4 herbi   insecti     -2.41       1 ns           Games-Howell test</span>
-<span class="co">#&gt; 5 herbi   omni        -1.87       1 ns           Games-Howell test</span>
-<span class="co">#&gt; 6 insecti omni         2.19       1 ns           Games-Howell test</span>
-<span class="co">#&gt;   p.value.adjustment label                                        </span>
-<span class="co">#&gt;   &lt;chr&gt;              &lt;chr&gt;                                        </span>
-<span class="co">#&gt; 1 Bonferroni         list(~italic(p)[Bonferroni-corrected]==1.000)</span>
-<span class="co">#&gt; 2 Bonferroni         list(~italic(p)[Bonferroni-corrected]==1.000)</span>
-<span class="co">#&gt; 3 Bonferroni         list(~italic(p)[Bonferroni-corrected]==1.000)</span>
-<span class="co">#&gt; 4 Bonferroni         list(~italic(p)[Bonferroni-corrected]==1.000)</span>
-<span class="co">#&gt; 5 Bonferroni         list(~italic(p)[Bonferroni-corrected]==1.000)</span>
-<span class="co">#&gt; 6 Bonferroni         list(~italic(p)[Bonferroni-corrected]==1.000)</span>
+<span class="co">#&gt; # A tibble: 6 x 10</span>
+<span class="co">#&gt;   group1  group2  statistic p.value alternative distribution significance</span>
+<span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;       &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;        &lt;chr&gt;       </span>
+<span class="co">#&gt; 1 carni   herbi        2.17       1 two.sided   q            ns          </span>
+<span class="co">#&gt; 2 carni   insecti     -2.17       1 two.sided   q            ns          </span>
+<span class="co">#&gt; 3 carni   omni         1.10       1 two.sided   q            ns          </span>
+<span class="co">#&gt; 4 herbi   insecti     -2.41       1 two.sided   q            ns          </span>
+<span class="co">#&gt; 5 herbi   omni        -1.87       1 two.sided   q            ns          </span>
+<span class="co">#&gt; 6 insecti omni         2.19       1 two.sided   q            ns          </span>
+<span class="co">#&gt;   test.details      p.value.adjustment</span>
+<span class="co">#&gt;   &lt;chr&gt;             &lt;chr&gt;             </span>
+<span class="co">#&gt; 1 Games-Howell test Bonferroni        </span>
+<span class="co">#&gt; 2 Games-Howell test Bonferroni        </span>
+<span class="co">#&gt; 3 Games-Howell test Bonferroni        </span>
+<span class="co">#&gt; 4 Games-Howell test Bonferroni        </span>
+<span class="co">#&gt; 5 Games-Howell test Bonferroni        </span>
+<span class="co">#&gt; 6 Games-Howell test Bonferroni        </span>
+<span class="co">#&gt;   label                                        </span>
+<span class="co">#&gt;   &lt;chr&gt;                                        </span>
+<span class="co">#&gt; 1 list(~italic(p)[Bonferroni-corrected]==1.000)</span>
+<span class="co">#&gt; 2 list(~italic(p)[Bonferroni-corrected]==1.000)</span>
+<span class="co">#&gt; 3 list(~italic(p)[Bonferroni-corrected]==1.000)</span>
+<span class="co">#&gt; 4 list(~italic(p)[Bonferroni-corrected]==1.000)</span>
+<span class="co">#&gt; 5 list(~italic(p)[Bonferroni-corrected]==1.000)</span>
+<span class="co">#&gt; 6 list(~italic(p)[Bonferroni-corrected]==1.000)</span>
 
 <span class="co"># non-parametric</span>
 <span class="fu"><a href="reference/pairwise_comparisons.html">pairwise_comparisons</a></span><span class="op">(</span>
@@ -362,23 +370,23 @@
   paired <span class="op">=</span> <span class="cn">FALSE</span>,
   p.adjust.method <span class="op">=</span> <span class="st">"none"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 6 x 8</span>
-<span class="co">#&gt;   group1  group2  statistic p.value significance test.details p.value.adjustment</span>
-<span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;       &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;        &lt;chr&gt;             </span>
-<span class="co">#&gt; 1 carni   herbi       0.582  0.561  ns           Dunn test    None              </span>
-<span class="co">#&gt; 2 carni   insecti     1.88   0.0595 ns           Dunn test    None              </span>
-<span class="co">#&gt; 3 carni   omni        1.14   0.254  ns           Dunn test    None              </span>
-<span class="co">#&gt; 4 herbi   insecti     1.63   0.102  ns           Dunn test    None              </span>
-<span class="co">#&gt; 5 herbi   omni        0.717  0.474  ns           Dunn test    None              </span>
-<span class="co">#&gt; 6 insecti omni        1.14   0.254  ns           Dunn test    None              </span>
-<span class="co">#&gt;   label                               </span>
-<span class="co">#&gt;   &lt;chr&gt;                               </span>
-<span class="co">#&gt; 1 list(~italic(p)[uncorrected]==0.561)</span>
-<span class="co">#&gt; 2 list(~italic(p)[uncorrected]==0.060)</span>
-<span class="co">#&gt; 3 list(~italic(p)[uncorrected]==0.254)</span>
-<span class="co">#&gt; 4 list(~italic(p)[uncorrected]==0.102)</span>
-<span class="co">#&gt; 5 list(~italic(p)[uncorrected]==0.474)</span>
-<span class="co">#&gt; 6 list(~italic(p)[uncorrected]==0.254)</span>
+<span class="co">#&gt; # A tibble: 6 x 10</span>
+<span class="co">#&gt;   group1  group2  statistic p.value alternative distribution significance</span>
+<span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;       &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;        &lt;chr&gt;       </span>
+<span class="co">#&gt; 1 carni   herbi       0.582  0.561  two.sided   z            ns          </span>
+<span class="co">#&gt; 2 carni   insecti     1.88   0.0595 two.sided   z            ns          </span>
+<span class="co">#&gt; 3 carni   omni        1.14   0.254  two.sided   z            ns          </span>
+<span class="co">#&gt; 4 herbi   insecti     1.63   0.102  two.sided   z            ns          </span>
+<span class="co">#&gt; 5 herbi   omni        0.717  0.474  two.sided   z            ns          </span>
+<span class="co">#&gt; 6 insecti omni        1.14   0.254  two.sided   z            ns          </span>
+<span class="co">#&gt;   test.details p.value.adjustment label                               </span>
+<span class="co">#&gt;   &lt;chr&gt;        &lt;chr&gt;              &lt;chr&gt;                               </span>
+<span class="co">#&gt; 1 Dunn test    None               list(~italic(p)[uncorrected]==0.561)</span>
+<span class="co">#&gt; 2 Dunn test    None               list(~italic(p)[uncorrected]==0.060)</span>
+<span class="co">#&gt; 3 Dunn test    None               list(~italic(p)[uncorrected]==0.254)</span>
+<span class="co">#&gt; 4 Dunn test    None               list(~italic(p)[uncorrected]==0.102)</span>
+<span class="co">#&gt; 5 Dunn test    None               list(~italic(p)[uncorrected]==0.474)</span>
+<span class="co">#&gt; 6 Dunn test    None               list(~italic(p)[uncorrected]==0.254)</span>
 
 <span class="co"># robust</span>
 <span class="fu"><a href="reference/pairwise_comparisons.html">pairwise_comparisons</a></span><span class="op">(</span>
@@ -423,7 +431,7 @@
   type <span class="op">=</span> <span class="st">"bayes"</span>,
   paired <span class="op">=</span> <span class="cn">FALSE</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 6 x 17</span>
+<span class="co">#&gt; # A tibble: 6 x 15</span>
 <span class="co">#&gt;   group1  group2  term       estimate conf.low conf.high    pd rope.percentage</span>
 <span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;           &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 carni   herbi   Difference   0.376   -0.349     1.15   0.800           0.183</span>
@@ -432,22 +440,22 @@
 <span class="co">#&gt; 4 herbi   insecti Difference  -0.353   -1.38      0.501  0.742           0.190</span>
 <span class="co">#&gt; 5 herbi   omni    Difference  -0.364   -0.943     0.197  0.848           0.176</span>
 <span class="co">#&gt; 6 insecti omni    Difference   0.0766  -0.111     0.276  0.743           0.182</span>
-<span class="co">#&gt;   prior.distribution prior.location prior.scale effect component    bf10</span>
-<span class="co">#&gt;   &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;       &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 cauchy                          0       0.707 fixed  conditional 0.540</span>
-<span class="co">#&gt; 2 cauchy                          0       0.707 fixed  conditional 0.718</span>
-<span class="co">#&gt; 3 cauchy                          0       0.707 fixed  conditional 0.427</span>
-<span class="co">#&gt; 4 cauchy                          0       0.707 fixed  conditional 0.540</span>
-<span class="co">#&gt; 5 cauchy                          0       0.707 fixed  conditional 0.571</span>
-<span class="co">#&gt; 6 cauchy                          0       0.707 fixed  conditional 0.545</span>
-<span class="co">#&gt;   log_e_bf10 label                         test.details    </span>
-<span class="co">#&gt;        &lt;dbl&gt; &lt;chr&gt;                         &lt;chr&gt;           </span>
-<span class="co">#&gt; 1     -0.617 list(~log[e](BF['01'])==0.62) Student's t-test</span>
-<span class="co">#&gt; 2     -0.332 list(~log[e](BF['01'])==0.33) Student's t-test</span>
-<span class="co">#&gt; 3     -0.851 list(~log[e](BF['01'])==0.85) Student's t-test</span>
-<span class="co">#&gt; 4     -0.616 list(~log[e](BF['01'])==0.62) Student's t-test</span>
-<span class="co">#&gt; 5     -0.560 list(~log[e](BF['01'])==0.56) Student's t-test</span>
-<span class="co">#&gt; 6     -0.606 list(~log[e](BF['01'])==0.61) Student's t-test</span></code></pre></div>
+<span class="co">#&gt;   prior.distribution prior.location prior.scale  bf10 log_e_bf10</span>
+<span class="co">#&gt;   &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 cauchy                          0       0.707 0.540     -0.617</span>
+<span class="co">#&gt; 2 cauchy                          0       0.707 0.718     -0.332</span>
+<span class="co">#&gt; 3 cauchy                          0       0.707 0.427     -0.851</span>
+<span class="co">#&gt; 4 cauchy                          0       0.707 0.540     -0.616</span>
+<span class="co">#&gt; 5 cauchy                          0       0.707 0.571     -0.560</span>
+<span class="co">#&gt; 6 cauchy                          0       0.707 0.545     -0.606</span>
+<span class="co">#&gt;   label                         test.details    </span>
+<span class="co">#&gt;   &lt;chr&gt;                         &lt;chr&gt;           </span>
+<span class="co">#&gt; 1 list(~log[e](BF['01'])==0.62) Student's t-test</span>
+<span class="co">#&gt; 2 list(~log[e](BF['01'])==0.33) Student's t-test</span>
+<span class="co">#&gt; 3 list(~log[e](BF['01'])==0.85) Student's t-test</span>
+<span class="co">#&gt; 4 list(~log[e](BF['01'])==0.62) Student's t-test</span>
+<span class="co">#&gt; 5 list(~log[e](BF['01'])==0.56) Student's t-test</span>
+<span class="co">#&gt; 6 list(~log[e](BF['01'])==0.61) Student's t-test</span></code></pre></div>
 </div>
 <div id="within-subjects-design-1" class="section level2">
 <h2 class="hasAnchor">
@@ -494,23 +502,31 @@
   paired <span class="op">=</span> <span class="cn">TRUE</span>,
   p.adjust.method <span class="op">=</span> <span class="st">"BY"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 6 x 8</span>
-<span class="co">#&gt;   group1 group2 statistic  p.value significance test.details       </span>
-<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;      &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;              </span>
-<span class="co">#&gt; 1 HDHF   HDLF        4.78 1.44e- 5 ***          Durbin-Conover test</span>
-<span class="co">#&gt; 2 HDHF   LDHF        2.44 4.47e- 2 *            Durbin-Conover test</span>
-<span class="co">#&gt; 3 HDHF   LDLF        8.01 5.45e-13 ***          Durbin-Conover test</span>
-<span class="co">#&gt; 4 HDLF   LDHF        2.34 4.96e- 2 *            Durbin-Conover test</span>
-<span class="co">#&gt; 5 HDLF   LDLF        3.23 5.05e- 3 **           Durbin-Conover test</span>
-<span class="co">#&gt; 6 LDHF   LDLF        5.57 4.64e- 7 ***          Durbin-Conover test</span>
-<span class="co">#&gt;   p.value.adjustment label                                   </span>
-<span class="co">#&gt;   &lt;chr&gt;              &lt;chr&gt;                                   </span>
-<span class="co">#&gt; 1 BY                 list(~italic(p)[BY-corrected]==1.44e-05)</span>
-<span class="co">#&gt; 2 BY                 list(~italic(p)[BY-corrected]==0.045)   </span>
-<span class="co">#&gt; 3 BY                 list(~italic(p)[BY-corrected]==5.45e-13)</span>
-<span class="co">#&gt; 4 BY                 list(~italic(p)[BY-corrected]==0.050)   </span>
-<span class="co">#&gt; 5 BY                 list(~italic(p)[BY-corrected]==0.005)   </span>
-<span class="co">#&gt; 6 BY                 list(~italic(p)[BY-corrected]==4.64e-07)</span>
+<span class="co">#&gt; # A tibble: 6 x 10</span>
+<span class="co">#&gt;   group1 group2 statistic  p.value alternative distribution significance</span>
+<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;      &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;        &lt;chr&gt;       </span>
+<span class="co">#&gt; 1 HDHF   HDLF        4.78 1.44e- 5 two.sided   t            ***         </span>
+<span class="co">#&gt; 2 HDHF   LDHF        2.44 4.47e- 2 two.sided   t            *           </span>
+<span class="co">#&gt; 3 HDHF   LDLF        8.01 5.45e-13 two.sided   t            ***         </span>
+<span class="co">#&gt; 4 HDLF   LDHF        2.34 4.96e- 2 two.sided   t            *           </span>
+<span class="co">#&gt; 5 HDLF   LDLF        3.23 5.05e- 3 two.sided   t            **          </span>
+<span class="co">#&gt; 6 LDHF   LDLF        5.57 4.64e- 7 two.sided   t            ***         </span>
+<span class="co">#&gt;   test.details        p.value.adjustment</span>
+<span class="co">#&gt;   &lt;chr&gt;               &lt;chr&gt;             </span>
+<span class="co">#&gt; 1 Durbin-Conover test BY                </span>
+<span class="co">#&gt; 2 Durbin-Conover test BY                </span>
+<span class="co">#&gt; 3 Durbin-Conover test BY                </span>
+<span class="co">#&gt; 4 Durbin-Conover test BY                </span>
+<span class="co">#&gt; 5 Durbin-Conover test BY                </span>
+<span class="co">#&gt; 6 Durbin-Conover test BY                </span>
+<span class="co">#&gt;   label                                   </span>
+<span class="co">#&gt;   &lt;chr&gt;                                   </span>
+<span class="co">#&gt; 1 list(~italic(p)[BY-corrected]==1.44e-05)</span>
+<span class="co">#&gt; 2 list(~italic(p)[BY-corrected]==0.045)   </span>
+<span class="co">#&gt; 3 list(~italic(p)[BY-corrected]==5.45e-13)</span>
+<span class="co">#&gt; 4 list(~italic(p)[BY-corrected]==0.050)   </span>
+<span class="co">#&gt; 5 list(~italic(p)[BY-corrected]==0.005)   </span>
+<span class="co">#&gt; 6 list(~italic(p)[BY-corrected]==4.64e-07)</span>
 
 <span class="co"># robust</span>
 <span class="fu"><a href="reference/pairwise_comparisons.html">pairwise_comparisons</a></span><span class="op">(</span>
@@ -522,15 +538,15 @@
   paired <span class="op">=</span> <span class="cn">TRUE</span>,
   p.adjust.method <span class="op">=</span> <span class="st">"hommel"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 6 x 10</span>
-<span class="co">#&gt;   group1 group2 estimate conf.low conf.high  p.value significance</span>
-<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       </span>
-<span class="co">#&gt; 1 HDHF   HDLF      1.16    0.318      2.00  1.49e- 3 **          </span>
-<span class="co">#&gt; 2 HDHF   LDHF      0.5    -0.188      1.19  6.20e- 2 ns          </span>
-<span class="co">#&gt; 3 HDHF   LDLF      2.10    1.37       2.82  1.79e-10 ***         </span>
-<span class="co">#&gt; 4 HDLF   LDHF     -0.701  -1.71       0.303 6.20e- 2 ns          </span>
-<span class="co">#&gt; 5 HDLF   LDLF      0.938   0.0694     1.81  1.36e- 2 *           </span>
-<span class="co">#&gt; 6 LDHF   LDLF      1.54    0.810      2.27  1.16e- 6 ***         </span>
+<span class="co">#&gt; # A tibble: 6 x 11</span>
+<span class="co">#&gt;   group1 group2 estimate conf.low conf.high  p.value  p.crit significance</span>
+<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;       </span>
+<span class="co">#&gt; 1 HDHF   HDLF      1.16    0.318      2.00  1.49e- 3 0.0127  **          </span>
+<span class="co">#&gt; 2 HDHF   LDHF      0.5    -0.188      1.19  6.20e- 2 0.025   ns          </span>
+<span class="co">#&gt; 3 HDHF   LDLF      2.10    1.37       2.82  1.79e-10 0.00851 ***         </span>
+<span class="co">#&gt; 4 HDLF   LDHF     -0.701  -1.71       0.303 6.20e- 2 0.05    ns          </span>
+<span class="co">#&gt; 5 HDLF   LDLF      0.938   0.0694     1.81  1.36e- 2 0.0169  *           </span>
+<span class="co">#&gt; 6 LDHF   LDLF      1.54    0.810      2.27  1.16e- 6 0.0102  ***         </span>
 <span class="co">#&gt;   test.details              p.value.adjustment</span>
 <span class="co">#&gt;   &lt;chr&gt;                     &lt;chr&gt;             </span>
 <span class="co">#&gt; 1 Yuen's trimmed means test Hommel            </span>
@@ -558,7 +574,7 @@
   paired <span class="op">=</span> <span class="cn">TRUE</span>,
   bf.prior <span class="op">=</span> <span class="fl">0.77</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 6 x 17</span>
+<span class="co">#&gt; # A tibble: 6 x 15</span>
 <span class="co">#&gt;   group1 group2 term       estimate conf.low conf.high    pd rope.percentage</span>
 <span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;           &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 HDHF   HDLF   Difference   -1.10   -1.62     -0.621  1               0    </span>
@@ -567,22 +583,22 @@
 <span class="co">#&gt; 4 HDLF   LDHF   Difference    0.653   0.0889    1.19   0.968           0.144</span>
 <span class="co">#&gt; 5 HDLF   LDLF   Difference   -0.980  -1.49     -0.471  0.999           0    </span>
 <span class="co">#&gt; 6 LDHF   LDLF   Difference   -1.66   -2.09     -1.26   1               0    </span>
-<span class="co">#&gt;   prior.distribution prior.location prior.scale effect component       bf10</span>
-<span class="co">#&gt;   &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;          &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 cauchy                          0        0.77 fixed  conditional 3.95e+ 1</span>
-<span class="co">#&gt; 2 cauchy                          0        0.77 fixed  conditional 5.42e- 1</span>
-<span class="co">#&gt; 3 cauchy                          0        0.77 fixed  conditional 1.22e+10</span>
-<span class="co">#&gt; 4 cauchy                          0        0.77 fixed  conditional 6.50e- 1</span>
-<span class="co">#&gt; 5 cauchy                          0        0.77 fixed  conditional 1.72e+ 1</span>
-<span class="co">#&gt; 6 cauchy                          0        0.77 fixed  conditional 4.78e+ 6</span>
-<span class="co">#&gt;   log_e_bf10 label                           test.details    </span>
-<span class="co">#&gt;        &lt;dbl&gt; &lt;chr&gt;                           &lt;chr&gt;           </span>
-<span class="co">#&gt; 1      3.68  list(~log[e](BF['01'])==-3.68)  Student's t-test</span>
-<span class="co">#&gt; 2     -0.612 list(~log[e](BF['01'])==0.61)   Student's t-test</span>
-<span class="co">#&gt; 3     23.2   list(~log[e](BF['01'])==-23.22) Student's t-test</span>
-<span class="co">#&gt; 4     -0.430 list(~log[e](BF['01'])==0.43)   Student's t-test</span>
-<span class="co">#&gt; 5      2.84  list(~log[e](BF['01'])==-2.84)  Student's t-test</span>
-<span class="co">#&gt; 6     15.4   list(~log[e](BF['01'])==-15.38) Student's t-test</span></code></pre></div>
+<span class="co">#&gt;   prior.distribution prior.location prior.scale     bf10 log_e_bf10</span>
+<span class="co">#&gt;   &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt;    &lt;dbl&gt;      &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 cauchy                          0        0.77 3.95e+ 1      3.68 </span>
+<span class="co">#&gt; 2 cauchy                          0        0.77 5.42e- 1     -0.612</span>
+<span class="co">#&gt; 3 cauchy                          0        0.77 1.22e+10     23.2  </span>
+<span class="co">#&gt; 4 cauchy                          0        0.77 6.50e- 1     -0.430</span>
+<span class="co">#&gt; 5 cauchy                          0        0.77 1.72e+ 1      2.84 </span>
+<span class="co">#&gt; 6 cauchy                          0        0.77 4.78e+ 6     15.4  </span>
+<span class="co">#&gt;   label                           test.details    </span>
+<span class="co">#&gt;   &lt;chr&gt;                           &lt;chr&gt;           </span>
+<span class="co">#&gt; 1 list(~log[e](BF['01'])==-3.68)  Student's t-test</span>
+<span class="co">#&gt; 2 list(~log[e](BF['01'])==0.61)   Student's t-test</span>
+<span class="co">#&gt; 3 list(~log[e](BF['01'])==-23.22) Student's t-test</span>
+<span class="co">#&gt; 4 list(~log[e](BF['01'])==0.43)   Student's t-test</span>
+<span class="co">#&gt; 5 list(~log[e](BF['01'])==-2.84)  Student's t-test</span>
+<span class="co">#&gt; 6 list(~log[e](BF['01'])==-15.38) Student's t-test</span></code></pre></div>
 </div>
 </div>
 <div id="using-pairwisecomparisons-with-ggsignif" class="section level1">
@@ -594,6 +610,7 @@
 <a href="#example-1-between-subjects" class="anchor"></a>Example-1: between-subjects</h2>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># needed libraries</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://indrajeetpatil.github.io/pairwiseComparisons/">pairwiseComparisons</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/const-ae/ggsignif">ggsignif</a></span><span class="op">)</span>
@@ -607,29 +624,32 @@
 <span class="co"># using `pairwiseComparisons` package to create a dataframe with results</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="op">(</span><span class="va">df</span> <span class="op">&lt;-</span>
-  <span class="fu"><a href="reference/pairwise_comparisons.html">pairwise_comparisons</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">cyl</span>, <span class="va">wt</span>, messages <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/pairwise_comparisons.html">pairwise_comparisons</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">cyl</span>, <span class="va">wt</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>.data <span class="op">=</span> <span class="va">.</span>, groups <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map2.html">pmap</a></span><span class="op">(</span>.l <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">group1</span>, <span class="va">group2</span><span class="op">)</span>, .f <span class="op">=</span> <span class="va">c</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span>.data <span class="op">=</span> <span class="va">.</span>, <span class="va">group1</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 3 x 9</span>
-<span class="co">#&gt;   group1 group2 statistic   p.value significance test.details     </span>
-<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;      &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;            </span>
-<span class="co">#&gt; 1 4      6           5.39 0.00831   **           Games-Howell test</span>
-<span class="co">#&gt; 2 4      8           9.11 0.0000124 ***          Games-Howell test</span>
-<span class="co">#&gt; 3 6      8           5.12 0.00831   **           Games-Howell test</span>
-<span class="co">#&gt;   p.value.adjustment label                                      groups   </span>
-<span class="co">#&gt;   &lt;chr&gt;              &lt;chr&gt;                                      &lt;list&gt;   </span>
-<span class="co">#&gt; 1 Holm               list(~italic(p)[Holm-corrected]==0.008)    &lt;chr [2]&gt;</span>
-<span class="co">#&gt; 2 Holm               list(~italic(p)[Holm-corrected]==1.24e-05) &lt;chr [2]&gt;</span>
-<span class="co">#&gt; 3 Holm               list(~italic(p)[Holm-corrected]==0.008)    &lt;chr [2]&gt;</span>
+<span class="co">#&gt; # A tibble: 3 x 11</span>
+<span class="co">#&gt;   group1 group2 statistic   p.value alternative distribution significance</span>
+<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;      &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;        &lt;chr&gt;       </span>
+<span class="co">#&gt; 1 4      6           5.39 0.00831   two.sided   q            **          </span>
+<span class="co">#&gt; 2 4      8           9.11 0.0000124 two.sided   q            ***         </span>
+<span class="co">#&gt; 3 6      8           5.12 0.00831   two.sided   q            **          </span>
+<span class="co">#&gt;   test.details      p.value.adjustment</span>
+<span class="co">#&gt;   &lt;chr&gt;             &lt;chr&gt;             </span>
+<span class="co">#&gt; 1 Games-Howell test Holm              </span>
+<span class="co">#&gt; 2 Games-Howell test Holm              </span>
+<span class="co">#&gt; 3 Games-Howell test Holm              </span>
+<span class="co">#&gt;   label                                      groups   </span>
+<span class="co">#&gt;   &lt;chr&gt;                                      &lt;list&gt;   </span>
+<span class="co">#&gt; 1 list(~italic(p)[Holm-corrected]==0.008)    &lt;chr [2]&gt;</span>
+<span class="co">#&gt; 2 list(~italic(p)[Holm-corrected]==1.24e-05) &lt;chr [2]&gt;</span>
+<span class="co">#&gt; 3 list(~italic(p)[Holm-corrected]==0.008)    &lt;chr [2]&gt;</span>
 
 <span class="co"># using `geom_signif` to display results</span>
+<span class="co"># (note that you can choose not to display all comparisons)</span>
 <span class="va">p</span> <span class="op">+</span>
   <span class="fu">ggsignif</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/ggsignif/man/stat_signif.html">geom_signif</a></span><span class="op">(</span>
-    comparisons <span class="op">=</span> <span class="va">df</span><span class="op">$</span><span class="va">groups</span>,
-    map_signif_level <span class="op">=</span> <span class="cn">TRUE</span>,
-    tip_length <span class="op">=</span> <span class="fl">0.01</span>,
-    y_position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5.5</span>, <span class="fl">5.75</span>, <span class="fl">6</span><span class="op">)</span>,
-    annotations <span class="op">=</span> <span class="va">df</span><span class="op">$</span><span class="va">label</span>,
+    comparisons <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">df</span><span class="op">$</span><span class="va">groups</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>,
+    annotations <span class="op">=</span> <span class="va">df</span><span class="op">$</span><span class="va">label</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>,
     test <span class="op">=</span> <span class="cn">NULL</span>,
     na.rm <span class="op">=</span> <span class="cn">TRUE</span>,
     parse <span class="op">=</span> <span class="cn">TRUE</span>
@@ -661,22 +681,22 @@
   <span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>.data <span class="op">=</span> <span class="va">.</span>, groups <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map2.html">pmap</a></span><span class="op">(</span>.l <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">group1</span>, <span class="va">group2</span><span class="op">)</span>, .f <span class="op">=</span> <span class="va">c</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span>.data <span class="op">=</span> <span class="va">.</span>, <span class="va">group1</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 3 x 18</span>
+<span class="co">#&gt; # A tibble: 3 x 16</span>
 <span class="co">#&gt;   group1 group2 term       estimate conf.low conf.high    pd rope.percentage</span>
 <span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;           &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 Wine A Wine B Difference -0.00721  -0.0473    0.0307 0.624           0.431</span>
 <span class="co">#&gt; 2 Wine A Wine C Difference -0.0755   -0.127    -0.0242 0.990           0    </span>
 <span class="co">#&gt; 3 Wine B Wine C Difference -0.0693   -0.102    -0.0390 1.00            0    </span>
-<span class="co">#&gt;   prior.distribution prior.location prior.scale effect component     bf10</span>
-<span class="co">#&gt;   &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;        &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 cauchy                          0       0.707 fixed  conditional  0.235</span>
-<span class="co">#&gt; 2 cauchy                          0       0.707 fixed  conditional  3.71 </span>
-<span class="co">#&gt; 3 cauchy                          0       0.707 fixed  conditional 50.5  </span>
-<span class="co">#&gt;   log_e_bf10 label                          test.details     groups   </span>
-<span class="co">#&gt;        &lt;dbl&gt; &lt;chr&gt;                          &lt;chr&gt;            &lt;list&gt;   </span>
-<span class="co">#&gt; 1      -1.45 list(~log[e](BF['01'])==1.45)  Student's t-test &lt;chr [2]&gt;</span>
-<span class="co">#&gt; 2       1.31 list(~log[e](BF['01'])==-1.31) Student's t-test &lt;chr [2]&gt;</span>
-<span class="co">#&gt; 3       3.92 list(~log[e](BF['01'])==-3.92) Student's t-test &lt;chr [2]&gt;</span>
+<span class="co">#&gt;   prior.distribution prior.location prior.scale   bf10 log_e_bf10</span>
+<span class="co">#&gt;   &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 cauchy                          0       0.707  0.235      -1.45</span>
+<span class="co">#&gt; 2 cauchy                          0       0.707  3.71        1.31</span>
+<span class="co">#&gt; 3 cauchy                          0       0.707 50.5         3.92</span>
+<span class="co">#&gt;   label                          test.details     groups   </span>
+<span class="co">#&gt;   &lt;chr&gt;                          &lt;chr&gt;            &lt;list&gt;   </span>
+<span class="co">#&gt; 1 list(~log[e](BF['01'])==1.45)  Student's t-test &lt;chr [2]&gt;</span>
+<span class="co">#&gt; 2 list(~log[e](BF['01'])==-1.31) Student's t-test &lt;chr [2]&gt;</span>
+<span class="co">#&gt; 3 list(~log[e](BF['01'])==-3.92) Student's t-test &lt;chr [2]&gt;</span>
 
 <span class="co"># using `geom_signif` to display results</span>
 <span class="va">p</span> <span class="op">+</span>

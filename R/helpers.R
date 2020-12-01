@@ -1,34 +1,15 @@
 #' @name PMCMR_to_tibble
 #'
-#' @importFrom stats na.omit
-#' @importFrom dplyr bind_cols contains select
+#' @importFrom dplyr contains select rename
+#' @importFrom PMCMRplus toTidy
 #'
 #' @keywords internal
 #' @noRd
 
 # function body
 PMCMR_to_tibble <- function(mod, ...) {
-  # combining statistic and p-value columns
-  dplyr::bind_cols(
-    matrix_to_tidy(mod$statistic, "statistic"),
-    dplyr::select(matrix_to_tidy(mod$p.value, "p.value"), -dplyr::contains("group"))
-  )
-}
-
-#' @keywords internal
-#' @noRd
-
-matrix_to_tidy <- function(m, col_name = "value", ...) {
-  result <-
-    data.frame(
-      group2 = rep(rownames(m), each = ncol(m)),
-      group1 = rep(colnames(m), times = nrow(m)),
-      value = as.numeric(base::t(m)),
-      stringsAsFactors = FALSE
-    )
-
-  names(result)[3] <- col_name
-  as_tibble(stats::na.omit(result))
+  dplyr::select(PMCMRplus::toTidy(mod), -dplyr::contains("method")) %>%
+    dplyr::rename(.data = ., group2 = group1, group1 = group2)
 }
 
 #' @importFrom BayesFactor ttestBF
@@ -45,9 +26,6 @@ bf_internal_ttest <- function(data,
                               paired = FALSE,
                               bf.prior = 0.707,
                               ...) {
-  # make sure both quoted and unquoted arguments are allowed
-  c(x, y) %<-% c(rlang::ensym(x), rlang::ensym(y))
-
   # have a proper cleanup with NA removal
   data %<>%
     ipmisc::long_to_wide_converter(
@@ -60,7 +38,7 @@ bf_internal_ttest <- function(data,
 
   # relevant arguments
   if (isTRUE(paired)) bf.args <- list(x = data[[2]], y = data[[3]])
-  if (isFALSE(paired)) bf.args <- list(formula = rlang::new_formula({{ y }}, {{ x }}))
+  if (isFALSE(paired)) bf.args <- list(formula = rlang::new_formula(y, x))
 
   # creating a BayesFactor object
   bf_object <-
@@ -68,7 +46,6 @@ bf_internal_ttest <- function(data,
       .fn = BayesFactor::ttestBF,
       rscale = bf.prior,
       paired = paired,
-      progress = FALSE,
       data = as.data.frame(data),
       !!!bf.args
     )

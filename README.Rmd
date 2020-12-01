@@ -229,6 +229,7 @@ pairwise_comparisons(
 
 ```{r ggsignif, fig.height=7}
 # needed libraries
+set.seed(123)
 library(ggplot2)
 library(pairwiseComparisons)
 library(ggsignif)
@@ -242,18 +243,16 @@ p <- ggplot(mtcars, aes(cyl, wt)) + geom_boxplot()
 # using `pairwiseComparisons` package to create a dataframe with results
 set.seed(123)
 (df <-
-  pairwise_comparisons(mtcars, cyl, wt, messages = FALSE) %>%
+  pairwise_comparisons(mtcars, cyl, wt) %>%
   dplyr::mutate(.data = ., groups = purrr::pmap(.l = list(group1, group2), .f = c)) %>%
   dplyr::arrange(.data = ., group1))
 
 # using `geom_signif` to display results
+# (note that you can choose not to display all comparisons)
 p +
   ggsignif::geom_signif(
-    comparisons = df$groups,
-    map_signif_level = TRUE,
-    tip_length = 0.01,
-    y_position = c(5.5, 5.75, 6),
-    annotations = df$label,
+    comparisons = list(df$groups[[1]]),
+    annotations = df$label[[1]],
     test = NULL,
     na.rm = TRUE,
     parse = TRUE

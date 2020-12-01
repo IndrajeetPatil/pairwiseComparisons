@@ -36,9 +36,9 @@
 #'   levels being compared with each other (`group1` and `group2`) and `p.value`
 #'   column corresponding to this comparison. The dataframe will also contain a
 #'   `p.value.label` column containing a *label* for this *p*-value, in case
-#'   this needs to be displayed in `geom_ggsignif`. In addition to these common
-#'   columns across the different types of statistics, there will be additional
-#'   columns specific to the `type` of test being run.
+#'   this needs to be displayed in `ggsignif::geom_ggsignif`. In addition to
+#'   these common columns across the different types of statistics, there will
+#'   be additional columns specific to the `type` of test being run.
 #'
 #'   This function provides a unified syntax to carry out pairwise comparison
 #'   tests and internally relies on other packages to carry out these tests. For
@@ -53,15 +53,6 @@
 #'   \item *robust* :
 #'   [WRS2::rmmcp()] (paired) and  [WRS2::lincon()] (unpaired)
 #'   \item *Bayes Factor* : [BayesFactor::ttestBF()]
-#'   }
-#'
-#'   The `significance` column asterisks indicate significance levels of
-#'   *p*-values in the American Psychological Association (APA) mandated format:
-#'   \itemize{
-#'   \item `ns` : > 0.05
-#'   \item `*` : < 0.05
-#'   \item `**` : < 0.01
-#'   \item `***` : < 0.001
 #'   }
 #'
 #' @importFrom dplyr select rename mutate everything mutate_if across starts_with
@@ -82,7 +73,7 @@
 #' library(pairwiseComparisons)
 #'
 #' # show me all columns and make the column titles bold
-#' options(tibble.width = Inf, pillar.bold = TRUE)
+#' options(tibble.width = Inf, pillar.bold = TRUE, pillar.subtle_num = TRUE)
 #'
 #' #------------------- between-subjects design ----------------------------
 #'
@@ -207,7 +198,7 @@ pairwise_comparisons <- function(data,
   # ---------------------------- data cleanup -------------------------------
 
   # creating a dataframe (it's important for the data to be sorted by `x`)
-  df_internal <-
+  df_int <-
     long_to_wide_converter(
       data = data,
       x = {{ x }},
@@ -218,9 +209,9 @@ pairwise_comparisons <- function(data,
     )
 
   # for some tests, it's better to have these as vectors
-  x_vec <- df_internal %>% dplyr::pull({{ x }})
-  y_vec <- df_internal %>% dplyr::pull({{ y }})
-  g_vec <- df_internal$rowid
+  x_vec <- df_int %>% dplyr::pull({{ x }})
+  y_vec <- df_int %>% dplyr::pull({{ y }})
+  g_vec <- df_int$rowid
 
   # ---------------------------- nonparametric ----------------------------
 
@@ -264,16 +255,16 @@ pairwise_comparisons <- function(data,
     if (isFALSE(paired)) {
       mod <-
         WRS2::lincon(
-          formula = rlang::new_formula({{ y }}, {{ x }}),
-          data = df_internal,
+          formula = rlang::new_formula(y, x),
+          data = df_int,
           tr = tr
         )
     } else {
       mod <-
         WRS2::rmmcp(
-          y = df_internal[[rlang::as_name(y)]],
-          groups = df_internal[[rlang::as_name(x)]],
-          blocks = df_internal[["rowid"]],
+          y = df_int[[rlang::as_name(y)]],
+          groups = df_int[[rlang::as_name(x)]],
+          blocks = df_int[["rowid"]],
           tr = tr
         )
     }
@@ -286,9 +277,6 @@ pairwise_comparisons <- function(data,
         .cols = dplyr::starts_with("group"),
         .fns = ~ as.character(setNames(mod$fnames, seq_along(mod$fnames))[as.character(.)])
       ))
-
-    # for paired designs, there will be an unnecessary column to remove
-    if (("p.crit") %in% names(df)) df %<>% dplyr::select(.data = ., -p.crit)
 
     # renaming confidence interval names
     df %<>% dplyr::rename(estimate = psihat, conf.low = ci.lower, conf.high = ci.upper)
@@ -310,14 +298,15 @@ pairwise_comparisons <- function(data,
           paired = paired,
           na.action = na.omit
         ) %>%
-        .$p.value %>%
-        matrix_to_tidy(., "p.value")
+        parameters::model_parameters(.) %>%
+        parameters::standardize_names(data = ., style = "broom") %>%
+        dplyr::rename(.data = ., group2 = group1, group1 = group2)
 
       # test details
       test.details <- "Student's t-test"
     } else {
       # anova model
-      aovmodel <- stats::aov(rlang::new_formula({{ y }}, {{ x }}), df_internal)
+      aovmodel <- stats::aov(rlang::new_formula(y, x), df_int)
 
       # dataframe with Games-Howell test results
       df <- PMCMR_to_tibble(PMCMRplus::gamesHowellTest(aovmodel, p.adjust.method = "none"))
@@ -337,7 +326,7 @@ pairwise_comparisons <- function(data,
         .x = purrr::map2(
           .x = as.character(df$group1),
           .y = as.character(df$group2),
-          .f = function(a, b) droplevels(dplyr::filter(df_internal, {{ x }} %in% c(a, b)))
+          .f = function(a, b) droplevels(dplyr::filter(df_int, {{ x }} %in% c(a, b)))
         ),
         # internal function to carry out BF t-test
         .f = ~ bf_internal_ttest(

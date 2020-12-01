@@ -11,7 +11,6 @@ utils::globalVariables(
     "group1",
     "group2",
     "log_e_bf10",
-    "p.crit",
     "p.value",
     "psihat"
   ),

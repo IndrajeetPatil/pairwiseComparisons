@@ -10,24 +10,8 @@ ipmisc::`%>%`
 ipmisc::`%<>%`
 
 #' @export
-#' @importFrom ipmisc "%$%"
-ipmisc::`%$%`
-
-#' @export
 #' @importFrom ipmisc "%<-%"
 ipmisc::`%<-%`
-
-#' @export
-#' @importFrom rlang "%||%"
-rlang::`%||%`
-
-#' @export
-#' @importFrom rlang "%|%"
-rlang::`%|%`
-
-#' @export
-#' @importFrom rlang ":="
-rlang::`:=`
 
 #' @export
 #' @importFrom ipmisc tibble
