@@ -27,7 +27,7 @@ Imports:
     BayesFactor,
     dplyr,
     ipmisc,
-    parameters (>= 0.9.0.1),
+    parameters (>= 0.10.0),
     PMCMRplus (>= 1.7.1),
     purrr,
     rlang,
@@ -38,8 +38,6 @@ Suggests:
     rmarkdown,
     spelling,
     testthat
-Remotes:
-    easystats/parameters
 Encoding: UTF-8
 Language: en-US
 LazyData: true

@@ -299,7 +299,7 @@ pairwise_comparisons <- function(data,
         ) %>%
         parameters::model_parameters(.) %>%
         parameters::standardize_names(data = ., style = "broom") %>%
-        dplyr::rename(.data = ., group2 = group1, group1 = group2)
+        dplyr::rename(group2 = group1, group1 = group2)
 
       # test details
       test.details <- "Student's t-test"
@@ -341,7 +341,7 @@ pairwise_comparisons <- function(data,
         "list(~log[e](BF['01'])==", specify_decimal_p(-log_e_bf10, k), ")"
       )) %>%
       dplyr::ungroup() %>%
-      dplyr::mutate(.data = ., test.details = "Student's t-test")
+      dplyr::mutate(test.details = "Student's t-test")
 
     # combine it with the other details
     df <- dplyr::bind_cols(dplyr::select(df, group1, group2), df_tidy)
@@ -353,7 +353,7 @@ pairwise_comparisons <- function(data,
   df %<>%
     dplyr::mutate_if(.tbl = ., .predicate = is.factor, .funs = ~ as.character(.)) %>%
     dplyr::arrange(group1, group2) %>%
-    dplyr::select(.data = ., group1, group2, dplyr::everything())
+    dplyr::select(group1, group2, dplyr::everything())
 
   # clean-up for non-Bayes tests
   if (type != "bayes") {
