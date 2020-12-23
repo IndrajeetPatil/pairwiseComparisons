@@ -270,15 +270,9 @@ pairwise_comparisons <- function(data,
 
     # cleaning the raw object and getting it in the right format
     df <-
-      suppressMessages(as_tibble(mod$comp, .name_repair = "unique")) %>%
-      dplyr::rename(group1 = Group...1, group2 = Group...2) %>%
-      dplyr::mutate(dplyr::across(
-        .cols = dplyr::starts_with("group"),
-        .fns = ~ as.character(setNames(mod$fnames, seq_along(mod$fnames))[as.character(.)])
-      ))
-
-    # renaming confidence interval names
-    df %<>% dplyr::rename(estimate = psihat, conf.low = ci.lower, conf.high = ci.upper)
+      parameters::model_parameters(mod) %>%
+      parameters::standardize_names(data = ., style = "broom") %>%
+      dplyr::rename(estimate = psihat)
 
     # test details
     test.details <- "Yuen's trimmed means test"

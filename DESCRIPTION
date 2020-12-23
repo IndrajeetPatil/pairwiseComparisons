@@ -1,7 +1,7 @@
 Type: Package
 Package: pairwiseComparisons
 Title: Multiple Pairwise Comparison Tests
-Version: 3.1.1
+Version: 3.1.1.9000
 Authors@R: 
     person(given = "Indrajeet",
            family = "Patil",
@@ -27,8 +27,8 @@ Imports:
     BayesFactor,
     dplyr,
     ipmisc,
-    parameters (>= 0.10.0),
-    PMCMRplus (>= 1.7.1),
+    parameters (>= 0.10.1.1),
+    PMCMRplus,
     purrr,
     rlang,
     stats,
@@ -38,6 +38,8 @@ Suggests:
     rmarkdown,
     spelling,
     testthat
+Remotes:
+    easystats/parameters    
 Encoding: UTF-8
 Language: en-US
 LazyData: true
@@ -46,6 +48,5 @@ Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace",
 RoxygenNote: 7.1.1
 Config/testthat/edition: 3
 Config/testthat/parallel: true
-Config/testthat/start-first: watcher, parallel*
 
 
