@@ -12,6 +12,14 @@ PMCMR_to_tibble <- function(mod, ...) {
     dplyr::rename(group2 = group1, group1 = group2)
 }
 
+#' @description Handy shorthand for `model_parameters`
+#' @noRd
+
+tidy_model_parameters <- function(model, ...) {
+  parameters::model_parameters(model, verbose = FALSE, ...) %>%
+    parameters::standardize_names(data = ., style = "broom")
+}
+
 #' @importFrom BayesFactor ttestBF
 #' @importFrom dplyr mutate
 #' @importFrom parameters model_parameters standardize_names
@@ -51,8 +59,7 @@ bf_internal_ttest <- function(data,
     )
 
   # extracting Bayes Factors and other details
-  parameters::model_parameters(bf_object, verbose = FALSE, ...) %>%
-    parameters::standardize_names(data = ., style = "broom") %>%
+  tidy_model_parameters(bf_object) %>%
     dplyr::rename("bf10" = "bayes.factor") %>%
     dplyr::mutate(log_e_bf10 = log(bf10))
 }

@@ -270,10 +270,7 @@ pairwise_comparisons <- function(data,
     }
 
     # cleaning the raw object and getting it in the right format
-    df <-
-      parameters::model_parameters(mod) %>%
-      parameters::standardize_names(data = ., style = "broom") %>%
-      dplyr::rename(estimate = psihat)
+    df <- tidy_model_parameters(mod)
 
     # test details
     test.details <- "Yuen's trimmed means test"
@@ -292,8 +289,7 @@ pairwise_comparisons <- function(data,
           paired = paired,
           na.action = na.omit
         ) %>%
-        parameters::model_parameters(.) %>%
-        parameters::standardize_names(data = ., style = "broom") %>%
+        tidy_model_parameters(.) %>%
         dplyr::rename(group2 = group1, group1 = group2)
 
       # test details
