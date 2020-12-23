@@ -63,6 +63,7 @@
 #' @importFrom rlang !! enquo as_string ensym
 #' @importFrom purrr map2 map_dfr
 #' @importFrom ipmisc stats_type_switch specify_decimal_p long_to_wide_converter
+#' @importFrom insight standardize_names
 #'
 #' @examples
 #'

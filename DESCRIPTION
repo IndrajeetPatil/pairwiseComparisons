@@ -26,6 +26,7 @@ Depends:
 Imports:
     BayesFactor,
     dplyr,
+    insight (>= 0.11.1.1),
     ipmisc,
     parameters (>= 0.10.1.1),
     PMCMRplus,
@@ -39,7 +40,8 @@ Suggests:
     spelling,
     testthat
 Remotes:
-    easystats/parameters    
+    easystats/insight,
+    easystats/parameters
 Encoding: UTF-8
 Language: en-US
 LazyData: true
