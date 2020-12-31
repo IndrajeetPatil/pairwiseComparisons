@@ -28,12 +28,7 @@ tidy_model_parameters <- function(model, ...) {
 #' @noRd
 #' @keywords internal
 
-bf_internal_ttest <- function(data,
-                              x,
-                              y,
-                              paired = FALSE,
-                              bf.prior = 0.707,
-                              ...) {
+bf_ttest <- function(data, x, y, paired = FALSE, bf.prior = 0.707, ...) {
   # have a proper cleanup with NA removal
   data %<>%
     ipmisc::long_to_wide_converter(
@@ -59,7 +54,7 @@ bf_internal_ttest <- function(data,
     )
 
   # extracting Bayes Factors and other details
-  tidy_model_parameters(bf_object) %>%
+  dplyr::filter(tidy_model_parameters(bf_object), !is.na(bayes.factor)) %>%
     dplyr::rename("bf10" = "bayes.factor") %>%
     dplyr::mutate(log_e_bf10 = log(bf10))
 }
@@ -119,7 +114,7 @@ pairwise_caption <- function(caption,
   # which comparisons are shown? (standardize strings)
   pairwise.display <-
     switch(
-      EXPR = substr(x = pairwise.display, start = 1L, stop = 1L),
+      EXPR = substr(pairwise.display, 1L, 1L),
       s = "only significant",
       n = "only non-significant",
       "all"
@@ -129,17 +124,12 @@ pairwise_caption <- function(caption,
   substitute(
     atop(
       displaystyle(top.text),
-      expr = paste(
-        "Pairwise test: ",
-        bold(test.description),
-        "; Comparisons shown: ",
-        bold(pairwise.display)
-      )
+      expr = paste("Pairwise test: ", bold(test), "; Comparisons shown: ", bold(display))
     ),
     env = list(
       top.text = caption,
-      test.description = test.description,
-      pairwise.display = pairwise.display
+      test = test.description,
+      display = pairwise.display
     )
   )
 }

@@ -3,6 +3,7 @@
 utils::globalVariables(
   names = c(
     ".",
+    "bayes.factor",
     "bf10",
     "group1",
     "group2",

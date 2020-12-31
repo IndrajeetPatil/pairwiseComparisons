@@ -62,7 +62,7 @@
 #' @importFrom PMCMRplus durbinAllPairsTest kwAllPairsDunnTest gamesHowellTest
 #' @importFrom rlang !! enquo as_string ensym
 #' @importFrom purrr map2 map_dfr
-#' @importFrom ipmisc stats_type_switch specify_decimal_p long_to_wide_converter
+#' @importFrom ipmisc stats_type_switch format_num long_to_wide_converter
 #' @importFrom insight standardize_names
 #'
 #' @examples
@@ -199,7 +199,7 @@ pairwise_comparisons <- function(data,
 
   # creating a dataframe (it's important for the data to be sorted by `x`)
   df_int <-
-    long_to_wide_converter(
+    ipmisc::long_to_wide_converter(
       data = data,
       x = {{ x }},
       y = {{ y }},
@@ -319,7 +319,7 @@ pairwise_comparisons <- function(data,
           .f = function(a, b) droplevels(dplyr::filter(df_int, {{ x }} %in% c(a, b)))
         ),
         # internal function to carry out BF t-test
-        .f = ~ bf_internal_ttest(
+        .f = ~ bf_ttest(
           data = .x,
           x = {{ x }},
           y = {{ y }},
@@ -328,9 +328,7 @@ pairwise_comparisons <- function(data,
         )
       ) %>%
       dplyr::rowwise() %>%
-      dplyr::mutate(label = paste0(
-        "list(~log[e](BF['01'])==", specify_decimal_p(-log_e_bf10, k), ")"
-      )) %>%
+      dplyr::mutate(label = paste0("list(~log[e](BF['01'])==", format_num(-log_e_bf10, k), ")")) %>%
       dplyr::ungroup() %>%
       dplyr::mutate(test.details = "Student's t-test")
 
@@ -357,14 +355,15 @@ pairwise_comparisons <- function(data,
       dplyr::rowwise() %>%
       dplyr::mutate(
         label = dplyr::case_when(
-          p.value.adjustment != "None" ~ paste0(
+          p.value.adjustment != "None" ~
+          paste0(
             "list(~italic(p)[",
             p.value.adjustment,
             "-corrected]==",
-            specify_decimal_p(p.value, k, TRUE),
+            format_num(p.value, k, TRUE),
             ")"
           ),
-          TRUE ~ paste0("list(~italic(p)[uncorrected]==", specify_decimal_p(p.value, k, TRUE), ")")
+          TRUE ~ paste0("list(~italic(p)[uncorrected]==", format_num(p.value, k, TRUE), ")")
         )
       ) %>%
       dplyr::ungroup()

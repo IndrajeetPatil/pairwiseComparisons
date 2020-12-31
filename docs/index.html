@@ -123,7 +123,7 @@
 <td><a href="https://cran.r-project.org/"><img src="https://img.shields.io/badge/R%3E%3D-3.6.0-6666ff.svg" alt="minimal R version"></a></td>
 <td><a href="https://www.tidyverse.org/lifecycle/"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="lifecycle"></a></td>
 <td><a href="https://CRAN.R-project.org/package=pairwiseComparisons"><img src="https://cranlogs.r-pkg.org/badges/last-month/pairwiseComparisons?color=blue" alt="Monthly downloads badge"></a></td>
-<td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/issues"><img src="https://img.shields.io/badge/issues-0-red.svg" alt="Github Issues"></a></td>
+<td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/issues"><img src="https://img.shields.io/badge/issues-1-red.svg" alt="Github Issues"></a></td>
 <td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/blob/master/README.md"><img src="https://img.shields.io/badge/vignettes-3.1.0-orange.svg?colorB=FF5722" alt="vignettes"></a></td>
 </tr>
 <tr class="even">
@@ -137,7 +137,7 @@
 <td><a href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img src="https://img.shields.io/badge/licence-GPL--3-blue.svg" alt="Licence"></a></td>
 <td><a href="https://codecov.io/gh/IndrajeetPatil/pairwiseComparisons?branch=master"><img src="https://codecov.io/gh/IndrajeetPatil/pairwiseComparisons/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></td>
 <td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/blob/master/tests/README.md"><img src="https://img.shields.io/badge/covrpage-Last_Build_2020_05_29-brightgreen.svg" alt="Covrpage Summary"></a></td>
-<td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/commits/master"><img src="https://img.shields.io/badge/last%20change-2020--12--23-yellowgreen.svg" alt="Last-changedate"></a></td>
+<td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/commits/master"><img src="https://img.shields.io/badge/last%20change-2020--12--31-yellowgreen.svg" alt="Last-changedate"></a></td>
 <td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/commits/master"><img src="https://img.shields.io/github/last-commit/IndrajeetPatil/pairwiseComparisons.svg" alt="GitHub last commit"></a></td>
 </tr>
 <tr class="even">
@@ -419,11 +419,11 @@
 <span class="co">#&gt;   group1  group2  term       estimate conf.low conf.high    pd rope.percentage</span>
 <span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;           &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 carni   herbi   Difference   0.376   -0.349     1.15   0.800           0.183</span>
-<span class="co">#&gt; 2 carni   insecti Difference  -0.0339  -0.0990    0.0348 0.812           0.145</span>
-<span class="co">#&gt; 3 carni   omni    Difference   0.0447  -0.100     0.210  0.688           0.229</span>
-<span class="co">#&gt; 4 herbi   insecti Difference  -0.353   -1.38      0.501  0.742           0.190</span>
-<span class="co">#&gt; 5 herbi   omni    Difference  -0.364   -0.943     0.197  0.848           0.176</span>
-<span class="co">#&gt; 6 insecti omni    Difference   0.0766  -0.111     0.276  0.743           0.182</span>
+<span class="co">#&gt; 2 carni   insecti Difference  -0.0348  -0.105     0.0272 0.818           0.143</span>
+<span class="co">#&gt; 3 carni   omni    Difference   0.0440  -0.0962    0.208  0.693           0.252</span>
+<span class="co">#&gt; 4 herbi   insecti Difference  -0.394   -1.34      0.596  0.758           0.177</span>
+<span class="co">#&gt; 5 herbi   omni    Difference  -0.362   -0.938     0.191  0.859           0.172</span>
+<span class="co">#&gt; 6 insecti omni    Difference   0.0762  -0.141     0.261  0.732           0.172</span>
 <span class="co">#&gt;   prior.distribution prior.location prior.scale  bf10 log_e_bf10</span>
 <span class="co">#&gt;   &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 cauchy                          0       0.707 0.540     -0.617</span>
@@ -553,12 +553,12 @@
 <span class="co">#&gt; # A tibble: 6 x 15</span>
 <span class="co">#&gt;   group1 group2 term       estimate conf.low conf.high    pd rope.percentage</span>
 <span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;           &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 HDHF   HDLF   Difference   -1.10   -1.62     -0.621  1               0    </span>
-<span class="co">#&gt; 2 HDHF   LDHF   Difference   -0.453  -0.868    -0.0337 0.954           0.166</span>
-<span class="co">#&gt; 3 HDHF   LDLF   Difference   -2.13   -2.53     -1.70   1               0    </span>
-<span class="co">#&gt; 4 HDLF   LDHF   Difference    0.653   0.0889    1.19   0.968           0.144</span>
-<span class="co">#&gt; 5 HDLF   LDLF   Difference   -0.980  -1.49     -0.471  0.999           0    </span>
-<span class="co">#&gt; 6 LDHF   LDLF   Difference   -1.66   -2.09     -1.26   1               0    </span>
+<span class="co">#&gt; 1 HDHF   HDLF   Difference   -1.10    -1.62    -0.621  1               0    </span>
+<span class="co">#&gt; 2 HDHF   LDHF   Difference   -0.465   -0.868   -0.0521 0.962           0.151</span>
+<span class="co">#&gt; 3 HDHF   LDLF   Difference   -2.13    -2.57    -1.74   1               0    </span>
+<span class="co">#&gt; 4 HDLF   LDHF   Difference    0.652    0.105    1.21   0.971           0.135</span>
+<span class="co">#&gt; 5 HDLF   LDLF   Difference   -0.983   -1.46    -0.506  0.999           0    </span>
+<span class="co">#&gt; 6 LDHF   LDLF   Difference   -1.67    -2.10    -1.27   1               0    </span>
 <span class="co">#&gt;   prior.distribution prior.location prior.scale     bf10 log_e_bf10</span>
 <span class="co">#&gt;   &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt;    &lt;dbl&gt;      &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 cauchy                          0        0.77 3.95e+ 1      3.68 </span>
@@ -587,7 +587,7 @@
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># needed libraries</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://indrajeetpatil.github.io/pairwiseComparisons/">pairwiseComparisons</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/const-ae/ggsignif">ggsignif</a></span><span class="op">)</span>
 
@@ -633,7 +633,7 @@
 <a href="#example-2-within-subjects" class="anchor"></a>Example-2: within-subjects</h2>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># needed libraries</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://indrajeetpatil.github.io/pairwiseComparisons/">pairwiseComparisons</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/const-ae/ggsignif">ggsignif</a></span><span class="op">)</span>
 
@@ -658,8 +658,8 @@
 <span class="co">#&gt;   group1 group2 term       estimate conf.low conf.high    pd rope.percentage</span>
 <span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;           &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 Wine A Wine B Difference -0.00721  -0.0473    0.0307 0.624           0.431</span>
-<span class="co">#&gt; 2 Wine A Wine C Difference -0.0755   -0.127    -0.0242 0.990           0    </span>
-<span class="co">#&gt; 3 Wine B Wine C Difference -0.0693   -0.102    -0.0390 1.00            0    </span>
+<span class="co">#&gt; 2 Wine A Wine C Difference -0.0766   -0.129    -0.0265 0.989           0    </span>
+<span class="co">#&gt; 3 Wine B Wine C Difference -0.0696   -0.0991   -0.0368 1.00            0    </span>
 <span class="co">#&gt;   prior.distribution prior.location prior.scale   bf10 log_e_bf10</span>
 <span class="co">#&gt;   &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 cauchy                          0       0.707  0.235      -1.45</span>
