@@ -197,7 +197,7 @@
 <th>Test</th>
 <th>
 <em>p</em>-value adjustment?</th>
-<th>Function</th>
+<th>Function used</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
@@ -229,7 +229,7 @@
 <td><code><a href="https://rdrr.io/pkg/WRS2/man/t1way.html">WRS2::lincon</a></code></td>
 </tr>
 <tr class="odd">
-<td>Bayes Factor</td>
+<td>Bayesian</td>
 <td><code>NA</code></td>
 <td>Student’s <em>t</em>-test</td>
 <td><code>NA</code></td>
@@ -247,7 +247,7 @@
 <th>Test</th>
 <th>
 <em>p</em>-value adjustment?</th>
-<th>Function</th>
+<th>Function used</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
@@ -269,7 +269,7 @@
 <td><code><a href="https://rdrr.io/pkg/WRS2/man/rmanova.html">WRS2::rmmcp</a></code></td>
 </tr>
 <tr class="even">
-<td>Bayes Factor</td>
+<td>Bayesian</td>
 <td>Student’s <em>t</em>-test</td>
 <td><code>NA</code></td>
 <td><code><a href="https://rdrr.io/pkg/BayesFactor/man/ttestBF.html">BayesFactor::ttestBF</a></code></td>
@@ -335,23 +335,31 @@
   paired <span class="op">=</span> <span class="cn">FALSE</span>,
   p.adjust.method <span class="op">=</span> <span class="st">"bonferroni"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 6 x 9</span>
-<span class="co">#&gt;   group1  group2  statistic p.value alternative distribution test.details     </span>
-<span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;       &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;        &lt;chr&gt;            </span>
-<span class="co">#&gt; 1 carni   herbi        2.17       1 two.sided   q            Games-Howell test</span>
-<span class="co">#&gt; 2 carni   insecti     -2.17       1 two.sided   q            Games-Howell test</span>
-<span class="co">#&gt; 3 carni   omni         1.10       1 two.sided   q            Games-Howell test</span>
-<span class="co">#&gt; 4 herbi   insecti     -2.41       1 two.sided   q            Games-Howell test</span>
-<span class="co">#&gt; 5 herbi   omni        -1.87       1 two.sided   q            Games-Howell test</span>
-<span class="co">#&gt; 6 insecti omni         2.19       1 two.sided   q            Games-Howell test</span>
-<span class="co">#&gt;   p.value.adjustment label                                        </span>
-<span class="co">#&gt;   &lt;chr&gt;              &lt;chr&gt;                                        </span>
-<span class="co">#&gt; 1 Bonferroni         list(~italic(p)[Bonferroni-corrected]==1.000)</span>
-<span class="co">#&gt; 2 Bonferroni         list(~italic(p)[Bonferroni-corrected]==1.000)</span>
-<span class="co">#&gt; 3 Bonferroni         list(~italic(p)[Bonferroni-corrected]==1.000)</span>
-<span class="co">#&gt; 4 Bonferroni         list(~italic(p)[Bonferroni-corrected]==1.000)</span>
-<span class="co">#&gt; 5 Bonferroni         list(~italic(p)[Bonferroni-corrected]==1.000)</span>
-<span class="co">#&gt; 6 Bonferroni         list(~italic(p)[Bonferroni-corrected]==1.000)</span>
+<span class="co">#&gt; # A tibble: 6 x 11</span>
+<span class="co">#&gt;   group1  group2  statistic p.value alternative method            distribution</span>
+<span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;       &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;             &lt;chr&gt;       </span>
+<span class="co">#&gt; 1 carni   herbi        2.17       1 two.sided   Games-Howell test q           </span>
+<span class="co">#&gt; 2 carni   insecti     -2.17       1 two.sided   Games-Howell test q           </span>
+<span class="co">#&gt; 3 carni   omni         1.10       1 two.sided   Games-Howell test q           </span>
+<span class="co">#&gt; 4 herbi   insecti     -2.41       1 two.sided   Games-Howell test q           </span>
+<span class="co">#&gt; 5 herbi   omni        -1.87       1 two.sided   Games-Howell test q           </span>
+<span class="co">#&gt; 6 insecti omni         2.19       1 two.sided   Games-Howell test q           </span>
+<span class="co">#&gt;   p.adjustment test.details      p.value.adjustment</span>
+<span class="co">#&gt;   &lt;chr&gt;        &lt;chr&gt;             &lt;chr&gt;             </span>
+<span class="co">#&gt; 1 none         Games-Howell test Bonferroni        </span>
+<span class="co">#&gt; 2 none         Games-Howell test Bonferroni        </span>
+<span class="co">#&gt; 3 none         Games-Howell test Bonferroni        </span>
+<span class="co">#&gt; 4 none         Games-Howell test Bonferroni        </span>
+<span class="co">#&gt; 5 none         Games-Howell test Bonferroni        </span>
+<span class="co">#&gt; 6 none         Games-Howell test Bonferroni        </span>
+<span class="co">#&gt;   label                                        </span>
+<span class="co">#&gt;   &lt;chr&gt;                                        </span>
+<span class="co">#&gt; 1 list(~italic(p)[Bonferroni-corrected]==1.000)</span>
+<span class="co">#&gt; 2 list(~italic(p)[Bonferroni-corrected]==1.000)</span>
+<span class="co">#&gt; 3 list(~italic(p)[Bonferroni-corrected]==1.000)</span>
+<span class="co">#&gt; 4 list(~italic(p)[Bonferroni-corrected]==1.000)</span>
+<span class="co">#&gt; 5 list(~italic(p)[Bonferroni-corrected]==1.000)</span>
+<span class="co">#&gt; 6 list(~italic(p)[Bonferroni-corrected]==1.000)</span>
 
 <span class="co"># non-parametric</span>
 <span class="fu"><a href="reference/pairwise_comparisons.html">pairwise_comparisons</a></span><span class="op">(</span>
@@ -362,23 +370,31 @@
   paired <span class="op">=</span> <span class="cn">FALSE</span>,
   p.adjust.method <span class="op">=</span> <span class="st">"none"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 6 x 9</span>
-<span class="co">#&gt;   group1  group2  statistic p.value alternative distribution test.details</span>
-<span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;       &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;        &lt;chr&gt;       </span>
-<span class="co">#&gt; 1 carni   herbi       0.582  0.561  two.sided   z            Dunn test   </span>
-<span class="co">#&gt; 2 carni   insecti     1.88   0.0595 two.sided   z            Dunn test   </span>
-<span class="co">#&gt; 3 carni   omni        1.14   0.254  two.sided   z            Dunn test   </span>
-<span class="co">#&gt; 4 herbi   insecti     1.63   0.102  two.sided   z            Dunn test   </span>
-<span class="co">#&gt; 5 herbi   omni        0.717  0.474  two.sided   z            Dunn test   </span>
-<span class="co">#&gt; 6 insecti omni        1.14   0.254  two.sided   z            Dunn test   </span>
-<span class="co">#&gt;   p.value.adjustment label                               </span>
-<span class="co">#&gt;   &lt;chr&gt;              &lt;chr&gt;                               </span>
-<span class="co">#&gt; 1 None               list(~italic(p)[uncorrected]==0.561)</span>
-<span class="co">#&gt; 2 None               list(~italic(p)[uncorrected]==0.060)</span>
-<span class="co">#&gt; 3 None               list(~italic(p)[uncorrected]==0.254)</span>
-<span class="co">#&gt; 4 None               list(~italic(p)[uncorrected]==0.102)</span>
-<span class="co">#&gt; 5 None               list(~italic(p)[uncorrected]==0.474)</span>
-<span class="co">#&gt; 6 None               list(~italic(p)[uncorrected]==0.254)</span>
+<span class="co">#&gt; # A tibble: 6 x 11</span>
+<span class="co">#&gt;   group1  group2  statistic p.value alternative method               </span>
+<span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;       &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;                </span>
+<span class="co">#&gt; 1 carni   herbi       0.582  0.561  two.sided   Dunn's all-pairs test</span>
+<span class="co">#&gt; 2 carni   insecti     1.88   0.0595 two.sided   Dunn's all-pairs test</span>
+<span class="co">#&gt; 3 carni   omni        1.14   0.254  two.sided   Dunn's all-pairs test</span>
+<span class="co">#&gt; 4 herbi   insecti     1.63   0.102  two.sided   Dunn's all-pairs test</span>
+<span class="co">#&gt; 5 herbi   omni        0.717  0.474  two.sided   Dunn's all-pairs test</span>
+<span class="co">#&gt; 6 insecti omni        1.14   0.254  two.sided   Dunn's all-pairs test</span>
+<span class="co">#&gt;   distribution p.adjustment test.details p.value.adjustment</span>
+<span class="co">#&gt;   &lt;chr&gt;        &lt;chr&gt;        &lt;chr&gt;        &lt;chr&gt;             </span>
+<span class="co">#&gt; 1 z            none         Dunn test    None              </span>
+<span class="co">#&gt; 2 z            none         Dunn test    None              </span>
+<span class="co">#&gt; 3 z            none         Dunn test    None              </span>
+<span class="co">#&gt; 4 z            none         Dunn test    None              </span>
+<span class="co">#&gt; 5 z            none         Dunn test    None              </span>
+<span class="co">#&gt; 6 z            none         Dunn test    None              </span>
+<span class="co">#&gt;   label                               </span>
+<span class="co">#&gt;   &lt;chr&gt;                               </span>
+<span class="co">#&gt; 1 list(~italic(p)[uncorrected]==0.561)</span>
+<span class="co">#&gt; 2 list(~italic(p)[uncorrected]==0.060)</span>
+<span class="co">#&gt; 3 list(~italic(p)[uncorrected]==0.254)</span>
+<span class="co">#&gt; 4 list(~italic(p)[uncorrected]==0.102)</span>
+<span class="co">#&gt; 5 list(~italic(p)[uncorrected]==0.474)</span>
+<span class="co">#&gt; 6 list(~italic(p)[uncorrected]==0.254)</span>
 
 <span class="co"># robust</span>
 <span class="fu"><a href="reference/pairwise_comparisons.html">pairwise_comparisons</a></span><span class="op">(</span>
@@ -486,23 +502,39 @@
   paired <span class="op">=</span> <span class="cn">TRUE</span>,
   p.adjust.method <span class="op">=</span> <span class="st">"BY"</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 6 x 9</span>
-<span class="co">#&gt;   group1 group2 statistic  p.value alternative distribution test.details       </span>
-<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;      &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;        &lt;chr&gt;              </span>
-<span class="co">#&gt; 1 HDHF   HDLF        4.78 1.44e- 5 two.sided   t            Durbin-Conover test</span>
-<span class="co">#&gt; 2 HDHF   LDHF        2.44 4.47e- 2 two.sided   t            Durbin-Conover test</span>
-<span class="co">#&gt; 3 HDHF   LDLF        8.01 5.45e-13 two.sided   t            Durbin-Conover test</span>
-<span class="co">#&gt; 4 HDLF   LDHF        2.34 4.96e- 2 two.sided   t            Durbin-Conover test</span>
-<span class="co">#&gt; 5 HDLF   LDLF        3.23 5.05e- 3 two.sided   t            Durbin-Conover test</span>
-<span class="co">#&gt; 6 LDHF   LDLF        5.57 4.64e- 7 two.sided   t            Durbin-Conover test</span>
-<span class="co">#&gt;   p.value.adjustment label                                   </span>
-<span class="co">#&gt;   &lt;chr&gt;              &lt;chr&gt;                                   </span>
-<span class="co">#&gt; 1 BY                 list(~italic(p)[BY-corrected]==1.44e-05)</span>
-<span class="co">#&gt; 2 BY                 list(~italic(p)[BY-corrected]==0.045)   </span>
-<span class="co">#&gt; 3 BY                 list(~italic(p)[BY-corrected]==5.45e-13)</span>
-<span class="co">#&gt; 4 BY                 list(~italic(p)[BY-corrected]==0.050)   </span>
-<span class="co">#&gt; 5 BY                 list(~italic(p)[BY-corrected]==0.005)   </span>
-<span class="co">#&gt; 6 BY                 list(~italic(p)[BY-corrected]==4.64e-07)</span>
+<span class="co">#&gt; # A tibble: 6 x 11</span>
+<span class="co">#&gt;   group1 group2 statistic  p.value alternative</span>
+<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;      &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;      </span>
+<span class="co">#&gt; 1 HDHF   HDLF        4.78 1.44e- 5 two.sided  </span>
+<span class="co">#&gt; 2 HDHF   LDHF        2.44 4.47e- 2 two.sided  </span>
+<span class="co">#&gt; 3 HDHF   LDLF        8.01 5.45e-13 two.sided  </span>
+<span class="co">#&gt; 4 HDLF   LDHF        2.34 4.96e- 2 two.sided  </span>
+<span class="co">#&gt; 5 HDLF   LDLF        3.23 5.05e- 3 two.sided  </span>
+<span class="co">#&gt; 6 LDHF   LDLF        5.57 4.64e- 7 two.sided  </span>
+<span class="co">#&gt;   method                                                                </span>
+<span class="co">#&gt;   &lt;chr&gt;                                                                 </span>
+<span class="co">#&gt; 1 Durbin's all-pairs test for a two-way balanced incomplete block design</span>
+<span class="co">#&gt; 2 Durbin's all-pairs test for a two-way balanced incomplete block design</span>
+<span class="co">#&gt; 3 Durbin's all-pairs test for a two-way balanced incomplete block design</span>
+<span class="co">#&gt; 4 Durbin's all-pairs test for a two-way balanced incomplete block design</span>
+<span class="co">#&gt; 5 Durbin's all-pairs test for a two-way balanced incomplete block design</span>
+<span class="co">#&gt; 6 Durbin's all-pairs test for a two-way balanced incomplete block design</span>
+<span class="co">#&gt;   distribution p.adjustment test.details        p.value.adjustment</span>
+<span class="co">#&gt;   &lt;chr&gt;        &lt;chr&gt;        &lt;chr&gt;               &lt;chr&gt;             </span>
+<span class="co">#&gt; 1 t            none         Durbin-Conover test BY                </span>
+<span class="co">#&gt; 2 t            none         Durbin-Conover test BY                </span>
+<span class="co">#&gt; 3 t            none         Durbin-Conover test BY                </span>
+<span class="co">#&gt; 4 t            none         Durbin-Conover test BY                </span>
+<span class="co">#&gt; 5 t            none         Durbin-Conover test BY                </span>
+<span class="co">#&gt; 6 t            none         Durbin-Conover test BY                </span>
+<span class="co">#&gt;   label                                   </span>
+<span class="co">#&gt;   &lt;chr&gt;                                   </span>
+<span class="co">#&gt; 1 list(~italic(p)[BY-corrected]==1.44e-05)</span>
+<span class="co">#&gt; 2 list(~italic(p)[BY-corrected]==0.045)   </span>
+<span class="co">#&gt; 3 list(~italic(p)[BY-corrected]==5.45e-13)</span>
+<span class="co">#&gt; 4 list(~italic(p)[BY-corrected]==0.050)   </span>
+<span class="co">#&gt; 5 list(~italic(p)[BY-corrected]==0.005)   </span>
+<span class="co">#&gt; 6 list(~italic(p)[BY-corrected]==4.64e-07)</span>
 
 <span class="co"># robust</span>
 <span class="fu"><a href="reference/pairwise_comparisons.html">pairwise_comparisons</a></span><span class="op">(</span>
@@ -604,17 +636,22 @@
   <span class="fu"><a href="reference/pairwise_comparisons.html">pairwise_comparisons</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">cyl</span>, <span class="va">wt</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>.data <span class="op">=</span> <span class="va">.</span>, groups <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map2.html">pmap</a></span><span class="op">(</span>.l <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">group1</span>, <span class="va">group2</span><span class="op">)</span>, .f <span class="op">=</span> <span class="va">c</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span>.data <span class="op">=</span> <span class="va">.</span>, <span class="va">group1</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 3 x 10</span>
-<span class="co">#&gt;   group1 group2 statistic   p.value alternative distribution test.details     </span>
-<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;      &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;        &lt;chr&gt;            </span>
-<span class="co">#&gt; 1 4      6           5.39 0.00831   two.sided   q            Games-Howell test</span>
-<span class="co">#&gt; 2 4      8           9.11 0.0000124 two.sided   q            Games-Howell test</span>
-<span class="co">#&gt; 3 6      8           5.12 0.00831   two.sided   q            Games-Howell test</span>
-<span class="co">#&gt;   p.value.adjustment label                                      groups   </span>
-<span class="co">#&gt;   &lt;chr&gt;              &lt;chr&gt;                                      &lt;list&gt;   </span>
-<span class="co">#&gt; 1 Holm               list(~italic(p)[Holm-corrected]==0.008)    &lt;chr [2]&gt;</span>
-<span class="co">#&gt; 2 Holm               list(~italic(p)[Holm-corrected]==1.24e-05) &lt;chr [2]&gt;</span>
-<span class="co">#&gt; 3 Holm               list(~italic(p)[Holm-corrected]==0.008)    &lt;chr [2]&gt;</span>
+<span class="co">#&gt; # A tibble: 3 x 12</span>
+<span class="co">#&gt;   group1 group2 statistic   p.value alternative method            distribution</span>
+<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;      &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;             &lt;chr&gt;       </span>
+<span class="co">#&gt; 1 4      6           5.39 0.00831   two.sided   Games-Howell test q           </span>
+<span class="co">#&gt; 2 4      8           9.11 0.0000124 two.sided   Games-Howell test q           </span>
+<span class="co">#&gt; 3 6      8           5.12 0.00831   two.sided   Games-Howell test q           </span>
+<span class="co">#&gt;   p.adjustment test.details      p.value.adjustment</span>
+<span class="co">#&gt;   &lt;chr&gt;        &lt;chr&gt;             &lt;chr&gt;             </span>
+<span class="co">#&gt; 1 none         Games-Howell test Holm              </span>
+<span class="co">#&gt; 2 none         Games-Howell test Holm              </span>
+<span class="co">#&gt; 3 none         Games-Howell test Holm              </span>
+<span class="co">#&gt;   label                                      groups   </span>
+<span class="co">#&gt;   &lt;chr&gt;                                      &lt;list&gt;   </span>
+<span class="co">#&gt; 1 list(~italic(p)[Holm-corrected]==0.008)    &lt;chr [2]&gt;</span>
+<span class="co">#&gt; 2 list(~italic(p)[Holm-corrected]==1.24e-05) &lt;chr [2]&gt;</span>
+<span class="co">#&gt; 3 list(~italic(p)[Holm-corrected]==0.008)    &lt;chr [2]&gt;</span>
 
 <span class="co"># using `geom_signif` to display results</span>
 <span class="co"># (note that you can choose not to display all comparisons)</span>

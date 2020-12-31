@@ -1,17 +1,3 @@
-#' @name PMCMR_to_tibble
-#'
-#' @importFrom dplyr contains select rename
-#' @importFrom PMCMRplus toTidy
-#'
-#' @keywords internal
-#' @noRd
-
-# function body
-PMCMR_to_tibble <- function(mod, ...) {
-  dplyr::select(PMCMRplus::toTidy(mod), -dplyr::contains("method")) %>%
-    dplyr::rename(group2 = group1, group1 = group2)
-}
-
 #' @description Handy shorthand for `model_parameters`
 #' @noRd
 
