@@ -60,7 +60,7 @@
 #' @importFrom stats p.adjust pairwise.t.test na.omit aov
 #' @importFrom WRS2 lincon rmmcp
 #' @importFrom PMCMRplus durbinAllPairsTest kwAllPairsDunnTest gamesHowellTest
-#' @importFrom rlang !! enquo as_string ensym
+#' @importFrom rlang !! enquo as_string ensym exec
 #' @importFrom purrr map2 map_dfr
 #' @importFrom ipmisc stats_type_switch format_num long_to_wide_converter
 #' @importFrom insight standardize_names
@@ -216,33 +216,30 @@ pairwise_comparisons <- function(data,
   # ---------------------------- nonparametric ----------------------------
 
   if (type == "nonparametric") {
-    # # running Dunn test
+    # test details
     if (isFALSE(paired)) {
-      mod <-
-        suppressWarnings(PMCMRplus::kwAllPairsDunnTest(
-          x = y_vec,
-          g = x_vec,
-          na.action = na.omit,
-          p.adjust.method = "none"
-        ))
-
-      # test details
+      .f <- PMCMRplus::kwAllPairsDunnTest
       test.details <- "Dunn test"
-    }
-
-    # # running Durbin-Conover test
-    if (isTRUE(paired)) {
-      mod <-
-        PMCMRplus::durbinAllPairsTest(
-          y = y_vec,
-          groups = x_vec,
-          blocks = g_vec,
-          p.adjust.method = "none"
-        )
-
-      # test details
+    } else {
+      .f <- PMCMRplus::durbinAllPairsTest
       test.details <- "Durbin-Conover test"
     }
+
+    # running the appropriate test
+    mod <-
+      suppressWarnings(rlang::exec(
+        .fn = .f,
+        # Dunn test
+        x = y_vec,
+        g = x_vec,
+        # Durbin-Conover test
+        y = y_vec,
+        groups = x_vec,
+        blocks = g_vec,
+        # common
+        na.action = na.omit,
+        p.adjust.method = "none"
+      ))
 
     # cleanup
     df <- PMCMR_to_tibble(mod)
