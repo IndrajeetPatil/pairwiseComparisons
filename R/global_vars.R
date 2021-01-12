@@ -9,7 +9,7 @@ utils::globalVariables(
     "group2",
     "log_e_bf10",
     "p.value",
-    "psihat"
+    ".f"
   ),
   package = "pairwiseComparisons",
   add = FALSE

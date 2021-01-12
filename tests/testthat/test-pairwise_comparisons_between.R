@@ -145,14 +145,14 @@ msleep <-
     -83L
   ))
 
-testthat::test_that(
+test_that(
   desc = "`pairwise_comparisons()` works for between-subjects design",
   code = {
     set.seed(123)
 
     # student's t
     df1 <-
-      pairwiseComparisons::pairwise_comparisons(
+      pairwise_comparisons(
         data = msleep,
         x = vore,
         y = "brainwt",
@@ -171,7 +171,7 @@ testthat::test_that(
     df_msleep$vore <- factor(df_msleep$vore, levels = c(levels(df_msleep$vore), "Random"))
 
     df2 <-
-      pairwiseComparisons::pairwise_comparisons(
+      pairwise_comparisons(
         data = df_msleep,
         x = "vore",
         y = brainwt,
@@ -183,7 +183,7 @@ testthat::test_that(
 
     # Dunn test
     df3 <-
-      pairwiseComparisons::pairwise_comparisons(
+      pairwise_comparisons(
         data = msleep,
         x = vore,
         y = brainwt,
@@ -194,7 +194,7 @@ testthat::test_that(
 
     # robust t test
     df4 <-
-      pairwiseComparisons::pairwise_comparisons(
+      pairwise_comparisons(
         data = msleep,
         x = vore,
         y = brainwt,
@@ -206,7 +206,7 @@ testthat::test_that(
     # checking the edge case where factor level names contain `-`
     set.seed(123)
     df5 <-
-      pairwiseComparisons::pairwise_comparisons(
+      pairwise_comparisons(
         data = movies_wide,
         x = mpaa,
         y = rating,
@@ -215,7 +215,7 @@ testthat::test_that(
 
     # bayes test
     df6 <-
-      pairwiseComparisons::pairwise_comparisons(
+      pairwise_comparisons(
         data = df_msleep,
         x = vore,
         y = brainwt,
@@ -224,30 +224,30 @@ testthat::test_that(
       )
 
     # column types
-    testthat::expect_true(all(is.character(df1$group1), is.character(df1$group2)))
-    testthat::expect_true(all(is.character(df2$group1), is.character(df2$group2)))
-    testthat::expect_true(all(is.character(df3$group1), is.character(df3$group2)))
-    testthat::expect_true(all(is.character(df4$group1), is.character(df4$group2)))
-    testthat::expect_true(all(is.character(df5$group1), is.character(df5$group2)))
-    testthat::expect_true(all(is.character(df6$group1), is.character(df6$group2)))
+    expect_true(all(is.character(df1$group1), is.character(df1$group2)))
+    expect_true(all(is.character(df2$group1), is.character(df2$group2)))
+    expect_true(all(is.character(df3$group1), is.character(df3$group2)))
+    expect_true(all(is.character(df4$group1), is.character(df4$group2)))
+    expect_true(all(is.character(df5$group1), is.character(df5$group2)))
+    expect_true(all(is.character(df6$group1), is.character(df6$group2)))
 
     # test details
-    testthat::expect_identical(unique(df1$test.details), "Student's t-test")
-    testthat::expect_identical(unique(df2$test.details), "Games-Howell test")
-    testthat::expect_identical(unique(df3$test.details), "Dunn test")
-    testthat::expect_identical(unique(df4$test.details), "Yuen's trimmed means test")
-    testthat::expect_identical(unique(df5$test.details), "Student's t-test")
-    testthat::expect_identical(unique(df6$test.details), "Student's t-test")
+    expect_identical(unique(df1$test.details), "Student's t-test")
+    expect_identical(unique(df2$test.details), "Games-Howell test")
+    expect_identical(unique(df3$test.details), "Dunn test")
+    expect_identical(unique(df4$test.details), "Yuen's trimmed means test")
+    expect_identical(unique(df5$test.details), "Student's t-test")
+    expect_identical(unique(df6$test.details), "Student's t-test")
 
     # adjustment method
-    testthat::expect_identical(unique(df1$p.value.adjustment), "Bonferroni")
-    testthat::expect_identical(unique(df2$p.value.adjustment), "Bonferroni")
-    testthat::expect_identical(unique(df3$p.value.adjustment), "None")
-    testthat::expect_identical(unique(df4$p.value.adjustment), "FDR")
-    testthat::expect_identical(unique(df5$p.value.adjustment), "Holm")
+    expect_identical(unique(df1$p.value.adjustment), "Bonferroni")
+    expect_identical(unique(df2$p.value.adjustment), "Bonferroni")
+    expect_identical(unique(df3$p.value.adjustment), "None")
+    expect_identical(unique(df4$p.value.adjustment), "FDR")
+    expect_identical(unique(df5$p.value.adjustment), "Holm")
 
     # testing exact values
-    testthat::expect_equal(
+    expect_equal(
       df2$statistic,
       c(
         2.17169043717625,
@@ -260,7 +260,7 @@ testthat::test_that(
       tolerance = 0.001
     )
 
-    testthat::expect_equal(
+    expect_equal(
       df3$statistic,
       c(
         0.581939863708611,
@@ -273,7 +273,7 @@ testthat::test_that(
       tolerance = 0.001
     )
 
-    testthat::expect_equal(
+    expect_equal(
       df4$estimate,
       c(
         -0.0529663194444444,
@@ -286,23 +286,23 @@ testthat::test_that(
       tolerance = 0.001
     )
 
-    testthat::expect_equal(
+    expect_equal(
       df1$group1,
       c("carni", "carni", "carni", "herbi", "herbi", "insecti")
     )
-    testthat::expect_equal(
+    expect_equal(
       df1$group2,
       c("herbi", "insecti", "omni", "insecti", "omni", "omni")
     )
-    testthat::expect_equal(df5$group1, c("PG", "PG", "PG-13"))
-    testthat::expect_equal(df5$group2, c("PG-13", "R", "R"))
-    testthat::expect_equal(df5$p.value,
+    expect_equal(df5$group1, c("PG", "PG", "PG-13"))
+    expect_equal(df5$group2, c("PG-13", "R", "R"))
+    expect_equal(df5$p.value,
       c(0.315931518, 0.002825407, 0.003100279),
       tolerance = 0.001
     )
 
     # checking labels
-    testthat::expect_identical(
+    expect_identical(
       df1$label,
       c(
         "list(~italic(p)[Bonferroni-corrected]==1.000)",
@@ -314,7 +314,7 @@ testthat::test_that(
       )
     )
 
-    testthat::expect_identical(
+    expect_identical(
       df2$label,
       c(
         "list(~italic(p)[Bonferroni-corrected]==1.000)",
@@ -326,7 +326,7 @@ testthat::test_that(
       )
     )
 
-    testthat::expect_identical(
+    expect_identical(
       df3$label,
       c(
         "list(~italic(p)[uncorrected]==0.561)",
@@ -338,7 +338,7 @@ testthat::test_that(
       )
     )
 
-    testthat::expect_identical(
+    expect_identical(
       df4$label,
       c(
         "list(~italic(p)[FDR-corrected]==0.969)",
@@ -350,7 +350,7 @@ testthat::test_that(
       )
     )
 
-    testthat::expect_identical(
+    expect_identical(
       df5$label,
       c(
         "list(~italic(p)[Holm-corrected]==0.316)",
@@ -359,7 +359,7 @@ testthat::test_that(
       )
     )
 
-    testthat::expect_identical(
+    expect_identical(
       df6$label,
       c(
         "list(~log[e](BF['01'])==0.617)",
@@ -372,35 +372,35 @@ testthat::test_that(
     )
 
     # checking tibble
-    testthat::expect_s3_class(df1, "tbl_df")
-    testthat::expect_s3_class(df2, "tbl_df")
-    testthat::expect_s3_class(df3, "tbl_df")
-    testthat::expect_s3_class(df4, "tbl_df")
-    testthat::expect_s3_class(df5, "tbl_df")
+    expect_s3_class(df1, "tbl_df")
+    expect_s3_class(df2, "tbl_df")
+    expect_s3_class(df3, "tbl_df")
+    expect_s3_class(df4, "tbl_df")
+    expect_s3_class(df5, "tbl_df")
 
     # columns should be same no matter the test
-    testthat::expect_identical(df1$group1, df2$group1)
-    testthat::expect_identical(df1$group1, df3$group1)
-    testthat::expect_identical(df1$group1, df4$group1)
-    testthat::expect_identical(df1$group1, df6$group1)
-    testthat::expect_identical(df1$group2, df2$group2)
-    testthat::expect_identical(df1$group2, df3$group2)
-    testthat::expect_identical(df1$group2, df4$group2)
-    testthat::expect_identical(df1$group2, df6$group2)
+    expect_identical(df1$group1, df2$group1)
+    expect_identical(df1$group1, df3$group1)
+    expect_identical(df1$group1, df4$group1)
+    expect_identical(df1$group1, df6$group1)
+    expect_identical(df1$group2, df2$group2)
+    expect_identical(df1$group2, df3$group2)
+    expect_identical(df1$group2, df4$group2)
+    expect_identical(df1$group2, df6$group2)
 
     # column names
-    testthat::expect_identical(names(df1)[1:2], c("group1", "group2"))
-    testthat::expect_identical(names(df2)[1:2], c("group1", "group2"))
-    testthat::expect_identical(names(df3)[1:2], c("group1", "group2"))
-    testthat::expect_identical(names(df4)[1:2], c("group1", "group2"))
-    testthat::expect_identical(names(df5)[1:2], c("group1", "group2"))
-    testthat::expect_identical(names(df6)[1:2], c("group1", "group2"))
+    expect_identical(names(df1)[1:2], c("group1", "group2"))
+    expect_identical(names(df2)[1:2], c("group1", "group2"))
+    expect_identical(names(df3)[1:2], c("group1", "group2"))
+    expect_identical(names(df4)[1:2], c("group1", "group2"))
+    expect_identical(names(df5)[1:2], c("group1", "group2"))
+    expect_identical(names(df6)[1:2], c("group1", "group2"))
   }
 )
 
 # dropped levels --------------------------------------------------
 
-testthat::test_that(
+test_that(
   desc = "dropped levels are not included",
   code = {
     set.seed(123)
@@ -410,7 +410,7 @@ testthat::test_that(
 
     # check those levels are not included
     df1 <-
-      pairwiseComparisons::pairwise_comparisons(
+      pairwise_comparisons(
         data = msleep2,
         x = vore,
         y = brainwt,
@@ -418,7 +418,7 @@ testthat::test_that(
       )
 
     df2 <-
-      pairwiseComparisons::pairwise_comparisons(
+      pairwise_comparisons(
         data = msleep,
         x = vore,
         y = brainwt,
@@ -427,19 +427,19 @@ testthat::test_that(
       dplyr::filter(.data = ., group2 == "omni", group1 == "carni")
 
     # tests
-    testthat::expect_equal(df1$statistic, df2$statistic, tolerance = 0.01)
-    testthat::expect_identical(df2$label, "list(~italic(p)[uncorrected]==0.865)")
+    expect_equal(df1$statistic, df2$statistic, tolerance = 0.01)
+    expect_identical(df2$label, "list(~italic(p)[uncorrected]==0.865)")
   }
 )
 
 # data without NAs --------------------------------------------------
 
-testthat::test_that(
+test_that(
   desc = "data without NAs",
   code = {
     set.seed(123)
     df <-
-      pairwiseComparisons::pairwise_comparisons(
+      pairwise_comparisons(
         data = iris,
         x = Species,
         y = Sepal.Length,
@@ -448,7 +448,7 @@ testthat::test_that(
         var.equal = TRUE
       )
 
-    testthat::expect_equal(
+    expect_equal(
       df$label,
       c(
         "list(~italic(p)[FDR-corrected]==1.32e-15)",

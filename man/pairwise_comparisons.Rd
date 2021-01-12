@@ -92,9 +92,10 @@ respective functions:
 }
 }
 \description{
-Calculate parametric, non-parametric, robust, and Bayes Factor
-pairwise comparisons between group levels with corrections for multiple
-testing.
+\Sexpr[results=rd, stage=render]{rlang:::lifecycle("maturing")}
+
+Calculate parametric, non-parametric, robust, and Bayes Factor pairwise
+comparisons between group levels with corrections for multiple testing.
 }
 \examples{
 

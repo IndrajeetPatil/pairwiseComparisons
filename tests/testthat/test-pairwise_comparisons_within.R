@@ -1,14 +1,14 @@
 # within-subjects design - NAs --------------------------------------------------
 
-testthat::test_that(
+test_that(
   desc = "`pairwise_comparisons()` works for within-subjects design - NAs",
   code = {
 
     # student's t test
     set.seed(123)
     df1 <-
-      pairwiseComparisons::pairwise_comparisons(
-        data = pairwiseComparisons::bugs_long,
+      pairwise_comparisons(
+        data = bugs_long,
         x = "condition",
         y = desire,
         type = "p",
@@ -20,8 +20,8 @@ testthat::test_that(
     # Durbin-Conover test
     set.seed(123)
     df2 <-
-      pairwiseComparisons::pairwise_comparisons(
-        data = pairwiseComparisons::bugs_long,
+      pairwise_comparisons(
+        data = bugs_long,
         x = condition,
         y = "desire",
         type = "np",
@@ -33,8 +33,8 @@ testthat::test_that(
     # robust t test
     set.seed(123)
     df3 <-
-      pairwiseComparisons::pairwise_comparisons(
-        data = pairwiseComparisons::bugs_long,
+      pairwise_comparisons(
+        data = bugs_long,
         x = condition,
         y = desire,
         type = "r",
@@ -45,7 +45,7 @@ testthat::test_that(
 
     # bf
     df4 <-
-      pairwiseComparisons::pairwise_comparisons(
+      pairwise_comparisons(
         data = bugs_long,
         x = condition,
         y = desire,
@@ -55,18 +55,18 @@ testthat::test_that(
       )
 
     # test details
-    testthat::expect_identical(unique(df1$test.details), "Student's t-test")
-    testthat::expect_identical(unique(df2$test.details), "Durbin-Conover test")
-    testthat::expect_identical(unique(df3$test.details), "Yuen's trimmed means test")
-    testthat::expect_identical(unique(df4$test.details), "Student's t-test")
+    expect_identical(unique(df1$test.details), "Student's t-test")
+    expect_identical(unique(df2$test.details), "Durbin-Conover test")
+    expect_identical(unique(df3$test.details), "Yuen's trimmed means test")
+    expect_identical(unique(df4$test.details), "Student's t-test")
 
     # adjustment method
-    testthat::expect_identical(unique(df1$p.value.adjustment), "Bonferroni")
-    testthat::expect_identical(unique(df2$p.value.adjustment), "BY")
-    testthat::expect_identical(unique(df3$p.value.adjustment), "Hommel")
+    expect_identical(unique(df1$p.value.adjustment), "Bonferroni")
+    expect_identical(unique(df2$p.value.adjustment), "BY")
+    expect_identical(unique(df3$p.value.adjustment), "Hommel")
 
     # checking exact values
-    testthat::expect_identical(
+    expect_identical(
       df1$label,
       c(
         "list(~italic(p)[Bonferroni-corrected]==0.003)",
@@ -78,7 +78,7 @@ testthat::test_that(
       )
     )
 
-    testthat::expect_equal(
+    expect_equal(
       df2$statistic,
       c(
         4.78004208516409,
@@ -91,7 +91,7 @@ testthat::test_that(
       tolerance = 0.001
     )
 
-    testthat::expect_identical(
+    expect_identical(
       df2$label,
       c(
         "list(~italic(p)[BY-corrected]==1.44e-05)",
@@ -103,7 +103,7 @@ testthat::test_that(
       )
     )
 
-    testthat::expect_equal(
+    expect_equal(
       df3$estimate,
       c(
         1.15972222222222,
@@ -116,7 +116,7 @@ testthat::test_that(
       tolerance = 0.001
     )
 
-    testthat::expect_identical(
+    expect_identical(
       df3$label,
       c(
         "list(~italic(p)[Hommel-corrected]==0.001)",
@@ -128,7 +128,7 @@ testthat::test_that(
       )
     )
 
-    testthat::expect_identical(
+    expect_identical(
       df4$label,
       c(
         "list(~log[e](BF['01'])==-3.7273)",
@@ -141,24 +141,24 @@ testthat::test_that(
     )
 
     # checking if it is a tibble
-    testthat::expect_s3_class(df1, "tbl_df")
-    testthat::expect_s3_class(df2, "tbl_df")
-    testthat::expect_s3_class(df3, "tbl_df")
-    testthat::expect_s3_class(df4, "tbl_df")
+    expect_s3_class(df1, "tbl_df")
+    expect_s3_class(df2, "tbl_df")
+    expect_s3_class(df3, "tbl_df")
+    expect_s3_class(df4, "tbl_df")
 
     # columns should be same no matter the test
-    testthat::expect_identical(df1$group1, df2$group1)
-    testthat::expect_identical(df1$group1, df3$group1)
-    testthat::expect_identical(df1$group1, df4$group1)
-    testthat::expect_identical(df1$group2, df2$group2)
-    testthat::expect_identical(df1$group2, df3$group2)
-    testthat::expect_identical(df1$group2, df4$group2)
+    expect_identical(df1$group1, df2$group1)
+    expect_identical(df1$group1, df3$group1)
+    expect_identical(df1$group1, df4$group1)
+    expect_identical(df1$group2, df2$group2)
+    expect_identical(df1$group2, df3$group2)
+    expect_identical(df1$group2, df4$group2)
 
     # column names
-    testthat::expect_identical(names(df1)[1:2], c("group1", "group2"))
-    testthat::expect_identical(names(df2)[1:2], c("group1", "group2"))
-    testthat::expect_identical(names(df3)[1:2], c("group1", "group2"))
-    testthat::expect_identical(names(df4)[1:2], c("group1", "group2"))
+    expect_identical(names(df1)[1:2], c("group1", "group2"))
+    expect_identical(names(df2)[1:2], c("group1", "group2"))
+    expect_identical(names(df3)[1:2], c("group1", "group2"))
+    expect_identical(names(df4)[1:2], c("group1", "group2"))
   }
 )
 
@@ -166,14 +166,14 @@ testthat::test_that(
 
 # within-subjects design - no NAs ---------------------------------------------
 
-testthat::test_that(
+test_that(
   desc = "`pairwise_comparisons()` works for within-subjects design - NAs",
   code = {
 
     # student's t test
     set.seed(123)
     df1 <-
-      pairwiseComparisons::pairwise_comparisons(
+      pairwise_comparisons(
         data = WRS2::WineTasting,
         x = "Wine",
         y = Taste,
@@ -186,7 +186,7 @@ testthat::test_that(
     # Durbin-Conover test
     set.seed(123)
     df2 <-
-      pairwiseComparisons::pairwise_comparisons(
+      pairwise_comparisons(
         data = WRS2::WineTasting,
         x = Wine,
         y = "Taste",
@@ -199,7 +199,7 @@ testthat::test_that(
     # robust t test
     set.seed(123)
     df3 <-
-      pairwiseComparisons::pairwise_comparisons(
+      pairwise_comparisons(
         data = WRS2::WineTasting,
         x = Wine,
         y = Taste,
@@ -211,7 +211,7 @@ testthat::test_that(
 
     # bf
     df4 <-
-      pairwiseComparisons::pairwise_comparisons(
+      pairwise_comparisons(
         data = WRS2::WineTasting,
         x = Wine,
         y = Taste,
@@ -221,18 +221,18 @@ testthat::test_that(
       )
 
     # test details
-    testthat::expect_identical(unique(df1$test.details), "Student's t-test")
-    testthat::expect_identical(unique(df2$test.details), "Durbin-Conover test")
-    testthat::expect_identical(unique(df3$test.details), "Yuen's trimmed means test")
-    testthat::expect_identical(unique(df4$test.details), "Student's t-test")
+    expect_identical(unique(df1$test.details), "Student's t-test")
+    expect_identical(unique(df2$test.details), "Durbin-Conover test")
+    expect_identical(unique(df3$test.details), "Yuen's trimmed means test")
+    expect_identical(unique(df4$test.details), "Student's t-test")
 
     # adjustment method
-    testthat::expect_identical(unique(df1$p.value.adjustment), "None")
-    testthat::expect_identical(unique(df2$p.value.adjustment), "None")
-    testthat::expect_identical(unique(df3$p.value.adjustment), "None")
+    expect_identical(unique(df1$p.value.adjustment), "None")
+    expect_identical(unique(df2$p.value.adjustment), "None")
+    expect_identical(unique(df3$p.value.adjustment), "None")
 
     # checking exact values
-    testthat::expect_identical(
+    expect_identical(
       df1$label,
       c(
         "list(~italic(p)[uncorrected]==0.732)",
@@ -241,13 +241,13 @@ testthat::test_that(
       )
     )
 
-    testthat::expect_equal(
+    expect_equal(
       df2$statistic,
       c(1.04673405118638, 3.66356917915232, 2.61683512796594),
       tolerance = 0.001
     )
 
-    testthat::expect_identical(
+    expect_identical(
       df2$label,
       c(
         "list(~italic(p)[uncorrected]==0.301)",
@@ -256,13 +256,13 @@ testthat::test_that(
       )
     )
 
-    testthat::expect_equal(
+    expect_equal(
       df3$estimate,
       c(0.0166666666666668, 0.1, 0.0777777777777778),
       tolerance = 0.001
     )
 
-    testthat::expect_identical(
+    expect_identical(
       df3$label,
       c(
         "list(~italic(p)[uncorrected]==0.380)",
@@ -271,7 +271,7 @@ testthat::test_that(
       )
     )
 
-    testthat::expect_identical(
+    expect_identical(
       df4$label,
       c(
         "list(~log[e](BF['01'])==1.4462)",
@@ -281,26 +281,26 @@ testthat::test_that(
     )
 
     # columns should be same no matter the test
-    testthat::expect_identical(df1$group1, df2$group1)
-    testthat::expect_identical(df1$group1, df3$group1)
-    testthat::expect_identical(df1$group1, df4$group1)
-    testthat::expect_identical(df1$group2, df2$group2)
-    testthat::expect_identical(df1$group2, df3$group2)
-    testthat::expect_identical(df1$group2, df4$group2)
+    expect_identical(df1$group1, df2$group1)
+    expect_identical(df1$group1, df3$group1)
+    expect_identical(df1$group1, df4$group1)
+    expect_identical(df1$group2, df2$group2)
+    expect_identical(df1$group2, df3$group2)
+    expect_identical(df1$group2, df4$group2)
   }
 )
 
 # works with subject id ------------------------------------------------------
 
-testthat::test_that(
+test_that(
   desc = "works with subject id",
   code = {
-    testthat::skip_if(getRversion() < "3.6")
+    skip_if(getRversion() < "3.6")
 
     set.seed(123)
     df1 <-
       dplyr::bind_rows(
-        pairwiseComparisons::pairwise_comparisons(
+        pairwise_comparisons(
           data = WRS2::WineTasting,
           x = Wine,
           y = "Taste",
@@ -309,7 +309,7 @@ testthat::test_that(
           subject.id = "Taster",
           paired = TRUE
         ),
-        pairwiseComparisons::pairwise_comparisons(
+        pairwise_comparisons(
           data = WRS2::WineTasting,
           x = Wine,
           y = "Taste",
@@ -318,7 +318,7 @@ testthat::test_that(
           subject.id = "Taster",
           paired = TRUE
         ),
-        pairwiseComparisons::pairwise_comparisons(
+        pairwise_comparisons(
           data = WRS2::WineTasting,
           x = Wine,
           y = "Taste",
@@ -327,7 +327,7 @@ testthat::test_that(
           subject.id = "Taster",
           paired = TRUE
         ),
-        pairwiseComparisons::pairwise_comparisons(
+        pairwise_comparisons(
           data = WRS2::WineTasting,
           x = Wine,
           y = "Taste",
@@ -341,7 +341,7 @@ testthat::test_that(
     set.seed(123)
     df2 <-
       dplyr::bind_rows(
-        pairwiseComparisons::pairwise_comparisons(
+        pairwise_comparisons(
           data = dplyr::arrange(WRS2::WineTasting, Taster),
           x = Wine,
           y = "Taste",
@@ -349,7 +349,7 @@ testthat::test_that(
           k = 3,
           paired = TRUE
         ),
-        pairwiseComparisons::pairwise_comparisons(
+        pairwise_comparisons(
           data = dplyr::arrange(WRS2::WineTasting, Taster),
           x = Wine,
           y = "Taste",
@@ -357,7 +357,7 @@ testthat::test_that(
           k = 3,
           paired = TRUE
         ),
-        pairwiseComparisons::pairwise_comparisons(
+        pairwise_comparisons(
           data = dplyr::arrange(WRS2::WineTasting, Taster),
           x = Wine,
           y = "Taste",
@@ -365,7 +365,7 @@ testthat::test_that(
           k = 3,
           paired = TRUE
         ),
-        pairwiseComparisons::pairwise_comparisons(
+        pairwise_comparisons(
           data = dplyr::arrange(WRS2::WineTasting, Taster),
           x = Wine,
           y = "Taste",
@@ -376,6 +376,6 @@ testthat::test_that(
       )
 
     # columns should be same no matter the test
-    testthat::expect_equal(as.data.frame(df1), as.data.frame(df2))
+    expect_equal(as.data.frame(df1), as.data.frame(df2))
   }
 )

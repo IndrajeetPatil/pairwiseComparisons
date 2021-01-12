@@ -9,7 +9,7 @@
 | [![CRAN Checks](https://cranchecks.info/badges/summary/pairwiseComparisons)](https://cran.r-project.org/web/checks/check_results_pairwiseComparisons.html)                      | [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/pairwiseComparisons?branch=master&svg=true)](https://ci.appveyor.com/project/IndrajeetPatil/pairwiseComparisons) | [![Weekly downloads badge](https://cranlogs.r-pkg.org/badges/last-week/pairwiseComparisons?color=blue)](https://CRAN.R-project.org/package=pairwiseComparisons)                       | [![Forks](https://img.shields.io/badge/forks-3-blue.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/)                                                              | [![Rdoc](https://www.rdocumentation.org/badges/version/pairwiseComparisons)](https://www.rdocumentation.org/packages/pairwiseComparisons)                                       |
 | [![minimal R version](https://img.shields.io/badge/R%3E%3D-3.6.0-6666ff.svg)](https://cran.r-project.org/)                                                                      | [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/)                                                                                               | [![Monthly downloads badge](https://cranlogs.r-pkg.org/badges/last-month/pairwiseComparisons?color=blue)](https://CRAN.R-project.org/package=pairwiseComparisons)                     | [![Github Issues](https://img.shields.io/badge/issues-1-red.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/issues)                                                | [![vignettes](https://img.shields.io/badge/vignettes-3.1.0-orange.svg?colorB=FF5722)](https://github.com/IndrajeetPatil/pairwiseComparisons/blob/master/README.md)              |
 | [![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/IndrajeetPatil/pairwiseComparisons.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons) | [![Coverage Status](https://coveralls.io/repos/github/IndrajeetPatil/pairwiseComparisons/badge.svg?branch=master)](https://coveralls.io/github/IndrajeetPatil/pairwiseComparisons?branch=master)             | [![Total downloads badge](https://cranlogs.r-pkg.org/badges/grand-total/pairwiseComparisons?color=blue)](https://CRAN.R-project.org/package=pairwiseComparisons)                      | [![Github Stars](https://img.shields.io/github/stars/IndrajeetPatil/pairwiseComparisons.svg?style=social&label=Github)](https://github.com/IndrajeetPatil/pairwiseComparisons) | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2074621.svg)](https://doi.org/10.5281/zenodo.2074621)                                                                       |
-| [![Licence](https://img.shields.io/badge/licence-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)                                                                | [![Codecov test coverage](https://codecov.io/gh/IndrajeetPatil/pairwiseComparisons/branch/master/graph/badge.svg)](https://codecov.io/gh/IndrajeetPatil/pairwiseComparisons?branch=master)                   | [![Covrpage Summary](https://img.shields.io/badge/covrpage-Last_Build_2020_05_29-brightgreen.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/blob/master/tests/README.md) | [![Last-changedate](https://img.shields.io/badge/last%20change-2020--12--31-yellowgreen.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/commits/master)            | [![GitHub last commit](https://img.shields.io/github/last-commit/IndrajeetPatil/pairwiseComparisons.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/commits/master) |
+| [![Licence](https://img.shields.io/badge/licence-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)                                                                | [![Codecov test coverage](https://codecov.io/gh/IndrajeetPatil/pairwiseComparisons/branch/master/graph/badge.svg)](https://codecov.io/gh/IndrajeetPatil/pairwiseComparisons?branch=master)                   | [![Covrpage Summary](https://img.shields.io/badge/covrpage-Last_Build_2020_05_29-brightgreen.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/blob/master/tests/README.md) | [![Last-changedate](https://img.shields.io/badge/last%20change-2021--01--12-yellowgreen.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/commits/master)            | [![GitHub last commit](https://img.shields.io/github/last-commit/IndrajeetPatil/pairwiseComparisons.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/commits/master) |
 | [![status](https://tinyverse.netlify.com/badge/pairwiseComparisons)](https://CRAN.R-project.org/package=pairwiseComparisons)                                                    | [![R build status](https://github.com/IndrajeetPatil/pairwiseComparisons/workflows/R-CMD-check/badge.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons)                                            | [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/pairwiseComparisons/community)                                                                       | [![Project Status](http://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)                                                                    | [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/IndrajeetPatil/pairwiseComparisons/issues)         |
 
 # Introduction <img src="man/figures/logo.png" align="right" width="240" />
@@ -236,7 +236,7 @@ pairwise_comparisons(
   type = "bayes",
   paired = FALSE
 )
-#> # A tibble: 6 x 15
+#> # A tibble: 6 x 16
 #>   group1  group2  term       estimate conf.low conf.high    pd rope.percentage
 #>   <chr>   <chr>   <chr>         <dbl>    <dbl>     <dbl> <dbl>           <dbl>
 #> 1 carni   herbi   Difference   0.376   -0.349     1.15   0.800           0.183
@@ -245,14 +245,14 @@ pairwise_comparisons(
 #> 4 herbi   insecti Difference  -0.394   -1.34      0.596  0.758           0.177
 #> 5 herbi   omni    Difference  -0.362   -0.938     0.191  0.859           0.172
 #> 6 insecti omni    Difference   0.0762  -0.141     0.261  0.732           0.172
-#>   prior.distribution prior.location prior.scale  bf10 log_e_bf10
-#>   <chr>                       <dbl>       <dbl> <dbl>      <dbl>
-#> 1 cauchy                          0       0.707 0.540     -0.617
-#> 2 cauchy                          0       0.707 0.718     -0.332
-#> 3 cauchy                          0       0.707 0.427     -0.851
-#> 4 cauchy                          0       0.707 0.540     -0.616
-#> 5 cauchy                          0       0.707 0.571     -0.560
-#> 6 cauchy                          0       0.707 0.545     -0.606
+#>   prior.distribution prior.location prior.scale  bf10 method          log_e_bf10
+#>   <chr>                       <dbl>       <dbl> <dbl> <chr>                <dbl>
+#> 1 cauchy                          0       0.707 0.540 Bayesian t-test     -0.617
+#> 2 cauchy                          0       0.707 0.718 Bayesian t-test     -0.332
+#> 3 cauchy                          0       0.707 0.427 Bayesian t-test     -0.851
+#> 4 cauchy                          0       0.707 0.540 Bayesian t-test     -0.616
+#> 5 cauchy                          0       0.707 0.571 Bayesian t-test     -0.560
+#> 6 cauchy                          0       0.707 0.545 Bayesian t-test     -0.606
 #>   label                         test.details    
 #>   <chr>                         <chr>           
 #> 1 list(~log[e](BF['01'])==0.62) Student's t-test
@@ -387,7 +387,7 @@ pairwise_comparisons(
   paired = TRUE,
   bf.prior = 0.77
 )
-#> # A tibble: 6 x 15
+#> # A tibble: 6 x 16
 #>   group1 group2 term       estimate conf.low conf.high    pd rope.percentage
 #>   <chr>  <chr>  <chr>         <dbl>    <dbl>     <dbl> <dbl>           <dbl>
 #> 1 HDHF   HDLF   Difference   -1.10    -1.62    -0.621  1               0    
@@ -396,22 +396,22 @@ pairwise_comparisons(
 #> 4 HDLF   LDHF   Difference    0.652    0.105    1.21   0.971           0.135
 #> 5 HDLF   LDLF   Difference   -0.983   -1.46    -0.506  0.999           0    
 #> 6 LDHF   LDLF   Difference   -1.67    -2.10    -1.27   1               0    
-#>   prior.distribution prior.location prior.scale     bf10 log_e_bf10
-#>   <chr>                       <dbl>       <dbl>    <dbl>      <dbl>
-#> 1 cauchy                          0        0.77 3.95e+ 1      3.68 
-#> 2 cauchy                          0        0.77 5.42e- 1     -0.612
-#> 3 cauchy                          0        0.77 1.22e+10     23.2  
-#> 4 cauchy                          0        0.77 6.50e- 1     -0.430
-#> 5 cauchy                          0        0.77 1.72e+ 1      2.84 
-#> 6 cauchy                          0        0.77 4.78e+ 6     15.4  
-#>   label                           test.details    
-#>   <chr>                           <chr>           
-#> 1 list(~log[e](BF['01'])==-3.68)  Student's t-test
-#> 2 list(~log[e](BF['01'])==0.61)   Student's t-test
-#> 3 list(~log[e](BF['01'])==-23.22) Student's t-test
-#> 4 list(~log[e](BF['01'])==0.43)   Student's t-test
-#> 5 list(~log[e](BF['01'])==-2.84)  Student's t-test
-#> 6 list(~log[e](BF['01'])==-15.38) Student's t-test
+#>   prior.distribution prior.location prior.scale     bf10 method         
+#>   <chr>                       <dbl>       <dbl>    <dbl> <chr>          
+#> 1 cauchy                          0        0.77 3.95e+ 1 Bayesian t-test
+#> 2 cauchy                          0        0.77 5.42e- 1 Bayesian t-test
+#> 3 cauchy                          0        0.77 1.22e+10 Bayesian t-test
+#> 4 cauchy                          0        0.77 6.50e- 1 Bayesian t-test
+#> 5 cauchy                          0        0.77 1.72e+ 1 Bayesian t-test
+#> 6 cauchy                          0        0.77 4.78e+ 6 Bayesian t-test
+#>   log_e_bf10 label                           test.details    
+#>        <dbl> <chr>                           <chr>           
+#> 1      3.68  list(~log[e](BF['01'])==-3.68)  Student's t-test
+#> 2     -0.612 list(~log[e](BF['01'])==0.61)   Student's t-test
+#> 3     23.2   list(~log[e](BF['01'])==-23.22) Student's t-test
+#> 4     -0.430 list(~log[e](BF['01'])==0.43)   Student's t-test
+#> 5      2.84  list(~log[e](BF['01'])==-2.84)  Student's t-test
+#> 6     15.4   list(~log[e](BF['01'])==-15.38) Student's t-test
 ```
 
 # Using `pairwiseComparisons` with `ggsignif`
@@ -494,22 +494,22 @@ set.seed(123)
   ) %>%
   dplyr::mutate(.data = ., groups = purrr::pmap(.l = list(group1, group2), .f = c)) %>%
   dplyr::arrange(.data = ., group1))
-#> # A tibble: 3 x 16
+#> # A tibble: 3 x 17
 #>   group1 group2 term       estimate conf.low conf.high    pd rope.percentage
 #>   <chr>  <chr>  <chr>         <dbl>    <dbl>     <dbl> <dbl>           <dbl>
 #> 1 Wine A Wine B Difference -0.00721  -0.0473    0.0307 0.624           0.431
 #> 2 Wine A Wine C Difference -0.0766   -0.129    -0.0265 0.989           0    
 #> 3 Wine B Wine C Difference -0.0696   -0.0991   -0.0368 1.00            0    
-#>   prior.distribution prior.location prior.scale   bf10 log_e_bf10
-#>   <chr>                       <dbl>       <dbl>  <dbl>      <dbl>
-#> 1 cauchy                          0       0.707  0.235      -1.45
-#> 2 cauchy                          0       0.707  3.71        1.31
-#> 3 cauchy                          0       0.707 50.5         3.92
-#>   label                          test.details     groups   
-#>   <chr>                          <chr>            <list>   
-#> 1 list(~log[e](BF['01'])==1.45)  Student's t-test <chr [2]>
-#> 2 list(~log[e](BF['01'])==-1.31) Student's t-test <chr [2]>
-#> 3 list(~log[e](BF['01'])==-3.92) Student's t-test <chr [2]>
+#>   prior.distribution prior.location prior.scale   bf10 method         
+#>   <chr>                       <dbl>       <dbl>  <dbl> <chr>          
+#> 1 cauchy                          0       0.707  0.235 Bayesian t-test
+#> 2 cauchy                          0       0.707  3.71  Bayesian t-test
+#> 3 cauchy                          0       0.707 50.5   Bayesian t-test
+#>   log_e_bf10 label                          test.details     groups   
+#>        <dbl> <chr>                          <chr>            <list>   
+#> 1      -1.45 list(~log[e](BF['01'])==1.45)  Student's t-test <chr [2]>
+#> 2       1.31 list(~log[e](BF['01'])==-1.31) Student's t-test <chr [2]>
+#> 3       3.92 list(~log[e](BF['01'])==-3.92) Student's t-test <chr [2]>
 
 # using `geom_signif` to display results
 p +

@@ -2,7 +2,7 @@
 % Please edit documentation in R/helpers.R
 \name{p_adjust_text}
 \alias{p_adjust_text}
-\title{Preparing text to describe which \emph{p}-value adjustment method was used}
+\title{\emph{p}-value adjustment method text}
 \usage{
 p_adjust_text(p.adjust.method)
 }
@@ -15,6 +15,8 @@ comparisons. Possible methods are: \code{"holm"} (default), \code{"hochberg"},
 Standardized text description for what method was used.
 }
 \description{
+\Sexpr[results=rd, stage=render]{rlang:::lifecycle("stable")}
+
 Preparing text to describe which \emph{p}-value adjustment method was used
 }
 \examples{

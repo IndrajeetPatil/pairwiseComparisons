@@ -2,7 +2,7 @@
 % Please edit documentation in R/helpers.R
 \name{pairwise_caption}
 \alias{pairwise_caption}
-\title{Expression containing details about pairwise comparison test}
+\title{Pairwise comparison test expression}
 \usage{
 pairwise_caption(
   caption,
@@ -24,9 +24,11 @@ Available options are \code{"significant"} (abbreviation accepted: \code{"s"}) o
 \item{...}{Ignored.}
 }
 \description{
-This returns an expression containing details about the pairwise
-comparison test and the \emph{p}-value adjustment method. These details are
-typically included in the \code{ggstatsplot} package plots as a caption.
+\Sexpr[results=rd, stage=render]{rlang:::lifecycle("stable")}
+
+This returns an expression containing details about the pairwise comparison
+test and the \emph{p}-value adjustment method. These details are typically
+included in the \code{ggstatsplot} package plots as a caption.
 }
 \examples{
 library(pairwiseComparisons)

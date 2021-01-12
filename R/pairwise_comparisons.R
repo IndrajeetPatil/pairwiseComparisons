@@ -1,8 +1,12 @@
 #' @title Multiple pairwise comparison tests with tidy data
 #' @name pairwise_comparisons
-#' @description Calculate parametric, non-parametric, robust, and Bayes Factor
-#'   pairwise comparisons between group levels with corrections for multiple
-#'   testing.
+#'
+#' @description
+#'
+#' \Sexpr[results=rd, stage=render]{rlang:::lifecycle("maturing")}
+#'
+#' Calculate parametric, non-parametric, robust, and Bayes Factor pairwise
+#' comparisons between group levels with corrections for multiple testing.
 #'
 #' @param data A dataframe from which variables specified are to be taken. A
 #'   matrix or tables will **not** be accepted.
@@ -212,37 +216,30 @@ pairwise_comparisons <- function(data,
   x_vec <- df_int %>% dplyr::pull({{ x }})
   y_vec <- df_int %>% dplyr::pull({{ y }})
   g_vec <- df_int$rowid
-  .f.extra <- list()
+  .f.args <- list()
 
   # ---------------------------- parametric ---------------------------------
 
   if (type %in% c("parametric", "bayes")) {
     if (isTRUE(var.equal) || isTRUE(paired)) {
-      .f <- stats::pairwise.t.test
-      test.details <- "Student's t-test"
+      c(.f, test.details) %<-% c(stats::pairwise.t.test, "Student's t-test")
     } else {
-      .f <- PMCMRplus::gamesHowellTest
-      test.details <- "Games-Howell test"
+      c(.f, test.details) %<-% c(PMCMRplus::gamesHowellTest, "Games-Howell test")
     }
   }
 
   # ---------------------------- nonparametric ----------------------------
 
   if (type == "nonparametric") {
-    if (isFALSE(paired)) {
-      .f <- PMCMRplus::kwAllPairsDunnTest
-      test.details <- "Dunn test"
-    } else {
-      .f <- PMCMRplus::durbinAllPairsTest
-      test.details <- "Durbin-Conover test"
+    if (isFALSE(paired)) c(.f, test.details) %<-% c(PMCMRplus::kwAllPairsDunnTest, "Dunn test")
+    if (isTRUE(paired)) c(.f, test.details) %<-% c(PMCMRplus::durbinAllPairsTest, "Durbin-Conover test")
 
-      # `exec` fails otherwise for `pairwise.t.test` because `y` is passed to `t.test`
-      .f.extra <- list(y = y_vec)
-    }
+    # `exec` fails otherwise for `pairwise.t.test` because `y` is passed to `t.test`
+    .f.args <- list(y = y_vec)
   }
 
+  # running the appropriate test
   if (type != "robust") {
-    # running the appropriate test
     df <-
       suppressWarnings(rlang::exec(
         .fn = .f,
@@ -258,7 +255,7 @@ pairwise_comparisons <- function(data,
         na.action = na.omit,
         p.adjust.method = "none",
         # problematic for other methods
-        !!!.f.extra
+        !!!.f.args
       )) %>%
       tidy_model_parameters(.) %>%
       dplyr::rename(group2 = group1, group1 = group2)
@@ -266,8 +263,8 @@ pairwise_comparisons <- function(data,
 
   # ---------------------------- robust ----------------------------------
 
+  # extracting the robust pairwise comparisons
   if (type == "robust") {
-    # extracting the robust pairwise comparisons
     if (isFALSE(paired)) {
       mod <-
         WRS2::lincon(
@@ -356,5 +353,5 @@ pairwise_comparisons <- function(data,
   }
 
   # return
-  return(as_tibble(df))
+  as_tibble(df)
 }

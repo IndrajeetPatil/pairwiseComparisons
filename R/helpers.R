@@ -46,8 +46,15 @@ bf_ttest <- function(data, x, y, paired = FALSE, bf.prior = 0.707, ...) {
 }
 
 
-#' @title Preparing text to describe which *p*-value adjustment method was used
+#' @title *p*-value adjustment method text
 #' @name p_adjust_text
+#'
+#' @description
+#'
+#' \Sexpr[results=rd, stage=render]{rlang:::lifecycle("stable")}
+#'
+#' Preparing text to describe which *p*-value adjustment method was used
+#'
 #' @return Standardized text description for what method was used.
 #'
 #' @inheritParams pairwise_comparisons
@@ -75,10 +82,15 @@ p_adjust_text <- function(p.adjust.method) {
 
 
 #' @name pairwise_caption
-#' @title Expression containing details about pairwise comparison test
-#' @description This returns an expression containing details about the pairwise
-#'   comparison test and the *p*-value adjustment method. These details are
-#'   typically included in the `ggstatsplot` package plots as a caption.
+#' @title Pairwise comparison test expression
+#'
+#' @description
+#'
+#' \Sexpr[results=rd, stage=render]{rlang:::lifecycle("stable")}
+#'
+#' This returns an expression containing details about the pairwise comparison
+#' test and the *p*-value adjustment method. These details are typically
+#' included in the `ggstatsplot` package plots as a caption.
 #'
 #' @param test.description Text describing the details of the test.
 #' @param caption Additional text to be included in the plot.
