@@ -137,7 +137,7 @@
 <td><a href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img src="https://img.shields.io/badge/licence-GPL--3-blue.svg" alt="Licence"></a></td>
 <td><a href="https://codecov.io/gh/IndrajeetPatil/pairwiseComparisons?branch=master"><img src="https://codecov.io/gh/IndrajeetPatil/pairwiseComparisons/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></td>
 <td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/blob/master/tests/README.md"><img src="https://img.shields.io/badge/covrpage-Last_Build_2020_05_29-brightgreen.svg" alt="Covrpage Summary"></a></td>
-<td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/commits/master"><img src="https://img.shields.io/badge/last%20change-2021--01--12-yellowgreen.svg" alt="Last-changedate"></a></td>
+<td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/commits/master"><img src="https://img.shields.io/badge/last%20change-2021--01--15-yellowgreen.svg" alt="Last-changedate"></a></td>
 <td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/commits/master"><img src="https://img.shields.io/github/last-commit/IndrajeetPatil/pairwiseComparisons.svg" alt="GitHub last commit"></a></td>
 </tr>
 <tr class="even">
@@ -621,7 +621,7 @@
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://indrajeetpatil.github.io/pairwiseComparisons/">pairwiseComparisons</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/const-ae/ggsignif">ggsignif</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://const-ae.github.io/ggsignif/">ggsignif</a></span><span class="op">)</span>
 
 <span class="co"># converting to factor</span>
 <span class="va">mtcars</span><span class="op">$</span><span class="va">cyl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">$</span><span class="va">cyl</span><span class="op">)</span>
@@ -656,7 +656,7 @@
 <span class="co"># using `geom_signif` to display results</span>
 <span class="co"># (note that you can choose not to display all comparisons)</span>
 <span class="va">p</span> <span class="op">+</span>
-  <span class="fu">ggsignif</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/ggsignif/man/stat_signif.html">geom_signif</a></span><span class="op">(</span>
+  <span class="fu">ggsignif</span><span class="fu">::</span><span class="fu"><a href="https://const-ae.github.io/ggsignif//reference/stat_signif.html">geom_signif</a></span><span class="op">(</span>
     comparisons <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">df</span><span class="op">$</span><span class="va">groups</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>,
     annotations <span class="op">=</span> <span class="va">df</span><span class="op">$</span><span class="va">label</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>,
     test <span class="op">=</span> <span class="cn">NULL</span>,
@@ -672,7 +672,7 @@
 <code class="sourceCode R"><span class="co"># needed libraries</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://indrajeetpatil.github.io/pairwiseComparisons/">pairwiseComparisons</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/const-ae/ggsignif">ggsignif</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://const-ae.github.io/ggsignif/">ggsignif</a></span><span class="op">)</span>
 
 <span class="co"># creating a basic plot</span>
 <span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu">WRS2</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/WRS2/man/WineTasting.html">WineTasting</a></span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">Wine</span>, <span class="va">Taste</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
@@ -710,7 +710,7 @@
 
 <span class="co"># using `geom_signif` to display results</span>
 <span class="va">p</span> <span class="op">+</span>
-  <span class="fu">ggsignif</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/ggsignif/man/stat_signif.html">geom_signif</a></span><span class="op">(</span>
+  <span class="fu">ggsignif</span><span class="fu">::</span><span class="fu"><a href="https://const-ae.github.io/ggsignif//reference/stat_signif.html">geom_signif</a></span><span class="op">(</span>
     comparisons <span class="op">=</span> <span class="va">df</span><span class="op">$</span><span class="va">groups</span>,
     map_signif_level <span class="op">=</span> <span class="cn">TRUE</span>,
     tip_length <span class="op">=</span> <span class="fl">0.01</span>,

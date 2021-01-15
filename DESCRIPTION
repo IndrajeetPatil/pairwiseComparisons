@@ -26,9 +26,9 @@ Depends:
 Imports:
     BayesFactor,
     dplyr,
-    insight (>= 0.11.1.1),
+    insight (>= 0.12.0),
     ipmisc (>= 5.0.2),
-    parameters (>= 0.10.1.1),
+    parameters (>= 0.11.0),
     PMCMRplus,
     purrr,
     rlang,
@@ -39,10 +39,6 @@ Suggests:
     rmarkdown,
     spelling,
     testthat
-Remotes:
-    easystats/insight,
-    easystats/parameters,
-    IndrajeetPatil/ipmisc
 Encoding: UTF-8
 Language: en-US
 LazyData: true

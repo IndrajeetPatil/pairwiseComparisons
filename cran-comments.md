@@ -7,4 +7,6 @@
 
 0 errors | 0 warnings | 0 note
 
-  - Minor internal refactoring.
+  - Fixes failing tests.
+  
+  - No worse changes for the reverse dependency.
