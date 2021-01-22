@@ -59,6 +59,8 @@ bf_ttest <- function(data, x, y, paired = FALSE, bf.prior = 0.707, ...) {
 #'
 #' @inheritParams pairwise_comparisons
 #'
+#' @importFrom dplyr case_when
+#'
 #' @examples
 #' library(pairwiseComparisons)
 #' p_adjust_text("none")
@@ -66,17 +68,12 @@ bf_ttest <- function(data, x, y, paired = FALSE, bf.prior = 0.707, ...) {
 #' @export
 
 p_adjust_text <- function(p.adjust.method) {
-  switch(
-    EXPR = p.adjust.method,
-    none = "None",
-    bonferroni = "Bonferroni",
-    holm = "Holm",
-    hochberg = "Hochberg",
-    hommel = "Hommel",
-    BH = "FDR",
-    fdr = "FDR",
-    BY = "BY",
-    "Holm"
+  x <- p.adjust.method
+  dplyr::case_when(
+    grepl("^n|^bo|^h", x) ~ paste0(toupper(substr(x, 1, 1)), substr(x, 2, nchar(x))),
+    grepl("^BH|^f", x) ~ "FDR",
+    grepl("^BY", x) ~ "BY",
+    TRUE ~ "Holm"
   )
 }
 
