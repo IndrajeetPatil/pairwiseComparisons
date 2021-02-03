@@ -8,11 +8,7 @@
 #' Calculate parametric, non-parametric, robust, and Bayes Factor pairwise
 #' comparisons between group levels with corrections for multiple testing.
 #'
-#' @param data A dataframe from which variables specified are to be taken. A
-#'   matrix or tables will **not** be accepted.
-#' @param x The grouping variable from the dataframe `data`.
-#' @param y The response (a.k.a. outcome or dependent) variable from the
-#'   dataframe `data`.
+#' @inheritParams ipmisc::long_to_wide_converter
 #' @param type Type of statistic expected (`"parametric"` or `"nonparametric"`
 #'   or `"robust"` or `"bayes"`).Corresponding abbreviations are also accepted:
 #'   `"p"` (for parametric), `"np"` (nonparametric), `"r"` (robust), or
@@ -31,7 +27,6 @@
 #' @param k Number of digits after decimal point (should be an integer)
 #'   (Default: `k = 2L`).
 #' @param ... Current ignored.
-#' @inheritParams ipmisc::long_to_wide_converter
 #' @inheritParams stats::t.test
 #' @inheritParams WRS2::rmmcp
 #' @inheritParams tidyBF::bf_ttest
@@ -67,7 +62,7 @@
 #' @importFrom rlang !!! ensym exec call2 new_formula
 #' @importFrom purrr map2 map_dfr
 #' @importFrom ipmisc stats_type_switch format_num long_to_wide_converter
-#' @importFrom insight standardize_names
+#' @importFrom parameters model_parameters standardize_names
 #'
 #' @examples
 #'

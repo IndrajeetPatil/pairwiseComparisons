@@ -7,6 +7,6 @@
 
 0 errors | 0 warnings | 0 note
 
-  - Fixes failing tests.
+  - Internal refactoring to remove `insight` from dependencies.
   
   - No worse changes for the reverse dependency.

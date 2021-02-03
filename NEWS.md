@@ -1,4 +1,4 @@
-# pairwiseComparisons 3.1.2.9000
+# pairwiseComparisons 3.1.3
 
   - Minor internal refactoring.
 

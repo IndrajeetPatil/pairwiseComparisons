@@ -20,8 +20,8 @@ pairwise_comparisons(
 )
 }
 \arguments{
-\item{data}{A dataframe from which variables specified are to be taken. A
-matrix or tables will \strong{not} be accepted.}
+\item{data}{A dataframe (or a tibble) from which variables specified are to
+be taken. A matrix or tables will \strong{not} be accepted.}
 
 \item{x}{The grouping variable from the dataframe \code{data}.}
 
