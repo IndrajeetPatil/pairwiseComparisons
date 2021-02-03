@@ -64,7 +64,7 @@
 #' @importFrom stats p.adjust pairwise.t.test na.omit aov
 #' @importFrom WRS2 lincon rmmcp
 #' @importFrom PMCMRplus durbinAllPairsTest kwAllPairsDunnTest gamesHowellTest
-#' @importFrom rlang !!! ensym exec
+#' @importFrom rlang !!! ensym exec call2 new_formula
 #' @importFrom purrr map2 map_dfr
 #' @importFrom ipmisc stats_type_switch format_num long_to_wide_converter
 #' @importFrom insight standardize_names
@@ -266,24 +266,17 @@ pairwise_comparisons <- function(data,
   # extracting the robust pairwise comparisons
   if (type == "robust") {
     if (isFALSE(paired)) {
-      mod <-
-        WRS2::lincon(
-          formula = rlang::new_formula(y, x),
-          data = df_int,
-          tr = tr
-        )
+      c(.ns, .fn) %<-% c("WRS2", "lincon")
+      .f.args <- list(formula = rlang::new_formula(y, x), data = df_int)
     } else {
-      mod <-
-        WRS2::rmmcp(
-          y = y_vec,
-          groups = x_vec,
-          blocks = g_vec,
-          tr = tr
-        )
+      c(.ns, .fn) %<-% c("WRS2", "rmmcp")
+      .f.args <- list(y = quote(y_vec), groups = quote(x_vec), blocks = quote(g_vec))
     }
 
     # cleaning the raw object and getting it in the right format
-    df <- tidy_model_parameters(mod)
+    df <-
+      eval(rlang::call2(.ns = .ns, .fn = .fn, tr = tr, !!!.f.args)) %>%
+      tidy_model_parameters(.)
 
     # test details
     test.details <- "Yuen's trimmed means test"

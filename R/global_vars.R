@@ -9,7 +9,9 @@ utils::globalVariables(
     "group2",
     "log_e_bf10",
     "p.value",
-    ".f"
+    ".f",
+    ".fn",
+    ".ns"
   ),
   package = "pairwiseComparisons",
   add = FALSE

@@ -7,7 +7,7 @@
 |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [![CRAN\_Release\_Badge](http://www.r-pkg.org/badges/version-ago/pairwiseComparisons)](https://CRAN.R-project.org/package=pairwiseComparisons)                                  | [![Travis Build Status](https://travis-ci.org/IndrajeetPatil/pairwiseComparisons.svg?branch=master)](https://travis-ci.org/IndrajeetPatil/pairwiseComparisons)                                               | [![Daily downloads badge](https://cranlogs.r-pkg.org/badges/last-day/pairwiseComparisons?color=blue)](https://CRAN.R-project.org/package=pairwiseComparisons)                         | [![GitHub version](https://img.shields.io/badge/GitHub-3.1.0-orange.svg?style=flat-square)](https://github.com/IndrajeetPatil/pairwiseComparisons/)                            | [![Website](https://img.shields.io/badge/website-pairwiseComparisons-orange.svg?colorB=E91E63)](https://indrajeetpatil.github.io/pairwiseComparisons/)                          |
 | [![CRAN Checks](https://cranchecks.info/badges/summary/pairwiseComparisons)](https://cran.r-project.org/web/checks/check_results_pairwiseComparisons.html)                      | [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/pairwiseComparisons?branch=master&svg=true)](https://ci.appveyor.com/project/IndrajeetPatil/pairwiseComparisons) | [![Weekly downloads badge](https://cranlogs.r-pkg.org/badges/last-week/pairwiseComparisons?color=blue)](https://CRAN.R-project.org/package=pairwiseComparisons)                       | [![Forks](https://img.shields.io/badge/forks-4-blue.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/)                                                              | [![Rdoc](https://www.rdocumentation.org/badges/version/pairwiseComparisons)](https://www.rdocumentation.org/packages/pairwiseComparisons)                                       |
-| [![minimal R version](https://img.shields.io/badge/R%3E%3D-3.6.0-6666ff.svg)](https://cran.r-project.org/)                                                                      | [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/)                                                                                               | [![Monthly downloads badge](https://cranlogs.r-pkg.org/badges/last-month/pairwiseComparisons?color=blue)](https://CRAN.R-project.org/package=pairwiseComparisons)                     | [![Github Issues](https://img.shields.io/badge/issues-1-red.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/issues)                                                | [![vignettes](https://img.shields.io/badge/vignettes-3.1.0-orange.svg?colorB=FF5722)](https://github.com/IndrajeetPatil/pairwiseComparisons/blob/master/README.md)              |
+| [![minimal R version](https://img.shields.io/badge/R%3E%3D-3.6.0-6666ff.svg)](https://cran.r-project.org/)                                                                      | [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html)                                                                                   | [![Monthly downloads badge](https://cranlogs.r-pkg.org/badges/last-month/pairwiseComparisons?color=blue)](https://CRAN.R-project.org/package=pairwiseComparisons)                     | [![Github Issues](https://img.shields.io/badge/issues-1-red.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/issues)                                                | [![vignettes](https://img.shields.io/badge/vignettes-3.1.0-orange.svg?colorB=FF5722)](https://github.com/IndrajeetPatil/pairwiseComparisons/blob/master/README.md)              |
 | [![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/IndrajeetPatil/pairwiseComparisons.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons) | [![Coverage Status](https://coveralls.io/repos/github/IndrajeetPatil/pairwiseComparisons/badge.svg?branch=master)](https://coveralls.io/github/IndrajeetPatil/pairwiseComparisons?branch=master)             | [![Total downloads badge](https://cranlogs.r-pkg.org/badges/grand-total/pairwiseComparisons?color=blue)](https://CRAN.R-project.org/package=pairwiseComparisons)                      | [![Github Stars](https://img.shields.io/github/stars/IndrajeetPatil/pairwiseComparisons.svg?style=social&label=Github)](https://github.com/IndrajeetPatil/pairwiseComparisons) | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2074621.svg)](https://doi.org/10.5281/zenodo.2074621)                                                                       |
 | [![Licence](https://img.shields.io/badge/licence-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)                                                                | [![Codecov test coverage](https://codecov.io/gh/IndrajeetPatil/pairwiseComparisons/branch/master/graph/badge.svg)](https://codecov.io/gh/IndrajeetPatil/pairwiseComparisons?branch=master)                   | [![Covrpage Summary](https://img.shields.io/badge/covrpage-Last_Build_2020_05_29-brightgreen.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/blob/master/tests/README.md) | [![Last-changedate](https://img.shields.io/badge/last%20change-2021--02--03-yellowgreen.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/commits/master)            | [![GitHub last commit](https://img.shields.io/github/last-commit/IndrajeetPatil/pairwiseComparisons.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/commits/master) |
 | [![status](https://tinyverse.netlify.com/badge/pairwiseComparisons)](https://CRAN.R-project.org/package=pairwiseComparisons)                                                    | [![R build status](https://github.com/IndrajeetPatil/pairwiseComparisons/workflows/R-CMD-check/badge.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons)                                            | [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/pairwiseComparisons/community)                                                                       | [![Project Status](http://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)                                                                    | [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/IndrajeetPatil/pairwiseComparisons/issues)         |
@@ -211,14 +211,14 @@ pairwise_comparisons(
   p.adjust.method = "fdr"
 )
 #> # A tibble: 6 x 10
-#>   group1  group2  estimate ci.width conf.low conf.high p.value
-#>   <chr>   <chr>      <dbl>    <dbl>    <dbl>     <dbl>   <dbl>
-#> 1 carni   herbi   -0.0530      0.95  -0.274     0.168    0.969
-#> 2 carni   insecti  0.0577      0.95  -0.0609    0.176    0.969
-#> 3 carni   omni     0.00210     0.95  -0.151     0.155    0.969
-#> 4 herbi   insecti  0.111       0.95  -0.0983    0.320    0.969
-#> 5 herbi   omni     0.0551      0.95  -0.173     0.283    0.969
-#> 6 insecti omni    -0.0556      0.95  -0.184     0.0728   0.969
+#>   group1  group2  estimate conf.level conf.low conf.high p.value
+#>   <chr>   <chr>      <dbl>      <dbl>    <dbl>     <dbl>   <dbl>
+#> 1 carni   herbi   -0.0530        0.95  -0.274     0.168    0.969
+#> 2 carni   insecti  0.0577        0.95  -0.0609    0.176    0.969
+#> 3 carni   omni     0.00210       0.95  -0.151     0.155    0.969
+#> 4 herbi   insecti  0.111         0.95  -0.0983    0.320    0.969
+#> 5 herbi   omni     0.0551        0.95  -0.173     0.283    0.969
+#> 6 insecti omni    -0.0556        0.95  -0.184     0.0728   0.969
 #>   test.details              p.value.adjustment
 #>   <chr>                     <chr>             
 #> 1 Yuen's trimmed means test FDR               
@@ -245,14 +245,14 @@ pairwise_comparisons(
   paired = FALSE
 )
 #> # A tibble: 6 x 17
-#>   group1  group2  term       estimate ci.width conf.low conf.high    pd
-#>   <chr>   <chr>   <chr>         <dbl>    <dbl>    <dbl>     <dbl> <dbl>
-#> 1 carni   herbi   Difference   0.376      0.89  -0.349     1.15   0.800
-#> 2 carni   insecti Difference  -0.0348     0.89  -0.105     0.0272 0.818
-#> 3 carni   omni    Difference   0.0440     0.89  -0.0962    0.208  0.693
-#> 4 herbi   insecti Difference  -0.394      0.89  -1.34      0.596  0.758
-#> 5 herbi   omni    Difference  -0.362      0.89  -0.938     0.191  0.859
-#> 6 insecti omni    Difference   0.0762     0.89  -0.141     0.261  0.732
+#>   group1  group2  term       estimate conf.level conf.low conf.high    pd
+#>   <chr>   <chr>   <chr>         <dbl>      <dbl>    <dbl>     <dbl> <dbl>
+#> 1 carni   herbi   Difference   0.376        0.89  -0.349     1.15   0.800
+#> 2 carni   insecti Difference  -0.0348       0.89  -0.105     0.0272 0.818
+#> 3 carni   omni    Difference   0.0440       0.89  -0.0962    0.208  0.693
+#> 4 herbi   insecti Difference  -0.394        0.89  -1.34      0.596  0.758
+#> 5 herbi   omni    Difference  -0.362        0.89  -0.938     0.191  0.859
+#> 6 insecti omni    Difference   0.0762       0.89  -0.141     0.261  0.732
 #>   rope.percentage prior.distribution prior.location prior.scale  bf10
 #>             <dbl> <chr>                       <dbl>       <dbl> <dbl>
 #> 1           0.183 cauchy                          0       0.707 0.540
@@ -360,14 +360,14 @@ pairwise_comparisons(
   p.adjust.method = "hommel"
 )
 #> # A tibble: 6 x 11
-#>   group1 group2 estimate ci.width conf.low conf.high  p.value  p.crit
-#>   <chr>  <chr>     <dbl>    <dbl>    <dbl>     <dbl>    <dbl>   <dbl>
-#> 1 HDHF   HDLF      1.16      0.95   0.318      2.00  1.49e- 3 0.0127 
-#> 2 HDHF   LDHF      0.5       0.95  -0.188      1.19  6.20e- 2 0.025  
-#> 3 HDHF   LDLF      2.10      0.95   1.37       2.82  1.79e-10 0.00851
-#> 4 HDLF   LDHF     -0.701     0.95  -1.71       0.303 6.20e- 2 0.05   
-#> 5 HDLF   LDLF      0.938     0.95   0.0694     1.81  1.36e- 2 0.0169 
-#> 6 LDHF   LDLF      1.54      0.95   0.810      2.27  1.16e- 6 0.0102 
+#>   group1 group2 estimate conf.level conf.low conf.high  p.value  p.crit
+#>   <chr>  <chr>     <dbl>      <dbl>    <dbl>     <dbl>    <dbl>   <dbl>
+#> 1 HDHF   HDLF      1.16        0.95   0.318      2.00  1.49e- 3 0.0127 
+#> 2 HDHF   LDHF      0.5         0.95  -0.188      1.19  6.20e- 2 0.025  
+#> 3 HDHF   LDLF      2.10        0.95   1.37       2.82  1.79e-10 0.00851
+#> 4 HDLF   LDHF     -0.701       0.95  -1.71       0.303 6.20e- 2 0.05   
+#> 5 HDLF   LDLF      0.938       0.95   0.0694     1.81  1.36e- 2 0.0169 
+#> 6 LDHF   LDLF      1.54        0.95   0.810      2.27  1.16e- 6 0.0102 
 #>   test.details              p.value.adjustment
 #>   <chr>                     <chr>             
 #> 1 Yuen's trimmed means test Hommel            
@@ -396,14 +396,14 @@ pairwise_comparisons(
   bf.prior = 0.77
 )
 #> # A tibble: 6 x 17
-#>   group1 group2 term       estimate ci.width conf.low conf.high    pd
-#>   <chr>  <chr>  <chr>         <dbl>    <dbl>    <dbl>     <dbl> <dbl>
-#> 1 HDHF   HDLF   Difference   -1.10      0.89   -1.62    -0.621  1    
-#> 2 HDHF   LDHF   Difference   -0.465     0.89   -0.868   -0.0521 0.962
-#> 3 HDHF   LDLF   Difference   -2.13      0.89   -2.57    -1.74   1    
-#> 4 HDLF   LDHF   Difference    0.652     0.89    0.105    1.21   0.971
-#> 5 HDLF   LDLF   Difference   -0.983     0.89   -1.46    -0.506  0.999
-#> 6 LDHF   LDLF   Difference   -1.67      0.89   -2.10    -1.27   1    
+#>   group1 group2 term       estimate conf.level conf.low conf.high    pd
+#>   <chr>  <chr>  <chr>         <dbl>      <dbl>    <dbl>     <dbl> <dbl>
+#> 1 HDHF   HDLF   Difference   -1.10        0.89   -1.62    -0.621  1    
+#> 2 HDHF   LDHF   Difference   -0.465       0.89   -0.868   -0.0521 0.962
+#> 3 HDHF   LDLF   Difference   -2.13        0.89   -2.57    -1.74   1    
+#> 4 HDLF   LDHF   Difference    0.652       0.89    0.105    1.21   0.971
+#> 5 HDLF   LDLF   Difference   -0.983       0.89   -1.46    -0.506  0.999
+#> 6 LDHF   LDLF   Difference   -1.67        0.89   -2.10    -1.27   1    
 #>   rope.percentage prior.distribution prior.location prior.scale     bf10
 #>             <dbl> <chr>                       <dbl>       <dbl>    <dbl>
 #> 1           0     cauchy                          0        0.77 3.95e+ 1
@@ -503,11 +503,11 @@ set.seed(123)
   dplyr::mutate(.data = ., groups = purrr::pmap(.l = list(group1, group2), .f = c)) %>%
   dplyr::arrange(.data = ., group1))
 #> # A tibble: 3 x 18
-#>   group1 group2 term       estimate ci.width conf.low conf.high    pd
-#>   <chr>  <chr>  <chr>         <dbl>    <dbl>    <dbl>     <dbl> <dbl>
-#> 1 Wine A Wine B Difference -0.00721     0.89  -0.0473    0.0307 0.624
-#> 2 Wine A Wine C Difference -0.0766      0.89  -0.129    -0.0265 0.989
-#> 3 Wine B Wine C Difference -0.0696      0.89  -0.0991   -0.0368 1.00 
+#>   group1 group2 term       estimate conf.level conf.low conf.high    pd
+#>   <chr>  <chr>  <chr>         <dbl>      <dbl>    <dbl>     <dbl> <dbl>
+#> 1 Wine A Wine B Difference -0.00721       0.89  -0.0473    0.0307 0.624
+#> 2 Wine A Wine C Difference -0.0766        0.89  -0.129    -0.0265 0.989
+#> 3 Wine B Wine C Difference -0.0696        0.89  -0.0991   -0.0368 1.00 
 #>   rope.percentage prior.distribution prior.location prior.scale   bf10
 #>             <dbl> <chr>                       <dbl>       <dbl>  <dbl>
 #> 1           0.431 cauchy                          0       0.707  0.235
