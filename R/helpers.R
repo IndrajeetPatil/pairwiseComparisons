@@ -68,11 +68,13 @@ bf_ttest <- function(data, x, y, paired = FALSE, bf.prior = 0.707, ...) {
 #' @export
 
 p_adjust_text <- function(p.adjust.method) {
-  x <- p.adjust.method
   dplyr::case_when(
-    grepl("^n|^bo|^h", x) ~ paste0(toupper(substr(x, 1, 1)), substr(x, 2, nchar(x))),
-    grepl("^BH|^f", x) ~ "FDR",
-    grepl("^BY", x) ~ "BY",
+    grepl("^n|^bo|^h", p.adjust.method) ~ paste0(
+      toupper(substr(p.adjust.method, 1, 1)),
+      substr(p.adjust.method, 2, nchar(p.adjust.method))
+    ),
+    grepl("^BH|^f", p.adjust.method) ~ "FDR",
+    grepl("^BY", p.adjust.method) ~ "BY",
     TRUE ~ "Holm"
   )
 }

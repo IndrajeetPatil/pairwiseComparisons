@@ -1,6 +1,10 @@
+# pairwiseComparisons 3.1.3.9000
+
 # pairwiseComparisons 3.1.3
 
   - Minor internal refactoring.
+  
+  - Removes `insight` from dependencies.
 
 # pairwiseComparisons 3.1.2
 
