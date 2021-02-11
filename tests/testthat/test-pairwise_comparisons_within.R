@@ -57,7 +57,19 @@ test_that(
       )
 
     set.seed(123)
-    expect_snapshot(list(df1, df2, df3, df4))
+    expect_snapshot(list(df1, df2, df3))
+
+    expect_equal(df4$log_e_bf10,
+      c(
+        3.72728778555223,
+        -0.539360770276211,
+        23.2071488954099,
+        -0.3589384624894,
+        2.89663700378694,
+        15.3854222237555
+      ),
+      tolerance = 0.01
+    )
   }
 )
 
@@ -110,6 +122,7 @@ test_that(
       )
 
     # bf
+    set.seed(123)
     df4 <-
       pairwise_comparisons(
         data = WRS2::WineTasting,
@@ -120,7 +133,12 @@ test_that(
         paired = TRUE
       )
 
-    expect_snapshot(list(df1, df2, df3, df4))
+    expect_snapshot(list(df1, df2, df3))
+
+    expect_equal(df4$log_e_bf10,
+      c(-1.44618964442711, 1.31224804728311, 3.92141234993467),
+      tolerance = 0.01
+    )
   }
 )
 

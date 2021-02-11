@@ -230,7 +230,20 @@ test_that(
         k = 3
       )
 
-    expect_snapshot(list(df1, df2, df3, df4, df5, df6))
+    expect_snapshot(list(df1, df2, df3, df4, df5))
+
+
+    expect_equal(df6$log_e_bf10,
+      c(
+        -0.616556955077368,
+        -0.331816123738985,
+        -0.850766925918558,
+        -0.615915090483787,
+        -0.559562332764069,
+        -0.6062922675725
+      ),
+      tolerance = 0.01
+    )
   }
 )
 

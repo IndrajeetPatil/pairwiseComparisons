@@ -1,7 +1,7 @@
 # `pairwise_comparisons()` works for within-subjects design - NAs
 
     Code
-      list(df1, df2, df3, df4)
+      list(df1, df2, df3)
     Output
       [[1]]
       # A tibble: 6 x 6
@@ -84,38 +84,11 @@
       5 list(~italic(p)[Hommel-corrected]==0.020)   
       6 list(~italic(p)[Hommel-corrected]==1.02e-04)
       
-      [[4]]
-      # A tibble: 6 x 17
-        group1 group2 term       estimate conf.level conf.low conf.high    pd
-        <chr>  <chr>  <chr>         <dbl>      <dbl>    <dbl>     <dbl> <dbl>
-      1 HDHF   HDLF   Difference   -1.10        0.89   -1.62    -0.619  1    
-      2 HDHF   LDHF   Difference   -0.462       0.89   -0.831   -0.0165 0.962
-      3 HDHF   LDLF   Difference   -2.13        0.89   -2.57    -1.73   1    
-      4 HDLF   LDHF   Difference    0.648       0.89    0.102    1.20   0.971
-      5 HDLF   LDLF   Difference   -0.976       0.89   -1.46    -0.504  0.999
-      6 LDHF   LDLF   Difference   -1.66        0.89   -2.09    -1.26   1    
-        rope.percentage prior.distribution prior.location prior.scale     bf10
-                  <dbl> <chr>                       <dbl>       <dbl>    <dbl>
-      1           0     cauchy                          0       0.707 4.16e+ 1
-      2           0.167 cauchy                          0       0.707 5.83e- 1
-      3           0     cauchy                          0       0.707 1.20e+10
-      4           0.138 cauchy                          0       0.707 6.98e- 1
-      5           0     cauchy                          0       0.707 1.81e+ 1
-      6           0     cauchy                          0       0.707 4.81e+ 6
-        method          log_e_bf10 label                             test.details    
-        <chr>                <dbl> <chr>                             <chr>           
-      1 Bayesian t-test      3.73  list(~log[e](BF['01'])==-3.7273)  Student's t-test
-      2 Bayesian t-test     -0.539 list(~log[e](BF['01'])==0.5394)   Student's t-test
-      3 Bayesian t-test     23.2   list(~log[e](BF['01'])==-23.2071) Student's t-test
-      4 Bayesian t-test     -0.359 list(~log[e](BF['01'])==0.3589)   Student's t-test
-      5 Bayesian t-test      2.90  list(~log[e](BF['01'])==-2.8966)  Student's t-test
-      6 Bayesian t-test     15.4   list(~log[e](BF['01'])==-15.3854) Student's t-test
-      
 
 # `pairwise_comparisons()` works for within-subjects design - without NAs
 
     Code
-      list(df1, df2, df3, df4)
+      list(df1, df2, df3)
     Output
       [[1]]
       # A tibble: 3 x 6
@@ -170,23 +143,5 @@
       1 list(~italic(p)[uncorrected]==0.195)
       2 list(~italic(p)[uncorrected]==0.005)
       3 list(~italic(p)[uncorrected]==0.009)
-      
-      [[4]]
-      # A tibble: 3 x 17
-        group1 group2 term       estimate conf.level conf.low conf.high    pd
-        <chr>  <chr>  <chr>         <dbl>      <dbl>    <dbl>     <dbl> <dbl>
-      1 Wine A Wine B Difference -0.00721       0.89  -0.0473    0.0307 0.624
-      2 Wine A Wine C Difference -0.0766        0.89  -0.129    -0.0265 0.989
-      3 Wine B Wine C Difference -0.0696        0.89  -0.0991   -0.0368 1.00 
-        rope.percentage prior.distribution prior.location prior.scale   bf10
-                  <dbl> <chr>                       <dbl>       <dbl>  <dbl>
-      1           0.431 cauchy                          0       0.707  0.235
-      2           0     cauchy                          0       0.707  3.71 
-      3           0     cauchy                          0       0.707 50.5  
-        method          log_e_bf10 label                            test.details    
-        <chr>                <dbl> <chr>                            <chr>           
-      1 Bayesian t-test      -1.45 list(~log[e](BF['01'])==1.4462)  Student's t-test
-      2 Bayesian t-test       1.31 list(~log[e](BF['01'])==-1.3122) Student's t-test
-      3 Bayesian t-test       3.92 list(~log[e](BF['01'])==-3.9214) Student's t-test
       
 

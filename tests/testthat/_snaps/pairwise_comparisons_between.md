@@ -1,7 +1,7 @@
 # `pairwise_comparisons()` works for between-subjects design
 
     Code
-      list(df1, df2, df3, df4, df5, df6)
+      list(df1, df2, df3, df4, df5)
     Output
       [[1]]
       # A tibble: 6 x 6
@@ -115,32 +115,5 @@
       1 list(~italic(p)[Holm-corrected]==0.316)
       2 list(~italic(p)[Holm-corrected]==0.003)
       3 list(~italic(p)[Holm-corrected]==0.003)
-      
-      [[6]]
-      # A tibble: 6 x 17
-        group1  group2  term       estimate conf.level conf.low conf.high    pd
-        <chr>   <chr>   <chr>         <dbl>      <dbl>    <dbl>     <dbl> <dbl>
-      1 carni   herbi   Difference   0.376        0.89  -0.349     1.15   0.800
-      2 carni   insecti Difference  -0.0348       0.89  -0.105     0.0272 0.818
-      3 carni   omni    Difference   0.0440       0.89  -0.0962    0.208  0.693
-      4 herbi   insecti Difference  -0.394        0.89  -1.34      0.596  0.758
-      5 herbi   omni    Difference  -0.362        0.89  -0.938     0.191  0.859
-      6 insecti omni    Difference   0.0762       0.89  -0.141     0.261  0.732
-        rope.percentage prior.distribution prior.location prior.scale  bf10
-                  <dbl> <chr>                       <dbl>       <dbl> <dbl>
-      1           0.183 cauchy                          0       0.707 0.540
-      2           0.143 cauchy                          0       0.707 0.718
-      3           0.252 cauchy                          0       0.707 0.427
-      4           0.177 cauchy                          0       0.707 0.540
-      5           0.172 cauchy                          0       0.707 0.571
-      6           0.172 cauchy                          0       0.707 0.545
-        method          log_e_bf10 label                          test.details    
-        <chr>                <dbl> <chr>                          <chr>           
-      1 Bayesian t-test     -0.617 list(~log[e](BF['01'])==0.617) Student's t-test
-      2 Bayesian t-test     -0.332 list(~log[e](BF['01'])==0.332) Student's t-test
-      3 Bayesian t-test     -0.851 list(~log[e](BF['01'])==0.851) Student's t-test
-      4 Bayesian t-test     -0.616 list(~log[e](BF['01'])==0.616) Student's t-test
-      5 Bayesian t-test     -0.560 list(~log[e](BF['01'])==0.560) Student's t-test
-      6 Bayesian t-test     -0.606 list(~log[e](BF['01'])==0.606) Student's t-test
       
 
