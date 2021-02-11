@@ -133,6 +133,19 @@
     },
     {
       "@type": "SoftwareApplication",
+      "identifier": "insight",
+      "name": "insight",
+      "version": ">= 0.12.0.1",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://github.com/easystats/insight"
+    },
+    {
+      "@type": "SoftwareApplication",
       "identifier": "ipmisc",
       "name": "ipmisc",
       "version": ">= 5.0.2",
@@ -236,5 +249,5 @@
     "name": "Comprehensive R Archive Network (CRAN)",
     "url": "https://cran.r-project.org"
   },
-  "fileSize": "1286.217KB"
+  "fileSize": "1286.53KB"
 }

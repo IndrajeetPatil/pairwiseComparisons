@@ -8,6 +8,7 @@
 \alias{\%<-\%}
 \alias{tibble}
 \alias{as_tibble}
+\alias{standardize_names}
 \title{Objects exported from other packages}
 \keyword{internal}
 \description{
@@ -15,6 +16,8 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
+  \item{insight}{\code{\link[insight]{standardize_names}}}
+
   \item{ipmisc}{\code{\link[ipmisc:reexports]{\%<-\%}}, \code{\link[ipmisc:reexports]{\%<>\%}}, \code{\link[ipmisc:reexports]{\%>\%}}, \code{\link[ipmisc:reexports]{as_tibble}}, \code{\link[ipmisc:reexports]{tibble}}}
 }}
 
