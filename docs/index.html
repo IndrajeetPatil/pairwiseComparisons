@@ -137,7 +137,7 @@
 <td><a href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img src="https://img.shields.io/badge/licence-GPL--3-blue.svg" alt="Licence"></a></td>
 <td><a href="https://codecov.io/gh/IndrajeetPatil/pairwiseComparisons?branch=master"><img src="https://codecov.io/gh/IndrajeetPatil/pairwiseComparisons/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></td>
 <td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/blob/master/tests/README.md"><img src="https://img.shields.io/badge/covrpage-Last_Build_2020_05_29-brightgreen.svg" alt="Covrpage Summary"></a></td>
-<td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/commits/master"><img src="https://img.shields.io/badge/last%20change-2021--02--03-yellowgreen.svg" alt="Last-changedate"></a></td>
+<td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/commits/master"><img src="https://img.shields.io/badge/last%20change-2021--02--11-yellowgreen.svg" alt="Last-changedate"></a></td>
 <td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/commits/master"><img src="https://img.shields.io/github/last-commit/IndrajeetPatil/pairwiseComparisons.svg" alt="GitHub last commit"></a></td>
 </tr>
 <tr class="even">
@@ -408,12 +408,12 @@
 <span class="co">#&gt; # A tibble: 6 x 10</span>
 <span class="co">#&gt;   group1  group2  estimate conf.level conf.low conf.high p.value</span>
 <span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 carni   herbi   -0.0530        0.95  -0.274     0.168    0.969</span>
-<span class="co">#&gt; 2 carni   insecti  0.0577        0.95  -0.0609    0.176    0.969</span>
-<span class="co">#&gt; 3 carni   omni     0.00210       0.95  -0.151     0.155    0.969</span>
-<span class="co">#&gt; 4 herbi   insecti  0.111         0.95  -0.0983    0.320    0.969</span>
-<span class="co">#&gt; 5 herbi   omni     0.0551        0.95  -0.173     0.283    0.969</span>
-<span class="co">#&gt; 6 insecti omni    -0.0556        0.95  -0.184     0.0728   0.969</span>
+<span class="co">#&gt; 1 carni   herbi   -0.0323        0.95  -0.248     0.184    0.898</span>
+<span class="co">#&gt; 2 carni   insecti  0.0451        0.95  -0.0484    0.139    0.898</span>
+<span class="co">#&gt; 3 carni   omni     0.00520       0.95  -0.114     0.124    0.898</span>
+<span class="co">#&gt; 4 herbi   insecti  0.0774        0.95  -0.133     0.288    0.898</span>
+<span class="co">#&gt; 5 herbi   omni     0.0375        0.95  -0.182     0.257    0.898</span>
+<span class="co">#&gt; 6 insecti omni    -0.0399        0.95  -0.142     0.0625   0.898</span>
 <span class="co">#&gt;   test.details              p.value.adjustment</span>
 <span class="co">#&gt;   &lt;chr&gt;                     &lt;chr&gt;             </span>
 <span class="co">#&gt; 1 Yuen's trimmed means test FDR               </span>
@@ -424,12 +424,12 @@
 <span class="co">#&gt; 6 Yuen's trimmed means test FDR               </span>
 <span class="co">#&gt;   label                                 </span>
 <span class="co">#&gt;   &lt;chr&gt;                                 </span>
-<span class="co">#&gt; 1 list(~italic(p)[FDR-corrected]==0.969)</span>
-<span class="co">#&gt; 2 list(~italic(p)[FDR-corrected]==0.969)</span>
-<span class="co">#&gt; 3 list(~italic(p)[FDR-corrected]==0.969)</span>
-<span class="co">#&gt; 4 list(~italic(p)[FDR-corrected]==0.969)</span>
-<span class="co">#&gt; 5 list(~italic(p)[FDR-corrected]==0.969)</span>
-<span class="co">#&gt; 6 list(~italic(p)[FDR-corrected]==0.969)</span>
+<span class="co">#&gt; 1 list(~italic(p)[FDR-corrected]==0.898)</span>
+<span class="co">#&gt; 2 list(~italic(p)[FDR-corrected]==0.898)</span>
+<span class="co">#&gt; 3 list(~italic(p)[FDR-corrected]==0.898)</span>
+<span class="co">#&gt; 4 list(~italic(p)[FDR-corrected]==0.898)</span>
+<span class="co">#&gt; 5 list(~italic(p)[FDR-corrected]==0.898)</span>
+<span class="co">#&gt; 6 list(~italic(p)[FDR-corrected]==0.898)</span>
 
 <span class="co"># Bayes Factor</span>
 <span class="fu"><a href="reference/pairwise_comparisons.html">pairwise_comparisons</a></span><span class="op">(</span>
@@ -555,14 +555,14 @@
   p.adjust.method <span class="op">=</span> <span class="st">"hommel"</span>
 <span class="op">)</span>
 <span class="co">#&gt; # A tibble: 6 x 11</span>
-<span class="co">#&gt;   group1 group2 estimate conf.level conf.low conf.high  p.value  p.crit</span>
-<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;     &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 HDHF   HDLF      1.16        0.95   0.318      2.00  1.49e- 3 0.0127 </span>
-<span class="co">#&gt; 2 HDHF   LDHF      0.5         0.95  -0.188      1.19  6.20e- 2 0.025  </span>
-<span class="co">#&gt; 3 HDHF   LDLF      2.10        0.95   1.37       2.82  1.79e-10 0.00851</span>
-<span class="co">#&gt; 4 HDLF   LDHF     -0.701       0.95  -1.71       0.303 6.20e- 2 0.05   </span>
-<span class="co">#&gt; 5 HDLF   LDLF      0.938       0.95   0.0694     1.81  1.36e- 2 0.0169 </span>
-<span class="co">#&gt; 6 LDHF   LDLF      1.54        0.95   0.810      2.27  1.16e- 6 0.0102 </span>
+<span class="co">#&gt;   group1 group2 estimate conf.level conf.low conf.high     p.value  p.crit</span>
+<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;     &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;   &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 HDHF   HDLF      1.03        0.95   0.140      1.92  0.00999     0.0127 </span>
+<span class="co">#&gt; 2 HDHF   LDHF      0.454       0.95  -0.104      1.01  0.0520      0.025  </span>
+<span class="co">#&gt; 3 HDHF   LDLF      1.95        0.95   1.09       2.82  0.000000564 0.00851</span>
+<span class="co">#&gt; 4 HDLF   LDHF     -0.676       0.95  -1.61       0.256 0.0520      0.05   </span>
+<span class="co">#&gt; 5 HDLF   LDLF      0.889       0.95   0.0244     1.75  0.0203      0.0169 </span>
+<span class="co">#&gt; 6 LDHF   LDLF      1.35        0.95   0.560      2.14  0.000102    0.0102 </span>
 <span class="co">#&gt;   test.details              p.value.adjustment</span>
 <span class="co">#&gt;   &lt;chr&gt;                     &lt;chr&gt;             </span>
 <span class="co">#&gt; 1 Yuen's trimmed means test Hommel            </span>
@@ -573,12 +573,12 @@
 <span class="co">#&gt; 6 Yuen's trimmed means test Hommel            </span>
 <span class="co">#&gt;   label                                       </span>
 <span class="co">#&gt;   &lt;chr&gt;                                       </span>
-<span class="co">#&gt; 1 list(~italic(p)[Hommel-corrected]==0.001)   </span>
-<span class="co">#&gt; 2 list(~italic(p)[Hommel-corrected]==0.062)   </span>
-<span class="co">#&gt; 3 list(~italic(p)[Hommel-corrected]==1.79e-10)</span>
-<span class="co">#&gt; 4 list(~italic(p)[Hommel-corrected]==0.062)   </span>
-<span class="co">#&gt; 5 list(~italic(p)[Hommel-corrected]==0.014)   </span>
-<span class="co">#&gt; 6 list(~italic(p)[Hommel-corrected]==1.16e-06)</span>
+<span class="co">#&gt; 1 list(~italic(p)[Hommel-corrected]==0.010)   </span>
+<span class="co">#&gt; 2 list(~italic(p)[Hommel-corrected]==0.052)   </span>
+<span class="co">#&gt; 3 list(~italic(p)[Hommel-corrected]==5.64e-07)</span>
+<span class="co">#&gt; 4 list(~italic(p)[Hommel-corrected]==0.052)   </span>
+<span class="co">#&gt; 5 list(~italic(p)[Hommel-corrected]==0.020)   </span>
+<span class="co">#&gt; 6 list(~italic(p)[Hommel-corrected]==1.02e-04)</span>
 
 <span class="co"># Bayes Factor</span>
 <span class="fu"><a href="reference/pairwise_comparisons.html">pairwise_comparisons</a></span><span class="op">(</span>

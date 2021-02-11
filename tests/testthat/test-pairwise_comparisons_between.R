@@ -150,7 +150,10 @@ test_that(
   code = {
     set.seed(123)
 
+    options(tibble.width = Inf)
+
     # student's t
+    set.seed(123)
     df1 <-
       pairwise_comparisons(
         data = msleep,
@@ -170,6 +173,7 @@ test_that(
 
     df_msleep$vore <- factor(df_msleep$vore, levels = c(levels(df_msleep$vore), "Random"))
 
+    set.seed(123)
     df2 <-
       pairwise_comparisons(
         data = df_msleep,
@@ -182,6 +186,7 @@ test_that(
       )
 
     # Dunn test
+    set.seed(123)
     df3 <-
       pairwise_comparisons(
         data = msleep,
@@ -193,6 +198,7 @@ test_that(
       )
 
     # robust t test
+    set.seed(123)
     df4 <-
       pairwise_comparisons(
         data = msleep,
@@ -214,6 +220,7 @@ test_that(
       )
 
     # bayes test
+    set.seed(123)
     df6 <-
       pairwise_comparisons(
         data = df_msleep,
@@ -223,178 +230,7 @@ test_that(
         k = 3
       )
 
-    # column types
-    expect_true(all(is.character(df1$group1), is.character(df1$group2)))
-    expect_true(all(is.character(df2$group1), is.character(df2$group2)))
-    expect_true(all(is.character(df3$group1), is.character(df3$group2)))
-    expect_true(all(is.character(df4$group1), is.character(df4$group2)))
-    expect_true(all(is.character(df5$group1), is.character(df5$group2)))
-    expect_true(all(is.character(df6$group1), is.character(df6$group2)))
-
-    # test details
-    expect_identical(unique(df1$test.details), "Student's t-test")
-    expect_identical(unique(df2$test.details), "Games-Howell test")
-    expect_identical(unique(df3$test.details), "Dunn test")
-    expect_identical(unique(df4$test.details), "Yuen's trimmed means test")
-    expect_identical(unique(df5$test.details), "Student's t-test")
-    expect_identical(unique(df6$test.details), "Student's t-test")
-
-    # adjustment method
-    expect_identical(unique(df1$p.value.adjustment), "Bonferroni")
-    expect_identical(unique(df2$p.value.adjustment), "Bonferroni")
-    expect_identical(unique(df3$p.value.adjustment), "None")
-    expect_identical(unique(df4$p.value.adjustment), "FDR")
-    expect_identical(unique(df5$p.value.adjustment), "Holm")
-
-    # testing exact values
-    expect_equal(
-      df2$statistic,
-      c(
-        2.17169043717625,
-        -2.16913303477938,
-        1.09507690266434,
-        -2.41175676610363,
-        -1.86823811633304,
-        2.18822208033862
-      ),
-      tolerance = 0.001
-    )
-
-    expect_equal(
-      df3$statistic,
-      c(
-        0.581939863708611,
-        1.88416265861034,
-        1.1401937549755,
-        1.63470584606214,
-        0.716738819223383,
-        1.14184879734281
-      ),
-      tolerance = 0.001
-    )
-
-    expect_equal(
-      df4$estimate,
-      c(
-        -0.0529663194444444,
-        0.0577055555555556,
-        0.00210288888888889,
-        0.110671875,
-        0.0550692083333333,
-        -0.0556026666666667
-      ),
-      tolerance = 0.001
-    )
-
-    expect_equal(
-      df1$group1,
-      c("carni", "carni", "carni", "herbi", "herbi", "insecti")
-    )
-    expect_equal(
-      df1$group2,
-      c("herbi", "insecti", "omni", "insecti", "omni", "omni")
-    )
-    expect_equal(df5$group1, c("PG", "PG", "PG-13"))
-    expect_equal(df5$group2, c("PG-13", "R", "R"))
-    expect_equal(df5$p.value,
-      c(0.315931518, 0.002825407, 0.003100279),
-      tolerance = 0.001
-    )
-
-    # checking labels
-    expect_identical(
-      df1$label,
-      c(
-        "list(~italic(p)[Bonferroni-corrected]==1.000)",
-        "list(~italic(p)[Bonferroni-corrected]==1.000)",
-        "list(~italic(p)[Bonferroni-corrected]==1.000)",
-        "list(~italic(p)[Bonferroni-corrected]==1.000)",
-        "list(~italic(p)[Bonferroni-corrected]==0.979)",
-        "list(~italic(p)[Bonferroni-corrected]==1.000)"
-      )
-    )
-
-    expect_identical(
-      df2$label,
-      c(
-        "list(~italic(p)[Bonferroni-corrected]==1.000)",
-        "list(~italic(p)[Bonferroni-corrected]==1.000)",
-        "list(~italic(p)[Bonferroni-corrected]==1.000)",
-        "list(~italic(p)[Bonferroni-corrected]==1.000)",
-        "list(~italic(p)[Bonferroni-corrected]==1.000)",
-        "list(~italic(p)[Bonferroni-corrected]==1.000)"
-      )
-    )
-
-    expect_identical(
-      df3$label,
-      c(
-        "list(~italic(p)[uncorrected]==0.561)",
-        "list(~italic(p)[uncorrected]==0.060)",
-        "list(~italic(p)[uncorrected]==0.254)",
-        "list(~italic(p)[uncorrected]==0.102)",
-        "list(~italic(p)[uncorrected]==0.474)",
-        "list(~italic(p)[uncorrected]==0.254)"
-      )
-    )
-
-    expect_identical(
-      df4$label,
-      c(
-        "list(~italic(p)[FDR-corrected]==0.969)",
-        "list(~italic(p)[FDR-corrected]==0.969)",
-        "list(~italic(p)[FDR-corrected]==0.969)",
-        "list(~italic(p)[FDR-corrected]==0.969)",
-        "list(~italic(p)[FDR-corrected]==0.969)",
-        "list(~italic(p)[FDR-corrected]==0.969)"
-      )
-    )
-
-    expect_identical(
-      df5$label,
-      c(
-        "list(~italic(p)[Holm-corrected]==0.316)",
-        "list(~italic(p)[Holm-corrected]==0.003)",
-        "list(~italic(p)[Holm-corrected]==0.003)"
-      )
-    )
-
-    expect_identical(
-      df6$label,
-      c(
-        "list(~log[e](BF['01'])==0.617)",
-        "list(~log[e](BF['01'])==0.332)",
-        "list(~log[e](BF['01'])==0.851)",
-        "list(~log[e](BF['01'])==0.616)",
-        "list(~log[e](BF['01'])==0.560)",
-        "list(~log[e](BF['01'])==0.606)"
-      )
-    )
-
-    # checking tibble
-    expect_s3_class(df1, "tbl_df")
-    expect_s3_class(df2, "tbl_df")
-    expect_s3_class(df3, "tbl_df")
-    expect_s3_class(df4, "tbl_df")
-    expect_s3_class(df5, "tbl_df")
-
-    # columns should be same no matter the test
-    expect_identical(df1$group1, df2$group1)
-    expect_identical(df1$group1, df3$group1)
-    expect_identical(df1$group1, df4$group1)
-    expect_identical(df1$group1, df6$group1)
-    expect_identical(df1$group2, df2$group2)
-    expect_identical(df1$group2, df3$group2)
-    expect_identical(df1$group2, df4$group2)
-    expect_identical(df1$group2, df6$group2)
-
-    # column names
-    expect_identical(names(df1)[1:2], c("group1", "group2"))
-    expect_identical(names(df2)[1:2], c("group1", "group2"))
-    expect_identical(names(df3)[1:2], c("group1", "group2"))
-    expect_identical(names(df4)[1:2], c("group1", "group2"))
-    expect_identical(names(df5)[1:2], c("group1", "group2"))
-    expect_identical(names(df6)[1:2], c("group1", "group2"))
+    expect_snapshot(list(df1, df2, df3, df4, df5, df6))
   }
 )
 
@@ -409,6 +245,7 @@ test_that(
     msleep2 <- dplyr::filter(.data = msleep, vore %in% c("carni", "omni"))
 
     # check those levels are not included
+    set.seed(123)
     df1 <-
       pairwise_comparisons(
         data = msleep2,
@@ -417,6 +254,7 @@ test_that(
         p.adjust.method = "none"
       )
 
+    set.seed(123)
     df2 <-
       pairwise_comparisons(
         data = msleep,

@@ -12,7 +12,7 @@ pairwise_comparisons(
   type = "parametric",
   paired = FALSE,
   var.equal = FALSE,
-  tr = 0.1,
+  tr = 0.2,
   bf.prior = 0.707,
   p.adjust.method = "holm",
   k = 2L,
@@ -53,7 +53,7 @@ repeated measures/within-subjects or between-subjects. The default is
 get error stating "Standard error cannot be computed because of Winsorized
 variance of 0 (e.g., due to ties). Try to decrease the trimming level.",
 try to play around with the value of \code{tr}, which is by default set to
-\code{0.1}. Lowering the value might help.}
+\code{0.2}. Lowering the value might help.}
 
 \item{bf.prior}{A number between \code{0.5} and \code{2} (default \code{0.707}), the prior
 width to use in calculating Bayes factors.}

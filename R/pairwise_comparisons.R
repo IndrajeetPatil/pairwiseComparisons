@@ -17,7 +17,7 @@
 #'   get error stating "Standard error cannot be computed because of Winsorized
 #'   variance of 0 (e.g., due to ties). Try to decrease the trimming level.",
 #'   try to play around with the value of `tr`, which is by default set to
-#'   `0.1`. Lowering the value might help.
+#'   `0.2`. Lowering the value might help.
 #' @param p.adjust.method Adjustment method for *p*-values for multiple
 #'   comparisons. Possible methods are: `"holm"` (default), `"hochberg"`,
 #'   `"hommel"`, `"bonferroni"`, `"BH"`, `"BY"`, `"fdr"`, `"none"`.
@@ -183,7 +183,7 @@ pairwise_comparisons <- function(data,
                                  type = "parametric",
                                  paired = FALSE,
                                  var.equal = FALSE,
-                                 tr = 0.1,
+                                 tr = 0.2,
                                  bf.prior = 0.707,
                                  p.adjust.method = "holm",
                                  k = 2L,
