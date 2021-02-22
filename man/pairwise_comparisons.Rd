@@ -21,19 +21,19 @@ pairwise_comparisons(
 }
 \arguments{
 \item{data}{A dataframe (or a tibble) from which variables specified are to
-be taken. A matrix or tables will \strong{not} be accepted.}
+be taken. A matrix or a table will \strong{not} be accepted.}
 
 \item{x}{The grouping variable from the dataframe \code{data}.}
 
 \item{y}{The response (a.k.a. outcome or dependent) variable from the
 dataframe \code{data}.}
 
-\item{subject.id}{In case of repeated measures design (\code{paired = TRUE},
-i.e.), this argument specifies the subject or repeated measures id. Note
-that if this argument is \code{NULL} (which is the default), the function
-assumes that the data has already been sorted by such an id by the user and
-creates an internal identifier. So if your data is \strong{not} sorted and you
-leave this argument unspecified, the results can be inaccurate.}
+\item{subject.id}{Relevant in case of repeated measures design (\code{paired = TRUE}, i.e.), it specifies the subject or repeated measures identifier.
+\strong{Important}: Note that if this argument is \code{NULL} (which is the default),
+the function assumes that the data has already been sorted by such an id by
+the user and creates an internal identifier. So if your data is \strong{not}
+sorted and you leave this argument unspecified, the results can be
+inaccurate.}
 
 \item{type}{Type of statistic expected (\code{"parametric"} or \code{"nonparametric"}
 or \code{"robust"} or \code{"bayes"}).Corresponding abbreviations are also accepted:
@@ -105,7 +105,8 @@ set.seed(123)
 library(pairwiseComparisons)
 
 # show me all columns and make the column titles bold
-options(tibble.width = Inf, pillar.bold = TRUE, pillar.subtle_num = TRUE)
+# as a user, you don't need to do this; this is just for the website
+options(tibble.width = Inf, pillar.bold = TRUE, pillar.neg = TRUE, pillar.subtle_num = TRUE)
 
 #------------------- between-subjects design ----------------------------
 

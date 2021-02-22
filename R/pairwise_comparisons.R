@@ -72,7 +72,8 @@
 #' library(pairwiseComparisons)
 #'
 #' # show me all columns and make the column titles bold
-#' options(tibble.width = Inf, pillar.bold = TRUE, pillar.subtle_num = TRUE)
+#' # as a user, you don't need to do this; this is just for the website
+#' options(tibble.width = Inf, pillar.bold = TRUE, pillar.neg = TRUE, pillar.subtle_num = TRUE)
 #'
 #' #------------------- between-subjects design ----------------------------
 #'
