@@ -5,7 +5,7 @@ output: github_document
   <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 ```{r, echo = FALSE}
-# show me all columns
+# pretty printing for the tibble
 options(
   tibble.width = Inf,
   pillar.bold = TRUE,
@@ -43,7 +43,7 @@ provides a tidy data friendly way to carry out pairwise comparison tests.
 
 It currently supports *post hoc* multiple pairwise comparisons tests for both
 between-subjects and within-subjects one-way analysis of variance designs. For
-both of these designs, parametric, non-parametric, robust, and Bayes Factor
+both of these designs, parametric, non-parametric, robust, and Bayesian
 statistical tests are available.
 
 ## Installation
@@ -114,7 +114,7 @@ Here we will see specific examples of how to use this function for different
 types of
 
   - designs (between or within subjects)
-  - statistics (parametric, non-parametric, robust, Bayes Factor)
+  - statistics (parametric, non-parametric, robust, Bayesian)
   - *p*-value adjustment methods
 
 ## Between-subjects design
@@ -167,7 +167,7 @@ pairwise_comparisons(
   p.adjust.method = "fdr"
 )
 
-# Bayes Factor
+# Bayesian
 pairwise_comparisons(
   data = ggplot2::msleep,
   x = vore,
@@ -217,7 +217,7 @@ pairwise_comparisons(
   p.adjust.method = "hommel"
 )
 
-# Bayes Factor
+# Bayesian
 pairwise_comparisons(
   data = bugs_long,
   x = condition,
