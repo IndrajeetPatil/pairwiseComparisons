@@ -21,19 +21,21 @@ pairwise_comparisons(
 }
 \arguments{
 \item{data}{A dataframe (or a tibble) from which variables specified are to
-be taken. A matrix or a table will \strong{not} be accepted.}
+be taken. Other data types (e.g., matrix,table, array, etc.) will \strong{not}
+be accepted.}
 
-\item{x}{The grouping variable from the dataframe \code{data}.}
+\item{x}{The grouping (or independent) variable from the dataframe \code{data}.}
 
-\item{y}{The response (a.k.a. outcome or dependent) variable from the
+\item{y}{The response (or outcome or dependent) variable from the
 dataframe \code{data}.}
 
-\item{subject.id}{Relevant in case of repeated measures design (\code{paired = TRUE}, i.e.), it specifies the subject or repeated measures identifier.
-\strong{Important}: Note that if this argument is \code{NULL} (which is the default),
-the function assumes that the data has already been sorted by such an id by
-the user and creates an internal identifier. So if your data is \strong{not}
-sorted and you leave this argument unspecified, the results can be
-inaccurate.}
+\item{subject.id}{Relevant in case of repeated measures or within-subjects
+design (\code{paired = TRUE}, i.e.), it specifies the subject or repeated
+measures identifier. \strong{Important}: Note that if this argument is \code{NULL}
+(which is the default), the function assumes that the data has already been
+sorted by such an id by the user and creates an internal identifier. So if
+your data is \strong{not} sorted and you leave this argument unspecified, the
+results can be inaccurate.}
 
 \item{type}{Type of statistic expected (\code{"parametric"} or \code{"nonparametric"}
 or \code{"robust"} or \code{"bayes"}).Corresponding abbreviations are also accepted:
@@ -92,13 +94,10 @@ respective functions:
 }
 }
 \description{
-\Sexpr[results=rd, stage=render]{rlang:::lifecycle("maturing")}
-
 Calculate parametric, non-parametric, robust, and Bayes Factor pairwise
 comparisons between group levels with corrections for multiple testing.
 }
 \examples{
-
 \donttest{
 # for reproducibility
 set.seed(123)

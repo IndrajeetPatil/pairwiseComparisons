@@ -15,8 +15,6 @@ comparisons. Possible methods are: \code{"holm"} (default), \code{"hochberg"},
 Standardized text description for what method was used.
 }
 \description{
-\Sexpr[results=rd, stage=render]{rlang:::lifecycle("stable")}
-
 Preparing text to describe which \emph{p}-value adjustment method was used
 }
 \examples{

@@ -3,8 +3,6 @@
 #'
 #' @description
 #'
-#' \Sexpr[results=rd, stage=render]{rlang:::lifecycle("maturing")}
-#'
 #' Calculate parametric, non-parametric, robust, and Bayes Factor pairwise
 #' comparisons between group levels with corrections for multiple testing.
 #'
@@ -63,9 +61,9 @@
 #' @importFrom purrr map2 map_dfr
 #' @importFrom ipmisc stats_type_switch format_num long_to_wide_converter
 #' @importFrom parameters model_parameters standardize_names
+#' @importFrom insight format_value
 #'
 #' @examples
-#'
 #' \donttest{
 #' # for reproducibility
 #' set.seed(123)
@@ -300,7 +298,7 @@ pairwise_comparisons <- function(data,
         )
       ) %>%
       dplyr::rowwise() %>%
-      dplyr::mutate(label = paste0("list(~log[e](BF['01'])==", format_num(-log_e_bf10, k), ")")) %>%
+      dplyr::mutate(label = paste0("list(~log[e](BF['01'])==", format_value(-log_e_bf10, k), ")")) %>%
       dplyr::ungroup() %>%
       dplyr::mutate(test.details = "Student's t-test")
 
@@ -327,13 +325,8 @@ pairwise_comparisons <- function(data,
       dplyr::rowwise() %>%
       dplyr::mutate(
         label = dplyr::case_when(
-          p.value.adjustment != "None" ~
-          paste0(
-            "list(~italic(p)[",
-            p.value.adjustment,
-            "-corrected]==",
-            format_num(p.value, k, TRUE),
-            ")"
+          p.value.adjustment != "None" ~ paste0(
+            "list(~italic(p)[", p.value.adjustment, "-corrected]==", format_num(p.value, k, TRUE), ")"
           ),
           TRUE ~ paste0("list(~italic(p)[uncorrected]==", format_num(p.value, k, TRUE), ")")
         )

@@ -1,4 +1,4 @@
-# pairwiseComparisons 3.1.3.9000
+# pairwiseComparisons 3.1.4
 
   - To avoid confusion among users, the trimming level for all functions is now
     changed from `tr = 0.1` to `tr = 0.2` (which is what `WRS2` defaults to).

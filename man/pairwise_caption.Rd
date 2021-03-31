@@ -24,8 +24,6 @@ Available options are \code{"significant"} (abbreviation accepted: \code{"s"}) o
 \item{...}{Ignored.}
 }
 \description{
-\Sexpr[results=rd, stage=render]{rlang:::lifecycle("stable")}
-
 This returns an expression containing details about the pairwise comparison
 test and the \emph{p}-value adjustment method. These details are typically
 included in the \code{ggstatsplot} package plots as a caption.

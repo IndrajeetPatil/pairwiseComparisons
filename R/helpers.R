@@ -51,8 +51,6 @@ bf_ttest <- function(data, x, y, paired = FALSE, bf.prior = 0.707, ...) {
 #'
 #' @description
 #'
-#' \Sexpr[results=rd, stage=render]{rlang:::lifecycle("stable")}
-#'
 #' Preparing text to describe which *p*-value adjustment method was used
 #'
 #' @return Standardized text description for what method was used.
@@ -84,8 +82,6 @@ p_adjust_text <- function(p.adjust.method) {
 #' @title Pairwise comparison test expression
 #'
 #' @description
-#'
-#' \Sexpr[results=rd, stage=render]{rlang:::lifecycle("stable")}
 #'
 #' This returns an expression containing details about the pairwise comparison
 #' test and the *p*-value adjustment method. These details are typically
