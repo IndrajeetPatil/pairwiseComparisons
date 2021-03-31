@@ -47,7 +47,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">pairwiseComparisons</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">3.1.3.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">3.1.4</span>
       </span>
     </div>
 
@@ -129,7 +129,7 @@
 <td><a href="https://cran.r-project.org/"><img src="https://img.shields.io/badge/R%3E%3D-3.6.0-6666ff.svg" alt="minimal R version"></a></td>
 <td><a href="https://lifecycle.r-lib.org/articles/stages.html"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="lifecycle"></a></td>
 <td><a href="https://CRAN.R-project.org/package=pairwiseComparisons"><img src="https://cranlogs.r-pkg.org/badges/last-month/pairwiseComparisons?color=blue" alt="Monthly downloads badge"></a></td>
-<td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/issues"><img src="https://img.shields.io/badge/issues-1-red.svg" alt="Github Issues"></a></td>
+<td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/issues"><img src="https://img.shields.io/badge/issues-2-red.svg" alt="Github Issues"></a></td>
 <td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/blob/master/README.md"><img src="https://img.shields.io/badge/vignettes-3.1.0-orange.svg?colorB=FF5722" alt="vignettes"></a></td>
 </tr>
 <tr class="even">
@@ -143,7 +143,7 @@
 <td><a href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img src="https://img.shields.io/badge/licence-GPL--3-blue.svg" alt="Licence"></a></td>
 <td><a href="https://codecov.io/gh/IndrajeetPatil/pairwiseComparisons?branch=master"><img src="https://codecov.io/gh/IndrajeetPatil/pairwiseComparisons/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></td>
 <td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/blob/master/tests/README.md"><img src="https://img.shields.io/badge/covrpage-Last_Build_2020_05_29-brightgreen.svg" alt="Covrpage Summary"></a></td>
-<td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/commits/master"><img src="https://img.shields.io/badge/last%20change-2021--02--11-yellowgreen.svg" alt="Last-changedate"></a></td>
+<td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/commits/master"><img src="https://img.shields.io/badge/last%20change-2021--03--31-yellowgreen.svg" alt="Last-changedate"></a></td>
 <td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/commits/master"><img src="https://img.shields.io/github/last-commit/IndrajeetPatil/pairwiseComparisons.svg" alt="GitHub last commit"></a></td>
 </tr>
 <tr class="even">
@@ -161,7 +161,7 @@
 <a href="#introduction-" class="anchor"></a>Introduction <img src="reference/figures/logo.png" align="right" width="240">
 </h1>
 <p><a href="https://indrajeetpatil.github.io/pairwiseComparisons/"><code>pairwiseComparisons</code></a> provides a tidy data friendly way to carry out pairwise comparison tests.</p>
-<p>It currently supports <em>post hoc</em> multiple pairwise comparisons tests for both between-subjects and within-subjects one-way analysis of variance designs. For both of these designs, parametric, non-parametric, robust, and Bayes Factor statistical tests are available.</p>
+<p>It currently supports <em>post hoc</em> multiple pairwise comparisons tests for both between-subjects and within-subjects one-way analysis of variance designs. For both of these designs, parametric, non-parametric, robust, and Bayesian statistical tests are available.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
@@ -290,7 +290,7 @@
 <p>Here we will see specific examples of how to use this function for different types of</p>
 <ul>
 <li>designs (between or within subjects)</li>
-<li>statistics (parametric, non-parametric, robust, Bayes Factor)</li>
+<li>statistics (parametric, non-parametric, robust, Bayesian)</li>
 <li>
 <em>p</em>-value adjustment methods</li>
 </ul>
@@ -437,7 +437,7 @@
 <span class="co">#&gt; 5 list(~italic(p)[FDR-corrected]==0.898)</span>
 <span class="co">#&gt; 6 list(~italic(p)[FDR-corrected]==0.898)</span>
 
-<span class="co"># Bayes Factor</span>
+<span class="co"># Bayesian</span>
 <span class="fu"><a href="reference/pairwise_comparisons.html">pairwise_comparisons</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="va">msleep</span>,
   x <span class="op">=</span> <span class="va">vore</span>,
@@ -445,7 +445,7 @@
   type <span class="op">=</span> <span class="st">"bayes"</span>,
   paired <span class="op">=</span> <span class="cn">FALSE</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 6 x 17</span>
+<span class="co">#&gt; # A tibble: 6 x 18</span>
 <span class="co">#&gt;   group1  group2  term       estimate conf.level conf.low conf.high    pd</span>
 <span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;         &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 carni   herbi   Difference   0.376        0.89  -0.349     1.15   0.800</span>
@@ -454,14 +454,14 @@
 <span class="co">#&gt; 4 herbi   insecti Difference  -0.394        0.89  -1.34      0.596  0.758</span>
 <span class="co">#&gt; 5 herbi   omni    Difference  -0.362        0.89  -0.938     0.191  0.859</span>
 <span class="co">#&gt; 6 insecti omni    Difference   0.0762       0.89  -0.141     0.261  0.732</span>
-<span class="co">#&gt;   rope.percentage prior.distribution prior.location prior.scale  bf10</span>
-<span class="co">#&gt;             &lt;dbl&gt; &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt; 1           0.183 cauchy                          0       0.707 0.540</span>
-<span class="co">#&gt; 2           0.143 cauchy                          0       0.707 0.718</span>
-<span class="co">#&gt; 3           0.252 cauchy                          0       0.707 0.427</span>
-<span class="co">#&gt; 4           0.177 cauchy                          0       0.707 0.540</span>
-<span class="co">#&gt; 5           0.172 cauchy                          0       0.707 0.571</span>
-<span class="co">#&gt; 6           0.172 cauchy                          0       0.707 0.545</span>
+<span class="co">#&gt;   rope.ci rope.percentage prior.distribution prior.location prior.scale  bf10</span>
+<span class="co">#&gt;     &lt;dbl&gt;           &lt;dbl&gt; &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;</span>
+<span class="co">#&gt; 1    0.89           0.183 cauchy                          0       0.707 0.540</span>
+<span class="co">#&gt; 2    0.89           0.143 cauchy                          0       0.707 0.718</span>
+<span class="co">#&gt; 3    0.89           0.252 cauchy                          0       0.707 0.427</span>
+<span class="co">#&gt; 4    0.89           0.177 cauchy                          0       0.707 0.540</span>
+<span class="co">#&gt; 5    0.89           0.172 cauchy                          0       0.707 0.571</span>
+<span class="co">#&gt; 6    0.89           0.172 cauchy                          0       0.707 0.545</span>
 <span class="co">#&gt;   method          log_e_bf10 label                         test.details    </span>
 <span class="co">#&gt;   &lt;chr&gt;                &lt;dbl&gt; &lt;chr&gt;                         &lt;chr&gt;           </span>
 <span class="co">#&gt; 1 Bayesian t-test     -0.617 list(~log[e](BF['01'])==0.62) Student's t-test</span>
@@ -586,7 +586,7 @@
 <span class="co">#&gt; 5 list(~italic(p)[Hommel-corrected]==0.020)   </span>
 <span class="co">#&gt; 6 list(~italic(p)[Hommel-corrected]==1.02e-04)</span>
 
-<span class="co"># Bayes Factor</span>
+<span class="co"># Bayesian</span>
 <span class="fu"><a href="reference/pairwise_comparisons.html">pairwise_comparisons</a></span><span class="op">(</span>
   data <span class="op">=</span> <span class="va">bugs_long</span>,
   x <span class="op">=</span> <span class="va">condition</span>,
@@ -596,15 +596,15 @@
   paired <span class="op">=</span> <span class="cn">TRUE</span>,
   bf.prior <span class="op">=</span> <span class="fl">0.77</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 6 x 17</span>
-<span class="co">#&gt;   group1 group2 term       estimate conf.level conf.low conf.high    pd</span>
-<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;         &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 HDHF   HDLF   Difference   -1.10        0.89   -1.62    -0.621  1    </span>
-<span class="co">#&gt; 2 HDHF   LDHF   Difference   -0.465       0.89   -0.868   -0.0521 0.962</span>
-<span class="co">#&gt; 3 HDHF   LDLF   Difference   -2.13        0.89   -2.57    -1.74   1    </span>
-<span class="co">#&gt; 4 HDLF   LDHF   Difference    0.652       0.89    0.105    1.21   0.971</span>
-<span class="co">#&gt; 5 HDLF   LDLF   Difference   -0.983       0.89   -1.46    -0.506  0.999</span>
-<span class="co">#&gt; 6 LDHF   LDLF   Difference   -1.67        0.89   -2.10    -1.27   1    </span>
+<span class="co">#&gt; # A tibble: 6 x 18</span>
+<span class="co">#&gt;   group1 group2 term       estimate conf.level conf.low conf.high    pd rope.ci</span>
+<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;         &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 HDHF   HDLF   Difference   -1.10        0.89   -1.62    -0.621  1        0.89</span>
+<span class="co">#&gt; 2 HDHF   LDHF   Difference   -0.465       0.89   -0.868   -0.0521 0.962    0.89</span>
+<span class="co">#&gt; 3 HDHF   LDLF   Difference   -2.13        0.89   -2.57    -1.74   1        0.89</span>
+<span class="co">#&gt; 4 HDLF   LDHF   Difference    0.652       0.89    0.105    1.21   0.971    0.89</span>
+<span class="co">#&gt; 5 HDLF   LDLF   Difference   -0.983       0.89   -1.46    -0.506  0.999    0.89</span>
+<span class="co">#&gt; 6 LDHF   LDLF   Difference   -1.67        0.89   -2.10    -1.27   1        0.89</span>
 <span class="co">#&gt;   rope.percentage prior.distribution prior.location prior.scale     bf10</span>
 <span class="co">#&gt;             &lt;dbl&gt; &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt;    &lt;dbl&gt;</span>
 <span class="co">#&gt; 1           0     cauchy                          0        0.77 3.95e+ 1</span>
@@ -705,12 +705,12 @@
   <span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>.data <span class="op">=</span> <span class="va">.</span>, groups <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map2.html">pmap</a></span><span class="op">(</span>.l <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">group1</span>, <span class="va">group2</span><span class="op">)</span>, .f <span class="op">=</span> <span class="va">c</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span>.data <span class="op">=</span> <span class="va">.</span>, <span class="va">group1</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 3 x 18</span>
-<span class="co">#&gt;   group1 group2 term       estimate conf.level conf.low conf.high    pd</span>
-<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;         &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 Wine A Wine B Difference -0.00721       0.89  -0.0473    0.0307 0.624</span>
-<span class="co">#&gt; 2 Wine A Wine C Difference -0.0766        0.89  -0.129    -0.0265 0.989</span>
-<span class="co">#&gt; 3 Wine B Wine C Difference -0.0696        0.89  -0.0991   -0.0368 1.00 </span>
+<span class="co">#&gt; # A tibble: 3 x 19</span>
+<span class="co">#&gt;   group1 group2 term       estimate conf.level conf.low conf.high    pd rope.ci</span>
+<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;         &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 Wine A Wine B Difference -0.00721       0.89  -0.0473    0.0307 0.624    0.89</span>
+<span class="co">#&gt; 2 Wine A Wine C Difference -0.0766        0.89  -0.129    -0.0265 0.989    0.89</span>
+<span class="co">#&gt; 3 Wine B Wine C Difference -0.0696        0.89  -0.0991   -0.0368 1.00     0.89</span>
 <span class="co">#&gt;   rope.percentage prior.distribution prior.location prior.scale   bf10</span>
 <span class="co">#&gt;             &lt;dbl&gt; &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt;  &lt;dbl&gt;</span>
 <span class="co">#&gt; 1           0.431 cauchy                          0       0.707  0.235</span>
