@@ -29,6 +29,26 @@ test_that(
       )
 
     set.seed(123)
-    expect_snapshot(list(df1, df2))
+    df3 <-
+      pairwise_comparisons(
+        data = msleep,
+        x = vore,
+        y = brainwt,
+        p.adjust.method = "none",
+        alternative = "less"
+      )
+
+    set.seed(123)
+    df4 <-
+      pairwise_comparisons(
+        data = msleep,
+        x = vore,
+        y = brainwt,
+        p.adjust.method = "none",
+        alternative = "greater"
+      )
+
+    set.seed(123)
+    expect_snapshot(list(df1, df2, df3, df4))
   }
 )

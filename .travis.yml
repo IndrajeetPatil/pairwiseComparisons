@@ -30,7 +30,6 @@ repos:
 
 r_packages:
   - Rcpp
-  - RcppEigen
   - mvtnorm
   - rstan
   - testthat
