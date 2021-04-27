@@ -122,7 +122,7 @@
 <td><a href="https://cran.r-project.org/web/checks/check_results_pairwiseComparisons.html"><img src="https://cranchecks.info/badges/summary/pairwiseComparisons" alt="CRAN Checks"></a></td>
 <td><a href="https://ci.appveyor.com/project/IndrajeetPatil/pairwiseComparisons"><img src="https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/pairwiseComparisons?branch=master&amp;svg=true" alt="AppVeyor Build Status"></a></td>
 <td><a href="https://CRAN.R-project.org/package=pairwiseComparisons"><img src="https://cranlogs.r-pkg.org/badges/last-week/pairwiseComparisons?color=blue" alt="Weekly downloads badge"></a></td>
-<td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/"><img src="https://img.shields.io/badge/forks-4-blue.svg" alt="Forks"></a></td>
+<td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/"><img src="https://img.shields.io/badge/forks-5-blue.svg" alt="Forks"></a></td>
 <td><a href="https://www.rdocumentation.org/packages/pairwiseComparisons"><img src="https://www.rdocumentation.org/badges/version/pairwiseComparisons" alt="Rdoc"></a></td>
 </tr>
 <tr class="odd">
@@ -143,7 +143,7 @@
 <td><a href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img src="https://img.shields.io/badge/licence-GPL--3-blue.svg" alt="Licence"></a></td>
 <td><a href="https://codecov.io/gh/IndrajeetPatil/pairwiseComparisons?branch=master"><img src="https://codecov.io/gh/IndrajeetPatil/pairwiseComparisons/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></td>
 <td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/blob/master/tests/README.md"><img src="https://img.shields.io/badge/covrpage-Last_Build_2020_05_29-brightgreen.svg" alt="Covrpage Summary"></a></td>
-<td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/commits/master"><img src="https://img.shields.io/badge/last%20change-2021--03--31-yellowgreen.svg" alt="Last-changedate"></a></td>
+<td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/commits/master"><img src="https://img.shields.io/badge/last%20change-2021--04--27-yellowgreen.svg" alt="Last-changedate"></a></td>
 <td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/commits/master"><img src="https://img.shields.io/github/last-commit/IndrajeetPatil/pairwiseComparisons.svg" alt="GitHub last commit"></a></td>
 </tr>
 <tr class="even">
@@ -210,28 +210,28 @@
 <td>Parametric</td>
 <td>No</td>
 <td>Games-Howell test</td>
-<td><font color="green">Yes</font></td>
+<td>✅</td>
 <td><code><a href="https://rdrr.io/r/stats/pairwise.t.test.html">stats::pairwise.t.test</a></code></td>
 </tr>
 <tr class="even">
 <td>Parametric</td>
 <td>Yes</td>
 <td>Student’s <em>t</em>-test</td>
-<td><font color="green">Yes</font></td>
+<td>✅</td>
 <td><code><a href="https://rdrr.io/pkg/PMCMRplus/man/gamesHowellTest.html">PMCMRplus::gamesHowellTest</a></code></td>
 </tr>
 <tr class="odd">
 <td>Non-parametric</td>
 <td>No</td>
 <td>Dunn test</td>
-<td><font color="green">Yes</font></td>
+<td>✅</td>
 <td><code><a href="https://rdrr.io/pkg/PMCMRplus/man/kwAllPairsDunnTest.html">PMCMRplus::kwAllPairsDunnTest</a></code></td>
 </tr>
 <tr class="even">
 <td>Robust</td>
 <td>No</td>
 <td>Yuen’s trimmed means test</td>
-<td><font color="green">Yes</font></td>
+<td>✅</td>
 <td><code><a href="https://rdrr.io/pkg/WRS2/man/t1way.html">WRS2::lincon</a></code></td>
 </tr>
 <tr class="odd">
@@ -259,19 +259,19 @@
 <tr class="odd">
 <td>Parametric</td>
 <td>Student’s <em>t</em>-test</td>
-<td><font color="green">Yes</font></td>
+<td>✅</td>
 <td><code><a href="https://rdrr.io/r/stats/pairwise.t.test.html">stats::pairwise.t.test</a></code></td>
 </tr>
 <tr class="even">
 <td>Non-parametric</td>
 <td>Durbin-Conover test</td>
-<td><font color="green">Yes</font></td>
+<td>✅</td>
 <td><code><a href="https://rdrr.io/pkg/PMCMRplus/man/durbinAllPairsTest.html">PMCMRplus::durbinAllPairsTest</a></code></td>
 </tr>
 <tr class="odd">
 <td>Robust</td>
 <td>Yuen’s trimmed means test</td>
-<td><font color="green">Yes</font></td>
+<td>✅</td>
 <td><code><a href="https://rdrr.io/pkg/WRS2/man/rmanova.html">WRS2::rmmcp</a></code></td>
 </tr>
 <tr class="even">
@@ -445,7 +445,7 @@
   type <span class="op">=</span> <span class="st">"bayes"</span>,
   paired <span class="op">=</span> <span class="cn">FALSE</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 6 x 18</span>
+<span class="co">#&gt; # A tibble: 6 x 17</span>
 <span class="co">#&gt;   group1  group2  term       estimate conf.level conf.low conf.high    pd</span>
 <span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;         &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 carni   herbi   Difference   0.376        0.89  -0.349     1.15   0.800</span>
@@ -454,14 +454,14 @@
 <span class="co">#&gt; 4 herbi   insecti Difference  -0.394        0.89  -1.34      0.596  0.758</span>
 <span class="co">#&gt; 5 herbi   omni    Difference  -0.362        0.89  -0.938     0.191  0.859</span>
 <span class="co">#&gt; 6 insecti omni    Difference   0.0762       0.89  -0.141     0.261  0.732</span>
-<span class="co">#&gt;   rope.ci rope.percentage prior.distribution prior.location prior.scale  bf10</span>
-<span class="co">#&gt;     &lt;dbl&gt;           &lt;dbl&gt; &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt; 1    0.89           0.183 cauchy                          0       0.707 0.540</span>
-<span class="co">#&gt; 2    0.89           0.143 cauchy                          0       0.707 0.718</span>
-<span class="co">#&gt; 3    0.89           0.252 cauchy                          0       0.707 0.427</span>
-<span class="co">#&gt; 4    0.89           0.177 cauchy                          0       0.707 0.540</span>
-<span class="co">#&gt; 5    0.89           0.172 cauchy                          0       0.707 0.571</span>
-<span class="co">#&gt; 6    0.89           0.172 cauchy                          0       0.707 0.545</span>
+<span class="co">#&gt;   rope.percentage prior.distribution prior.location prior.scale  bf10</span>
+<span class="co">#&gt;             &lt;dbl&gt; &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;</span>
+<span class="co">#&gt; 1           0.183 cauchy                          0       0.707 0.540</span>
+<span class="co">#&gt; 2           0.143 cauchy                          0       0.707 0.718</span>
+<span class="co">#&gt; 3           0.252 cauchy                          0       0.707 0.427</span>
+<span class="co">#&gt; 4           0.177 cauchy                          0       0.707 0.540</span>
+<span class="co">#&gt; 5           0.172 cauchy                          0       0.707 0.571</span>
+<span class="co">#&gt; 6           0.172 cauchy                          0       0.707 0.545</span>
 <span class="co">#&gt;   method          log_e_bf10 label                         test.details    </span>
 <span class="co">#&gt;   &lt;chr&gt;                &lt;dbl&gt; &lt;chr&gt;                         &lt;chr&gt;           </span>
 <span class="co">#&gt; 1 Bayesian t-test     -0.617 list(~log[e](BF['01'])==0.62) Student's t-test</span>
@@ -596,15 +596,15 @@
   paired <span class="op">=</span> <span class="cn">TRUE</span>,
   bf.prior <span class="op">=</span> <span class="fl">0.77</span>
 <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 6 x 18</span>
-<span class="co">#&gt;   group1 group2 term       estimate conf.level conf.low conf.high    pd rope.ci</span>
-<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;         &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 HDHF   HDLF   Difference   -1.10        0.89   -1.62    -0.621  1        0.89</span>
-<span class="co">#&gt; 2 HDHF   LDHF   Difference   -0.465       0.89   -0.868   -0.0521 0.962    0.89</span>
-<span class="co">#&gt; 3 HDHF   LDLF   Difference   -2.13        0.89   -2.57    -1.74   1        0.89</span>
-<span class="co">#&gt; 4 HDLF   LDHF   Difference    0.652       0.89    0.105    1.21   0.971    0.89</span>
-<span class="co">#&gt; 5 HDLF   LDLF   Difference   -0.983       0.89   -1.46    -0.506  0.999    0.89</span>
-<span class="co">#&gt; 6 LDHF   LDLF   Difference   -1.67        0.89   -2.10    -1.27   1        0.89</span>
+<span class="co">#&gt; # A tibble: 6 x 17</span>
+<span class="co">#&gt;   group1 group2 term       estimate conf.level conf.low conf.high    pd</span>
+<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;         &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 HDHF   HDLF   Difference   -1.10        0.89   -1.62    -0.621  1    </span>
+<span class="co">#&gt; 2 HDHF   LDHF   Difference   -0.465       0.89   -0.868   -0.0521 0.962</span>
+<span class="co">#&gt; 3 HDHF   LDLF   Difference   -2.13        0.89   -2.57    -1.74   1    </span>
+<span class="co">#&gt; 4 HDLF   LDHF   Difference    0.652       0.89    0.105    1.21   0.971</span>
+<span class="co">#&gt; 5 HDLF   LDLF   Difference   -0.983       0.89   -1.46    -0.506  0.999</span>
+<span class="co">#&gt; 6 LDHF   LDLF   Difference   -1.67        0.89   -2.10    -1.27   1    </span>
 <span class="co">#&gt;   rope.percentage prior.distribution prior.location prior.scale     bf10</span>
 <span class="co">#&gt;             &lt;dbl&gt; &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt;    &lt;dbl&gt;</span>
 <span class="co">#&gt; 1           0     cauchy                          0        0.77 3.95e+ 1</span>
@@ -705,12 +705,12 @@
   <span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>.data <span class="op">=</span> <span class="va">.</span>, groups <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map2.html">pmap</a></span><span class="op">(</span>.l <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">group1</span>, <span class="va">group2</span><span class="op">)</span>, .f <span class="op">=</span> <span class="va">c</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span>.data <span class="op">=</span> <span class="va">.</span>, <span class="va">group1</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 3 x 19</span>
-<span class="co">#&gt;   group1 group2 term       estimate conf.level conf.low conf.high    pd rope.ci</span>
-<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;         &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 Wine A Wine B Difference -0.00721       0.89  -0.0473    0.0307 0.624    0.89</span>
-<span class="co">#&gt; 2 Wine A Wine C Difference -0.0766        0.89  -0.129    -0.0265 0.989    0.89</span>
-<span class="co">#&gt; 3 Wine B Wine C Difference -0.0696        0.89  -0.0991   -0.0368 1.00     0.89</span>
+<span class="co">#&gt; # A tibble: 3 x 18</span>
+<span class="co">#&gt;   group1 group2 term       estimate conf.level conf.low conf.high    pd</span>
+<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;         &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 Wine A Wine B Difference -0.00721       0.89  -0.0473    0.0307 0.624</span>
+<span class="co">#&gt; 2 Wine A Wine C Difference -0.0766        0.89  -0.129    -0.0265 0.989</span>
+<span class="co">#&gt; 3 Wine B Wine C Difference -0.0696        0.89  -0.0991   -0.0368 1.00 </span>
 <span class="co">#&gt;   rope.percentage prior.distribution prior.location prior.scale   bf10</span>
 <span class="co">#&gt;             &lt;dbl&gt; &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt;  &lt;dbl&gt;</span>
 <span class="co">#&gt; 1           0.431 cauchy                          0       0.707  0.235</span>
