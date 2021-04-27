@@ -42,57 +42,29 @@
       6 list(~italic(p)[uncorrected]==1.000)
       
       [[3]]
-      # A tibble: 6 x 11
-        group1  group2  statistic p.value alternative method            distribution
-        <chr>   <chr>       <dbl>   <dbl> <chr>       <chr>             <chr>       
-      1 carni   herbi        2.17   0.437 two.sided   Games-Howell test q           
-      2 carni   insecti     -2.17   0.452 two.sided   Games-Howell test q           
-      3 carni   omni         1.10   0.865 two.sided   Games-Howell test q           
-      4 herbi   insecti     -2.41   0.348 two.sided   Games-Howell test q           
-      5 herbi   omni        -1.87   0.560 two.sided   Games-Howell test q           
-      6 insecti omni         2.19   0.433 two.sided   Games-Howell test q           
-        p.adjustment test.details      p.value.adjustment
-        <chr>        <chr>             <chr>             
-      1 none         Games-Howell test None              
-      2 none         Games-Howell test None              
-      3 none         Games-Howell test None              
-      4 none         Games-Howell test None              
-      5 none         Games-Howell test None              
-      6 none         Games-Howell test None              
+      # A tibble: 3 x 6
+        group1 group2 p.value test.details     p.value.adjustment
+        <chr>  <chr>    <dbl> <chr>            <chr>             
+      1 4      6        0.995 Student's t-test None              
+      2 4      8        1.00  Student's t-test None              
+      3 6      8        0.997 Student's t-test None              
         label                               
         <chr>                               
-      1 list(~italic(p)[uncorrected]==0.437)
-      2 list(~italic(p)[uncorrected]==0.452)
-      3 list(~italic(p)[uncorrected]==0.865)
-      4 list(~italic(p)[uncorrected]==0.348)
-      5 list(~italic(p)[uncorrected]==0.560)
-      6 list(~italic(p)[uncorrected]==0.433)
+      1 list(~italic(p)[uncorrected]==0.995)
+      2 list(~italic(p)[uncorrected]==1.000)
+      3 list(~italic(p)[uncorrected]==0.997)
       
       [[4]]
-      # A tibble: 6 x 11
-        group1  group2  statistic p.value alternative method            distribution
-        <chr>   <chr>       <dbl>   <dbl> <chr>       <chr>             <chr>       
-      1 carni   herbi        2.17   0.437 two.sided   Games-Howell test q           
-      2 carni   insecti     -2.17   0.452 two.sided   Games-Howell test q           
-      3 carni   omni         1.10   0.865 two.sided   Games-Howell test q           
-      4 herbi   insecti     -2.41   0.348 two.sided   Games-Howell test q           
-      5 herbi   omni        -1.87   0.560 two.sided   Games-Howell test q           
-      6 insecti omni         2.19   0.433 two.sided   Games-Howell test q           
-        p.adjustment test.details      p.value.adjustment
-        <chr>        <chr>             <chr>             
-      1 none         Games-Howell test None              
-      2 none         Games-Howell test None              
-      3 none         Games-Howell test None              
-      4 none         Games-Howell test None              
-      5 none         Games-Howell test None              
-      6 none         Games-Howell test None              
-        label                               
-        <chr>                               
-      1 list(~italic(p)[uncorrected]==0.437)
-      2 list(~italic(p)[uncorrected]==0.452)
-      3 list(~italic(p)[uncorrected]==0.865)
-      4 list(~italic(p)[uncorrected]==0.348)
-      5 list(~italic(p)[uncorrected]==0.560)
-      6 list(~italic(p)[uncorrected]==0.433)
+      # A tibble: 3 x 6
+        group1 group2     p.value test.details     p.value.adjustment
+        <chr>  <chr>        <dbl> <chr>            <chr>             
+      1 4      6      0.00532     Student's t-test None              
+      2 4      8      0.000000103 Student's t-test None              
+      3 6      8      0.00258     Student's t-test None              
+        label                                  
+        <chr>                                  
+      1 list(~italic(p)[uncorrected]==0.005)   
+      2 list(~italic(p)[uncorrected]==1.03e-07)
+      3 list(~italic(p)[uncorrected]==0.003)   
       
 

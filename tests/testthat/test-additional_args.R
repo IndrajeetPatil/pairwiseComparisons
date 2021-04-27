@@ -31,9 +31,10 @@ test_that(
     set.seed(123)
     df3 <-
       pairwise_comparisons(
-        data = msleep,
-        x = vore,
-        y = brainwt,
+        data = mtcars,
+        x = cyl,
+        y = wt,
+        var.equal = TRUE,
         p.adjust.method = "none",
         alternative = "less"
       )
@@ -41,9 +42,10 @@ test_that(
     set.seed(123)
     df4 <-
       pairwise_comparisons(
-        data = msleep,
-        x = vore,
-        y = brainwt,
+        data = mtcars,
+        x = cyl,
+        y = wt,
+        var.equal = TRUE,
         p.adjust.method = "none",
         alternative = "greater"
       )
