@@ -47,7 +47,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">pairwiseComparisons</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">3.1.4</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">3.1.5</span>
       </span>
     </div>
 
@@ -99,7 +99,7 @@
 <colgroup>
 <col width="19%">
 <col width="22%">
-<col width="19%">
+<col width="18%">
 <col width="19%">
 <col width="19%">
 </colgroup>
@@ -115,7 +115,7 @@
 <td><a href="https://CRAN.R-project.org/package=pairwiseComparisons"><img src="http://www.r-pkg.org/badges/version-ago/pairwiseComparisons" alt="CRAN_Release_Badge"></a></td>
 <td><a href="https://travis-ci.org/IndrajeetPatil/pairwiseComparisons"><img src="https://travis-ci.org/IndrajeetPatil/pairwiseComparisons.svg?branch=master" alt="Travis Build Status"></a></td>
 <td><a href="https://CRAN.R-project.org/package=pairwiseComparisons"><img src="https://cranlogs.r-pkg.org/badges/last-day/pairwiseComparisons?color=blue" alt="Daily downloads badge"></a></td>
-<td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/"><img src="https://img.shields.io/badge/GitHub-3.1.0-orange.svg?style=flat-square" alt="GitHub version"></a></td>
+<td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/"><img src="https://img.shields.io/badge/GitHub-3.1.5-orange.svg?style=flat-square" alt="GitHub version"></a></td>
 <td><a href="https://indrajeetpatil.github.io/pairwiseComparisons/"><img src="https://img.shields.io/badge/website-pairwiseComparisons-orange.svg?colorB=E91E63" alt="Website"></a></td>
 </tr>
 <tr class="even">
@@ -129,7 +129,7 @@
 <td><a href="https://cran.r-project.org/"><img src="https://img.shields.io/badge/R%3E%3D-3.6.0-6666ff.svg" alt="minimal R version"></a></td>
 <td><a href="https://lifecycle.r-lib.org/articles/stages.html"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="lifecycle"></a></td>
 <td><a href="https://CRAN.R-project.org/package=pairwiseComparisons"><img src="https://cranlogs.r-pkg.org/badges/last-month/pairwiseComparisons?color=blue" alt="Monthly downloads badge"></a></td>
-<td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/issues"><img src="https://img.shields.io/badge/issues-2-red.svg" alt="Github Issues"></a></td>
+<td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/issues"><img src="https://img.shields.io/badge/issues-1-red.svg" alt="Github Issues"></a></td>
 <td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/blob/master/README.md"><img src="https://img.shields.io/badge/vignettes-3.1.0-orange.svg?colorB=FF5722" alt="vignettes"></a></td>
 </tr>
 <tr class="even">
@@ -142,7 +142,7 @@
 <tr class="odd">
 <td><a href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img src="https://img.shields.io/badge/licence-GPL--3-blue.svg" alt="Licence"></a></td>
 <td><a href="https://codecov.io/gh/IndrajeetPatil/pairwiseComparisons?branch=master"><img src="https://codecov.io/gh/IndrajeetPatil/pairwiseComparisons/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></td>
-<td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/blob/master/tests/README.md"><img src="https://img.shields.io/badge/covrpage-Last_Build_2020_05_29-brightgreen.svg" alt="Covrpage Summary"></a></td>
+<td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/actions"><img src="https://github.com/IndrajeetPatil/pairwiseComparisons/workflows/pkgdown/badge.svg" alt="pkgdown"></a></td>
 <td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/commits/master"><img src="https://img.shields.io/badge/last%20change-2021--04--27-yellowgreen.svg" alt="Last-changedate"></a></td>
 <td><a href="https://github.com/IndrajeetPatil/pairwiseComparisons/commits/master"><img src="https://img.shields.io/github/last-commit/IndrajeetPatil/pairwiseComparisons.svg" alt="GitHub last commit"></a></td>
 </tr>
@@ -648,8 +648,8 @@
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="op">(</span><span class="va">df</span> <span class="op">&lt;-</span>
   <span class="fu"><a href="reference/pairwise_comparisons.html">pairwise_comparisons</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">cyl</span>, <span class="va">wt</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>.data <span class="op">=</span> <span class="va">.</span>, groups <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map2.html">pmap</a></span><span class="op">(</span>.l <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">group1</span>, <span class="va">group2</span><span class="op">)</span>, .f <span class="op">=</span> <span class="va">c</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span>.data <span class="op">=</span> <span class="va">.</span>, <span class="va">group1</span><span class="op">)</span><span class="op">)</span>
+  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>groups <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map2.html">pmap</a></span><span class="op">(</span>.l <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">group1</span>, <span class="va">group2</span><span class="op">)</span>, .f <span class="op">=</span> <span class="va">c</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">group1</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 3 x 12</span>
 <span class="co">#&gt;   group1 group2 statistic   p.value alternative method            distribution</span>
 <span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;      &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;             &lt;chr&gt;       </span>
@@ -703,8 +703,8 @@
     type <span class="op">=</span> <span class="st">"bayes"</span>,
     paired <span class="op">=</span> <span class="cn">TRUE</span>
   <span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>.data <span class="op">=</span> <span class="va">.</span>, groups <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map2.html">pmap</a></span><span class="op">(</span>.l <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">group1</span>, <span class="va">group2</span><span class="op">)</span>, .f <span class="op">=</span> <span class="va">c</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span>.data <span class="op">=</span> <span class="va">.</span>, <span class="va">group1</span><span class="op">)</span><span class="op">)</span>
+  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>groups <span class="op">=</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map2.html">pmap</a></span><span class="op">(</span>.l <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">group1</span>, <span class="va">group2</span><span class="op">)</span>, .f <span class="op">=</span> <span class="va">c</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">group1</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 3 x 18</span>
 <span class="co">#&gt;   group1 group2 term       estimate conf.level conf.low conf.high    pd</span>
 <span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;         &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;</span>
