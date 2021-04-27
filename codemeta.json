@@ -20,7 +20,7 @@
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.0.4 (2021-02-15)",
+  "runtimePlatform": "R version 4.0.5 (2021-03-31)",
   "author": [
     {
       "@type": "Person",
@@ -135,7 +135,7 @@
       "@type": "SoftwareApplication",
       "identifier": "insight",
       "name": "insight",
-      "version": ">= 0.13.0",
+      "version": ">= 0.13.2",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -148,7 +148,6 @@
       "@type": "SoftwareApplication",
       "identifier": "ipmisc",
       "name": "ipmisc",
-      "version": ">= 5.0.2",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -161,7 +160,7 @@
       "@type": "SoftwareApplication",
       "identifier": "parameters",
       "name": "parameters",
-      "version": ">= 0.12.0",
+      "version": ">= 0.13.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -248,7 +247,7 @@
     "name": "Comprehensive R Archive Network (CRAN)",
     "url": "https://cran.r-project.org"
   },
-  "fileSize": "653.041KB",
+  "fileSize": "653.033KB",
   "readme": "https://github.com/IndrajeetPatil/pairwiseComparisons/blob/master/README.md",
   "keywords": [
     "pairwise-comparison-tests",

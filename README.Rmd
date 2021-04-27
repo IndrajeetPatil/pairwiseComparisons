@@ -62,7 +62,7 @@ release on `CRAN`, you can check the detailed log of changes here:
 If you are in hurry and want to reduce the time of installation,
 prefer-
 
-```{r installation1, eval = FALSE}
+```{r installation1, eval=FALSE}
 # needed package to download from GitHub repo
 install.packages("remotes")
 
@@ -76,7 +76,7 @@ remotes::install_github(
 
 If time is not a constraint-
 
-```{r installation2, eval = FALSE}
+```{r installation2, eval=FALSE}
 remotes::install_github(
   repo = "IndrajeetPatil/pairwiseComparisons", # package path on GitHub
   dependencies = TRUE, # installs packages which pairwiseComparisons depends on
@@ -93,19 +93,19 @@ comparison tests-
 
 Type | Equal variance? | Test | *p*-value adjustment? | Function used
 ----------- | --- | ------------------------- | --- | -----
-Parametric | No | Games-Howell test | <font color="green">Yes</font> | `stats::pairwise.t.test`
-Parametric | Yes | Student's *t*-test | <font color="green">Yes</font> | `PMCMRplus::gamesHowellTest`
-Non-parametric | No | Dunn test | <font color="green">Yes</font> | `PMCMRplus::kwAllPairsDunnTest`
-Robust | No | Yuen's trimmed means test | <font color="green">Yes</font> | `WRS2::lincon`
+Parametric | No | Games-Howell test | ✅ | `stats::pairwise.t.test`
+Parametric | Yes | Student's *t*-test | ✅ | `PMCMRplus::gamesHowellTest`
+Non-parametric | No | Dunn test | ✅ | `PMCMRplus::kwAllPairsDunnTest`
+Robust | No | Yuen's trimmed means test | ✅ | `WRS2::lincon`
 Bayesian | `NA` | Student's *t*-test | `NA` | `BayesFactor::ttestBF`
 
 ## Within-subjects design
 
 Type | Test | *p*-value adjustment? | Function used
 ----------- | ---------------------------- | --- | -----
-Parametric | Student's *t*-test | <font color="green">Yes</font> | `stats::pairwise.t.test`
-Non-parametric | Durbin-Conover test | <font color="green">Yes</font> | `PMCMRplus::durbinAllPairsTest` 
-Robust | Yuen's trimmed means test | <font color="green">Yes</font> | `WRS2::rmmcp`
+Parametric | Student's *t*-test | ✅ | `stats::pairwise.t.test`
+Non-parametric | Durbin-Conover test | ✅ | `PMCMRplus::durbinAllPairsTest` 
+Robust | Yuen's trimmed means test | ✅ | `WRS2::rmmcp`
 Bayesian | Student's *t*-test | `NA` | `BayesFactor::ttestBF`
 
 # Examples

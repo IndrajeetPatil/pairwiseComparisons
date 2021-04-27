@@ -3,10 +3,15 @@
   - To avoid confusion among users, the trimming level for all functions is now
     changed from `tr = 0.1` to `tr = 0.2` (which is what `WRS2` defaults to).
 
+  - The `...` are now passed to other methods. This can be used to specify
+    additional arguments, like `alternative` (#28).
+
+  - Gets rid of `iris_long` dataset, which was not used in the package.
+
 # pairwiseComparisons 3.1.3
 
   - Minor internal refactoring.
-  
+
   - Removes `insight` from dependencies.
 
 # pairwiseComparisons 3.1.2

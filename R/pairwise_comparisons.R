@@ -24,7 +24,7 @@
 #'   `FALSE`.
 #' @param k Number of digits after decimal point (should be an integer)
 #'   (Default: `k = 2L`).
-#' @param ... Current ignored.
+#' @param ... Additional arguments passed to other methods.
 #' @inheritParams stats::t.test
 #' @inheritParams WRS2::rmmcp
 #' @inheritParams tidyBF::bf_ttest
@@ -48,7 +48,7 @@
 #'   [PMCMRplus::durbinAllPairsTest()] (paired) and
 #'   [PMCMRplus::kwAllPairsDunnTest()] (unpaired)
 #'   \item *robust* :
-#'   [WRS2::rmmcp()] (paired) and  [WRS2::lincon()] (unpaired)
+#'   [WRS2::rmmcp()] (paired) and [WRS2::lincon()] (unpaired)
 #'   \item *Bayes Factor* : [BayesFactor::ttestBF()]
 #'   }
 #'
@@ -69,8 +69,8 @@
 #' set.seed(123)
 #' library(pairwiseComparisons)
 #'
-#' # show me all columns and make the column titles bold
-#' # as a user, you don't need to do this; this is just for the website
+#' # show all columns and make the column titles bold
+#' # as a user, you don't need to do this; this is just for the package website
 #' options(tibble.width = Inf, pillar.bold = TRUE, pillar.neg = TRUE, pillar.subtle_num = TRUE)
 #'
 #' #------------------- between-subjects design ----------------------------
@@ -210,7 +210,7 @@ pairwise_comparisons <- function(data,
   x_vec <- df_int %>% dplyr::pull({{ x }})
   y_vec <- df_int %>% dplyr::pull({{ y }})
   g_vec <- df_int$rowid
-  .f.args <- list()
+  .f.args <- list(...)
 
   # ---------------------------- parametric ---------------------------------
 
@@ -229,7 +229,7 @@ pairwise_comparisons <- function(data,
     if (isTRUE(paired)) c(.f, test.details) %<-% c(PMCMRplus::durbinAllPairsTest, "Durbin-Conover test")
 
     # `exec` fails otherwise for `pairwise.t.test` because `y` is passed to `t.test`
-    .f.args <- list(y = y_vec)
+    .f.args <- list(y = y_vec, ...)
   }
 
   # running the appropriate test
@@ -310,7 +310,7 @@ pairwise_comparisons <- function(data,
 
   # final cleanup for p-value labels
   df %<>%
-    dplyr::mutate_if(.tbl = ., .predicate = is.factor, .funs = ~ as.character(.)) %>%
+    dplyr::mutate_if(.predicate = is.factor, .funs = ~ as.character(.)) %>%
     dplyr::arrange(group1, group2) %>%
     dplyr::select(group1, group2, dplyr::everything())
 

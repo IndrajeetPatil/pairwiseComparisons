@@ -67,7 +67,7 @@ comparisons. Possible methods are: \code{"holm"} (default), \code{"hochberg"},
 \item{k}{Number of digits after decimal point (should be an integer)
 (Default: \code{k = 2L}).}
 
-\item{...}{Current ignored.}
+\item{...}{Additional arguments passed to other methods.}
 }
 \value{
 A tibble dataframe containing two columns corresponding to group
@@ -89,7 +89,7 @@ respective functions:
 \code{\link[PMCMRplus:durbinAllPairsTest]{PMCMRplus::durbinAllPairsTest()}} (paired) and
 \code{\link[PMCMRplus:kwAllPairsDunnTest]{PMCMRplus::kwAllPairsDunnTest()}} (unpaired)
 \item \emph{robust} :
-\code{\link[WRS2:rmanova]{WRS2::rmmcp()}} (paired) and  \code{\link[WRS2:t1way]{WRS2::lincon()}} (unpaired)
+\code{\link[WRS2:rmanova]{WRS2::rmmcp()}} (paired) and \code{\link[WRS2:t1way]{WRS2::lincon()}} (unpaired)
 \item \emph{Bayes Factor} : \code{\link[BayesFactor:ttestBF]{BayesFactor::ttestBF()}}
 }
 }
@@ -103,8 +103,8 @@ comparisons between group levels with corrections for multiple testing.
 set.seed(123)
 library(pairwiseComparisons)
 
-# show me all columns and make the column titles bold
-# as a user, you don't need to do this; this is just for the website
+# show all columns and make the column titles bold
+# as a user, you don't need to do this; this is just for the package website
 options(tibble.width = Inf, pillar.bold = TRUE, pillar.neg = TRUE, pillar.subtle_num = TRUE)
 
 #------------------- between-subjects design ----------------------------

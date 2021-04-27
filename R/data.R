@@ -66,36 +66,6 @@
 #' dplyr::glimpse(movies_long)
 "movies_long"
 
-#' @title Edgar Anderson's Iris Data in long format.
-#' @name iris_long
-#' @details This famous (Fisher's or Anderson's) iris data set gives the
-#'   measurements in centimeters of the variables sepal length and width and
-#'   petal length and width, respectively, for 50 flowers from each of 3 species
-#'   of iris. The species are Iris setosa, versicolor, and virginica.
-#'
-#' This is a modified dataset from `datasets` package.
-#'
-#' @format A data frame with 600 rows and 5 variables
-#' \itemize{
-#'   \item id. Dummy identity number for each flower (150 flowers in total).
-#'   \item Species.	The species are *Iris setosa*, *versicolor*, and
-#'   *virginica*.
-#'   \item condition. Factor giving a detailed description of the attribute
-#'   (Four levels: `"Petal.Length"`, `"Petal.Width"`,  `"Sepal.Length"`,
-#'   `"Sepal.Width"`).
-#'   \item attribute.	What attribute is being measured (`"Sepal"` or `"Pepal"`).
-#'   \item measure.	What aspect of the attribute is being measured (`"Length"`
-#'   or `"Width"`).
-#'   \item value.	Value of the measurement.
-#' }
-#'
-#' @examples
-#' dim(iris_long)
-#' head(iris_long)
-#' dplyr::glimpse(iris_long)
-"iris_long"
-
-
 #' @title Tidy version of the "Bugs" dataset.
 #' @name bugs_long
 #' @details This data set, "Bugs", provides the extent to which men and women
