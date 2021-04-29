@@ -1,3 +1,5 @@
+# pairwiseComparisons 3.1.5.9000
+
 # pairwiseComparisons 3.1.5
 
   - To avoid confusion among users, the trimming level for all functions is now
