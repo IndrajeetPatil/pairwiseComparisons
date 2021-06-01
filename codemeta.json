@@ -14,7 +14,7 @@
   ],
   "issueTracker": "\n    https://github.com/IndrajeetPatil/pairwiseComparisons/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "3.1.6",
+  "version": "3.1.6.9000",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -248,7 +248,7 @@
     "name": "Comprehensive R Archive Network (CRAN)",
     "url": "https://cran.r-project.org"
   },
-  "fileSize": "476.147KB",
+  "fileSize": "476.152KB",
   "readme": "https://github.com/IndrajeetPatil/pairwiseComparisons/blob/master/README.md",
   "keywords": [
     "pairwise-comparison-tests",
