@@ -112,7 +112,7 @@ comparisons between group levels with corrections for multiple testing." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pairwiseComparisons</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">3.1.5.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">3.1.6</span>
       </span>
     </div>
 
@@ -192,7 +192,14 @@ be accepted.</p></td>
     </tr>
     <tr>
       <th>x</th>
-      <td><p>The grouping (or independent) variable from the dataframe <code>data</code>.</p></td>
+      <td><p>The grouping (or independent) variable from the dataframe <code>data</code>. In
+case of a repeated measures or within-subjects design, if <code>subject.id</code>
+argument is not available or not explicitly specified, the function assumes
+that the data has already been sorted by such an id by the user and creates
+an internal identifier. So if your data is <strong>not</strong> sorted, the results
+<em>can</em> be inaccurate when there are more than two levels in <code>x</code> and there
+are <code>NA</code>s present. The data is expected to be sorted by user in
+subject-1,subject-2, ..., pattern.</p></td>
     </tr>
     <tr>
       <th>y</th>
@@ -201,13 +208,14 @@ dataframe <code>data</code>.</p></td>
     </tr>
     <tr>
       <th>subject.id</th>
-      <td><p>Relevant in case of repeated measures or within-subjects
+      <td><p>Relevant in case of a repeated measures or within-subjects
 design (<code>paired = TRUE</code>, i.e.), it specifies the subject or repeated
 measures identifier. <strong>Important</strong>: Note that if this argument is <code>NULL</code>
 (which is the default), the function assumes that the data has already been
 sorted by such an id by the user and creates an internal identifier. So if
 your data is <strong>not</strong> sorted and you leave this argument unspecified, the
-results can be inaccurate.</p></td>
+results <em>can</em> be inaccurate when there are more than two levels in <code>x</code> and
+there are <code>NA</code>s present.</p></td>
     </tr>
     <tr>
       <th>type</th>
@@ -240,7 +248,11 @@ try to play around with the value of <code>tr</code>, which is by default set to
     <tr>
       <th>bf.prior</th>
       <td><p>A number between <code>0.5</code> and <code>2</code> (default <code>0.707</code>), the prior
-width to use in calculating Bayes factors.</p></td>
+width to use in calculating Bayes factors and posterior estimates. In
+addition to numeric arguments, several named values are also recognized:
+<code>"medium"</code>, <code>"wide"</code>, and <code>"ultrawide"</code>, corresponding to <em>r</em> scale values
+of 1/2, sqrt(2)/2, and 1, respectively. In case of an ANOVA, this value
+corresponds to scale for fixed effects.</p></td>
     </tr>
     <tr>
       <th>p.adjust.method</th>
@@ -306,17 +318,17 @@ respective functions:</p><ul>
   paired <span class='op'>=</span> <span class='cn'>FALSE</span>,
   p.adjust.method <span class='op'>=</span> <span class='st'>"none"</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 3 x 6</span><span>
-#&gt;   </span><span style='font-weight: bold;'>group1</span><span> </span><span style='font-weight: bold;'>group2</span><span>     </span><span style='font-weight: bold;'>p.value</span><span> </span><span style='font-weight: bold;'>test.details</span><span>     </span><span style='font-weight: bold;'>p.value.adjustment</span><span>
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>             
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> 4      6      </span><span style='color: #949494;'>0.0</span><span>10</span><span style='text-decoration: underline;'>6</span><span>      Student's t-test None              
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span> 4      8      </span><span style='color: #949494;'>0.000</span><span style='color: #949494;text-decoration: underline;'>000</span><span>207 Student's t-test None              
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> 6      8      </span><span style='color: #949494;'>0.00</span><span>5</span><span style='text-decoration: underline;'>16</span><span>     Student's t-test None              
-#&gt;   </span><span style='font-weight: bold;'>label</span><span>                                  
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                                  
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> list(~italic(p)[uncorrected]==0.011)   
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span> list(~italic(p)[uncorrected]==2.07e-07)
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> list(~italic(p)[uncorrected]==0.005)   </div><div class='input'>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 3 x 6</span>
+#&gt;   <span style='font-weight: bold;'>group1</span> <span style='font-weight: bold;'>group2</span>     <span style='font-weight: bold;'>p.value</span> <span style='font-weight: bold;'>test.details</span>     <span style='font-weight: bold;'>p.value.adjustment</span>
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>            <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>             
+#&gt; <span style='color: #BCBCBC;'>1</span> 4      6      <span style='color: #949494;'>0.0</span>10<span style='text-decoration: underline;'>6</span>      Student's t-test None              
+#&gt; <span style='color: #BCBCBC;'>2</span> 4      8      <span style='color: #949494;'>0.000</span><span style='color: #949494; text-decoration: underline;'>000</span>207 Student's t-test None              
+#&gt; <span style='color: #BCBCBC;'>3</span> 6      8      <span style='color: #949494;'>0.00</span>5<span style='text-decoration: underline;'>16</span>     Student's t-test None              
+#&gt;   <span style='font-weight: bold;'>label</span>                                  
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                                  
+#&gt; <span style='color: #BCBCBC;'>1</span> list(~italic(p)[uncorrected]==0.011)   
+#&gt; <span style='color: #BCBCBC;'>2</span> list(~italic(p)[uncorrected]==2.07e-07)
+#&gt; <span style='color: #BCBCBC;'>3</span> list(~italic(p)[uncorrected]==0.005)   </div><div class='input'>
 <span class='co'># if `var.equal = FALSE`, then Games-Howell test will be run</span>
 <span class='fu'>pairwise_comparisons</span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='va'>mtcars</span>,
@@ -327,22 +339,22 @@ respective functions:</p><ul>
   paired <span class='op'>=</span> <span class='cn'>FALSE</span>,
   p.adjust.method <span class='op'>=</span> <span class='st'>"bonferroni"</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 3 x 11</span><span>
-#&gt;   </span><span style='font-weight: bold;'>group1</span><span> </span><span style='font-weight: bold;'>group2</span><span> </span><span style='font-weight: bold;'>statistic</span><span>   </span><span style='font-weight: bold;'>p.value</span><span> </span><span style='font-weight: bold;'>alternative</span><span> </span><span style='font-weight: bold;'>method</span><span>            </span><span style='font-weight: bold;'>distribution</span><span>
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>             </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> 4      6           5.39 </span><span style='color: #949494;'>0.0</span><span>12</span><span style='text-decoration: underline;'>5</span><span>    two.sided   Games-Howell test q           
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span> 4      8           9.11 </span><span style='color: #949494;'>0.000</span><span style='color: #949494;text-decoration: underline;'>0</span><span style='text-decoration: underline;'>12</span><span>4 two.sided   Games-Howell test q           
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> 6      8           5.12 </span><span style='color: #949494;'>0.0</span><span>14</span><span style='text-decoration: underline;'>8</span><span>    two.sided   Games-Howell test q           
-#&gt;   </span><span style='font-weight: bold;'>p.adjustment</span><span> </span><span style='font-weight: bold;'>test.details</span><span>      </span><span style='font-weight: bold;'>p.value.adjustment</span><span>
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>             </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>             
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> none         Games-Howell test Bonferroni        
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span> none         Games-Howell test Bonferroni        
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> none         Games-Howell test Bonferroni        
-#&gt;   </span><span style='font-weight: bold;'>label</span><span>                                           
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                                           
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> list(~italic(p)[Bonferroni-corrected]==0.012)   
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span> list(~italic(p)[Bonferroni-corrected]==1.24e-05)
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> list(~italic(p)[Bonferroni-corrected]==0.015)   </div><div class='input'>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 3 x 11</span>
+#&gt;   <span style='font-weight: bold;'>group1</span> <span style='font-weight: bold;'>group2</span> <span style='font-weight: bold;'>statistic</span>   <span style='font-weight: bold;'>p.value</span> <span style='font-weight: bold;'>alternative</span> <span style='font-weight: bold;'>method</span>            <span style='font-weight: bold;'>distribution</span>
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>             <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       
+#&gt; <span style='color: #BCBCBC;'>1</span> 4      6           5.39 <span style='color: #949494;'>0.0</span>12<span style='text-decoration: underline;'>5</span>    two.sided   Games-Howell test q           
+#&gt; <span style='color: #BCBCBC;'>2</span> 4      8           9.11 <span style='color: #949494;'>0.000</span><span style='color: #949494; text-decoration: underline;'>0</span><span style='text-decoration: underline;'>12</span>4 two.sided   Games-Howell test q           
+#&gt; <span style='color: #BCBCBC;'>3</span> 6      8           5.12 <span style='color: #949494;'>0.0</span>14<span style='text-decoration: underline;'>8</span>    two.sided   Games-Howell test q           
+#&gt;   <span style='font-weight: bold;'>p.adjustment</span> <span style='font-weight: bold;'>test.details</span>      <span style='font-weight: bold;'>p.value.adjustment</span>
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>             <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>             
+#&gt; <span style='color: #BCBCBC;'>1</span> none         Games-Howell test Bonferroni        
+#&gt; <span style='color: #BCBCBC;'>2</span> none         Games-Howell test Bonferroni        
+#&gt; <span style='color: #BCBCBC;'>3</span> none         Games-Howell test Bonferroni        
+#&gt;   <span style='font-weight: bold;'>label</span>                                           
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                                           
+#&gt; <span style='color: #BCBCBC;'>1</span> list(~italic(p)[Bonferroni-corrected]==0.012)   
+#&gt; <span style='color: #BCBCBC;'>2</span> list(~italic(p)[Bonferroni-corrected]==1.24e-05)
+#&gt; <span style='color: #BCBCBC;'>3</span> list(~italic(p)[Bonferroni-corrected]==0.015)   </div><div class='input'>
 <span class='co'># non-parametric (Dunn test)</span>
 <span class='fu'>pairwise_comparisons</span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='va'>mtcars</span>,
@@ -352,22 +364,22 @@ respective functions:</p><ul>
   paired <span class='op'>=</span> <span class='cn'>FALSE</span>,
   p.adjust.method <span class='op'>=</span> <span class='st'>"none"</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 3 x 11</span><span>
-#&gt;   </span><span style='font-weight: bold;'>group1</span><span> </span><span style='font-weight: bold;'>group2</span><span> </span><span style='font-weight: bold;'>statistic</span><span>    </span><span style='font-weight: bold;'>p.value</span><span> </span><span style='font-weight: bold;'>alternative</span><span> </span><span style='font-weight: bold;'>method</span><span>               
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> 4      6           1.84 </span><span style='color: #949494;'>0.0</span><span>66</span><span style='text-decoration: underline;'>3</span><span>     two.sided   Dunn's all-pairs test
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span> 4      8           4.76 </span><span style='color: #949494;'>0.000</span><span style='color: #949494;text-decoration: underline;'>00</span><span style='text-decoration: underline;'>1</span><span>98 two.sided   Dunn's all-pairs test
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> 6      8           2.22 </span><span style='color: #949494;'>0.0</span><span>26</span><span style='text-decoration: underline;'>3</span><span>     two.sided   Dunn's all-pairs test
-#&gt;   </span><span style='font-weight: bold;'>distribution</span><span> </span><span style='font-weight: bold;'>p.adjustment</span><span> </span><span style='font-weight: bold;'>test.details</span><span> </span><span style='font-weight: bold;'>p.value.adjustment</span><span>
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>             
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> z            none         Dunn test    None              
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span> z            none         Dunn test    None              
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> z            none         Dunn test    None              
-#&gt;   </span><span style='font-weight: bold;'>label</span><span>                                  
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                                  
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> list(~italic(p)[uncorrected]==0.066)   
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span> list(~italic(p)[uncorrected]==1.98e-06)
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> list(~italic(p)[uncorrected]==0.026)   </div><div class='input'>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 3 x 11</span>
+#&gt;   <span style='font-weight: bold;'>group1</span> <span style='font-weight: bold;'>group2</span> <span style='font-weight: bold;'>statistic</span>    <span style='font-weight: bold;'>p.value</span> <span style='font-weight: bold;'>alternative</span> <span style='font-weight: bold;'>method</span>               
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                
+#&gt; <span style='color: #BCBCBC;'>1</span> 4      6           1.84 <span style='color: #949494;'>0.0</span>66<span style='text-decoration: underline;'>3</span>     two.sided   Dunn's all-pairs test
+#&gt; <span style='color: #BCBCBC;'>2</span> 4      8           4.76 <span style='color: #949494;'>0.000</span><span style='color: #949494; text-decoration: underline;'>00</span><span style='text-decoration: underline;'>1</span>98 two.sided   Dunn's all-pairs test
+#&gt; <span style='color: #BCBCBC;'>3</span> 6      8           2.22 <span style='color: #949494;'>0.0</span>26<span style='text-decoration: underline;'>3</span>     two.sided   Dunn's all-pairs test
+#&gt;   <span style='font-weight: bold;'>distribution</span> <span style='font-weight: bold;'>p.adjustment</span> <span style='font-weight: bold;'>test.details</span> <span style='font-weight: bold;'>p.value.adjustment</span>
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>             
+#&gt; <span style='color: #BCBCBC;'>1</span> z            none         Dunn test    None              
+#&gt; <span style='color: #BCBCBC;'>2</span> z            none         Dunn test    None              
+#&gt; <span style='color: #BCBCBC;'>3</span> z            none         Dunn test    None              
+#&gt;   <span style='font-weight: bold;'>label</span>                                  
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                                  
+#&gt; <span style='color: #BCBCBC;'>1</span> list(~italic(p)[uncorrected]==0.066)   
+#&gt; <span style='color: #BCBCBC;'>2</span> list(~italic(p)[uncorrected]==1.98e-06)
+#&gt; <span style='color: #BCBCBC;'>3</span> list(~italic(p)[uncorrected]==0.026)   </div><div class='input'>
 <span class='co'># robust (Yuen's trimmed means t-test)</span>
 <span class='fu'>pairwise_comparisons</span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='va'>mtcars</span>,
@@ -377,22 +389,22 @@ respective functions:</p><ul>
   paired <span class='op'>=</span> <span class='cn'>FALSE</span>,
   p.adjust.method <span class='op'>=</span> <span class='st'>"fdr"</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 3 x 10</span><span>
-#&gt;   </span><span style='font-weight: bold;'>group1</span><span> </span><span style='font-weight: bold;'>group2</span><span> </span><span style='font-weight: bold;'>estimate</span><span> </span><span style='font-weight: bold;'>conf.level</span><span> </span><span style='font-weight: bold;'>conf.low</span><span> </span><span style='font-weight: bold;'>conf.high</span><span> </span><span style='font-weight: bold;'>p.value</span><span>
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> 4      6        -</span><span style='color: #949494;'>0.</span><span style='color: #BB0000;'>909</span><span>       </span><span style='color: #949494;'>0.</span><span>95    -</span><span style='color: #BB0000;'>1.64</span><span>    -</span><span style='color: #949494;'>0.</span><span style='color: #BB0000;'>173</span><span> </span><span style='color: #949494;'>0.0</span><span>17</span><span style='text-decoration: underline;'>4</span><span> 
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span> 4      8        -</span><span style='color: #BB0000;'>1.62</span><span>        </span><span style='color: #949494;'>0.</span><span>95    -</span><span style='color: #BB0000;'>2.50</span><span>    -</span><span style='color: #949494;'>0.</span><span style='color: #BB0000;'>746</span><span> </span><span style='color: #949494;'>0.00</span><span>1</span><span style='text-decoration: underline;'>65</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> 6      8        -</span><span style='color: #949494;'>0.</span><span style='color: #BB0000;'>713</span><span>       </span><span style='color: #949494;'>0.</span><span>95    -</span><span style='color: #BB0000;'>1.58</span><span>     </span><span style='color: #949494;'>0.</span><span>155 </span><span style='color: #949494;'>0.0</span><span>43</span><span style='text-decoration: underline;'>8</span><span> 
-#&gt;   </span><span style='font-weight: bold;'>test.details</span><span>              </span><span style='font-weight: bold;'>p.value.adjustment</span><span>
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>             
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> Yuen's trimmed means test FDR               
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span> Yuen's trimmed means test FDR               
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> Yuen's trimmed means test FDR               
-#&gt;   </span><span style='font-weight: bold;'>label</span><span>                                 
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                                 
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> list(~italic(p)[FDR-corrected]==0.017)
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span> list(~italic(p)[FDR-corrected]==0.002)
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> list(~italic(p)[FDR-corrected]==0.044)</div><div class='input'>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 3 x 10</span>
+#&gt;   <span style='font-weight: bold;'>group1</span> <span style='font-weight: bold;'>group2</span> <span style='font-weight: bold;'>estimate</span> <span style='font-weight: bold;'>conf.level</span> <span style='font-weight: bold;'>conf.low</span> <span style='font-weight: bold;'>conf.high</span> <span style='font-weight: bold;'>p.value</span>
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>1</span> 4      6        -<span style='color: #949494;'>0.</span><span style='color: #BB0000;'>909</span>       <span style='color: #949494;'>0.</span>95    -<span style='color: #BB0000;'>1.64</span>    -<span style='color: #949494;'>0.</span><span style='color: #BB0000;'>173</span> <span style='color: #949494;'>0.0</span>17<span style='text-decoration: underline;'>4</span> 
+#&gt; <span style='color: #BCBCBC;'>2</span> 4      8        -<span style='color: #BB0000;'>1.62</span>        <span style='color: #949494;'>0.</span>95    -<span style='color: #BB0000;'>2.50</span>    -<span style='color: #949494;'>0.</span><span style='color: #BB0000;'>746</span> <span style='color: #949494;'>0.00</span>1<span style='text-decoration: underline;'>65</span>
+#&gt; <span style='color: #BCBCBC;'>3</span> 6      8        -<span style='color: #949494;'>0.</span><span style='color: #BB0000;'>713</span>       <span style='color: #949494;'>0.</span>95    -<span style='color: #BB0000;'>1.58</span>     <span style='color: #949494;'>0.</span>155 <span style='color: #949494;'>0.0</span>43<span style='text-decoration: underline;'>8</span> 
+#&gt;   <span style='font-weight: bold;'>test.details</span>              <span style='font-weight: bold;'>p.value.adjustment</span>
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                     <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>             
+#&gt; <span style='color: #BCBCBC;'>1</span> Yuen's trimmed means test FDR               
+#&gt; <span style='color: #BCBCBC;'>2</span> Yuen's trimmed means test FDR               
+#&gt; <span style='color: #BCBCBC;'>3</span> Yuen's trimmed means test FDR               
+#&gt;   <span style='font-weight: bold;'>label</span>                                 
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                                 
+#&gt; <span style='color: #BCBCBC;'>1</span> list(~italic(p)[FDR-corrected]==0.017)
+#&gt; <span style='color: #BCBCBC;'>2</span> list(~italic(p)[FDR-corrected]==0.002)
+#&gt; <span style='color: #BCBCBC;'>3</span> list(~italic(p)[FDR-corrected]==0.044)</div><div class='input'>
 <span class='co'># Bayes Factor (Student's t-test)</span>
 <span class='fu'>pairwise_comparisons</span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='va'>mtcars</span>,
@@ -401,22 +413,22 @@ respective functions:</p><ul>
   type <span class='op'>=</span> <span class='st'>"bayes"</span>,
   paired <span class='op'>=</span> <span class='cn'>FALSE</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 3 x 17</span><span>
-#&gt;   </span><span style='font-weight: bold;'>group1</span><span> </span><span style='font-weight: bold;'>group2</span><span> </span><span style='font-weight: bold;'>term</span><span>       </span><span style='font-weight: bold;'>estimate</span><span> </span><span style='font-weight: bold;'>conf.level</span><span> </span><span style='font-weight: bold;'>conf.low</span><span> </span><span style='font-weight: bold;'>conf.high</span><span>    </span><span style='font-weight: bold;'>pd</span><span>
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> 4      6      Difference    </span><span style='color: #949494;'>0.</span><span>686       </span><span style='color: #949494;'>0.</span><span>89    </span><span style='color: #949494;'>0.</span><span>252      1.10 </span><span style='color: #949494;'>0.</span><span>992
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span> 4      8      Difference    1.63        </span><span style='color: #949494;'>0.</span><span>89    1.14       2.11 1    
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> 6      8      Difference    </span><span style='color: #949494;'>0.</span><span>715       </span><span style='color: #949494;'>0.</span><span>89    </span><span style='color: #949494;'>0.</span><span>203      1.21 </span><span style='color: #949494;'>0.</span><span>987
-#&gt;   </span><span style='font-weight: bold;'>rope.percentage</span><span> </span><span style='font-weight: bold;'>prior.distribution</span><span> </span><span style='font-weight: bold;'>prior.location</span><span> </span><span style='font-weight: bold;'>prior.scale</span><span>    </span><span style='font-weight: bold;'>bf10</span><span>
-#&gt;             </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span>               </span><span style='color: #949494;'>0</span><span> cauchy                          </span><span style='color: #949494;'>0</span><span>       </span><span style='color: #949494;'>0.</span><span>707   11.4 
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span>               </span><span style='color: #949494;'>0</span><span> cauchy                          </span><span style='color: #949494;'>0</span><span>       </span><span style='color: #949494;'>0.</span><span>707 </span><span style='text-decoration: underline;'>5</span><span>22</span><span style='color: #949494;'>2</span><span>.  
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span>               </span><span style='color: #949494;'>0</span><span> cauchy                          </span><span style='color: #949494;'>0</span><span>       </span><span style='color: #949494;'>0.</span><span>707    5.36
-#&gt;   </span><span style='font-weight: bold;'>method</span><span>          </span><span style='font-weight: bold;'>log_e_bf10</span><span> </span><span style='font-weight: bold;'>label</span><span>                          </span><span style='font-weight: bold;'>test.details</span><span>    
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                          </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>           
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> Bayesian t-test       2.44 list(~log[e](BF['01'])==-2.44) Student's t-test
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span> Bayesian t-test       8.56 list(~log[e](BF['01'])==-8.56) Student's t-test
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> Bayesian t-test       1.68 list(~log[e](BF['01'])==-1.68) Student's t-test</div><div class='input'>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 3 x 17</span>
+#&gt;   <span style='font-weight: bold;'>group1</span> <span style='font-weight: bold;'>group2</span> <span style='font-weight: bold;'>term</span>       <span style='font-weight: bold;'>estimate</span> <span style='font-weight: bold;'>conf.level</span> <span style='font-weight: bold;'>conf.low</span> <span style='font-weight: bold;'>conf.high</span>    <span style='font-weight: bold;'>pd</span>
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>1</span> 4      6      Difference    <span style='color: #949494;'>0.</span>686       <span style='color: #949494;'>0.</span>89    <span style='color: #949494;'>0.</span>252      1.10 <span style='color: #949494;'>0.</span>992
+#&gt; <span style='color: #BCBCBC;'>2</span> 4      8      Difference    1.63        <span style='color: #949494;'>0.</span>89    1.14       2.11 1    
+#&gt; <span style='color: #BCBCBC;'>3</span> 6      8      Difference    <span style='color: #949494;'>0.</span>715       <span style='color: #949494;'>0.</span>89    <span style='color: #949494;'>0.</span>203      1.21 <span style='color: #949494;'>0.</span>987
+#&gt;   <span style='font-weight: bold;'>rope.percentage</span> <span style='font-weight: bold;'>prior.distribution</span> <span style='font-weight: bold;'>prior.location</span> <span style='font-weight: bold;'>prior.scale</span>    <span style='font-weight: bold;'>bf10</span>
+#&gt;             <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>1</span>               <span style='color: #949494;'>0</span> cauchy                          <span style='color: #949494;'>0</span>       <span style='color: #949494;'>0.</span>707   11.4 
+#&gt; <span style='color: #BCBCBC;'>2</span>               <span style='color: #949494;'>0</span> cauchy                          <span style='color: #949494;'>0</span>       <span style='color: #949494;'>0.</span>707 <span style='text-decoration: underline;'>5</span>22<span style='color: #949494;'>2</span>.  
+#&gt; <span style='color: #BCBCBC;'>3</span>               <span style='color: #949494;'>0</span> cauchy                          <span style='color: #949494;'>0</span>       <span style='color: #949494;'>0.</span>707    5.36
+#&gt;   <span style='font-weight: bold;'>method</span>          <span style='font-weight: bold;'>log_e_bf10</span> <span style='font-weight: bold;'>label</span>                          <span style='font-weight: bold;'>test.details</span>    
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                          <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>           
+#&gt; <span style='color: #BCBCBC;'>1</span> Bayesian t-test       2.44 list(~log[e](BF['01'])==-2.44) Student's t-test
+#&gt; <span style='color: #BCBCBC;'>2</span> Bayesian t-test       8.56 list(~log[e](BF['01'])==-8.56) Student's t-test
+#&gt; <span style='color: #BCBCBC;'>3</span> Bayesian t-test       1.68 list(~log[e](BF['01'])==-1.68) Student's t-test</div><div class='input'>
 <span class='co'>#------------------- within-subjects design ----------------------------</span>
 
 <span class='co'># parametric (Student's t-test)</span>
@@ -429,23 +441,23 @@ respective functions:</p><ul>
   paired <span class='op'>=</span> <span class='cn'>TRUE</span>,
   p.adjust.method <span class='op'>=</span> <span class='st'>"BH"</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 6 x 6</span><span>
-#&gt;   </span><span style='font-weight: bold;'>group1</span><span> </span><span style='font-weight: bold;'>group2</span><span>  </span><span style='font-weight: bold;'>p.value</span><span> </span><span style='font-weight: bold;'>test.details</span><span>     </span><span style='font-weight: bold;'>p.value.adjustment</span><span>
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>             
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> HDHF   HDLF   1.06</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 3</span><span> Student's t-test FDR               
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span> HDHF   LDHF   7.02</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 2</span><span> Student's t-test FDR               
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> HDHF   LDLF   3.95</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-12</span><span> Student's t-test FDR               
-#&gt; </span><span style='color: #BCBCBC;'>4</span><span> HDLF   LDHF   6.74</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 2</span><span> Student's t-test FDR               
-#&gt; </span><span style='color: #BCBCBC;'>5</span><span> HDLF   LDLF   1.99</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 3</span><span> Student's t-test FDR               
-#&gt; </span><span style='color: #BCBCBC;'>6</span><span> LDHF   LDLF   6.66</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 9</span><span> Student's t-test FDR               
-#&gt;   </span><span style='font-weight: bold;'>label</span><span>                                    
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                                    
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> list(~italic(p)[FDR-corrected]==0.001)   
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span> list(~italic(p)[FDR-corrected]==0.070)   
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> list(~italic(p)[FDR-corrected]==3.95e-12)
-#&gt; </span><span style='color: #BCBCBC;'>4</span><span> list(~italic(p)[FDR-corrected]==0.067)   
-#&gt; </span><span style='color: #BCBCBC;'>5</span><span> list(~italic(p)[FDR-corrected]==0.002)   
-#&gt; </span><span style='color: #BCBCBC;'>6</span><span> list(~italic(p)[FDR-corrected]==6.66e-09)</div><div class='input'>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 6 x 6</span>
+#&gt;   <span style='font-weight: bold;'>group1</span> <span style='font-weight: bold;'>group2</span>  <span style='font-weight: bold;'>p.value</span> <span style='font-weight: bold;'>test.details</span>     <span style='font-weight: bold;'>p.value.adjustment</span>
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>            <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>             
+#&gt; <span style='color: #BCBCBC;'>1</span> HDHF   HDLF   1.06<span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 3</span> Student's t-test FDR               
+#&gt; <span style='color: #BCBCBC;'>2</span> HDHF   LDHF   7.02<span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 2</span> Student's t-test FDR               
+#&gt; <span style='color: #BCBCBC;'>3</span> HDHF   LDLF   3.95<span style='color: #949494;'>e</span><span style='color: #BB0000;'>-12</span> Student's t-test FDR               
+#&gt; <span style='color: #BCBCBC;'>4</span> HDLF   LDHF   6.74<span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 2</span> Student's t-test FDR               
+#&gt; <span style='color: #BCBCBC;'>5</span> HDLF   LDLF   1.99<span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 3</span> Student's t-test FDR               
+#&gt; <span style='color: #BCBCBC;'>6</span> LDHF   LDLF   6.66<span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 9</span> Student's t-test FDR               
+#&gt;   <span style='font-weight: bold;'>label</span>                                    
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                                    
+#&gt; <span style='color: #BCBCBC;'>1</span> list(~italic(p)[FDR-corrected]==0.001)   
+#&gt; <span style='color: #BCBCBC;'>2</span> list(~italic(p)[FDR-corrected]==0.070)   
+#&gt; <span style='color: #BCBCBC;'>3</span> list(~italic(p)[FDR-corrected]==3.95e-12)
+#&gt; <span style='color: #BCBCBC;'>4</span> list(~italic(p)[FDR-corrected]==0.067)   
+#&gt; <span style='color: #BCBCBC;'>5</span> list(~italic(p)[FDR-corrected]==0.002)   
+#&gt; <span style='color: #BCBCBC;'>6</span> list(~italic(p)[FDR-corrected]==6.66e-09)</div><div class='input'>
 <span class='co'># non-parametric (Durbin-Conover test)</span>
 <span class='fu'>pairwise_comparisons</span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='va'>bugs_long</span>,
@@ -456,39 +468,39 @@ respective functions:</p><ul>
   paired <span class='op'>=</span> <span class='cn'>TRUE</span>,
   p.adjust.method <span class='op'>=</span> <span class='st'>"BY"</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 6 x 11</span><span>
-#&gt;   </span><span style='font-weight: bold;'>group1</span><span> </span><span style='font-weight: bold;'>group2</span><span> </span><span style='font-weight: bold;'>statistic</span><span>  </span><span style='font-weight: bold;'>p.value</span><span> </span><span style='font-weight: bold;'>alternative</span><span>
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> HDHF   HDLF        4.78 1.44</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 5</span><span> two.sided  
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span> HDHF   LDHF        2.44 4.47</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 2</span><span> two.sided  
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> HDHF   LDLF        8.01 5.45</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>-13</span><span> two.sided  
-#&gt; </span><span style='color: #BCBCBC;'>4</span><span> HDLF   LDHF        2.34 4.96</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 2</span><span> two.sided  
-#&gt; </span><span style='color: #BCBCBC;'>5</span><span> HDLF   LDLF        3.23 5.05</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 3</span><span> two.sided  
-#&gt; </span><span style='color: #BCBCBC;'>6</span><span> LDHF   LDLF        5.57 4.64</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 7</span><span> two.sided  
-#&gt;   </span><span style='font-weight: bold;'>method</span><span>                                                                
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                                                                 
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> Durbin's all-pairs test for a two-way balanced incomplete block design
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span> Durbin's all-pairs test for a two-way balanced incomplete block design
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> Durbin's all-pairs test for a two-way balanced incomplete block design
-#&gt; </span><span style='color: #BCBCBC;'>4</span><span> Durbin's all-pairs test for a two-way balanced incomplete block design
-#&gt; </span><span style='color: #BCBCBC;'>5</span><span> Durbin's all-pairs test for a two-way balanced incomplete block design
-#&gt; </span><span style='color: #BCBCBC;'>6</span><span> Durbin's all-pairs test for a two-way balanced incomplete block design
-#&gt;   </span><span style='font-weight: bold;'>distribution</span><span> </span><span style='font-weight: bold;'>p.adjustment</span><span> </span><span style='font-weight: bold;'>test.details</span><span>        </span><span style='font-weight: bold;'>p.value.adjustment</span><span>
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>               </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>             
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> t            none         Durbin-Conover test BY                
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span> t            none         Durbin-Conover test BY                
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> t            none         Durbin-Conover test BY                
-#&gt; </span><span style='color: #BCBCBC;'>4</span><span> t            none         Durbin-Conover test BY                
-#&gt; </span><span style='color: #BCBCBC;'>5</span><span> t            none         Durbin-Conover test BY                
-#&gt; </span><span style='color: #BCBCBC;'>6</span><span> t            none         Durbin-Conover test BY                
-#&gt;   </span><span style='font-weight: bold;'>label</span><span>                                   
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                                   
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> list(~italic(p)[BY-corrected]==1.44e-05)
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span> list(~italic(p)[BY-corrected]==0.045)   
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> list(~italic(p)[BY-corrected]==5.45e-13)
-#&gt; </span><span style='color: #BCBCBC;'>4</span><span> list(~italic(p)[BY-corrected]==0.050)   
-#&gt; </span><span style='color: #BCBCBC;'>5</span><span> list(~italic(p)[BY-corrected]==0.005)   
-#&gt; </span><span style='color: #BCBCBC;'>6</span><span> list(~italic(p)[BY-corrected]==4.64e-07)</div><div class='input'>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 6 x 11</span>
+#&gt;   <span style='font-weight: bold;'>group1</span> <span style='font-weight: bold;'>group2</span> <span style='font-weight: bold;'>statistic</span>  <span style='font-weight: bold;'>p.value</span> <span style='font-weight: bold;'>alternative</span>
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      
+#&gt; <span style='color: #BCBCBC;'>1</span> HDHF   HDLF        4.78 1.44<span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 5</span> two.sided  
+#&gt; <span style='color: #BCBCBC;'>2</span> HDHF   LDHF        2.44 4.47<span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 2</span> two.sided  
+#&gt; <span style='color: #BCBCBC;'>3</span> HDHF   LDLF        8.01 5.45<span style='color: #949494;'>e</span><span style='color: #BB0000;'>-13</span> two.sided  
+#&gt; <span style='color: #BCBCBC;'>4</span> HDLF   LDHF        2.34 4.96<span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 2</span> two.sided  
+#&gt; <span style='color: #BCBCBC;'>5</span> HDLF   LDLF        3.23 5.05<span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 3</span> two.sided  
+#&gt; <span style='color: #BCBCBC;'>6</span> LDHF   LDLF        5.57 4.64<span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 7</span> two.sided  
+#&gt;   <span style='font-weight: bold;'>method</span>                                                                
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                                                                 
+#&gt; <span style='color: #BCBCBC;'>1</span> Durbin's all-pairs test for a two-way balanced incomplete block design
+#&gt; <span style='color: #BCBCBC;'>2</span> Durbin's all-pairs test for a two-way balanced incomplete block design
+#&gt; <span style='color: #BCBCBC;'>3</span> Durbin's all-pairs test for a two-way balanced incomplete block design
+#&gt; <span style='color: #BCBCBC;'>4</span> Durbin's all-pairs test for a two-way balanced incomplete block design
+#&gt; <span style='color: #BCBCBC;'>5</span> Durbin's all-pairs test for a two-way balanced incomplete block design
+#&gt; <span style='color: #BCBCBC;'>6</span> Durbin's all-pairs test for a two-way balanced incomplete block design
+#&gt;   <span style='font-weight: bold;'>distribution</span> <span style='font-weight: bold;'>p.adjustment</span> <span style='font-weight: bold;'>test.details</span>        <span style='font-weight: bold;'>p.value.adjustment</span>
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>               <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>             
+#&gt; <span style='color: #BCBCBC;'>1</span> t            none         Durbin-Conover test BY                
+#&gt; <span style='color: #BCBCBC;'>2</span> t            none         Durbin-Conover test BY                
+#&gt; <span style='color: #BCBCBC;'>3</span> t            none         Durbin-Conover test BY                
+#&gt; <span style='color: #BCBCBC;'>4</span> t            none         Durbin-Conover test BY                
+#&gt; <span style='color: #BCBCBC;'>5</span> t            none         Durbin-Conover test BY                
+#&gt; <span style='color: #BCBCBC;'>6</span> t            none         Durbin-Conover test BY                
+#&gt;   <span style='font-weight: bold;'>label</span>                                   
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                                   
+#&gt; <span style='color: #BCBCBC;'>1</span> list(~italic(p)[BY-corrected]==1.44e-05)
+#&gt; <span style='color: #BCBCBC;'>2</span> list(~italic(p)[BY-corrected]==0.045)   
+#&gt; <span style='color: #BCBCBC;'>3</span> list(~italic(p)[BY-corrected]==5.45e-13)
+#&gt; <span style='color: #BCBCBC;'>4</span> list(~italic(p)[BY-corrected]==0.050)   
+#&gt; <span style='color: #BCBCBC;'>5</span> list(~italic(p)[BY-corrected]==0.005)   
+#&gt; <span style='color: #BCBCBC;'>6</span> list(~italic(p)[BY-corrected]==4.64e-07)</div><div class='input'>
 <span class='co'># robust (Yuen's trimmed means t-test)</span>
 <span class='fu'>pairwise_comparisons</span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='va'>bugs_long</span>,
@@ -499,31 +511,31 @@ respective functions:</p><ul>
   paired <span class='op'>=</span> <span class='cn'>TRUE</span>,
   p.adjust.method <span class='op'>=</span> <span class='st'>"hommel"</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 6 x 11</span><span>
-#&gt;   </span><span style='font-weight: bold;'>group1</span><span> </span><span style='font-weight: bold;'>group2</span><span> </span><span style='font-weight: bold;'>estimate</span><span> </span><span style='font-weight: bold;'>conf.level</span><span> </span><span style='font-weight: bold;'>conf.low</span><span> </span><span style='font-weight: bold;'>conf.high</span><span>     </span><span style='font-weight: bold;'>p.value</span><span>  </span><span style='font-weight: bold;'>p.crit</span><span>
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> HDHF   HDLF      1.03        </span><span style='color: #949494;'>0.</span><span>95   </span><span style='color: #949494;'>0.</span><span>140      1.92  </span><span style='color: #949494;'>0.00</span><span>9</span><span style='text-decoration: underline;'>99</span><span>     </span><span style='color: #949494;'>0.0</span><span>12</span><span style='text-decoration: underline;'>7</span><span> 
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span> HDHF   LDHF      </span><span style='color: #949494;'>0.</span><span>454       </span><span style='color: #949494;'>0.</span><span>95  -</span><span style='color: #949494;'>0.</span><span style='color: #BB0000;'>104</span><span>      1.01  </span><span style='color: #949494;'>0.0</span><span>52</span><span style='text-decoration: underline;'>0</span><span>      </span><span style='color: #949494;'>0.0</span><span>25  
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> HDHF   LDLF      1.95        </span><span style='color: #949494;'>0.</span><span>95   1.09       2.82  </span><span style='color: #949494;'>0.000</span><span style='color: #949494;text-decoration: underline;'>000</span><span>564 </span><span style='color: #949494;'>0.00</span><span>8</span><span style='text-decoration: underline;'>51</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>4</span><span> HDLF   LDHF     -</span><span style='color: #949494;'>0.</span><span style='color: #BB0000;'>676</span><span>       </span><span style='color: #949494;'>0.</span><span>95  -</span><span style='color: #BB0000;'>1.61</span><span>       </span><span style='color: #949494;'>0.</span><span>256 </span><span style='color: #949494;'>0.0</span><span>52</span><span style='text-decoration: underline;'>0</span><span>      </span><span style='color: #949494;'>0.0</span><span>5   
-#&gt; </span><span style='color: #BCBCBC;'>5</span><span> HDLF   LDLF      </span><span style='color: #949494;'>0.</span><span>889       </span><span style='color: #949494;'>0.</span><span>95   </span><span style='color: #949494;'>0.0</span><span>24</span><span style='text-decoration: underline;'>4</span><span>     1.75  </span><span style='color: #949494;'>0.0</span><span>20</span><span style='text-decoration: underline;'>3</span><span>      </span><span style='color: #949494;'>0.0</span><span>16</span><span style='text-decoration: underline;'>9</span><span> 
-#&gt; </span><span style='color: #BCBCBC;'>6</span><span> LDHF   LDLF      1.35        </span><span style='color: #949494;'>0.</span><span>95   </span><span style='color: #949494;'>0.</span><span>560      2.14  </span><span style='color: #949494;'>0.000</span><span style='text-decoration: underline;'>102</span><span>    </span><span style='color: #949494;'>0.0</span><span>10</span><span style='text-decoration: underline;'>2</span><span> 
-#&gt;   </span><span style='font-weight: bold;'>test.details</span><span>              </span><span style='font-weight: bold;'>p.value.adjustment</span><span>
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>             
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> Yuen's trimmed means test Hommel            
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span> Yuen's trimmed means test Hommel            
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> Yuen's trimmed means test Hommel            
-#&gt; </span><span style='color: #BCBCBC;'>4</span><span> Yuen's trimmed means test Hommel            
-#&gt; </span><span style='color: #BCBCBC;'>5</span><span> Yuen's trimmed means test Hommel            
-#&gt; </span><span style='color: #BCBCBC;'>6</span><span> Yuen's trimmed means test Hommel            
-#&gt;   </span><span style='font-weight: bold;'>label</span><span>                                       
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                                       
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> list(~italic(p)[Hommel-corrected]==0.010)   
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span> list(~italic(p)[Hommel-corrected]==0.052)   
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> list(~italic(p)[Hommel-corrected]==5.64e-07)
-#&gt; </span><span style='color: #BCBCBC;'>4</span><span> list(~italic(p)[Hommel-corrected]==0.052)   
-#&gt; </span><span style='color: #BCBCBC;'>5</span><span> list(~italic(p)[Hommel-corrected]==0.020)   
-#&gt; </span><span style='color: #BCBCBC;'>6</span><span> list(~italic(p)[Hommel-corrected]==1.02e-04)</div><div class='input'>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 6 x 11</span>
+#&gt;   <span style='font-weight: bold;'>group1</span> <span style='font-weight: bold;'>group2</span> <span style='font-weight: bold;'>estimate</span> <span style='font-weight: bold;'>conf.level</span> <span style='font-weight: bold;'>conf.low</span> <span style='font-weight: bold;'>conf.high</span>     <span style='font-weight: bold;'>p.value</span>  <span style='font-weight: bold;'>p.crit</span>
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>1</span> HDHF   HDLF      1.03        <span style='color: #949494;'>0.</span>95   <span style='color: #949494;'>0.</span>140      1.92  <span style='color: #949494;'>0.00</span>9<span style='text-decoration: underline;'>99</span>     <span style='color: #949494;'>0.0</span>12<span style='text-decoration: underline;'>7</span> 
+#&gt; <span style='color: #BCBCBC;'>2</span> HDHF   LDHF      <span style='color: #949494;'>0.</span>454       <span style='color: #949494;'>0.</span>95  -<span style='color: #949494;'>0.</span><span style='color: #BB0000;'>104</span>      1.01  <span style='color: #949494;'>0.0</span>52<span style='text-decoration: underline;'>0</span>      <span style='color: #949494;'>0.0</span>25  
+#&gt; <span style='color: #BCBCBC;'>3</span> HDHF   LDLF      1.95        <span style='color: #949494;'>0.</span>95   1.09       2.82  <span style='color: #949494;'>0.000</span><span style='color: #949494; text-decoration: underline;'>000</span>564 <span style='color: #949494;'>0.00</span>8<span style='text-decoration: underline;'>51</span>
+#&gt; <span style='color: #BCBCBC;'>4</span> HDLF   LDHF     -<span style='color: #949494;'>0.</span><span style='color: #BB0000;'>676</span>       <span style='color: #949494;'>0.</span>95  -<span style='color: #BB0000;'>1.61</span>       <span style='color: #949494;'>0.</span>256 <span style='color: #949494;'>0.0</span>52<span style='text-decoration: underline;'>0</span>      <span style='color: #949494;'>0.0</span>5   
+#&gt; <span style='color: #BCBCBC;'>5</span> HDLF   LDLF      <span style='color: #949494;'>0.</span>889       <span style='color: #949494;'>0.</span>95   <span style='color: #949494;'>0.0</span>24<span style='text-decoration: underline;'>4</span>     1.75  <span style='color: #949494;'>0.0</span>20<span style='text-decoration: underline;'>3</span>      <span style='color: #949494;'>0.0</span>16<span style='text-decoration: underline;'>9</span> 
+#&gt; <span style='color: #BCBCBC;'>6</span> LDHF   LDLF      1.35        <span style='color: #949494;'>0.</span>95   <span style='color: #949494;'>0.</span>560      2.14  <span style='color: #949494;'>0.000</span><span style='text-decoration: underline;'>102</span>    <span style='color: #949494;'>0.0</span>10<span style='text-decoration: underline;'>2</span> 
+#&gt;   <span style='font-weight: bold;'>test.details</span>              <span style='font-weight: bold;'>p.value.adjustment</span>
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                     <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>             
+#&gt; <span style='color: #BCBCBC;'>1</span> Yuen's trimmed means test Hommel            
+#&gt; <span style='color: #BCBCBC;'>2</span> Yuen's trimmed means test Hommel            
+#&gt; <span style='color: #BCBCBC;'>3</span> Yuen's trimmed means test Hommel            
+#&gt; <span style='color: #BCBCBC;'>4</span> Yuen's trimmed means test Hommel            
+#&gt; <span style='color: #BCBCBC;'>5</span> Yuen's trimmed means test Hommel            
+#&gt; <span style='color: #BCBCBC;'>6</span> Yuen's trimmed means test Hommel            
+#&gt;   <span style='font-weight: bold;'>label</span>                                       
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                                       
+#&gt; <span style='color: #BCBCBC;'>1</span> list(~italic(p)[Hommel-corrected]==0.010)   
+#&gt; <span style='color: #BCBCBC;'>2</span> list(~italic(p)[Hommel-corrected]==0.052)   
+#&gt; <span style='color: #BCBCBC;'>3</span> list(~italic(p)[Hommel-corrected]==5.64e-07)
+#&gt; <span style='color: #BCBCBC;'>4</span> list(~italic(p)[Hommel-corrected]==0.052)   
+#&gt; <span style='color: #BCBCBC;'>5</span> list(~italic(p)[Hommel-corrected]==0.020)   
+#&gt; <span style='color: #BCBCBC;'>6</span> list(~italic(p)[Hommel-corrected]==1.02e-04)</div><div class='input'>
 <span class='co'># Bayes Factor (Student's t-test)</span>
 <span class='fu'>pairwise_comparisons</span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='va'>bugs_long</span>,
@@ -533,32 +545,32 @@ respective functions:</p><ul>
   type <span class='op'>=</span> <span class='st'>"bayes"</span>,
   paired <span class='op'>=</span> <span class='cn'>TRUE</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 6 x 17</span><span>
-#&gt;   </span><span style='font-weight: bold;'>group1</span><span> </span><span style='font-weight: bold;'>group2</span><span> </span><span style='font-weight: bold;'>term</span><span>       </span><span style='font-weight: bold;'>estimate</span><span> </span><span style='font-weight: bold;'>conf.level</span><span> </span><span style='font-weight: bold;'>conf.low</span><span> </span><span style='font-weight: bold;'>conf.high</span><span>    </span><span style='font-weight: bold;'>pd</span><span>
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> HDHF   HDLF   Difference   -</span><span style='color: #BB0000;'>1.10</span><span>        </span><span style='color: #949494;'>0.</span><span>89   -</span><span style='color: #BB0000;'>1.61</span><span>    -</span><span style='color: #949494;'>0.</span><span style='color: #BB0000;'>575</span><span>  1.00 
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span> HDHF   LDHF   Difference   -</span><span style='color: #949494;'>0.</span><span style='color: #BB0000;'>455</span><span>       </span><span style='color: #949494;'>0.</span><span>89   -</span><span style='color: #949494;'>0.</span><span style='color: #BB0000;'>883</span><span>   -</span><span style='color: #949494;'>0.0</span><span style='color: #BB0000;'>67</span><span style='color: #BB0000;text-decoration: underline;'>5</span><span> </span><span style='color: #949494;'>0.</span><span>962
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> HDHF   LDLF   Difference   -</span><span style='color: #BB0000;'>2.13</span><span>        </span><span style='color: #949494;'>0.</span><span>89   -</span><span style='color: #BB0000;'>2.56</span><span>    -</span><span style='color: #BB0000;'>1.73</span><span>   1    
-#&gt; </span><span style='color: #BCBCBC;'>4</span><span> HDLF   LDHF   Difference    </span><span style='color: #949494;'>0.</span><span>661       </span><span style='color: #949494;'>0.</span><span>89    </span><span style='color: #949494;'>0.</span><span>126    1.21   </span><span style='color: #949494;'>0.</span><span>97 
-#&gt; </span><span style='color: #BCBCBC;'>5</span><span> HDLF   LDLF   Difference   -</span><span style='color: #949494;'>0.</span><span style='color: #BB0000;'>991</span><span>       </span><span style='color: #949494;'>0.</span><span>89   -</span><span style='color: #BB0000;'>1.49</span><span>    -</span><span style='color: #949494;'>0.</span><span style='color: #BB0000;'>500</span><span>  </span><span style='color: #949494;'>0.</span><span>999
-#&gt; </span><span style='color: #BCBCBC;'>6</span><span> LDHF   LDLF   Difference   -</span><span style='color: #BB0000;'>1.65</span><span>        </span><span style='color: #949494;'>0.</span><span>89   -</span><span style='color: #BB0000;'>2.05</span><span>    -</span><span style='color: #BB0000;'>1.24</span><span>   1    
-#&gt;   </span><span style='font-weight: bold;'>rope.percentage</span><span> </span><span style='font-weight: bold;'>prior.distribution</span><span> </span><span style='font-weight: bold;'>prior.location</span><span> </span><span style='font-weight: bold;'>prior.scale</span><span>     </span><span style='font-weight: bold;'>bf10</span><span>
-#&gt;             </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span>           </span><span style='color: #949494;'>0</span><span>     cauchy                          </span><span style='color: #949494;'>0</span><span>       </span><span style='color: #949494;'>0.</span><span>707 4.16</span><span style='color: #949494;'>e</span><span>+ 1
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span>           </span><span style='color: #949494;'>0.</span><span>161 cauchy                          </span><span style='color: #949494;'>0</span><span>       </span><span style='color: #949494;'>0.</span><span>707 5.83</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 1</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span>           </span><span style='color: #949494;'>0</span><span>     cauchy                          </span><span style='color: #949494;'>0</span><span>       </span><span style='color: #949494;'>0.</span><span>707 1.20</span><span style='color: #949494;'>e</span><span>+10
-#&gt; </span><span style='color: #BCBCBC;'>4</span><span>           </span><span style='color: #949494;'>0.</span><span>113 cauchy                          </span><span style='color: #949494;'>0</span><span>       </span><span style='color: #949494;'>0.</span><span>707 6.98</span><span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 1</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>5</span><span>           </span><span style='color: #949494;'>0</span><span>     cauchy                          </span><span style='color: #949494;'>0</span><span>       </span><span style='color: #949494;'>0.</span><span>707 1.81</span><span style='color: #949494;'>e</span><span>+ 1
-#&gt; </span><span style='color: #BCBCBC;'>6</span><span>           </span><span style='color: #949494;'>0</span><span>     cauchy                          </span><span style='color: #949494;'>0</span><span>       </span><span style='color: #949494;'>0.</span><span>707 4.81</span><span style='color: #949494;'>e</span><span>+ 6
-#&gt;   </span><span style='font-weight: bold;'>method</span><span>          </span><span style='font-weight: bold;'>log_e_bf10</span><span> </span><span style='font-weight: bold;'>label</span><span>                           </span><span style='font-weight: bold;'>test.details</span><span>    
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                           </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>           
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> Bayesian t-test      3.73  list(~log[e](BF['01'])==-3.73)  Student's t-test
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span> Bayesian t-test     -</span><span style='color: #949494;'>0.</span><span style='color: #BB0000;'>539</span><span> list(~log[e](BF['01'])==0.54)   Student's t-test
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> Bayesian t-test     23.2   list(~log[e](BF['01'])==-23.21) Student's t-test
-#&gt; </span><span style='color: #BCBCBC;'>4</span><span> Bayesian t-test     -</span><span style='color: #949494;'>0.</span><span style='color: #BB0000;'>359</span><span> list(~log[e](BF['01'])==0.36)   Student's t-test
-#&gt; </span><span style='color: #BCBCBC;'>5</span><span> Bayesian t-test      2.90  list(~log[e](BF['01'])==-2.90)  Student's t-test
-#&gt; </span><span style='color: #BCBCBC;'>6</span><span> Bayesian t-test     15.4   list(~log[e](BF['01'])==-15.39) Student's t-test</div><div class='input'><span class='co'># }</span>
-</div></span></pre>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 6 x 17</span>
+#&gt;   <span style='font-weight: bold;'>group1</span> <span style='font-weight: bold;'>group2</span> <span style='font-weight: bold;'>term</span>       <span style='font-weight: bold;'>estimate</span> <span style='font-weight: bold;'>conf.level</span> <span style='font-weight: bold;'>conf.low</span> <span style='font-weight: bold;'>conf.high</span>    <span style='font-weight: bold;'>pd</span>
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>1</span> HDHF   HDLF   Difference   -<span style='color: #BB0000;'>1.10</span>        <span style='color: #949494;'>0.</span>89   -<span style='color: #BB0000;'>1.61</span>    -<span style='color: #949494;'>0.</span><span style='color: #BB0000;'>575</span>  1.00 
+#&gt; <span style='color: #BCBCBC;'>2</span> HDHF   LDHF   Difference   -<span style='color: #949494;'>0.</span><span style='color: #BB0000;'>455</span>       <span style='color: #949494;'>0.</span>89   -<span style='color: #949494;'>0.</span><span style='color: #BB0000;'>883</span>   -<span style='color: #949494;'>0.0</span><span style='color: #BB0000;'>67</span><span style='color: #BB0000; text-decoration: underline;'>5</span> <span style='color: #949494;'>0.</span>962
+#&gt; <span style='color: #BCBCBC;'>3</span> HDHF   LDLF   Difference   -<span style='color: #BB0000;'>2.13</span>        <span style='color: #949494;'>0.</span>89   -<span style='color: #BB0000;'>2.56</span>    -<span style='color: #BB0000;'>1.73</span>   1    
+#&gt; <span style='color: #BCBCBC;'>4</span> HDLF   LDHF   Difference    <span style='color: #949494;'>0.</span>661       <span style='color: #949494;'>0.</span>89    <span style='color: #949494;'>0.</span>126    1.21   <span style='color: #949494;'>0.</span>97 
+#&gt; <span style='color: #BCBCBC;'>5</span> HDLF   LDLF   Difference   -<span style='color: #949494;'>0.</span><span style='color: #BB0000;'>991</span>       <span style='color: #949494;'>0.</span>89   -<span style='color: #BB0000;'>1.49</span>    -<span style='color: #949494;'>0.</span><span style='color: #BB0000;'>500</span>  <span style='color: #949494;'>0.</span>999
+#&gt; <span style='color: #BCBCBC;'>6</span> LDHF   LDLF   Difference   -<span style='color: #BB0000;'>1.65</span>        <span style='color: #949494;'>0.</span>89   -<span style='color: #BB0000;'>2.05</span>    -<span style='color: #BB0000;'>1.24</span>   1    
+#&gt;   <span style='font-weight: bold;'>rope.percentage</span> <span style='font-weight: bold;'>prior.distribution</span> <span style='font-weight: bold;'>prior.location</span> <span style='font-weight: bold;'>prior.scale</span>     <span style='font-weight: bold;'>bf10</span>
+#&gt;             <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>1</span>           <span style='color: #949494;'>0</span>     cauchy                          <span style='color: #949494;'>0</span>       <span style='color: #949494;'>0.</span>707 4.16<span style='color: #949494;'>e</span>+ 1
+#&gt; <span style='color: #BCBCBC;'>2</span>           <span style='color: #949494;'>0.</span>161 cauchy                          <span style='color: #949494;'>0</span>       <span style='color: #949494;'>0.</span>707 5.83<span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 1</span>
+#&gt; <span style='color: #BCBCBC;'>3</span>           <span style='color: #949494;'>0</span>     cauchy                          <span style='color: #949494;'>0</span>       <span style='color: #949494;'>0.</span>707 1.20<span style='color: #949494;'>e</span>+10
+#&gt; <span style='color: #BCBCBC;'>4</span>           <span style='color: #949494;'>0.</span>113 cauchy                          <span style='color: #949494;'>0</span>       <span style='color: #949494;'>0.</span>707 6.98<span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 1</span>
+#&gt; <span style='color: #BCBCBC;'>5</span>           <span style='color: #949494;'>0</span>     cauchy                          <span style='color: #949494;'>0</span>       <span style='color: #949494;'>0.</span>707 1.81<span style='color: #949494;'>e</span>+ 1
+#&gt; <span style='color: #BCBCBC;'>6</span>           <span style='color: #949494;'>0</span>     cauchy                          <span style='color: #949494;'>0</span>       <span style='color: #949494;'>0.</span>707 4.81<span style='color: #949494;'>e</span>+ 6
+#&gt;   <span style='font-weight: bold;'>method</span>          <span style='font-weight: bold;'>log_e_bf10</span> <span style='font-weight: bold;'>label</span>                           <span style='font-weight: bold;'>test.details</span>    
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                           <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>           
+#&gt; <span style='color: #BCBCBC;'>1</span> Bayesian t-test      3.73  list(~log[e](BF['01'])==-3.73)  Student's t-test
+#&gt; <span style='color: #BCBCBC;'>2</span> Bayesian t-test     -<span style='color: #949494;'>0.</span><span style='color: #BB0000;'>539</span> list(~log[e](BF['01'])==0.54)   Student's t-test
+#&gt; <span style='color: #BCBCBC;'>3</span> Bayesian t-test     23.2   list(~log[e](BF['01'])==-23.21) Student's t-test
+#&gt; <span style='color: #BCBCBC;'>4</span> Bayesian t-test     -<span style='color: #949494;'>0.</span><span style='color: #BB0000;'>359</span> list(~log[e](BF['01'])==0.36)   Student's t-test
+#&gt; <span style='color: #BCBCBC;'>5</span> Bayesian t-test      2.90  list(~log[e](BF['01'])==-2.90)  Student's t-test
+#&gt; <span style='color: #BCBCBC;'>6</span> Bayesian t-test     15.4   list(~log[e](BF['01'])==-15.39) Student's t-test</div><div class='input'><span class='co'># }</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
