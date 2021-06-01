@@ -3,7 +3,7 @@
 
 tidy_model_parameters <- function(model, ...) {
   parameters::model_parameters(model, verbose = FALSE, ...) %>%
-    parameters::standardize_names(data = ., style = "broom")
+    parameters::standardize_names(style = "broom")
 }
 
 #' @importFrom BayesFactor ttestBF
@@ -18,7 +18,6 @@ bf_ttest <- function(data, x, y, paired = FALSE, bf.prior = 0.707, ...) {
   # have a proper cleanup with NA removal
   data %<>%
     ipmisc::long_to_wide_converter(
-      data = .,
       x = {{ x }},
       y = {{ y }},
       paired = paired,
@@ -30,14 +29,13 @@ bf_ttest <- function(data, x, y, paired = FALSE, bf.prior = 0.707, ...) {
   if (isFALSE(paired)) bf.args <- list(formula = rlang::new_formula(y, x))
 
   # creating a BayesFactor object
-  bf_object <-
-    rlang::exec(
-      .fn = BayesFactor::ttestBF,
-      rscale = bf.prior,
-      paired = paired,
-      data = as.data.frame(data),
-      !!!bf.args
-    )
+  bf_object <- rlang::exec(
+    .fn = BayesFactor::ttestBF,
+    rscale = bf.prior,
+    paired = paired,
+    data = as.data.frame(data),
+    !!!bf.args
+  )
 
   # extracting Bayes Factors and other details
   dplyr::filter(tidy_model_parameters(bf_object), !is.na(bayes.factor)) %>%

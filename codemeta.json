@@ -14,13 +14,13 @@
   ],
   "issueTracker": "\n    https://github.com/IndrajeetPatil/pairwiseComparisons/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "3.1.5.9000",
+  "version": "3.1.6",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.0.5 (2021-03-31)",
+  "runtimePlatform": "R version 4.1.0 (2021-05-18)",
   "author": [
     {
       "@type": "Person",
@@ -135,7 +135,7 @@
       "@type": "SoftwareApplication",
       "identifier": "insight",
       "name": "insight",
-      "version": ">= 0.13.2",
+      "version": ">= 0.14.1",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -160,7 +160,7 @@
       "@type": "SoftwareApplication",
       "identifier": "parameters",
       "name": "parameters",
-      "version": ">= 0.13.0",
+      "version": ">= 0.14.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -214,6 +214,7 @@
       "@type": "SoftwareApplication",
       "identifier": "WRS2",
       "name": "WRS2",
+      "version": ">= 1.1-1",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -224,8 +225,8 @@
     }
   ],
   "releaseNotes": "https://github.com/IndrajeetPatil/pairwiseComparisons/blob/master/NEWS.md",
-  "contIntegration": ["https://travis-ci.org/IndrajeetPatil/pairwiseComparisons", "https://ci.appveyor.com/project/IndrajeetPatil/pairwiseComparisons", "https://coveralls.io/github/IndrajeetPatil/pairwiseComparisons?branch=master", "https://codecov.io/gh/IndrajeetPatil/pairwiseComparisons?branch=master"],
-  "developmentStatus": ["https://lifecycle.r-lib.org/articles/stages.html", "https://www.repostatus.org/#active"],
+  "contIntegration": ["https://travis-ci.org/IndrajeetPatil/pairwiseComparisons", "https://ci.appveyor.com/project/IndrajeetPatil/pairwiseComparisons"],
+  "developmentStatus": "https://lifecycle.r-lib.org/articles/stages.html",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -247,7 +248,7 @@
     "name": "Comprehensive R Archive Network (CRAN)",
     "url": "https://cran.r-project.org"
   },
-  "fileSize": "624.167KB",
+  "fileSize": "476.147KB",
   "readme": "https://github.com/IndrajeetPatil/pairwiseComparisons/blob/master/README.md",
   "keywords": [
     "pairwise-comparison-tests",

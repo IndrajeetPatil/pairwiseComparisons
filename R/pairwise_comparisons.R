@@ -24,10 +24,15 @@
 #'   `FALSE`.
 #' @param k Number of digits after decimal point (should be an integer)
 #'   (Default: `k = 2L`).
+#' @param bf.prior A number between `0.5` and `2` (default `0.707`), the prior
+#'   width to use in calculating Bayes factors and posterior estimates. In
+#'   addition to numeric arguments, several named values are also recognized:
+#'   `"medium"`, `"wide"`, and `"ultrawide"`, corresponding to *r* scale values
+#'   of 1/2, sqrt(2)/2, and 1, respectively. In case of an ANOVA, this value
+#'   corresponds to scale for fixed effects.
 #' @param ... Additional arguments passed to other methods.
 #' @inheritParams stats::t.test
 #' @inheritParams WRS2::rmmcp
-#' @inheritParams tidyBF::bf_ttest
 #'
 #' @return A tibble dataframe containing two columns corresponding to group
 #'   levels being compared with each other (`group1` and `group2`) and `p.value`
@@ -234,23 +239,22 @@ pairwise_comparisons <- function(data,
 
   # running the appropriate test
   if (type != "robust") {
-    df <-
-      suppressWarnings(rlang::exec(
-        .fn = .f,
-        # Dunn, Games-Howell, Student test
-        x = y_vec,
-        g = x_vec,
-        # Durbin-Conover test
-        groups = x_vec,
-        blocks = g_vec,
-        # Student
-        paired = paired,
-        # common
-        na.action = na.omit,
-        p.adjust.method = "none",
-        # problematic for other methods
-        !!!.f.args
-      )) %>%
+    df <- suppressWarnings(rlang::exec(
+      .fn = .f,
+      # Dunn, Games-Howell, Student test
+      x = y_vec,
+      g = x_vec,
+      # Durbin-Conover test
+      groups = x_vec,
+      blocks = g_vec,
+      # Student
+      paired = paired,
+      # common
+      na.action = na.omit,
+      p.adjust.method = "none",
+      # problematic for other methods
+      !!!.f.args
+    )) %>%
       tidy_model_parameters(.) %>%
       dplyr::rename(group2 = group1, group1 = group2)
   }
@@ -268,8 +272,7 @@ pairwise_comparisons <- function(data,
     }
 
     # cleaning the raw object and getting it in the right format
-    df <-
-      eval(rlang::call2(.ns = .ns, .fn = .fn, tr = tr, !!!.f.args)) %>%
+    df <- eval(rlang::call2(.ns = .ns, .fn = .fn, tr = tr, !!!.f.args)) %>%
       tidy_model_parameters(.)
 
     # test details
@@ -280,23 +283,22 @@ pairwise_comparisons <- function(data,
 
   if (type == "bayes") {
     # combining results into a single dataframe and returning it
-    df_tidy <-
-      purrr::map_dfr(
-        # creating a list of dataframes with subsections of data
-        .x = purrr::map2(
-          .x = as.character(df$group1),
-          .y = as.character(df$group2),
-          .f = function(a, b) droplevels(dplyr::filter(df_int, {{ x }} %in% c(a, b)))
-        ),
-        # internal function to carry out BF t-test
-        .f = ~ bf_ttest(
-          data = .x,
-          x = {{ x }},
-          y = {{ y }},
-          paired = paired,
-          bf.prior = bf.prior
-        )
-      ) %>%
+    df_tidy <- purrr::map_dfr(
+      # creating a list of dataframes with subsections of data
+      .x = purrr::map2(
+        .x = as.character(df$group1),
+        .y = as.character(df$group2),
+        .f = function(a, b) droplevels(dplyr::filter(df_int, {{ x }} %in% c(a, b)))
+      ),
+      # internal function to carry out BF t-test
+      .f = ~ bf_ttest(
+        data = .x,
+        x = {{ x }},
+        y = {{ y }},
+        paired = paired,
+        bf.prior = bf.prior
+      )
+    ) %>%
       dplyr::rowwise() %>%
       dplyr::mutate(label = paste0("list(~log[e](BF['01'])==", format_value(-log_e_bf10, k), ")")) %>%
       dplyr::ungroup() %>%

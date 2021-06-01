@@ -24,18 +24,26 @@ pairwise_comparisons(
 be taken. Other data types (e.g., matrix,table, array, etc.) will \strong{not}
 be accepted.}
 
-\item{x}{The grouping (or independent) variable from the dataframe \code{data}.}
+\item{x}{The grouping (or independent) variable from the dataframe \code{data}. In
+case of a repeated measures or within-subjects design, if \code{subject.id}
+argument is not available or not explicitly specified, the function assumes
+that the data has already been sorted by such an id by the user and creates
+an internal identifier. So if your data is \strong{not} sorted, the results
+\emph{can} be inaccurate when there are more than two levels in \code{x} and there
+are \code{NA}s present. The data is expected to be sorted by user in
+subject-1,subject-2, ..., pattern.}
 
 \item{y}{The response (or outcome or dependent) variable from the
 dataframe \code{data}.}
 
-\item{subject.id}{Relevant in case of repeated measures or within-subjects
+\item{subject.id}{Relevant in case of a repeated measures or within-subjects
 design (\code{paired = TRUE}, i.e.), it specifies the subject or repeated
 measures identifier. \strong{Important}: Note that if this argument is \code{NULL}
 (which is the default), the function assumes that the data has already been
 sorted by such an id by the user and creates an internal identifier. So if
 your data is \strong{not} sorted and you leave this argument unspecified, the
-results can be inaccurate.}
+results \emph{can} be inaccurate when there are more than two levels in \code{x} and
+there are \code{NA}s present.}
 
 \item{type}{Type of statistic expected (\code{"parametric"} or \code{"nonparametric"}
 or \code{"robust"} or \code{"bayes"}).Corresponding abbreviations are also accepted:
@@ -58,7 +66,11 @@ try to play around with the value of \code{tr}, which is by default set to
 \code{0.2}. Lowering the value might help.}
 
 \item{bf.prior}{A number between \code{0.5} and \code{2} (default \code{0.707}), the prior
-width to use in calculating Bayes factors.}
+width to use in calculating Bayes factors and posterior estimates. In
+addition to numeric arguments, several named values are also recognized:
+\code{"medium"}, \code{"wide"}, and \code{"ultrawide"}, corresponding to \emph{r} scale values
+of 1/2, sqrt(2)/2, and 1, respectively. In case of an ANOVA, this value
+corresponds to scale for fixed effects.}
 
 \item{p.adjust.method}{Adjustment method for \emph{p}-values for multiple
 comparisons. Possible methods are: \code{"holm"} (default), \code{"hochberg"},

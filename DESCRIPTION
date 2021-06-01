@@ -1,7 +1,7 @@
 Type: Package
 Package: pairwiseComparisons
 Title: Multiple Pairwise Comparison Tests
-Version: 3.1.5.9000
+Version: 3.1.6
 Authors@R: 
     person(given = "Indrajeet",
            family = "Patil",
@@ -26,14 +26,14 @@ Depends:
 Imports:
     BayesFactor,
     dplyr,
-    insight (>= 0.13.2),
+    insight (>= 0.14.1),
     ipmisc,
-    parameters (>= 0.13.0),
+    parameters (>= 0.14.0),
     PMCMRplus,
     purrr,
     rlang,
     stats,
-    WRS2
+    WRS2 (>= 1.1-1)
 Suggests:
     knitr,
     rmarkdown,
