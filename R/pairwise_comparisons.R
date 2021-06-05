@@ -214,7 +214,6 @@ pairwise_comparisons <- function(data,
   x_vec <- df_int %>% dplyr::pull({{ x }})
   y_vec <- df_int %>% dplyr::pull({{ y }})
   g_vec <- df_int$rowid
-  y_position <- ggsignif_xy(x_vec, y_vec)
   .f.args <- list(...)
 
   # ---------------------------- parametric ---------------------------------
@@ -337,5 +336,5 @@ pairwise_comparisons <- function(data,
   }
 
   # return
-  as_tibble(dplyr::mutate(df, y_position = y_position))
+  as_tibble(df)
 }

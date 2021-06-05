@@ -1,7 +1,4 @@
-# pairwiseComparisons 3.2.0
-
-  - `pairwise_comparisons()` now also returns suggested `y_position` argument
-    for `geom_ggsignif`.
+# pairwiseComparisons 3.2.0 (development version)
 
 # pairwiseComparisons 3.1.6
 
