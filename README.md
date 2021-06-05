@@ -117,7 +117,7 @@ pairwise_comparisons(
   paired = FALSE,
   p.adjust.method = "bonferroni"
 )
-#> # A tibble: 6 x 6
+#> # A tibble: 6 x 7
 #>   group1  group2  p.value test.details     p.value.adjustment
 #>   <chr>   <chr>     <dbl> <chr>            <chr>             
 #> 1 carni   herbi     1     Student's t-test Bonferroni        
@@ -126,14 +126,14 @@ pairwise_comparisons(
 #> 4 herbi   insecti   1     Student's t-test Bonferroni        
 #> 5 herbi   omni      0.979 Student's t-test Bonferroni        
 #> 6 insecti omni      1     Student's t-test Bonferroni        
-#>   label                                        
-#>   <chr>                                        
-#> 1 list(~italic(p)[Bonferroni-corrected]==1.000)
-#> 2 list(~italic(p)[Bonferroni-corrected]==1.000)
-#> 3 list(~italic(p)[Bonferroni-corrected]==1.000)
-#> 4 list(~italic(p)[Bonferroni-corrected]==1.000)
-#> 5 list(~italic(p)[Bonferroni-corrected]==0.979)
-#> 6 list(~italic(p)[Bonferroni-corrected]==1.000)
+#>   label                                         y_position
+#>   <chr>                                              <dbl>
+#> 1 list(~italic(p)[Bonferroni-corrected]==1.000)       5.85
+#> 2 list(~italic(p)[Bonferroni-corrected]==1.000)       6.20
+#> 3 list(~italic(p)[Bonferroni-corrected]==1.000)       6.54
+#> 4 list(~italic(p)[Bonferroni-corrected]==1.000)       6.88
+#> 5 list(~italic(p)[Bonferroni-corrected]==0.979)       7.23
+#> 6 list(~italic(p)[Bonferroni-corrected]==1.000)       7.57
 
 # if `var.equal = FALSE`, then Games-Howell test will be run
 pairwise_comparisons(
@@ -145,7 +145,7 @@ pairwise_comparisons(
   paired = FALSE,
   p.adjust.method = "bonferroni"
 )
-#> # A tibble: 6 x 11
+#> # A tibble: 6 x 12
 #>   group1  group2  statistic p.value alternative method            distribution
 #>   <chr>   <chr>       <dbl>   <dbl> <chr>       <chr>             <chr>       
 #> 1 carni   herbi        2.17       1 two.sided   Games-Howell test q           
@@ -162,14 +162,14 @@ pairwise_comparisons(
 #> 4 none         Games-Howell test Bonferroni        
 #> 5 none         Games-Howell test Bonferroni        
 #> 6 none         Games-Howell test Bonferroni        
-#>   label                                        
-#>   <chr>                                        
-#> 1 list(~italic(p)[Bonferroni-corrected]==1.000)
-#> 2 list(~italic(p)[Bonferroni-corrected]==1.000)
-#> 3 list(~italic(p)[Bonferroni-corrected]==1.000)
-#> 4 list(~italic(p)[Bonferroni-corrected]==1.000)
-#> 5 list(~italic(p)[Bonferroni-corrected]==1.000)
-#> 6 list(~italic(p)[Bonferroni-corrected]==1.000)
+#>   label                                         y_position
+#>   <chr>                                              <dbl>
+#> 1 list(~italic(p)[Bonferroni-corrected]==1.000)       5.85
+#> 2 list(~italic(p)[Bonferroni-corrected]==1.000)       6.20
+#> 3 list(~italic(p)[Bonferroni-corrected]==1.000)       6.54
+#> 4 list(~italic(p)[Bonferroni-corrected]==1.000)       6.88
+#> 5 list(~italic(p)[Bonferroni-corrected]==1.000)       7.23
+#> 6 list(~italic(p)[Bonferroni-corrected]==1.000)       7.57
 
 # non-parametric
 pairwise_comparisons(
@@ -180,7 +180,7 @@ pairwise_comparisons(
   paired = FALSE,
   p.adjust.method = "none"
 )
-#> # A tibble: 6 x 11
+#> # A tibble: 6 x 12
 #>   group1  group2  statistic p.value alternative method               
 #>   <chr>   <chr>       <dbl>   <dbl> <chr>       <chr>                
 #> 1 carni   herbi       0.582  0.561  two.sided   Dunn's all-pairs test
@@ -197,14 +197,14 @@ pairwise_comparisons(
 #> 4 z            none         Dunn test    None              
 #> 5 z            none         Dunn test    None              
 #> 6 z            none         Dunn test    None              
-#>   label                               
-#>   <chr>                               
-#> 1 list(~italic(p)[uncorrected]==0.561)
-#> 2 list(~italic(p)[uncorrected]==0.060)
-#> 3 list(~italic(p)[uncorrected]==0.254)
-#> 4 list(~italic(p)[uncorrected]==0.102)
-#> 5 list(~italic(p)[uncorrected]==0.474)
-#> 6 list(~italic(p)[uncorrected]==0.254)
+#>   label                                y_position
+#>   <chr>                                     <dbl>
+#> 1 list(~italic(p)[uncorrected]==0.561)       5.85
+#> 2 list(~italic(p)[uncorrected]==0.060)       6.20
+#> 3 list(~italic(p)[uncorrected]==0.254)       6.54
+#> 4 list(~italic(p)[uncorrected]==0.102)       6.88
+#> 5 list(~italic(p)[uncorrected]==0.474)       7.23
+#> 6 list(~italic(p)[uncorrected]==0.254)       7.57
 
 # robust
 pairwise_comparisons(
@@ -215,7 +215,7 @@ pairwise_comparisons(
   paired = FALSE,
   p.adjust.method = "fdr"
 )
-#> # A tibble: 6 x 10
+#> # A tibble: 6 x 11
 #>   group1  group2  estimate conf.level conf.low conf.high p.value
 #>   <chr>   <chr>      <dbl>      <dbl>    <dbl>     <dbl>   <dbl>
 #> 1 carni   herbi   -0.0323        0.95  -0.248     0.184    0.898
@@ -232,14 +232,14 @@ pairwise_comparisons(
 #> 4 Yuen's trimmed means test FDR               
 #> 5 Yuen's trimmed means test FDR               
 #> 6 Yuen's trimmed means test FDR               
-#>   label                                 
-#>   <chr>                                 
-#> 1 list(~italic(p)[FDR-corrected]==0.898)
-#> 2 list(~italic(p)[FDR-corrected]==0.898)
-#> 3 list(~italic(p)[FDR-corrected]==0.898)
-#> 4 list(~italic(p)[FDR-corrected]==0.898)
-#> 5 list(~italic(p)[FDR-corrected]==0.898)
-#> 6 list(~italic(p)[FDR-corrected]==0.898)
+#>   label                                  y_position
+#>   <chr>                                       <dbl>
+#> 1 list(~italic(p)[FDR-corrected]==0.898)       5.85
+#> 2 list(~italic(p)[FDR-corrected]==0.898)       6.20
+#> 3 list(~italic(p)[FDR-corrected]==0.898)       6.54
+#> 4 list(~italic(p)[FDR-corrected]==0.898)       6.88
+#> 5 list(~italic(p)[FDR-corrected]==0.898)       7.23
+#> 6 list(~italic(p)[FDR-corrected]==0.898)       7.57
 
 # Bayesian
 pairwise_comparisons(
@@ -249,7 +249,7 @@ pairwise_comparisons(
   type = "bayes",
   paired = FALSE
 )
-#> # A tibble: 6 x 17
+#> # A tibble: 6 x 18
 #>   group1  group2  term       estimate conf.level conf.low conf.high    pd
 #>   <chr>   <chr>   <chr>         <dbl>      <dbl>    <dbl>     <dbl> <dbl>
 #> 1 carni   herbi   Difference   0.376        0.89  -0.349     1.15   0.800
@@ -274,6 +274,14 @@ pairwise_comparisons(
 #> 4 Bayesian t-test     -0.616 list(~log[e](BF['01'])==0.62) Student's t-test
 #> 5 Bayesian t-test     -0.560 list(~log[e](BF['01'])==0.56) Student's t-test
 #> 6 Bayesian t-test     -0.606 list(~log[e](BF['01'])==0.61) Student's t-test
+#>   y_position
+#>        <dbl>
+#> 1       5.85
+#> 2       6.20
+#> 3       6.54
+#> 4       6.88
+#> 5       7.23
+#> 6       7.57
 ```
 
 ## Within-subjects design
@@ -292,7 +300,7 @@ pairwise_comparisons(
   paired = TRUE,
   p.adjust.method = "BH"
 )
-#> # A tibble: 6 x 6
+#> # A tibble: 6 x 7
 #>   group1 group2  p.value test.details     p.value.adjustment
 #>   <chr>  <chr>     <dbl> <chr>            <chr>             
 #> 1 HDHF   HDLF   1.06e- 3 Student's t-test FDR               
@@ -301,14 +309,14 @@ pairwise_comparisons(
 #> 4 HDLF   LDHF   6.74e- 2 Student's t-test FDR               
 #> 5 HDLF   LDLF   1.99e- 3 Student's t-test FDR               
 #> 6 LDHF   LDLF   6.66e- 9 Student's t-test FDR               
-#>   label                                    
-#>   <chr>                                    
-#> 1 list(~italic(p)[FDR-corrected]==0.001)   
-#> 2 list(~italic(p)[FDR-corrected]==0.070)   
-#> 3 list(~italic(p)[FDR-corrected]==3.95e-12)
-#> 4 list(~italic(p)[FDR-corrected]==0.067)   
-#> 5 list(~italic(p)[FDR-corrected]==0.002)   
-#> 6 list(~italic(p)[FDR-corrected]==6.66e-09)
+#>   label                                     y_position
+#>   <chr>                                          <dbl>
+#> 1 list(~italic(p)[FDR-corrected]==0.001)          10.2
+#> 2 list(~italic(p)[FDR-corrected]==0.070)          10.8
+#> 3 list(~italic(p)[FDR-corrected]==3.95e-12)       11.4
+#> 4 list(~italic(p)[FDR-corrected]==0.067)          12.0
+#> 5 list(~italic(p)[FDR-corrected]==0.002)          12.6
+#> 6 list(~italic(p)[FDR-corrected]==6.66e-09)       13.2
 
 # non-parametric
 pairwise_comparisons(
@@ -320,7 +328,7 @@ pairwise_comparisons(
   paired = TRUE,
   p.adjust.method = "BY"
 )
-#> # A tibble: 6 x 11
+#> # A tibble: 6 x 12
 #>   group1 group2 statistic  p.value alternative
 #>   <chr>  <chr>      <dbl>    <dbl> <chr>      
 #> 1 HDHF   HDLF        4.78 1.44e- 5 two.sided  
@@ -345,14 +353,14 @@ pairwise_comparisons(
 #> 4 t            none         Durbin-Conover test BY                
 #> 5 t            none         Durbin-Conover test BY                
 #> 6 t            none         Durbin-Conover test BY                
-#>   label                                   
-#>   <chr>                                   
-#> 1 list(~italic(p)[BY-corrected]==1.44e-05)
-#> 2 list(~italic(p)[BY-corrected]==0.045)   
-#> 3 list(~italic(p)[BY-corrected]==5.45e-13)
-#> 4 list(~italic(p)[BY-corrected]==0.050)   
-#> 5 list(~italic(p)[BY-corrected]==0.005)   
-#> 6 list(~italic(p)[BY-corrected]==4.64e-07)
+#>   label                                    y_position
+#>   <chr>                                         <dbl>
+#> 1 list(~italic(p)[BY-corrected]==1.44e-05)       10.2
+#> 2 list(~italic(p)[BY-corrected]==0.045)          10.8
+#> 3 list(~italic(p)[BY-corrected]==5.45e-13)       11.4
+#> 4 list(~italic(p)[BY-corrected]==0.050)          12.0
+#> 5 list(~italic(p)[BY-corrected]==0.005)          12.6
+#> 6 list(~italic(p)[BY-corrected]==4.64e-07)       13.2
 
 # robust
 pairwise_comparisons(
@@ -364,7 +372,7 @@ pairwise_comparisons(
   paired = TRUE,
   p.adjust.method = "hommel"
 )
-#> # A tibble: 6 x 11
+#> # A tibble: 6 x 12
 #>   group1 group2 estimate conf.level conf.low conf.high     p.value  p.crit
 #>   <chr>  <chr>     <dbl>      <dbl>    <dbl>     <dbl>       <dbl>   <dbl>
 #> 1 HDHF   HDLF      1.03        0.95   0.140      1.92  0.00999     0.0127 
@@ -381,14 +389,14 @@ pairwise_comparisons(
 #> 4 Yuen's trimmed means test Hommel            
 #> 5 Yuen's trimmed means test Hommel            
 #> 6 Yuen's trimmed means test Hommel            
-#>   label                                       
-#>   <chr>                                       
-#> 1 list(~italic(p)[Hommel-corrected]==0.010)   
-#> 2 list(~italic(p)[Hommel-corrected]==0.052)   
-#> 3 list(~italic(p)[Hommel-corrected]==5.64e-07)
-#> 4 list(~italic(p)[Hommel-corrected]==0.052)   
-#> 5 list(~italic(p)[Hommel-corrected]==0.020)   
-#> 6 list(~italic(p)[Hommel-corrected]==1.02e-04)
+#>   label                                        y_position
+#>   <chr>                                             <dbl>
+#> 1 list(~italic(p)[Hommel-corrected]==0.010)          10.2
+#> 2 list(~italic(p)[Hommel-corrected]==0.052)          10.8
+#> 3 list(~italic(p)[Hommel-corrected]==5.64e-07)       11.4
+#> 4 list(~italic(p)[Hommel-corrected]==0.052)          12.0
+#> 5 list(~italic(p)[Hommel-corrected]==0.020)          12.6
+#> 6 list(~italic(p)[Hommel-corrected]==1.02e-04)       13.2
 
 # Bayesian
 pairwise_comparisons(
@@ -400,7 +408,7 @@ pairwise_comparisons(
   paired = TRUE,
   bf.prior = 0.77
 )
-#> # A tibble: 6 x 17
+#> # A tibble: 6 x 18
 #>   group1 group2 term       estimate conf.level conf.low conf.high    pd
 #>   <chr>  <chr>  <chr>         <dbl>      <dbl>    <dbl>     <dbl> <dbl>
 #> 1 HDHF   HDLF   Difference   -1.10        0.89   -1.62    -0.621  1    
@@ -425,6 +433,14 @@ pairwise_comparisons(
 #> 4 Bayesian t-test     -0.430 list(~log[e](BF['01'])==0.43)   Student's t-test
 #> 5 Bayesian t-test      2.84  list(~log[e](BF['01'])==-2.84)  Student's t-test
 #> 6 Bayesian t-test     15.4   list(~log[e](BF['01'])==-15.38) Student's t-test
+#>   y_position
+#>        <dbl>
+#> 1       10.2
+#> 2       10.8
+#> 3       11.4
+#> 4       12.0
+#> 5       12.6
+#> 6       13.2
 ```
 
 # Using `pairwiseComparisons` with `ggsignif`
@@ -451,7 +467,7 @@ set.seed(123)
   pairwise_comparisons(mtcars, cyl, wt) %>%
   dplyr::mutate(groups = purrr::pmap(.l = list(group1, group2), .f = c)) %>%
   dplyr::arrange(group1))
-#> # A tibble: 3 x 12
+#> # A tibble: 3 x 13
 #>   group1 group2 statistic   p.value alternative method            distribution
 #>   <chr>  <chr>      <dbl>     <dbl> <chr>       <chr>             <chr>       
 #> 1 4      6           5.39 0.00831   two.sided   Games-Howell test q           
@@ -462,11 +478,11 @@ set.seed(123)
 #> 1 none         Games-Howell test Holm              
 #> 2 none         Games-Howell test Holm              
 #> 3 none         Games-Howell test Holm              
-#>   label                                      groups   
-#>   <chr>                                      <list>   
-#> 1 list(~italic(p)[Holm-corrected]==0.008)    <chr [2]>
-#> 2 list(~italic(p)[Holm-corrected]==1.24e-05) <chr [2]>
-#> 3 list(~italic(p)[Holm-corrected]==0.008)    <chr [2]>
+#>   label                                      y_position groups   
+#>   <chr>                                           <dbl> <list>   
+#> 1 list(~italic(p)[Holm-corrected]==0.008)          5.56 <chr [2]>
+#> 2 list(~italic(p)[Holm-corrected]==1.24e-05)       5.85 <chr [2]>
+#> 3 list(~italic(p)[Holm-corrected]==0.008)          6.15 <chr [2]>
 
 # using `geom_signif` to display results
 # (note that you can choose not to display all comparisons)
@@ -507,7 +523,7 @@ set.seed(123)
   ) %>%
   dplyr::mutate(groups = purrr::pmap(.l = list(group1, group2), .f = c)) %>%
   dplyr::arrange(group1))
-#> # A tibble: 3 x 18
+#> # A tibble: 3 x 19
 #>   group1 group2 term       estimate conf.level conf.low conf.high    pd
 #>   <chr>  <chr>  <chr>         <dbl>      <dbl>    <dbl>     <dbl> <dbl>
 #> 1 Wine A Wine B Difference -0.00721       0.89  -0.0473    0.0307 0.624
@@ -523,11 +539,11 @@ set.seed(123)
 #> 1 Bayesian t-test      -1.45 list(~log[e](BF['01'])==1.45)  Student's t-test
 #> 2 Bayesian t-test       1.31 list(~log[e](BF['01'])==-1.31) Student's t-test
 #> 3 Bayesian t-test       3.92 list(~log[e](BF['01'])==-3.92) Student's t-test
-#>   groups   
-#>   <list>   
-#> 1 <chr [2]>
-#> 2 <chr [2]>
-#> 3 <chr [2]>
+#>   y_position groups   
+#>        <dbl> <list>   
+#> 1       6.46 <chr [2]>
+#> 2       6.56 <chr [2]>
+#> 3       6.66 <chr [2]>
 
 # using `geom_signif` to display results
 p +
@@ -535,7 +551,7 @@ p +
     comparisons = df$groups,
     map_signif_level = TRUE,
     tip_length = 0.01,
-    y_position = c(6.5, 6.65, 6.8),
+    y_position = df$y_position,
     annotations = df$label,
     test = NULL,
     na.rm = TRUE,

@@ -201,20 +201,20 @@ pairwise_comparisons <- function(data,
   # ---------------------------- data cleanup -------------------------------
 
   # creating a dataframe (it's important for the data to be sorted by `x`)
-  df_int <-
-    ipmisc::long_to_wide_converter(
-      data = data,
-      x = {{ x }},
-      y = {{ y }},
-      subject.id = {{ subject.id }},
-      paired = paired,
-      spread = FALSE
-    )
+  df_int <- ipmisc::long_to_wide_converter(
+    data = data,
+    x = {{ x }},
+    y = {{ y }},
+    subject.id = {{ subject.id }},
+    paired = paired,
+    spread = FALSE
+  )
 
   # for some tests, it's better to have these as vectors
   x_vec <- df_int %>% dplyr::pull({{ x }})
   y_vec <- df_int %>% dplyr::pull({{ y }})
   g_vec <- df_int$rowid
+  y_position <- ggsignif_xy(x_vec, y_vec)
   .f.args <- list(...)
 
   # ---------------------------- parametric ---------------------------------
@@ -337,5 +337,5 @@ pairwise_comparisons <- function(data,
   }
 
   # return
-  as_tibble(df)
+  as_tibble(dplyr::mutate(df, y_position = y_position))
 }

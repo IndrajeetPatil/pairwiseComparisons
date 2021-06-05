@@ -212,6 +212,11 @@
     },
     {
       "@type": "SoftwareApplication",
+      "identifier": "utils",
+      "name": "utils"
+    },
+    {
+      "@type": "SoftwareApplication",
       "identifier": "WRS2",
       "name": "WRS2",
       "version": ">= 1.1-1",
@@ -248,7 +253,7 @@
     "name": "Comprehensive R Archive Network (CRAN)",
     "url": "https://cran.r-project.org"
   },
-  "fileSize": "476.152KB",
+  "fileSize": "479.103KB",
   "readme": "https://github.com/IndrajeetPatil/pairwiseComparisons/blob/master/README.md",
   "keywords": [
     "pairwise-comparison-tests",

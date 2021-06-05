@@ -298,7 +298,7 @@ p +
     comparisons = df$groups,
     map_signif_level = TRUE,
     tip_length = 0.01,
-    y_position = c(6.5, 6.65, 6.8),
+    y_position = df$y_position,
     annotations = df$label,
     test = NULL,
     na.rm = TRUE,
