@@ -16,10 +16,17 @@ pairwise_caption(
 
 \item{test.description}{Text describing the details of the test.}
 
-\item{pairwise.display}{Decides which pairwise comparisons to display.
-Available options are \code{"significant"} (abbreviation accepted: \code{"s"}) or
-\code{"non-significant"} (abbreviation accepted: \code{"ns"}) or
-\code{"everything"}/\code{"all"}. The default is \code{"significant"}.}
+\item{pairwise.display}{Decides \emph{which} pairwise comparisons to display.
+Available options are:
+\itemize{
+\item \code{"significant"} (abbreviation accepted: \code{"s"})
+\item \code{"non-significant"} (abbreviation accepted: \code{"ns"})
+\item \code{"all"}
+}
+
+You can use this argument to make sure that your plot is not uber-cluttered
+when you have multiple groups being compared and scores of pairwise
+comparisons being displayed.}
 
 \item{...}{Ignored.}
 }

@@ -24,7 +24,6 @@ BugReports:
 Depends: 
     R (>= 3.6.0)
 Imports:
-    BayesFactor,
     dplyr,
     insight (>= 0.14.1),
     ipmisc,
@@ -33,6 +32,7 @@ Imports:
     purrr,
     rlang,
     stats,
+    statsExpressions (>= 1.1.0),
     WRS2 (>= 1.1-1)
 Suggests:
     knitr,

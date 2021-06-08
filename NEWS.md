@@ -1,5 +1,8 @@
 # pairwiseComparisons 3.2.0 (development version)
 
+  - `pairwiseComparisons` now relies on `statsExpressions` for statistical
+    analysis.
+
 # pairwiseComparisons 3.1.6
 
   - Maintenance and internal changes.
