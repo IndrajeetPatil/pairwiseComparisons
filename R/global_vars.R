@@ -11,7 +11,8 @@ utils::globalVariables(
     "p.value",
     ".f",
     ".fn",
-    ".ns"
+    ".ns",
+    "term"
   ),
   package = "pairwiseComparisons",
   add = FALSE

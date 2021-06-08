@@ -30,8 +30,6 @@ and Bayesian statistical tests are available.
 
 # Installation
 
-# Installation
-
 | Type        | Source | Command                                                         |
 |-------------|--------|-----------------------------------------------------------------|
 | Release     | CRAN   | `install.packages("pairwiseComparisons")`                       |

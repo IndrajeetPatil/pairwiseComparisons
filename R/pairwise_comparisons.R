@@ -67,7 +67,7 @@
 #' @importFrom ipmisc stats_type_switch format_num long_to_wide_converter
 #' @importFrom parameters model_parameters standardize_names
 #' @importFrom insight format_value
-#' @importFrom statsExpressions two_sample_test
+#' @importFrom statsExpressions two_sample_test tidy_model_parameters
 #'
 #' @examples
 #' \donttest{
@@ -255,7 +255,7 @@ pairwise_comparisons <- function(data,
       # problematic for other methods
       !!!.f.args
     )) %>%
-      tidy_model_parameters(.) %>%
+      statsExpressions::tidy_model_parameters(.) %>%
       dplyr::rename(group2 = group1, group1 = group2)
   }
 
@@ -273,7 +273,7 @@ pairwise_comparisons <- function(data,
 
     # cleaning the raw object and getting it in the right format
     df <- eval(rlang::call2(.ns = .ns, .fn = .fn, tr = tr, !!!.f.args)) %>%
-      tidy_model_parameters(.)
+      statsExpressions::tidy_model_parameters(.)
 
     # test details
     test.details <- "Yuen's trimmed means test"
