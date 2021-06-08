@@ -28,43 +28,31 @@ both between-subjects and within-subjects one-way analysis of variance
 designs. For both of these designs, parametric, non-parametric, robust,
 and Bayesian statistical tests are available.
 
-## Installation
+# Installation
 
-To get the latest, stable `CRAN` release:
+# Installation
 
-``` r
-install.packages("pairwiseComparisons")
-```
+| Type        | Source | Command                                                         |
+|-------------|--------|-----------------------------------------------------------------|
+| Release     | CRAN   | `install.packages("pairwiseComparisons")`                       |
+| Development | GitHub | `remotes::install_github("IndrajeetPatil/pairwiseComparisons")` |
 
-You can get the **development** version of the package from `GitHub`. To
-see what new changes (and bug fixes) have been made to the package since
-the last release on `CRAN`, you can check the detailed log of changes
-here:
-<https://indrajeetpatil.github.io/pairwiseComparisons/news/index.html>
+Linux users may encounter some installation problems. In particular, the
+`pairwiseComparisons` package depends on the `PMCMRplus` package.
 
-If you are in hurry and want to reduce the time of installation, prefer-
+    ERROR: dependencies ‘gmp’, ‘Rmpfr’ are not available for package ‘PMCMRplus’
+    ERROR: dependency ‘pairwiseComparisons’ is not available for package ‘ggstatsplot’
 
-``` r
-# needed package to download from GitHub repo
-install.packages("remotes")
+This means that your operating system lacks `gmp` and `Rmpfr` libraries.
 
-# downloading the package from GitHub
-remotes::install_github(
-  repo = "IndrajeetPatil/pairwiseComparisons", # package path on GitHub
-  dependencies = FALSE, # assumes you have already installed needed packages
-  quick = TRUE # skips docs, demos, and vignettes
-)
-```
+If you use `Ubuntu`, you can install these dependencies:
 
-If time is not a constraint-
+    sudo apt-get install libgmp3-dev
+    sudo apt-get install libmpfr-dev
 
-``` r
-remotes::install_github(
-  repo = "IndrajeetPatil/pairwiseComparisons", # package path on GitHub
-  dependencies = TRUE, # installs packages which pairwiseComparisons depends on
-  upgrade_dependencies = TRUE # updates any out of date dependencies
-)
-```
+The following `README` file briefly describes the installation
+procedure:
+<https://CRAN.R-project.org/package=PMCMRplus/readme/README.html>
 
 # Summary of types of statistical analyses
 
@@ -249,15 +237,15 @@ pairwise_comparisons(
   type = "bayes",
   paired = FALSE
 )
-#> # A tibble: 6 x 17
+#> # A tibble: 6 x 18
 #>   group1  group2  term       estimate conf.level conf.low conf.high    pd
 #>   <chr>   <chr>   <chr>         <dbl>      <dbl>    <dbl>     <dbl> <dbl>
-#> 1 carni   herbi   Difference   0.376        0.89  -0.349     1.15   0.800
-#> 2 carni   insecti Difference  -0.0348       0.89  -0.105     0.0272 0.818
-#> 3 carni   omni    Difference   0.0440       0.89  -0.0962    0.208  0.693
-#> 4 herbi   insecti Difference  -0.394        0.89  -1.34      0.596  0.758
-#> 5 herbi   omni    Difference  -0.362        0.89  -0.938     0.191  0.859
-#> 6 insecti omni    Difference   0.0762       0.89  -0.141     0.261  0.732
+#> 1 carni   herbi   Difference   0.376        0.95   -0.525    1.33   0.800
+#> 2 carni   insecti Difference  -0.0348       0.95   -0.127    0.0425 0.818
+#> 3 carni   omni    Difference   0.0440       0.95   -0.139    0.239  0.693
+#> 4 herbi   insecti Difference  -0.394        0.95   -1.61     0.775  0.758
+#> 5 herbi   omni    Difference  -0.362        0.95   -1.06     0.345  0.859
+#> 6 insecti omni    Difference   0.0762       0.95   -0.153    0.339  0.732
 #>   rope.percentage prior.distribution prior.location prior.scale  bf10
 #>             <dbl> <chr>                       <dbl>       <dbl> <dbl>
 #> 1           0.183 cauchy                          0       0.707 0.540
@@ -266,14 +254,22 @@ pairwise_comparisons(
 #> 4           0.177 cauchy                          0       0.707 0.540
 #> 5           0.172 cauchy                          0       0.707 0.571
 #> 6           0.172 cauchy                          0       0.707 0.545
-#>   method          log_e_bf10 label                         test.details    
-#>   <chr>                <dbl> <chr>                         <chr>           
-#> 1 Bayesian t-test     -0.617 list(~log[e](BF['01'])==0.62) Student's t-test
-#> 2 Bayesian t-test     -0.332 list(~log[e](BF['01'])==0.33) Student's t-test
-#> 3 Bayesian t-test     -0.851 list(~log[e](BF['01'])==0.85) Student's t-test
-#> 4 Bayesian t-test     -0.616 list(~log[e](BF['01'])==0.62) Student's t-test
-#> 5 Bayesian t-test     -0.560 list(~log[e](BF['01'])==0.56) Student's t-test
-#> 6 Bayesian t-test     -0.606 list(~log[e](BF['01'])==0.61) Student's t-test
+#>   method          expression log_e_bf10 label                        
+#>   <chr>           <list>          <dbl> <chr>                        
+#> 1 Bayesian t-test <language>     -0.617 list(~log[e](BF['01'])==0.62)
+#> 2 Bayesian t-test <language>     -0.332 list(~log[e](BF['01'])==0.33)
+#> 3 Bayesian t-test <language>     -0.851 list(~log[e](BF['01'])==0.85)
+#> 4 Bayesian t-test <language>     -0.616 list(~log[e](BF['01'])==0.62)
+#> 5 Bayesian t-test <language>     -0.560 list(~log[e](BF['01'])==0.56)
+#> 6 Bayesian t-test <language>     -0.606 list(~log[e](BF['01'])==0.61)
+#>   test.details    
+#>   <chr>           
+#> 1 Student's t-test
+#> 2 Student's t-test
+#> 3 Student's t-test
+#> 4 Student's t-test
+#> 5 Student's t-test
+#> 6 Student's t-test
 ```
 
 ## Within-subjects design
@@ -400,15 +396,15 @@ pairwise_comparisons(
   paired = TRUE,
   bf.prior = 0.77
 )
-#> # A tibble: 6 x 17
+#> # A tibble: 6 x 18
 #>   group1 group2 term       estimate conf.level conf.low conf.high    pd
 #>   <chr>  <chr>  <chr>         <dbl>      <dbl>    <dbl>     <dbl> <dbl>
-#> 1 HDHF   HDLF   Difference   -1.10        0.89   -1.62    -0.621  1    
-#> 2 HDHF   LDHF   Difference   -0.465       0.89   -0.868   -0.0521 0.962
-#> 3 HDHF   LDLF   Difference   -2.13        0.89   -2.57    -1.74   1    
-#> 4 HDLF   LDHF   Difference    0.652       0.89    0.105    1.21   0.971
-#> 5 HDLF   LDLF   Difference   -0.983       0.89   -1.46    -0.506  0.999
-#> 6 LDHF   LDLF   Difference   -1.67        0.89   -2.10    -1.27   1    
+#> 1 HDHF   HDLF   Difference   -1.10        0.95  -1.73     -0.492  1    
+#> 2 HDHF   LDHF   Difference   -0.465       0.95  -0.969     0.0406 0.962
+#> 3 HDHF   LDLF   Difference   -2.13        0.95  -2.64     -1.63   1    
+#> 4 HDLF   LDHF   Difference    0.652       0.95  -0.0362    1.32   0.971
+#> 5 HDLF   LDLF   Difference   -0.983       0.95  -1.60     -0.423  0.999
+#> 6 LDHF   LDLF   Difference   -1.67        0.95  -2.14     -1.14   1    
 #>   rope.percentage prior.distribution prior.location prior.scale     bf10
 #>             <dbl> <chr>                       <dbl>       <dbl>    <dbl>
 #> 1           0     cauchy                          0        0.77 3.95e+ 1
@@ -417,14 +413,22 @@ pairwise_comparisons(
 #> 4           0.135 cauchy                          0        0.77 6.50e- 1
 #> 5           0     cauchy                          0        0.77 1.72e+ 1
 #> 6           0     cauchy                          0        0.77 4.78e+ 6
-#>   method          log_e_bf10 label                           test.details    
-#>   <chr>                <dbl> <chr>                           <chr>           
-#> 1 Bayesian t-test      3.68  list(~log[e](BF['01'])==-3.68)  Student's t-test
-#> 2 Bayesian t-test     -0.612 list(~log[e](BF['01'])==0.61)   Student's t-test
-#> 3 Bayesian t-test     23.2   list(~log[e](BF['01'])==-23.22) Student's t-test
-#> 4 Bayesian t-test     -0.430 list(~log[e](BF['01'])==0.43)   Student's t-test
-#> 5 Bayesian t-test      2.84  list(~log[e](BF['01'])==-2.84)  Student's t-test
-#> 6 Bayesian t-test     15.4   list(~log[e](BF['01'])==-15.38) Student's t-test
+#>   method          expression log_e_bf10 label                          
+#>   <chr>           <list>          <dbl> <chr>                          
+#> 1 Bayesian t-test <language>      3.68  list(~log[e](BF['01'])==-3.68) 
+#> 2 Bayesian t-test <language>     -0.612 list(~log[e](BF['01'])==0.61)  
+#> 3 Bayesian t-test <language>     23.2   list(~log[e](BF['01'])==-23.22)
+#> 4 Bayesian t-test <language>     -0.430 list(~log[e](BF['01'])==0.43)  
+#> 5 Bayesian t-test <language>      2.84  list(~log[e](BF['01'])==-2.84) 
+#> 6 Bayesian t-test <language>     15.4   list(~log[e](BF['01'])==-15.38)
+#>   test.details    
+#>   <chr>           
+#> 1 Student's t-test
+#> 2 Student's t-test
+#> 3 Student's t-test
+#> 4 Student's t-test
+#> 5 Student's t-test
+#> 6 Student's t-test
 ```
 
 # Using `pairwiseComparisons` with `ggsignif`
@@ -507,27 +511,27 @@ set.seed(123)
   ) %>%
   dplyr::mutate(groups = purrr::pmap(.l = list(group1, group2), .f = c)) %>%
   dplyr::arrange(group1))
-#> # A tibble: 3 x 18
+#> # A tibble: 3 x 19
 #>   group1 group2 term       estimate conf.level conf.low conf.high    pd
 #>   <chr>  <chr>  <chr>         <dbl>      <dbl>    <dbl>     <dbl> <dbl>
-#> 1 Wine A Wine B Difference -0.00721       0.89  -0.0473    0.0307 0.624
-#> 2 Wine A Wine C Difference -0.0766        0.89  -0.129    -0.0265 0.989
-#> 3 Wine B Wine C Difference -0.0696        0.89  -0.0991   -0.0368 1.00 
+#> 1 Wine A Wine B Difference -0.00721       0.95  -0.0569    0.0404 0.624
+#> 2 Wine A Wine C Difference -0.0766        0.95  -0.140    -0.0144 0.989
+#> 3 Wine B Wine C Difference -0.0696        0.95  -0.109    -0.0330 1.00 
 #>   rope.percentage prior.distribution prior.location prior.scale   bf10
 #>             <dbl> <chr>                       <dbl>       <dbl>  <dbl>
 #> 1           0.431 cauchy                          0       0.707  0.235
 #> 2           0     cauchy                          0       0.707  3.71 
 #> 3           0     cauchy                          0       0.707 50.5  
-#>   method          log_e_bf10 label                          test.details    
-#>   <chr>                <dbl> <chr>                          <chr>           
-#> 1 Bayesian t-test      -1.45 list(~log[e](BF['01'])==1.45)  Student's t-test
-#> 2 Bayesian t-test       1.31 list(~log[e](BF['01'])==-1.31) Student's t-test
-#> 3 Bayesian t-test       3.92 list(~log[e](BF['01'])==-3.92) Student's t-test
-#>   groups   
-#>   <list>   
-#> 1 <chr [2]>
-#> 2 <chr [2]>
-#> 3 <chr [2]>
+#>   method          expression log_e_bf10 label                         
+#>   <chr>           <list>          <dbl> <chr>                         
+#> 1 Bayesian t-test <language>      -1.45 list(~log[e](BF['01'])==1.45) 
+#> 2 Bayesian t-test <language>       1.31 list(~log[e](BF['01'])==-1.31)
+#> 3 Bayesian t-test <language>       3.92 list(~log[e](BF['01'])==-3.92)
+#>   test.details     groups   
+#>   <chr>            <list>   
+#> 1 Student's t-test <chr [2]>
+#> 2 Student's t-test <chr [2]>
+#> 3 Student's t-test <chr [2]>
 
 # using `geom_signif` to display results
 p +
@@ -563,11 +567,8 @@ order of commitment):
 
 -   Read and correct any inconsistencies in the
     [documentation](https://indrajeetpatil.github.io/pairwiseComparisons/)
-
 -   Raise issues about bugs or wanted features
-
 -   Review code
-
 -   Add new functionality
 
 Please note that this project is released with a [Contributor Code of

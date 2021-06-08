@@ -46,43 +46,33 @@ between-subjects and within-subjects one-way analysis of variance designs. For
 both of these designs, parametric, non-parametric, robust, and Bayesian
 statistical tests are available.
 
-## Installation
+# Installation
 
-To get the latest, stable `CRAN` release:
+# Installation
+Type | Source | Command
+---|---|---
+Release | CRAN | `install.packages("pairwiseComparisons")`
+Development | GitHub | `remotes::install_github("IndrajeetPatil/pairwiseComparisons")`
 
-```{r installationCRAN, eval = FALSE}
-install.packages("pairwiseComparisons")
+Linux users may encounter some installation problems. In particular, the
+`pairwiseComparisons` package depends on the `PMCMRplus` package.
+
+```
+ERROR: dependencies ‘gmp’, ‘Rmpfr’ are not available for package ‘PMCMRplus’
+ERROR: dependency ‘pairwiseComparisons’ is not available for package ‘ggstatsplot’
 ```
 
-You can get the **development** version of the package from `GitHub`. To see
-what new changes (and bug fixes) have been made to the package since the last
-release on `CRAN`, you can check the detailed log of changes here:
-<https://indrajeetpatil.github.io/pairwiseComparisons/news/index.html>
+This means that your operating system lacks `gmp` and `Rmpfr` libraries.
 
-If you are in hurry and want to reduce the time of installation,
-prefer-
+If you use `Ubuntu`, you can install these dependencies:
 
-```{r installation1, eval=FALSE}
-# needed package to download from GitHub repo
-install.packages("remotes")
-
-# downloading the package from GitHub
-remotes::install_github(
-  repo = "IndrajeetPatil/pairwiseComparisons", # package path on GitHub
-  dependencies = FALSE, # assumes you have already installed needed packages
-  quick = TRUE # skips docs, demos, and vignettes
-)
+```
+sudo apt-get install libgmp3-dev
+sudo apt-get install libmpfr-dev
 ```
 
-If time is not a constraint-
-
-```{r installation2, eval=FALSE}
-remotes::install_github(
-  repo = "IndrajeetPatil/pairwiseComparisons", # package path on GitHub
-  dependencies = TRUE, # installs packages which pairwiseComparisons depends on
-  upgrade_dependencies = TRUE # updates any out of date dependencies
-)
-```
+The following `README` file briefly describes the installation procedure:
+<https://CRAN.R-project.org/package=PMCMRplus/readme/README.html>
 
 # Summary of types of statistical analyses
 
@@ -323,11 +313,8 @@ of commitment):
 
   - Read and correct any inconsistencies in the
     [documentation](https://indrajeetpatil.github.io/pairwiseComparisons/)
-
   - Raise issues about bugs or wanted features
-
   - Review code
-
   - Add new functionality
 
 Please note that this project is released with a 

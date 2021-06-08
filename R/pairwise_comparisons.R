@@ -67,6 +67,7 @@
 #' @importFrom ipmisc stats_type_switch format_num long_to_wide_converter
 #' @importFrom parameters model_parameters standardize_names
 #' @importFrom insight format_value
+#' @importFrom statsExpressions two_sample_test
 #'
 #' @examples
 #' \donttest{
@@ -290,14 +291,17 @@ pairwise_comparisons <- function(data,
         .f = function(a, b) droplevels(dplyr::filter(df_int, {{ x }} %in% c(a, b)))
       ),
       # internal function to carry out BF t-test
-      .f = ~ bf_ttest(
+      .f = ~ statsExpressions::two_sample_test(
         data = .x,
         x = {{ x }},
         y = {{ y }},
         paired = paired,
-        bf.prior = bf.prior
+        bf.prior = bf.prior,
+        type = "bayes"
       )
     ) %>%
+      dplyr::filter(term == "Difference") %>%
+      dplyr::mutate(log_e_bf10 = log(bf10)) %>%
       dplyr::rowwise() %>%
       dplyr::mutate(label = paste0("list(~log[e](BF['01'])==", format_value(-log_e_bf10, k), ")")) %>%
       dplyr::ungroup() %>%
