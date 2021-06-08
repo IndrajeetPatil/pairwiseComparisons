@@ -1,3 +1,12 @@
+#' @description Handy shorthand for `model_parameters`
+#' @noRd
+
+tidy_model_parameters <- function(model, ...) {
+  parameters::model_parameters(model, verbose = FALSE, ...) %>%
+    parameters::standardize_names(style = "broom")
+}
+
+
 #' @title *p*-value adjustment method text
 #' @name p_adjust_text
 #'
