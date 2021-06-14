@@ -2,24 +2,24 @@
 # ----------------------- tidyverse -------------------------------------
 
 #' @export
-#' @importFrom ipmisc "%>%"
-ipmisc::`%>%`
+#' @importFrom statsExpressions "%>%"
+statsExpressions::`%>%`
 
 #' @export
-#' @importFrom ipmisc "%<>%"
-ipmisc::`%<>%`
+#' @importFrom statsExpressions "%<>%"
+statsExpressions::`%<>%`
 
 #' @export
-#' @importFrom ipmisc "%<-%"
-ipmisc::`%<-%`
+#' @importFrom statsExpressions "%<-%"
+statsExpressions::`%<-%`
 
 #' @export
-#' @importFrom ipmisc tibble
-ipmisc::tibble
+#' @importFrom statsExpressions tibble
+statsExpressions::tibble
 
 #' @export
-#' @importFrom ipmisc as_tibble
-ipmisc::as_tibble
+#' @importFrom statsExpressions as_tibble
+statsExpressions::as_tibble
 
 
 #' @export

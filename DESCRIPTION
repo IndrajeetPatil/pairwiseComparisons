@@ -26,19 +26,20 @@ Depends:
 Imports:
     dplyr,
     insight (>= 0.14.1),
-    ipmisc,
     parameters (>= 0.14.0),
     PMCMRplus,
     purrr,
     rlang,
     stats,
-    statsExpressions (>= 1.1.0),
+    statsExpressions (>= 1.2.0),
     WRS2 (>= 1.1-1)
 Suggests:
     knitr,
     rmarkdown,
     spelling,
     testthat
+Remotes:
+    IndrajeetPatil/statsExpressions
 Encoding: UTF-8
 Language: en-US
 LazyData: true

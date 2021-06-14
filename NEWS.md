@@ -2,6 +2,8 @@
 
   - `pairwiseComparisons` now relies on `statsExpressions` for statistical
     analysis.
+  
+  - No longer depends on `ipmisc` package.
 
 # pairwiseComparisons 3.1.6
 

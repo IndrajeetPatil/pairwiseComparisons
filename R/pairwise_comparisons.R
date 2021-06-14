@@ -6,7 +6,7 @@
 #' Calculate parametric, non-parametric, robust, and Bayes Factor pairwise
 #' comparisons between group levels with corrections for multiple testing.
 #'
-#' @inheritParams ipmisc::long_to_wide_converter
+#' @inheritParams statsExpressions::long_to_wide_converter
 #' @param type Type of statistic expected (`"parametric"` or `"nonparametric"`
 #'   or `"robust"` or `"bayes"`).Corresponding abbreviations are also accepted:
 #'   `"p"` (for parametric), `"np"` (nonparametric), `"r"` (robust), or
@@ -64,7 +64,7 @@
 #' @importFrom PMCMRplus durbinAllPairsTest kwAllPairsDunnTest gamesHowellTest
 #' @importFrom rlang !!! ensym exec call2 new_formula
 #' @importFrom purrr map2 map_dfr
-#' @importFrom ipmisc stats_type_switch format_num long_to_wide_converter
+#' @importFrom statsExpressions stats_type_switch format_num long_to_wide_converter
 #' @importFrom parameters model_parameters standardize_names
 #' @importFrom insight format_value
 #' @importFrom statsExpressions two_sample_test tidy_model_parameters
@@ -194,7 +194,7 @@ pairwise_comparisons <- function(data,
                                  k = 2L,
                                  ...) {
   # standardize stats type
-  type <- ipmisc::stats_type_switch(type)
+  type <- statsExpressions::stats_type_switch(type)
 
   # ensure the arguments work quoted or unquoted
   c(x, y) %<-% c(rlang::ensym(x), rlang::ensym(y))
@@ -202,7 +202,7 @@ pairwise_comparisons <- function(data,
   # ---------------------------- data cleanup -------------------------------
 
   # creating a dataframe (it's important for the data to be sorted by `x`)
-  df_int <- ipmisc::long_to_wide_converter(
+  df_int <- statsExpressions::long_to_wide_converter(
     data = data,
     x = {{ x }},
     y = {{ y }},
