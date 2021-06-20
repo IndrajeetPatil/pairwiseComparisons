@@ -301,7 +301,6 @@ pairwise_comparisons <- function(data,
       )
     ) %>%
       dplyr::filter(term == "Difference") %>%
-      dplyr::mutate(log_e_bf10 = log(bf10)) %>%
       dplyr::rowwise() %>%
       dplyr::mutate(label = paste0("list(~log[e](BF['01'])==", format_value(-log_e_bf10, k), ")")) %>%
       dplyr::ungroup() %>%
