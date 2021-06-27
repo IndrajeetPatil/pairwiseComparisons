@@ -6,10 +6,8 @@
 [![CRAN\_Release\_Badge](https://www.r-pkg.org/badges/version-ago/pairwiseComparisons)](https://CRAN.R-project.org/package=pairwiseComparisons)
 [![CRAN
 Checks](https://cranchecks.info/badges/summary/pairwiseComparisons)](https://cran.r-project.org/web/checks/check_results_pairwiseComparisons.html)
-[![Travis Build
-Status](https://travis-ci.org/IndrajeetPatil/pairwiseComparisons.svg?branch=master)](https://travis-ci.org/IndrajeetPatil/pairwiseComparisons)
-[![AppVeyor Build
-Status](https://ci.appveyor.com/api/projects/status/github/IndrajeetPatil/pairwiseComparisons?branch=master&svg=true)](https://ci.appveyor.com/project/IndrajeetPatil/pairwiseComparisons)
+[![R build
+status](https://github.com/IndrajeetPatil/pairwiseComparisons/workflows/R-CMD-check/badge.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons)
 [![pkgdown](https://github.com/IndrajeetPatil/pairwiseComparisons/workflows/pkgdown/badge.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/actions)
 [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html)
 [![Daily downloads
@@ -252,14 +250,14 @@ pairwise_comparisons(
 #> 4           0.177 cauchy                          0       0.707 0.540
 #> 5           0.172 cauchy                          0       0.707 0.571
 #> 6           0.172 cauchy                          0       0.707 0.545
-#>   method          expression log_e_bf10 label                        
-#>   <chr>           <list>          <dbl> <chr>                        
-#> 1 Bayesian t-test <language>     -0.617 list(~log[e](BF['01'])==0.62)
-#> 2 Bayesian t-test <language>     -0.332 list(~log[e](BF['01'])==0.33)
-#> 3 Bayesian t-test <language>     -0.851 list(~log[e](BF['01'])==0.85)
-#> 4 Bayesian t-test <language>     -0.616 list(~log[e](BF['01'])==0.62)
-#> 5 Bayesian t-test <language>     -0.560 list(~log[e](BF['01'])==0.56)
-#> 6 Bayesian t-test <language>     -0.606 list(~log[e](BF['01'])==0.61)
+#>   method          log_e_bf10 expression label                        
+#>   <chr>                <dbl> <list>     <chr>                        
+#> 1 Bayesian t-test     -0.617 <language> list(~log[e](BF['01'])==0.62)
+#> 2 Bayesian t-test     -0.332 <language> list(~log[e](BF['01'])==0.33)
+#> 3 Bayesian t-test     -0.851 <language> list(~log[e](BF['01'])==0.85)
+#> 4 Bayesian t-test     -0.616 <language> list(~log[e](BF['01'])==0.62)
+#> 5 Bayesian t-test     -0.560 <language> list(~log[e](BF['01'])==0.56)
+#> 6 Bayesian t-test     -0.606 <language> list(~log[e](BF['01'])==0.61)
 #>   test.details    
 #>   <chr>           
 #> 1 Student's t-test
@@ -411,14 +409,14 @@ pairwise_comparisons(
 #> 4           0.135 cauchy                          0        0.77 6.50e- 1
 #> 5           0     cauchy                          0        0.77 1.72e+ 1
 #> 6           0     cauchy                          0        0.77 4.78e+ 6
-#>   method          expression log_e_bf10 label                          
-#>   <chr>           <list>          <dbl> <chr>                          
-#> 1 Bayesian t-test <language>      3.68  list(~log[e](BF['01'])==-3.68) 
-#> 2 Bayesian t-test <language>     -0.612 list(~log[e](BF['01'])==0.61)  
-#> 3 Bayesian t-test <language>     23.2   list(~log[e](BF['01'])==-23.22)
-#> 4 Bayesian t-test <language>     -0.430 list(~log[e](BF['01'])==0.43)  
-#> 5 Bayesian t-test <language>      2.84  list(~log[e](BF['01'])==-2.84) 
-#> 6 Bayesian t-test <language>     15.4   list(~log[e](BF['01'])==-15.38)
+#>   method          log_e_bf10 expression label                          
+#>   <chr>                <dbl> <list>     <chr>                          
+#> 1 Bayesian t-test      3.68  <language> list(~log[e](BF['01'])==-3.68) 
+#> 2 Bayesian t-test     -0.612 <language> list(~log[e](BF['01'])==0.61)  
+#> 3 Bayesian t-test     23.2   <language> list(~log[e](BF['01'])==-23.22)
+#> 4 Bayesian t-test     -0.430 <language> list(~log[e](BF['01'])==0.43)  
+#> 5 Bayesian t-test      2.84  <language> list(~log[e](BF['01'])==-2.84) 
+#> 6 Bayesian t-test     15.4   <language> list(~log[e](BF['01'])==-15.38)
 #>   test.details    
 #>   <chr>           
 #> 1 Student's t-test
@@ -520,11 +518,11 @@ set.seed(123)
 #> 1           0.431 cauchy                          0       0.707  0.235
 #> 2           0     cauchy                          0       0.707  3.71 
 #> 3           0     cauchy                          0       0.707 50.5  
-#>   method          expression log_e_bf10 label                         
-#>   <chr>           <list>          <dbl> <chr>                         
-#> 1 Bayesian t-test <language>      -1.45 list(~log[e](BF['01'])==1.45) 
-#> 2 Bayesian t-test <language>       1.31 list(~log[e](BF['01'])==-1.31)
-#> 3 Bayesian t-test <language>       3.92 list(~log[e](BF['01'])==-3.92)
+#>   method          log_e_bf10 expression label                         
+#>   <chr>                <dbl> <list>     <chr>                         
+#> 1 Bayesian t-test      -1.45 <language> list(~log[e](BF['01'])==1.45) 
+#> 2 Bayesian t-test       1.31 <language> list(~log[e](BF['01'])==-1.31)
+#> 3 Bayesian t-test       3.92 <language> list(~log[e](BF['01'])==-3.92)
 #>   test.details     groups   
 #>   <chr>            <list>   
 #> 1 Student's t-test <chr [2]>
