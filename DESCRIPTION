@@ -26,7 +26,7 @@ Depends:
 Imports:
     dplyr,
     insight (>= 0.14.2),
-    parameters (>= 0.14.0),
+    parameters (>= 0.14.0.1),
     PMCMRplus,
     purrr,
     rlang,
@@ -39,6 +39,7 @@ Suggests:
     spelling,
     testthat
 Remotes:
+    easystats/parameters,
     IndrajeetPatil/statsExpressions
 Encoding: UTF-8
 Language: en-US
