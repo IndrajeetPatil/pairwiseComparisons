@@ -123,7 +123,7 @@
       "@type": "SoftwareApplication",
       "identifier": "insight",
       "name": "insight",
-      "version": ">= 0.14.1",
+      "version": ">= 0.14.2",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -203,7 +203,7 @@
       "@type": "SoftwareApplication",
       "identifier": "WRS2",
       "name": "WRS2",
-      "version": ">= 1.1-1",
+      "version": ">= 1.1-2",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -214,7 +214,6 @@
     }
   ],
   "releaseNotes": "https://github.com/IndrajeetPatil/pairwiseComparisons/blob/master/NEWS.md",
-  "contIntegration": ["https://travis-ci.org/IndrajeetPatil/pairwiseComparisons", "https://ci.appveyor.com/project/IndrajeetPatil/pairwiseComparisons"],
   "developmentStatus": "https://lifecycle.r-lib.org/articles/stages.html",
   "citation": [
     {
@@ -237,7 +236,7 @@
     "name": "Comprehensive R Archive Network (CRAN)",
     "url": "https://cran.r-project.org"
   },
-  "fileSize": "476.144KB",
+  "fileSize": "475.97KB",
   "readme": "https://github.com/IndrajeetPatil/pairwiseComparisons/blob/master/README.md",
   "keywords": [
     "pairwise-comparison-tests",

@@ -19,7 +19,7 @@
       2 list(~italic(p)[uncorrected]==0.035)   
       3 list(~italic(p)[uncorrected]==3.29e-13)
       4 list(~italic(p)[uncorrected]==0.972)   
-      5 list(~italic(p)[uncorrected]==0.001)   
+      5 list(~italic(p)[uncorrected]==6.62e-04)
       6 list(~italic(p)[uncorrected]==1.11e-09)
       
       [[2]]

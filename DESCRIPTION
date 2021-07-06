@@ -25,14 +25,14 @@ Depends:
     R (>= 3.6.0)
 Imports:
     dplyr,
-    insight (>= 0.14.1),
+    insight (>= 0.14.2),
     parameters (>= 0.14.0),
     PMCMRplus,
     purrr,
     rlang,
     stats,
     statsExpressions (>= 1.2.0),
-    WRS2 (>= 1.1-1)
+    WRS2 (>= 1.1-2)
 Suggests:
     knitr,
     rmarkdown,

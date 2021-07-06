@@ -97,11 +97,11 @@
       1 Wine A Wine B 0.732    Student's t-test None              
       2 Wine A Wine C 0.0142   Student's t-test None              
       3 Wine B Wine C 0.000675 Student's t-test None              
-        label                               
-        <chr>                               
-      1 list(~italic(p)[uncorrected]==0.732)
-      2 list(~italic(p)[uncorrected]==0.014)
-      3 list(~italic(p)[uncorrected]==0.001)
+        label                                  
+        <chr>                                  
+      1 list(~italic(p)[uncorrected]==0.732)   
+      2 list(~italic(p)[uncorrected]==0.014)   
+      3 list(~italic(p)[uncorrected]==6.75e-04)
       
       [[2]]
       # A tibble: 3 x 11
@@ -120,11 +120,11 @@
       1 t            none         Durbin-Conover test None              
       2 t            none         Durbin-Conover test None              
       3 t            none         Durbin-Conover test None              
-        label                               
-        <chr>                               
-      1 list(~italic(p)[uncorrected]==0.301)
-      2 list(~italic(p)[uncorrected]==0.001)
-      3 list(~italic(p)[uncorrected]==0.012)
+        label                                  
+        <chr>                                  
+      1 list(~italic(p)[uncorrected]==0.301)   
+      2 list(~italic(p)[uncorrected]==6.91e-04)
+      3 list(~italic(p)[uncorrected]==0.012)   
       
       [[3]]
       # A tibble: 3 x 11
