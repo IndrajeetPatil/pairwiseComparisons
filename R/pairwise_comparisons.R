@@ -199,39 +199,39 @@ pairwise_comparisons <- function(data,
   # ensure the arguments work quoted or unquoted
   c(x, y) %<-% c(rlang::ensym(x), rlang::ensym(y))
 
-  # ---------------------------- data cleanup -------------------------------
+  # dataframe -------------------------------
 
-  # creating a dataframe (it's important for the data to be sorted by `x`)
-  df_int <- statsExpressions::long_to_wide_converter(
-    data = data,
-    x = {{ x }},
-    y = {{ y }},
-    subject.id = {{ subject.id }},
-    paired = paired,
-    spread = FALSE
-  )
+  # cleaning up dataframe
+  data %<>%
+    statsExpressions::long_to_wide_converter(
+      x = {{ x }},
+      y = {{ y }},
+      subject.id = {{ subject.id }},
+      paired = paired,
+      spread = FALSE
+    )
 
   # for some tests, it's better to have these as vectors
-  x_vec <- df_int %>% dplyr::pull({{ x }})
-  y_vec <- df_int %>% dplyr::pull({{ y }})
-  g_vec <- df_int$rowid
+  x_vec <- data %>% dplyr::pull({{ x }})
+  y_vec <- data %>% dplyr::pull({{ y }})
+  g_vec <- data$rowid
   .f.args <- list(...)
 
-  # ---------------------------- parametric ---------------------------------
+  # parametric ---------------------------------
 
   if (type %in% c("parametric", "bayes")) {
-    if (isTRUE(var.equal) || isTRUE(paired)) {
+    if (var.equal || paired) {
       c(.f, test.details) %<-% c(stats::pairwise.t.test, "Student's t-test")
     } else {
       c(.f, test.details) %<-% c(PMCMRplus::gamesHowellTest, "Games-Howell test")
     }
   }
 
-  # ---------------------------- nonparametric ----------------------------
+  # nonparametric ----------------------------
 
   if (type == "nonparametric") {
-    if (isFALSE(paired)) c(.f, test.details) %<-% c(PMCMRplus::kwAllPairsDunnTest, "Dunn test")
-    if (isTRUE(paired)) c(.f, test.details) %<-% c(PMCMRplus::durbinAllPairsTest, "Durbin-Conover test")
+    if (!paired) c(.f, test.details) %<-% c(PMCMRplus::kwAllPairsDunnTest, "Dunn test")
+    if (paired) c(.f, test.details) %<-% c(PMCMRplus::durbinAllPairsTest, "Durbin-Conover test")
 
     # `exec` fails otherwise for `pairwise.t.test` because `y` is passed to `t.test`
     .f.args <- list(y = y_vec, ...)
@@ -241,7 +241,7 @@ pairwise_comparisons <- function(data,
   if (type != "robust") {
     df <- suppressWarnings(rlang::exec(
       .fn = .f,
-      # Dunn, Games-Howell, Student test
+      # Dunn, Games-Howell, Student's t-test
       x = y_vec,
       g = x_vec,
       # Durbin-Conover test
@@ -250,7 +250,6 @@ pairwise_comparisons <- function(data,
       # Student
       paired = paired,
       # common
-      na.action = na.omit,
       p.adjust.method = "none",
       # problematic for other methods
       !!!.f.args
@@ -259,13 +258,13 @@ pairwise_comparisons <- function(data,
       dplyr::rename(group2 = group1, group1 = group2)
   }
 
-  # ---------------------------- robust ----------------------------------
+  # robust ----------------------------------
 
   # extracting the robust pairwise comparisons
   if (type == "robust") {
-    if (isFALSE(paired)) {
+    if (!paired) {
       c(.ns, .fn) %<-% c("WRS2", "lincon")
-      .f.args <- list(formula = rlang::new_formula(y, x), data = df_int)
+      .f.args <- list(formula = rlang::new_formula(y, x), data = data)
     } else {
       c(.ns, .fn) %<-% c("WRS2", "rmmcp")
       .f.args <- list(y = quote(y_vec), groups = quote(x_vec), blocks = quote(g_vec))
@@ -279,7 +278,7 @@ pairwise_comparisons <- function(data,
     test.details <- "Yuen's trimmed means test"
   }
 
-  # ---------------------------- bayes factor --------------------------------
+  # Bayesian --------------------------------
 
   if (type == "bayes") {
     # combining results into a single dataframe and returning it
@@ -288,7 +287,7 @@ pairwise_comparisons <- function(data,
       .x = purrr::map2(
         .x = as.character(df$group1),
         .y = as.character(df$group2),
-        .f = function(a, b) droplevels(dplyr::filter(df_int, {{ x }} %in% c(a, b)))
+        .f = function(a, b) droplevels(dplyr::filter(data, {{ x }} %in% c(a, b)))
       ),
       # internal function to carry out BF t-test
       .f = ~ statsExpressions::two_sample_test(
