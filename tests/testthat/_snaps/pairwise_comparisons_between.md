@@ -80,12 +80,12 @@
       # A tibble: 6 x 10
         group1  group2  estimate conf.level conf.low conf.high p.value
         <chr>   <chr>      <dbl>      <dbl>    <dbl>     <dbl>   <dbl>
-      1 carni   herbi   -0.0323        0.95  -0.248     0.184    0.898
-      2 carni   insecti  0.0451        0.95  -0.0484    0.139    0.898
+      1 carni   herbi   -0.0323        0.95  -0.248     0.184    0.790
+      2 carni   insecti  0.0451        0.95  -0.0484    0.139    0.552
       3 carni   omni     0.00520       0.95  -0.114     0.124    0.898
-      4 herbi   insecti  0.0774        0.95  -0.133     0.288    0.898
-      5 herbi   omni     0.0375        0.95  -0.182     0.257    0.898
-      6 insecti omni    -0.0399        0.95  -0.142     0.0625   0.898
+      4 herbi   insecti  0.0774        0.95  -0.133     0.288    0.552
+      5 herbi   omni     0.0375        0.95  -0.182     0.257    0.790
+      6 insecti omni    -0.0399        0.95  -0.142     0.0625   0.552
         test.details              p.value.adjustment
         <chr>                     <chr>             
       1 Yuen's trimmed means test FDR               
@@ -96,12 +96,12 @@
       6 Yuen's trimmed means test FDR               
         label                                 
         <chr>                                 
-      1 list(~italic(p)[FDR-corrected]==0.898)
-      2 list(~italic(p)[FDR-corrected]==0.898)
+      1 list(~italic(p)[FDR-corrected]==0.790)
+      2 list(~italic(p)[FDR-corrected]==0.552)
       3 list(~italic(p)[FDR-corrected]==0.898)
-      4 list(~italic(p)[FDR-corrected]==0.898)
-      5 list(~italic(p)[FDR-corrected]==0.898)
-      6 list(~italic(p)[FDR-corrected]==0.898)
+      4 list(~italic(p)[FDR-corrected]==0.552)
+      5 list(~italic(p)[FDR-corrected]==0.790)
+      6 list(~italic(p)[FDR-corrected]==0.552)
       
       [[5]]
       # A tibble: 3 x 6

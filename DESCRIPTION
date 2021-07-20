@@ -25,20 +25,21 @@ Depends:
     R (>= 3.6.0)
 Imports:
     dplyr,
-    insight (>= 0.14.2),
+    insight (>= 0.14.2.1),
     parameters (>= 0.14.0.1),
     PMCMRplus,
     purrr,
     rlang,
     stats,
     statsExpressions (>= 1.2.0),
-    WRS2 (>= 1.1-2)
+    WRS2 (>= 1.1-3)
 Suggests:
     knitr,
     rmarkdown,
     spelling,
     testthat
 Remotes:
+    easystats/insight,
     easystats/parameters,
     IndrajeetPatil/statsExpressions
 Encoding: UTF-8
