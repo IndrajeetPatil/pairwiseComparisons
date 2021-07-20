@@ -1,10 +1,11 @@
-AppVeyor
 Conover
 Crichtlow
 Durbin
 Dwass
 Fligner
 HFHD
+Hochberg's
+Holm's
 Hotfix
 IMDB
 LDLF
@@ -15,6 +16,7 @@ Otterstetter
 PMCMRplus
 README
 Satterthwaite
+WRS
 Welch
 Welch's
 Winsorized

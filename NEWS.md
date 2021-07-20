@@ -1,8 +1,15 @@
-# pairwiseComparisons 3.2.0 (development version)
+# pairwiseComparisons 3.2.0
+
+  - Due to a bug in previous versions of `WRS2::lincon`, even if p-value
+    correction was `method = "none"`, it still applied Hochberg's correction and
+    the `pairwiseComparisons` package once again applied Holm's correction,
+    which means the p-values were over-corrected for multiple comparisons. This
+    bug has been fixed in WRS2 1.1-3 and therefore the users should expect
+    slightly different *p*-values for between-subjects *post hoc* robust tests.
 
   - `pairwiseComparisons` now relies on `statsExpressions` for statistical
     analysis.
-  
+
   - No longer depends on `ipmisc` package.
 
 # pairwiseComparisons 3.1.6

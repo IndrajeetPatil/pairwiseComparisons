@@ -264,7 +264,7 @@ pairwise_comparisons <- function(data,
   if (type == "robust") {
     if (!paired) {
       c(.ns, .fn) %<-% c("WRS2", "lincon")
-      .f.args <- list(formula = rlang::new_formula(y, x), data = data)
+      .f.args <- list(formula = rlang::new_formula(y, x), data = data, method = "none")
     } else {
       c(.ns, .fn) %<-% c("WRS2", "rmmcp")
       .f.args <- list(y = quote(y_vec), groups = quote(x_vec), blocks = quote(g_vec))
@@ -309,7 +309,7 @@ pairwise_comparisons <- function(data,
     df <- dplyr::bind_cols(dplyr::select(df, group1, group2), df_tidy)
   }
 
-  # ---------------------------- cleanup ----------------------------------
+  # cleanup ----------------------------------
 
   # final cleanup for p-value labels
   df %<>%
