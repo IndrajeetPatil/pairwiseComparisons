@@ -390,21 +390,21 @@ respective functions:</p><ul>
   p.adjust.method <span class='op'>=</span> <span class='st'>"fdr"</span>
 <span class='op'>)</span>
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 3 x 10</span>
-#&gt;   <span style='font-weight: bold;'>group1</span> <span style='font-weight: bold;'>group2</span> <span style='font-weight: bold;'>estimate</span> <span style='font-weight: bold;'>conf.level</span> <span style='font-weight: bold;'>conf.low</span> <span style='font-weight: bold;'>conf.high</span> <span style='font-weight: bold;'>p.value</span>
-#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'>1</span> 4      6        -<span style='color: #949494;'>0.</span><span style='color: #BB0000;'>909</span>       <span style='color: #949494;'>0.</span>95    -<span style='color: #BB0000;'>1.64</span>    -<span style='color: #949494;'>0.</span><span style='color: #BB0000;'>173</span> <span style='color: #949494;'>0.0</span>17<span style='text-decoration: underline;'>4</span> 
-#&gt; <span style='color: #BCBCBC;'>2</span> 4      8        -<span style='color: #BB0000;'>1.62</span>        <span style='color: #949494;'>0.</span>95    -<span style='color: #BB0000;'>2.50</span>    -<span style='color: #949494;'>0.</span><span style='color: #BB0000;'>746</span> <span style='color: #949494;'>0.00</span>1<span style='text-decoration: underline;'>65</span>
-#&gt; <span style='color: #BCBCBC;'>3</span> 6      8        -<span style='color: #949494;'>0.</span><span style='color: #BB0000;'>713</span>       <span style='color: #949494;'>0.</span>95    -<span style='color: #BB0000;'>1.58</span>     <span style='color: #949494;'>0.</span>155 <span style='color: #949494;'>0.0</span>43<span style='text-decoration: underline;'>8</span> 
+#&gt;   <span style='font-weight: bold;'>group1</span> <span style='font-weight: bold;'>group2</span> <span style='font-weight: bold;'>estimate</span> <span style='font-weight: bold;'>conf.level</span> <span style='font-weight: bold;'>conf.low</span> <span style='font-weight: bold;'>conf.high</span>  <span style='font-weight: bold;'>p.value</span>
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>1</span> 4      6        -<span style='color: #949494;'>0.</span><span style='color: #BB0000;'>909</span>       <span style='color: #949494;'>0.</span>95    -<span style='color: #BB0000;'>1.64</span>    -<span style='color: #949494;'>0.</span><span style='color: #BB0000;'>173</span> <span style='color: #949494;'>0.00</span>8<span style='text-decoration: underline;'>72</span> 
+#&gt; <span style='color: #BCBCBC;'>2</span> 4      8        -<span style='color: #BB0000;'>1.62</span>        <span style='color: #949494;'>0.</span>95    -<span style='color: #BB0000;'>2.50</span>    -<span style='color: #949494;'>0.</span><span style='color: #BB0000;'>746</span> <span style='color: #949494;'>0.000</span><span style='text-decoration: underline;'>549</span>
+#&gt; <span style='color: #BCBCBC;'>3</span> 6      8        -<span style='color: #949494;'>0.</span><span style='color: #BB0000;'>713</span>       <span style='color: #949494;'>0.</span>95    -<span style='color: #BB0000;'>1.58</span>     <span style='color: #949494;'>0.</span>155 <span style='color: #949494;'>0.0</span>43<span style='text-decoration: underline;'>8</span>  
 #&gt;   <span style='font-weight: bold;'>test.details</span>              <span style='font-weight: bold;'>p.value.adjustment</span>
 #&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                     <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>             
 #&gt; <span style='color: #BCBCBC;'>1</span> Yuen's trimmed means test FDR               
 #&gt; <span style='color: #BCBCBC;'>2</span> Yuen's trimmed means test FDR               
 #&gt; <span style='color: #BCBCBC;'>3</span> Yuen's trimmed means test FDR               
-#&gt;   <span style='font-weight: bold;'>label</span>                                 
-#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                                 
-#&gt; <span style='color: #BCBCBC;'>1</span> list(~italic(p)[FDR-corrected]==0.017)
-#&gt; <span style='color: #BCBCBC;'>2</span> list(~italic(p)[FDR-corrected]==0.002)
-#&gt; <span style='color: #BCBCBC;'>3</span> list(~italic(p)[FDR-corrected]==0.044)</div><div class='input'>
+#&gt;   <span style='font-weight: bold;'>label</span>                                    
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                                    
+#&gt; <span style='color: #BCBCBC;'>1</span> list(~italic(p)[FDR-corrected]==0.009)   
+#&gt; <span style='color: #BCBCBC;'>2</span> list(~italic(p)[FDR-corrected]==5.49e-04)
+#&gt; <span style='color: #BCBCBC;'>3</span> list(~italic(p)[FDR-corrected]==0.044)   </div><div class='input'>
 <span class='co'># Bayes Factor (Student's t-test)</span>
 <span class='fu'>pairwise_comparisons</span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='va'>mtcars</span>,

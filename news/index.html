@@ -158,11 +158,12 @@
       <small>Source: <a href='https://github.com/IndrajeetPatil/pairwiseComparisons/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="pairwisecomparisons-320-development-version" class="section level1">
+    <div id="pairwisecomparisons-320" class="section level1">
 <h1 class="page-header" data-toc-text="3.2.0">
-<a href="#pairwisecomparisons-320-development-version" class="anchor"></a>pairwiseComparisons 3.2.0 (development version)<small> Unreleased </small>
+<a href="#pairwisecomparisons-320" class="anchor"></a>pairwiseComparisons 3.2.0<small> Unreleased </small>
 </h1>
 <ul>
+<li><p>Due to a bug in previous versions of <code><a href="https://rdrr.io/pkg/WRS2/man/t1way.html">WRS2::lincon</a></code>, even if p-value correction was <code>method = "none"</code>, it still applied Hochberg’s correction and the <code>pairwiseComparisons</code> package once again applied Holm’s correction, which means the p-values were over-corrected for multiple comparisons. This bug has been fixed in WRS2 1.1-3 and therefore the users should expect slightly different <em>p</em>-values for between-subjects <em>post hoc</em> robust tests.</p></li>
 <li><p><code>pairwiseComparisons</code> now relies on <code>statsExpressions</code> for statistical analysis.</p></li>
 <li><p>No longer depends on <code>ipmisc</code> package.</p></li>
 </ul>
