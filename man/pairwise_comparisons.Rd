@@ -114,6 +114,7 @@ comparisons between group levels with corrections for multiple testing.
 # for reproducibility
 set.seed(123)
 library(pairwiseComparisons)
+library(statsExpressions) # for data
 
 # show all columns and make the column titles bold
 # as a user, you don't need to do this; this is just for the package website

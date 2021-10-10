@@ -1,9 +1,9 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# `pairwiseComparisons`: Multiple Pairwise Comparison Tests
+# `{pairwiseComparisons}`: Multiple Pairwise Comparison Tests
 
-[![CRAN\_Release\_Badge](https://www.r-pkg.org/badges/version-ago/pairwiseComparisons)](https://CRAN.R-project.org/package=pairwiseComparisons)
+[![CRAN_Release_Badge](https://www.r-pkg.org/badges/version-ago/pairwiseComparisons)](https://CRAN.R-project.org/package=pairwiseComparisons)
 [![CRAN
 Checks](https://cranchecks.info/badges/summary/pairwiseComparisons)](https://cran.r-project.org/web/checks/check_results_pairwiseComparisons.html)
 [![R build
@@ -17,7 +17,7 @@ badge](https://cranlogs.r-pkg.org/badges/grand-total/pairwiseComparisons?color=b
 
 # Introduction <img src="man/figures/logo.png" align="right" width="240" />
 
-[`pairwiseComparisons`](https://indrajeetpatil.github.io/pairwiseComparisons/)
+[`{pairwiseComparisons}`](https://indrajeetpatil.github.io/pairwiseComparisons/)
 provides a tidy data friendly way to carry out pairwise comparison
 tests.
 
@@ -34,7 +34,7 @@ and Bayesian statistical tests are available.
 | Development | GitHub | `remotes::install_github("IndrajeetPatil/pairwiseComparisons")` |
 
 Linux users may encounter some installation problems. In particular, the
-`pairwiseComparisons` package depends on the `PMCMRplus` package.
+`{pairwiseComparisons}` package depends on the `PMCMRplus` package.
 
     ERROR: dependencies ‘gmp’, ‘Rmpfr’ are not available for package ‘PMCMRplus’
     ERROR: dependency ‘pairwiseComparisons’ is not available for package ‘ggstatsplot’
@@ -89,6 +89,7 @@ different types of
 # for reproducibility
 set.seed(123)
 library(pairwiseComparisons)
+library(statsExpressions) # for data
 
 # parametric
 # if `var.equal = TRUE`, then Student's *t*-test will be run
@@ -244,12 +245,12 @@ pairwise_comparisons(
 #> 6 insecti omni    Difference   0.0762       0.95   -0.153    0.339  0.732
 #>   rope.percentage prior.distribution prior.location prior.scale  bf10
 #>             <dbl> <chr>                       <dbl>       <dbl> <dbl>
-#> 1           0.183 cauchy                          0       0.707 0.540
-#> 2           0.143 cauchy                          0       0.707 0.718
-#> 3           0.252 cauchy                          0       0.707 0.427
-#> 4           0.177 cauchy                          0       0.707 0.540
-#> 5           0.172 cauchy                          0       0.707 0.571
-#> 6           0.172 cauchy                          0       0.707 0.545
+#> 1           0.171 cauchy                          0       0.707 0.540
+#> 2           0.134 cauchy                          0       0.707 0.718
+#> 3           0.236 cauchy                          0       0.707 0.427
+#> 4           0.166 cauchy                          0       0.707 0.540
+#> 5           0.162 cauchy                          0       0.707 0.571
+#> 6           0.161 cauchy                          0       0.707 0.545
 #>   method          log_e_bf10 expression label                        
 #>   <chr>                <dbl> <list>     <chr>                        
 #> 1 Bayesian t-test     -0.617 <language> list(~log[e](BF['01'])==0.62)
@@ -404,9 +405,9 @@ pairwise_comparisons(
 #>   rope.percentage prior.distribution prior.location prior.scale     bf10
 #>             <dbl> <chr>                       <dbl>       <dbl>    <dbl>
 #> 1           0     cauchy                          0        0.77 3.95e+ 1
-#> 2           0.151 cauchy                          0        0.77 5.42e- 1
+#> 2           0.170 cauchy                          0        0.77 5.42e- 1
 #> 3           0     cauchy                          0        0.77 1.22e+10
-#> 4           0.135 cauchy                          0        0.77 6.50e- 1
+#> 4           0.162 cauchy                          0        0.77 6.50e- 1
 #> 5           0     cauchy                          0        0.77 1.72e+ 1
 #> 6           0     cauchy                          0        0.77 4.78e+ 6
 #>   method          log_e_bf10 expression label                          
@@ -427,7 +428,7 @@ pairwise_comparisons(
 #> 6 Student's t-test
 ```
 
-# Using `pairwiseComparisons` with `ggsignif`
+# Using `{pairwiseComparisons}` with `ggsignif`
 
 ## Example-1: between-subjects
 
@@ -445,7 +446,7 @@ mtcars$cyl <- as.factor(mtcars$cyl)
 p <- ggplot(mtcars, aes(cyl, wt)) +
   geom_boxplot()
 
-# using `pairwiseComparisons` package to create a dataframe with results
+# using `{pairwiseComparisons}` package to create a dataframe with results
 set.seed(123)
 (df <-
   pairwise_comparisons(mtcars, cyl, wt) %>%
@@ -494,7 +495,7 @@ library(ggsignif)
 p <- ggplot(WRS2::WineTasting, aes(Wine, Taste)) +
   geom_boxplot()
 
-# using `pairwiseComparisons` package to create a dataframe with results
+# using `{pairwiseComparisons}` package to create a dataframe with results
 set.seed(123)
 (df <-
   pairwise_comparisons(
@@ -515,9 +516,9 @@ set.seed(123)
 #> 3 Wine B Wine C Difference -0.0696        0.95  -0.109    -0.0330 1.00 
 #>   rope.percentage prior.distribution prior.location prior.scale   bf10
 #>             <dbl> <chr>                       <dbl>       <dbl>  <dbl>
-#> 1           0.431 cauchy                          0       0.707  0.235
-#> 2           0     cauchy                          0       0.707  3.71 
-#> 3           0     cauchy                          0       0.707 50.5  
+#> 1        0.404    cauchy                          0       0.707  0.235
+#> 2        0.000526 cauchy                          0       0.707  3.71 
+#> 3        0        cauchy                          0       0.707 50.5  
 #>   method          log_e_bf10 expression label                         
 #>   <chr>                <dbl> <list>     <chr>                         
 #> 1 Bayesian t-test      -1.45 <language> list(~log[e](BF['01'])==1.45) 

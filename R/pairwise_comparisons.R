@@ -57,23 +57,23 @@
 #'   \item *Bayes Factor* : [BayesFactor::ttestBF()]
 #'   }
 #'
-#' @importFrom dplyr select rename mutate everything mutate_if across starts_with
-#' @importFrom dplyr bind_cols matches rowwise ungroup
+#' @import dplyr
+#' @import rlang
+#' @import statsExpressions
+#'
 #' @importFrom stats p.adjust pairwise.t.test na.omit aov
 #' @importFrom WRS2 lincon rmmcp
 #' @importFrom PMCMRplus durbinAllPairsTest kwAllPairsDunnTest gamesHowellTest
-#' @importFrom rlang !!! ensym exec call2 new_formula
 #' @importFrom purrr map2 map_dfr
-#' @importFrom statsExpressions stats_type_switch format_num long_to_wide_converter
 #' @importFrom parameters model_parameters standardize_names
 #' @importFrom insight format_value
-#' @importFrom statsExpressions two_sample_test tidy_model_parameters
 #'
 #' @examples
 #' \donttest{
 #' # for reproducibility
 #' set.seed(123)
 #' library(pairwiseComparisons)
+#' library(statsExpressions) # for data
 #'
 #' # show all columns and make the column titles bold
 #' # as a user, you don't need to do this; this is just for the package website
@@ -194,16 +194,16 @@ pairwise_comparisons <- function(data,
                                  k = 2L,
                                  ...) {
   # standardize stats type
-  type <- statsExpressions::stats_type_switch(type)
+  type <- stats_type_switch(type)
 
   # ensure the arguments work quoted or unquoted
-  c(x, y) %<-% c(rlang::ensym(x), rlang::ensym(y))
+  c(x, y) %<-% c(ensym(x), ensym(y))
 
   # dataframe -------------------------------
 
   # cleaning up dataframe
   data %<>%
-    statsExpressions::long_to_wide_converter(
+    long_to_wide_converter(
       x = {{ x }},
       y = {{ y }},
       subject.id = {{ subject.id }},
@@ -212,8 +212,8 @@ pairwise_comparisons <- function(data,
     )
 
   # for some tests, it's better to have these as vectors
-  x_vec <- data %>% dplyr::pull({{ x }})
-  y_vec <- data %>% dplyr::pull({{ y }})
+  x_vec <- data %>% pull({{ x }})
+  y_vec <- data %>% pull({{ y }})
   g_vec <- data$rowid
   .f.args <- list(...)
 
@@ -239,7 +239,7 @@ pairwise_comparisons <- function(data,
 
   # running the appropriate test
   if (type != "robust") {
-    df <- suppressWarnings(rlang::exec(
+    df <- suppressWarnings(exec(
       .fn = .f,
       # Dunn, Games-Howell, Student's t-test
       x = y_vec,
@@ -254,8 +254,8 @@ pairwise_comparisons <- function(data,
       # problematic for other methods
       !!!.f.args
     )) %>%
-      statsExpressions::tidy_model_parameters(.) %>%
-      dplyr::rename(group2 = group1, group1 = group2)
+      tidy_model_parameters(.) %>%
+      rename(group2 = group1, group1 = group2)
   }
 
   # robust ----------------------------------
@@ -264,15 +264,15 @@ pairwise_comparisons <- function(data,
   if (type == "robust") {
     if (!paired) {
       c(.ns, .fn) %<-% c("WRS2", "lincon")
-      .f.args <- list(formula = rlang::new_formula(y, x), data = data, method = "none")
+      .f.args <- list(formula = new_formula(y, x), data = data, method = "none")
     } else {
       c(.ns, .fn) %<-% c("WRS2", "rmmcp")
       .f.args <- list(y = quote(y_vec), groups = quote(x_vec), blocks = quote(g_vec))
     }
 
     # cleaning the raw object and getting it in the right format
-    df <- eval(rlang::call2(.ns = .ns, .fn = .fn, tr = tr, !!!.f.args)) %>%
-      statsExpressions::tidy_model_parameters(.)
+    df <- eval(call2(.ns = .ns, .fn = .fn, tr = tr, !!!.f.args)) %>%
+      tidy_model_parameters(.)
 
     # test details
     test.details <- "Yuen's trimmed means test"
@@ -287,10 +287,10 @@ pairwise_comparisons <- function(data,
       .x = purrr::map2(
         .x = as.character(df$group1),
         .y = as.character(df$group2),
-        .f = function(a, b) droplevels(dplyr::filter(data, {{ x }} %in% c(a, b)))
+        .f = function(a, b) droplevels(filter(data, {{ x }} %in% c(a, b)))
       ),
       # internal function to carry out BF t-test
-      .f = ~ statsExpressions::two_sample_test(
+      .f = ~ two_sample_test(
         data = .x,
         x = {{ x }},
         y = {{ y }},
@@ -299,44 +299,128 @@ pairwise_comparisons <- function(data,
         type = "bayes"
       )
     ) %>%
-      dplyr::filter(term == "Difference") %>%
-      dplyr::rowwise() %>%
-      dplyr::mutate(label = paste0("list(~log[e](BF['01'])==", format_value(-log_e_bf10, k), ")")) %>%
-      dplyr::ungroup() %>%
-      dplyr::mutate(test.details = "Student's t-test")
+      filter(term == "Difference") %>%
+      rowwise() %>%
+      mutate(label = paste0("list(~log[e](BF['01'])==", format_value(-log_e_bf10, k), ")")) %>%
+      ungroup() %>%
+      mutate(test.details = "Student's t-test")
 
     # combine it with the other details
-    df <- dplyr::bind_cols(dplyr::select(df, group1, group2), df_tidy)
+    df <- bind_cols(select(df, group1, group2), df_tidy)
   }
 
   # cleanup ----------------------------------
 
   # final cleanup for p-value labels
   df %<>%
-    dplyr::mutate_if(.predicate = is.factor, .funs = ~ as.character(.)) %>%
-    dplyr::arrange(group1, group2) %>%
-    dplyr::select(group1, group2, dplyr::everything())
+    mutate_if(.predicate = is.factor, .funs = ~ as.character(.)) %>%
+    arrange(group1, group2) %>%
+    select(group1, group2, everything())
 
   # clean-up for non-Bayes tests
   if (type != "bayes") {
     df %<>%
-      dplyr::mutate(p.value = stats::p.adjust(p = p.value, method = p.adjust.method)) %>%
-      dplyr::mutate(
+      mutate(p.value = stats::p.adjust(p = p.value, method = p.adjust.method)) %>%
+      mutate(
         test.details = test.details,
         p.value.adjustment = p_adjust_text(p.adjust.method)
       ) %>%
-      dplyr::rowwise() %>%
-      dplyr::mutate(
-        label = dplyr::case_when(
+      rowwise() %>%
+      mutate(
+        label = case_when(
           p.value.adjustment != "None" ~ paste0(
             "list(~italic(p)[", p.value.adjustment, "-corrected]==", format_num(p.value, k, TRUE), ")"
           ),
           TRUE ~ paste0("list(~italic(p)[uncorrected]==", format_num(p.value, k, TRUE), ")")
         )
       ) %>%
-      dplyr::ungroup()
+      ungroup()
   }
 
   # return
   as_tibble(df)
+}
+
+
+#' @title *p*-value adjustment method text
+#' @name p_adjust_text
+#'
+#' @description
+#'
+#' Preparing text to describe which *p*-value adjustment method was used
+#'
+#' @return Standardized text description for what method was used.
+#'
+#' @inheritParams pairwise_comparisons
+#'
+#' @importFrom dplyr case_when
+#'
+#' @examples
+#' library(pairwiseComparisons)
+#' p_adjust_text("none")
+#' p_adjust_text("BY")
+#' @export
+
+p_adjust_text <- function(p.adjust.method) {
+  case_when(
+    grepl("^n|^bo|^h", p.adjust.method) ~ paste0(
+      toupper(substr(p.adjust.method, 1, 1)),
+      substr(p.adjust.method, 2, nchar(p.adjust.method))
+    ),
+    grepl("^BH|^f", p.adjust.method) ~ "FDR",
+    grepl("^BY", p.adjust.method) ~ "BY",
+    TRUE ~ "Holm"
+  )
+}
+
+
+#' @name pairwise_caption
+#' @title Pairwise comparison test expression
+#'
+#' @description
+#'
+#' This returns an expression containing details about the pairwise comparison
+#' test and the *p*-value adjustment method. These details are typically
+#' included in the `ggstatsplot` package plots as a caption.
+#'
+#' @param test.description Text describing the details of the test.
+#' @param caption Additional text to be included in the plot.
+#' @param pairwise.display Decides *which* pairwise comparisons to display.
+#'   Available options are:
+#'   - `"significant"` (abbreviation accepted: `"s"`)
+#'   - `"non-significant"` (abbreviation accepted: `"ns"`)
+#'   - `"all"`
+#'
+#'   You can use this argument to make sure that your plot is not uber-cluttered
+#'   when you have multiple groups being compared and scores of pairwise
+#'   comparisons being displayed.
+#' @param ... Ignored.
+#'
+#' @importFrom dplyr case_when
+#'
+#' @examples
+#' library(pairwiseComparisons)
+#' pairwise_caption("my caption", "Student's t-test")
+#' @export
+
+pairwise_caption <- function(caption,
+                             test.description,
+                             pairwise.display = "significant",
+                             ...) {
+  # create expression
+  substitute(
+    atop(
+      displaystyle(top.text),
+      expr = paste("Pairwise test: ", bold(test), "; Comparisons shown: ", bold(display))
+    ),
+    env = list(
+      top.text = caption,
+      test = test.description,
+      display = case_when(
+        substr(pairwise.display, 1L, 1L) == "s" ~ "only significant",
+        substr(pairwise.display, 1L, 1L) == "n" ~ "only non-significant",
+        TRUE ~ "all"
+      )
+    )
+  )
 }

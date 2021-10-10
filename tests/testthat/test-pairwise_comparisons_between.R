@@ -266,7 +266,7 @@ test_that(
       y = brainwt,
       p.adjust.method = "none"
     ) %>%
-      dplyr::filter(.data = ., group2 == "omni", group1 == "carni")
+      dplyr::filter(group2 == "omni", group1 == "carni")
 
     # tests
     expect_equal(df1$statistic, df2$statistic, tolerance = 0.01)

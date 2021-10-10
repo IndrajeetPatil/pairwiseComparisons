@@ -25,7 +25,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# `pairwiseComparisons`: Multiple Pairwise Comparison Tests
+# `{pairwiseComparisons}`: Multiple Pairwise Comparison Tests
 
 [![CRAN_Release_Badge](https://www.r-pkg.org/badges/version-ago/pairwiseComparisons)](https://CRAN.R-project.org/package=pairwiseComparisons)
 [![CRAN Checks](https://cranchecks.info/badges/summary/pairwiseComparisons)](https://cran.r-project.org/web/checks/check_results_pairwiseComparisons.html)
@@ -37,7 +37,7 @@ knitr::opts_chunk$set(
 
 # Introduction <img src="man/figures/logo.png" align="right" width="240" />
 
-[`pairwiseComparisons`](https://indrajeetpatil.github.io/pairwiseComparisons/)
+[`{pairwiseComparisons}`](https://indrajeetpatil.github.io/pairwiseComparisons/)
 provides a tidy data friendly way to carry out pairwise comparison tests.
 
 It currently supports *post hoc* multiple pairwise comparisons tests for both
@@ -53,7 +53,7 @@ Release | CRAN | `install.packages("pairwiseComparisons")`
 Development | GitHub | `remotes::install_github("IndrajeetPatil/pairwiseComparisons")`
 
 Linux users may encounter some installation problems. In particular, the
-`pairwiseComparisons` package depends on the `PMCMRplus` package.
+`{pairwiseComparisons}` package depends on the `PMCMRplus` package.
 
 ```
 ERROR: dependencies ‘gmp’, ‘Rmpfr’ are not available for package ‘PMCMRplus’
@@ -111,6 +111,7 @@ types of
 # for reproducibility
 set.seed(123)
 library(pairwiseComparisons)
+library(statsExpressions) # for data
 
 # parametric
 # if `var.equal = TRUE`, then Student's *t*-test will be run
@@ -217,7 +218,7 @@ pairwise_comparisons(
 )
 ```
 
-# Using `pairwiseComparisons` with `ggsignif`
+# Using `{pairwiseComparisons}` with `ggsignif`
 
 ## Example-1: between-subjects
 
@@ -235,7 +236,7 @@ mtcars$cyl <- as.factor(mtcars$cyl)
 p <- ggplot(mtcars, aes(cyl, wt)) +
   geom_boxplot()
 
-# using `pairwiseComparisons` package to create a dataframe with results
+# using `{pairwiseComparisons}` package to create a dataframe with results
 set.seed(123)
 (df <-
   pairwise_comparisons(mtcars, cyl, wt) %>%
@@ -266,7 +267,7 @@ library(ggsignif)
 p <- ggplot(WRS2::WineTasting, aes(Wine, Taste)) +
   geom_boxplot()
 
-# using `pairwiseComparisons` package to create a dataframe with results
+# using `{pairwiseComparisons}` package to create a dataframe with results
 set.seed(123)
 (df <-
   pairwise_comparisons(
