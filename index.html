@@ -107,14 +107,14 @@
 
 <div id="pairwisecomparisons-multiple-pairwise-comparison-tests" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#pairwisecomparisons-multiple-pairwise-comparison-tests" class="anchor"></a><code>pairwiseComparisons</code>: Multiple Pairwise Comparison Tests</h1></div>
+<a href="#pairwisecomparisons-multiple-pairwise-comparison-tests" class="anchor"></a><code>{pairwiseComparisons}</code>: Multiple Pairwise Comparison Tests</h1></div>
 
 </div>
 <div id="introduction-" class="section level1">
 <h1 class="hasAnchor">
 <a href="#introduction-" class="anchor"></a>Introduction <img src="reference/figures/logo.png" align="right" width="240">
 </h1>
-<p><a href="https://indrajeetpatil.github.io/pairwiseComparisons/"><code>pairwiseComparisons</code></a> provides a tidy data friendly way to carry out pairwise comparison tests.</p>
+<p><a href="https://indrajeetpatil.github.io/pairwiseComparisons/"><code>{pairwiseComparisons}</code></a> provides a tidy data friendly way to carry out pairwise comparison tests.</p>
 <p>It currently supports <em>post hoc</em> multiple pairwise comparisons tests for both between-subjects and within-subjects one-way analysis of variance designs. For both of these designs, parametric, non-parametric, robust, and Bayesian statistical tests are available.</p>
 </div>
 <div id="installation" class="section level1">
@@ -144,7 +144,7 @@
 </tr>
 </tbody>
 </table>
-<p>Linux users may encounter some installation problems. In particular, the <code>pairwiseComparisons</code> package depends on the <code>PMCMRplus</code> package.</p>
+<p>Linux users may encounter some installation problems. In particular, the <a href="https://indrajeetpatil.github.io/pairwiseComparisons/">pairwiseComparisons</a> package depends on the <code>PMCMRplus</code> package.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>ERROR<span class="sc">:</span> dependencies ‘gmp’, ‘Rmpfr’ are not available <span class="cf">for</span> package ‘PMCMRplus’</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>ERROR<span class="sc">:</span> dependency ‘pairwiseComparisons’ is not available <span class="cf">for</span> package ‘ggstatsplot’</span></code></pre></div>
 <p>This means that your operating system lacks <code>gmp</code> and <code>Rmpfr</code> libraries.</p>
@@ -265,6 +265,7 @@
 <code class="sourceCode R"><span class="co"># for reproducibility</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://indrajeetpatil.github.io/pairwiseComparisons/">pairwiseComparisons</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://indrajeetpatil.github.io/statsExpressions/">statsExpressions</a></span><span class="op">)</span> <span class="co"># for data</span>
 
 <span class="co"># parametric</span>
 <span class="co"># if `var.equal = TRUE`, then Student's *t*-test will be run</span>
@@ -420,12 +421,12 @@
 <span class="co">#&gt; 6 insecti omni    Difference   0.0762       0.95   -0.153    0.339  0.732</span>
 <span class="co">#&gt;   rope.percentage prior.distribution prior.location prior.scale  bf10</span>
 <span class="co">#&gt;             &lt;dbl&gt; &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt; 1           0.183 cauchy                          0       0.707 0.540</span>
-<span class="co">#&gt; 2           0.143 cauchy                          0       0.707 0.718</span>
-<span class="co">#&gt; 3           0.252 cauchy                          0       0.707 0.427</span>
-<span class="co">#&gt; 4           0.177 cauchy                          0       0.707 0.540</span>
-<span class="co">#&gt; 5           0.172 cauchy                          0       0.707 0.571</span>
-<span class="co">#&gt; 6           0.172 cauchy                          0       0.707 0.545</span>
+<span class="co">#&gt; 1           0.171 cauchy                          0       0.707 0.540</span>
+<span class="co">#&gt; 2           0.134 cauchy                          0       0.707 0.718</span>
+<span class="co">#&gt; 3           0.236 cauchy                          0       0.707 0.427</span>
+<span class="co">#&gt; 4           0.166 cauchy                          0       0.707 0.540</span>
+<span class="co">#&gt; 5           0.162 cauchy                          0       0.707 0.571</span>
+<span class="co">#&gt; 6           0.161 cauchy                          0       0.707 0.545</span>
 <span class="co">#&gt;   method          log_e_bf10 expression label                        </span>
 <span class="co">#&gt;   &lt;chr&gt;                &lt;dbl&gt; &lt;list&gt;     &lt;chr&gt;                        </span>
 <span class="co">#&gt; 1 Bayesian t-test     -0.617 &lt;language&gt; list(~log[e](BF['01'])==0.62)</span>
@@ -580,9 +581,9 @@
 <span class="co">#&gt;   rope.percentage prior.distribution prior.location prior.scale     bf10</span>
 <span class="co">#&gt;             &lt;dbl&gt; &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt;    &lt;dbl&gt;</span>
 <span class="co">#&gt; 1           0     cauchy                          0        0.77 3.95e+ 1</span>
-<span class="co">#&gt; 2           0.151 cauchy                          0        0.77 5.42e- 1</span>
+<span class="co">#&gt; 2           0.170 cauchy                          0        0.77 5.42e- 1</span>
 <span class="co">#&gt; 3           0     cauchy                          0        0.77 1.22e+10</span>
-<span class="co">#&gt; 4           0.135 cauchy                          0        0.77 6.50e- 1</span>
+<span class="co">#&gt; 4           0.162 cauchy                          0        0.77 6.50e- 1</span>
 <span class="co">#&gt; 5           0     cauchy                          0        0.77 1.72e+ 1</span>
 <span class="co">#&gt; 6           0     cauchy                          0        0.77 4.78e+ 6</span>
 <span class="co">#&gt;   method          log_e_bf10 expression label                          </span>
@@ -605,7 +606,7 @@
 </div>
 <div id="using-pairwisecomparisons-with-ggsignif" class="section level1">
 <h1 class="hasAnchor">
-<a href="#using-pairwisecomparisons-with-ggsignif" class="anchor"></a>Using <code>pairwiseComparisons</code> with <code>ggsignif</code>
+<a href="#using-pairwisecomparisons-with-ggsignif" class="anchor"></a>Using <code>{pairwiseComparisons}</code> with <code>ggsignif</code>
 </h1>
 <div id="example-1-between-subjects" class="section level2">
 <h2 class="hasAnchor">
@@ -624,7 +625,7 @@
 <span class="va">p</span> <span class="op">&lt;-</span> <span class="fu">ggplot</span><span class="op">(</span><span class="va">mtcars</span>, <span class="fu">aes</span><span class="op">(</span><span class="va">cyl</span>, <span class="va">wt</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">geom_boxplot</span><span class="op">(</span><span class="op">)</span>
 
-<span class="co"># using `pairwiseComparisons` package to create a dataframe with results</span>
+<span class="co"># using `{pairwiseComparisons}` package to create a dataframe with results</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="op">(</span><span class="va">df</span> <span class="op">&lt;-</span>
   <span class="fu"><a href="reference/pairwise_comparisons.html">pairwise_comparisons</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">cyl</span>, <span class="va">wt</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -672,7 +673,7 @@
 <span class="va">p</span> <span class="op">&lt;-</span> <span class="fu">ggplot</span><span class="op">(</span><span class="fu">WRS2</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/WRS2/man/WineTasting.html">WineTasting</a></span>, <span class="fu">aes</span><span class="op">(</span><span class="va">Wine</span>, <span class="va">Taste</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">geom_boxplot</span><span class="op">(</span><span class="op">)</span>
 
-<span class="co"># using `pairwiseComparisons` package to create a dataframe with results</span>
+<span class="co"># using `{pairwiseComparisons}` package to create a dataframe with results</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>
 <span class="op">(</span><span class="va">df</span> <span class="op">&lt;-</span>
   <span class="fu"><a href="reference/pairwise_comparisons.html">pairwise_comparisons</a></span><span class="op">(</span>
@@ -693,9 +694,9 @@
 <span class="co">#&gt; 3 Wine B Wine C Difference -0.0696        0.95  -0.109    -0.0330 1.00 </span>
 <span class="co">#&gt;   rope.percentage prior.distribution prior.location prior.scale   bf10</span>
 <span class="co">#&gt;             &lt;dbl&gt; &lt;chr&gt;                       &lt;dbl&gt;       &lt;dbl&gt;  &lt;dbl&gt;</span>
-<span class="co">#&gt; 1           0.431 cauchy                          0       0.707  0.235</span>
-<span class="co">#&gt; 2           0     cauchy                          0       0.707  3.71 </span>
-<span class="co">#&gt; 3           0     cauchy                          0       0.707 50.5  </span>
+<span class="co">#&gt; 1        0.404    cauchy                          0       0.707  0.235</span>
+<span class="co">#&gt; 2        0.000526 cauchy                          0       0.707  3.71 </span>
+<span class="co">#&gt; 3        0        cauchy                          0       0.707 50.5  </span>
 <span class="co">#&gt;   method          log_e_bf10 expression label                         </span>
 <span class="co">#&gt;   &lt;chr&gt;                &lt;dbl&gt; &lt;list&gt;     &lt;chr&gt;                         </span>
 <span class="co">#&gt; 1 Bayesian t-test      -1.45 &lt;language&gt; list(~log[e](BF['01'])==1.45) </span>

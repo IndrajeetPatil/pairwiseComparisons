@@ -300,6 +300,7 @@ respective functions:</p><ul>
 <span class='co'># for reproducibility</span>
 <span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>123</span><span class='op'>)</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://indrajeetpatil.github.io/pairwiseComparisons/'>pairwiseComparisons</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://indrajeetpatil.github.io/statsExpressions/'>statsExpressions</a></span><span class='op'>)</span> <span class='co'># for data</span>
 
 <span class='co'># show all columns and make the column titles bold</span>
 <span class='co'># as a user, you don't need to do this; this is just for the package website</span>
@@ -318,7 +319,7 @@ respective functions:</p><ul>
   paired <span class='op'>=</span> <span class='cn'>FALSE</span>,
   p.adjust.method <span class='op'>=</span> <span class='st'>"none"</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 3 x 6</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 3 × 6</span>
 #&gt;   <span style='font-weight: bold;'>group1</span> <span style='font-weight: bold;'>group2</span>     <span style='font-weight: bold;'>p.value</span> <span style='font-weight: bold;'>test.details</span>     <span style='font-weight: bold;'>p.value.adjustment</span>
 #&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>            <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>             
 #&gt; <span style='color: #BCBCBC;'>1</span> 4      6      <span style='color: #949494;'>0.0</span>10<span style='text-decoration: underline;'>6</span>      Student's t-test None              
@@ -339,7 +340,7 @@ respective functions:</p><ul>
   paired <span class='op'>=</span> <span class='cn'>FALSE</span>,
   p.adjust.method <span class='op'>=</span> <span class='st'>"bonferroni"</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 3 x 11</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 3 × 11</span>
 #&gt;   <span style='font-weight: bold;'>group1</span> <span style='font-weight: bold;'>group2</span> <span style='font-weight: bold;'>statistic</span>   <span style='font-weight: bold;'>p.value</span> <span style='font-weight: bold;'>alternative</span> <span style='font-weight: bold;'>method</span>            <span style='font-weight: bold;'>distribution</span>
 #&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>             <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       
 #&gt; <span style='color: #BCBCBC;'>1</span> 4      6           5.39 <span style='color: #949494;'>0.0</span>12<span style='text-decoration: underline;'>5</span>    two.sided   Games-Howell test q           
@@ -364,7 +365,7 @@ respective functions:</p><ul>
   paired <span class='op'>=</span> <span class='cn'>FALSE</span>,
   p.adjust.method <span class='op'>=</span> <span class='st'>"none"</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 3 x 11</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 3 × 11</span>
 #&gt;   <span style='font-weight: bold;'>group1</span> <span style='font-weight: bold;'>group2</span> <span style='font-weight: bold;'>statistic</span>    <span style='font-weight: bold;'>p.value</span> <span style='font-weight: bold;'>alternative</span> <span style='font-weight: bold;'>method</span>               
 #&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                
 #&gt; <span style='color: #BCBCBC;'>1</span> 4      6           1.84 <span style='color: #949494;'>0.0</span>66<span style='text-decoration: underline;'>3</span>     two.sided   Dunn's all-pairs test
@@ -389,7 +390,7 @@ respective functions:</p><ul>
   paired <span class='op'>=</span> <span class='cn'>FALSE</span>,
   p.adjust.method <span class='op'>=</span> <span class='st'>"fdr"</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 3 x 10</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 3 × 10</span>
 #&gt;   <span style='font-weight: bold;'>group1</span> <span style='font-weight: bold;'>group2</span> <span style='font-weight: bold;'>estimate</span> <span style='font-weight: bold;'>conf.level</span> <span style='font-weight: bold;'>conf.low</span> <span style='font-weight: bold;'>conf.high</span>  <span style='font-weight: bold;'>p.value</span>
 #&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
 #&gt; <span style='color: #BCBCBC;'>1</span> 4      6        -<span style='color: #949494;'>0.</span><span style='color: #BB0000;'>909</span>       <span style='color: #949494;'>0.</span>95    -<span style='color: #BB0000;'>1.64</span>    -<span style='color: #949494;'>0.</span><span style='color: #BB0000;'>173</span> <span style='color: #949494;'>0.00</span>8<span style='text-decoration: underline;'>72</span> 
@@ -413,7 +414,7 @@ respective functions:</p><ul>
   type <span class='op'>=</span> <span class='st'>"bayes"</span>,
   paired <span class='op'>=</span> <span class='cn'>FALSE</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 3 x 18</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 3 × 18</span>
 #&gt;   <span style='font-weight: bold;'>group1</span> <span style='font-weight: bold;'>group2</span> <span style='font-weight: bold;'>term</span>       <span style='font-weight: bold;'>estimate</span> <span style='font-weight: bold;'>conf.level</span> <span style='font-weight: bold;'>conf.low</span> <span style='font-weight: bold;'>conf.high</span>    <span style='font-weight: bold;'>pd</span>
 #&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
 #&gt; <span style='color: #BCBCBC;'>1</span> 4      6      Difference    <span style='color: #949494;'>0.</span>686       <span style='color: #949494;'>0.</span>95   <span style='color: #949494;'>0.</span>194       1.25 <span style='color: #949494;'>0.</span>992
@@ -421,9 +422,9 @@ respective functions:</p><ul>
 #&gt; <span style='color: #BCBCBC;'>3</span> 6      8      Difference    <span style='color: #949494;'>0.</span>699       <span style='color: #949494;'>0.</span>95   <span style='color: #949494;'>0.0</span>64<span style='text-decoration: underline;'>0</span>      1.33 <span style='color: #949494;'>0.</span>986
 #&gt;   <span style='font-weight: bold;'>rope.percentage</span> <span style='font-weight: bold;'>prior.distribution</span> <span style='font-weight: bold;'>prior.location</span> <span style='font-weight: bold;'>prior.scale</span>    <span style='font-weight: bold;'>bf10</span>
 #&gt;             <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'>1</span>               <span style='color: #949494;'>0</span> cauchy                          <span style='color: #949494;'>0</span>       <span style='color: #949494;'>0.</span>707   11.4 
-#&gt; <span style='color: #BCBCBC;'>2</span>               <span style='color: #949494;'>0</span> cauchy                          <span style='color: #949494;'>0</span>       <span style='color: #949494;'>0.</span>707 <span style='text-decoration: underline;'>5</span>22<span style='color: #949494;'>2</span>.  
-#&gt; <span style='color: #BCBCBC;'>3</span>               <span style='color: #949494;'>0</span> cauchy                          <span style='color: #949494;'>0</span>       <span style='color: #949494;'>0.</span>707    5.36
+#&gt; <span style='color: #BCBCBC;'>1</span>         <span style='color: #949494;'>0</span>       cauchy                          <span style='color: #949494;'>0</span>       <span style='color: #949494;'>0.</span>707   11.4 
+#&gt; <span style='color: #BCBCBC;'>2</span>         <span style='color: #949494;'>0</span>       cauchy                          <span style='color: #949494;'>0</span>       <span style='color: #949494;'>0.</span>707 <span style='text-decoration: underline;'>5</span>22<span style='color: #949494;'>2</span>.  
+#&gt; <span style='color: #BCBCBC;'>3</span>         <span style='color: #949494;'>0.00</span>4<span style='text-decoration: underline;'>47</span> cauchy                          <span style='color: #949494;'>0</span>       <span style='color: #949494;'>0.</span>707    5.36
 #&gt;   <span style='font-weight: bold;'>method</span>          <span style='font-weight: bold;'>log_e_bf10</span> <span style='font-weight: bold;'>expression</span> <span style='font-weight: bold;'>label</span>                         
 #&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;list&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                         
 #&gt; <span style='color: #BCBCBC;'>1</span> Bayesian t-test       2.44 <span style='color: #949494;'>&lt;language&gt;</span> list(~log[e](BF['01'])==-2.44)
@@ -446,7 +447,7 @@ respective functions:</p><ul>
   paired <span class='op'>=</span> <span class='cn'>TRUE</span>,
   p.adjust.method <span class='op'>=</span> <span class='st'>"BH"</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 6 x 6</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 6 × 6</span>
 #&gt;   <span style='font-weight: bold;'>group1</span> <span style='font-weight: bold;'>group2</span>  <span style='font-weight: bold;'>p.value</span> <span style='font-weight: bold;'>test.details</span>     <span style='font-weight: bold;'>p.value.adjustment</span>
 #&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>            <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>             
 #&gt; <span style='color: #BCBCBC;'>1</span> HDHF   HDLF   1.06<span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 3</span> Student's t-test FDR               
@@ -473,7 +474,7 @@ respective functions:</p><ul>
   paired <span class='op'>=</span> <span class='cn'>TRUE</span>,
   p.adjust.method <span class='op'>=</span> <span class='st'>"BY"</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 6 x 11</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 6 × 11</span>
 #&gt;   <span style='font-weight: bold;'>group1</span> <span style='font-weight: bold;'>group2</span> <span style='font-weight: bold;'>statistic</span>  <span style='font-weight: bold;'>p.value</span> <span style='font-weight: bold;'>alternative</span>
 #&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      
 #&gt; <span style='color: #BCBCBC;'>1</span> HDHF   HDLF        4.78 1.44<span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 5</span> two.sided  
@@ -516,7 +517,7 @@ respective functions:</p><ul>
   paired <span class='op'>=</span> <span class='cn'>TRUE</span>,
   p.adjust.method <span class='op'>=</span> <span class='st'>"hommel"</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 6 x 11</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 6 × 11</span>
 #&gt;   <span style='font-weight: bold;'>group1</span> <span style='font-weight: bold;'>group2</span> <span style='font-weight: bold;'>estimate</span> <span style='font-weight: bold;'>conf.level</span> <span style='font-weight: bold;'>conf.low</span> <span style='font-weight: bold;'>conf.high</span>     <span style='font-weight: bold;'>p.value</span>  <span style='font-weight: bold;'>p.crit</span>
 #&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
 #&gt; <span style='color: #BCBCBC;'>1</span> HDHF   HDLF      1.03        <span style='color: #949494;'>0.</span>95   <span style='color: #949494;'>0.</span>140      1.92  <span style='color: #949494;'>0.00</span>9<span style='text-decoration: underline;'>99</span>     <span style='color: #949494;'>0.0</span>12<span style='text-decoration: underline;'>7</span> 
@@ -550,7 +551,7 @@ respective functions:</p><ul>
   type <span class='op'>=</span> <span class='st'>"bayes"</span>,
   paired <span class='op'>=</span> <span class='cn'>TRUE</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 6 x 18</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 6 × 18</span>
 #&gt;   <span style='font-weight: bold;'>group1</span> <span style='font-weight: bold;'>group2</span> <span style='font-weight: bold;'>term</span>       <span style='font-weight: bold;'>estimate</span> <span style='font-weight: bold;'>conf.level</span> <span style='font-weight: bold;'>conf.low</span> <span style='font-weight: bold;'>conf.high</span>    <span style='font-weight: bold;'>pd</span>
 #&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
 #&gt; <span style='color: #BCBCBC;'>1</span> HDHF   HDLF   Difference   -<span style='color: #BB0000;'>1.10</span>        <span style='color: #949494;'>0.</span>95  -<span style='color: #BB0000;'>1.77</span>     -<span style='color: #949494;'>0.</span><span style='color: #BB0000;'>505</span>  1.00 
@@ -562,9 +563,9 @@ respective functions:</p><ul>
 #&gt;   <span style='font-weight: bold;'>rope.percentage</span> <span style='font-weight: bold;'>prior.distribution</span> <span style='font-weight: bold;'>prior.location</span> <span style='font-weight: bold;'>prior.scale</span>     <span style='font-weight: bold;'>bf10</span>
 #&gt;             <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
 #&gt; <span style='color: #BCBCBC;'>1</span>           <span style='color: #949494;'>0</span>     cauchy                          <span style='color: #949494;'>0</span>       <span style='color: #949494;'>0.</span>707 4.16<span style='color: #949494;'>e</span>+ 1
-#&gt; <span style='color: #BCBCBC;'>2</span>           <span style='color: #949494;'>0.</span>183 cauchy                          <span style='color: #949494;'>0</span>       <span style='color: #949494;'>0.</span>707 5.83<span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 1</span>
+#&gt; <span style='color: #BCBCBC;'>2</span>           <span style='color: #949494;'>0.</span>184 cauchy                          <span style='color: #949494;'>0</span>       <span style='color: #949494;'>0.</span>707 5.83<span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 1</span>
 #&gt; <span style='color: #BCBCBC;'>3</span>           <span style='color: #949494;'>0</span>     cauchy                          <span style='color: #949494;'>0</span>       <span style='color: #949494;'>0.</span>707 1.20<span style='color: #949494;'>e</span>+10
-#&gt; <span style='color: #BCBCBC;'>4</span>           <span style='color: #949494;'>0.</span>133 cauchy                          <span style='color: #949494;'>0</span>       <span style='color: #949494;'>0.</span>707 6.98<span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 1</span>
+#&gt; <span style='color: #BCBCBC;'>4</span>           <span style='color: #949494;'>0.</span>155 cauchy                          <span style='color: #949494;'>0</span>       <span style='color: #949494;'>0.</span>707 6.98<span style='color: #949494;'>e</span><span style='color: #BB0000;'>- 1</span>
 #&gt; <span style='color: #BCBCBC;'>5</span>           <span style='color: #949494;'>0</span>     cauchy                          <span style='color: #949494;'>0</span>       <span style='color: #949494;'>0.</span>707 1.81<span style='color: #949494;'>e</span>+ 1
 #&gt; <span style='color: #BCBCBC;'>6</span>           <span style='color: #949494;'>0</span>     cauchy                          <span style='color: #949494;'>0</span>       <span style='color: #949494;'>0.</span>707 4.81<span style='color: #949494;'>e</span>+ 6
 #&gt;   <span style='font-weight: bold;'>method</span>          <span style='font-weight: bold;'>log_e_bf10</span> <span style='font-weight: bold;'>expression</span> <span style='font-weight: bold;'>label</span>                          
