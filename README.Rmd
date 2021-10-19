@@ -27,13 +27,9 @@ knitr::opts_chunk$set(
 
 # `{pairwiseComparisons}`: Multiple Pairwise Comparison Tests
 
-[![CRAN_Release_Badge](https://www.r-pkg.org/badges/version-ago/pairwiseComparisons)](https://CRAN.R-project.org/package=pairwiseComparisons)
-[![CRAN Checks](https://cranchecks.info/badges/summary/pairwiseComparisons)](https://cran.r-project.org/web/checks/check_results_pairwiseComparisons.html)
+[![lifecycle](https://img.shields.io/badge/lifecycle-retired-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html)
 [![R build status](https://github.com/IndrajeetPatil/pairwiseComparisons/workflows/R-CMD-check/badge.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons)
 [![pkgdown](https://github.com/IndrajeetPatil/pairwiseComparisons/workflows/pkgdown/badge.svg)](https://github.com/IndrajeetPatil/pairwiseComparisons/actions)
-[![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html)
-[![Daily downloads badge](https://cranlogs.r-pkg.org/badges/last-day/pairwiseComparisons?color=blue)](https://CRAN.R-project.org/package=pairwiseComparisons)
-[![Total downloads badge](https://cranlogs.r-pkg.org/badges/grand-total/pairwiseComparisons?color=blue)](https://CRAN.R-project.org/package=pairwiseComparisons)
 
 # Introduction <img src="man/figures/logo.png" align="right" width="240" />
 
@@ -300,21 +296,3 @@ p +
 The hexsticker was generously designed by Sarah Otterstetter (Max Planck
 Institute for Human Development, Berlin). 
 
-# Contributing
-
-I'm happy to receive bug reports, suggestions, questions, and (most of all)
-contributions to fix problems and add features. I personally prefer using the
-`GitHub` issues system over trying to reach out to me in other ways (personal
-e-mail, Twitter, etc.). Pull Requests for contributions are encouraged.
-
-Here are some simple ways in which you can contribute (in the increasing order
-of commitment):
-
-  - Read and correct any inconsistencies in the
-    [documentation](https://indrajeetpatil.github.io/pairwiseComparisons/)
-  - Raise issues about bugs or wanted features
-  - Review code
-  - Add new functionality
-
-Please note that this project is released with a 
-[Contributor Code of Conduct](https://github.com/IndrajeetPatil/pairwiseComparisons/blob/master/.github/CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
