@@ -22,7 +22,7 @@ URL: https://indrajeetpatil.github.io/pairwiseComparisons/,
 BugReports: 
     https://github.com/IndrajeetPatil/pairwiseComparisons/issues
 Depends: 
-    R (>= 3.6.0)
+    R (>= 4.0)
 Imports:
     dplyr,
     insight (>= 0.14.5),
