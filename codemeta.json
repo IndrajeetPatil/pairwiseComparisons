@@ -198,7 +198,7 @@
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://github.com/IndrajeetPatil/statsExpressions"
+      "sameAs": "https://CRAN.R-project.org/package=statsExpressions"
     },
     {
       "@type": "SoftwareApplication",
@@ -237,7 +237,7 @@
     "name": "Comprehensive R Archive Network (CRAN)",
     "url": "https://cran.r-project.org"
   },
-  "fileSize": "259.084KB",
+  "fileSize": "259.037KB",
   "readme": "https://github.com/IndrajeetPatil/pairwiseComparisons/blob/master/README.md",
   "keywords": [
     "pairwise-comparison-tests",
